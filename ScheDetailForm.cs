@@ -10,11 +10,36 @@ using System.Windows.Forms;
 
 namespace KSCS
 {
-    public partial class ScheduleDetailForm : Form
+    public partial class ScheDetailForm : Form
     {
-        public ScheduleDetailForm()
+        public ScheDetailForm()
         {
             InitializeComponent();
+        }
+
+        private void closeBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void addBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void deleteBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void dptEndDate_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2HtmlLabel7_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

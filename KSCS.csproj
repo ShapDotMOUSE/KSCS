@@ -52,11 +52,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dates.cs">
+    <Compile Include="UserBlankDate.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Dates.Designer.cs">
-      <DependentUpon>Dates.cs</DependentUpon>
+    <Compile Include="UserBlankDate.Designer.cs">
+      <DependentUpon>UserBlankDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserDate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserDate.Designer.cs">
+      <DependentUpon>UserDate.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -66,8 +72,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Dates.resx">
-      <DependentUpon>Dates.cs</DependentUpon>
+    <EmbeddedResource Include="UserBlankDate.resx">
+      <DependentUpon>UserBlankDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDate.resx">
+      <DependentUpon>UserDate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -101,6 +110,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Image\그립톡-기본.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\nextIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\previousIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

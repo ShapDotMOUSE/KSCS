@@ -48,6 +48,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            this.btnPrvious = new Guna.UI2.WinForms.Guna2Button();
+            this.btnNext = new Guna.UI2.WinForms.Guna2Button();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.label15 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -56,11 +58,11 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.Month_lbl = new System.Windows.Forms.Label();
+            this.daysConatiner = new System.Windows.Forms.FlowLayoutPanel();
+            this.lblMonth = new System.Windows.Forms.Label();
             this.guna2CustomGradientPanel3 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
+            this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.guna2Panel1.SuspendLayout();
             this.guna2CustomGradientPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -267,14 +269,52 @@
             // 
             // guna2CustomGradientPanel1
             // 
+            this.guna2CustomGradientPanel1.Controls.Add(this.btnPrvious);
+            this.guna2CustomGradientPanel1.Controls.Add(this.btnNext);
             this.guna2CustomGradientPanel1.Controls.Add(this.flowLayoutPanel2);
-            this.guna2CustomGradientPanel1.Controls.Add(this.flowLayoutPanel1);
-            this.guna2CustomGradientPanel1.Controls.Add(this.Month_lbl);
+            this.guna2CustomGradientPanel1.Controls.Add(this.daysConatiner);
+            this.guna2CustomGradientPanel1.Controls.Add(this.lblMonth);
             this.guna2CustomGradientPanel1.Location = new System.Drawing.Point(29, 245);
             this.guna2CustomGradientPanel1.Margin = new System.Windows.Forms.Padding(20, 18, 3, 15);
             this.guna2CustomGradientPanel1.Name = "guna2CustomGradientPanel1";
             this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(900, 595);
             this.guna2CustomGradientPanel1.TabIndex = 18;
+            // 
+            // btnPrvious
+            // 
+            this.btnPrvious.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnPrvious.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnPrvious.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnPrvious.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnPrvious.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnPrvious.FillColor = System.Drawing.Color.White;
+            this.btnPrvious.Font = new System.Drawing.Font("Microsoft YaHei UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrvious.ForeColor = System.Drawing.Color.Black;
+            this.btnPrvious.Image = global::KSCS.Properties.Resources.previousIcon;
+            this.btnPrvious.ImageSize = new System.Drawing.Size(20, 30);
+            this.btnPrvious.Location = new System.Drawing.Point(376, 0);
+            this.btnPrvious.Name = "btnPrvious";
+            this.btnPrvious.Size = new System.Drawing.Size(28, 45);
+            this.btnPrvious.TabIndex = 25;
+            this.btnPrvious.Click += new System.EventHandler(this.btnPrvious_Click);
+            // 
+            // btnNext
+            // 
+            this.btnNext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnNext.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnNext.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnNext.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnNext.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnNext.FillColor = System.Drawing.Color.White;
+            this.btnNext.Font = new System.Drawing.Font("Microsoft YaHei UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNext.ForeColor = System.Drawing.Color.Black;
+            this.btnNext.Image = global::KSCS.Properties.Resources.nextIcon;
+            this.btnNext.ImageSize = new System.Drawing.Size(20, 30);
+            this.btnNext.Location = new System.Drawing.Point(496, 0);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(28, 45);
+            this.btnNext.TabIndex = 24;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // flowLayoutPanel2
             // 
@@ -397,29 +437,27 @@
             this.label14.Text = "토요일";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // flowLayoutPanel1
+            // daysConatiner
             // 
-            this.flowLayoutPanel1.BackColor = System.Drawing.Color.White;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(25, 83);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(20, 0, 20, 10);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(855, 502);
-            this.flowLayoutPanel1.TabIndex = 20;
+            this.daysConatiner.BackColor = System.Drawing.Color.White;
+            this.daysConatiner.Location = new System.Drawing.Point(25, 83);
+            this.daysConatiner.Margin = new System.Windows.Forms.Padding(20, 0, 20, 10);
+            this.daysConatiner.Name = "daysConatiner";
+            this.daysConatiner.Size = new System.Drawing.Size(855, 502);
+            this.daysConatiner.TabIndex = 20;
             // 
-            // Month_lbl
+            // lblMonth
             // 
-            this.Month_lbl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Month_lbl.AutoSize = true;
-            this.Month_lbl.BackColor = System.Drawing.Color.Transparent;
-            this.Month_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Month_lbl.ForeColor = System.Drawing.Color.Black;
-            this.Month_lbl.Location = new System.Drawing.Point(411, 4);
-            this.Month_lbl.Name = "Month_lbl";
-            this.Month_lbl.Size = new System.Drawing.Size(92, 44);
-            this.Month_lbl.TabIndex = 19;
-            this.Month_lbl.Text = "00월";
-            this.Month_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblMonth.BackColor = System.Drawing.Color.Transparent;
+            this.lblMonth.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblMonth.ForeColor = System.Drawing.Color.Black;
+            this.lblMonth.Location = new System.Drawing.Point(0, 0);
+            this.lblMonth.Name = "lblMonth";
+            this.lblMonth.Size = new System.Drawing.Size(900, 44);
+            this.lblMonth.TabIndex = 19;
+            this.lblMonth.Text = "12월";
+            this.lblMonth.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // guna2CustomGradientPanel3
             // 
@@ -479,7 +517,6 @@
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             this.guna2CustomGradientPanel1.ResumeLayout(false);
-            this.guna2CustomGradientPanel1.PerformLayout();
             this.flowLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -507,9 +544,9 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel1;
-        private System.Windows.Forms.Label Month_lbl;
+        private System.Windows.Forms.Label lblMonth;
         private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel3;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel daysConatiner;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label9;
@@ -519,6 +556,8 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private Guna.UI2.WinForms.Guna2AnimateWindow guna2AnimateWindow1;
+        private Guna.UI2.WinForms.Guna2Button btnNext;
+        private Guna.UI2.WinForms.Guna2Button btnPrvious;
     }
 }
 

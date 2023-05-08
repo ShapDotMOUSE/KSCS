@@ -13,18 +13,12 @@ namespace KSCS
     public partial class KSCS : Form
     {
         private Point mousePoint;
+        private int year;
+        private int month;
         public KSCS()
         {
             InitializeComponent();
-        }
-
-        private void dispalyDays()
-        {
-            DateTime now = DateTime.Now;
-
-            DateTime startOfMonth = new DateTime(now.Year, now.Month, 1);
-            int days = DateTime.DaysInMonth(now.Year, now.Month);
-            int dayOfWeek = Convert.ToInt32(startOfMonth.DayOfWeek.ToString("d"));
+            
         }
 
         private void KSCS_Load(object sender, EventArgs e)
@@ -33,6 +27,40 @@ namespace KSCS
             seperator_vertical.FillColor = Color.FromArgb(245, 245, 245);
             seperator_horizon.FillColor = Color.FromArgb(245, 245, 245);
             category_underline.BackColor = Color.FromArgb(58, 5, 31);
+            dispalyDate();
+        }
+
+        private void dispalyDate()
+        {
+            DateTime now = DateTime.Now;
+
+            year = now.Year;
+            month = now.Month;
+            createDates();
+        }
+
+        private void createDates()
+        {
+            lblMonth.Text = month.ToString() + "월";
+            lblMonth.TextAlign = ContentAlignment.MiddleCenter;
+
+            DateTime startOfMonth = new DateTime(year, month, 1);
+            int dates = DateTime.DaysInMonth(year, month);
+            int dayOfWeek = Convert.ToInt32(startOfMonth.DayOfWeek.ToString("d")) + 1;
+
+            daysConatiner.Controls.Clear();
+            for (int i = 1; i < dayOfWeek; i++)
+            {
+                UserBlankDate userblankDate = new UserBlankDate();
+                daysConatiner.Controls.Add(userblankDate);
+            }
+
+            for (int i = 1; i < dates; i++)
+            {
+                UserDate userDate = new UserDate();
+                userDate.SetDate(i);
+                daysConatiner.Controls.Add(userDate);
+            }
         }
 
         private void guna2ControlBox1_Click(object sender, EventArgs e)
@@ -55,6 +83,31 @@ namespace KSCS
             }
         }
 
- 
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if(month == 12)
+            {
+                month = 1; year++;
+            }
+            else
+            {
+                month++;
+            }
+            createDates();
+        }
+
+        private void btnPrvious_Click(object sender, EventArgs e)
+        {
+            if (month == 1)
+            {
+                month = 12; year--;
+            }
+            else
+            {
+                month--;
+            }
+            createDates();
+
+        }
     }
 }

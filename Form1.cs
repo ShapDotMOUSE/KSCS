@@ -18,6 +18,15 @@ namespace KSCS
             InitializeComponent();
         }
 
+        private void dispalyDays()
+        {
+            DateTime now = DateTime.Now;
+
+            DateTime startOfMonth = new DateTime(now.Year, now.Month, 1);
+            int days = DateTime.DaysInMonth(now.Year, now.Month);
+            int dayOfWeek = Convert.ToInt32(startOfMonth.DayOfWeek.ToString("d"));
+        }
+
         private void KSCS_Load(object sender, EventArgs e)
         {
             this.BackColor = Color.FromArgb(58, 5, 31);
@@ -45,5 +54,7 @@ namespace KSCS
                 Location = new Point(this.Left - x, this.Top - y);
             }
         }
+
+ 
     }
 }

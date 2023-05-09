@@ -29,30 +29,46 @@
         private void InitializeComponent()
         {
             this.lblDate = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.flpEvent = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
             // lblDate
             // 
             this.lblDate.AutoSize = false;
             this.lblDate.BackColor = System.Drawing.Color.Transparent;
+            this.lblDate.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblDate.Font = new System.Drawing.Font("MS Reference Sans Serif", 10F);
             this.lblDate.Location = new System.Drawing.Point(0, 0);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(102, 18);
+            this.lblDate.Size = new System.Drawing.Size(102, 17);
             this.lblDate.TabIndex = 0;
             this.lblDate.Text = "1";
             this.lblDate.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // flpEvent
+            // 
+            this.flpEvent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpEvent.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flpEvent.Location = new System.Drawing.Point(0, 17);
+            this.flpEvent.Name = "flpEvent";
+            this.flpEvent.Size = new System.Drawing.Size(102, 47);
+            this.flpEvent.TabIndex = 1;
+            this.flpEvent.MouseLeave += new System.EventHandler(this.UserDate_MouseLeave);
+            this.flpEvent.MouseMove += new System.Windows.Forms.MouseEventHandler(this.UserDate_MouseMove);
+            this.flpEvent.MouseUp += new System.Windows.Forms.MouseEventHandler(this.UserDate_Click);
             // 
             // UserDate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
+            this.Controls.Add(this.flpEvent);
             this.Controls.Add(this.lblDate);
             this.Margin = new System.Windows.Forms.Padding(10);
             this.Name = "UserDate";
             this.Size = new System.Drawing.Size(102, 64);
-            this.Click += new System.EventHandler(this.UserDate_Click);
+            this.MouseLeave += new System.EventHandler(this.UserDate_MouseLeave);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.UserDate_MouseMove);
             this.ResumeLayout(false);
 
         }
@@ -60,5 +76,6 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2HtmlLabel lblDate;
+        private System.Windows.Forms.FlowLayoutPanel flpEvent;
     }
 }

@@ -13,6 +13,7 @@ namespace KSCS
     public partial class TempAddEventForm : Form
     {
         public event EventHandler AddEvent;
+        
         public TempAddEventForm()
         {
             InitializeComponent();
@@ -31,9 +32,15 @@ namespace KSCS
             }
         }
 
-        public string GetTxtboxEvnent()
+        public string GetTxtboxEvent()
         {
             return TxtBoxEvent.Text;
         }
+
+        public int GetCmbType()
+        {
+            return cmbType.SelectedIndex;
+        }
+
     }
 }

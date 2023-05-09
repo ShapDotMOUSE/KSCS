@@ -45,15 +45,16 @@ namespace KSCS
         private void SaveEvent(object sender, EventArgs e)
         {
             TempAddEventForm userControl = sender as TempAddEventForm;
-             AddEvent(userControl.GetTxtboxEvnent());
-            
+             AddEvent(userControl.GetTxtboxEvent(), userControl.GetCmbType());
         }
 
-        private void AddEvent(string dateEvent)
+        private void AddEvent(string dateEvent, int eventType)
         {
             if (dateEvent.Equals(string.Empty))
                 return;
             UserEvent userEvent = new UserEvent();
+            userEvent.SetEventInfo(dateEvent);
+            userEvent.SetColor(eventType);
             flpEvent.Controls.Add(userEvent);
 
         }

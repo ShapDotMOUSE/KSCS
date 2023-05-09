@@ -31,43 +31,49 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScheDetailForm));
             this.formRadius = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.closeBtn = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2ImageButton6 = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.guna2ImageButton5 = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.guna2ImageButton4 = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.guna2ImageButton3 = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.guna2ImageButton2 = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.panelTop = new Guna.UI2.WinForms.Guna2Panel();
+            this.panelLabel = new Guna.UI2.WinForms.Guna2Panel();
             this.labelCategory = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.labelMemo = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.labelTitle = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.labelSchedule = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.labelPlace = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.labelMember = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.tbTitle = new Guna.UI2.WinForms.Guna2TextBox();
-            this.tbPlace = new Guna.UI2.WinForms.Guna2TextBox();
-            this.tbMemo = new Guna.UI2.WinForms.Guna2TextBox();
-            this.deleteBtn = new Guna.UI2.WinForms.Guna2Button();
             this.deleteBtnRadius = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.addBtn = new Guna.UI2.WinForms.Guna2Button();
+            this.deleteBtn = new Guna.UI2.WinForms.Guna2Button();
             this.addBtnRadius = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.cbCategory = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.dtpStartDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
-            this.dtpEndDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
-            this.dtpStartTime = new Guna.UI2.WinForms.Guna2DateTimePicker();
-            this.dtpEndTime = new Guna.UI2.WinForms.Guna2DateTimePicker();
-            this.guna2HtmlLabel7 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2HtmlLabel8 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.addBtn = new Guna.UI2.WinForms.Guna2Button();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2ContextMenuStrip1 = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
             this.tsmAddmem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmDeleteMem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panelSchedules = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnSchedule3 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnSchedule2 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnSchedule1 = new Guna.UI2.WinForms.Guna2Button();
             this.btnMemSet = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Panel1.SuspendLayout();
-            this.guna2Panel2.SuspendLayout();
+            this.guna2HtmlLabel8 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.guna2HtmlLabel7 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.dtpEndTime = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.dtpStartTime = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.dtpEndDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.dtpStartDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.cbCategory = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.tbMemo = new Guna.UI2.WinForms.Guna2TextBox();
+            this.tbPlace = new Guna.UI2.WinForms.Guna2TextBox();
+            this.tbTitle = new Guna.UI2.WinForms.Guna2TextBox();
+            this.guna2ImageButton6 = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.guna2ImageButton5 = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.guna2ImageButton4 = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.guna2ImageButton3 = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.guna2ImageButton2 = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.btnAddSchedule = new Guna.UI2.WinForms.Guna2Button();
+            this.closeBtn = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.panelTop.SuspendLayout();
+            this.panelLabel.SuspendLayout();
             this.guna2ContextMenuStrip1.SuspendLayout();
+            this.panelSchedules.SuspendLayout();
             this.SuspendLayout();
             // 
             // formRadius
@@ -75,257 +81,100 @@
             this.formRadius.BorderRadius = 30;
             this.formRadius.TargetControl = this;
             // 
-            // guna2Panel1
+            // panelTop
             // 
-            this.guna2Panel1.BackColor = System.Drawing.Color.Pink;
-            this.guna2Panel1.Controls.Add(this.closeBtn);
-            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
-            this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(450, 44);
-            this.guna2Panel1.TabIndex = 5;
+            this.panelTop.BackColor = System.Drawing.Color.Pink;
+            this.panelTop.Controls.Add(this.closeBtn);
+            this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTop.Location = new System.Drawing.Point(0, 0);
+            this.panelTop.Name = "panelTop";
+            this.panelTop.Size = new System.Drawing.Size(650, 44);
+            this.panelTop.TabIndex = 5;
             // 
-            // closeBtn
+            // panelLabel
             // 
-            this.closeBtn.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.closeBtn.HoverState.ImageSize = new System.Drawing.Size(0, 0);
-            this.closeBtn.Image = ((System.Drawing.Image)(resources.GetObject("closeBtn.Image")));
-            this.closeBtn.ImageOffset = new System.Drawing.Point(0, 0);
-            this.closeBtn.ImageRotate = 0F;
-            this.closeBtn.ImageSize = new System.Drawing.Size(15, 15);
-            this.closeBtn.Location = new System.Drawing.Point(406, 0);
-            this.closeBtn.Name = "closeBtn";
-            this.closeBtn.PressedState.ImageSize = new System.Drawing.Size(0, 0);
-            this.closeBtn.Size = new System.Drawing.Size(44, 44);
-            this.closeBtn.TabIndex = 12;
-            this.closeBtn.Click += new System.EventHandler(this.closeBtn_Click);
-            // 
-            // guna2Panel2
-            // 
-            this.guna2Panel2.Controls.Add(this.guna2ImageButton6);
-            this.guna2Panel2.Controls.Add(this.guna2ImageButton5);
-            this.guna2Panel2.Controls.Add(this.guna2ImageButton4);
-            this.guna2Panel2.Controls.Add(this.guna2ImageButton3);
-            this.guna2Panel2.Controls.Add(this.guna2ImageButton2);
-            this.guna2Panel2.Controls.Add(this.guna2ImageButton1);
-            this.guna2Panel2.Controls.Add(this.labelCategory);
-            this.guna2Panel2.Controls.Add(this.labelMemo);
-            this.guna2Panel2.Controls.Add(this.labelTitle);
-            this.guna2Panel2.Controls.Add(this.labelSchedule);
-            this.guna2Panel2.Controls.Add(this.labelPlace);
-            this.guna2Panel2.Controls.Add(this.labelMember);
-            this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.guna2Panel2.Location = new System.Drawing.Point(0, 44);
-            this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(147, 526);
-            this.guna2Panel2.TabIndex = 0;
-            // 
-            // guna2ImageButton6
-            // 
-            this.guna2ImageButton6.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButton6.HoverState.ImageSize = new System.Drawing.Size(0, 0);
-            this.guna2ImageButton6.Image = ((System.Drawing.Image)(resources.GetObject("guna2ImageButton6.Image")));
-            this.guna2ImageButton6.ImageOffset = new System.Drawing.Point(0, 0);
-            this.guna2ImageButton6.ImageRotate = 0F;
-            this.guna2ImageButton6.ImageSize = new System.Drawing.Size(20, 20);
-            this.guna2ImageButton6.Location = new System.Drawing.Point(19, 378);
-            this.guna2ImageButton6.Name = "guna2ImageButton6";
-            this.guna2ImageButton6.PressedState.ImageSize = new System.Drawing.Size(0, 0);
-            this.guna2ImageButton6.Size = new System.Drawing.Size(39, 28);
-            this.guna2ImageButton6.TabIndex = 25;
-            // 
-            // guna2ImageButton5
-            // 
-            this.guna2ImageButton5.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButton5.HoverState.ImageSize = new System.Drawing.Size(0, 0);
-            this.guna2ImageButton5.Image = ((System.Drawing.Image)(resources.GetObject("guna2ImageButton5.Image")));
-            this.guna2ImageButton5.ImageOffset = new System.Drawing.Point(0, 0);
-            this.guna2ImageButton5.ImageRotate = 0F;
-            this.guna2ImageButton5.ImageSize = new System.Drawing.Size(20, 20);
-            this.guna2ImageButton5.Location = new System.Drawing.Point(19, 309);
-            this.guna2ImageButton5.Name = "guna2ImageButton5";
-            this.guna2ImageButton5.PressedState.ImageSize = new System.Drawing.Size(0, 0);
-            this.guna2ImageButton5.Size = new System.Drawing.Size(39, 28);
-            this.guna2ImageButton5.TabIndex = 24;
-            // 
-            // guna2ImageButton4
-            // 
-            this.guna2ImageButton4.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButton4.HoverState.ImageSize = new System.Drawing.Size(0, 0);
-            this.guna2ImageButton4.Image = ((System.Drawing.Image)(resources.GetObject("guna2ImageButton4.Image")));
-            this.guna2ImageButton4.ImageOffset = new System.Drawing.Point(0, 0);
-            this.guna2ImageButton4.ImageRotate = 0F;
-            this.guna2ImageButton4.ImageSize = new System.Drawing.Size(20, 20);
-            this.guna2ImageButton4.Location = new System.Drawing.Point(19, 239);
-            this.guna2ImageButton4.Name = "guna2ImageButton4";
-            this.guna2ImageButton4.PressedState.ImageSize = new System.Drawing.Size(0, 0);
-            this.guna2ImageButton4.Size = new System.Drawing.Size(39, 28);
-            this.guna2ImageButton4.TabIndex = 23;
-            // 
-            // guna2ImageButton3
-            // 
-            this.guna2ImageButton3.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButton3.HoverState.ImageSize = new System.Drawing.Size(0, 0);
-            this.guna2ImageButton3.Image = ((System.Drawing.Image)(resources.GetObject("guna2ImageButton3.Image")));
-            this.guna2ImageButton3.ImageOffset = new System.Drawing.Point(0, 0);
-            this.guna2ImageButton3.ImageRotate = 0F;
-            this.guna2ImageButton3.ImageSize = new System.Drawing.Size(20, 20);
-            this.guna2ImageButton3.Location = new System.Drawing.Point(19, 87);
-            this.guna2ImageButton3.Name = "guna2ImageButton3";
-            this.guna2ImageButton3.PressedState.ImageSize = new System.Drawing.Size(0, 0);
-            this.guna2ImageButton3.Size = new System.Drawing.Size(39, 28);
-            this.guna2ImageButton3.TabIndex = 22;
-            // 
-            // guna2ImageButton2
-            // 
-            this.guna2ImageButton2.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButton2.HoverState.ImageSize = new System.Drawing.Size(0, 0);
-            this.guna2ImageButton2.Image = ((System.Drawing.Image)(resources.GetObject("guna2ImageButton2.Image")));
-            this.guna2ImageButton2.ImageOffset = new System.Drawing.Point(0, 0);
-            this.guna2ImageButton2.ImageRotate = 0F;
-            this.guna2ImageButton2.ImageSize = new System.Drawing.Size(20, 20);
-            this.guna2ImageButton2.Location = new System.Drawing.Point(19, 22);
-            this.guna2ImageButton2.Name = "guna2ImageButton2";
-            this.guna2ImageButton2.PressedState.ImageSize = new System.Drawing.Size(0, 0);
-            this.guna2ImageButton2.Size = new System.Drawing.Size(39, 28);
-            this.guna2ImageButton2.TabIndex = 21;
-            // 
-            // guna2ImageButton1
-            // 
-            this.guna2ImageButton1.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButton1.HoverState.ImageSize = new System.Drawing.Size(0, 0);
-            this.guna2ImageButton1.Image = ((System.Drawing.Image)(resources.GetObject("guna2ImageButton1.Image")));
-            this.guna2ImageButton1.ImageOffset = new System.Drawing.Point(0, 0);
-            this.guna2ImageButton1.ImageRotate = 0F;
-            this.guna2ImageButton1.ImageSize = new System.Drawing.Size(20, 20);
-            this.guna2ImageButton1.Location = new System.Drawing.Point(19, 167);
-            this.guna2ImageButton1.Name = "guna2ImageButton1";
-            this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(0, 0);
-            this.guna2ImageButton1.Size = new System.Drawing.Size(39, 28);
-            this.guna2ImageButton1.TabIndex = 20;
+            this.panelLabel.Controls.Add(this.guna2ImageButton6);
+            this.panelLabel.Controls.Add(this.guna2ImageButton5);
+            this.panelLabel.Controls.Add(this.guna2ImageButton4);
+            this.panelLabel.Controls.Add(this.guna2ImageButton3);
+            this.panelLabel.Controls.Add(this.guna2ImageButton2);
+            this.panelLabel.Controls.Add(this.guna2ImageButton1);
+            this.panelLabel.Controls.Add(this.labelCategory);
+            this.panelLabel.Controls.Add(this.labelMemo);
+            this.panelLabel.Controls.Add(this.labelTitle);
+            this.panelLabel.Controls.Add(this.labelSchedule);
+            this.panelLabel.Controls.Add(this.labelPlace);
+            this.panelLabel.Controls.Add(this.labelMember);
+            this.panelLabel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelLabel.Location = new System.Drawing.Point(200, 44);
+            this.panelLabel.Name = "panelLabel";
+            this.panelLabel.Size = new System.Drawing.Size(147, 526);
+            this.panelLabel.TabIndex = 0;
             // 
             // labelCategory
             // 
             this.labelCategory.BackColor = System.Drawing.Color.Transparent;
             this.labelCategory.Font = new System.Drawing.Font("Pretendard", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labelCategory.Location = new System.Drawing.Point(64, 311);
+            this.labelCategory.Location = new System.Drawing.Point(59, 311);
             this.labelCategory.Name = "labelCategory";
             this.labelCategory.Size = new System.Drawing.Size(94, 28);
-            this.labelCategory.TabIndex = 10;
+            this.labelCategory.TabIndex = 31;
             this.labelCategory.Text = "Category";
             // 
             // labelMemo
             // 
             this.labelMemo.BackColor = System.Drawing.Color.Transparent;
             this.labelMemo.Font = new System.Drawing.Font("Pretendard", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labelMemo.Location = new System.Drawing.Point(64, 380);
+            this.labelMemo.Location = new System.Drawing.Point(59, 380);
             this.labelMemo.Name = "labelMemo";
             this.labelMemo.Size = new System.Drawing.Size(64, 28);
-            this.labelMemo.TabIndex = 9;
+            this.labelMemo.TabIndex = 30;
             this.labelMemo.Text = "Memo";
             // 
             // labelTitle
             // 
             this.labelTitle.BackColor = System.Drawing.Color.Transparent;
             this.labelTitle.Font = new System.Drawing.Font("Pretendard", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labelTitle.Location = new System.Drawing.Point(64, 24);
+            this.labelTitle.Location = new System.Drawing.Point(59, 24);
             this.labelTitle.Name = "labelTitle";
             this.labelTitle.Size = new System.Drawing.Size(45, 28);
-            this.labelTitle.TabIndex = 8;
+            this.labelTitle.TabIndex = 29;
             this.labelTitle.Text = "Title";
             // 
             // labelSchedule
             // 
             this.labelSchedule.BackColor = System.Drawing.Color.Transparent;
             this.labelSchedule.Font = new System.Drawing.Font("Pretendard", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labelSchedule.Location = new System.Drawing.Point(64, 89);
+            this.labelSchedule.Location = new System.Drawing.Point(59, 89);
             this.labelSchedule.Name = "labelSchedule";
             this.labelSchedule.Size = new System.Drawing.Size(94, 28);
-            this.labelSchedule.TabIndex = 5;
+            this.labelSchedule.TabIndex = 26;
             this.labelSchedule.Text = "Schedule";
             // 
             // labelPlace
             // 
             this.labelPlace.BackColor = System.Drawing.Color.Transparent;
             this.labelPlace.Font = new System.Drawing.Font("Pretendard", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labelPlace.Location = new System.Drawing.Point(64, 241);
+            this.labelPlace.Location = new System.Drawing.Point(59, 241);
             this.labelPlace.Name = "labelPlace";
             this.labelPlace.Size = new System.Drawing.Size(57, 28);
-            this.labelPlace.TabIndex = 7;
+            this.labelPlace.TabIndex = 28;
             this.labelPlace.Text = "Place";
             // 
             // labelMember
             // 
             this.labelMember.BackColor = System.Drawing.Color.Transparent;
             this.labelMember.Font = new System.Drawing.Font("Pretendard", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labelMember.Location = new System.Drawing.Point(64, 169);
+            this.labelMember.Location = new System.Drawing.Point(59, 169);
             this.labelMember.Name = "labelMember";
             this.labelMember.Size = new System.Drawing.Size(85, 28);
-            this.labelMember.TabIndex = 6;
+            this.labelMember.TabIndex = 27;
             this.labelMember.Text = "Member";
             // 
-            // tbTitle
+            // deleteBtnRadius
             // 
-            this.tbTitle.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.tbTitle.DefaultText = "";
-            this.tbTitle.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.tbTitle.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.tbTitle.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tbTitle.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tbTitle.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tbTitle.Font = new System.Drawing.Font("Pretendard", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.tbTitle.ForeColor = System.Drawing.Color.Black;
-            this.tbTitle.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tbTitle.Location = new System.Drawing.Point(143, 66);
-            this.tbTitle.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tbTitle.Name = "tbTitle";
-            this.tbTitle.PasswordChar = '\0';
-            this.tbTitle.PlaceholderText = "";
-            this.tbTitle.SelectedText = "";
-            this.tbTitle.Size = new System.Drawing.Size(280, 36);
-            this.tbTitle.TabIndex = 11;
-            // 
-            // tbPlace
-            // 
-            this.tbPlace.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.tbPlace.DefaultText = "";
-            this.tbPlace.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.tbPlace.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.tbPlace.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tbPlace.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tbPlace.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tbPlace.Font = new System.Drawing.Font("Pretendard", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.tbPlace.ForeColor = System.Drawing.Color.Black;
-            this.tbPlace.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tbPlace.Location = new System.Drawing.Point(143, 285);
-            this.tbPlace.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tbPlace.Name = "tbPlace";
-            this.tbPlace.PasswordChar = '\0';
-            this.tbPlace.PlaceholderText = "";
-            this.tbPlace.SelectedText = "";
-            this.tbPlace.Size = new System.Drawing.Size(280, 36);
-            this.tbPlace.TabIndex = 14;
-            // 
-            // tbMemo
-            // 
-            this.tbMemo.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.tbMemo.DefaultText = "";
-            this.tbMemo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.tbMemo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.tbMemo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tbMemo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tbMemo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tbMemo.Font = new System.Drawing.Font("Pretendard", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.tbMemo.ForeColor = System.Drawing.Color.Black;
-            this.tbMemo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tbMemo.Location = new System.Drawing.Point(143, 424);
-            this.tbMemo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tbMemo.Name = "tbMemo";
-            this.tbMemo.PasswordChar = '\0';
-            this.tbMemo.PlaceholderText = "";
-            this.tbMemo.SelectedText = "";
-            this.tbMemo.Size = new System.Drawing.Size(280, 72);
-            this.tbMemo.TabIndex = 16;
+            this.deleteBtnRadius.BorderRadius = 10;
+            this.deleteBtnRadius.TargetControl = this.deleteBtn;
             // 
             // deleteBtn
             // 
@@ -337,17 +186,17 @@
             this.deleteBtn.FillColor = System.Drawing.Color.LightCoral;
             this.deleteBtn.Font = new System.Drawing.Font("Pretendard", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.deleteBtn.ForeColor = System.Drawing.Color.White;
-            this.deleteBtn.Location = new System.Drawing.Point(313, 513);
+            this.deleteBtn.Location = new System.Drawing.Point(512, 513);
             this.deleteBtn.Name = "deleteBtn";
             this.deleteBtn.Size = new System.Drawing.Size(110, 40);
-            this.deleteBtn.TabIndex = 11;
+            this.deleteBtn.TabIndex = 29;
             this.deleteBtn.Text = "Delete";
             this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
             // 
-            // deleteBtnRadius
+            // addBtnRadius
             // 
-            this.deleteBtnRadius.BorderRadius = 10;
-            this.deleteBtnRadius.TargetControl = this.deleteBtn;
+            this.addBtnRadius.BorderRadius = 10;
+            this.addBtnRadius.TargetControl = this.addBtn;
             // 
             // addBtn
             // 
@@ -358,129 +207,17 @@
             this.addBtn.FillColor = System.Drawing.Color.CornflowerBlue;
             this.addBtn.Font = new System.Drawing.Font("Pretendard", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addBtn.ForeColor = System.Drawing.Color.White;
-            this.addBtn.Location = new System.Drawing.Point(185, 513);
+            this.addBtn.Location = new System.Drawing.Point(384, 513);
             this.addBtn.Name = "addBtn";
             this.addBtn.Size = new System.Drawing.Size(110, 40);
-            this.addBtn.TabIndex = 18;
+            this.addBtn.TabIndex = 33;
             this.addBtn.Text = "Add";
             this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
-            // 
-            // addBtnRadius
-            // 
-            this.addBtnRadius.BorderRadius = 10;
-            this.addBtnRadius.TargetControl = this.addBtn;
-            // 
-            // cbCategory
-            // 
-            this.cbCategory.BackColor = System.Drawing.Color.Transparent;
-            this.cbCategory.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbCategory.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbCategory.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbCategory.Font = new System.Drawing.Font("Pretendard", 10F);
-            this.cbCategory.ForeColor = System.Drawing.Color.Black;
-            this.cbCategory.ItemHeight = 30;
-            this.cbCategory.Items.AddRange(new object[] {
-            "KLAS",
-            "공유 일정",
-            "개인"});
-            this.cbCategory.Location = new System.Drawing.Point(143, 355);
-            this.cbCategory.Name = "cbCategory";
-            this.cbCategory.Size = new System.Drawing.Size(280, 36);
-            this.cbCategory.TabIndex = 19;
-            // 
-            // dtpStartDate
-            // 
-            this.dtpStartDate.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dtpStartDate.Checked = true;
-            this.dtpStartDate.CustomFormat = "yyyy-MM-dd ddd";
-            this.dtpStartDate.FillColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dtpStartDate.Font = new System.Drawing.Font("Pretendard", 9F);
-            this.dtpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpStartDate.IndicateFocus = true;
-            this.dtpStartDate.Location = new System.Drawing.Point(183, 133);
-            this.dtpStartDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.dtpStartDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.dtpStartDate.Name = "dtpStartDate";
-            this.dtpStartDate.Size = new System.Drawing.Size(141, 20);
-            this.dtpStartDate.TabIndex = 20;
-            this.dtpStartDate.Value = new System.DateTime(2023, 5, 9, 1, 5, 29, 884);
-            // 
-            // dtpEndDate
-            // 
-            this.dtpEndDate.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dtpEndDate.Checked = true;
-            this.dtpEndDate.CustomFormat = "yyyy-MM-dd ddd";
-            this.dtpEndDate.FillColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dtpEndDate.Font = new System.Drawing.Font("Pretendard", 9F);
-            this.dtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpEndDate.IndicateFocus = true;
-            this.dtpEndDate.Location = new System.Drawing.Point(183, 159);
-            this.dtpEndDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.dtpEndDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.dtpEndDate.Name = "dtpEndDate";
-            this.dtpEndDate.Size = new System.Drawing.Size(141, 20);
-            this.dtpEndDate.TabIndex = 21;
-            this.dtpEndDate.Value = new System.DateTime(2023, 5, 9, 1, 5, 29, 884);
-            // 
-            // dtpStartTime
-            // 
-            this.dtpStartTime.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dtpStartTime.Checked = true;
-            this.dtpStartTime.CustomFormat = "HH:mm";
-            this.dtpStartTime.FillColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dtpStartTime.Font = new System.Drawing.Font("Pretendard", 9F);
-            this.dtpStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpStartTime.Location = new System.Drawing.Point(334, 133);
-            this.dtpStartTime.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.dtpStartTime.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.dtpStartTime.Name = "dtpStartTime";
-            this.dtpStartTime.ShowUpDown = true;
-            this.dtpStartTime.Size = new System.Drawing.Size(89, 20);
-            this.dtpStartTime.TabIndex = 22;
-            this.dtpStartTime.Value = new System.DateTime(2023, 5, 9, 1, 5, 29, 884);
-            // 
-            // dtpEndTime
-            // 
-            this.dtpEndTime.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dtpEndTime.Checked = true;
-            this.dtpEndTime.CustomFormat = "HH:mm";
-            this.dtpEndTime.FillColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dtpEndTime.Font = new System.Drawing.Font("Pretendard", 9F);
-            this.dtpEndTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpEndTime.Location = new System.Drawing.Point(334, 159);
-            this.dtpEndTime.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.dtpEndTime.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.dtpEndTime.Name = "dtpEndTime";
-            this.dtpEndTime.ShowUpDown = true;
-            this.dtpEndTime.Size = new System.Drawing.Size(89, 20);
-            this.dtpEndTime.TabIndex = 23;
-            this.dtpEndTime.Value = new System.DateTime(2023, 5, 9, 1, 5, 29, 884);
-            // 
-            // guna2HtmlLabel7
-            // 
-            this.guna2HtmlLabel7.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel7.Font = new System.Drawing.Font("Pretendard Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.guna2HtmlLabel7.Location = new System.Drawing.Point(143, 135);
-            this.guna2HtmlLabel7.Name = "guna2HtmlLabel7";
-            this.guna2HtmlLabel7.Size = new System.Drawing.Size(49, 23);
-            this.guna2HtmlLabel7.TabIndex = 24;
-            this.guna2HtmlLabel7.Text = "Start :";
-            // 
-            // guna2HtmlLabel8
-            // 
-            this.guna2HtmlLabel8.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel8.Font = new System.Drawing.Font("Pretendard Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.guna2HtmlLabel8.Location = new System.Drawing.Point(143, 160);
-            this.guna2HtmlLabel8.Name = "guna2HtmlLabel8";
-            this.guna2HtmlLabel8.Size = new System.Drawing.Size(41, 23);
-            this.guna2HtmlLabel8.TabIndex = 25;
-            this.guna2HtmlLabel8.Text = "End :";
             // 
             // guna2DragControl1
             // 
             this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2DragControl1.TargetControl = this.guna2Panel1;
+            this.guna2DragControl1.TargetControl = this.panelTop;
             this.guna2DragControl1.UseTransparentDrag = true;
             // 
             // guna2ContextMenuStrip1
@@ -506,7 +243,7 @@
             // 
             this.tsmAddmem.Font = new System.Drawing.Font("Pretendard", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.tsmAddmem.Name = "tsmAddmem";
-            this.tsmAddmem.Size = new System.Drawing.Size(240, 28);
+            this.tsmAddmem.Size = new System.Drawing.Size(149, 28);
             this.tsmAddmem.Text = "멤버 추가";
             // 
             // tsmDeleteMem
@@ -515,6 +252,75 @@
             this.tsmDeleteMem.Name = "tsmDeleteMem";
             this.tsmDeleteMem.Size = new System.Drawing.Size(149, 28);
             this.tsmDeleteMem.Text = "멤버 삭제";
+            // 
+            // panelSchedules
+            // 
+            this.panelSchedules.Controls.Add(this.btnAddSchedule);
+            this.panelSchedules.Controls.Add(this.btnSchedule3);
+            this.panelSchedules.Controls.Add(this.btnSchedule2);
+            this.panelSchedules.Controls.Add(this.btnSchedule1);
+            this.panelSchedules.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelSchedules.Location = new System.Drawing.Point(0, 44);
+            this.panelSchedules.Name = "panelSchedules";
+            this.panelSchedules.Size = new System.Drawing.Size(200, 526);
+            this.panelSchedules.TabIndex = 28;
+            // 
+            // btnSchedule3
+            // 
+            this.btnSchedule3.BorderColor = System.Drawing.Color.DarkTurquoise;
+            this.btnSchedule3.BorderRadius = 5;
+            this.btnSchedule3.BorderThickness = 2;
+            this.btnSchedule3.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSchedule3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSchedule3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSchedule3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSchedule3.FillColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnSchedule3.Font = new System.Drawing.Font("Pretendard", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSchedule3.ForeColor = System.Drawing.Color.Black;
+            this.btnSchedule3.Location = new System.Drawing.Point(12, 99);
+            this.btnSchedule3.Name = "btnSchedule3";
+            this.btnSchedule3.Size = new System.Drawing.Size(188, 40);
+            this.btnSchedule3.TabIndex = 44;
+            this.btnSchedule3.Text = "schedule3";
+            this.btnSchedule3.Click += new System.EventHandler(this.btnSchedule_Click);
+            // 
+            // btnSchedule2
+            // 
+            this.btnSchedule2.BorderColor = System.Drawing.Color.HotPink;
+            this.btnSchedule2.BorderRadius = 5;
+            this.btnSchedule2.BorderThickness = 2;
+            this.btnSchedule2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSchedule2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSchedule2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSchedule2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSchedule2.FillColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnSchedule2.Font = new System.Drawing.Font("Pretendard", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSchedule2.ForeColor = System.Drawing.Color.Black;
+            this.btnSchedule2.Location = new System.Drawing.Point(12, 53);
+            this.btnSchedule2.Name = "btnSchedule2";
+            this.btnSchedule2.Size = new System.Drawing.Size(188, 40);
+            this.btnSchedule2.TabIndex = 43;
+            this.btnSchedule2.Text = "schedule2";
+            this.btnSchedule2.Click += new System.EventHandler(this.btnSchedule_Click);
+            // 
+            // btnSchedule1
+            // 
+            this.btnSchedule1.BorderColor = System.Drawing.Color.Maroon;
+            this.btnSchedule1.BorderRadius = 5;
+            this.btnSchedule1.BorderThickness = 2;
+            this.btnSchedule1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSchedule1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSchedule1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSchedule1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSchedule1.FillColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnSchedule1.Font = new System.Drawing.Font("Pretendard", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSchedule1.ForeColor = System.Drawing.Color.Black;
+            this.btnSchedule1.Location = new System.Drawing.Point(12, 7);
+            this.btnSchedule1.Name = "btnSchedule1";
+            this.btnSchedule1.Size = new System.Drawing.Size(188, 40);
+            this.btnSchedule1.TabIndex = 42;
+            this.btnSchedule1.Text = "schedule1";
+            this.btnSchedule1.Click += new System.EventHandler(this.btnSchedule_Click);
             // 
             // btnMemSet
             // 
@@ -527,19 +333,306 @@
             this.btnMemSet.FillColor = System.Drawing.Color.White;
             this.btnMemSet.Font = new System.Drawing.Font("Pretendard", 9F);
             this.btnMemSet.ForeColor = System.Drawing.Color.Black;
-            this.btnMemSet.Location = new System.Drawing.Point(143, 211);
+            this.btnMemSet.Location = new System.Drawing.Point(342, 211);
             this.btnMemSet.Name = "btnMemSet";
             this.btnMemSet.Size = new System.Drawing.Size(279, 36);
-            this.btnMemSet.TabIndex = 27;
+            this.btnMemSet.TabIndex = 41;
             this.btnMemSet.Text = "Member Setting";
             this.btnMemSet.Click += new System.EventHandler(this.btnMemSet_Click);
+            // 
+            // guna2HtmlLabel8
+            // 
+            this.guna2HtmlLabel8.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel8.Font = new System.Drawing.Font("Pretendard Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.guna2HtmlLabel8.Location = new System.Drawing.Point(342, 160);
+            this.guna2HtmlLabel8.Name = "guna2HtmlLabel8";
+            this.guna2HtmlLabel8.Size = new System.Drawing.Size(41, 23);
+            this.guna2HtmlLabel8.TabIndex = 40;
+            this.guna2HtmlLabel8.Text = "End :";
+            // 
+            // guna2HtmlLabel7
+            // 
+            this.guna2HtmlLabel7.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel7.Font = new System.Drawing.Font("Pretendard Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.guna2HtmlLabel7.Location = new System.Drawing.Point(342, 135);
+            this.guna2HtmlLabel7.Name = "guna2HtmlLabel7";
+            this.guna2HtmlLabel7.Size = new System.Drawing.Size(49, 23);
+            this.guna2HtmlLabel7.TabIndex = 39;
+            this.guna2HtmlLabel7.Text = "Start :";
+            // 
+            // dtpEndTime
+            // 
+            this.dtpEndTime.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dtpEndTime.Checked = true;
+            this.dtpEndTime.CustomFormat = "HH:mm";
+            this.dtpEndTime.FillColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dtpEndTime.Font = new System.Drawing.Font("Pretendard", 9F);
+            this.dtpEndTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpEndTime.Location = new System.Drawing.Point(533, 159);
+            this.dtpEndTime.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtpEndTime.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtpEndTime.Name = "dtpEndTime";
+            this.dtpEndTime.ShowUpDown = true;
+            this.dtpEndTime.Size = new System.Drawing.Size(89, 20);
+            this.dtpEndTime.TabIndex = 38;
+            this.dtpEndTime.Value = new System.DateTime(2023, 5, 9, 1, 5, 29, 884);
+            // 
+            // dtpStartTime
+            // 
+            this.dtpStartTime.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dtpStartTime.Checked = true;
+            this.dtpStartTime.CustomFormat = "HH:mm";
+            this.dtpStartTime.FillColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dtpStartTime.Font = new System.Drawing.Font("Pretendard", 9F);
+            this.dtpStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpStartTime.Location = new System.Drawing.Point(533, 133);
+            this.dtpStartTime.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtpStartTime.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtpStartTime.Name = "dtpStartTime";
+            this.dtpStartTime.ShowUpDown = true;
+            this.dtpStartTime.Size = new System.Drawing.Size(89, 20);
+            this.dtpStartTime.TabIndex = 37;
+            this.dtpStartTime.Value = new System.DateTime(2023, 5, 9, 1, 5, 29, 884);
+            // 
+            // dtpEndDate
+            // 
+            this.dtpEndDate.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dtpEndDate.Checked = true;
+            this.dtpEndDate.CustomFormat = "yyyy-MM-dd ddd";
+            this.dtpEndDate.FillColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dtpEndDate.Font = new System.Drawing.Font("Pretendard", 9F);
+            this.dtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpEndDate.IndicateFocus = true;
+            this.dtpEndDate.Location = new System.Drawing.Point(382, 159);
+            this.dtpEndDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtpEndDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtpEndDate.Name = "dtpEndDate";
+            this.dtpEndDate.Size = new System.Drawing.Size(141, 20);
+            this.dtpEndDate.TabIndex = 36;
+            this.dtpEndDate.Value = new System.DateTime(2023, 5, 9, 1, 5, 29, 884);
+            // 
+            // dtpStartDate
+            // 
+            this.dtpStartDate.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dtpStartDate.Checked = true;
+            this.dtpStartDate.CustomFormat = "yyyy-MM-dd ddd";
+            this.dtpStartDate.FillColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dtpStartDate.Font = new System.Drawing.Font("Pretendard", 9F);
+            this.dtpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpStartDate.IndicateFocus = true;
+            this.dtpStartDate.Location = new System.Drawing.Point(382, 133);
+            this.dtpStartDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtpStartDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtpStartDate.Name = "dtpStartDate";
+            this.dtpStartDate.Size = new System.Drawing.Size(141, 20);
+            this.dtpStartDate.TabIndex = 35;
+            this.dtpStartDate.Value = new System.DateTime(2023, 5, 9, 1, 5, 29, 884);
+            // 
+            // cbCategory
+            // 
+            this.cbCategory.BackColor = System.Drawing.Color.Transparent;
+            this.cbCategory.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCategory.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbCategory.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbCategory.Font = new System.Drawing.Font("Pretendard", 10F);
+            this.cbCategory.ForeColor = System.Drawing.Color.Black;
+            this.cbCategory.ItemHeight = 30;
+            this.cbCategory.Items.AddRange(new object[] {
+            "KLAS",
+            "공유 일정",
+            "개인"});
+            this.cbCategory.Location = new System.Drawing.Point(342, 355);
+            this.cbCategory.Name = "cbCategory";
+            this.cbCategory.Size = new System.Drawing.Size(280, 36);
+            this.cbCategory.TabIndex = 34;
+            // 
+            // tbMemo
+            // 
+            this.tbMemo.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbMemo.DefaultText = "";
+            this.tbMemo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.tbMemo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.tbMemo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tbMemo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tbMemo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tbMemo.Font = new System.Drawing.Font("Pretendard", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.tbMemo.ForeColor = System.Drawing.Color.Black;
+            this.tbMemo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tbMemo.Location = new System.Drawing.Point(342, 424);
+            this.tbMemo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbMemo.Name = "tbMemo";
+            this.tbMemo.PasswordChar = '\0';
+            this.tbMemo.PlaceholderText = "";
+            this.tbMemo.SelectedText = "";
+            this.tbMemo.Size = new System.Drawing.Size(280, 72);
+            this.tbMemo.TabIndex = 32;
+            // 
+            // tbPlace
+            // 
+            this.tbPlace.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbPlace.DefaultText = "";
+            this.tbPlace.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.tbPlace.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.tbPlace.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tbPlace.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tbPlace.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tbPlace.Font = new System.Drawing.Font("Pretendard", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.tbPlace.ForeColor = System.Drawing.Color.Black;
+            this.tbPlace.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tbPlace.Location = new System.Drawing.Point(342, 285);
+            this.tbPlace.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbPlace.Name = "tbPlace";
+            this.tbPlace.PasswordChar = '\0';
+            this.tbPlace.PlaceholderText = "";
+            this.tbPlace.SelectedText = "";
+            this.tbPlace.Size = new System.Drawing.Size(280, 36);
+            this.tbPlace.TabIndex = 31;
+            // 
+            // tbTitle
+            // 
+            this.tbTitle.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbTitle.DefaultText = "";
+            this.tbTitle.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.tbTitle.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.tbTitle.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tbTitle.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tbTitle.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tbTitle.Font = new System.Drawing.Font("Pretendard", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.tbTitle.ForeColor = System.Drawing.Color.Black;
+            this.tbTitle.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tbTitle.Location = new System.Drawing.Point(342, 66);
+            this.tbTitle.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbTitle.Name = "tbTitle";
+            this.tbTitle.PasswordChar = '\0';
+            this.tbTitle.PlaceholderText = "";
+            this.tbTitle.SelectedText = "";
+            this.tbTitle.Size = new System.Drawing.Size(280, 36);
+            this.tbTitle.TabIndex = 30;
+            // 
+            // guna2ImageButton6
+            // 
+            this.guna2ImageButton6.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.guna2ImageButton6.HoverState.ImageSize = new System.Drawing.Size(0, 0);
+            this.guna2ImageButton6.Image = ((System.Drawing.Image)(resources.GetObject("guna2ImageButton6.Image")));
+            this.guna2ImageButton6.ImageOffset = new System.Drawing.Point(0, 0);
+            this.guna2ImageButton6.ImageRotate = 0F;
+            this.guna2ImageButton6.ImageSize = new System.Drawing.Size(20, 20);
+            this.guna2ImageButton6.Location = new System.Drawing.Point(14, 378);
+            this.guna2ImageButton6.Name = "guna2ImageButton6";
+            this.guna2ImageButton6.PressedState.ImageSize = new System.Drawing.Size(0, 0);
+            this.guna2ImageButton6.Size = new System.Drawing.Size(39, 28);
+            this.guna2ImageButton6.TabIndex = 37;
+            // 
+            // guna2ImageButton5
+            // 
+            this.guna2ImageButton5.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.guna2ImageButton5.HoverState.ImageSize = new System.Drawing.Size(0, 0);
+            this.guna2ImageButton5.Image = ((System.Drawing.Image)(resources.GetObject("guna2ImageButton5.Image")));
+            this.guna2ImageButton5.ImageOffset = new System.Drawing.Point(0, 0);
+            this.guna2ImageButton5.ImageRotate = 0F;
+            this.guna2ImageButton5.ImageSize = new System.Drawing.Size(20, 20);
+            this.guna2ImageButton5.Location = new System.Drawing.Point(14, 309);
+            this.guna2ImageButton5.Name = "guna2ImageButton5";
+            this.guna2ImageButton5.PressedState.ImageSize = new System.Drawing.Size(0, 0);
+            this.guna2ImageButton5.Size = new System.Drawing.Size(39, 28);
+            this.guna2ImageButton5.TabIndex = 36;
+            // 
+            // guna2ImageButton4
+            // 
+            this.guna2ImageButton4.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.guna2ImageButton4.HoverState.ImageSize = new System.Drawing.Size(0, 0);
+            this.guna2ImageButton4.Image = ((System.Drawing.Image)(resources.GetObject("guna2ImageButton4.Image")));
+            this.guna2ImageButton4.ImageOffset = new System.Drawing.Point(0, 0);
+            this.guna2ImageButton4.ImageRotate = 0F;
+            this.guna2ImageButton4.ImageSize = new System.Drawing.Size(20, 20);
+            this.guna2ImageButton4.Location = new System.Drawing.Point(14, 239);
+            this.guna2ImageButton4.Name = "guna2ImageButton4";
+            this.guna2ImageButton4.PressedState.ImageSize = new System.Drawing.Size(0, 0);
+            this.guna2ImageButton4.Size = new System.Drawing.Size(39, 28);
+            this.guna2ImageButton4.TabIndex = 35;
+            // 
+            // guna2ImageButton3
+            // 
+            this.guna2ImageButton3.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.guna2ImageButton3.HoverState.ImageSize = new System.Drawing.Size(0, 0);
+            this.guna2ImageButton3.Image = ((System.Drawing.Image)(resources.GetObject("guna2ImageButton3.Image")));
+            this.guna2ImageButton3.ImageOffset = new System.Drawing.Point(0, 0);
+            this.guna2ImageButton3.ImageRotate = 0F;
+            this.guna2ImageButton3.ImageSize = new System.Drawing.Size(20, 20);
+            this.guna2ImageButton3.Location = new System.Drawing.Point(14, 87);
+            this.guna2ImageButton3.Name = "guna2ImageButton3";
+            this.guna2ImageButton3.PressedState.ImageSize = new System.Drawing.Size(0, 0);
+            this.guna2ImageButton3.Size = new System.Drawing.Size(39, 28);
+            this.guna2ImageButton3.TabIndex = 34;
+            // 
+            // guna2ImageButton2
+            // 
+            this.guna2ImageButton2.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.guna2ImageButton2.HoverState.ImageSize = new System.Drawing.Size(0, 0);
+            this.guna2ImageButton2.Image = ((System.Drawing.Image)(resources.GetObject("guna2ImageButton2.Image")));
+            this.guna2ImageButton2.ImageOffset = new System.Drawing.Point(0, 0);
+            this.guna2ImageButton2.ImageRotate = 0F;
+            this.guna2ImageButton2.ImageSize = new System.Drawing.Size(20, 20);
+            this.guna2ImageButton2.Location = new System.Drawing.Point(14, 22);
+            this.guna2ImageButton2.Name = "guna2ImageButton2";
+            this.guna2ImageButton2.PressedState.ImageSize = new System.Drawing.Size(0, 0);
+            this.guna2ImageButton2.Size = new System.Drawing.Size(39, 28);
+            this.guna2ImageButton2.TabIndex = 33;
+            // 
+            // guna2ImageButton1
+            // 
+            this.guna2ImageButton1.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.guna2ImageButton1.HoverState.ImageSize = new System.Drawing.Size(0, 0);
+            this.guna2ImageButton1.Image = ((System.Drawing.Image)(resources.GetObject("guna2ImageButton1.Image")));
+            this.guna2ImageButton1.ImageOffset = new System.Drawing.Point(0, 0);
+            this.guna2ImageButton1.ImageRotate = 0F;
+            this.guna2ImageButton1.ImageSize = new System.Drawing.Size(20, 20);
+            this.guna2ImageButton1.Location = new System.Drawing.Point(14, 167);
+            this.guna2ImageButton1.Name = "guna2ImageButton1";
+            this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(0, 0);
+            this.guna2ImageButton1.Size = new System.Drawing.Size(39, 28);
+            this.guna2ImageButton1.TabIndex = 32;
+            // 
+            // btnAddSchedule
+            // 
+            this.btnAddSchedule.BorderRadius = 5;
+            this.btnAddSchedule.BorderThickness = 1;
+            this.btnAddSchedule.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnAddSchedule.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnAddSchedule.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnAddSchedule.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnAddSchedule.FillColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnAddSchedule.Font = new System.Drawing.Font("Pretendard", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddSchedule.ForeColor = System.Drawing.Color.Black;
+            this.btnAddSchedule.Image = global::KSCS.Properties.Resources.free_icon_font_plus_3917757;
+            this.btnAddSchedule.Location = new System.Drawing.Point(12, 145);
+            this.btnAddSchedule.Name = "btnAddSchedule";
+            this.btnAddSchedule.Size = new System.Drawing.Size(188, 40);
+            this.btnAddSchedule.TabIndex = 45;
+            this.btnAddSchedule.Click += new System.EventHandler(this.btnAddSchedule_Click);
+            // 
+            // closeBtn
+            // 
+            this.closeBtn.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.closeBtn.HoverState.ImageSize = new System.Drawing.Size(0, 0);
+            this.closeBtn.Image = ((System.Drawing.Image)(resources.GetObject("closeBtn.Image")));
+            this.closeBtn.ImageOffset = new System.Drawing.Point(0, 0);
+            this.closeBtn.ImageRotate = 0F;
+            this.closeBtn.ImageSize = new System.Drawing.Size(15, 15);
+            this.closeBtn.Location = new System.Drawing.Point(606, 0);
+            this.closeBtn.Name = "closeBtn";
+            this.closeBtn.PressedState.ImageSize = new System.Drawing.Size(0, 0);
+            this.closeBtn.Size = new System.Drawing.Size(44, 44);
+            this.closeBtn.TabIndex = 12;
+            this.closeBtn.Click += new System.EventHandler(this.closeBtn_Click);
             // 
             // ScheDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(450, 570);
+            this.ClientSize = new System.Drawing.Size(650, 570);
             this.Controls.Add(this.btnMemSet);
             this.Controls.Add(this.guna2HtmlLabel8);
             this.Controls.Add(this.guna2HtmlLabel7);
@@ -553,17 +646,19 @@
             this.Controls.Add(this.tbMemo);
             this.Controls.Add(this.tbPlace);
             this.Controls.Add(this.tbTitle);
-            this.Controls.Add(this.guna2Panel2);
-            this.Controls.Add(this.guna2Panel1);
+            this.Controls.Add(this.panelLabel);
+            this.Controls.Add(this.panelSchedules);
+            this.Controls.Add(this.panelTop);
             this.Font = new System.Drawing.Font("Pretendard", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ScheDetailForm";
             this.Text = "ScheduleDetailForm";
-            this.guna2Panel1.ResumeLayout(false);
-            this.guna2Panel2.ResumeLayout(false);
-            this.guna2Panel2.PerformLayout();
+            this.panelTop.ResumeLayout(false);
+            this.panelLabel.ResumeLayout(false);
+            this.panelLabel.PerformLayout();
             this.guna2ContextMenuStrip1.ResumeLayout(false);
+            this.panelSchedules.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -572,39 +667,44 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2Elipse formRadius;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
+        private Guna.UI2.WinForms.Guna2Panel panelLabel;
+        private Guna.UI2.WinForms.Guna2Panel panelTop;
+        private Guna.UI2.WinForms.Guna2Elipse deleteBtnRadius;
+        private Guna.UI2.WinForms.Guna2Elipse addBtnRadius;
+        private Guna.UI2.WinForms.Guna2ImageButton closeBtn;
+        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
+        private Guna.UI2.WinForms.Guna2ContextMenuStrip guna2ContextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem tsmAddmem;
+        private System.Windows.Forms.ToolStripMenuItem tsmDeleteMem;
+        private Guna.UI2.WinForms.Guna2Panel panelSchedules;
+        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton6;
+        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton5;
+        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton4;
+        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton3;
+        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton2;
+        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;
         private Guna.UI2.WinForms.Guna2HtmlLabel labelCategory;
         private Guna.UI2.WinForms.Guna2HtmlLabel labelMemo;
         private Guna.UI2.WinForms.Guna2HtmlLabel labelTitle;
         private Guna.UI2.WinForms.Guna2HtmlLabel labelSchedule;
         private Guna.UI2.WinForms.Guna2HtmlLabel labelPlace;
         private Guna.UI2.WinForms.Guna2HtmlLabel labelMember;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private Guna.UI2.WinForms.Guna2Button btnMemSet;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel8;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel7;
+        private Guna.UI2.WinForms.Guna2DateTimePicker dtpEndTime;
+        private Guna.UI2.WinForms.Guna2DateTimePicker dtpStartTime;
+        private Guna.UI2.WinForms.Guna2DateTimePicker dtpEndDate;
+        private Guna.UI2.WinForms.Guna2DateTimePicker dtpStartDate;
+        private Guna.UI2.WinForms.Guna2ComboBox cbCategory;
+        private Guna.UI2.WinForms.Guna2Button deleteBtn;
+        private Guna.UI2.WinForms.Guna2Button addBtn;
         private Guna.UI2.WinForms.Guna2TextBox tbMemo;
         private Guna.UI2.WinForms.Guna2TextBox tbPlace;
         private Guna.UI2.WinForms.Guna2TextBox tbTitle;
-        private Guna.UI2.WinForms.Guna2Button deleteBtn;
-        private Guna.UI2.WinForms.Guna2Elipse deleteBtnRadius;
-        private Guna.UI2.WinForms.Guna2Button addBtn;
-        private Guna.UI2.WinForms.Guna2Elipse addBtnRadius;
-        private Guna.UI2.WinForms.Guna2ComboBox cbCategory;
-        private Guna.UI2.WinForms.Guna2ImageButton closeBtn;
-        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;
-        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton6;
-        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton5;
-        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton4;
-        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton3;
-        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton2;
-        private Guna.UI2.WinForms.Guna2DateTimePicker dtpStartDate;
-        private Guna.UI2.WinForms.Guna2DateTimePicker dtpEndDate;
-        private Guna.UI2.WinForms.Guna2DateTimePicker dtpEndTime;
-        private Guna.UI2.WinForms.Guna2DateTimePicker dtpStartTime;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel7;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel8;
-        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
-        private Guna.UI2.WinForms.Guna2Button btnMemSet;
-        private Guna.UI2.WinForms.Guna2ContextMenuStrip guna2ContextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem tsmAddmem;
-        private System.Windows.Forms.ToolStripMenuItem tsmDeleteMem;
+        private Guna.UI2.WinForms.Guna2Button btnSchedule3;
+        private Guna.UI2.WinForms.Guna2Button btnSchedule2;
+        private Guna.UI2.WinForms.Guna2Button btnSchedule1;
+        private Guna.UI2.WinForms.Guna2Button btnAddSchedule;
     }
 }

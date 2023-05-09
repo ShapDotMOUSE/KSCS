@@ -71,5 +71,17 @@ namespace KSCS
         {
             guna2ContextMenuStrip1.Show(MousePosition);
         }
+
+        private void btnSchedule_Click(object sender, EventArgs e)
+        {
+            addBtn.FillColor = Color.LimeGreen;
+            addBtn.Text = "Modify";
+        }
+
+        private void btnAddSchedule_Click(object sender, EventArgs e)
+        {
+            addBtn.FillColor = Color.CornflowerBlue;
+            addBtn.Text = "Add";
+        }
     }
 }

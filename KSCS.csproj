@@ -99,5 +99,8 @@
   <ItemGroup>
     <None Include="Resources\free-icon-font-cross-39177591.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-font-plus-3917757.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

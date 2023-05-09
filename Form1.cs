@@ -13,8 +13,8 @@ namespace KSCS
     public partial class KSCS : Form
     {
         private Point mousePoint;
-        private int year;
-        private int month;
+        private int year, month;
+        public static int static_month, static_year;
         public KSCS()
         {
             InitializeComponent();
@@ -41,6 +41,9 @@ namespace KSCS
 
         private void createDates()
         {
+            static_month = month;
+            static_year = year;
+
             lblMonth.Text = month.ToString() + "월";
             lblMonth.TextAlign = ContentAlignment.MiddleCenter;
 

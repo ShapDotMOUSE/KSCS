@@ -12,6 +12,8 @@ namespace KSCS
 {
     public partial class UserDate : UserControl
     {
+        public static int static_date;
+
         public UserDate()
         {
             InitializeComponent();
@@ -22,9 +24,38 @@ namespace KSCS
             lblDate.Text = date.ToString();
         }
 
-        private void UserDate_Click(object sender, EventArgs e)
+        private void UserDate_MouseMove(object sender, MouseEventArgs e)
         {
-            MessageBox.Show(lblDate.Text);
+            this.BackColor = Color.Gray;
+        }
+
+        private void UserDate_MouseLeave(object sender, EventArgs e)
+        {
+            this.BackColor = Color.Gainsboro;
+        }
+
+        private void UserDate_Click(object sender, MouseEventArgs e)
+        {
+            static_date = Convert.ToInt32(lblDate.Text);
+            TempAddEventForm eventForm = new TempAddEventForm();
+            eventForm.AddEvent += new EventHandler(SaveEvent);
+            eventForm.Show();
+        }
+
+        private void SaveEvent(object sender, EventArgs e)
+        {
+            TempAddEventForm userControl = sender as TempAddEventForm;
+             AddEvent(userControl.GetTxtboxEvnent());
+            
+        }
+
+        private void AddEvent(string dateEvent)
+        {
+            if (dateEvent.Equals(string.Empty))
+                return;
+            UserEvent userEvent = new UserEvent();
+            flpEvent.Controls.Add(userEvent);
+
         }
     }
 }

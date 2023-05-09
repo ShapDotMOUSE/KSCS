@@ -64,6 +64,12 @@
     <Compile Include="UserBlankDate.Designer.cs">
       <DependentUpon>UserBlankDate.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserCheckedCategory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserCheckedCategory.Designer.cs">
+      <DependentUpon>UserCheckedCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserDate.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -89,6 +95,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserBlankDate.resx">
       <DependentUpon>UserBlankDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserCheckedCategory.resx">
+      <DependentUpon>UserCheckedCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserDate.resx">
       <DependentUpon>UserDate.cs</DependentUpon>

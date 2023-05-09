@@ -48,8 +48,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            this.btnPrvious = new Guna.UI2.WinForms.Guna2Button();
-            this.btnNext = new Guna.UI2.WinForms.Guna2Button();
+            this.categoryContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.label15 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -61,8 +60,10 @@
             this.daysConatiner = new System.Windows.Forms.FlowLayoutPanel();
             this.lblMonth = new System.Windows.Forms.Label();
             this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
-            this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnPrvious = new Guna.UI2.WinForms.Guna2Button();
+            this.btnNext = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.guna2Panel1.SuspendLayout();
             this.guna2CustomGradientPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -269,6 +270,7 @@
             // 
             // guna2CustomGradientPanel1
             // 
+            this.guna2CustomGradientPanel1.Controls.Add(this.categoryContainer);
             this.guna2CustomGradientPanel1.Controls.Add(this.btnPrvious);
             this.guna2CustomGradientPanel1.Controls.Add(this.btnNext);
             this.guna2CustomGradientPanel1.Controls.Add(this.flowLayoutPanel2);
@@ -280,41 +282,14 @@
             this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(900, 595);
             this.guna2CustomGradientPanel1.TabIndex = 18;
             // 
-            // btnPrvious
+            // categoryContainer
             // 
-            this.btnPrvious.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnPrvious.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnPrvious.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnPrvious.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnPrvious.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnPrvious.FillColor = System.Drawing.Color.White;
-            this.btnPrvious.Font = new System.Drawing.Font("Microsoft YaHei UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrvious.ForeColor = System.Drawing.Color.Black;
-            this.btnPrvious.Image = global::KSCS.Properties.Resources.previousIcon;
-            this.btnPrvious.ImageSize = new System.Drawing.Size(20, 30);
-            this.btnPrvious.Location = new System.Drawing.Point(376, 0);
-            this.btnPrvious.Name = "btnPrvious";
-            this.btnPrvious.Size = new System.Drawing.Size(28, 45);
-            this.btnPrvious.TabIndex = 25;
-            this.btnPrvious.Click += new System.EventHandler(this.btnPrvious_Click);
-            // 
-            // btnNext
-            // 
-            this.btnNext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnNext.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnNext.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnNext.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnNext.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnNext.FillColor = System.Drawing.Color.White;
-            this.btnNext.Font = new System.Drawing.Font("Microsoft YaHei UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNext.ForeColor = System.Drawing.Color.Black;
-            this.btnNext.Image = global::KSCS.Properties.Resources.nextIcon;
-            this.btnNext.ImageSize = new System.Drawing.Size(20, 30);
-            this.btnNext.Location = new System.Drawing.Point(496, 0);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(28, 45);
-            this.btnNext.TabIndex = 24;
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            this.categoryContainer.BackColor = System.Drawing.Color.Transparent;
+            this.categoryContainer.Location = new System.Drawing.Point(25, 26);
+            this.categoryContainer.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.categoryContainer.Name = "categoryContainer";
+            this.categoryContainer.Size = new System.Drawing.Size(345, 14);
+            this.categoryContainer.TabIndex = 26;
             // 
             // flowLayoutPanel2
             // 
@@ -327,7 +302,7 @@
             this.flowLayoutPanel2.Controls.Add(this.label13);
             this.flowLayoutPanel2.Controls.Add(this.label14);
             this.flowLayoutPanel2.Location = new System.Drawing.Point(25, 51);
-            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(855, 32);
             this.flowLayoutPanel2.TabIndex = 23;
@@ -459,6 +434,50 @@
             this.lblMonth.Text = "12월";
             this.lblMonth.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.White;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(935, 245);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(43, 595);
+            this.flowLayoutPanel1.TabIndex = 0;
+            // 
+            // btnPrvious
+            // 
+            this.btnPrvious.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnPrvious.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnPrvious.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnPrvious.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnPrvious.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnPrvious.FillColor = System.Drawing.Color.White;
+            this.btnPrvious.Font = new System.Drawing.Font("Microsoft YaHei UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrvious.ForeColor = System.Drawing.Color.Black;
+            this.btnPrvious.Image = global::KSCS.Properties.Resources.previousIcon;
+            this.btnPrvious.ImageSize = new System.Drawing.Size(20, 30);
+            this.btnPrvious.Location = new System.Drawing.Point(376, 0);
+            this.btnPrvious.Name = "btnPrvious";
+            this.btnPrvious.Size = new System.Drawing.Size(28, 45);
+            this.btnPrvious.TabIndex = 25;
+            this.btnPrvious.Click += new System.EventHandler(this.btnPrvious_Click);
+            // 
+            // btnNext
+            // 
+            this.btnNext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnNext.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnNext.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnNext.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnNext.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnNext.FillColor = System.Drawing.Color.White;
+            this.btnNext.Font = new System.Drawing.Font("Microsoft YaHei UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNext.ForeColor = System.Drawing.Color.Black;
+            this.btnNext.Image = global::KSCS.Properties.Resources.nextIcon;
+            this.btnNext.ImageSize = new System.Drawing.Size(20, 30);
+            this.btnNext.Location = new System.Drawing.Point(496, 0);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(28, 45);
+            this.btnNext.TabIndex = 24;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
             // guna2ImageButton1
             // 
             this.guna2ImageButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -473,14 +492,6 @@
             this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(64, 64);
             this.guna2ImageButton1.Size = new System.Drawing.Size(80, 63);
             this.guna2ImageButton1.TabIndex = 3;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.BackColor = System.Drawing.Color.White;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(935, 245);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(43, 595);
-            this.flowLayoutPanel1.TabIndex = 0;
             // 
             // KSCS
             // 
@@ -558,6 +569,7 @@
         private Guna.UI2.WinForms.Guna2Button btnNext;
         private Guna.UI2.WinForms.Guna2Button btnPrvious;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel categoryContainer;
     }
 }
 

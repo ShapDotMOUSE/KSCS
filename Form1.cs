@@ -28,6 +28,8 @@ namespace KSCS
             seperator_horizon.FillColor = Color.FromArgb(245, 245, 245);
             category_underline.BackColor = Color.FromArgb(58, 5, 31);
             dispalyDate();
+            AddCategory("학사일정");
+            AddCategory("테스트용");
         }
 
         private void dispalyDate()
@@ -111,6 +113,13 @@ namespace KSCS
             }
             createDates();
 
+        }
+
+        private void AddCategory(string category)
+        {
+            UserCheckedCategory checkedCategory = new UserCheckedCategory();
+            checkedCategory.SetlblCategoryName(category);
+            categoryContainer.Controls.Add(checkedCategory);
         }
     }
 }

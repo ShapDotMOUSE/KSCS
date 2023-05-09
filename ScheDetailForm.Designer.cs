@@ -47,7 +47,6 @@
             this.labelPlace = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.labelMember = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.tbTitle = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2TextBox3 = new Guna.UI2.WinForms.Guna2TextBox();
             this.tbPlace = new Guna.UI2.WinForms.Guna2TextBox();
             this.tbMemo = new Guna.UI2.WinForms.Guna2TextBox();
             this.deleteBtn = new Guna.UI2.WinForms.Guna2Button();
@@ -62,8 +61,13 @@
             this.guna2HtmlLabel7 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel8 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.guna2ContextMenuStrip1 = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
+            this.tsmAddmem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmDeleteMem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnMemSet = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
+            this.guna2ContextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // formRadius
@@ -281,27 +285,6 @@
             this.tbTitle.Size = new System.Drawing.Size(280, 36);
             this.tbTitle.TabIndex = 11;
             // 
-            // guna2TextBox3
-            // 
-            this.guna2TextBox3.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox3.DefaultText = "";
-            this.guna2TextBox3.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox3.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox3.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox3.Font = new System.Drawing.Font("Pretendard", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.guna2TextBox3.ForeColor = System.Drawing.Color.Black;
-            this.guna2TextBox3.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox3.Location = new System.Drawing.Point(143, 213);
-            this.guna2TextBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.guna2TextBox3.Name = "guna2TextBox3";
-            this.guna2TextBox3.PasswordChar = '\0';
-            this.guna2TextBox3.PlaceholderText = "";
-            this.guna2TextBox3.SelectedText = "";
-            this.guna2TextBox3.Size = new System.Drawing.Size(280, 36);
-            this.guna2TextBox3.TabIndex = 13;
-            // 
             // tbPlace
             // 
             this.tbPlace.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -409,6 +392,7 @@
             // dtpStartDate
             // 
             this.dtpStartDate.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dtpStartDate.Checked = true;
             this.dtpStartDate.CustomFormat = "yyyy-MM-dd ddd";
             this.dtpStartDate.FillColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dtpStartDate.Font = new System.Drawing.Font("Pretendard", 9F);
@@ -425,6 +409,7 @@
             // dtpEndDate
             // 
             this.dtpEndDate.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dtpEndDate.Checked = true;
             this.dtpEndDate.CustomFormat = "yyyy-MM-dd ddd";
             this.dtpEndDate.FillColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dtpEndDate.Font = new System.Drawing.Font("Pretendard", 9F);
@@ -437,11 +422,11 @@
             this.dtpEndDate.Size = new System.Drawing.Size(141, 20);
             this.dtpEndDate.TabIndex = 21;
             this.dtpEndDate.Value = new System.DateTime(2023, 5, 9, 1, 5, 29, 884);
-            this.dtpEndDate.ValueChanged += new System.EventHandler(this.dptEndDate_ValueChanged);
             // 
             // dtpStartTime
             // 
             this.dtpStartTime.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dtpStartTime.Checked = true;
             this.dtpStartTime.CustomFormat = "HH:mm";
             this.dtpStartTime.FillColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dtpStartTime.Font = new System.Drawing.Font("Pretendard", 9F);
@@ -458,6 +443,7 @@
             // dtpEndTime
             // 
             this.dtpEndTime.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dtpEndTime.Checked = true;
             this.dtpEndTime.CustomFormat = "HH:mm";
             this.dtpEndTime.FillColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dtpEndTime.Font = new System.Drawing.Font("Pretendard", 9F);
@@ -480,7 +466,6 @@
             this.guna2HtmlLabel7.Size = new System.Drawing.Size(49, 23);
             this.guna2HtmlLabel7.TabIndex = 24;
             this.guna2HtmlLabel7.Text = "Start :";
-            this.guna2HtmlLabel7.Click += new System.EventHandler(this.guna2HtmlLabel7_Click);
             // 
             // guna2HtmlLabel8
             // 
@@ -498,12 +483,64 @@
             this.guna2DragControl1.TargetControl = this.guna2Panel1;
             this.guna2DragControl1.UseTransparentDrag = true;
             // 
+            // guna2ContextMenuStrip1
+            // 
+            this.guna2ContextMenuStrip1.Font = new System.Drawing.Font("Pretendard", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.guna2ContextMenuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.guna2ContextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmAddmem,
+            this.tsmDeleteMem});
+            this.guna2ContextMenuStrip1.Name = "guna2ContextMenuStrip1";
+            this.guna2ContextMenuStrip1.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.guna2ContextMenuStrip1.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
+            this.guna2ContextMenuStrip1.RenderStyle.ColorTable = null;
+            this.guna2ContextMenuStrip1.RenderStyle.RoundedEdges = true;
+            this.guna2ContextMenuStrip1.RenderStyle.SelectionArrowColor = System.Drawing.Color.White;
+            this.guna2ContextMenuStrip1.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.guna2ContextMenuStrip1.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.guna2ContextMenuStrip1.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
+            this.guna2ContextMenuStrip1.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            this.guna2ContextMenuStrip1.Size = new System.Drawing.Size(150, 60);
+            // 
+            // tsmAddmem
+            // 
+            this.tsmAddmem.Font = new System.Drawing.Font("Pretendard", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.tsmAddmem.Name = "tsmAddmem";
+            this.tsmAddmem.Size = new System.Drawing.Size(240, 28);
+            this.tsmAddmem.Text = "멤버 추가";
+            // 
+            // tsmDeleteMem
+            // 
+            this.tsmDeleteMem.Font = new System.Drawing.Font("Pretendard", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.tsmDeleteMem.Name = "tsmDeleteMem";
+            this.tsmDeleteMem.Size = new System.Drawing.Size(149, 28);
+            this.tsmDeleteMem.Text = "멤버 삭제";
+            // 
+            // btnMemSet
+            // 
+            this.btnMemSet.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
+            this.btnMemSet.BorderThickness = 1;
+            this.btnMemSet.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnMemSet.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnMemSet.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnMemSet.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnMemSet.FillColor = System.Drawing.Color.White;
+            this.btnMemSet.Font = new System.Drawing.Font("Pretendard", 9F);
+            this.btnMemSet.ForeColor = System.Drawing.Color.Black;
+            this.btnMemSet.Location = new System.Drawing.Point(143, 211);
+            this.btnMemSet.Name = "btnMemSet";
+            this.btnMemSet.Size = new System.Drawing.Size(279, 36);
+            this.btnMemSet.TabIndex = 27;
+            this.btnMemSet.Text = "Member Setting";
+            this.btnMemSet.Click += new System.EventHandler(this.btnMemSet_Click);
+            // 
             // ScheDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(450, 570);
+            this.Controls.Add(this.btnMemSet);
             this.Controls.Add(this.guna2HtmlLabel8);
             this.Controls.Add(this.guna2HtmlLabel7);
             this.Controls.Add(this.dtpEndTime);
@@ -515,7 +552,6 @@
             this.Controls.Add(this.addBtn);
             this.Controls.Add(this.tbMemo);
             this.Controls.Add(this.tbPlace);
-            this.Controls.Add(this.guna2TextBox3);
             this.Controls.Add(this.tbTitle);
             this.Controls.Add(this.guna2Panel2);
             this.Controls.Add(this.guna2Panel1);
@@ -527,6 +563,7 @@
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel2.ResumeLayout(false);
             this.guna2Panel2.PerformLayout();
+            this.guna2ContextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -545,7 +582,6 @@
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2TextBox tbMemo;
         private Guna.UI2.WinForms.Guna2TextBox tbPlace;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox3;
         private Guna.UI2.WinForms.Guna2TextBox tbTitle;
         private Guna.UI2.WinForms.Guna2Button deleteBtn;
         private Guna.UI2.WinForms.Guna2Elipse deleteBtnRadius;
@@ -566,5 +602,9 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel7;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel8;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
+        private Guna.UI2.WinForms.Guna2Button btnMemSet;
+        private Guna.UI2.WinForms.Guna2ContextMenuStrip guna2ContextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem tsmAddmem;
+        private System.Windows.Forms.ToolStripMenuItem tsmDeleteMem;
     }
 }

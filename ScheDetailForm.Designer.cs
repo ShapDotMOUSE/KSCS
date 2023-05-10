@@ -70,6 +70,7 @@
             this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnAddSchedule = new Guna.UI2.WinForms.Guna2Button();
             this.closeBtn = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.scheduleUnit1 = new KSCS.scheduleUnit();
             this.panelTop.SuspendLayout();
             this.panelLabel.SuspendLayout();
             this.guna2ContextMenuStrip1.SuspendLayout();
@@ -255,6 +256,7 @@
             // 
             // panelSchedules
             // 
+            this.panelSchedules.Controls.Add(this.scheduleUnit1);
             this.panelSchedules.Controls.Add(this.btnAddSchedule);
             this.panelSchedules.Controls.Add(this.btnSchedule3);
             this.panelSchedules.Controls.Add(this.btnSchedule2);
@@ -627,6 +629,16 @@
             this.closeBtn.TabIndex = 12;
             this.closeBtn.Click += new System.EventHandler(this.closeBtn_Click);
             // 
+            // scheduleUnit1
+            // 
+            this.scheduleUnit1.BackColor = System.Drawing.Color.Transparent;
+            this.scheduleUnit1.Location = new System.Drawing.Point(0, 0);
+            this.scheduleUnit1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.scheduleUnit1.Name = "scheduleUnit1";
+            this.scheduleUnit1.ScheduleTitle = "schedule";
+            this.scheduleUnit1.Size = new System.Drawing.Size(193, 40);
+            this.scheduleUnit1.TabIndex = 46;
+            // 
             // ScheDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 26F);
@@ -706,5 +718,6 @@
         private Guna.UI2.WinForms.Guna2Button btnSchedule2;
         private Guna.UI2.WinForms.Guna2Button btnSchedule1;
         private Guna.UI2.WinForms.Guna2Button btnAddSchedule;
+        private scheduleUnit scheduleUnit1;
     }
 }

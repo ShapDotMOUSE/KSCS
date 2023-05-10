@@ -66,6 +66,12 @@
     <Compile Include="ScheDetailForm.Designer.cs">
       <DependentUpon>ScheDetailForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="scheduleUnit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="scheduleUnit.Designer.cs">
+      <DependentUpon>scheduleUnit.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -78,6 +84,9 @@
     </Compile>
     <EmbeddedResource Include="ScheDetailForm.resx">
       <DependentUpon>ScheDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="scheduleUnit.resx">
+      <DependentUpon>scheduleUnit.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

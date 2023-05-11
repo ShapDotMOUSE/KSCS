@@ -12,10 +12,15 @@ namespace KSCS
 {
     public partial class scheduleUnit : UserControl
     {
+
         public scheduleUnit()
         {
             InitializeComponent();
+
+            btnSchedule.Click += btnClick;
         }
+
+        public event EventHandler btnClick;
 
         public string ScheduleTitle
         {
@@ -32,6 +37,14 @@ namespace KSCS
         public void ChangeScheduleColor(Color color)
         {
             this.btnSchedule.BorderColor = color;
+        }
+
+        private void btnSchedule_Click(object sender, EventArgs e)
+        {
+            if(this.btnClick != null)
+            {
+                btnClick(this, e);
+            }
         }
     }
 }

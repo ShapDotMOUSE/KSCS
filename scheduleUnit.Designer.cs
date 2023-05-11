@@ -40,23 +40,27 @@
             this.btnSchedule.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnSchedule.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnSchedule.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSchedule.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSchedule.FillColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSchedule.Font = new System.Drawing.Font("Pretendard", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSchedule.ForeColor = System.Drawing.Color.Black;
             this.btnSchedule.Location = new System.Drawing.Point(0, 0);
+            this.btnSchedule.Margin = new System.Windows.Forms.Padding(2);
             this.btnSchedule.Name = "btnSchedule";
-            this.btnSchedule.Size = new System.Drawing.Size(188, 40);
-            this.btnSchedule.TabIndex = 46;
+            this.btnSchedule.Size = new System.Drawing.Size(136, 31);
+            this.btnSchedule.TabIndex = 0;
             this.btnSchedule.Text = "schedule";
+            this.btnSchedule.Click += new System.EventHandler(this.btnSchedule_Click);
             // 
             // scheduleUnit
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.btnSchedule);
+            this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "scheduleUnit";
-            this.Size = new System.Drawing.Size(188, 40);
+            this.Size = new System.Drawing.Size(136, 31);
             this.ResumeLayout(false);
 
         }

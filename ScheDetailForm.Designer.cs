@@ -32,7 +32,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScheDetailForm));
             this.formRadius = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.panelTop = new Guna.UI2.WinForms.Guna2Panel();
+            this.closeBtn = new Guna.UI2.WinForms.Guna2ImageButton();
             this.panelLabel = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2ImageButton6 = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.guna2ImageButton5 = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.guna2ImageButton4 = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.guna2ImageButton3 = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.guna2ImageButton2 = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.labelCategory = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.labelMemo = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.labelTitle = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -48,9 +55,7 @@
             this.tsmAddmem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmDeleteMem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelSchedules = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnSchedule3 = new Guna.UI2.WinForms.Guna2Button();
-            this.btnSchedule2 = new Guna.UI2.WinForms.Guna2Button();
-            this.btnSchedule1 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnAddSchedule = new Guna.UI2.WinForms.Guna2Button();
             this.btnMemSet = new Guna.UI2.WinForms.Guna2Button();
             this.guna2HtmlLabel8 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel7 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -62,15 +67,6 @@
             this.tbMemo = new Guna.UI2.WinForms.Guna2TextBox();
             this.tbPlace = new Guna.UI2.WinForms.Guna2TextBox();
             this.tbTitle = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2ImageButton6 = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.guna2ImageButton5 = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.guna2ImageButton4 = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.guna2ImageButton3 = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.guna2ImageButton2 = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.btnAddSchedule = new Guna.UI2.WinForms.Guna2Button();
-            this.closeBtn = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.scheduleUnit1 = new KSCS.scheduleUnit();
             this.panelTop.SuspendLayout();
             this.panelLabel.SuspendLayout();
             this.guna2ContextMenuStrip1.SuspendLayout();
@@ -92,6 +88,21 @@
             this.panelTop.Size = new System.Drawing.Size(650, 44);
             this.panelTop.TabIndex = 5;
             // 
+            // closeBtn
+            // 
+            this.closeBtn.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.closeBtn.HoverState.ImageSize = new System.Drawing.Size(0, 0);
+            this.closeBtn.Image = global::KSCS.Properties.Resources.free_icon_font_cross_3917759;
+            this.closeBtn.ImageOffset = new System.Drawing.Point(0, 0);
+            this.closeBtn.ImageRotate = 0F;
+            this.closeBtn.ImageSize = new System.Drawing.Size(15, 15);
+            this.closeBtn.Location = new System.Drawing.Point(606, 0);
+            this.closeBtn.Name = "closeBtn";
+            this.closeBtn.PressedState.ImageSize = new System.Drawing.Size(0, 0);
+            this.closeBtn.Size = new System.Drawing.Size(44, 44);
+            this.closeBtn.TabIndex = 12;
+            this.closeBtn.Click += new System.EventHandler(this.closeBtn_Click);
+            // 
             // panelLabel
             // 
             this.panelLabel.Controls.Add(this.guna2ImageButton6);
@@ -107,410 +118,10 @@
             this.panelLabel.Controls.Add(this.labelPlace);
             this.panelLabel.Controls.Add(this.labelMember);
             this.panelLabel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelLabel.Location = new System.Drawing.Point(200, 44);
+            this.panelLabel.Location = new System.Drawing.Point(208, 44);
             this.panelLabel.Name = "panelLabel";
             this.panelLabel.Size = new System.Drawing.Size(147, 526);
             this.panelLabel.TabIndex = 0;
-            // 
-            // labelCategory
-            // 
-            this.labelCategory.BackColor = System.Drawing.Color.Transparent;
-            this.labelCategory.Font = new System.Drawing.Font("Pretendard", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labelCategory.Location = new System.Drawing.Point(59, 311);
-            this.labelCategory.Name = "labelCategory";
-            this.labelCategory.Size = new System.Drawing.Size(94, 28);
-            this.labelCategory.TabIndex = 31;
-            this.labelCategory.Text = "Category";
-            // 
-            // labelMemo
-            // 
-            this.labelMemo.BackColor = System.Drawing.Color.Transparent;
-            this.labelMemo.Font = new System.Drawing.Font("Pretendard", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labelMemo.Location = new System.Drawing.Point(59, 380);
-            this.labelMemo.Name = "labelMemo";
-            this.labelMemo.Size = new System.Drawing.Size(64, 28);
-            this.labelMemo.TabIndex = 30;
-            this.labelMemo.Text = "Memo";
-            // 
-            // labelTitle
-            // 
-            this.labelTitle.BackColor = System.Drawing.Color.Transparent;
-            this.labelTitle.Font = new System.Drawing.Font("Pretendard", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labelTitle.Location = new System.Drawing.Point(59, 24);
-            this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(45, 28);
-            this.labelTitle.TabIndex = 29;
-            this.labelTitle.Text = "Title";
-            // 
-            // labelSchedule
-            // 
-            this.labelSchedule.BackColor = System.Drawing.Color.Transparent;
-            this.labelSchedule.Font = new System.Drawing.Font("Pretendard", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labelSchedule.Location = new System.Drawing.Point(59, 89);
-            this.labelSchedule.Name = "labelSchedule";
-            this.labelSchedule.Size = new System.Drawing.Size(94, 28);
-            this.labelSchedule.TabIndex = 26;
-            this.labelSchedule.Text = "Schedule";
-            // 
-            // labelPlace
-            // 
-            this.labelPlace.BackColor = System.Drawing.Color.Transparent;
-            this.labelPlace.Font = new System.Drawing.Font("Pretendard", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labelPlace.Location = new System.Drawing.Point(59, 241);
-            this.labelPlace.Name = "labelPlace";
-            this.labelPlace.Size = new System.Drawing.Size(57, 28);
-            this.labelPlace.TabIndex = 28;
-            this.labelPlace.Text = "Place";
-            // 
-            // labelMember
-            // 
-            this.labelMember.BackColor = System.Drawing.Color.Transparent;
-            this.labelMember.Font = new System.Drawing.Font("Pretendard", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labelMember.Location = new System.Drawing.Point(59, 169);
-            this.labelMember.Name = "labelMember";
-            this.labelMember.Size = new System.Drawing.Size(85, 28);
-            this.labelMember.TabIndex = 27;
-            this.labelMember.Text = "Member";
-            // 
-            // deleteBtnRadius
-            // 
-            this.deleteBtnRadius.BorderRadius = 10;
-            this.deleteBtnRadius.TargetControl = this.deleteBtn;
-            // 
-            // deleteBtn
-            // 
-            this.deleteBtn.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.deleteBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.deleteBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.deleteBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.deleteBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.deleteBtn.FillColor = System.Drawing.Color.LightCoral;
-            this.deleteBtn.Font = new System.Drawing.Font("Pretendard", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.deleteBtn.ForeColor = System.Drawing.Color.White;
-            this.deleteBtn.Location = new System.Drawing.Point(512, 513);
-            this.deleteBtn.Name = "deleteBtn";
-            this.deleteBtn.Size = new System.Drawing.Size(110, 40);
-            this.deleteBtn.TabIndex = 29;
-            this.deleteBtn.Text = "Delete";
-            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
-            // 
-            // addBtnRadius
-            // 
-            this.addBtnRadius.BorderRadius = 10;
-            this.addBtnRadius.TargetControl = this.addBtn;
-            // 
-            // addBtn
-            // 
-            this.addBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.addBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.addBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.addBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.addBtn.FillColor = System.Drawing.Color.CornflowerBlue;
-            this.addBtn.Font = new System.Drawing.Font("Pretendard", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addBtn.ForeColor = System.Drawing.Color.White;
-            this.addBtn.Location = new System.Drawing.Point(384, 513);
-            this.addBtn.Name = "addBtn";
-            this.addBtn.Size = new System.Drawing.Size(110, 40);
-            this.addBtn.TabIndex = 33;
-            this.addBtn.Text = "Add";
-            this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
-            // 
-            // guna2DragControl1
-            // 
-            this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2DragControl1.TargetControl = this.panelTop;
-            this.guna2DragControl1.UseTransparentDrag = true;
-            // 
-            // guna2ContextMenuStrip1
-            // 
-            this.guna2ContextMenuStrip1.Font = new System.Drawing.Font("Pretendard", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.guna2ContextMenuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.guna2ContextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmAddmem,
-            this.tsmDeleteMem});
-            this.guna2ContextMenuStrip1.Name = "guna2ContextMenuStrip1";
-            this.guna2ContextMenuStrip1.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
-            this.guna2ContextMenuStrip1.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
-            this.guna2ContextMenuStrip1.RenderStyle.ColorTable = null;
-            this.guna2ContextMenuStrip1.RenderStyle.RoundedEdges = true;
-            this.guna2ContextMenuStrip1.RenderStyle.SelectionArrowColor = System.Drawing.Color.White;
-            this.guna2ContextMenuStrip1.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.guna2ContextMenuStrip1.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
-            this.guna2ContextMenuStrip1.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
-            this.guna2ContextMenuStrip1.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.guna2ContextMenuStrip1.Size = new System.Drawing.Size(150, 60);
-            // 
-            // tsmAddmem
-            // 
-            this.tsmAddmem.Font = new System.Drawing.Font("Pretendard", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.tsmAddmem.Name = "tsmAddmem";
-            this.tsmAddmem.Size = new System.Drawing.Size(149, 28);
-            this.tsmAddmem.Text = "멤버 추가";
-            // 
-            // tsmDeleteMem
-            // 
-            this.tsmDeleteMem.Font = new System.Drawing.Font("Pretendard", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.tsmDeleteMem.Name = "tsmDeleteMem";
-            this.tsmDeleteMem.Size = new System.Drawing.Size(149, 28);
-            this.tsmDeleteMem.Text = "멤버 삭제";
-            // 
-            // panelSchedules
-            // 
-            this.panelSchedules.Controls.Add(this.scheduleUnit1);
-            this.panelSchedules.Controls.Add(this.btnAddSchedule);
-            this.panelSchedules.Controls.Add(this.btnSchedule3);
-            this.panelSchedules.Controls.Add(this.btnSchedule2);
-            this.panelSchedules.Controls.Add(this.btnSchedule1);
-            this.panelSchedules.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelSchedules.Location = new System.Drawing.Point(0, 44);
-            this.panelSchedules.Name = "panelSchedules";
-            this.panelSchedules.Size = new System.Drawing.Size(200, 526);
-            this.panelSchedules.TabIndex = 28;
-            // 
-            // btnSchedule3
-            // 
-            this.btnSchedule3.BorderColor = System.Drawing.Color.DarkTurquoise;
-            this.btnSchedule3.BorderRadius = 5;
-            this.btnSchedule3.BorderThickness = 2;
-            this.btnSchedule3.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnSchedule3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnSchedule3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnSchedule3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSchedule3.FillColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSchedule3.Font = new System.Drawing.Font("Pretendard", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSchedule3.ForeColor = System.Drawing.Color.Black;
-            this.btnSchedule3.Location = new System.Drawing.Point(12, 99);
-            this.btnSchedule3.Name = "btnSchedule3";
-            this.btnSchedule3.Size = new System.Drawing.Size(188, 40);
-            this.btnSchedule3.TabIndex = 44;
-            this.btnSchedule3.Text = "schedule3";
-            this.btnSchedule3.Click += new System.EventHandler(this.btnSchedule_Click);
-            // 
-            // btnSchedule2
-            // 
-            this.btnSchedule2.BorderColor = System.Drawing.Color.HotPink;
-            this.btnSchedule2.BorderRadius = 5;
-            this.btnSchedule2.BorderThickness = 2;
-            this.btnSchedule2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnSchedule2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnSchedule2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnSchedule2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSchedule2.FillColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSchedule2.Font = new System.Drawing.Font("Pretendard", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSchedule2.ForeColor = System.Drawing.Color.Black;
-            this.btnSchedule2.Location = new System.Drawing.Point(12, 53);
-            this.btnSchedule2.Name = "btnSchedule2";
-            this.btnSchedule2.Size = new System.Drawing.Size(188, 40);
-            this.btnSchedule2.TabIndex = 43;
-            this.btnSchedule2.Text = "schedule2";
-            this.btnSchedule2.Click += new System.EventHandler(this.btnSchedule_Click);
-            // 
-            // btnSchedule1
-            // 
-            this.btnSchedule1.BorderColor = System.Drawing.Color.Maroon;
-            this.btnSchedule1.BorderRadius = 5;
-            this.btnSchedule1.BorderThickness = 2;
-            this.btnSchedule1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnSchedule1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnSchedule1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnSchedule1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSchedule1.FillColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSchedule1.Font = new System.Drawing.Font("Pretendard", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSchedule1.ForeColor = System.Drawing.Color.Black;
-            this.btnSchedule1.Location = new System.Drawing.Point(12, 7);
-            this.btnSchedule1.Name = "btnSchedule1";
-            this.btnSchedule1.Size = new System.Drawing.Size(188, 40);
-            this.btnSchedule1.TabIndex = 42;
-            this.btnSchedule1.Text = "schedule1";
-            this.btnSchedule1.Click += new System.EventHandler(this.btnSchedule_Click);
-            // 
-            // btnMemSet
-            // 
-            this.btnMemSet.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
-            this.btnMemSet.BorderThickness = 1;
-            this.btnMemSet.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnMemSet.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnMemSet.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnMemSet.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnMemSet.FillColor = System.Drawing.Color.White;
-            this.btnMemSet.Font = new System.Drawing.Font("Pretendard", 9F);
-            this.btnMemSet.ForeColor = System.Drawing.Color.Black;
-            this.btnMemSet.Location = new System.Drawing.Point(342, 211);
-            this.btnMemSet.Name = "btnMemSet";
-            this.btnMemSet.Size = new System.Drawing.Size(279, 36);
-            this.btnMemSet.TabIndex = 41;
-            this.btnMemSet.Text = "Member Setting";
-            this.btnMemSet.Click += new System.EventHandler(this.btnMemSet_Click);
-            // 
-            // guna2HtmlLabel8
-            // 
-            this.guna2HtmlLabel8.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel8.Font = new System.Drawing.Font("Pretendard Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.guna2HtmlLabel8.Location = new System.Drawing.Point(342, 160);
-            this.guna2HtmlLabel8.Name = "guna2HtmlLabel8";
-            this.guna2HtmlLabel8.Size = new System.Drawing.Size(41, 23);
-            this.guna2HtmlLabel8.TabIndex = 40;
-            this.guna2HtmlLabel8.Text = "End :";
-            // 
-            // guna2HtmlLabel7
-            // 
-            this.guna2HtmlLabel7.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel7.Font = new System.Drawing.Font("Pretendard Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.guna2HtmlLabel7.Location = new System.Drawing.Point(342, 135);
-            this.guna2HtmlLabel7.Name = "guna2HtmlLabel7";
-            this.guna2HtmlLabel7.Size = new System.Drawing.Size(49, 23);
-            this.guna2HtmlLabel7.TabIndex = 39;
-            this.guna2HtmlLabel7.Text = "Start :";
-            // 
-            // dtpEndTime
-            // 
-            this.dtpEndTime.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dtpEndTime.Checked = true;
-            this.dtpEndTime.CustomFormat = "HH:mm";
-            this.dtpEndTime.FillColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dtpEndTime.Font = new System.Drawing.Font("Pretendard", 9F);
-            this.dtpEndTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpEndTime.Location = new System.Drawing.Point(533, 159);
-            this.dtpEndTime.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.dtpEndTime.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.dtpEndTime.Name = "dtpEndTime";
-            this.dtpEndTime.ShowUpDown = true;
-            this.dtpEndTime.Size = new System.Drawing.Size(89, 20);
-            this.dtpEndTime.TabIndex = 38;
-            this.dtpEndTime.Value = new System.DateTime(2023, 5, 9, 1, 5, 29, 884);
-            // 
-            // dtpStartTime
-            // 
-            this.dtpStartTime.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dtpStartTime.Checked = true;
-            this.dtpStartTime.CustomFormat = "HH:mm";
-            this.dtpStartTime.FillColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dtpStartTime.Font = new System.Drawing.Font("Pretendard", 9F);
-            this.dtpStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpStartTime.Location = new System.Drawing.Point(533, 133);
-            this.dtpStartTime.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.dtpStartTime.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.dtpStartTime.Name = "dtpStartTime";
-            this.dtpStartTime.ShowUpDown = true;
-            this.dtpStartTime.Size = new System.Drawing.Size(89, 20);
-            this.dtpStartTime.TabIndex = 37;
-            this.dtpStartTime.Value = new System.DateTime(2023, 5, 9, 1, 5, 29, 884);
-            // 
-            // dtpEndDate
-            // 
-            this.dtpEndDate.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dtpEndDate.Checked = true;
-            this.dtpEndDate.CustomFormat = "yyyy-MM-dd ddd";
-            this.dtpEndDate.FillColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dtpEndDate.Font = new System.Drawing.Font("Pretendard", 9F);
-            this.dtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpEndDate.IndicateFocus = true;
-            this.dtpEndDate.Location = new System.Drawing.Point(382, 159);
-            this.dtpEndDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.dtpEndDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.dtpEndDate.Name = "dtpEndDate";
-            this.dtpEndDate.Size = new System.Drawing.Size(141, 20);
-            this.dtpEndDate.TabIndex = 36;
-            this.dtpEndDate.Value = new System.DateTime(2023, 5, 9, 1, 5, 29, 884);
-            // 
-            // dtpStartDate
-            // 
-            this.dtpStartDate.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dtpStartDate.Checked = true;
-            this.dtpStartDate.CustomFormat = "yyyy-MM-dd ddd";
-            this.dtpStartDate.FillColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dtpStartDate.Font = new System.Drawing.Font("Pretendard", 9F);
-            this.dtpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpStartDate.IndicateFocus = true;
-            this.dtpStartDate.Location = new System.Drawing.Point(382, 133);
-            this.dtpStartDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.dtpStartDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.dtpStartDate.Name = "dtpStartDate";
-            this.dtpStartDate.Size = new System.Drawing.Size(141, 20);
-            this.dtpStartDate.TabIndex = 35;
-            this.dtpStartDate.Value = new System.DateTime(2023, 5, 9, 1, 5, 29, 884);
-            // 
-            // cbCategory
-            // 
-            this.cbCategory.BackColor = System.Drawing.Color.Transparent;
-            this.cbCategory.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbCategory.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbCategory.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbCategory.Font = new System.Drawing.Font("Pretendard", 10F);
-            this.cbCategory.ForeColor = System.Drawing.Color.Black;
-            this.cbCategory.ItemHeight = 30;
-            this.cbCategory.Items.AddRange(new object[] {
-            "KLAS",
-            "공유 일정",
-            "개인"});
-            this.cbCategory.Location = new System.Drawing.Point(342, 355);
-            this.cbCategory.Name = "cbCategory";
-            this.cbCategory.Size = new System.Drawing.Size(280, 36);
-            this.cbCategory.TabIndex = 34;
-            // 
-            // tbMemo
-            // 
-            this.tbMemo.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.tbMemo.DefaultText = "";
-            this.tbMemo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.tbMemo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.tbMemo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tbMemo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tbMemo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tbMemo.Font = new System.Drawing.Font("Pretendard", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.tbMemo.ForeColor = System.Drawing.Color.Black;
-            this.tbMemo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tbMemo.Location = new System.Drawing.Point(342, 424);
-            this.tbMemo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tbMemo.Name = "tbMemo";
-            this.tbMemo.PasswordChar = '\0';
-            this.tbMemo.PlaceholderText = "";
-            this.tbMemo.SelectedText = "";
-            this.tbMemo.Size = new System.Drawing.Size(280, 72);
-            this.tbMemo.TabIndex = 32;
-            // 
-            // tbPlace
-            // 
-            this.tbPlace.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.tbPlace.DefaultText = "";
-            this.tbPlace.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.tbPlace.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.tbPlace.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tbPlace.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tbPlace.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tbPlace.Font = new System.Drawing.Font("Pretendard", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.tbPlace.ForeColor = System.Drawing.Color.Black;
-            this.tbPlace.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tbPlace.Location = new System.Drawing.Point(342, 285);
-            this.tbPlace.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tbPlace.Name = "tbPlace";
-            this.tbPlace.PasswordChar = '\0';
-            this.tbPlace.PlaceholderText = "";
-            this.tbPlace.SelectedText = "";
-            this.tbPlace.Size = new System.Drawing.Size(280, 36);
-            this.tbPlace.TabIndex = 31;
-            // 
-            // tbTitle
-            // 
-            this.tbTitle.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.tbTitle.DefaultText = "";
-            this.tbTitle.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.tbTitle.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.tbTitle.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tbTitle.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tbTitle.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tbTitle.Font = new System.Drawing.Font("Pretendard", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.tbTitle.ForeColor = System.Drawing.Color.Black;
-            this.tbTitle.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tbTitle.Location = new System.Drawing.Point(342, 66);
-            this.tbTitle.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tbTitle.Name = "tbTitle";
-            this.tbTitle.PasswordChar = '\0';
-            this.tbTitle.PlaceholderText = "";
-            this.tbTitle.SelectedText = "";
-            this.tbTitle.Size = new System.Drawing.Size(280, 36);
-            this.tbTitle.TabIndex = 30;
             // 
             // guna2ImageButton6
             // 
@@ -596,8 +207,164 @@
             this.guna2ImageButton1.Size = new System.Drawing.Size(39, 28);
             this.guna2ImageButton1.TabIndex = 32;
             // 
+            // labelCategory
+            // 
+            this.labelCategory.BackColor = System.Drawing.Color.Transparent;
+            this.labelCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.labelCategory.Location = new System.Drawing.Point(59, 311);
+            this.labelCategory.Name = "labelCategory";
+            this.labelCategory.Size = new System.Drawing.Size(91, 28);
+            this.labelCategory.TabIndex = 31;
+            this.labelCategory.Text = "Category";
+            // 
+            // labelMemo
+            // 
+            this.labelMemo.BackColor = System.Drawing.Color.Transparent;
+            this.labelMemo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.labelMemo.Location = new System.Drawing.Point(59, 380);
+            this.labelMemo.Name = "labelMemo";
+            this.labelMemo.Size = new System.Drawing.Size(64, 28);
+            this.labelMemo.TabIndex = 30;
+            this.labelMemo.Text = "Memo";
+            // 
+            // labelTitle
+            // 
+            this.labelTitle.BackColor = System.Drawing.Color.Transparent;
+            this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.labelTitle.Location = new System.Drawing.Point(59, 24);
+            this.labelTitle.Name = "labelTitle";
+            this.labelTitle.Size = new System.Drawing.Size(43, 28);
+            this.labelTitle.TabIndex = 29;
+            this.labelTitle.Text = "Title";
+            // 
+            // labelSchedule
+            // 
+            this.labelSchedule.BackColor = System.Drawing.Color.Transparent;
+            this.labelSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.labelSchedule.Location = new System.Drawing.Point(59, 89);
+            this.labelSchedule.Name = "labelSchedule";
+            this.labelSchedule.Size = new System.Drawing.Size(94, 28);
+            this.labelSchedule.TabIndex = 26;
+            this.labelSchedule.Text = "Schedule";
+            // 
+            // labelPlace
+            // 
+            this.labelPlace.BackColor = System.Drawing.Color.Transparent;
+            this.labelPlace.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.labelPlace.Location = new System.Drawing.Point(59, 241);
+            this.labelPlace.Name = "labelPlace";
+            this.labelPlace.Size = new System.Drawing.Size(58, 28);
+            this.labelPlace.TabIndex = 28;
+            this.labelPlace.Text = "Place";
+            // 
+            // labelMember
+            // 
+            this.labelMember.BackColor = System.Drawing.Color.Transparent;
+            this.labelMember.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.labelMember.Location = new System.Drawing.Point(59, 169);
+            this.labelMember.Name = "labelMember";
+            this.labelMember.Size = new System.Drawing.Size(83, 28);
+            this.labelMember.TabIndex = 27;
+            this.labelMember.Text = "Member";
+            // 
+            // deleteBtnRadius
+            // 
+            this.deleteBtnRadius.BorderRadius = 10;
+            this.deleteBtnRadius.TargetControl = this.deleteBtn;
+            // 
+            // deleteBtn
+            // 
+            this.deleteBtn.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.deleteBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.deleteBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.deleteBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.deleteBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.deleteBtn.FillColor = System.Drawing.Color.LightCoral;
+            this.deleteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.deleteBtn.ForeColor = System.Drawing.Color.White;
+            this.deleteBtn.Location = new System.Drawing.Point(512, 513);
+            this.deleteBtn.Name = "deleteBtn";
+            this.deleteBtn.Size = new System.Drawing.Size(110, 40);
+            this.deleteBtn.TabIndex = 29;
+            this.deleteBtn.Text = "Delete";
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
+            // 
+            // addBtnRadius
+            // 
+            this.addBtnRadius.BorderRadius = 10;
+            this.addBtnRadius.TargetControl = this.addBtn;
+            // 
+            // addBtn
+            // 
+            this.addBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.addBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.addBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.addBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.addBtn.FillColor = System.Drawing.Color.CornflowerBlue;
+            this.addBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addBtn.ForeColor = System.Drawing.Color.White;
+            this.addBtn.Location = new System.Drawing.Point(384, 513);
+            this.addBtn.Name = "addBtn";
+            this.addBtn.Size = new System.Drawing.Size(110, 40);
+            this.addBtn.TabIndex = 33;
+            this.addBtn.Text = "Add";
+            this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
+            // 
+            // guna2DragControl1
+            // 
+            this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2DragControl1.TargetControl = this.panelTop;
+            this.guna2DragControl1.UseTransparentDrag = true;
+            // 
+            // guna2ContextMenuStrip1
+            // 
+            this.guna2ContextMenuStrip1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.guna2ContextMenuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.guna2ContextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmAddmem,
+            this.tsmDeleteMem});
+            this.guna2ContextMenuStrip1.Name = "guna2ContextMenuStrip1";
+            this.guna2ContextMenuStrip1.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.guna2ContextMenuStrip1.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
+            this.guna2ContextMenuStrip1.RenderStyle.ColorTable = null;
+            this.guna2ContextMenuStrip1.RenderStyle.RoundedEdges = true;
+            this.guna2ContextMenuStrip1.RenderStyle.SelectionArrowColor = System.Drawing.Color.White;
+            this.guna2ContextMenuStrip1.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.guna2ContextMenuStrip1.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.guna2ContextMenuStrip1.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
+            this.guna2ContextMenuStrip1.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            this.guna2ContextMenuStrip1.Size = new System.Drawing.Size(138, 60);
+            // 
+            // tsmAddmem
+            // 
+            this.tsmAddmem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.tsmAddmem.Name = "tsmAddmem";
+            this.tsmAddmem.Size = new System.Drawing.Size(137, 28);
+            this.tsmAddmem.Text = "멤버 추가";
+            // 
+            // tsmDeleteMem
+            // 
+            this.tsmDeleteMem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.tsmDeleteMem.Name = "tsmDeleteMem";
+            this.tsmDeleteMem.Size = new System.Drawing.Size(137, 28);
+            this.tsmDeleteMem.Text = "멤버 삭제";
+            // 
+            // panelSchedules
+            // 
+            this.panelSchedules.AutoScroll = true;
+            this.panelSchedules.AutoScrollMargin = new System.Drawing.Size(0, 100);
+            this.panelSchedules.AutoScrollMinSize = new System.Drawing.Size(0, 450);
+            this.panelSchedules.Controls.Add(this.btnAddSchedule);
+            this.panelSchedules.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelSchedules.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.panelSchedules.Location = new System.Drawing.Point(0, 44);
+            this.panelSchedules.Name = "panelSchedules";
+            this.panelSchedules.Size = new System.Drawing.Size(208, 526);
+            this.panelSchedules.TabIndex = 28;
+            // 
             // btnAddSchedule
             // 
+            this.btnAddSchedule.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnAddSchedule.BorderRadius = 5;
             this.btnAddSchedule.BorderThickness = 1;
             this.btnAddSchedule.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -605,39 +372,203 @@
             this.btnAddSchedule.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnAddSchedule.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnAddSchedule.FillColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAddSchedule.Font = new System.Drawing.Font("Pretendard", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddSchedule.ForeColor = System.Drawing.Color.Black;
             this.btnAddSchedule.Image = global::KSCS.Properties.Resources.free_icon_font_plus_3917757;
-            this.btnAddSchedule.Location = new System.Drawing.Point(12, 145);
+            this.btnAddSchedule.Location = new System.Drawing.Point(22, 10);
             this.btnAddSchedule.Name = "btnAddSchedule";
-            this.btnAddSchedule.Size = new System.Drawing.Size(188, 40);
+            this.btnAddSchedule.Size = new System.Drawing.Size(167, 40);
             this.btnAddSchedule.TabIndex = 45;
             this.btnAddSchedule.Click += new System.EventHandler(this.btnAddSchedule_Click);
             // 
-            // closeBtn
+            // btnMemSet
             // 
-            this.closeBtn.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.closeBtn.HoverState.ImageSize = new System.Drawing.Size(0, 0);
-            this.closeBtn.Image = ((System.Drawing.Image)(resources.GetObject("closeBtn.Image")));
-            this.closeBtn.ImageOffset = new System.Drawing.Point(0, 0);
-            this.closeBtn.ImageRotate = 0F;
-            this.closeBtn.ImageSize = new System.Drawing.Size(15, 15);
-            this.closeBtn.Location = new System.Drawing.Point(606, 0);
-            this.closeBtn.Name = "closeBtn";
-            this.closeBtn.PressedState.ImageSize = new System.Drawing.Size(0, 0);
-            this.closeBtn.Size = new System.Drawing.Size(44, 44);
-            this.closeBtn.TabIndex = 12;
-            this.closeBtn.Click += new System.EventHandler(this.closeBtn_Click);
+            this.btnMemSet.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
+            this.btnMemSet.BorderThickness = 1;
+            this.btnMemSet.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnMemSet.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnMemSet.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnMemSet.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnMemSet.FillColor = System.Drawing.Color.White;
+            this.btnMemSet.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btnMemSet.ForeColor = System.Drawing.Color.Black;
+            this.btnMemSet.Location = new System.Drawing.Point(342, 211);
+            this.btnMemSet.Name = "btnMemSet";
+            this.btnMemSet.Size = new System.Drawing.Size(279, 36);
+            this.btnMemSet.TabIndex = 41;
+            this.btnMemSet.Text = "Member Setting";
+            this.btnMemSet.Click += new System.EventHandler(this.btnMemSet_Click);
             // 
-            // scheduleUnit1
+            // guna2HtmlLabel8
             // 
-            this.scheduleUnit1.BackColor = System.Drawing.Color.Transparent;
-            this.scheduleUnit1.Location = new System.Drawing.Point(0, 0);
-            this.scheduleUnit1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.scheduleUnit1.Name = "scheduleUnit1";
-            this.scheduleUnit1.ScheduleTitle = "schedule";
-            this.scheduleUnit1.Size = new System.Drawing.Size(193, 40);
-            this.scheduleUnit1.TabIndex = 46;
+            this.guna2HtmlLabel8.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.guna2HtmlLabel8.Location = new System.Drawing.Point(342, 160);
+            this.guna2HtmlLabel8.Name = "guna2HtmlLabel8";
+            this.guna2HtmlLabel8.Size = new System.Drawing.Size(45, 24);
+            this.guna2HtmlLabel8.TabIndex = 40;
+            this.guna2HtmlLabel8.Text = "End :";
+            // 
+            // guna2HtmlLabel7
+            // 
+            this.guna2HtmlLabel7.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.guna2HtmlLabel7.Location = new System.Drawing.Point(342, 135);
+            this.guna2HtmlLabel7.Name = "guna2HtmlLabel7";
+            this.guna2HtmlLabel7.Size = new System.Drawing.Size(51, 24);
+            this.guna2HtmlLabel7.TabIndex = 39;
+            this.guna2HtmlLabel7.Text = "Start :";
+            // 
+            // dtpEndTime
+            // 
+            this.dtpEndTime.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dtpEndTime.Checked = true;
+            this.dtpEndTime.CustomFormat = "HH:mm";
+            this.dtpEndTime.FillColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dtpEndTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.dtpEndTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpEndTime.Location = new System.Drawing.Point(533, 159);
+            this.dtpEndTime.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtpEndTime.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtpEndTime.Name = "dtpEndTime";
+            this.dtpEndTime.ShowUpDown = true;
+            this.dtpEndTime.Size = new System.Drawing.Size(89, 20);
+            this.dtpEndTime.TabIndex = 38;
+            this.dtpEndTime.Value = new System.DateTime(2023, 5, 9, 1, 5, 29, 884);
+            // 
+            // dtpStartTime
+            // 
+            this.dtpStartTime.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dtpStartTime.Checked = true;
+            this.dtpStartTime.CustomFormat = "HH:mm";
+            this.dtpStartTime.FillColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dtpStartTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.dtpStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpStartTime.Location = new System.Drawing.Point(533, 133);
+            this.dtpStartTime.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtpStartTime.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtpStartTime.Name = "dtpStartTime";
+            this.dtpStartTime.ShowUpDown = true;
+            this.dtpStartTime.Size = new System.Drawing.Size(89, 20);
+            this.dtpStartTime.TabIndex = 37;
+            this.dtpStartTime.Value = new System.DateTime(2023, 5, 9, 1, 5, 29, 884);
+            // 
+            // dtpEndDate
+            // 
+            this.dtpEndDate.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dtpEndDate.Checked = true;
+            this.dtpEndDate.CustomFormat = "yyyy-MM-dd ddd";
+            this.dtpEndDate.FillColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dtpEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.dtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpEndDate.IndicateFocus = true;
+            this.dtpEndDate.Location = new System.Drawing.Point(382, 159);
+            this.dtpEndDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtpEndDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtpEndDate.Name = "dtpEndDate";
+            this.dtpEndDate.Size = new System.Drawing.Size(141, 20);
+            this.dtpEndDate.TabIndex = 36;
+            this.dtpEndDate.Value = new System.DateTime(2023, 5, 9, 1, 5, 29, 884);
+            // 
+            // dtpStartDate
+            // 
+            this.dtpStartDate.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dtpStartDate.Checked = true;
+            this.dtpStartDate.CustomFormat = "yyyy-MM-dd ddd";
+            this.dtpStartDate.FillColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dtpStartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.dtpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpStartDate.IndicateFocus = true;
+            this.dtpStartDate.Location = new System.Drawing.Point(382, 133);
+            this.dtpStartDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtpStartDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtpStartDate.Name = "dtpStartDate";
+            this.dtpStartDate.Size = new System.Drawing.Size(141, 20);
+            this.dtpStartDate.TabIndex = 35;
+            this.dtpStartDate.Value = new System.DateTime(2023, 5, 9, 1, 5, 29, 884);
+            // 
+            // cbCategory
+            // 
+            this.cbCategory.BackColor = System.Drawing.Color.Transparent;
+            this.cbCategory.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCategory.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbCategory.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.cbCategory.ForeColor = System.Drawing.Color.Black;
+            this.cbCategory.ItemHeight = 30;
+            this.cbCategory.Items.AddRange(new object[] {
+            "KLAS",
+            "공유 일정",
+            "개인"});
+            this.cbCategory.Location = new System.Drawing.Point(342, 355);
+            this.cbCategory.Name = "cbCategory";
+            this.cbCategory.Size = new System.Drawing.Size(280, 36);
+            this.cbCategory.TabIndex = 34;
+            this.cbCategory.DropDownClosed += new System.EventHandler(this.cbCategory_DropDownClosed);
+            // 
+            // tbMemo
+            // 
+            this.tbMemo.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbMemo.DefaultText = "";
+            this.tbMemo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.tbMemo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.tbMemo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tbMemo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tbMemo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tbMemo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.tbMemo.ForeColor = System.Drawing.Color.Black;
+            this.tbMemo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tbMemo.Location = new System.Drawing.Point(342, 424);
+            this.tbMemo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbMemo.Name = "tbMemo";
+            this.tbMemo.PasswordChar = '\0';
+            this.tbMemo.PlaceholderText = "";
+            this.tbMemo.SelectedText = "";
+            this.tbMemo.Size = new System.Drawing.Size(280, 72);
+            this.tbMemo.TabIndex = 32;
+            // 
+            // tbPlace
+            // 
+            this.tbPlace.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbPlace.DefaultText = "";
+            this.tbPlace.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.tbPlace.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.tbPlace.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tbPlace.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tbPlace.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tbPlace.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.tbPlace.ForeColor = System.Drawing.Color.Black;
+            this.tbPlace.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tbPlace.Location = new System.Drawing.Point(342, 285);
+            this.tbPlace.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbPlace.Name = "tbPlace";
+            this.tbPlace.PasswordChar = '\0';
+            this.tbPlace.PlaceholderText = "";
+            this.tbPlace.SelectedText = "";
+            this.tbPlace.Size = new System.Drawing.Size(280, 36);
+            this.tbPlace.TabIndex = 31;
+            // 
+            // tbTitle
+            // 
+            this.tbTitle.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbTitle.DefaultText = "";
+            this.tbTitle.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.tbTitle.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.tbTitle.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tbTitle.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tbTitle.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tbTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.tbTitle.ForeColor = System.Drawing.Color.Black;
+            this.tbTitle.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tbTitle.Location = new System.Drawing.Point(342, 66);
+            this.tbTitle.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbTitle.Name = "tbTitle";
+            this.tbTitle.PasswordChar = '\0';
+            this.tbTitle.PlaceholderText = "";
+            this.tbTitle.SelectedText = "";
+            this.tbTitle.Size = new System.Drawing.Size(280, 36);
+            this.tbTitle.TabIndex = 30;
             // 
             // ScheDetailForm
             // 
@@ -661,7 +592,7 @@
             this.Controls.Add(this.panelLabel);
             this.Controls.Add(this.panelSchedules);
             this.Controls.Add(this.panelTop);
-            this.Font = new System.Drawing.Font("Pretendard", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ScheDetailForm";
@@ -714,10 +645,6 @@
         private Guna.UI2.WinForms.Guna2TextBox tbMemo;
         private Guna.UI2.WinForms.Guna2TextBox tbPlace;
         private Guna.UI2.WinForms.Guna2TextBox tbTitle;
-        private Guna.UI2.WinForms.Guna2Button btnSchedule3;
-        private Guna.UI2.WinForms.Guna2Button btnSchedule2;
-        private Guna.UI2.WinForms.Guna2Button btnSchedule1;
         private Guna.UI2.WinForms.Guna2Button btnAddSchedule;
-        private scheduleUnit scheduleUnit1;
     }
 }

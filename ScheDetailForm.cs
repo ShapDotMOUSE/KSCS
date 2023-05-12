@@ -29,20 +29,6 @@ namespace KSCS
             panelSchedules.VerticalScroll.Visible = false;
         }
 
-        public static class DatabaseConnection
-        {
-            static MySqlConnection connection = null;
-            public static MySqlConnection getDBConnection()
-            {
-                if (connection == null)
-                {
-                    string connectionString = ConfigurationManager.ConnectionStrings["MySQL"].ConnectionString;
-                    connection = new MySqlConnection(connectionString);
-                }
-                return connection;
-            }
-        }
-
         public void InitializeDatabase()    
         {
             string selectQuery = string.Format("SELECT * from Schedule JOIN Category ON Schedule.category_id=Category.id JOIN StudentCategory ON StudentCategory.student_id=Schedule.student_id and Schedule.category_id=Category.id and Category.id=StudentCategory.category_id WHERE Schedule.student_id={0} ORDER BY startDate DESC;", student_id);

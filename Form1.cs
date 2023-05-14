@@ -7,12 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Guna.UI2.WinForms;
 
 namespace KSCS
 {
     public partial class KSCS : Form
     {
-        private Point mousePoint;
         private int year, month;
         public static int static_month, static_year;
         public KSCS()
@@ -69,21 +69,6 @@ namespace KSCS
             Close();
         }
 
-        private void KSCS_MouseDown(object sender, MouseEventArgs e)
-        {
-            mousePoint=new Point(e.X, e.Y);
-        }
-
-        private void KSCS_MouseMove(object sender, MouseEventArgs e)
-        {
-            if(e.Button == MouseButtons.Left)
-            {
-                int x = mousePoint.X - e.X;
-                int y = mousePoint.Y - e.Y;
-                Location = new Point(this.Left - x, this.Top - y);
-            }
-        }
-
         private void btnNext_Click(object sender, EventArgs e)
         {
             if(month == 12)
@@ -131,13 +116,6 @@ namespace KSCS
             }
             createDates();
 
-        }
-
-        private void AddCategory(string category)
-        {
-            UserCheckedCategory checkedCategory = new UserCheckedCategory();
-            checkedCategory.SetlblCategoryName(category);
-            categoryContainer.Controls.Add(checkedCategory);
         }
     }
 }

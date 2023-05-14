@@ -45,6 +45,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.categoryContainer = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnPrvious = new Guna.UI2.WinForms.Guna2Button();
+            this.btnNext = new Guna.UI2.WinForms.Guna2Button();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.label15 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -75,10 +77,9 @@
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
             this.label17 = new System.Windows.Forms.Label();
             this.guna2CustomCheckBox3 = new Guna.UI2.WinForms.Guna2CustomCheckBox();
-            this.btnPrvious = new Guna.UI2.WinForms.Guna2Button();
-            this.btnNext = new Guna.UI2.WinForms.Guna2Button();
             this.btnPlusCategory = new Guna.UI2.WinForms.Guna2Button();
             this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2CustomGradientPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.flpMainCategory.SuspendLayout();
@@ -262,6 +263,42 @@
             this.categoryContainer.Name = "categoryContainer";
             this.categoryContainer.Size = new System.Drawing.Size(345, 14);
             this.categoryContainer.TabIndex = 26;
+            // 
+            // btnPrvious
+            // 
+            this.btnPrvious.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnPrvious.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnPrvious.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnPrvious.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnPrvious.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnPrvious.FillColor = System.Drawing.Color.White;
+            this.btnPrvious.Font = new System.Drawing.Font("Microsoft YaHei UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrvious.ForeColor = System.Drawing.Color.Black;
+            this.btnPrvious.Image = global::KSCS.Properties.Resources.previousIcon;
+            this.btnPrvious.ImageSize = new System.Drawing.Size(20, 30);
+            this.btnPrvious.Location = new System.Drawing.Point(376, 0);
+            this.btnPrvious.Name = "btnPrvious";
+            this.btnPrvious.Size = new System.Drawing.Size(28, 45);
+            this.btnPrvious.TabIndex = 25;
+            this.btnPrvious.Click += new System.EventHandler(this.btnPrvious_Click);
+            // 
+            // btnNext
+            // 
+            this.btnNext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnNext.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnNext.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnNext.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnNext.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnNext.FillColor = System.Drawing.Color.White;
+            this.btnNext.Font = new System.Drawing.Font("Microsoft YaHei UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNext.ForeColor = System.Drawing.Color.Black;
+            this.btnNext.Image = global::KSCS.Properties.Resources.nextIcon;
+            this.btnNext.ImageSize = new System.Drawing.Size(20, 30);
+            this.btnNext.Location = new System.Drawing.Point(496, 0);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(28, 45);
+            this.btnNext.TabIndex = 24;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // flowLayoutPanel2
             // 
@@ -652,42 +689,6 @@
             this.guna2CustomCheckBox3.UncheckedState.BorderThickness = 0;
             this.guna2CustomCheckBox3.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
             // 
-            // btnPrvious
-            // 
-            this.btnPrvious.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnPrvious.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnPrvious.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnPrvious.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnPrvious.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnPrvious.FillColor = System.Drawing.Color.White;
-            this.btnPrvious.Font = new System.Drawing.Font("Microsoft YaHei UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrvious.ForeColor = System.Drawing.Color.Black;
-            this.btnPrvious.Image = global::KSCS.Properties.Resources.previousIcon;
-            this.btnPrvious.ImageSize = new System.Drawing.Size(20, 30);
-            this.btnPrvious.Location = new System.Drawing.Point(376, 0);
-            this.btnPrvious.Name = "btnPrvious";
-            this.btnPrvious.Size = new System.Drawing.Size(28, 45);
-            this.btnPrvious.TabIndex = 25;
-            this.btnPrvious.Click += new System.EventHandler(this.btnPrvious_Click);
-            // 
-            // btnNext
-            // 
-            this.btnNext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnNext.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnNext.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnNext.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnNext.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnNext.FillColor = System.Drawing.Color.White;
-            this.btnNext.Font = new System.Drawing.Font("Microsoft YaHei UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNext.ForeColor = System.Drawing.Color.Black;
-            this.btnNext.Image = global::KSCS.Properties.Resources.nextIcon;
-            this.btnNext.ImageSize = new System.Drawing.Size(20, 30);
-            this.btnNext.Location = new System.Drawing.Point(496, 0);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(28, 45);
-            this.btnNext.TabIndex = 24;
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
-            // 
             // btnPlusCategory
             // 
             this.btnPlusCategory.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -720,6 +721,12 @@
             this.guna2ImageButton1.Size = new System.Drawing.Size(80, 63);
             this.guna2ImageButton1.TabIndex = 3;
             // 
+            // guna2DragControl1
+            // 
+            this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2DragControl1.TargetControl = this;
+            this.guna2DragControl1.UseTransparentDrag = true;
+            // 
             // KSCS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -749,8 +756,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "KSCS";
             this.Load += new System.EventHandler(this.KSCS_Load);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.KSCS_MouseDown);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.KSCS_MouseMove);
             this.guna2CustomGradientPanel1.ResumeLayout(false);
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flpMainCategory.ResumeLayout(false);
@@ -820,6 +825,7 @@
         private System.Windows.Forms.Label label17;
         private Guna.UI2.WinForms.Guna2CustomCheckBox guna2CustomCheckBox3;
         private Guna.UI2.WinForms.Guna2Button btnPlusCategory;
+        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
     }
 }
 

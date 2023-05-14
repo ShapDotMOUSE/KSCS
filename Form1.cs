@@ -18,7 +18,6 @@ namespace KSCS
         public KSCS()
         {
             InitializeComponent();
-            
         }
 
         private void KSCS_Load(object sender, EventArgs e)
@@ -26,10 +25,7 @@ namespace KSCS
             this.BackColor = Color.FromArgb(58, 5, 31);
             seperator_vertical.FillColor = Color.FromArgb(245, 245, 245);
             seperator_horizon.FillColor = Color.FromArgb(245, 245, 245);
-            category_underline.BackColor = Color.FromArgb(58, 5, 31);
             dispalyDate();
-            AddCategory("학사일정");
-            AddCategory("테스트용");
         }
 
         private void dispalyDate()
@@ -53,18 +49,18 @@ namespace KSCS
             int dates = DateTime.DaysInMonth(year, month);
             int dayOfWeek = Convert.ToInt32(startOfMonth.DayOfWeek.ToString("d")) + 1;
 
-            daysConatiner.Controls.Clear();
+            flpDays.Controls.Clear();
             for (int i = 1; i < dayOfWeek; i++)
             {
                 UserBlankDate userblankDate = new UserBlankDate();
-                daysConatiner.Controls.Add(userblankDate);
+                flpDays.Controls.Add(userblankDate);
             }
 
             for (int i = 1; i < dates; i++)
             {
                 UserDate userDate = new UserDate();
                 userDate.SetDate(i);
-                daysConatiner.Controls.Add(userDate);
+                flpDays.Controls.Add(userDate);
             }
         }
 
@@ -100,6 +96,28 @@ namespace KSCS
             }
             createDates();
         }
+
+        private void btnSchoolCategory_Click(object sender, EventArgs e)
+        {
+            flpSchoolCategory.Visible = !flpSchoolCategory.Visible;
+        }
+
+        private void btnPersonalCategory_Click(object sender, EventArgs e)
+        {
+            flpPersonalCategory.Visible = !flpPersonalCategory.Visible;
+        }
+
+        private void btnEtcCategory_Click(object sender, EventArgs e)
+        {
+            flpEtcCategory.Visible = !flpEtcCategory.Visible;
+        }
+
+        private void btnPlusCategory_Click(object sender, EventArgs e)
+        {
+            UserCategory category = new UserCategory();
+            flpEtcCategory.Controls.Add(category);
+        }
+
 
         private void btnPrvious_Click(object sender, EventArgs e)
         {

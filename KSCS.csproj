@@ -104,6 +104,12 @@
     <Compile Include="UserBlankDate.Designer.cs">
       <DependentUpon>UserBlankDate.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserCategory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserCategory.Designer.cs">
+      <DependentUpon>UserCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserCheckedCategory.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -135,6 +141,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserBlankDate.resx">
       <DependentUpon>UserBlankDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserCategory.resx">
+      <DependentUpon>UserCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserCheckedCategory.resx">
       <DependentUpon>UserCheckedCategory.cs</DependentUpon>
@@ -212,6 +221,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\free-icon-font-plus-3917757.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\plus.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -63,6 +63,16 @@ namespace KSCS.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        internal static System.Drawing.Bitmap caption {
+            get {
+                object obj = ResourceManager.GetObject("caption", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         internal static System.Drawing.Bitmap user {
             get {
                 object obj = ResourceManager.GetObject("user", resourceCulture);
@@ -76,6 +86,26 @@ namespace KSCS.Properties {
         internal static System.Drawing.Bitmap 그립톡_기본 {
             get {
                 object obj = ResourceManager.GetObject("그립톡-기본", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap 우니팡이동그라미_2x {
+            get {
+                object obj = ResourceManager.GetObject("우니팡이동그라미@2x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap 팡이우니_일기 {
+            get {
+                object obj = ResourceManager.GetObject("팡이우니 일기", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

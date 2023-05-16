@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Guna.UI2.WinForms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace KSCS
 {
@@ -15,6 +16,7 @@ namespace KSCS
     {
         private int year, month;
         public static int static_month, static_year;
+        public static Category Category = new Category();
         public KSCS()
         {
             InitializeComponent();
@@ -25,7 +27,37 @@ namespace KSCS
             this.BackColor = Color.FromArgb(58, 5, 31);
             seperator_vertical.FillColor = Color.FromArgb(245, 245, 245);
             seperator_horizon.FillColor = Color.FromArgb(245, 245, 245);
+            
             dispalyDate();
+            DisplayCategery();
+        }
+
+        private void DisplayCategery()
+        {
+            
+            foreach (var item in Category.MainCategory["ShcoolCategory"] as HashSet<string>)
+            {
+                UserCategory uc = new UserCategory();
+                uc.SetBasicMode(item);
+                uc.MouseDoubleClick += UcCategory_MouseDoubleClick;
+                flpSchoolCategory.Controls.Add(uc);
+            }
+
+            foreach (var item in Category.MainCategory["PersonalCategory"] as HashSet<string>)
+            {
+                UserCategory uc = new UserCategory();
+                uc.SetBasicMode(item);
+                uc.MouseDoubleClick += UcCategory_MouseDoubleClick;
+                flpPersonalCategory.Controls.Add(uc);
+            }
+
+            foreach (var item in Category.MainCategory["EtcCategory"] as HashSet<string>)
+            {
+                UserCategory uc = new UserCategory();
+                uc.SetBasicMode(item);
+                uc.MouseDoubleClick += UcCategory_MouseDoubleClick;
+                flpEtcCategory.Controls.Add(uc);
+            }
         }
 
         private void dispalyDate()
@@ -71,7 +103,7 @@ namespace KSCS
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            if(month == 12)
+            if (month == 12)
             {
                 month = 1; year++;
             }
@@ -117,5 +149,36 @@ namespace KSCS
             createDates();
 
         }
+
+        private UserCategory draggedUcCategory; // 드래그 중인 카테고리 유저 컨트롤
+        private UserCategory cloneUcCategory; // 드래그 중인 카테고리 유저 컨트롤 복사본
+
+        private void UcCategory_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+               UserCategory ucCategory = (UserCategory)sender;
+                draggedUcCategory = ucCategory;
+                Point Position = new Point((Cursor.Position.X - e.X) - Left, (Cursor.Position.Y - e.Y) - Top);
+
+                // 드래그 중인 버튼의 복사본 생성
+                cloneUcCategory = new UserCategory{Location = Position};
+                cloneUcCategory.DragMode(ucCategory.GetName());
+                this.Controls.Add(cloneUcCategory);
+            flpMainCategory.SendToBack();
+                cloneUcCategory.MouseMove += UcCategory_MouseMove;
+                cloneUcCategory.MouseUp += UcCategory_MouseUp;
+        }
+
+        private void UcCategory_MouseUp(object sender, MouseEventArgs e)
+        {
+            this.Controls.Remove(cloneUcCategory);
+            cloneUcCategory.Dispose();
+        }
+
+        private void UcCategory_MouseMove(object sender, MouseEventArgs e)
+        {
+            Point Position = new Point((Cursor.Position.X - cloneUcCategory.Width/2) - Left, (Cursor.Position.Y - cloneUcCategory.Height / 2) - Top);
+            cloneUcCategory.Location = Position;
+        }
+
     }
 }

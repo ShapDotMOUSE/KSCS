@@ -62,33 +62,18 @@
             this.flpMainCategory = new System.Windows.Forms.FlowLayoutPanel();
             this.category_underline = new Guna.UI2.WinForms.Guna2Separator();
             this.flpSchoolCategory = new System.Windows.Forms.FlowLayoutPanel();
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.guna2CustomCheckBox1 = new Guna.UI2.WinForms.Guna2CustomCheckBox();
             this.btnPersonalCategory = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             this.flpPersonalCategory = new System.Windows.Forms.FlowLayoutPanel();
-            this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
-            this.label16 = new System.Windows.Forms.Label();
-            this.guna2CustomCheckBox2 = new Guna.UI2.WinForms.Guna2CustomCheckBox();
             this.btnEtcCategory = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Separator2 = new Guna.UI2.WinForms.Guna2Separator();
             this.flpEtcCategory = new System.Windows.Forms.FlowLayoutPanel();
-            this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
-            this.label17 = new System.Windows.Forms.Label();
-            this.guna2CustomCheckBox3 = new Guna.UI2.WinForms.Guna2CustomCheckBox();
             this.btnPlusCategory = new Guna.UI2.WinForms.Guna2Button();
             this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2CustomGradientPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.flpMainCategory.SuspendLayout();
-            this.flpSchoolCategory.SuspendLayout();
-            this.guna2Panel1.SuspendLayout();
-            this.flpPersonalCategory.SuspendLayout();
-            this.guna2Panel2.SuspendLayout();
-            this.flpEtcCategory.SuspendLayout();
-            this.guna2Panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // seperator_horizon
@@ -141,11 +126,11 @@
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(1055, 259);
+            this.label1.Location = new System.Drawing.Point(1065, 250);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(62, 22);
             this.label1.TabIndex = 7;
@@ -202,6 +187,7 @@
             // 
             // btnSchoolCategory
             // 
+            this.btnSchoolCategory.AllowDrop = true;
             this.btnSchoolCategory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSchoolCategory.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnSchoolCategory.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -453,6 +439,7 @@
             // 
             // flpMainCategory
             // 
+            this.flpMainCategory.AllowDrop = true;
             this.flpMainCategory.Controls.Add(this.btnSchoolCategory);
             this.flpMainCategory.Controls.Add(this.category_underline);
             this.flpMainCategory.Controls.Add(this.flpSchoolCategory);
@@ -462,9 +449,9 @@
             this.flpMainCategory.Controls.Add(this.btnEtcCategory);
             this.flpMainCategory.Controls.Add(this.guna2Separator2);
             this.flpMainCategory.Controls.Add(this.flpEtcCategory);
-            this.flpMainCategory.Location = new System.Drawing.Point(1059, 284);
+            this.flpMainCategory.Location = new System.Drawing.Point(1060, 280);
             this.flpMainCategory.Name = "flpMainCategory";
-            this.flpMainCategory.Size = new System.Drawing.Size(175, 395);
+            this.flpMainCategory.Size = new System.Drawing.Size(175, 460);
             this.flpMainCategory.TabIndex = 19;
             // 
             // category_underline
@@ -480,53 +467,12 @@
             // 
             // flpSchoolCategory
             // 
-            this.flpSchoolCategory.AutoSize = true;
-            this.flpSchoolCategory.Controls.Add(this.guna2Panel1);
-            this.flpSchoolCategory.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flpSchoolCategory.AllowDrop = true;
             this.flpSchoolCategory.Location = new System.Drawing.Point(13, 42);
             this.flpSchoolCategory.Margin = new System.Windows.Forms.Padding(13, 0, 3, 3);
             this.flpSchoolCategory.Name = "flpSchoolCategory";
-            this.flpSchoolCategory.Size = new System.Drawing.Size(138, 23);
+            this.flpSchoolCategory.Size = new System.Drawing.Size(155, 100);
             this.flpSchoolCategory.TabIndex = 17;
-            // 
-            // guna2Panel1
-            // 
-            this.guna2Panel1.Controls.Add(this.label6);
-            this.guna2Panel1.Controls.Add(this.guna2CustomCheckBox1);
-            this.guna2Panel1.Location = new System.Drawing.Point(0, 2);
-            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(0, 2, 3, 2);
-            this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(135, 19);
-            this.guna2Panel1.TabIndex = 17;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.label6.Location = new System.Drawing.Point(3, 2);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(56, 17);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "학사일정";
-            // 
-            // guna2CustomCheckBox1
-            // 
-            this.guna2CustomCheckBox1.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2CustomCheckBox1.CheckedState.BorderRadius = 2;
-            this.guna2CustomCheckBox1.CheckedState.BorderThickness = 0;
-            this.guna2CustomCheckBox1.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2CustomCheckBox1.Location = new System.Drawing.Point(107, 2);
-            this.guna2CustomCheckBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.guna2CustomCheckBox1.Name = "guna2CustomCheckBox1";
-            this.guna2CustomCheckBox1.Size = new System.Drawing.Size(18, 16);
-            this.guna2CustomCheckBox1.TabIndex = 13;
-            this.guna2CustomCheckBox1.Text = "guna2CustomCheckBox1";
-            this.guna2CustomCheckBox1.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.guna2CustomCheckBox1.UncheckedState.BorderRadius = 2;
-            this.guna2CustomCheckBox1.UncheckedState.BorderThickness = 0;
-            this.guna2CustomCheckBox1.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
             // 
             // btnPersonalCategory
             // 
@@ -538,7 +484,7 @@
             this.btnPersonalCategory.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(5)))), ((int)(((byte)(31)))));
             this.btnPersonalCategory.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.btnPersonalCategory.ForeColor = System.Drawing.Color.White;
-            this.btnPersonalCategory.Location = new System.Drawing.Point(0, 78);
+            this.btnPersonalCategory.Location = new System.Drawing.Point(0, 155);
             this.btnPersonalCategory.Margin = new System.Windows.Forms.Padding(0, 10, 3, 0);
             this.btnPersonalCategory.Name = "btnPersonalCategory";
             this.btnPersonalCategory.Size = new System.Drawing.Size(163, 29);
@@ -552,7 +498,7 @@
             this.guna2Separator1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2Separator1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.guna2Separator1.FillColor = System.Drawing.Color.White;
-            this.guna2Separator1.Location = new System.Drawing.Point(13, 107);
+            this.guna2Separator1.Location = new System.Drawing.Point(13, 184);
             this.guna2Separator1.Margin = new System.Windows.Forms.Padding(13, 0, 3, 5);
             this.guna2Separator1.Name = "guna2Separator1";
             this.guna2Separator1.Size = new System.Drawing.Size(134, 8);
@@ -560,53 +506,13 @@
             // 
             // flpPersonalCategory
             // 
-            this.flpPersonalCategory.AutoSize = true;
-            this.flpPersonalCategory.Controls.Add(this.guna2Panel2);
-            this.flpPersonalCategory.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flpPersonalCategory.Location = new System.Drawing.Point(13, 120);
+            this.flpPersonalCategory.AllowDrop = true;
+            this.flpPersonalCategory.AutoScroll = true;
+            this.flpPersonalCategory.Location = new System.Drawing.Point(13, 197);
             this.flpPersonalCategory.Margin = new System.Windows.Forms.Padding(13, 0, 3, 3);
             this.flpPersonalCategory.Name = "flpPersonalCategory";
-            this.flpPersonalCategory.Size = new System.Drawing.Size(138, 23);
+            this.flpPersonalCategory.Size = new System.Drawing.Size(155, 100);
             this.flpPersonalCategory.TabIndex = 20;
-            // 
-            // guna2Panel2
-            // 
-            this.guna2Panel2.Controls.Add(this.label16);
-            this.guna2Panel2.Controls.Add(this.guna2CustomCheckBox2);
-            this.guna2Panel2.Location = new System.Drawing.Point(0, 2);
-            this.guna2Panel2.Margin = new System.Windows.Forms.Padding(0, 2, 3, 2);
-            this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(135, 19);
-            this.guna2Panel2.TabIndex = 17;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.BackColor = System.Drawing.Color.Transparent;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.label16.Location = new System.Drawing.Point(3, 2);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(56, 17);
-            this.label16.TabIndex = 14;
-            this.label16.Text = "학사일정";
-            // 
-            // guna2CustomCheckBox2
-            // 
-            this.guna2CustomCheckBox2.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2CustomCheckBox2.CheckedState.BorderRadius = 2;
-            this.guna2CustomCheckBox2.CheckedState.BorderThickness = 0;
-            this.guna2CustomCheckBox2.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2CustomCheckBox2.Location = new System.Drawing.Point(107, 2);
-            this.guna2CustomCheckBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.guna2CustomCheckBox2.Name = "guna2CustomCheckBox2";
-            this.guna2CustomCheckBox2.Size = new System.Drawing.Size(18, 16);
-            this.guna2CustomCheckBox2.TabIndex = 13;
-            this.guna2CustomCheckBox2.Text = "guna2CustomCheckBox2";
-            this.guna2CustomCheckBox2.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.guna2CustomCheckBox2.UncheckedState.BorderRadius = 2;
-            this.guna2CustomCheckBox2.UncheckedState.BorderThickness = 0;
-            this.guna2CustomCheckBox2.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
             // 
             // btnEtcCategory
             // 
@@ -618,7 +524,7 @@
             this.btnEtcCategory.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(5)))), ((int)(((byte)(31)))));
             this.btnEtcCategory.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.btnEtcCategory.ForeColor = System.Drawing.Color.White;
-            this.btnEtcCategory.Location = new System.Drawing.Point(0, 156);
+            this.btnEtcCategory.Location = new System.Drawing.Point(0, 310);
             this.btnEtcCategory.Margin = new System.Windows.Forms.Padding(0, 10, 3, 0);
             this.btnEtcCategory.Name = "btnEtcCategory";
             this.btnEtcCategory.Size = new System.Drawing.Size(163, 29);
@@ -632,7 +538,7 @@
             this.guna2Separator2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2Separator2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.guna2Separator2.FillColor = System.Drawing.Color.White;
-            this.guna2Separator2.Location = new System.Drawing.Point(13, 185);
+            this.guna2Separator2.Location = new System.Drawing.Point(13, 339);
             this.guna2Separator2.Margin = new System.Windows.Forms.Padding(13, 0, 3, 5);
             this.guna2Separator2.Name = "guna2Separator2";
             this.guna2Separator2.Size = new System.Drawing.Size(134, 8);
@@ -640,54 +546,13 @@
             // 
             // flpEtcCategory
             // 
-            this.flpEtcCategory.AutoSize = true;
-            this.flpEtcCategory.Controls.Add(this.guna2Panel3);
-            this.flpEtcCategory.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flpEtcCategory.Location = new System.Drawing.Point(13, 198);
+            this.flpEtcCategory.AllowDrop = true;
+            this.flpEtcCategory.AutoScroll = true;
+            this.flpEtcCategory.Location = new System.Drawing.Point(13, 352);
             this.flpEtcCategory.Margin = new System.Windows.Forms.Padding(13, 0, 3, 3);
             this.flpEtcCategory.Name = "flpEtcCategory";
-            this.flpEtcCategory.Size = new System.Drawing.Size(138, 23);
+            this.flpEtcCategory.Size = new System.Drawing.Size(155, 100);
             this.flpEtcCategory.TabIndex = 23;
-            // 
-            // guna2Panel3
-            // 
-            this.guna2Panel3.Controls.Add(this.label17);
-            this.guna2Panel3.Controls.Add(this.guna2CustomCheckBox3);
-            this.guna2Panel3.Location = new System.Drawing.Point(0, 2);
-            this.guna2Panel3.Margin = new System.Windows.Forms.Padding(0, 2, 3, 2);
-            this.guna2Panel3.Name = "guna2Panel3";
-            this.guna2Panel3.Size = new System.Drawing.Size(135, 19);
-            this.guna2Panel3.TabIndex = 17;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.BackColor = System.Drawing.Color.Transparent;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.label17.Location = new System.Drawing.Point(6, 1);
-            this.label17.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(56, 17);
-            this.label17.TabIndex = 14;
-            this.label17.Text = "학사일정";
-            // 
-            // guna2CustomCheckBox3
-            // 
-            this.guna2CustomCheckBox3.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2CustomCheckBox3.CheckedState.BorderRadius = 2;
-            this.guna2CustomCheckBox3.CheckedState.BorderThickness = 0;
-            this.guna2CustomCheckBox3.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2CustomCheckBox3.Location = new System.Drawing.Point(107, 2);
-            this.guna2CustomCheckBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.guna2CustomCheckBox3.Name = "guna2CustomCheckBox3";
-            this.guna2CustomCheckBox3.Size = new System.Drawing.Size(18, 16);
-            this.guna2CustomCheckBox3.TabIndex = 13;
-            this.guna2CustomCheckBox3.Text = "guna2CustomCheckBox3";
-            this.guna2CustomCheckBox3.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.guna2CustomCheckBox3.UncheckedState.BorderRadius = 2;
-            this.guna2CustomCheckBox3.UncheckedState.BorderThickness = 0;
-            this.guna2CustomCheckBox3.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
             // 
             // btnPlusCategory
             // 
@@ -700,7 +565,7 @@
             this.btnPlusCategory.ForeColor = System.Drawing.Color.White;
             this.btnPlusCategory.Image = global::KSCS.Properties.Resources.plus;
             this.btnPlusCategory.ImageSize = new System.Drawing.Size(80, 80);
-            this.btnPlusCategory.Location = new System.Drawing.Point(1107, 729);
+            this.btnPlusCategory.Location = new System.Drawing.Point(1107, 747);
             this.btnPlusCategory.Name = "btnPlusCategory";
             this.btnPlusCategory.Size = new System.Drawing.Size(80, 80);
             this.btnPlusCategory.TabIndex = 24;
@@ -759,16 +624,6 @@
             this.guna2CustomGradientPanel1.ResumeLayout(false);
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flpMainCategory.ResumeLayout(false);
-            this.flpMainCategory.PerformLayout();
-            this.flpSchoolCategory.ResumeLayout(false);
-            this.guna2Panel1.ResumeLayout(false);
-            this.guna2Panel1.PerformLayout();
-            this.flpPersonalCategory.ResumeLayout(false);
-            this.guna2Panel2.ResumeLayout(false);
-            this.guna2Panel2.PerformLayout();
-            this.flpEtcCategory.ResumeLayout(false);
-            this.guna2Panel3.ResumeLayout(false);
-            this.guna2Panel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -808,22 +663,13 @@
         private System.Windows.Forms.FlowLayoutPanel categoryContainer;
         private System.Windows.Forms.FlowLayoutPanel flpMainCategory;
         private System.Windows.Forms.FlowLayoutPanel flpSchoolCategory;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private System.Windows.Forms.Label label6;
-        private Guna.UI2.WinForms.Guna2CustomCheckBox guna2CustomCheckBox1;
         private Guna.UI2.WinForms.Guna2Separator category_underline;
         private Guna.UI2.WinForms.Guna2Button btnPersonalCategory;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator1;
         private System.Windows.Forms.FlowLayoutPanel flpPersonalCategory;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
-        private System.Windows.Forms.Label label16;
-        private Guna.UI2.WinForms.Guna2CustomCheckBox guna2CustomCheckBox2;
         private Guna.UI2.WinForms.Guna2Button btnEtcCategory;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator2;
         private System.Windows.Forms.FlowLayoutPanel flpEtcCategory;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
-        private System.Windows.Forms.Label label17;
-        private Guna.UI2.WinForms.Guna2CustomCheckBox guna2CustomCheckBox3;
         private Guna.UI2.WinForms.Guna2Button btnPlusCategory;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
     }

@@ -72,7 +72,7 @@
             this.txtCategory.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txtCategory.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtCategory.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtCategory.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(5)))), ((int)(((byte)(31)))));
+            this.txtCategory.FillColor = System.Drawing.Color.Transparent;
             this.txtCategory.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
             this.txtCategory.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -94,6 +94,7 @@
             this.Controls.Add(this.txtCategory);
             this.Controls.Add(this.chkCategory);
             this.Controls.Add(this.lblCategory);
+            this.Margin = new System.Windows.Forms.Padding(0, 0, 0, 3);
             this.Name = "UserCategory";
             this.Size = new System.Drawing.Size(135, 19);
             this.Load += new System.EventHandler(this.UserCategory_Load);

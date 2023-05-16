@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace KSCS
 {
@@ -17,11 +18,28 @@ namespace KSCS
             InitializeComponent();
         }
 
-        public void SetlblCategory(string categoryName)
+        public string GetName()
         {
-            lblCategory.Text = categoryName;
+            return this.Name;
         }
 
+        public string GetText()
+        {
+            return this.Name;
+        }
+
+        public void DragMode(string txt)
+        {
+            lblCategory.Text = txt;
+            txtCategory.Visible = false;
+        }
+
+        public void SetBasicMode(string txt)
+        {
+            this.Name = "UCCategory" + txt;
+            lblCategory.Text = txt;
+            txtCategory.Visible = false;
+        }
 
         private void txtCategory_KeyDown(object sender, KeyEventArgs e)
         {
@@ -30,6 +48,7 @@ namespace KSCS
                 if (txtCategory.Text.Length > 0)
                 {
                     lblCategory.Text = txtCategory.Text;
+                    this.Name = "UCCategory" + txtCategory.Text;
                     txtCategory.Visible= false;
                 }
             }

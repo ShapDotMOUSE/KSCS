@@ -105,12 +105,12 @@
             this.guna2Elipse3 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Elipse4 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Elipse5 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.customTapButton1 = new KSCS.customTapButton();
-            this.customTapButton2 = new KSCS.customTapButton();
-            this.customTapButton3 = new KSCS.customTapButton();
-            this.customTapButton4 = new KSCS.customTapButton();
-            this.customTapButton5 = new KSCS.customTapButton();
             this.customTapButton6 = new KSCS.customTapButton();
+            this.customTapButton5 = new KSCS.customTapButton();
+            this.customTapButton4 = new KSCS.customTapButton();
+            this.customTapButton3 = new KSCS.customTapButton();
+            this.customTapButton2 = new KSCS.customTapButton();
+            this.customTapButton1 = new KSCS.customTapButton();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox4)).BeginInit();
@@ -1526,33 +1526,12 @@
             this.guna2Elipse5.BorderRadius = 10;
             this.guna2Elipse5.TargetControl = this.guna2Panel5;
             // 
-            // customTapButton1
+            // customTapButton6
             // 
-            this.customTapButton1.Location = new System.Drawing.Point(958, 331);
-            this.customTapButton1.Name = "customTapButton1";
-            this.customTapButton1.Size = new System.Drawing.Size(36, 78);
-            this.customTapButton1.TabIndex = 22;
-            // 
-            // customTapButton2
-            // 
-            this.customTapButton2.Location = new System.Drawing.Point(958, 428);
-            this.customTapButton2.Name = "customTapButton2";
-            this.customTapButton2.Size = new System.Drawing.Size(36, 78);
-            this.customTapButton2.TabIndex = 22;
-            // 
-            // customTapButton3
-            // 
-            this.customTapButton3.Location = new System.Drawing.Point(958, 533);
-            this.customTapButton3.Name = "customTapButton3";
-            this.customTapButton3.Size = new System.Drawing.Size(36, 78);
-            this.customTapButton3.TabIndex = 22;
-            // 
-            // customTapButton4
-            // 
-            this.customTapButton4.Location = new System.Drawing.Point(958, 633);
-            this.customTapButton4.Name = "customTapButton4";
-            this.customTapButton4.Size = new System.Drawing.Size(36, 78);
-            this.customTapButton4.TabIndex = 22;
+            this.customTapButton6.Location = new System.Drawing.Point(958, 733);
+            this.customTapButton6.Name = "customTapButton6";
+            this.customTapButton6.Size = new System.Drawing.Size(36, 78);
+            this.customTapButton6.TabIndex = 22;
             // 
             // customTapButton5
             // 
@@ -1561,12 +1540,33 @@
             this.customTapButton5.Size = new System.Drawing.Size(36, 78);
             this.customTapButton5.TabIndex = 22;
             // 
-            // customTapButton6
+            // customTapButton4
             // 
-            this.customTapButton6.Location = new System.Drawing.Point(958, 733);
-            this.customTapButton6.Name = "customTapButton6";
-            this.customTapButton6.Size = new System.Drawing.Size(36, 78);
-            this.customTapButton6.TabIndex = 22;
+            this.customTapButton4.Location = new System.Drawing.Point(958, 633);
+            this.customTapButton4.Name = "customTapButton4";
+            this.customTapButton4.Size = new System.Drawing.Size(36, 78);
+            this.customTapButton4.TabIndex = 22;
+            // 
+            // customTapButton3
+            // 
+            this.customTapButton3.Location = new System.Drawing.Point(958, 533);
+            this.customTapButton3.Name = "customTapButton3";
+            this.customTapButton3.Size = new System.Drawing.Size(36, 78);
+            this.customTapButton3.TabIndex = 22;
+            // 
+            // customTapButton2
+            // 
+            this.customTapButton2.Location = new System.Drawing.Point(958, 428);
+            this.customTapButton2.Name = "customTapButton2";
+            this.customTapButton2.Size = new System.Drawing.Size(36, 78);
+            this.customTapButton2.TabIndex = 22;
+            // 
+            // customTapButton1
+            // 
+            this.customTapButton1.Location = new System.Drawing.Point(958, 331);
+            this.customTapButton1.Name = "customTapButton1";
+            this.customTapButton1.Size = new System.Drawing.Size(36, 78);
+            this.customTapButton1.TabIndex = 22;
             // 
             // MainForm
             // 

@@ -43,6 +43,7 @@
             this.guna2PictureBox7 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -79,7 +80,6 @@
             this.guna2TextBox1.SelectedText = "";
             this.guna2TextBox1.Size = new System.Drawing.Size(283, 41);
             this.guna2TextBox1.TabIndex = 1;
-            this.guna2TextBox1.TextChanged += new System.EventHandler(this.guna2TextBox1_TextChanged);
             // 
             // guna2BorderlessForm1
             // 
@@ -108,7 +108,6 @@
             this.guna2TextBox2.SelectedText = "";
             this.guna2TextBox2.Size = new System.Drawing.Size(283, 41);
             this.guna2TextBox2.TabIndex = 2;
-            this.guna2TextBox2.TextChanged += new System.EventHandler(this.guna2TextBox2_TextChanged);
             // 
             // guna2Button1
             // 
@@ -125,7 +124,6 @@
             this.guna2Button1.Size = new System.Drawing.Size(283, 45);
             this.guna2Button1.TabIndex = 4;
             this.guna2Button1.Text = "로그인";
-            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
             // guna2CustomCheckBox1
             // 
@@ -143,7 +141,6 @@
             this.guna2CustomCheckBox1.UncheckedState.BorderRadius = 2;
             this.guna2CustomCheckBox1.UncheckedState.BorderThickness = 1;
             this.guna2CustomCheckBox1.UncheckedState.FillColor = System.Drawing.Color.White;
-            this.guna2CustomCheckBox1.Click += new System.EventHandler(this.guna2CustomCheckBox1_Click);
             // 
             // label1
             // 
@@ -154,7 +151,6 @@
             this.label1.Size = new System.Drawing.Size(41, 20);
             this.label1.TabIndex = 7;
             this.label1.Text = "학번";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -165,7 +161,6 @@
             this.label2.Size = new System.Drawing.Size(73, 20);
             this.label2.TabIndex = 7;
             this.label2.Text = "비밀번호";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label4
             // 
@@ -177,7 +172,6 @@
             this.label4.Size = new System.Drawing.Size(330, 16);
             this.label4.TabIndex = 8;
             this.label4.Text = "학번과 비번은 저장되지 않으며 로그인에만 사용됩니다.";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // guna2ImageButton1
             // 
@@ -206,7 +200,6 @@
             this.guna2PictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.guna2PictureBox7.TabIndex = 1;
             this.guna2PictureBox7.TabStop = false;
-            this.guna2PictureBox7.Click += new System.EventHandler(this.guna2PictureBox7_Click);
             // 
             // guna2PictureBox2
             // 
@@ -218,7 +211,6 @@
             this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.guna2PictureBox2.TabIndex = 11;
             this.guna2PictureBox2.TabStop = false;
-            this.guna2PictureBox2.Click += new System.EventHandler(this.guna2PictureBox2_Click);
             // 
             // label3
             // 
@@ -229,6 +221,11 @@
             this.label3.Size = new System.Drawing.Size(94, 20);
             this.label3.TabIndex = 16;
             this.label3.Text = "자동 로그인";
+            // 
+            // guna2Elipse2
+            // 
+            this.guna2Elipse2.BorderRadius = 10;
+            this.guna2Elipse2.TargetControl = this;
             // 
             // LoginForm
             // 
@@ -273,5 +270,6 @@
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox2;
         private System.Windows.Forms.Label label3;
+        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse2;
     }
 }

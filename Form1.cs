@@ -155,23 +155,25 @@ namespace KSCS
 
         private void UcCategory_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-               UserCategory ucCategory = (UserCategory)sender;
-                draggedUcCategory = ucCategory;
-                Point Position = new Point((Cursor.Position.X - e.X) - Left, (Cursor.Position.Y - e.Y) - Top);
+            draggedUcCategory = (UserCategory)sender;
+            draggedUcCategory.Visible = false;
 
-                // 드래그 중인 버튼의 복사본 생성
-                cloneUcCategory = new UserCategory{Location = Position};
-                cloneUcCategory.DragMode(ucCategory.GetName());
-                this.Controls.Add(cloneUcCategory);
+            // 드래그 중인 버튼의 복사본 생성
+            Point Position = new Point((Cursor.Position.X - e.X) - Left, (Cursor.Position.Y - e.Y) - Top); // 현제 마우스 위치
+            cloneUcCategory = new UserCategory{Location = Position};
+            cloneUcCategory.DragMode(draggedUcCategory.GetText());
+            this.Controls.Add(cloneUcCategory);
             flpMainCategory.SendToBack();
-                cloneUcCategory.MouseMove += UcCategory_MouseMove;
-                cloneUcCategory.MouseUp += UcCategory_MouseUp;
+            cloneUcCategory.MouseMove += UcCategory_MouseMove;
+            cloneUcCategory.MouseUp += UcCategory_MouseUp;
         }
 
         private void UcCategory_MouseUp(object sender, MouseEventArgs e)
         {
             this.Controls.Remove(cloneUcCategory);
             cloneUcCategory.Dispose();
+
+            draggedUcCategory.Visible = true;
         }
 
         private void UcCategory_MouseMove(object sender, MouseEventArgs e)

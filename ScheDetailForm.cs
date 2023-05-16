@@ -15,6 +15,8 @@ namespace KSCS
 {
     public partial class ScheDetailForm : Form
     {
+        public event EventHandler AddEvent;
+
         MySqlConnection connection=DatabaseConnection.getDBConnection();
         List<Schedule> scheduleList = new List<Schedule>();
         Dictionary<string, string[]> categoryDict = new Dictionary<string, string[]>();
@@ -167,6 +169,12 @@ namespace KSCS
                     if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Update Data.");
                 }
             }
+
+            if (AddEvent != null)
+            {
+                AddEvent(this, new EventArgs());
+            }
+
             ClearForm();
             InitializeDatabase();
         }
@@ -223,6 +231,16 @@ namespace KSCS
                 scheduleUnit scheduleUnit = (scheduleUnit)(panelSchedules.Controls[selectedScheduleIndex]);
                 scheduleUnit.ChangeScheduleColor(Color.FromArgb(int.Parse(categoryDict[cbCategory.Text][1])));
             }
+        }
+
+        public string GetTbTitle()
+        {
+            return tbTitle.Text;
+        }
+
+        public int GetCbCategory()
+        {
+            return cbCategory.SelectedIndex;
         }
     }
 }

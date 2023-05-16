@@ -37,15 +37,16 @@ namespace KSCS
         private void UserDate_Click(object sender, MouseEventArgs e)
         {
             static_date = Convert.ToInt32(lblDate.Text);
-            TempAddEventForm eventForm = new TempAddEventForm();
+            ScheDetailForm eventForm = new ScheDetailForm();
             eventForm.AddEvent += new EventHandler(SaveEvent);
             eventForm.Show();
         }
 
         private void SaveEvent(object sender, EventArgs e)
         {
-            TempAddEventForm userControl = sender as TempAddEventForm;
-             AddEvent(userControl.GetTxtboxEvent(), userControl.GetCmbType());
+            ScheDetailForm userControl = sender as ScheDetailForm;
+            AddEvent(userControl.GetTbTitle(), userControl.GetCbCategory());
+
         }
 
         private void AddEvent(string dateEvent, int eventType)
@@ -55,8 +56,7 @@ namespace KSCS
             UserEvent userEvent = new UserEvent();
             userEvent.SetEventInfo(dateEvent);
             userEvent.SetColor(eventType);
-            flpEvent.Controls.Add(userEvent);
-
+            flpEvent.Controls.Add(userEvent); //??
         }
     }
 }

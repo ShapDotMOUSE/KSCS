@@ -116,11 +116,11 @@
     <Compile Include="UserDate.Designer.cs">
       <DependentUpon>UserDate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="KSCS.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="KSCS.Designer.cs">
+      <DependentUpon>KSCS.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -142,8 +142,8 @@
     <EmbeddedResource Include="UserDate.resx">
       <DependentUpon>UserDate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="KSCS.resx">
+      <DependentUpon>KSCS.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="ScheDetailForm.cs">
       <SubType>Form</SubType>

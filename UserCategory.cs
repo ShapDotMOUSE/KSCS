@@ -25,7 +25,7 @@ namespace KSCS
 
         public string GetText()
         {
-            return this.Name;
+            return lblCategory.Text;
         }
 
         public void DragMode(string txt)

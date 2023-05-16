@@ -91,6 +91,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Category.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="TempAddEventForm.cs">
       <SubType>Form</SubType>

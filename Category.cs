@@ -64,5 +64,20 @@ namespace KSCS
         {
             return Subdivision[Sub] as string;
         }
+
+        public void ChangeSubdivision(string NewMain, string Sub)
+        {
+            string sourcsMain = Subdivision[Sub] as string;
+            //기존 main에서 sub 제거
+            HashSet<string> deleteSubformSourceMain = MainCategory[sourcsMain] as HashSet<string>;
+            deleteSubformSourceMain.Remove(Sub);
+            MainCategory[sourcsMain] = deleteSubformSourceMain;
+            //sub에 대한 main 변경
+            Subdivision[Sub] = NewMain;
+            //새로운 main에 sub 추가
+            HashSet<string> AddSubIntoNewMain = MainCategory[NewMain] as HashSet<string>;
+            AddSubIntoNewMain.Add(Sub);
+            MainCategory[NewMain] = AddSubIntoNewMain;
+        }
     }
 }

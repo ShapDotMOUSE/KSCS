@@ -26,8 +26,6 @@ namespace KSCS
             EtcCatergories.Add("기타1");
             EtcCatergories.Add("기타2");
             EtcCatergories.Add("기타3");
-            EtcCatergories.Add("기타4");
-            EtcCatergories.Add("기타5");
 
             MainCategory["ShcoolCategory"] = SchoolCategories;
             MainCategory["PersonalCategory"] = PersonalCategories;

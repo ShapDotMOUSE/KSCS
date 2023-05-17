@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Guna.UI2.WinForms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
+using static Guna.UI2.WinForms.Helpers.GraphicsHelper;
 
 namespace KSCS
 {
@@ -152,6 +153,7 @@ namespace KSCS
 
         private UserCategory draggedUcCategory; // 드래그 중인 카테고리 유저 컨트롤
         private UserCategory cloneUcCategory; // 드래그 중인 카테고리 유저 컨트롤 복사본
+        private Point MouseLocation;
 
         private void UcCategory_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -159,27 +161,90 @@ namespace KSCS
             draggedUcCategory.Visible = false;
 
             // 드래그 중인 버튼의 복사본 생성
-            Point Position = new Point((Cursor.Position.X - e.X) - Left, (Cursor.Position.Y - e.Y) - Top); // 현제 마우스 위치
-            cloneUcCategory = new UserCategory{Location = Position};
+            MouseLocation = new Point((Cursor.Position.X - e.X) - Left, (Cursor.Position.Y - e.Y) - Top); // 현제 마우스 위치
+            cloneUcCategory = new UserCategory{Location = MouseLocation};
             cloneUcCategory.DragMode(draggedUcCategory.GetText());
             this.Controls.Add(cloneUcCategory);
             flpMainCategory.SendToBack();
             cloneUcCategory.MouseMove += UcCategory_MouseMove;
-            cloneUcCategory.MouseUp += UcCategory_MouseUp;
+            cloneUcCategory.MouseClick += UcCategory_MouseClick;
         }
 
-        private void UcCategory_MouseUp(object sender, MouseEventArgs e)
+        private void UcCategory_MouseClick(object sender, MouseEventArgs e)
         {
-            this.Controls.Remove(cloneUcCategory);
-            cloneUcCategory.Dispose();
+            string MainCategoryName;
+            if(MouseLocation.Y < 425)
+            {
+                //학교
+                MainCategoryName = "ShcoolCategory";
+                
+            }
+            else if (MouseLocation.Y < 425 + flpPersonalCategory.Height)
+            {
+                //개인
+                MainCategoryName = "PersonalCategory";
+            }
+            else
+            {
+                //기타
+                MainCategoryName = "EtcCategory";
+            }
 
-            draggedUcCategory.Visible = true;
+            if(MainCategoryName.Length > 0)
+            {
+                draggedUcCategory.Visible = true;
+                string WhatMain = Category.Subdivision[cloneUcCategory.GetText()] as string;
+                if (WhatMain == MainCategoryName)
+                {
+                    this.Controls.Remove(cloneUcCategory);
+                    cloneUcCategory.Dispose();
+                    draggedUcCategory.Visible = true;
+                }
+                else
+                {
+                    switch (WhatMain)
+                    {
+                        case "ShcoolCategory":
+                            flpSchoolCategory.Controls.Remove(draggedUcCategory);
+                            break;
+                        case "PersonalCategory":
+                            flpPersonalCategory.Controls.Remove(draggedUcCategory);
+                            break;
+                        case "EtcCategory":
+                            flpEtcCategory.Controls.Remove(draggedUcCategory);
+                            break;
+                    }
+                    this.Controls.Remove(cloneUcCategory);
+                    switch (MainCategoryName)
+                    {
+                        case "ShcoolCategory":
+                            flpSchoolCategory.Controls.Add(draggedUcCategory);
+                            break;
+                        case "PersonalCategory":
+                            flpPersonalCategory.Controls.Add(draggedUcCategory);
+                            break;
+                        case "EtcCategory":
+                            flpEtcCategory.Controls.Add(draggedUcCategory);
+                            break;
+                    }
+                    Category.ChangeSubdivision(MainCategoryName, cloneUcCategory.GetText());
+                }
+            }
+            
         }
 
         private void UcCategory_MouseMove(object sender, MouseEventArgs e)
         {
-            Point Position = new Point((Cursor.Position.X - cloneUcCategory.Width/2) - Left, (Cursor.Position.Y - cloneUcCategory.Height / 2) - Top);
-            cloneUcCategory.Location = Position;
+            MouseLocation = new Point((Cursor.Position.X - cloneUcCategory.Width/2) - Left, (Cursor.Position.Y - cloneUcCategory.Height / 2) - Top);
+            guna2HtmlLabel1.Text = MouseLocation.ToString();
+            if ((MouseLocation.X < flpMainCategory.Location.X - 100 || MouseLocation.X > flpMainCategory.Location.X + 130) 
+                || (MouseLocation.Y < flpMainCategory.Location.Y || MouseLocation.Y > flpMainCategory.Location.Y + 450))
+            {
+                this.Controls.Remove(cloneUcCategory);
+                cloneUcCategory.Dispose();
+                draggedUcCategory.Visible = true;
+            }
+            cloneUcCategory.Location = MouseLocation;
         }
 
     }

@@ -18,6 +18,7 @@ namespace KSCS
         private int year, month;
         public static int static_month, static_year;
         public static Category Category = new Category();
+        public static string TabName;
         public KSCS()
         {
             InitializeComponent();
@@ -32,6 +33,10 @@ namespace KSCS
 
             Category.TestCategory();
 
+
+            //초기 탭 설정 
+            TabName = btnTestTab1.Name; //수정되어야함
+
             dispalyDate();
             DisplayCategery();
             SetCheckedCategoryByTab();
@@ -41,7 +46,7 @@ namespace KSCS
         private void DisplayCategery()
         {
             
-            foreach (var item in Category.ParentCategory["SchoolCategory"] as HashSet<string>)
+            foreach (var item in Category.ParentCategorys["SchoolCategory"] as HashSet<string>)
             {
                 UserCategory uc = new UserCategory();
                 uc.SetBasicMode(item);
@@ -49,7 +54,7 @@ namespace KSCS
                 flpSchoolCategory.Controls.Add(uc);
             }
 
-            foreach (var item in Category.ParentCategory["PersonalCategory"] as HashSet<string>)
+            foreach (var item in Category.ParentCategorys["PersonalCategory"] as HashSet<string>)
             {
                 UserCategory uc = new UserCategory();
                 uc.SetBasicMode(item);
@@ -57,7 +62,7 @@ namespace KSCS
                 flpPersonalCategory.Controls.Add(uc);
             }
 
-            foreach (var item in Category.ParentCategory["EtcCategory"] as HashSet<string>)
+            foreach (var item in Category.ParentCategorys["EtcCategory"] as HashSet<string>)
             {
                 UserCategory uc = new UserCategory();
                 uc.SetBasicMode(item);
@@ -67,6 +72,15 @@ namespace KSCS
         }
 
         //탭 함수-------------------------------------------------------------------------------------------------------------------------------------------
+        private void ChangeTab(object sender)
+        {
+            /*
+             * TODO: 이 부분에 DB에 연결하는 함수 추가 필요
+             */
+
+            TabName = ((Guna2Button)sender).Name;
+            SetCheckedCategoryByTab();
+        }
         private void SetCheckedCategoryByTab()
         {
             FlowLayoutPanel[]flp = { flpSchoolCategory, flpPersonalCategory, flpEtcCategory };
@@ -74,7 +88,8 @@ namespace KSCS
             {
                 foreach (UserCategory category in panel.Controls)
                 {
-                    category.SetChecked(Category.Checked.Contains(category.GetText()));
+                    
+                    category.SetChecked(Category.IsChecked(TabName, category.GetText()));
                 }
             }
 
@@ -123,6 +138,8 @@ namespace KSCS
             Close();
         }
 
+        //컨트롤 함수------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
         //달력 컨트롤--------------------------------------------------------------------------------------------------------------------------------------
         private void btnNext_Click(object sender, EventArgs e)
         {
@@ -170,6 +187,7 @@ namespace KSCS
         private void btnPlusCategory_Click(object sender, EventArgs e)
         {
             UserCategory category = new UserCategory();
+            category.MouseDoubleClick += UcCategory_MouseDoubleClick;
             flpEtcCategory.Controls.Add(category);
         }
 
@@ -222,7 +240,7 @@ namespace KSCS
             if(NewMainCategory.Length > 0)
             {
                 draggedUcCategory.Visible = true;
-                string OringMainCategory = Category.SubCategory[cloneUcCategory.GetText()] as string;
+                string OringMainCategory = Category.SubCategorys[cloneUcCategory.GetText()] as string;
                 if (OringMainCategory == NewMainCategory)
                 {
                     UndoCategory();
@@ -257,20 +275,7 @@ namespace KSCS
         //탭 컨트롤------------------------------------------------------------------------------------------------------------------------------------
         private void btnTestTab1_Click(object sender, EventArgs e)
         {
-            Category.TestTab1();
-            SetCheckedCategoryByTab();
-        }
-
-        private void btnTestTab2_Click(object sender, EventArgs e)
-        {
-            Category.TestTab2();
-            SetCheckedCategoryByTab();
-        }
-
-        private void btnTestTab3_Click(object sender, EventArgs e)
-        {
-            Category.TestTab3();
-            SetCheckedCategoryByTab();
+            ChangeTab(sender);
         }
     }
 }

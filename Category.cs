@@ -9,8 +9,8 @@ namespace KSCS
 {
     public class Category
     {
-        public Hashtable MainCategory = new Hashtable();
-        public Hashtable Subdivision = new Hashtable();
+        public Hashtable ParentCategory = new Hashtable();
+        public Hashtable SubCategory = new Hashtable();
 
         public Category() { 
             HashSet<string> SchoolCategories = new HashSet<string>();
@@ -27,55 +27,56 @@ namespace KSCS
             EtcCatergories.Add("기타2");
             EtcCatergories.Add("기타3");
 
-            MainCategory["SchoolCategory"] = SchoolCategories;
-            MainCategory["PersonalCategory"] = PersonalCategories;
-            MainCategory["EtcCategory"] = EtcCatergories;
+            ParentCategory["SchoolCategory"] = SchoolCategories;
+            ParentCategory["PersonalCategory"] = PersonalCategories;
+            ParentCategory["EtcCategory"] = EtcCatergories;
 
-            Subdivision["학사일정"] = "SchoolCategory";
-            Subdivision["과제"] = "SchoolCategory";
-            Subdivision["퀴즈"] = "SchoolCategory";
-            Subdivision["온라인 강의"] = "SchoolCategory";
+            SubCategory["학사일정"] = "SchoolCategory";
+            SubCategory["과제"] = "SchoolCategory";
+            SubCategory["퀴즈"] = "SchoolCategory";
+            SubCategory["온라인 강의"] = "SchoolCategory";
 
-            Subdivision["생일"] = "PersonalCategory";
-            Subdivision["약속"] = "PersonalCategory";
-            Subdivision["식사"] = "PersonalCategory";
+            SubCategory["생일"] = "PersonalCategory";
+            SubCategory["약속"] = "PersonalCategory";
+            SubCategory["식사"] = "PersonalCategory";
 
-            Subdivision["기타1"] = "EtcCategory";
-            Subdivision["기타2"] = "EtcCategory";
-            Subdivision["기타3"] = "EtcCategory";
+            SubCategory["기타1"] = "EtcCategory";
+            SubCategory["기타2"] = "EtcCategory";
+            SubCategory["기타3"] = "EtcCategory";
 
         }
         public void AddSubdivision(string Main, string Sub)
         {
-            HashSet<string> SubdivisionSet = MainCategory[Main] as HashSet<string>;
+            HashSet<string> SubdivisionSet = ParentCategory[Main] as HashSet<string>;
             SubdivisionSet.Add(Sub);
-            MainCategory[Main] = SubdivisionSet;
-            Subdivision[Sub] = Main;
+            ParentCategory[Main] = SubdivisionSet;
+            SubCategory[Sub] = Main;
         }
 
-        public HashSet<string> GetSubdivisionSetByMainCategory(string Main)
+        public void ChageSubdivisionName(string Old, string New)
         {
-            return MainCategory[Main] as HashSet<string>;
+            //대분류단에서 이름 수정
+            string ParentCategory = KSCS.Category.SubCategory[Old] as string;
+            HashSet<string> Set = KSCS.Category.ParentCategory[ParentCategory] as HashSet<string>;
+            Set.Remove(Old);
+            Set.Add(New);
+            KSCS.Category.ParentCategory[ParentCategory] = Set;
+            //하위 카테고리 단에서의 수정
         }
 
-        public string GetMainCategoryBySubdivision(string Sub)
+        public void ChangeParentOfSub(string NewMain, string Sub)
         {
-            return Subdivision[Sub] as string;
-        }
-
-        public void ChangeSubdivision(string NewMain, string Sub)
-        {
-            string sourcsMain = Subdivision[Sub] as string;
+            string sourcsMain = SubCategory[Sub] as string;
             //기존 main에서 sub 제거
-            HashSet<string> deleteSubformSourceMain = MainCategory[sourcsMain] as HashSet<string>;
+            HashSet<string> deleteSubformSourceMain = ParentCategory[sourcsMain] as HashSet<string>;
             deleteSubformSourceMain.Remove(Sub);
-            MainCategory[sourcsMain] = deleteSubformSourceMain;
+            ParentCategory[sourcsMain] = deleteSubformSourceMain;
             //sub에 대한 main 변경
-            Subdivision[Sub] = NewMain;
+            SubCategory[Sub] = NewMain;
             //새로운 main에 sub 추가
-            HashSet<string> AddSubIntoNewMain = MainCategory[NewMain] as HashSet<string>;
-            AddSubIntoNewMain.Add(Sub);
-            MainCategory[NewMain] = AddSubIntoNewMain;
+            HashSet<string> AddSubIntoNewParent = ParentCategory[NewMain] as HashSet<string>;
+            AddSubIntoNewParent.Add(Sub);
+            ParentCategory[NewMain] = AddSubIntoNewParent;
         }
     }
 }

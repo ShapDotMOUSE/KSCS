@@ -91,7 +91,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="customTapButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="customTapButton.Designer.cs" />
     <Compile Include="Database.cs" />
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="TempAddEventForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,6 +144,11 @@
     <Compile Include="UserEvent.Designer.cs">
       <DependentUpon>UserEvent.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="customTapButton.resx" />
+    <EmbeddedResource Include="LoginForm.resx" />
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TempAddEventForm.resx">
       <DependentUpon>TempAddEventForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -11,6 +11,7 @@ namespace KSCS
     {
         public Hashtable ParentCategory = new Hashtable();
         public Hashtable SubCategory = new Hashtable();
+        public HashSet<string> Checked = new HashSet<string>();
 
         public Category() { 
             HashSet<string> SchoolCategories = new HashSet<string>();
@@ -79,6 +80,19 @@ namespace KSCS
             HashSet<string> AddSubIntoNewParent = ParentCategory[NewMain] as HashSet<string>;
             AddSubIntoNewParent.Add(Sub);
             ParentCategory[NewMain] = AddSubIntoNewParent;
+        }
+
+        public void AddChecked(string Sub)
+        {
+            Checked.Add(Sub);
+        }
+
+        public void DelteChecked(string Sub)
+        {
+            if (Checked.Contains(Sub))
+            {
+                Checked.Remove(Sub);
+            }
         }
     }
 }

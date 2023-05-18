@@ -214,33 +214,6 @@ namespace KSCS
                     Category.ChangeSubdivision(NewMainCategory, cloneUcCategory.GetText());
                     draggedUcCategory = null;
                     cloneUcCategory = null;
-
-                    //switch (OringMainCategory)
-                    //{
-                    //    case "ShcoolCategory":
-                    //        flpSchoolCategory.Controls.Remove(draggedUcCategory);
-                    //        break;
-                    //    case "PersonalCategory":
-                    //        flpPersonalCategory.Controls.Remove(draggedUcCategory);
-                    //        break;
-                    //    case "EtcCategory":
-                    //        flpEtcCategory.Controls.Remove(draggedUcCategory);
-                    //        break;
-                    //}
-
-                    //switch (NewMainCategory)
-                    //{
-                    //    case "ShcoolCategory":
-                    //        flpSchoolCategory.Controls.Add(draggedUcCategory);
-                    //        break;
-                    //    case "PersonalCategory":
-                    //        flpPersonalCategory.Controls.Add(draggedUcCategory);
-                    //        break;
-                    //    case "EtcCategory":
-                    //        flpEtcCategory.Controls.Add(draggedUcCategory);
-                    //        break;
-                    //}
-
                 }
             }
             

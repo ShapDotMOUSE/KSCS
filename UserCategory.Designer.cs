@@ -42,9 +42,8 @@
             this.lblCategory.Location = new System.Drawing.Point(6, 1);
             this.lblCategory.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
             this.lblCategory.Name = "lblCategory";
-            this.lblCategory.Size = new System.Drawing.Size(56, 17);
+            this.lblCategory.Size = new System.Drawing.Size(0, 17);
             this.lblCategory.TabIndex = 15;
-            this.lblCategory.Text = "학사일정";
             this.lblCategory.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lblCategory_MouseDoubleClick);
             // 
             // chkCategory

@@ -55,12 +55,19 @@ namespace KSCS
             {
                 if (txtCategory.Text.Length > 0)
                 {
-                    KSCS.Category.ChageSubdivisionName(lblCategory.Text, txtCategory.Text);
+                    if (lblCategory.Text.Length > 0)
+                    {
+                        KSCS.Category.ChageSubdivisionName(lblCategory.Text, txtCategory.Text);
+                    }
+                    else
+                    {
+                        KSCS.Category.AddSubdivision("EtcCategory", txtCategory.Text);
+                    }
                     lblCategory.Text = txtCategory.Text;
                     this.Name = "UCCategory" + txtCategory.Text;
-                    txtCategory.Visible= false;
+                    txtCategory.Visible = false;
                 }
-            }else if(e.KeyCode == Keys.Escape)
+            }else if(e.KeyCode == Keys.Escape && lblCategory.Text.Length > 0)
             {
                 txtCategory.Visible = false;
                 txtCategory.Clear();

@@ -28,6 +28,11 @@ namespace KSCS
             return lblCategory.Text;
         }
 
+        public void SetChecked(bool check)
+        {
+           chkCategory.Checked = check;
+        }
+
         public void DragMode(string txt)
         {
             lblCategory.Text = txt;
@@ -95,7 +100,7 @@ namespace KSCS
             }
             else
             {
-                KSCS.Category.DelteChecked(lblCategory.Text);
+                KSCS.Category.DeletChecked(lblCategory.Text);
             }
         }
     }

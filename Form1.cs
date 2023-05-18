@@ -36,7 +36,7 @@ namespace KSCS
         private void DisplayCategery()
         {
             
-            foreach (var item in Category.MainCategory["SchoolCategory"] as HashSet<string>)
+            foreach (var item in Category.ParentCategory["SchoolCategory"] as HashSet<string>)
             {
                 UserCategory uc = new UserCategory();
                 uc.SetBasicMode(item);
@@ -44,7 +44,7 @@ namespace KSCS
                 flpSchoolCategory.Controls.Add(uc);
             }
 
-            foreach (var item in Category.MainCategory["PersonalCategory"] as HashSet<string>)
+            foreach (var item in Category.ParentCategory["PersonalCategory"] as HashSet<string>)
             {
                 UserCategory uc = new UserCategory();
                 uc.SetBasicMode(item);
@@ -52,7 +52,7 @@ namespace KSCS
                 flpPersonalCategory.Controls.Add(uc);
             }
 
-            foreach (var item in Category.MainCategory["EtcCategory"] as HashSet<string>)
+            foreach (var item in Category.ParentCategory["EtcCategory"] as HashSet<string>)
             {
                 UserCategory uc = new UserCategory();
                 uc.SetBasicMode(item);
@@ -199,7 +199,7 @@ namespace KSCS
             if(NewMainCategory.Length > 0)
             {
                 draggedUcCategory.Visible = true;
-                string OringMainCategory = Category.Subdivision[cloneUcCategory.GetText()] as string;
+                string OringMainCategory = Category.SubCategory[cloneUcCategory.GetText()] as string;
                 if (OringMainCategory == NewMainCategory)
                 {
                     UndoCategory();
@@ -211,7 +211,7 @@ namespace KSCS
                     FlowLayoutPanel FlpOriginCategory = flpMainCategory.Controls["flp" + OringMainCategory] as FlowLayoutPanel;
                     FlpOriginCategory.Controls.Remove(draggedUcCategory);
                     FlpNewCategory.Controls.Add(draggedUcCategory);
-                    Category.ChangeSubdivision(NewMainCategory, cloneUcCategory.GetText());
+                    Category.ChangeParentOfSub(NewMainCategory, cloneUcCategory.GetText());
                     draggedUcCategory = null;
                     cloneUcCategory = null;
                 }

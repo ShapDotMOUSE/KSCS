@@ -21,7 +21,7 @@ namespace KSCS
 
         private void TempAddEventForm_Load(object sender, EventArgs e)
         {
-            TxtBoxDate.Text = KSCS.static_year.ToString() + "/" + KSCS.static_month.ToString() + "/" + UserDate.static_date;
+            TxtBoxDate.Text = form.static_year.ToString() + "/" + form.static_month.ToString() + "/" + UserDate.static_date;
         }
 
         private void btnSave_Click(object sender, EventArgs e)

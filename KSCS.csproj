@@ -92,7 +92,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Category.cs" />
+    <Compile Include="customTapButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="customTapButton.Designer.cs">
+      <DependentUpon>customTapButton.cs</DependentUpon>
+    </Compile>
     <Compile Include="Database.cs" />
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="TempAddEventForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +155,28 @@
     <Compile Include="UserEvent.Designer.cs">
       <DependentUpon>UserEvent.cs</DependentUpon>
     </Compile>
+    <Compile Include="ScheDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScheDetailForm.Designer.cs">
+      <DependentUpon>ScheDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Schedule.cs" />
+    <Compile Include="scheduleUnit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="scheduleUnit.Designer.cs">
+      <DependentUpon>scheduleUnit.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="customTapButton.resx">
+      <DependentUpon>customTapButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TempAddEventForm.resx">
       <DependentUpon>TempAddEventForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -155,19 +195,6 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <Compile Include="ScheDetailForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ScheDetailForm.Designer.cs">
-      <DependentUpon>ScheDetailForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Schedule.cs" />
-    <Compile Include="scheduleUnit.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="scheduleUnit.Designer.cs">
-      <DependentUpon>scheduleUnit.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -203,16 +230,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Image\user.png" />
+    <EmbeddedResource Include="Image\user.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Image\그립톡-기본.png" />
+    <EmbeddedResource Include="Image\그립톡-기본.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Image\nextIcon.png" />
+    <EmbeddedResource Include="Image\nextIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Image\previousIcon.png" />
+    <EmbeddedResource Include="Image\previousIcon.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\free-icon-font-cross-3917759.png" />
@@ -224,7 +251,26 @@
     <None Include="Resources\free-icon-font-plus-3917757.png" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <None Include="Image\plus.png" />
+=======
+    <EmbeddedResource Include="Image\팡이우니 일기.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Image\우니팡이동그라미.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Image\caption.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Image\우니커피.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Image\우니열공.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Image\팡이비행.png" />
+>>>>>>> develop
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

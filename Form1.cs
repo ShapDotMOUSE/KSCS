@@ -13,13 +13,13 @@ using static Guna.UI2.WinForms.Helpers.GraphicsHelper;
 
 namespace KSCS
 {
-    public partial class KSCS : Form
+    public partial class form : Form
     {
         private int year, month;
         public static int static_month, static_year;
         public static Category Category = new Category();
         public static string TabName;
-        public KSCS()
+        public form()
         {
             InitializeComponent();
         }

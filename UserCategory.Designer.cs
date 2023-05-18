@@ -63,6 +63,7 @@
             this.chkCategory.UncheckedState.BorderRadius = 2;
             this.chkCategory.UncheckedState.BorderThickness = 0;
             this.chkCategory.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.chkCategory.CheckedChanged += new System.EventHandler(this.chkCategory_CheckedChanged);
             // 
             // txtCategory
             // 

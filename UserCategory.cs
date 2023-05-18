@@ -72,5 +72,17 @@ namespace KSCS
             txtCategory.Visible = true;
             txtCategory.Focus();
         }
+
+        private void chkCategory_CheckedChanged(object sender, EventArgs e)
+        {
+            if(chkCategory.Checked)
+            {
+                KSCS.Category.AddChecked(lblCategory.Text);
+            }
+            else
+            {
+                KSCS.Category.DelteChecked(lblCategory.Text);
+            }
+        }
     }
 }

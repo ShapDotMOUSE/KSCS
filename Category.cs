@@ -27,14 +27,14 @@ namespace KSCS
             EtcCatergories.Add("기타2");
             EtcCatergories.Add("기타3");
 
-            MainCategory["ShcoolCategory"] = SchoolCategories;
+            MainCategory["SchoolCategory"] = SchoolCategories;
             MainCategory["PersonalCategory"] = PersonalCategories;
             MainCategory["EtcCategory"] = EtcCatergories;
 
-            Subdivision["학사일정"] = "ShcoolCategory";
-            Subdivision["과제"] = "ShcoolCategory";
-            Subdivision["퀴즈"] = "ShcoolCategory";
-            Subdivision["온라인 강의"] = "ShcoolCategory";
+            Subdivision["학사일정"] = "SchoolCategory";
+            Subdivision["과제"] = "SchoolCategory";
+            Subdivision["퀴즈"] = "SchoolCategory";
+            Subdivision["온라인 강의"] = "SchoolCategory";
 
             Subdivision["생일"] = "PersonalCategory";
             Subdivision["약속"] = "PersonalCategory";

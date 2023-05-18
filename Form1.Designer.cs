@@ -71,7 +71,6 @@
             this.btnPlusCategory = new Guna.UI2.WinForms.Guna2Button();
             this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
-            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2CustomGradientPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.flpMainCategory.SuspendLayout();
@@ -84,10 +83,10 @@
             this.seperator_horizon.BackColor = System.Drawing.Color.White;
             this.seperator_horizon.FillColor = System.Drawing.Color.White;
             this.seperator_horizon.FillThickness = 20;
-            this.seperator_horizon.Location = new System.Drawing.Point(-1, 208);
-            this.seperator_horizon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.seperator_horizon.Location = new System.Drawing.Point(-2, 416);
+            this.seperator_horizon.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.seperator_horizon.Name = "seperator_horizon";
-            this.seperator_horizon.Size = new System.Drawing.Size(1261, 17);
+            this.seperator_horizon.Size = new System.Drawing.Size(2342, 34);
             this.seperator_horizon.TabIndex = 0;
             // 
             // seperator_vertical
@@ -97,10 +96,10 @@
             this.seperator_vertical.BackColor = System.Drawing.Color.White;
             this.seperator_vertical.FillColor = System.Drawing.Color.White;
             this.seperator_vertical.FillThickness = 20;
-            this.seperator_vertical.Location = new System.Drawing.Point(998, -1);
-            this.seperator_vertical.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.seperator_vertical.Location = new System.Drawing.Point(1853, -2);
+            this.seperator_vertical.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.seperator_vertical.Name = "seperator_vertical";
-            this.seperator_vertical.Size = new System.Drawing.Size(18, 866);
+            this.seperator_vertical.Size = new System.Drawing.Size(33, 1732);
             this.seperator_vertical.TabIndex = 1;
             // 
             // label2
@@ -108,9 +107,10 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(1139, 34);
+            this.label2.Location = new System.Drawing.Point(2115, 68);
+            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 12);
+            this.label2.Size = new System.Drawing.Size(82, 24);
             this.label2.TabIndex = 6;
             this.label2.Text = "팡운머";
             // 
@@ -119,9 +119,10 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(1139, 58);
+            this.label3.Location = new System.Drawing.Point(2115, 116);
+            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(73, 12);
+            this.label3.Size = new System.Drawing.Size(148, 24);
             this.label3.TabIndex = 6;
             this.label3.Text = "20XX2030XX";
             // 
@@ -131,9 +132,10 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(1065, 250);
+            this.label1.Location = new System.Drawing.Point(1978, 500);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 22);
+            this.label1.Size = new System.Drawing.Size(133, 40);
             this.label1.TabIndex = 7;
             this.label1.Text = "카테고리";
             // 
@@ -141,10 +143,10 @@
             // 
             this.guna2VSeparator1.FillColor = System.Drawing.Color.White;
             this.guna2VSeparator1.FillThickness = 20;
-            this.guna2VSeparator1.Location = new System.Drawing.Point(511, -1);
-            this.guna2VSeparator1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.guna2VSeparator1.Location = new System.Drawing.Point(949, -2);
+            this.guna2VSeparator1.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.guna2VSeparator1.Name = "guna2VSeparator1";
-            this.guna2VSeparator1.Size = new System.Drawing.Size(17, 226);
+            this.guna2VSeparator1.Size = new System.Drawing.Size(32, 452);
             this.guna2VSeparator1.TabIndex = 8;
             // 
             // label4
@@ -152,10 +154,11 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(566, 21);
+            this.label4.Location = new System.Drawing.Point(1051, 42);
+            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
             this.label4.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label4.Size = new System.Drawing.Size(168, 44);
+            this.label4.Size = new System.Drawing.Size(352, 86);
             this.label4.TabIndex = 7;
             this.label4.Text = "마 감 임 박";
             // 
@@ -164,9 +167,10 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(32, 21);
+            this.label5.Location = new System.Drawing.Point(59, 42);
+            this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(175, 44);
+            this.label5.Size = new System.Drawing.Size(373, 86);
             this.label5.TabIndex = 7;
             this.label5.Text = "오늘의 일정";
             // 
@@ -179,10 +183,10 @@
             this.guna2ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2ControlBox1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(152)))), ((int)(((byte)(166)))));
             this.guna2ControlBox1.IconColor = System.Drawing.Color.White;
-            this.guna2ControlBox1.Location = new System.Drawing.Point(1222, -1);
-            this.guna2ControlBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.guna2ControlBox1.Location = new System.Drawing.Point(2269, -2);
+            this.guna2ControlBox1.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.guna2ControlBox1.Name = "guna2ControlBox1";
-            this.guna2ControlBox1.Size = new System.Drawing.Size(38, 29);
+            this.guna2ControlBox1.Size = new System.Drawing.Size(71, 58);
             this.guna2ControlBox1.TabIndex = 9;
             this.guna2ControlBox1.Click += new System.EventHandler(this.guna2ControlBox1_Click);
             // 
@@ -198,9 +202,9 @@
             this.btnSchoolCategory.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.btnSchoolCategory.ForeColor = System.Drawing.Color.White;
             this.btnSchoolCategory.Location = new System.Drawing.Point(0, 0);
-            this.btnSchoolCategory.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.btnSchoolCategory.Margin = new System.Windows.Forms.Padding(0, 0, 6, 0);
             this.btnSchoolCategory.Name = "btnSchoolCategory";
-            this.btnSchoolCategory.Size = new System.Drawing.Size(163, 29);
+            this.btnSchoolCategory.Size = new System.Drawing.Size(303, 58);
             this.btnSchoolCategory.TabIndex = 10;
             this.btnSchoolCategory.Text = "학교                       ▼";
             this.btnSchoolCategory.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -211,9 +215,10 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label7.ForeColor = System.Drawing.Color.Silver;
-            this.label7.Location = new System.Drawing.Point(40, 80);
+            this.label7.Location = new System.Drawing.Point(74, 160);
+            this.label7.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(186, 24);
+            this.label7.Size = new System.Drawing.Size(370, 42);
             this.label7.TabIndex = 17;
             this.label7.Text = "● 오늘은 밥을 먹어야해요";
             // 
@@ -222,9 +227,10 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label8.ForeColor = System.Drawing.Color.Red;
-            this.label8.Location = new System.Drawing.Point(570, 80);
+            this.label8.Location = new System.Drawing.Point(1059, 160);
+            this.label8.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(231, 24);
+            this.label8.Size = new System.Drawing.Size(461, 42);
             this.label8.TabIndex = 17;
             this.label8.Text = "● 알고리즘 퀴즈가 1일 남았어요";
             // 
@@ -236,19 +242,19 @@
             this.guna2CustomGradientPanel1.Controls.Add(this.flowLayoutPanel2);
             this.guna2CustomGradientPanel1.Controls.Add(this.flpDays);
             this.guna2CustomGradientPanel1.Controls.Add(this.lblMonth);
-            this.guna2CustomGradientPanel1.Location = new System.Drawing.Point(29, 245);
-            this.guna2CustomGradientPanel1.Margin = new System.Windows.Forms.Padding(20, 18, 3, 15);
+            this.guna2CustomGradientPanel1.Location = new System.Drawing.Point(54, 490);
+            this.guna2CustomGradientPanel1.Margin = new System.Windows.Forms.Padding(37, 36, 6, 30);
             this.guna2CustomGradientPanel1.Name = "guna2CustomGradientPanel1";
-            this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(900, 595);
+            this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(1671, 1190);
             this.guna2CustomGradientPanel1.TabIndex = 18;
             // 
             // categoryContainer
             // 
             this.categoryContainer.BackColor = System.Drawing.Color.Transparent;
-            this.categoryContainer.Location = new System.Drawing.Point(25, 26);
-            this.categoryContainer.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.categoryContainer.Location = new System.Drawing.Point(46, 52);
+            this.categoryContainer.Margin = new System.Windows.Forms.Padding(6, 6, 6, 0);
             this.categoryContainer.Name = "categoryContainer";
-            this.categoryContainer.Size = new System.Drawing.Size(345, 14);
+            this.categoryContainer.Size = new System.Drawing.Size(641, 28);
             this.categoryContainer.TabIndex = 26;
             // 
             // btnPrvious
@@ -263,9 +269,10 @@
             this.btnPrvious.ForeColor = System.Drawing.Color.Black;
             this.btnPrvious.Image = global::KSCS.Properties.Resources.previousIcon;
             this.btnPrvious.ImageSize = new System.Drawing.Size(20, 30);
-            this.btnPrvious.Location = new System.Drawing.Point(376, 0);
+            this.btnPrvious.Location = new System.Drawing.Point(698, 0);
+            this.btnPrvious.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnPrvious.Name = "btnPrvious";
-            this.btnPrvious.Size = new System.Drawing.Size(28, 45);
+            this.btnPrvious.Size = new System.Drawing.Size(52, 90);
             this.btnPrvious.TabIndex = 25;
             this.btnPrvious.Click += new System.EventHandler(this.btnPrvious_Click);
             // 
@@ -281,9 +288,10 @@
             this.btnNext.ForeColor = System.Drawing.Color.Black;
             this.btnNext.Image = global::KSCS.Properties.Resources.nextIcon;
             this.btnNext.ImageSize = new System.Drawing.Size(20, 30);
-            this.btnNext.Location = new System.Drawing.Point(496, 0);
+            this.btnNext.Location = new System.Drawing.Point(921, 0);
+            this.btnNext.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(28, 45);
+            this.btnNext.Size = new System.Drawing.Size(52, 90);
             this.btnNext.TabIndex = 24;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
@@ -297,10 +305,10 @@
             this.flowLayoutPanel2.Controls.Add(this.label12);
             this.flowLayoutPanel2.Controls.Add(this.label13);
             this.flowLayoutPanel2.Controls.Add(this.label14);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(25, 51);
-            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(46, 102);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(855, 32);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(1588, 64);
             this.flowLayoutPanel2.TabIndex = 23;
             // 
             // label15
@@ -310,10 +318,10 @@
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 18.2F, System.Drawing.FontStyle.Bold);
             this.label15.ForeColor = System.Drawing.Color.Red;
-            this.label15.Location = new System.Drawing.Point(10, 0);
-            this.label15.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.label15.Location = new System.Drawing.Point(19, 0);
+            this.label15.Margin = new System.Windows.Forms.Padding(19, 0, 19, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(102, 29);
+            this.label15.Size = new System.Drawing.Size(189, 58);
             this.label15.TabIndex = 28;
             this.label15.Text = "일요일";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -325,10 +333,10 @@
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 18.2F, System.Drawing.FontStyle.Bold);
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(132, 0);
-            this.label9.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.label9.Location = new System.Drawing.Point(246, 0);
+            this.label9.Margin = new System.Windows.Forms.Padding(19, 0, 19, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(102, 29);
+            this.label9.Size = new System.Drawing.Size(189, 58);
             this.label9.TabIndex = 29;
             this.label9.Text = "월요일";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -340,10 +348,10 @@
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 18.2F, System.Drawing.FontStyle.Bold);
             this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(254, 0);
-            this.label10.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.label10.Location = new System.Drawing.Point(473, 0);
+            this.label10.Margin = new System.Windows.Forms.Padding(19, 0, 19, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(102, 29);
+            this.label10.Size = new System.Drawing.Size(189, 58);
             this.label10.TabIndex = 30;
             this.label10.Text = "화요일";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -355,10 +363,10 @@
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 18.2F, System.Drawing.FontStyle.Bold);
             this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(376, 0);
-            this.label11.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.label11.Location = new System.Drawing.Point(700, 0);
+            this.label11.Margin = new System.Windows.Forms.Padding(19, 0, 19, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(102, 29);
+            this.label11.Size = new System.Drawing.Size(189, 58);
             this.label11.TabIndex = 31;
             this.label11.Text = "수요일";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -370,10 +378,10 @@
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 18.2F, System.Drawing.FontStyle.Bold);
             this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(498, 0);
-            this.label12.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.label12.Location = new System.Drawing.Point(927, 0);
+            this.label12.Margin = new System.Windows.Forms.Padding(19, 0, 19, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(102, 29);
+            this.label12.Size = new System.Drawing.Size(189, 58);
             this.label12.TabIndex = 32;
             this.label12.Text = "목요일";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -385,10 +393,10 @@
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 18.2F, System.Drawing.FontStyle.Bold);
             this.label13.ForeColor = System.Drawing.Color.Black;
-            this.label13.Location = new System.Drawing.Point(620, 0);
-            this.label13.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.label13.Location = new System.Drawing.Point(1154, 0);
+            this.label13.Margin = new System.Windows.Forms.Padding(19, 0, 19, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(102, 29);
+            this.label13.Size = new System.Drawing.Size(189, 58);
             this.label13.TabIndex = 33;
             this.label13.Text = "금요일";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -400,10 +408,10 @@
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 18.2F, System.Drawing.FontStyle.Bold);
             this.label14.ForeColor = System.Drawing.Color.Blue;
-            this.label14.Location = new System.Drawing.Point(742, 0);
-            this.label14.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.label14.Location = new System.Drawing.Point(19, 58);
+            this.label14.Margin = new System.Windows.Forms.Padding(19, 0, 19, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(102, 29);
+            this.label14.Size = new System.Drawing.Size(189, 58);
             this.label14.TabIndex = 34;
             this.label14.Text = "토요일";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -411,10 +419,10 @@
             // flpDays
             // 
             this.flpDays.BackColor = System.Drawing.Color.White;
-            this.flpDays.Location = new System.Drawing.Point(25, 83);
-            this.flpDays.Margin = new System.Windows.Forms.Padding(20, 0, 20, 10);
+            this.flpDays.Location = new System.Drawing.Point(46, 166);
+            this.flpDays.Margin = new System.Windows.Forms.Padding(37, 0, 37, 20);
             this.flpDays.Name = "flpDays";
-            this.flpDays.Size = new System.Drawing.Size(855, 502);
+            this.flpDays.Size = new System.Drawing.Size(1588, 1004);
             this.flpDays.TabIndex = 20;
             // 
             // lblMonth
@@ -424,8 +432,9 @@
             this.lblMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblMonth.ForeColor = System.Drawing.Color.Black;
             this.lblMonth.Location = new System.Drawing.Point(0, 0);
+            this.lblMonth.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblMonth.Name = "lblMonth";
-            this.lblMonth.Size = new System.Drawing.Size(900, 44);
+            this.lblMonth.Size = new System.Drawing.Size(1671, 88);
             this.lblMonth.TabIndex = 19;
             this.lblMonth.Text = "12월";
             this.lblMonth.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -433,9 +442,10 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.White;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(935, 245);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(1736, 490);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(43, 595);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(80, 1190);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // flpMainCategory
@@ -450,9 +460,10 @@
             this.flpMainCategory.Controls.Add(this.btnEtcCategory);
             this.flpMainCategory.Controls.Add(this.guna2Separator2);
             this.flpMainCategory.Controls.Add(this.flpEtcCategory);
-            this.flpMainCategory.Location = new System.Drawing.Point(1060, 280);
+            this.flpMainCategory.Location = new System.Drawing.Point(1969, 560);
+            this.flpMainCategory.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.flpMainCategory.Name = "flpMainCategory";
-            this.flpMainCategory.Size = new System.Drawing.Size(175, 460);
+            this.flpMainCategory.Size = new System.Drawing.Size(325, 920);
             this.flpMainCategory.TabIndex = 19;
             // 
             // category_underline
@@ -460,19 +471,19 @@
             this.category_underline.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.category_underline.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.category_underline.FillColor = System.Drawing.Color.White;
-            this.category_underline.Location = new System.Drawing.Point(13, 29);
-            this.category_underline.Margin = new System.Windows.Forms.Padding(13, 0, 3, 5);
+            this.category_underline.Location = new System.Drawing.Point(24, 58);
+            this.category_underline.Margin = new System.Windows.Forms.Padding(24, 0, 6, 10);
             this.category_underline.Name = "category_underline";
-            this.category_underline.Size = new System.Drawing.Size(134, 8);
+            this.category_underline.Size = new System.Drawing.Size(249, 16);
             this.category_underline.TabIndex = 11;
             // 
             // flpSchoolCategory
             // 
             this.flpSchoolCategory.AllowDrop = true;
-            this.flpSchoolCategory.Location = new System.Drawing.Point(13, 42);
-            this.flpSchoolCategory.Margin = new System.Windows.Forms.Padding(13, 0, 3, 3);
+            this.flpSchoolCategory.Location = new System.Drawing.Point(24, 84);
+            this.flpSchoolCategory.Margin = new System.Windows.Forms.Padding(24, 0, 6, 6);
             this.flpSchoolCategory.Name = "flpSchoolCategory";
-            this.flpSchoolCategory.Size = new System.Drawing.Size(155, 100);
+            this.flpSchoolCategory.Size = new System.Drawing.Size(288, 200);
             this.flpSchoolCategory.TabIndex = 17;
             // 
             // btnPersonalCategory
@@ -485,10 +496,10 @@
             this.btnPersonalCategory.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(5)))), ((int)(((byte)(31)))));
             this.btnPersonalCategory.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.btnPersonalCategory.ForeColor = System.Drawing.Color.White;
-            this.btnPersonalCategory.Location = new System.Drawing.Point(0, 155);
-            this.btnPersonalCategory.Margin = new System.Windows.Forms.Padding(0, 10, 3, 0);
+            this.btnPersonalCategory.Location = new System.Drawing.Point(0, 310);
+            this.btnPersonalCategory.Margin = new System.Windows.Forms.Padding(0, 20, 6, 0);
             this.btnPersonalCategory.Name = "btnPersonalCategory";
-            this.btnPersonalCategory.Size = new System.Drawing.Size(163, 29);
+            this.btnPersonalCategory.Size = new System.Drawing.Size(303, 58);
             this.btnPersonalCategory.TabIndex = 18;
             this.btnPersonalCategory.Text = "개인                       ▼";
             this.btnPersonalCategory.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -499,20 +510,20 @@
             this.guna2Separator1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2Separator1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.guna2Separator1.FillColor = System.Drawing.Color.White;
-            this.guna2Separator1.Location = new System.Drawing.Point(13, 184);
-            this.guna2Separator1.Margin = new System.Windows.Forms.Padding(13, 0, 3, 5);
+            this.guna2Separator1.Location = new System.Drawing.Point(24, 368);
+            this.guna2Separator1.Margin = new System.Windows.Forms.Padding(24, 0, 6, 10);
             this.guna2Separator1.Name = "guna2Separator1";
-            this.guna2Separator1.Size = new System.Drawing.Size(134, 8);
+            this.guna2Separator1.Size = new System.Drawing.Size(249, 16);
             this.guna2Separator1.TabIndex = 19;
             // 
             // flpPersonalCategory
             // 
             this.flpPersonalCategory.AllowDrop = true;
             this.flpPersonalCategory.AutoScroll = true;
-            this.flpPersonalCategory.Location = new System.Drawing.Point(13, 197);
-            this.flpPersonalCategory.Margin = new System.Windows.Forms.Padding(13, 0, 3, 3);
+            this.flpPersonalCategory.Location = new System.Drawing.Point(24, 394);
+            this.flpPersonalCategory.Margin = new System.Windows.Forms.Padding(24, 0, 6, 6);
             this.flpPersonalCategory.Name = "flpPersonalCategory";
-            this.flpPersonalCategory.Size = new System.Drawing.Size(155, 100);
+            this.flpPersonalCategory.Size = new System.Drawing.Size(288, 200);
             this.flpPersonalCategory.TabIndex = 20;
             // 
             // btnEtcCategory
@@ -525,10 +536,10 @@
             this.btnEtcCategory.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(5)))), ((int)(((byte)(31)))));
             this.btnEtcCategory.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.btnEtcCategory.ForeColor = System.Drawing.Color.White;
-            this.btnEtcCategory.Location = new System.Drawing.Point(0, 310);
-            this.btnEtcCategory.Margin = new System.Windows.Forms.Padding(0, 10, 3, 0);
+            this.btnEtcCategory.Location = new System.Drawing.Point(0, 620);
+            this.btnEtcCategory.Margin = new System.Windows.Forms.Padding(0, 20, 6, 0);
             this.btnEtcCategory.Name = "btnEtcCategory";
-            this.btnEtcCategory.Size = new System.Drawing.Size(163, 29);
+            this.btnEtcCategory.Size = new System.Drawing.Size(303, 58);
             this.btnEtcCategory.TabIndex = 21;
             this.btnEtcCategory.Text = "기타                       ▼";
             this.btnEtcCategory.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -539,20 +550,20 @@
             this.guna2Separator2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2Separator2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.guna2Separator2.FillColor = System.Drawing.Color.White;
-            this.guna2Separator2.Location = new System.Drawing.Point(13, 339);
-            this.guna2Separator2.Margin = new System.Windows.Forms.Padding(13, 0, 3, 5);
+            this.guna2Separator2.Location = new System.Drawing.Point(24, 678);
+            this.guna2Separator2.Margin = new System.Windows.Forms.Padding(24, 0, 6, 10);
             this.guna2Separator2.Name = "guna2Separator2";
-            this.guna2Separator2.Size = new System.Drawing.Size(134, 8);
+            this.guna2Separator2.Size = new System.Drawing.Size(249, 16);
             this.guna2Separator2.TabIndex = 22;
             // 
             // flpEtcCategory
             // 
             this.flpEtcCategory.AllowDrop = true;
             this.flpEtcCategory.AutoScroll = true;
-            this.flpEtcCategory.Location = new System.Drawing.Point(13, 352);
-            this.flpEtcCategory.Margin = new System.Windows.Forms.Padding(13, 0, 3, 3);
+            this.flpEtcCategory.Location = new System.Drawing.Point(24, 704);
+            this.flpEtcCategory.Margin = new System.Windows.Forms.Padding(24, 0, 6, 6);
             this.flpEtcCategory.Name = "flpEtcCategory";
-            this.flpEtcCategory.Size = new System.Drawing.Size(155, 100);
+            this.flpEtcCategory.Size = new System.Drawing.Size(288, 200);
             this.flpEtcCategory.TabIndex = 23;
             // 
             // btnPlusCategory
@@ -566,9 +577,10 @@
             this.btnPlusCategory.ForeColor = System.Drawing.Color.White;
             this.btnPlusCategory.Image = global::KSCS.Properties.Resources.plus;
             this.btnPlusCategory.ImageSize = new System.Drawing.Size(80, 80);
-            this.btnPlusCategory.Location = new System.Drawing.Point(1107, 747);
+            this.btnPlusCategory.Location = new System.Drawing.Point(2056, 1494);
+            this.btnPlusCategory.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnPlusCategory.Name = "btnPlusCategory";
-            this.btnPlusCategory.Size = new System.Drawing.Size(80, 80);
+            this.btnPlusCategory.Size = new System.Drawing.Size(149, 160);
             this.btnPlusCategory.TabIndex = 24;
             this.btnPlusCategory.Click += new System.EventHandler(this.btnPlusCategory_Click);
             // 
@@ -580,11 +592,11 @@
             this.guna2ImageButton1.Image = global::KSCS.Properties.Resources.그립톡_기본;
             this.guna2ImageButton1.ImageOffset = new System.Drawing.Point(0, 0);
             this.guna2ImageButton1.ImageRotate = 0F;
-            this.guna2ImageButton1.Location = new System.Drawing.Point(1042, 18);
-            this.guna2ImageButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.guna2ImageButton1.Location = new System.Drawing.Point(1935, 36);
+            this.guna2ImageButton1.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.guna2ImageButton1.Name = "guna2ImageButton1";
             this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButton1.Size = new System.Drawing.Size(80, 63);
+            this.guna2ImageButton1.Size = new System.Drawing.Size(149, 126);
             this.guna2ImageButton1.TabIndex = 3;
             // 
             // guna2DragControl1
@@ -593,23 +605,12 @@
             this.guna2DragControl1.TargetControl = this;
             this.guna2DragControl1.UseTransparentDrag = true;
             // 
-            // guna2HtmlLabel1
-            // 
-            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(1060, 149);
-            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(99, 14);
-            this.guna2HtmlLabel1.TabIndex = 25;
-            this.guna2HtmlLabel1.Text = "guna2HtmlLabel1";
-            // 
             // KSCS
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1260, 864);
-            this.Controls.Add(this.guna2HtmlLabel1);
+            this.ClientSize = new System.Drawing.Size(2340, 1728);
             this.Controls.Add(this.flpMainCategory);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.guna2CustomGradientPanel1);
@@ -628,7 +629,7 @@
             this.Controls.Add(this.seperator_horizon);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.Name = "KSCS";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "KSCS";
@@ -684,7 +685,6 @@
         private System.Windows.Forms.FlowLayoutPanel flpEtcCategory;
         private Guna.UI2.WinForms.Guna2Button btnPlusCategory;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
     }
 }
 

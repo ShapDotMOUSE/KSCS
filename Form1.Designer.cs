@@ -627,7 +627,7 @@
             this.btnTestTab2.Size = new System.Drawing.Size(40, 130);
             this.btnTestTab2.TabIndex = 1;
             this.btnTestTab2.Text = "탭2";
-            this.btnTestTab2.Click += new System.EventHandler(this.btnTestTab2_Click);
+            this.btnTestTab2.Click += new System.EventHandler(this.btnTestTab1_Click);
             // 
             // btnTestTab3
             // 
@@ -642,7 +642,7 @@
             this.btnTestTab3.Size = new System.Drawing.Size(40, 130);
             this.btnTestTab3.TabIndex = 2;
             this.btnTestTab3.Text = "탭3";
-            this.btnTestTab3.Click += new System.EventHandler(this.btnTestTab3_Click);
+            this.btnTestTab3.Click += new System.EventHandler(this.btnTestTab1_Click);
             // 
             // KSCS
             // 

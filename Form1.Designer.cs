@@ -40,15 +40,13 @@
             this.label5 = new System.Windows.Forms.Label();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.category_underline = new Guna.UI2.WinForms.Guna2Separator();
-            this.guna2CustomCheckBox1 = new Guna.UI2.WinForms.Guna2CustomCheckBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnSchoolCategory = new Guna.UI2.WinForms.Guna2Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.categoryContainer = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnPrvious = new Guna.UI2.WinForms.Guna2Button();
+            this.btnNext = new Guna.UI2.WinForms.Guna2Button();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.label15 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -57,16 +55,29 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.daysConatiner = new System.Windows.Forms.FlowLayoutPanel();
+            this.flpDays = new System.Windows.Forms.FlowLayoutPanel();
             this.lblMonth = new System.Windows.Forms.Label();
             this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnPrvious = new Guna.UI2.WinForms.Guna2Button();
-            this.btnNext = new Guna.UI2.WinForms.Guna2Button();
+            this.flpMainCategory = new System.Windows.Forms.FlowLayoutPanel();
+            this.category_underline = new Guna.UI2.WinForms.Guna2Separator();
+            this.flpSchoolCategory = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnPersonalCategory = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
+            this.flpPersonalCategory = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnEtcCategory = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Separator2 = new Guna.UI2.WinForms.Guna2Separator();
+            this.flpEtcCategory = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnPlusCategory = new Guna.UI2.WinForms.Guna2Button();
             this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.guna2Panel1.SuspendLayout();
+            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.btnTestTab1 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnTestTab2 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnTestTab3 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2CustomGradientPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.flpMainCategory.SuspendLayout();
             this.SuspendLayout();
             // 
             // seperator_horizon
@@ -92,7 +103,7 @@
             this.seperator_vertical.Location = new System.Drawing.Point(998, -1);
             this.seperator_vertical.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.seperator_vertical.Name = "seperator_vertical";
-            this.seperator_vertical.Size = new System.Drawing.Size(18, 866);
+            this.seperator_vertical.Size = new System.Drawing.Size(18, 1005);
             this.seperator_vertical.TabIndex = 1;
             // 
             // label2
@@ -119,11 +130,11 @@
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(1055, 259);
+            this.label1.Location = new System.Drawing.Point(1060, 255);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(62, 22);
             this.label1.TabIndex = 7;
@@ -178,73 +189,25 @@
             this.guna2ControlBox1.TabIndex = 9;
             this.guna2ControlBox1.Click += new System.EventHandler(this.guna2ControlBox1_Click);
             // 
-            // guna2Button1
+            // btnSchoolCategory
             // 
-            this.guna2Button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(5)))), ((int)(((byte)(31)))));
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Location = new System.Drawing.Point(1060, 301);
-            this.guna2Button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(158, 25);
-            this.guna2Button1.TabIndex = 10;
-            this.guna2Button1.Text = "학교                   ▼   ";
-            this.guna2Button1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            // 
-            // category_underline
-            // 
-            this.category_underline.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.category_underline.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.category_underline.FillColor = System.Drawing.Color.White;
-            this.category_underline.Location = new System.Drawing.Point(1075, 320);
-            this.category_underline.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.category_underline.Name = "category_underline";
-            this.category_underline.Size = new System.Drawing.Size(116, 8);
-            this.category_underline.TabIndex = 11;
-            // 
-            // guna2CustomCheckBox1
-            // 
-            this.guna2CustomCheckBox1.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2CustomCheckBox1.CheckedState.BorderRadius = 2;
-            this.guna2CustomCheckBox1.CheckedState.BorderThickness = 0;
-            this.guna2CustomCheckBox1.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2CustomCheckBox1.Location = new System.Drawing.Point(107, 2);
-            this.guna2CustomCheckBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.guna2CustomCheckBox1.Name = "guna2CustomCheckBox1";
-            this.guna2CustomCheckBox1.Size = new System.Drawing.Size(18, 16);
-            this.guna2CustomCheckBox1.TabIndex = 13;
-            this.guna2CustomCheckBox1.Text = "guna2CustomCheckBox1";
-            this.guna2CustomCheckBox1.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.guna2CustomCheckBox1.UncheckedState.BorderRadius = 2;
-            this.guna2CustomCheckBox1.UncheckedState.BorderThickness = 0;
-            this.guna2CustomCheckBox1.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.label6.Location = new System.Drawing.Point(3, 2);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(56, 17);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "학사일정";
-            // 
-            // guna2Panel1
-            // 
-            this.guna2Panel1.Controls.Add(this.label6);
-            this.guna2Panel1.Controls.Add(this.guna2CustomCheckBox1);
-            this.guna2Panel1.Location = new System.Drawing.Point(1068, 330);
-            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(135, 19);
-            this.guna2Panel1.TabIndex = 16;
+            this.btnSchoolCategory.AllowDrop = true;
+            this.btnSchoolCategory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSchoolCategory.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSchoolCategory.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSchoolCategory.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSchoolCategory.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSchoolCategory.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(5)))), ((int)(((byte)(31)))));
+            this.btnSchoolCategory.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.btnSchoolCategory.ForeColor = System.Drawing.Color.White;
+            this.btnSchoolCategory.Location = new System.Drawing.Point(0, 0);
+            this.btnSchoolCategory.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.btnSchoolCategory.Name = "btnSchoolCategory";
+            this.btnSchoolCategory.Size = new System.Drawing.Size(163, 29);
+            this.btnSchoolCategory.TabIndex = 10;
+            this.btnSchoolCategory.Text = "학교                       ▼";
+            this.btnSchoolCategory.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnSchoolCategory.Click += new System.EventHandler(this.btnSchoolCategory_Click);
             // 
             // label7
             // 
@@ -274,7 +237,7 @@
             this.guna2CustomGradientPanel1.Controls.Add(this.btnPrvious);
             this.guna2CustomGradientPanel1.Controls.Add(this.btnNext);
             this.guna2CustomGradientPanel1.Controls.Add(this.flowLayoutPanel2);
-            this.guna2CustomGradientPanel1.Controls.Add(this.daysConatiner);
+            this.guna2CustomGradientPanel1.Controls.Add(this.flpDays);
             this.guna2CustomGradientPanel1.Controls.Add(this.lblMonth);
             this.guna2CustomGradientPanel1.Location = new System.Drawing.Point(29, 245);
             this.guna2CustomGradientPanel1.Margin = new System.Windows.Forms.Padding(20, 18, 3, 15);
@@ -290,6 +253,42 @@
             this.categoryContainer.Name = "categoryContainer";
             this.categoryContainer.Size = new System.Drawing.Size(345, 14);
             this.categoryContainer.TabIndex = 26;
+            // 
+            // btnPrvious
+            // 
+            this.btnPrvious.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnPrvious.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnPrvious.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnPrvious.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnPrvious.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnPrvious.FillColor = System.Drawing.Color.White;
+            this.btnPrvious.Font = new System.Drawing.Font("Microsoft YaHei UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrvious.ForeColor = System.Drawing.Color.Black;
+            this.btnPrvious.Image = global::KSCS.Properties.Resources.previousIcon;
+            this.btnPrvious.ImageSize = new System.Drawing.Size(20, 30);
+            this.btnPrvious.Location = new System.Drawing.Point(376, 0);
+            this.btnPrvious.Name = "btnPrvious";
+            this.btnPrvious.Size = new System.Drawing.Size(28, 45);
+            this.btnPrvious.TabIndex = 25;
+            this.btnPrvious.Click += new System.EventHandler(this.btnPrvious_Click);
+            // 
+            // btnNext
+            // 
+            this.btnNext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnNext.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnNext.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnNext.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnNext.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnNext.FillColor = System.Drawing.Color.White;
+            this.btnNext.Font = new System.Drawing.Font("Microsoft YaHei UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNext.ForeColor = System.Drawing.Color.Black;
+            this.btnNext.Image = global::KSCS.Properties.Resources.nextIcon;
+            this.btnNext.ImageSize = new System.Drawing.Size(20, 30);
+            this.btnNext.Location = new System.Drawing.Point(496, 0);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(28, 45);
+            this.btnNext.TabIndex = 24;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // flowLayoutPanel2
             // 
@@ -412,14 +411,14 @@
             this.label14.Text = "토요일";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // daysConatiner
+            // flpDays
             // 
-            this.daysConatiner.BackColor = System.Drawing.Color.White;
-            this.daysConatiner.Location = new System.Drawing.Point(25, 83);
-            this.daysConatiner.Margin = new System.Windows.Forms.Padding(20, 0, 20, 10);
-            this.daysConatiner.Name = "daysConatiner";
-            this.daysConatiner.Size = new System.Drawing.Size(855, 502);
-            this.daysConatiner.TabIndex = 20;
+            this.flpDays.BackColor = System.Drawing.Color.White;
+            this.flpDays.Location = new System.Drawing.Point(25, 83);
+            this.flpDays.Margin = new System.Windows.Forms.Padding(20, 0, 20, 10);
+            this.flpDays.Name = "flpDays";
+            this.flpDays.Size = new System.Drawing.Size(855, 502);
+            this.flpDays.TabIndex = 20;
             // 
             // lblMonth
             // 
@@ -437,46 +436,147 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.White;
+            this.flowLayoutPanel1.Controls.Add(this.btnTestTab1);
+            this.flowLayoutPanel1.Controls.Add(this.btnTestTab2);
+            this.flowLayoutPanel1.Controls.Add(this.btnTestTab3);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(935, 245);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(43, 595);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
-            // btnPrvious
+            // flpMainCategory
             // 
-            this.btnPrvious.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnPrvious.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnPrvious.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnPrvious.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnPrvious.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnPrvious.FillColor = System.Drawing.Color.White;
-            this.btnPrvious.Font = new System.Drawing.Font("Microsoft YaHei UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrvious.ForeColor = System.Drawing.Color.Black;
-            this.btnPrvious.Image = global::KSCS.Properties.Resources.previousIcon;
-            this.btnPrvious.ImageSize = new System.Drawing.Size(20, 30);
-            this.btnPrvious.Location = new System.Drawing.Point(376, 0);
-            this.btnPrvious.Name = "btnPrvious";
-            this.btnPrvious.Size = new System.Drawing.Size(28, 45);
-            this.btnPrvious.TabIndex = 25;
-            this.btnPrvious.Click += new System.EventHandler(this.btnPrvious_Click);
+            this.flpMainCategory.AllowDrop = true;
+            this.flpMainCategory.Controls.Add(this.btnSchoolCategory);
+            this.flpMainCategory.Controls.Add(this.category_underline);
+            this.flpMainCategory.Controls.Add(this.flpSchoolCategory);
+            this.flpMainCategory.Controls.Add(this.btnPersonalCategory);
+            this.flpMainCategory.Controls.Add(this.guna2Separator1);
+            this.flpMainCategory.Controls.Add(this.flpPersonalCategory);
+            this.flpMainCategory.Controls.Add(this.btnEtcCategory);
+            this.flpMainCategory.Controls.Add(this.guna2Separator2);
+            this.flpMainCategory.Controls.Add(this.flpEtcCategory);
+            this.flpMainCategory.Location = new System.Drawing.Point(1060, 280);
+            this.flpMainCategory.Name = "flpMainCategory";
+            this.flpMainCategory.Size = new System.Drawing.Size(175, 460);
+            this.flpMainCategory.TabIndex = 19;
             // 
-            // btnNext
+            // category_underline
             // 
-            this.btnNext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnNext.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnNext.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnNext.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnNext.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnNext.FillColor = System.Drawing.Color.White;
-            this.btnNext.Font = new System.Drawing.Font("Microsoft YaHei UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNext.ForeColor = System.Drawing.Color.Black;
-            this.btnNext.Image = global::KSCS.Properties.Resources.nextIcon;
-            this.btnNext.ImageSize = new System.Drawing.Size(20, 30);
-            this.btnNext.Location = new System.Drawing.Point(496, 0);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(28, 45);
-            this.btnNext.TabIndex = 24;
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            this.category_underline.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.category_underline.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.category_underline.FillColor = System.Drawing.Color.White;
+            this.category_underline.Location = new System.Drawing.Point(13, 29);
+            this.category_underline.Margin = new System.Windows.Forms.Padding(13, 0, 3, 5);
+            this.category_underline.Name = "category_underline";
+            this.category_underline.Size = new System.Drawing.Size(134, 8);
+            this.category_underline.TabIndex = 11;
+            // 
+            // flpSchoolCategory
+            // 
+            this.flpSchoolCategory.AllowDrop = true;
+            this.flpSchoolCategory.Location = new System.Drawing.Point(13, 42);
+            this.flpSchoolCategory.Margin = new System.Windows.Forms.Padding(13, 0, 3, 3);
+            this.flpSchoolCategory.Name = "flpSchoolCategory";
+            this.flpSchoolCategory.Size = new System.Drawing.Size(155, 100);
+            this.flpSchoolCategory.TabIndex = 17;
+            // 
+            // btnPersonalCategory
+            // 
+            this.btnPersonalCategory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPersonalCategory.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnPersonalCategory.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnPersonalCategory.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnPersonalCategory.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnPersonalCategory.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(5)))), ((int)(((byte)(31)))));
+            this.btnPersonalCategory.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.btnPersonalCategory.ForeColor = System.Drawing.Color.White;
+            this.btnPersonalCategory.Location = new System.Drawing.Point(0, 155);
+            this.btnPersonalCategory.Margin = new System.Windows.Forms.Padding(0, 10, 3, 0);
+            this.btnPersonalCategory.Name = "btnPersonalCategory";
+            this.btnPersonalCategory.Size = new System.Drawing.Size(163, 29);
+            this.btnPersonalCategory.TabIndex = 18;
+            this.btnPersonalCategory.Text = "개인                       ▼";
+            this.btnPersonalCategory.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnPersonalCategory.Click += new System.EventHandler(this.btnPersonalCategory_Click);
+            // 
+            // guna2Separator1
+            // 
+            this.guna2Separator1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2Separator1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.guna2Separator1.FillColor = System.Drawing.Color.White;
+            this.guna2Separator1.Location = new System.Drawing.Point(13, 184);
+            this.guna2Separator1.Margin = new System.Windows.Forms.Padding(13, 0, 3, 5);
+            this.guna2Separator1.Name = "guna2Separator1";
+            this.guna2Separator1.Size = new System.Drawing.Size(134, 8);
+            this.guna2Separator1.TabIndex = 19;
+            // 
+            // flpPersonalCategory
+            // 
+            this.flpPersonalCategory.AllowDrop = true;
+            this.flpPersonalCategory.AutoScroll = true;
+            this.flpPersonalCategory.Location = new System.Drawing.Point(13, 197);
+            this.flpPersonalCategory.Margin = new System.Windows.Forms.Padding(13, 0, 3, 3);
+            this.flpPersonalCategory.Name = "flpPersonalCategory";
+            this.flpPersonalCategory.Size = new System.Drawing.Size(155, 100);
+            this.flpPersonalCategory.TabIndex = 20;
+            // 
+            // btnEtcCategory
+            // 
+            this.btnEtcCategory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEtcCategory.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnEtcCategory.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnEtcCategory.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnEtcCategory.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnEtcCategory.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(5)))), ((int)(((byte)(31)))));
+            this.btnEtcCategory.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.btnEtcCategory.ForeColor = System.Drawing.Color.White;
+            this.btnEtcCategory.Location = new System.Drawing.Point(0, 310);
+            this.btnEtcCategory.Margin = new System.Windows.Forms.Padding(0, 10, 3, 0);
+            this.btnEtcCategory.Name = "btnEtcCategory";
+            this.btnEtcCategory.Size = new System.Drawing.Size(163, 29);
+            this.btnEtcCategory.TabIndex = 21;
+            this.btnEtcCategory.Text = "기타                       ▼";
+            this.btnEtcCategory.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnEtcCategory.Click += new System.EventHandler(this.btnEtcCategory_Click);
+            // 
+            // guna2Separator2
+            // 
+            this.guna2Separator2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2Separator2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.guna2Separator2.FillColor = System.Drawing.Color.White;
+            this.guna2Separator2.Location = new System.Drawing.Point(13, 339);
+            this.guna2Separator2.Margin = new System.Windows.Forms.Padding(13, 0, 3, 5);
+            this.guna2Separator2.Name = "guna2Separator2";
+            this.guna2Separator2.Size = new System.Drawing.Size(134, 8);
+            this.guna2Separator2.TabIndex = 22;
+            // 
+            // flpEtcCategory
+            // 
+            this.flpEtcCategory.AllowDrop = true;
+            this.flpEtcCategory.AutoScroll = true;
+            this.flpEtcCategory.Location = new System.Drawing.Point(13, 352);
+            this.flpEtcCategory.Margin = new System.Windows.Forms.Padding(13, 0, 3, 3);
+            this.flpEtcCategory.Name = "flpEtcCategory";
+            this.flpEtcCategory.Size = new System.Drawing.Size(155, 100);
+            this.flpEtcCategory.TabIndex = 23;
+            // 
+            // btnPlusCategory
+            // 
+            this.btnPlusCategory.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnPlusCategory.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnPlusCategory.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnPlusCategory.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnPlusCategory.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(5)))), ((int)(((byte)(31)))));
+            this.btnPlusCategory.Font = new System.Drawing.Font("Sans Serif Collection", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPlusCategory.ForeColor = System.Drawing.Color.White;
+            this.btnPlusCategory.Image = global::KSCS.Properties.Resources.plus;
+            this.btnPlusCategory.ImageSize = new System.Drawing.Size(80, 80);
+            this.btnPlusCategory.Location = new System.Drawing.Point(1107, 747);
+            this.btnPlusCategory.Name = "btnPlusCategory";
+            this.btnPlusCategory.Size = new System.Drawing.Size(80, 80);
+            this.btnPlusCategory.TabIndex = 24;
+            this.btnPlusCategory.Click += new System.EventHandler(this.btnPlusCategory_Click);
             // 
             // guna2ImageButton1
             // 
@@ -493,23 +593,73 @@
             this.guna2ImageButton1.Size = new System.Drawing.Size(80, 63);
             this.guna2ImageButton1.TabIndex = 3;
             // 
+            // guna2DragControl1
+            // 
+            this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2DragControl1.TargetControl = this;
+            this.guna2DragControl1.UseTransparentDrag = true;
+            // 
+            // btnTestTab1
+            // 
+            this.btnTestTab1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnTestTab1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnTestTab1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnTestTab1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnTestTab1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnTestTab1.ForeColor = System.Drawing.Color.White;
+            this.btnTestTab1.Location = new System.Drawing.Point(3, 3);
+            this.btnTestTab1.Name = "btnTestTab1";
+            this.btnTestTab1.Size = new System.Drawing.Size(40, 130);
+            this.btnTestTab1.TabIndex = 0;
+            this.btnTestTab1.Text = "탭1";
+            this.btnTestTab1.Click += new System.EventHandler(this.btnTestTab1_Click);
+            // 
+            // btnTestTab2
+            // 
+            this.btnTestTab2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnTestTab2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnTestTab2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnTestTab2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnTestTab2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnTestTab2.ForeColor = System.Drawing.Color.White;
+            this.btnTestTab2.Location = new System.Drawing.Point(3, 139);
+            this.btnTestTab2.Name = "btnTestTab2";
+            this.btnTestTab2.Size = new System.Drawing.Size(40, 130);
+            this.btnTestTab2.TabIndex = 1;
+            this.btnTestTab2.Text = "탭2";
+            this.btnTestTab2.Click += new System.EventHandler(this.btnTestTab1_Click);
+            // 
+            // btnTestTab3
+            // 
+            this.btnTestTab3.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnTestTab3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnTestTab3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnTestTab3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnTestTab3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnTestTab3.ForeColor = System.Drawing.Color.White;
+            this.btnTestTab3.Location = new System.Drawing.Point(3, 275);
+            this.btnTestTab3.Name = "btnTestTab3";
+            this.btnTestTab3.Size = new System.Drawing.Size(40, 130);
+            this.btnTestTab3.TabIndex = 2;
+            this.btnTestTab3.Text = "탭3";
+            this.btnTestTab3.Click += new System.EventHandler(this.btnTestTab1_Click);
+            // 
             // KSCS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1260, 864);
+            this.ClientSize = new System.Drawing.Size(1260, 900);
+            this.Controls.Add(this.flpMainCategory);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.guna2CustomGradientPanel1);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.guna2Panel1);
-            this.Controls.Add(this.category_underline);
-            this.Controls.Add(this.guna2Button1);
             this.Controls.Add(this.guna2ControlBox1);
             this.Controls.Add(this.guna2VSeparator1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
+            this.Controls.Add(this.btnPlusCategory);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -523,12 +673,10 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "KSCS";
             this.Load += new System.EventHandler(this.KSCS_Load);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.KSCS_MouseDown);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.KSCS_MouseMove);
-            this.guna2Panel1.ResumeLayout(false);
-            this.guna2Panel1.PerformLayout();
             this.guna2CustomGradientPanel1.ResumeLayout(false);
             this.flowLayoutPanel2.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flpMainCategory.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -547,16 +695,12 @@
         private System.Windows.Forms.Label label5;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
-        private Guna.UI2.WinForms.Guna2Separator category_underline;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private System.Windows.Forms.Label label6;
-        private Guna.UI2.WinForms.Guna2CustomCheckBox guna2CustomCheckBox1;
+        private Guna.UI2.WinForms.Guna2Button btnSchoolCategory;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel1;
         private System.Windows.Forms.Label lblMonth;
-        private System.Windows.Forms.FlowLayoutPanel daysConatiner;
+        private System.Windows.Forms.FlowLayoutPanel flpDays;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label9;
@@ -570,6 +714,20 @@
         private Guna.UI2.WinForms.Guna2Button btnPrvious;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel categoryContainer;
+        private System.Windows.Forms.FlowLayoutPanel flpMainCategory;
+        private System.Windows.Forms.FlowLayoutPanel flpSchoolCategory;
+        private Guna.UI2.WinForms.Guna2Separator category_underline;
+        private Guna.UI2.WinForms.Guna2Button btnPersonalCategory;
+        private Guna.UI2.WinForms.Guna2Separator guna2Separator1;
+        private System.Windows.Forms.FlowLayoutPanel flpPersonalCategory;
+        private Guna.UI2.WinForms.Guna2Button btnEtcCategory;
+        private Guna.UI2.WinForms.Guna2Separator guna2Separator2;
+        private System.Windows.Forms.FlowLayoutPanel flpEtcCategory;
+        private Guna.UI2.WinForms.Guna2Button btnPlusCategory;
+        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
+        private Guna.UI2.WinForms.Guna2Button btnTestTab1;
+        private Guna.UI2.WinForms.Guna2Button btnTestTab2;
+        private Guna.UI2.WinForms.Guna2Button btnTestTab3;
     }
 }
 

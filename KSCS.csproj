@@ -91,6 +91,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Category.cs" />
     <Compile Include="customTapButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -121,6 +122,12 @@
     </Compile>
     <Compile Include="UserBlankDate.Designer.cs">
       <DependentUpon>UserBlankDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserCategory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserCategory.Designer.cs">
+      <DependentUpon>UserCategory.cs</DependentUpon>
     </Compile>
     <Compile Include="UserCheckedCategory.cs">
       <SubType>UserControl</SubType>
@@ -175,6 +182,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserBlankDate.resx">
       <DependentUpon>UserBlankDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserCategory.resx">
+      <DependentUpon>UserCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserCheckedCategory.resx">
       <DependentUpon>UserCheckedCategory.cs</DependentUpon>
@@ -241,6 +251,9 @@
     <None Include="Resources\free-icon-font-plus-3917757.png" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
+    <None Include="Image\plus.png" />
+=======
     <EmbeddedResource Include="Image\팡이우니 일기.png" />
   </ItemGroup>
   <ItemGroup>
@@ -257,6 +270,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Image\팡이비행.png" />
+>>>>>>> develop
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

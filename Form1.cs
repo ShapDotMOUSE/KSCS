@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace KSCS
 {
-    public partial class KSCS : Form
+    public partial class form : Form
     {
         private Point mousePoint;
         private int year, month;
         public static int static_month, static_year;
-        public KSCS()
+        public form()
         {
             InitializeComponent();
             

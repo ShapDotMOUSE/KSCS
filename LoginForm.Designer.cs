@@ -39,13 +39,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.guna2PictureBox7 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.label3 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox7)).BeginInit();
+            this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.guna2PictureBox7 = new Guna.UI2.WinForms.Guna2PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox7)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2Elipse1
@@ -148,7 +148,7 @@
             this.label1.Font = new System.Drawing.Font("나눔고딕", 10F);
             this.label1.Location = new System.Drawing.Point(33, 179);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 20);
+            this.label1.Size = new System.Drawing.Size(48, 23);
             this.label1.TabIndex = 7;
             this.label1.Text = "학번";
             // 
@@ -158,7 +158,7 @@
             this.label2.Font = new System.Drawing.Font("나눔고딕", 10F);
             this.label2.Location = new System.Drawing.Point(33, 255);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 20);
+            this.label2.Size = new System.Drawing.Size(86, 23);
             this.label2.TabIndex = 7;
             this.label2.Text = "비밀번호";
             // 
@@ -169,16 +169,42 @@
             this.label4.ForeColor = System.Drawing.Color.DimGray;
             this.label4.Location = new System.Drawing.Point(34, 432);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(330, 16);
+            this.label4.Size = new System.Drawing.Size(379, 19);
             this.label4.TabIndex = 8;
             this.label4.Text = "학번과 비번은 저장되지 않으며 로그인에만 사용됩니다.";
+            // 
+            // guna2Elipse2
+            // 
+            this.guna2Elipse2.BorderRadius = 10;
+            this.guna2Elipse2.TargetControl = this;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("나눔고딕", 10F);
+            this.label3.Location = new System.Drawing.Point(33, 324);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(111, 23);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "자동 로그인";
+            // 
+            // guna2PictureBox2
+            // 
+            this.guna2PictureBox2.Image = global::KSCS.Properties.Resources.팡이우니_일기;
+            this.guna2PictureBox2.ImageRotate = 0F;
+            this.guna2PictureBox2.Location = new System.Drawing.Point(336, 43);
+            this.guna2PictureBox2.Name = "guna2PictureBox2";
+            this.guna2PictureBox2.Size = new System.Drawing.Size(449, 426);
+            this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox2.TabIndex = 11;
+            this.guna2PictureBox2.TabStop = false;
             // 
             // guna2ImageButton1
             // 
             this.guna2ImageButton1.BackColor = System.Drawing.Color.Transparent;
             this.guna2ImageButton1.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
             this.guna2ImageButton1.HoverState.ImageSize = new System.Drawing.Size(18, 18);
-            this.guna2ImageButton1.Image = global::KSCS.Properties.Resources.caption;
+            this.guna2ImageButton1.Image = global::KSCS.Properties.Resources.free_icon_font_cross_3917759;
             this.guna2ImageButton1.ImageOffset = new System.Drawing.Point(0, 0);
             this.guna2ImageButton1.ImageRotate = 0F;
             this.guna2ImageButton1.ImageSize = new System.Drawing.Size(16, 16);
@@ -192,7 +218,7 @@
             // guna2PictureBox7
             // 
             this.guna2PictureBox7.BackColor = System.Drawing.Color.White;
-            this.guna2PictureBox7.Image = global::KSCS.Properties.Resources.우니팡이동그라미_2x;
+            this.guna2PictureBox7.Image = global::KSCS.Properties.Resources.우니팡이동그라미;
             this.guna2PictureBox7.ImageRotate = 0F;
             this.guna2PictureBox7.Location = new System.Drawing.Point(116, 64);
             this.guna2PictureBox7.Name = "guna2PictureBox7";
@@ -200,32 +226,6 @@
             this.guna2PictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.guna2PictureBox7.TabIndex = 1;
             this.guna2PictureBox7.TabStop = false;
-            // 
-            // guna2PictureBox2
-            // 
-            this.guna2PictureBox2.Image = global::KSCS.Properties.Resources.팡이우니_일기;
-            this.guna2PictureBox2.ImageRotate = 0F;
-            this.guna2PictureBox2.Location = new System.Drawing.Point(336, 43);
-            this.guna2PictureBox2.Name = "guna2PictureBox2";
-            this.guna2PictureBox2.Size = new System.Drawing.Size(449, 426);
-            this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox2.TabIndex = 11;
-            this.guna2PictureBox2.TabStop = false;
-            // 
-            // guna2Elipse2
-            // 
-            this.guna2Elipse2.BorderRadius = 10;
-            this.guna2Elipse2.TargetControl = this;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("나눔고딕", 10F);
-            this.label3.Location = new System.Drawing.Point(33, 324);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(94, 20);
-            this.label3.TabIndex = 17;
-            this.label3.Text = "자동 로그인";
             // 
             // LoginForm
             // 
@@ -248,8 +248,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginForm";
             this.Resize += new System.EventHandler(this.LoginForm_Resize);
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox7)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

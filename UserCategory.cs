@@ -41,6 +41,13 @@ namespace KSCS
             txtCategory.Visible = false;
         }
 
+        private void UserCategory_Load(object sender, EventArgs e)
+        {
+            txtCategory.MaxLength = 4;
+            this.ActiveControl = txtCategory;
+            txtCategory.Focus();
+        }
+
         private void txtCategory_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -52,13 +59,6 @@ namespace KSCS
                     txtCategory.Visible= false;
                 }
             }
-        }
-
-        private void UserCategory_Load(object sender, EventArgs e)
-        {
-            txtCategory.MaxLength = 4;
-            this.ActiveControl= txtCategory;
-            txtCategory.Focus();
         }
 
         private void lblCategory_MouseDoubleClick(object sender, MouseEventArgs e)

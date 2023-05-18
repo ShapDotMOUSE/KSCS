@@ -67,10 +67,17 @@ namespace KSCS
                     this.Name = "UCCategory" + txtCategory.Text;
                     txtCategory.Visible = false;
                 }
-            }else if(e.KeyCode == Keys.Escape && lblCategory.Text.Length > 0)
+            }else if(e.KeyCode == Keys.Escape)
             {
-                txtCategory.Visible = false;
-                txtCategory.Clear();
+                if (lblCategory.Text.Length > 0)
+                {
+                    txtCategory.Visible = false;
+                    txtCategory.Clear();
+                }
+                else
+                {
+                    ((FlowLayoutPanel)this.Parent).Controls.Remove(this);
+                }
             }
         }
 

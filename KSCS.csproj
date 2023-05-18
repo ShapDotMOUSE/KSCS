@@ -230,44 +230,47 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Image\user.png" />
+    <EmbeddedResource Include="Resources\user.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Image\그립톡-기본.png" />
+    <EmbeddedResource Include="Resources\그립톡-기본.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Image\nextIcon.png" />
+    <EmbeddedResource Include="Resources\nextIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Image\previousIcon.png" />
+    <EmbeddedResource Include="Resources\previousIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\free-icon-font-cross-3917759.png" />
+    <EmbeddedResource Include="Resources\free-icon-font-cross-3917759.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\free-icon-font-cross-39177591.png" />
+    <EmbeddedResource Include="Resources\free-icon-font-cross-39177591.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\free-icon-font-plus-3917757.png" />
+    <EmbeddedResource Include="Resources\free-icon-font-plus-3917757.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Image\plus.png" />
-    <EmbeddedResource Include="Image\팡이우니 일기.png" />
+    <EmbeddedResource Include="Resources\plus.png" />
+    <EmbeddedResource Include="Resources\팡이우니 일기.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Image\우니팡이동그라미.png" />
+    <EmbeddedResource Include="Resources\우니팡이동그라미.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Image\caption.png" />
+    <EmbeddedResource Include="Resources\caption.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Image\우니커피.png" />
+    <EmbeddedResource Include="Resources\우니커피.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Image\우니열공.png" />
+    <EmbeddedResource Include="Resources\우니열공.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Image\팡이비행.png" />
+    <EmbeddedResource Include="Resources\팡이비행.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Image\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -85,14 +85,14 @@ namespace KSCS
 
         public void ChageSubdivisionName(string Old, string New)
         {
-            string ParentCategory = KSCS.Category.SubCategorys[Old] as string;
+            string ParentCategory = form.Category.SubCategorys[Old] as string;
             //대분류단에서 이름 수정
-            HashSet<string> Set = KSCS.Category.ParentCategorys[ParentCategory] as HashSet<string>;
+            HashSet<string> Set = form.Category.ParentCategorys[ParentCategory] as HashSet<string>;
             Set.Remove(Old);
             Set.Add(New);
             //하위 카테고리 단에서의 수정
-            KSCS.Category.SubCategorys.Remove(Old);
-            KSCS.Category.SubCategorys.Add(New, ParentCategory);
+            form.Category.SubCategorys.Remove(Old);
+            form.Category.SubCategorys.Add(New, ParentCategory);
 
             foreach(DictionaryEntry tab in Tabs)
             {

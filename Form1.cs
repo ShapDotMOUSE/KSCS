@@ -36,7 +36,7 @@ namespace KSCS
         private void DisplayCategery()
         {
             
-            foreach (var item in Category.MainCategory["ShcoolCategory"] as HashSet<string>)
+            foreach (var item in Category.MainCategory["SchoolCategory"] as HashSet<string>)
             {
                 UserCategory uc = new UserCategory();
                 uc.SetBasicMode(item);
@@ -155,6 +155,12 @@ namespace KSCS
         private UserCategory cloneUcCategory; // 드래그 중인 카테고리 유저 컨트롤 복사본
         private Point MouseLocation;
 
+        public void UndoCategory()
+        {
+            this.Controls.Remove(cloneUcCategory);
+            cloneUcCategory.Dispose();
+            draggedUcCategory.Visible = true;
+        }
         private void UcCategory_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             draggedUcCategory = (UserCategory)sender;
@@ -172,62 +178,69 @@ namespace KSCS
 
         private void UcCategory_MouseClick(object sender, MouseEventArgs e)
         {
-            string MainCategoryName;
-            if(MouseLocation.Y < 425)
+            string NewMainCategory;
+            if(MouseLocation.Y < flpMainCategory.Location.Y + flpPersonalCategory.Location.Y)
             {
                 //학교
-                MainCategoryName = "ShcoolCategory";
+                NewMainCategory = "SchoolCategory";
                 
             }
-            else if (MouseLocation.Y < 425 + flpPersonalCategory.Height)
+            else if (MouseLocation.Y < flpMainCategory.Location.Y + flpEtcCategory.Location.Y)
             {
                 //개인
-                MainCategoryName = "PersonalCategory";
+                NewMainCategory = "PersonalCategory";
             }
             else
             {
                 //기타
-                MainCategoryName = "EtcCategory";
+                NewMainCategory = "EtcCategory";
             }
 
-            if(MainCategoryName.Length > 0)
+            if(NewMainCategory.Length > 0)
             {
                 draggedUcCategory.Visible = true;
-                string WhatMain = Category.Subdivision[cloneUcCategory.GetText()] as string;
-                if (WhatMain == MainCategoryName)
+                string OringMainCategory = Category.Subdivision[cloneUcCategory.GetText()] as string;
+                if (OringMainCategory == NewMainCategory)
                 {
-                    this.Controls.Remove(cloneUcCategory);
-                    cloneUcCategory.Dispose();
-                    draggedUcCategory.Visible = true;
+                    UndoCategory();
                 }
                 else
                 {
-                    switch (WhatMain)
-                    {
-                        case "ShcoolCategory":
-                            flpSchoolCategory.Controls.Remove(draggedUcCategory);
-                            break;
-                        case "PersonalCategory":
-                            flpPersonalCategory.Controls.Remove(draggedUcCategory);
-                            break;
-                        case "EtcCategory":
-                            flpEtcCategory.Controls.Remove(draggedUcCategory);
-                            break;
-                    }
                     this.Controls.Remove(cloneUcCategory);
-                    switch (MainCategoryName)
-                    {
-                        case "ShcoolCategory":
-                            flpSchoolCategory.Controls.Add(draggedUcCategory);
-                            break;
-                        case "PersonalCategory":
-                            flpPersonalCategory.Controls.Add(draggedUcCategory);
-                            break;
-                        case "EtcCategory":
-                            flpEtcCategory.Controls.Add(draggedUcCategory);
-                            break;
-                    }
-                    Category.ChangeSubdivision(MainCategoryName, cloneUcCategory.GetText());
+                    FlowLayoutPanel FlpNewCategory = flpMainCategory.Controls["flp" + NewMainCategory] as FlowLayoutPanel;
+                    FlowLayoutPanel FlpOriginCategory = flpMainCategory.Controls["flp" + OringMainCategory] as FlowLayoutPanel;
+                    FlpOriginCategory.Controls.Remove(draggedUcCategory);
+                    FlpNewCategory.Controls.Add(draggedUcCategory);
+                    Category.ChangeSubdivision(NewMainCategory, cloneUcCategory.GetText());
+                    draggedUcCategory = null;
+                    cloneUcCategory = null;
+
+                    //switch (OringMainCategory)
+                    //{
+                    //    case "ShcoolCategory":
+                    //        flpSchoolCategory.Controls.Remove(draggedUcCategory);
+                    //        break;
+                    //    case "PersonalCategory":
+                    //        flpPersonalCategory.Controls.Remove(draggedUcCategory);
+                    //        break;
+                    //    case "EtcCategory":
+                    //        flpEtcCategory.Controls.Remove(draggedUcCategory);
+                    //        break;
+                    //}
+
+                    //switch (NewMainCategory)
+                    //{
+                    //    case "ShcoolCategory":
+                    //        flpSchoolCategory.Controls.Add(draggedUcCategory);
+                    //        break;
+                    //    case "PersonalCategory":
+                    //        flpPersonalCategory.Controls.Add(draggedUcCategory);
+                    //        break;
+                    //    case "EtcCategory":
+                    //        flpEtcCategory.Controls.Add(draggedUcCategory);
+                    //        break;
+                    //}
+
                 }
             }
             
@@ -236,13 +249,10 @@ namespace KSCS
         private void UcCategory_MouseMove(object sender, MouseEventArgs e)
         {
             MouseLocation = new Point((Cursor.Position.X - cloneUcCategory.Width/2) - Left, (Cursor.Position.Y - cloneUcCategory.Height / 2) - Top);
-            guna2HtmlLabel1.Text = MouseLocation.ToString();
             if ((MouseLocation.X < flpMainCategory.Location.X - 100 || MouseLocation.X > flpMainCategory.Location.X + 130) 
                 || (MouseLocation.Y < flpMainCategory.Location.Y || MouseLocation.Y > flpMainCategory.Location.Y + 450))
             {
-                this.Controls.Remove(cloneUcCategory);
-                cloneUcCategory.Dispose();
-                draggedUcCategory.Visible = true;
+                UndoCategory();
             }
             cloneUcCategory.Location = MouseLocation;
         }

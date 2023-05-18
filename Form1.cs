@@ -29,9 +29,12 @@ namespace KSCS
             seperator_vertical.FillColor = Color.FromArgb(245, 245, 245);
             seperator_horizon.FillColor = Color.FromArgb(245, 245, 245);
 
+
             Category.TestCategory();
+
             dispalyDate();
             DisplayCategery();
+            SetCheckedCategoryByTab();
         }
 
         //카테고리 함수---------------------------------------------------------------------------------------------------------------------------------------
@@ -66,14 +69,15 @@ namespace KSCS
         //탭 함수-------------------------------------------------------------------------------------------------------------------------------------------
         private void SetCheckedCategoryByTab()
         {
-            foreach (FlowLayoutPanel flp in flpMainCategory.Controls)
+            FlowLayoutPanel[]flp = { flpSchoolCategory, flpPersonalCategory, flpEtcCategory };
+            foreach (FlowLayoutPanel panel in flp)
             {
-                foreach (UserCategory category in flp.Controls)
+                foreach (UserCategory category in panel.Controls)
                 {
-                    category.SetChecked(Category.Checked.Contains(category.GetName()));
+                    category.SetChecked(Category.Checked.Contains(category.GetText()));
                 }
-
             }
+
         }
 
         //달력 함수-----------------------------------------------------------------------------------------------------------------------------------------

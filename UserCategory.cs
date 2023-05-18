@@ -32,6 +32,7 @@ namespace KSCS
         {
             lblCategory.Text = txt;
             txtCategory.Visible = false;
+            lblCategory.MouseDoubleClick -= lblCategory_MouseDoubleClick;
         }
 
         public void SetBasicMode(string txt)

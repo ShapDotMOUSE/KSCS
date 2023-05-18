@@ -71,11 +71,13 @@ namespace KSCS
                     lblCategory.Text = txtCategory.Text;
                     this.Name = "UCCategory" + txtCategory.Text;
                     txtCategory.Visible = false;
+                    lblCategory.Visible = true;
                 }
             }else if(e.KeyCode == Keys.Escape)
             {
                 if (lblCategory.Text.Length > 0)
                 {
+                    lblCategory.Visible = true;
                     txtCategory.Visible = false;
                     txtCategory.Clear();
                 }
@@ -89,6 +91,7 @@ namespace KSCS
         private void lblCategory_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             txtCategory.Visible = true;
+            lblCategory.Visible = false;
             txtCategory.Focus();
         }
 
@@ -96,11 +99,11 @@ namespace KSCS
         {
             if(chkCategory.Checked)
             {
-                KSCS.Category.AddChecked(lblCategory.Text);
+                KSCS.Category.AddChecked(KSCS.TabName, lblCategory.Text);
             }
             else
             {
-                KSCS.Category.DeletChecked(lblCategory.Text);
+                KSCS.Category.DeletChecked(KSCS.TabName, lblCategory.Text);
             }
         }
     }

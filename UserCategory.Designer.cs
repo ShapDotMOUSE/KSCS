@@ -82,7 +82,7 @@
             this.txtCategory.PasswordChar = '\0';
             this.txtCategory.PlaceholderText = "";
             this.txtCategory.SelectedText = "";
-            this.txtCategory.Size = new System.Drawing.Size(70, 17);
+            this.txtCategory.Size = new System.Drawing.Size(108, 17);
             this.txtCategory.TabIndex = 17;
             this.txtCategory.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCategory_KeyDown);
             // 

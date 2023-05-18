@@ -60,6 +60,10 @@ namespace KSCS
                     this.Name = "UCCategory" + txtCategory.Text;
                     txtCategory.Visible= false;
                 }
+            }else if(e.KeyCode == Keys.Escape)
+            {
+                txtCategory.Visible = false;
+                txtCategory.Clear();
             }
         }
 

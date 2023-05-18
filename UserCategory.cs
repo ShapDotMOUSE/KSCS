@@ -55,6 +55,7 @@ namespace KSCS
             {
                 if (txtCategory.Text.Length > 0)
                 {
+                    KSCS.Category.ChageSubdivisionName(lblCategory.Text, txtCategory.Text);
                     lblCategory.Text = txtCategory.Text;
                     this.Name = "UCCategory" + txtCategory.Text;
                     txtCategory.Visible= false;

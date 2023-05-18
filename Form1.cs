@@ -28,11 +28,13 @@ namespace KSCS
             this.BackColor = Color.FromArgb(58, 5, 31);
             seperator_vertical.FillColor = Color.FromArgb(245, 245, 245);
             seperator_horizon.FillColor = Color.FromArgb(245, 245, 245);
-            
+
+            Category.TestCategory();
             dispalyDate();
             DisplayCategery();
         }
 
+        //카테고리 함수---------------------------------------------------------------------------------------------------------------------------------------
         private void DisplayCategery()
         {
             
@@ -61,6 +63,20 @@ namespace KSCS
             }
         }
 
+        //탭 함수-------------------------------------------------------------------------------------------------------------------------------------------
+        private void SetCheckedCategoryByTab()
+        {
+            foreach (FlowLayoutPanel flp in flpMainCategory.Controls)
+            {
+                foreach (UserCategory category in flp.Controls)
+                {
+                    category.SetChecked(Category.Checked.Contains(category.GetName()));
+                }
+
+            }
+        }
+
+        //달력 함수-----------------------------------------------------------------------------------------------------------------------------------------
         private void dispalyDate()
         {
             DateTime now = DateTime.Now;
@@ -97,11 +113,13 @@ namespace KSCS
             }
         }
 
+        //기타---------------------------------------------------------------------------------------------------------------------------------------------
         private void guna2ControlBox1_Click(object sender, EventArgs e)
         {
             Close();
         }
 
+        //달력 컨트롤--------------------------------------------------------------------------------------------------------------------------------------
         private void btnNext_Click(object sender, EventArgs e)
         {
             if (month == 12)
@@ -115,6 +133,21 @@ namespace KSCS
             createDates();
         }
 
+        private void btnPrvious_Click(object sender, EventArgs e)
+        {
+            if (month == 1)
+            {
+                month = 12; year--;
+            }
+            else
+            {
+                month--;
+            }
+            createDates();
+
+        }
+
+        //카테고리 컨트롤------------------------------------------------------------------------------------------------------------------------------------
         private void btnSchoolCategory_Click(object sender, EventArgs e)
         {
             flpSchoolCategory.Visible = !flpSchoolCategory.Visible;
@@ -136,21 +169,7 @@ namespace KSCS
             flpEtcCategory.Controls.Add(category);
         }
 
-
-        private void btnPrvious_Click(object sender, EventArgs e)
-        {
-            if (month == 1)
-            {
-                month = 12; year--;
-            }
-            else
-            {
-                month--;
-            }
-            createDates();
-
-        }
-
+        //카테고리 유저 컨트롤------------------------------------------------------------------------------------------------------------------------------------
         private UserCategory draggedUcCategory; // 드래그 중인 카테고리 유저 컨트롤
         private UserCategory cloneUcCategory; // 드래그 중인 카테고리 유저 컨트롤 복사본
         private Point MouseLocation;
@@ -230,5 +249,24 @@ namespace KSCS
             cloneUcCategory.Location = MouseLocation;
         }
 
+
+        //탭 컨트롤------------------------------------------------------------------------------------------------------------------------------------
+        private void btnTestTab1_Click(object sender, EventArgs e)
+        {
+            Category.TestTab1();
+            SetCheckedCategoryByTab();
+        }
+
+        private void btnTestTab2_Click(object sender, EventArgs e)
+        {
+            Category.TestTab2();
+            SetCheckedCategoryByTab();
+        }
+
+        private void btnTestTab3_Click(object sender, EventArgs e)
+        {
+            Category.TestTab3();
+            SetCheckedCategoryByTab();
+        }
     }
 }

@@ -55,13 +55,15 @@ namespace KSCS
 
         public void ChageSubdivisionName(string Old, string New)
         {
-            //대분류단에서 이름 수정
             string ParentCategory = KSCS.Category.SubCategory[Old] as string;
+            //대분류단에서 이름 수정
             HashSet<string> Set = KSCS.Category.ParentCategory[ParentCategory] as HashSet<string>;
             Set.Remove(Old);
             Set.Add(New);
             KSCS.Category.ParentCategory[ParentCategory] = Set;
             //하위 카테고리 단에서의 수정
+            KSCS.Category.SubCategory.Remove(Old);
+            KSCS.Category.SubCategory.Add(New, ParentCategory);
         }
 
         public void ChangeParentOfSub(string NewMain, string Sub)

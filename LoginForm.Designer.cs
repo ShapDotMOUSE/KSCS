@@ -42,8 +42,8 @@
             this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.guna2PictureBox7 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -132,7 +132,7 @@
             this.guna2CustomCheckBox1.CheckedState.BorderThickness = 1;
             this.guna2CustomCheckBox1.CheckedState.FillColor = System.Drawing.Color.White;
             this.guna2CustomCheckBox1.CheckMarkColor = System.Drawing.Color.Black;
-            this.guna2CustomCheckBox1.Location = new System.Drawing.Point(111, 326);
+            this.guna2CustomCheckBox1.Location = new System.Drawing.Point(111, 325);
             this.guna2CustomCheckBox1.Name = "guna2CustomCheckBox1";
             this.guna2CustomCheckBox1.Size = new System.Drawing.Size(14, 14);
             this.guna2CustomCheckBox1.TabIndex = 6;
@@ -212,6 +212,11 @@
             this.guna2PictureBox2.TabIndex = 11;
             this.guna2PictureBox2.TabStop = false;
             // 
+            // guna2Elipse2
+            // 
+            this.guna2Elipse2.BorderRadius = 10;
+            this.guna2Elipse2.TargetControl = this;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -219,13 +224,8 @@
             this.label3.Location = new System.Drawing.Point(33, 324);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(94, 20);
-            this.label3.TabIndex = 16;
+            this.label3.TabIndex = 17;
             this.label3.Text = "자동 로그인";
-            // 
-            // guna2Elipse2
-            // 
-            this.guna2Elipse2.BorderRadius = 10;
-            this.guna2Elipse2.TargetControl = this;
             // 
             // LoginForm
             // 
@@ -247,6 +247,7 @@
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginForm";
+            this.Resize += new System.EventHandler(this.LoginForm_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).EndInit();
             this.ResumeLayout(false);
@@ -269,7 +270,7 @@
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox2;
-        private System.Windows.Forms.Label label3;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse2;
+        private System.Windows.Forms.Label label3;
     }
 }

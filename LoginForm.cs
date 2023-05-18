@@ -21,5 +21,10 @@ namespace KSCS
         {
             Close();
         }
+
+        private void LoginForm_Resize(object sender, EventArgs e)
+        {
+            this.Size = new Size(800, 500);
+        }
     }
 }

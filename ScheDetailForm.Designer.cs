@@ -375,7 +375,7 @@
             this.btnAddSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddSchedule.ForeColor = System.Drawing.Color.Black;
             this.btnAddSchedule.Image = global::KSCS.Properties.Resources.free_icon_font_plus_3917757;
-            this.btnAddSchedule.Location = new System.Drawing.Point(22, 22);
+            this.btnAddSchedule.Location = new System.Drawing.Point(22, 34);
             this.btnAddSchedule.Name = "btnAddSchedule";
             this.btnAddSchedule.Size = new System.Drawing.Size(167, 40);
             this.btnAddSchedule.TabIndex = 45;
@@ -596,7 +596,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ScheDetailForm";
-            this.Text = "ScheduleDetailForm";
+            this.Text = "2";
             this.panelTop.ResumeLayout(false);
             this.panelLabel.ResumeLayout(false);
             this.panelLabel.PerformLayout();

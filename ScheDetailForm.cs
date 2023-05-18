@@ -17,23 +17,24 @@ namespace KSCS
     {
         public event EventHandler AddEvent;
 
-        MySqlConnection connection=DatabaseConnection.getDBConnection();
-        List<Schedule> scheduleList = new List<Schedule>();
+        MySqlConnection connection = DatabaseConnection.getDBConnection();
+        List<Schedule> scheduleList = new List<Schedule>(); //하루 내의 schedule list
         Dictionary<string, string[]> categoryDict = new Dictionary<string, string[]>();
-        string student_id = "2019203082";
+        string student_id = "2019203082"; //초기 학번
         int selectedScheduleIndex=-1;
+        DateTime click_date = new DateTime(KSCS.static_year, KSCS.static_month, UserDate.static_date); //추가
         public ScheDetailForm()
         {
             InitializeComponent();
             InitializeGuna2DateTimePicker();
-            connection.Open();
+            //connection.Open();
             InitializeDatabase();
-            panelSchedules.VerticalScroll.Visible = false;
+            panelSchedules.VerticalScroll.Visible = false; 
         }
 
         public void InitializeDatabase()    
         {
-            string selectQuery = string.Format("SELECT * from Schedule JOIN Category ON Schedule.category_id=Category.id JOIN StudentCategory ON StudentCategory.student_id=Schedule.student_id and Schedule.category_id=Category.id and Category.id=StudentCategory.category_id WHERE Schedule.student_id={0} ORDER BY startDate DESC;", student_id);
+            string selectQuery = string.Format("SELECT * from Schedule JOIN Category ON Schedule.category_id=Category.id JOIN StudentCategory ON StudentCategory.student_id=Schedule.student_id and Schedule.category_id=Category.id and Category.id=StudentCategory.category_id WHERE Schedule.student_id={0} and DATE_FORMAT(startDate, '%Y-%m-%d') = '{1}' ORDER BY startDate DESC;", student_id, click_date.ToString("yyyy-MM-dd"));
             MySqlCommand cmd = new MySqlCommand(selectQuery, connection);
             MySqlDataReader table = cmd.ExecuteReader();
             int index = 0;
@@ -91,9 +92,11 @@ namespace KSCS
 
         private void InitializeGuna2DateTimePicker()
         {
-            dtpStartDate.Value = DateTime.ParseExact(DateTime.Now.ToString("yyyy-MM-dd ddd"), "yyyy-MM-dd ddd", null);
+            //DateTime.Now -> 클릭한 날짜
+            //DateTime click_date = new DateTime(KSCS.static_year, KSCS.static_month, UserDate.static_date);
+            dtpStartDate.Value = DateTime.ParseExact(click_date.ToString("yyyy-MM-dd ddd"), "yyyy-MM-dd ddd", null);
             dtpStartTime.Value = DateTime.ParseExact("00:00", "HH:mm", null);
-            dtpEndDate.Value = DateTime.ParseExact(DateTime.Now.ToString("yyyy-MM-dd ddd"), "yyyy-MM-dd ddd", null);
+            dtpEndDate.Value = DateTime.ParseExact(click_date.ToString("yyyy-MM-dd ddd"), "yyyy-MM-dd ddd", null);
             dtpEndTime.Value = DateTime.ParseExact("00:00", "HH:mm", null);
         }
 

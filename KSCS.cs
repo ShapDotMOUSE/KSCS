@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace KSCS
 {
@@ -15,10 +16,18 @@ namespace KSCS
         private Point mousePoint;
         private int year, month;
         public static int static_month, static_year;
+        MySqlConnection connection = DatabaseConnection.getDBConnection(); //MySQL
+        List<Schedule> scheduleList = new List<Schedule>(); //한달 단위 schedule list
         public KSCS()
         {
             InitializeComponent();
-            
+            connection.Open(); //MySQL 연결
+            InitializeDatabase();
+        }
+
+        public void InitializeDatabase()
+        {
+
         }
 
         private void KSCS_Load(object sender, EventArgs e)

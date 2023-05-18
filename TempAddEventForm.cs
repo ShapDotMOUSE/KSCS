@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace KSCS
 {
-    public partial class TempAddEventForm : Form
+    public partial class TempAddEventForm : Form //삭제 해도 될 듯
     {
         public event EventHandler AddEvent;
         

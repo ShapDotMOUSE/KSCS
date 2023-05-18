@@ -12,7 +12,7 @@ namespace KSCS
 {
     public partial class UserEvent : UserControl
     {
-        public enum EventType
+        public enum EventType //MySQL 에 있는 유저 이벤트 타입을 갖고 와야 할듯 id순으로 
         {
             None = 0,
             School = 1,

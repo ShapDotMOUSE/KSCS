@@ -13,12 +13,13 @@ namespace KSCS
         public Hashtable SubCategory = new Hashtable();
         public HashSet<string> Checked = new HashSet<string>();
 
-        public Category() { 
+        public void TestCategory()
+        {
             HashSet<string> SchoolCategories = new HashSet<string>();
             SchoolCategories.Add("학사일정");
             SchoolCategories.Add("과제");
             SchoolCategories.Add("퀴즈");
-            SchoolCategories.Add("온라인 강의");
+            SchoolCategories.Add("온라인강의");
             HashSet<string> PersonalCategories = new HashSet<string>();
             PersonalCategories.Add("생일");
             PersonalCategories.Add("약속");
@@ -45,7 +46,53 @@ namespace KSCS
             SubCategory["기타2"] = "EtcCategory";
             SubCategory["기타3"] = "EtcCategory";
 
+            Checked.Add("학사일정");
+            Checked.Add("과제");
+            Checked.Add("퀴즈");
+            Checked.Add("온라인강의");
+            Checked.Add("생일");
+            Checked.Add("약속");
+            Checked.Add("식사");
+            Checked.Add("기타1");
+            Checked.Add("기타2");
+            Checked.Add("기타3");
         }
+
+        public void TestTab1()
+        {
+            Checked.Clear();
+            Checked.Add("학사일정");
+            Checked.Add("온라인강의");
+            Checked.Add("약속");
+            Checked.Add("기타1");
+        }
+
+        public void TestTab2()
+        {
+            Checked.Clear();
+            Checked.Add("학사일정");
+            Checked.Add("과제");
+            Checked.Add("퀴즈");
+            Checked.Add("온라인강의");
+            Checked.Add("기타1");
+            Checked.Add("기타2");
+        }
+
+        public void TestTab3()
+        {
+            Checked.Clear();
+            Checked.Add("학사일정");
+            Checked.Add("과제");
+            Checked.Add("퀴즈");
+            Checked.Add("온라인강의");
+            Checked.Add("생일");
+            Checked.Add("약속");
+            Checked.Add("식사");
+            Checked.Add("기타1");
+            Checked.Add("기타2");
+            Checked.Add("기타3");
+        }
+
         public void AddSubdivision(string Main, string Sub)
         {
             HashSet<string> SubdivisionSet = ParentCategory[Main] as HashSet<string>;
@@ -87,7 +134,7 @@ namespace KSCS
             Checked.Add(Sub);
         }
 
-        public void DelteChecked(string Sub)
+        public void DeletChecked(string Sub)
         {
             if (Checked.Contains(Sub))
             {

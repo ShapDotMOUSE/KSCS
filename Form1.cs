@@ -1,12 +1,26 @@
-﻿using System;
+﻿using crypto;
+using Guna.UI2.WinForms;
+using Org.BouncyCastle.Crypto;
+using Org.BouncyCastle.Security;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http.Headers;
+using System.Net.Http;
+using System.Net;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
+using Label = System.Windows.Forms.Label;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using Panel = System.Windows.Forms.Panel;
 
 namespace KSCS
 {
@@ -15,13 +29,15 @@ namespace KSCS
         private Point mousePoint;
         private int year, month;
         public static int static_month, static_year;
+        private Dictionary<string, List<Schedule>> KlasSchedule = new Dictionary<string, List<Schedule>>();
+        Dictionary<string, string> KLAS_LECTURE_NUM = new Dictionary<string, string>();
+
         public KSCS()
         {
             InitializeComponent();
-            
         }
 
-        private void KSCS_Load(object sender, EventArgs e)
+        private async void KSCS_Load(object sender, EventArgs e)
         {
             this.BackColor = Color.FromArgb(58, 5, 31);
             seperator_vertical.FillColor = Color.FromArgb(245, 245, 245);
@@ -30,6 +46,10 @@ namespace KSCS
             dispalyDate();
             AddCategory("학사일정");
             AddCategory("테스트용");
+            await Klas_Load();
+            MagamButtonEnable();
+            Guna2MessageDialog message = new Guna2MessageDialog();
+            message.Show("KLAS 로딩 완료");
         }
 
         private void dispalyDate()
@@ -68,6 +88,179 @@ namespace KSCS
             }
         }
 
+        private void MagamButtonEnable()
+        {
+            btnMagam_Click(btnMagam_HomeWork,new EventArgs());
+            btnMagamLecture.Enabled = true;
+            btnMagam_HomeWork.Enabled = true;
+            btnMagam_Quiz.Enabled = true;
+            btnMagam_TeamProz.Enabled = true;
+        }
+
+        private async Task Klas_Load()
+        {
+            KlasSchedule.Add("과제", new List<Schedule>());
+            KlasSchedule.Add("퀴즈", new List<Schedule>());
+            KlasSchedule.Add("강의", new List<Schedule>());
+            KlasSchedule.Add("팀플", new List<Schedule>());
+            KlasSchedule.Add("개인", new List<Schedule>());
+
+            Dictionary<string, string> KLAS_URL = new Dictionary<string, string>
+            {
+                { "LoginSecurity", "https://klas.kw.ac.kr/usr/cmn/login/LoginSecurity.do" },
+                { "LoginConfirm","https://klas.kw.ac.kr/usr/cmn/login/LoginConfirm.do" },
+                { "StdHome","https://klas.kw.ac.kr/std/cmn/frame/StdHome.do" },
+                { "OnlineStdList","https://klas.kw.ac.kr/std/lis/evltn/SelectOnlineCntntsStdList.do" },
+                { "TaskStdList","https://klas.kw.ac.kr/std/lis/evltn/TaskStdList.do" },
+                { "PrjctStdList","https://klas.kw.ac.kr/std/lis/evltn/PrjctStdList.do"},
+                { "QuizStdList","https://klas.kw.ac.kr/std/lis/evltn/AnytmQuizStdList.do" }
+            };
+
+
+            var httpClientHandler = new HttpClientHandler()
+            {
+                UseProxy = true,
+                UseCookies = true,
+                UseDefaultCredentials = true,
+                PreAuthenticate = true
+
+            };
+            CookieContainer cookieContainer = new CookieContainer();
+            httpClientHandler.CookieContainer = cookieContainer;
+            var httpClient = new HttpClient(httpClientHandler)
+            {
+                Timeout = TimeSpan.FromSeconds(30),
+            };
+
+            httpClient.DefaultRequestHeaders.Accept.Clear();
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("*/*"));
+            httpClient.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 Edge/16.16299");
+
+
+            var publicKeyRequest = new HttpRequestMessage(HttpMethod.Post, KLAS_URL["LoginSecurity"])
+            {
+                Content = new StringContent(""),
+            };
+            try
+            {
+                publicKeyRequest.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json; charset=UTF-8");
+
+                HttpResponseMessage response = await httpClient.SendAsync(publicKeyRequest);
+
+                string responseBody = await response.Content.ReadAsStringAsync();
+                response.EnsureSuccessStatusCode();
+                JObject security = JObject.Parse(responseBody);
+
+                // 로그인 토큰 생성
+                var input = new
+                {
+                    loginId = "",
+                    loginPwd = "",
+                    storeIdYn = "N"
+                };
+
+                return;
+                var loginJson = JsonConvert.SerializeObject(input);
+
+
+                var rsa = new RSACryptoServiceProvider();
+                byte[] publicKeyBytes = Convert.FromBase64String(security["publicKey"].ToString());
+                AsymmetricKeyParameter publicKey = PublicKeyFactory.CreateKey(publicKeyBytes);
+
+                IBufferedCipher cipher = CipherUtilities.GetCipher("RSA/None/PKCS1Padding");
+                cipher.Init(true, publicKey);
+
+                byte[] encryptedBytes = cipher.DoFinal(Encoding.UTF8.GetBytes(loginJson));
+
+                string encryptedToen = Convert.ToBase64String(encryptedBytes);
+
+                var login = new
+                {
+                    loginToken = encryptedToen,
+                    redirectUrl = "",
+                    redirectTabUrl = ""
+                };
+                string loginToken = JsonConvert.SerializeObject(login);
+                var loginRequest = new HttpRequestMessage(HttpMethod.Post, KLAS_URL["LoginConfirm"])
+                {
+                    Content = new StringContent(loginToken, Encoding.UTF8, "application/json")
+                };
+
+                HttpResponseMessage loginResponse = await httpClient.SendAsync(loginRequest);
+                loginResponse.EnsureSuccessStatusCode();
+                var sbjectListRequest = new HttpRequestMessage(HttpMethod.Post, KLAS_URL["StdHome"])
+                {
+                    Content = new StringContent("{}", Encoding.UTF8, "application/json")
+                };
+
+                HttpResponseMessage sbjectListResponse = await httpClient.SendAsync(sbjectListRequest);
+                string data = await sbjectListResponse.Content.ReadAsStringAsync();
+                JObject sbjectList = JObject.Parse(data);
+                foreach (JToken subj in sbjectList["atnlcSbjectList"])
+                {
+                    var magamContent = new
+                    {
+                        selectSubj = subj["subj"].ToString(),
+                        selectYearhakgi = "2023,1",
+                        selectChangeYn = "Y"
+                    };
+                    Schedule schedule;
+                    var magamOnlineRequest = new HttpRequestMessage(HttpMethod.Post, KLAS_URL["OnlineStdList"]) { Content = new StringContent(JsonConvert.SerializeObject(magamContent), Encoding.UTF8, "application/json") };
+                    var magamTaskRequest = new HttpRequestMessage(HttpMethod.Post, KLAS_URL["TaskStdList"]) { Content = new StringContent(JsonConvert.SerializeObject(magamContent), Encoding.UTF8, "application/json") };
+                    var magamPrjctRequest = new HttpRequestMessage(HttpMethod.Post, KLAS_URL["PrjctStdList"]) { Content = new StringContent(JsonConvert.SerializeObject(magamContent), Encoding.UTF8, "application/json") };
+                    var magamQuizRequest = new HttpRequestMessage(HttpMethod.Post, KLAS_URL["QuizStdList"]) { Content = new StringContent(JsonConvert.SerializeObject(magamContent), Encoding.UTF8, "application/json") };
+                    KLAS_LECTURE_NUM.Add(subj["subjNm"].ToString(), subj["subj"].ToString());
+                    HttpResponseMessage magamOnlineResponse = await httpClient.SendAsync(magamOnlineRequest);
+                    string onlineData = await magamOnlineResponse.Content.ReadAsStringAsync();
+                    var online = JArray.Parse(onlineData);
+                    foreach (JToken o in online)
+                    {
+                        schedule = Schedule.KLAS_Schedule(o["moduletitle"].ToString(), "강의", subj["subjNm"].ToString(), o["endDate"].ToString());
+                        if (schedule.MagamBeforeNow())
+                            KlasSchedule["강의"].Add(schedule);
+                    }
+                    HttpResponseMessage magamTaskResponse = await httpClient.SendAsync(magamTaskRequest);
+                    string taskData = await magamTaskResponse.Content.ReadAsStringAsync();
+                    JArray task = JArray.Parse(taskData);
+                    foreach (JToken t in task)
+                    {
+                        schedule = Schedule.KLAS_Schedule(t["title"].ToString(), "과제", subj["subjNm"].ToString(), t["expiredate"].ToString());
+                        if (schedule.MagamBeforeNow()) KlasSchedule["과제"].Add(schedule);
+                    }
+                    HttpResponseMessage magamQuizResponse = await httpClient.SendAsync(magamQuizRequest);
+                    string quizData = await magamQuizResponse.Content.ReadAsStringAsync();
+                    JArray quiz = JArray.Parse(quizData);
+                    foreach (JToken q in quiz)
+                    {
+                        schedule = Schedule.KLAS_Schedule(q["papernm"].ToString(), "퀴즈", subj["subjNm"].ToString(), q["edt"].ToString());
+                        if (schedule.MagamBeforeNow()) KlasSchedule["퀴즈"].Add(schedule);
+                    }
+
+                    HttpResponseMessage magamPrjctResponse = await httpClient.SendAsync(magamPrjctRequest);
+                    string prjctData = await magamPrjctResponse.Content.ReadAsStringAsync();
+                    JArray prjct = JArray.Parse(prjctData);
+                    foreach (JToken p in prjct)
+                    {
+                        schedule = Schedule.KLAS_Schedule(p["title"].ToString(), "팀플", subj["subjNm"].ToString(), p["expiredate"].ToString());
+                        if (schedule.MagamBeforeNow())  KlasSchedule["팀플"].Add(schedule);
+                    }
+
+                }
+                
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+
+        private void MagamDanger()
+        {
+            //foreach(var data in )
+            foreach(Guna2CircleButton btn in panelMagam.Controls)
+            {
+                
+            }
+        }
+
         private void guna2ControlBox1_Click(object sender, EventArgs e)
         {
             Close();
@@ -75,12 +268,12 @@ namespace KSCS
 
         private void KSCS_MouseDown(object sender, MouseEventArgs e)
         {
-            mousePoint=new Point(e.X, e.Y);
+            mousePoint = new Point(e.X, e.Y);
         }
 
         private void KSCS_MouseMove(object sender, MouseEventArgs e)
         {
-            if(e.Button == MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)
             {
                 int x = mousePoint.X - e.X;
                 int y = mousePoint.Y - e.Y;
@@ -90,7 +283,7 @@ namespace KSCS
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            if(month == 12)
+            if (month == 12)
             {
                 month = 1; year++;
             }
@@ -100,6 +293,7 @@ namespace KSCS
             }
             createDates();
         }
+
 
         private void btnPrvious_Click(object sender, EventArgs e)
         {
@@ -121,5 +315,60 @@ namespace KSCS
             checkedCategory.SetlblCategoryName(category);
             categoryContainer.Controls.Add(checkedCategory);
         }
+
+        private void btnMagam_Click(object sender, EventArgs e)
+        {
+            Guna2CircleButton btn = (Guna2CircleButton)sender;
+            Panel panel = (Panel)btn.Parent;
+            foreach (Guna2CircleButton magamBtn in panel.Controls)
+            {
+                magamBtn.FillColor = SystemColors.HotTrack;
+            }
+            btn.FillColor = Color.SteelBlue;
+            panelMagamList.Controls.Clear();
+            int index = 0;
+
+            Dictionary<string, int[]> MagamLectureDic = new Dictionary<string, int[]>();
+            Dictionary<string, DateTime> MagamMinDate = new Dictionary<string, DateTime>();
+            foreach (Schedule schedule in KlasSchedule[btn.Text])
+            {
+                if (MagamLectureDic.ContainsKey(schedule.content))
+                    MagamLectureDic[schedule.content][0] += 1;
+                else
+                {
+                    MagamLectureDic.Add(schedule.content, new int[2]);
+                    MagamLectureDic[schedule.content][0] = 1;
+                    MagamLectureDic[schedule.content][1] = 0;
+                }
+                if (MagamMinDate.ContainsKey(schedule.content))
+                {
+                    if (MagamMinDate[schedule.content] < schedule.endDate) MagamMinDate[schedule.content] = schedule.endDate;
+                }
+                else MagamMinDate.Add(schedule.content, schedule.endDate);
+            }
+            foreach (Schedule schedule in KlasSchedule[btn.Text])
+            {
+                if (MagamMinDate[schedule.content] == schedule.endDate)
+                {
+                    MagamLectureDic[schedule.content][1] += 1;
+                }
+            }
+            foreach (KeyValuePair<string, int[]> items in MagamLectureDic)
+            {
+                Label lbl = new Label();
+                lbl.Name = "KLAS_" + btn.Text + "_" + index.ToString();
+                lbl.Text = items.Key + " " + btn.Text + " " + items.Value[0] + " 개 중 " + items.Value[1] + " 개가 " + Schedule.MagamDateFrom(MagamMinDate[items.Key]) + " 남았습니다.";
+                lbl.ForeColor = Color.White;
+                lbl.AutoSize = true;
+                lbl.Font = new Font("Microsoft Sans Serif", 13, FontStyle.Bold);
+                lbl.Location = new Point(0, index * (lbl.Height + 3));
+                panelMagamList.Controls.Add(lbl);
+                index++;
+            }
+
+        }
+
+
+
     }
 }

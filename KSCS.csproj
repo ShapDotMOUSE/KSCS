@@ -91,108 +91,108 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Category.cs" />
-    <Compile Include="customTapButton.cs">
+    <Compile Include="Class\Category.cs" />
+    <Compile Include="UserControls\customTapButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="customTapButton.Designer.cs">
+    <Compile Include="UserControls\customTapButton.Designer.cs">
       <DependentUpon>customTapButton.cs</DependentUpon>
     </Compile>
-    <Compile Include="Database.cs" />
-    <Compile Include="LoginForm.cs">
+    <Compile Include="Class\Database.cs" />
+    <Compile Include="Forms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginForm.Designer.cs">
+    <Compile Include="Forms\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm.cs">
+    <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="TempAddEventForm.cs">
+    <Compile Include="Forms\TempAddEventForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TempAddEventForm.Designer.cs">
+    <Compile Include="Forms\TempAddEventForm.Designer.cs">
       <DependentUpon>TempAddEventForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserBlankDate.cs">
+    <Compile Include="UserControls\UserBlankDate.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserBlankDate.Designer.cs">
+    <Compile Include="UserControls\UserBlankDate.Designer.cs">
       <DependentUpon>UserBlankDate.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserCategory.cs">
+    <Compile Include="UserControls\UserCategory.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserCategory.Designer.cs">
+    <Compile Include="UserControls\UserCategory.Designer.cs">
       <DependentUpon>UserCategory.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserCheckedCategory.cs">
+    <Compile Include="UserControls\UserCheckedCategory.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserCheckedCategory.Designer.cs">
+    <Compile Include="UserControls\UserCheckedCategory.Designer.cs">
       <DependentUpon>UserCheckedCategory.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserDate.cs">
+    <Compile Include="UserControls\UserDate.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserDate.Designer.cs">
+    <Compile Include="UserControls\UserDate.Designer.cs">
       <DependentUpon>UserDate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="Forms\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Forms\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserEvent.cs">
+    <Compile Include="UserControls\UserEvent.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserEvent.Designer.cs">
+    <Compile Include="UserControls\UserEvent.Designer.cs">
       <DependentUpon>UserEvent.cs</DependentUpon>
     </Compile>
-    <Compile Include="ScheDetailForm.cs">
+    <Compile Include="Forms\ScheDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ScheDetailForm.Designer.cs">
+    <Compile Include="Forms\ScheDetailForm.Designer.cs">
       <DependentUpon>ScheDetailForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Schedule.cs" />
-    <Compile Include="scheduleUnit.cs">
+    <Compile Include="Class\Schedule.cs" />
+    <Compile Include="UserControls\scheduleUnit.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="scheduleUnit.Designer.cs">
+    <Compile Include="UserControls\scheduleUnit.Designer.cs">
       <DependentUpon>scheduleUnit.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="customTapButton.resx">
+    <EmbeddedResource Include="UserControls\customTapButton.resx">
       <DependentUpon>customTapButton.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginForm.resx">
+    <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TempAddEventForm.resx">
+    <EmbeddedResource Include="Forms\TempAddEventForm.resx">
       <DependentUpon>TempAddEventForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserBlankDate.resx">
+    <EmbeddedResource Include="UserControls\UserBlankDate.resx">
       <DependentUpon>UserBlankDate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserCategory.resx">
+    <EmbeddedResource Include="UserControls\UserCategory.resx">
       <DependentUpon>UserCategory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserCheckedCategory.resx">
+    <EmbeddedResource Include="UserControls\UserCheckedCategory.resx">
       <DependentUpon>UserCheckedCategory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserDate.resx">
+    <EmbeddedResource Include="UserControls\UserDate.resx">
       <DependentUpon>UserDate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -205,14 +205,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="ScheDetailForm.resx">
+    <EmbeddedResource Include="Forms\ScheDetailForm.resx">
       <DependentUpon>ScheDetailForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="scheduleUnit.resx">
+    <EmbeddedResource Include="UserControls\scheduleUnit.resx">
       <DependentUpon>scheduleUnit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserEvent.resx">
+    <EmbeddedResource Include="UserControls\UserEvent.resx">
       <DependentUpon>UserEvent.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -230,47 +230,45 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Image\user.png" />
+    <EmbeddedResource Include="Resources\user.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Image\그립톡-기본.png" />
+    <EmbeddedResource Include="Resources\그립톡-기본.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Image\nextIcon.png" />
+    <EmbeddedResource Include="Resources\nextIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Image\previousIcon.png" />
+    <EmbeddedResource Include="Resources\previousIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\free-icon-font-cross-3917759.png" />
+    <EmbeddedResource Include="Resources\free-icon-font-cross-3917759.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\free-icon-font-cross-39177591.png" />
+    <EmbeddedResource Include="Resources\free-icon-font-cross-39177591.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\free-icon-font-plus-3917757.png" />
+    <EmbeddedResource Include="Resources\free-icon-font-plus-3917757.png" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <None Include="Image\plus.png" />
-=======
-    <EmbeddedResource Include="Image\팡이우니 일기.png" />
+    <EmbeddedResource Include="Resources\plus.png" />
+    <EmbeddedResource Include="Resources\팡이우니 일기.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Image\우니팡이동그라미.png" />
+    <EmbeddedResource Include="Resources\우니팡이동그라미.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Image\caption.png" />
+    <EmbeddedResource Include="Resources\caption.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Image\우니커피.png" />
+    <EmbeddedResource Include="Resources\우니커피.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Image\우니열공.png" />
+    <EmbeddedResource Include="Resources\우니열공.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Image\팡이비행.png" />
->>>>>>> develop
+    <EmbeddedResource Include="Resources\팡이비행.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

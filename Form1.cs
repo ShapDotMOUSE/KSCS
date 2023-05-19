@@ -17,17 +17,58 @@ namespace KSCS
         private int year, month;
         public static int static_month, static_year;
         MySqlConnection connection = DatabaseConnection.getDBConnection(); //MySQL
-        List<Schedule> scheduleList = new List<Schedule>(); //한달 단위 schedule list
+        public static List<List<Schedule>> monthScheduleList = new List<List<Schedule>>(); //한달 단위 schedule list
+        public static Dictionary<string, string[]> categoryDict = new Dictionary<string, string[]>(); //category dictionary
+        public static string student_id = "2019203082"; //초기 학번
         public KSCS()
         {
             InitializeComponent();
             connection.Open(); //MySQL 연결
-            InitializeDatabase();
+            
         }
 
         public void InitializeDatabase()
         {
+            string selectQuery = string.Format("SELECT * from Schedule JOIN Category ON Schedule.category_id=Category.id JOIN StudentCategory ON StudentCategory.student_id=Schedule.student_id and Schedule.category_id=Category.id and Category.id=StudentCategory.category_id WHERE Schedule.student_id={0} and  startDate BETWEEN DATE_FORMAT('{0}', '%Y-%m-%d') AND LAST_DAY('{0}') ORDER BY startDate DESC;", student_id, new DateTime(year, month, 1).ToString("yyyy-MM-dd"));
+            MySqlCommand cmd = new MySqlCommand(selectQuery, connection);
+            MySqlDataReader table = cmd.ExecuteReader();
 
+            monthScheduleList.Clear(); //한달 스케줄 초기화
+
+            //하루 단위 리스트 생성
+            for (int i = 0; i < DateTime.DaysInMonth(year, month); i++)
+            {
+                monthScheduleList.Add(new List<Schedule>());
+            }
+
+            while (table.Read())
+            {
+                Schedule schedule = new Schedule(
+                    table["title"].ToString(),
+                    table["content"].ToString(),
+                    table["place"].ToString(),
+                    table["type"].ToString(),
+                    DateTime.Parse(table["startDate"].ToString()),
+                    DateTime.Parse(table["endDate"].ToString()))
+                {
+                    id = int.Parse(table["id"].ToString()),
+                };
+                monthScheduleList[Convert.ToInt32(schedule.startDate.ToString("dd"))-1].Add(schedule);
+            }
+            table.Close();
+        }
+
+        private void LoadCategory()
+        {
+            categoryDict.Clear();
+            string selectQuery = string.Format("SELECT * from Category JOIN StudentCategory ON Category.id=StudentCategory.category_id WHERE student_id='{0}';", student_id);
+            MySqlCommand cmd = new MySqlCommand(selectQuery, connection);
+            MySqlDataReader table = cmd.ExecuteReader();
+            while (table.Read())
+            {
+                categoryDict.Add(table["type"].ToString(), new string[2] { table["id"].ToString(), table["color"].ToString() });
+            }
+            table.Close();
         }
 
         private void KSCS_Load(object sender, EventArgs e)
@@ -39,6 +80,7 @@ namespace KSCS
             dispalyDate();
             AddCategory("학사일정");
             AddCategory("테스트용");
+            LoadCategory(); //추가
         }
 
         private void dispalyDate()
@@ -54,6 +96,8 @@ namespace KSCS
         {
             static_month = month;
             static_year = year;
+
+            InitializeDatabase(); //MySQL 에서 한달 스케줄 데이터 가져오기
 
             lblMonth.Text = month.ToString() + "월";
             lblMonth.TextAlign = ContentAlignment.MiddleCenter;
@@ -73,6 +117,7 @@ namespace KSCS
             {
                 UserDate userDate = new UserDate();
                 userDate.SetDate(i);
+                //UserDate userDate = new UserDate(i);
                 daysConatiner.Controls.Add(userDate);
             }
         }
@@ -121,7 +166,6 @@ namespace KSCS
                 month--;
             }
             createDates();
-
         }
 
         private void AddCategory(string category)

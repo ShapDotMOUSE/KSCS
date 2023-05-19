@@ -49,7 +49,8 @@ namespace KSCS
                     table["place"].ToString(),
                     table["type"].ToString(),
                     DateTime.Parse(table["startDate"].ToString()),
-                    DateTime.Parse(table["endDate"].ToString()))
+                    DateTime.Parse(table["endDate"].ToString())
+                    )
                 {
                     id = int.Parse(table["id"].ToString()),
                 };

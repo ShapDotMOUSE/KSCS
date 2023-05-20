@@ -31,16 +31,14 @@
             this.flpEventInfo = new System.Windows.Forms.FlowLayoutPanel();
             this.pnl = new Guna.UI2.WinForms.Guna2Panel();
             this.txtEventInfo = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.flpEventInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // flpEventInfo
             // 
-            this.flpEventInfo.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.flpEventInfo.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.flpEventInfo.Controls.Add(this.pnl);
             this.flpEventInfo.Controls.Add(this.txtEventInfo);
-            this.flpEventInfo.Controls.Add(this.guna2HtmlLabel1);
             this.flpEventInfo.Location = new System.Drawing.Point(0, 0);
             this.flpEventInfo.Margin = new System.Windows.Forms.Padding(4);
             this.flpEventInfo.Name = "flpEventInfo";
@@ -60,34 +58,24 @@
             // 
             this.txtEventInfo.AutoSize = false;
             this.txtEventInfo.BackColor = System.Drawing.Color.Transparent;
-            this.txtEventInfo.Font = new System.Drawing.Font("Pretendard", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEventInfo.Dock = System.Windows.Forms.DockStyle.Right;
+            this.txtEventInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEventInfo.Location = new System.Drawing.Point(21, 0);
             this.txtEventInfo.Margin = new System.Windows.Forms.Padding(7, 0, 0, 0);
             this.txtEventInfo.Name = "txtEventInfo";
-            this.txtEventInfo.Size = new System.Drawing.Size(124, 38);
+            this.txtEventInfo.Size = new System.Drawing.Size(124, 22);
             this.txtEventInfo.TabIndex = 2;
-            this.txtEventInfo.Text = "guna2HtmlLabel2";
-            // 
-            // guna2HtmlLabel1
-            // 
-            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(4, 42);
-            this.guna2HtmlLabel1.Margin = new System.Windows.Forms.Padding(4);
-            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(139, 20);
-            this.guna2HtmlLabel1.TabIndex = 1;
-            this.guna2HtmlLabel1.Text = "guna2HtmlLabel1";
+            this.txtEventInfo.Text = "일정 정보";
             // 
             // UserEvent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.flpEventInfo);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "UserEvent";
             this.Size = new System.Drawing.Size(146, 22);
             this.flpEventInfo.ResumeLayout(false);
-            this.flpEventInfo.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -97,6 +85,5 @@
         private System.Windows.Forms.FlowLayoutPanel flpEventInfo;
         private Guna.UI2.WinForms.Guna2Panel pnl;
         private Guna.UI2.WinForms.Guna2HtmlLabel txtEventInfo;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
     }
 }

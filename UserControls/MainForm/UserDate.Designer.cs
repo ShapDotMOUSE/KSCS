@@ -39,9 +39,9 @@
             this.lblDate.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblDate.Font = new System.Drawing.Font("MS Reference Sans Serif", 10F);
             this.lblDate.Location = new System.Drawing.Point(0, 0);
-            this.lblDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lblDate.Margin = new System.Windows.Forms.Padding(0);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(146, 26);
+            this.lblDate.Size = new System.Drawing.Size(150, 33);
             this.lblDate.TabIndex = 0;
             this.lblDate.Text = "1";
             this.lblDate.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -50,13 +50,11 @@
             // 
             this.flpEvent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpEvent.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flpEvent.Location = new System.Drawing.Point(0, 26);
-            this.flpEvent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flpEvent.Location = new System.Drawing.Point(0, 33);
+            this.flpEvent.Margin = new System.Windows.Forms.Padding(0);
             this.flpEvent.Name = "flpEvent";
-            this.flpEvent.Size = new System.Drawing.Size(146, 70);
+            this.flpEvent.Size = new System.Drawing.Size(150, 85);
             this.flpEvent.TabIndex = 1;
-            this.flpEvent.MouseLeave += new System.EventHandler(this.UserDate_MouseLeave);
-            this.flpEvent.MouseMove += new System.Windows.Forms.MouseEventHandler(this.UserDate_MouseMove);
             this.flpEvent.MouseUp += new System.Windows.Forms.MouseEventHandler(this.UserDate_Click);
             // 
             // UserDate
@@ -66,11 +64,11 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
             this.Controls.Add(this.flpEvent);
             this.Controls.Add(this.lblDate);
-            this.Margin = new System.Windows.Forms.Padding(14, 15, 14, 15);
+            this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "UserDate";
-            this.Size = new System.Drawing.Size(146, 96);
+            this.Size = new System.Drawing.Size(150, 118);
+            this.MouseEnter += new System.EventHandler(this.UserDate_MouseEnter);
             this.MouseLeave += new System.EventHandler(this.UserDate_MouseLeave);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.UserDate_MouseMove);
             this.ResumeLayout(false);
 
         }

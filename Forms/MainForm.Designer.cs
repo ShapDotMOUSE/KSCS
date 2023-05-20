@@ -58,7 +58,7 @@
             this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnPrvious = new Guna.UI2.WinForms.Guna2Button();
+            this.btnPrevisous = new Guna.UI2.WinForms.Guna2Button();
             this.btnNext = new Guna.UI2.WinForms.Guna2Button();
             this.lblMonth = new System.Windows.Forms.Label();
             this.guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
@@ -500,7 +500,7 @@
             this.guna2Panel5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.guna2Panel5.BackColor = System.Drawing.Color.White;
             this.guna2Panel5.BorderRadius = 10;
-            this.guna2Panel5.Controls.Add(this.btnPrvious);
+            this.guna2Panel5.Controls.Add(this.btnPrevisous);
             this.guna2Panel5.Controls.Add(this.btnNext);
             this.guna2Panel5.Controls.Add(this.lblMonth);
             this.guna2Panel5.Controls.Add(this.guna2PictureBox3);
@@ -511,24 +511,24 @@
             this.guna2Panel5.Size = new System.Drawing.Size(1195, 880);
             this.guna2Panel5.TabIndex = 21;
             // 
-            // btnPrvious
+            // btnPrevisous
             // 
-            this.btnPrvious.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnPrvious.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnPrvious.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnPrvious.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnPrvious.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnPrvious.FillColor = System.Drawing.Color.White;
-            this.btnPrvious.Font = new System.Drawing.Font("Microsoft YaHei UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrvious.ForeColor = System.Drawing.Color.Black;
-            this.btnPrvious.Image = global::KSCS.Properties.Resources.previousIcon;
-            this.btnPrvious.ImageSize = new System.Drawing.Size(20, 30);
-            this.btnPrvious.Location = new System.Drawing.Point(511, 37);
-            this.btnPrvious.Margin = new System.Windows.Forms.Padding(4);
-            this.btnPrvious.Name = "btnPrvious";
-            this.btnPrvious.Size = new System.Drawing.Size(40, 68);
-            this.btnPrvious.TabIndex = 27;
-            this.btnPrvious.Click += new System.EventHandler(this.btnPrvious_Click);
+            this.btnPrevisous.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnPrevisous.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnPrevisous.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnPrevisous.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnPrevisous.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnPrevisous.FillColor = System.Drawing.Color.White;
+            this.btnPrevisous.Font = new System.Drawing.Font("Microsoft YaHei UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrevisous.ForeColor = System.Drawing.Color.Black;
+            this.btnPrevisous.Image = global::KSCS.Properties.Resources.previousIcon;
+            this.btnPrevisous.ImageSize = new System.Drawing.Size(20, 30);
+            this.btnPrevisous.Location = new System.Drawing.Point(511, 37);
+            this.btnPrevisous.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPrevisous.Name = "btnPrevisous";
+            this.btnPrevisous.Size = new System.Drawing.Size(40, 68);
+            this.btnPrevisous.TabIndex = 27;
+            this.btnPrevisous.Click += new System.EventHandler(this.btnMonth_Click);
             // 
             // btnNext
             // 
@@ -547,7 +547,7 @@
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(40, 68);
             this.btnNext.TabIndex = 26;
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            this.btnNext.Click += new System.EventHandler(this.btnMonth_Click);
             // 
             // lblMonth
             // 
@@ -760,7 +760,7 @@
             this.userDate7.Location = new System.Drawing.Point(900, 0);
             this.userDate7.Margin = new System.Windows.Forms.Padding(0);
             this.userDate7.Name = "userDate7";
-            this.userDate7.Size = new System.Drawing.Size(154, 118);
+            this.userDate7.Size = new System.Drawing.Size(150, 118);
             this.userDate7.TabIndex = 6;
             // 
             // userDate8
@@ -823,7 +823,7 @@
             this.userDate14.Location = new System.Drawing.Point(900, 118);
             this.userDate14.Margin = new System.Windows.Forms.Padding(0);
             this.userDate14.Name = "userDate14";
-            this.userDate14.Size = new System.Drawing.Size(154, 118);
+            this.userDate14.Size = new System.Drawing.Size(150, 118);
             this.userDate14.TabIndex = 13;
             // 
             // userDate15
@@ -886,7 +886,7 @@
             this.userDate21.Location = new System.Drawing.Point(900, 236);
             this.userDate21.Margin = new System.Windows.Forms.Padding(0);
             this.userDate21.Name = "userDate21";
-            this.userDate21.Size = new System.Drawing.Size(154, 118);
+            this.userDate21.Size = new System.Drawing.Size(150, 118);
             this.userDate21.TabIndex = 20;
             // 
             // userDate22
@@ -949,7 +949,7 @@
             this.userDate28.Location = new System.Drawing.Point(900, 354);
             this.userDate28.Margin = new System.Windows.Forms.Padding(0);
             this.userDate28.Name = "userDate28";
-            this.userDate28.Size = new System.Drawing.Size(154, 118);
+            this.userDate28.Size = new System.Drawing.Size(150, 118);
             this.userDate28.TabIndex = 27;
             // 
             // userDate29
@@ -1012,7 +1012,7 @@
             this.userDate35.Location = new System.Drawing.Point(900, 472);
             this.userDate35.Margin = new System.Windows.Forms.Padding(0);
             this.userDate35.Name = "userDate35";
-            this.userDate35.Size = new System.Drawing.Size(154, 118);
+            this.userDate35.Size = new System.Drawing.Size(150, 118);
             this.userDate35.TabIndex = 34;
             // 
             // userDate36
@@ -1021,7 +1021,7 @@
             this.userDate36.Location = new System.Drawing.Point(0, 590);
             this.userDate36.Margin = new System.Windows.Forms.Padding(0);
             this.userDate36.Name = "userDate36";
-            this.userDate36.Size = new System.Drawing.Size(150, 120);
+            this.userDate36.Size = new System.Drawing.Size(150, 118);
             this.userDate36.TabIndex = 35;
             // 
             // userDate37
@@ -1030,7 +1030,7 @@
             this.userDate37.Location = new System.Drawing.Point(150, 590);
             this.userDate37.Margin = new System.Windows.Forms.Padding(0);
             this.userDate37.Name = "userDate37";
-            this.userDate37.Size = new System.Drawing.Size(150, 120);
+            this.userDate37.Size = new System.Drawing.Size(150, 118);
             this.userDate37.TabIndex = 36;
             // 
             // userDate38
@@ -1039,7 +1039,7 @@
             this.userDate38.Location = new System.Drawing.Point(300, 590);
             this.userDate38.Margin = new System.Windows.Forms.Padding(0);
             this.userDate38.Name = "userDate38";
-            this.userDate38.Size = new System.Drawing.Size(150, 120);
+            this.userDate38.Size = new System.Drawing.Size(150, 118);
             this.userDate38.TabIndex = 37;
             // 
             // userDate39
@@ -1048,7 +1048,7 @@
             this.userDate39.Location = new System.Drawing.Point(450, 590);
             this.userDate39.Margin = new System.Windows.Forms.Padding(0);
             this.userDate39.Name = "userDate39";
-            this.userDate39.Size = new System.Drawing.Size(150, 120);
+            this.userDate39.Size = new System.Drawing.Size(150, 118);
             this.userDate39.TabIndex = 38;
             // 
             // userDate40
@@ -1057,7 +1057,7 @@
             this.userDate40.Location = new System.Drawing.Point(600, 590);
             this.userDate40.Margin = new System.Windows.Forms.Padding(0);
             this.userDate40.Name = "userDate40";
-            this.userDate40.Size = new System.Drawing.Size(150, 120);
+            this.userDate40.Size = new System.Drawing.Size(150, 118);
             this.userDate40.TabIndex = 39;
             // 
             // userDate41
@@ -1066,7 +1066,7 @@
             this.userDate41.Location = new System.Drawing.Point(750, 590);
             this.userDate41.Margin = new System.Windows.Forms.Padding(0);
             this.userDate41.Name = "userDate41";
-            this.userDate41.Size = new System.Drawing.Size(150, 120);
+            this.userDate41.Size = new System.Drawing.Size(150, 118);
             this.userDate41.TabIndex = 40;
             // 
             // userDate42
@@ -1075,7 +1075,7 @@
             this.userDate42.Location = new System.Drawing.Point(900, 590);
             this.userDate42.Margin = new System.Windows.Forms.Padding(0);
             this.userDate42.Name = "userDate42";
-            this.userDate42.Size = new System.Drawing.Size(154, 120);
+            this.userDate42.Size = new System.Drawing.Size(150, 118);
             this.userDate42.TabIndex = 41;
             // 
             // MainForm
@@ -1102,6 +1102,7 @@
             this.MinimumSize = new System.Drawing.Size(1600, 1152);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.Resize += new System.EventHandler(this.MainForm_Resize);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
@@ -1162,9 +1163,10 @@
         private customTapButton customTapButton4;
         private customTapButton customTapButton3;
         private customTapButton customTapButton2;
-        private Guna.UI2.WinForms.Guna2Button btnPrvious;
+        private Guna.UI2.WinForms.Guna2Button btnPrevisous;
         private Guna.UI2.WinForms.Guna2Button btnNext;
         private System.Windows.Forms.TableLayoutPanel flpDays;
+        private System.Windows.Forms.FlowLayoutPanel panelMagam;
         private UserDate userDate1;
         private UserDate userDate2;
         private UserDate userDate3;
@@ -1207,7 +1209,6 @@
         private UserDate userDate40;
         private UserDate userDate41;
         private UserDate userDate42;
-        private System.Windows.Forms.FlowLayoutPanel panelMagam;
     }
 }
 

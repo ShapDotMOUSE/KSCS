@@ -19,40 +19,64 @@ namespace KSCS
         public UserDate()
         {
             InitializeComponent();
-            this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 15, 15));
+            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 18, 18)); //폼 모양 둥글게
         }
 
         private void LoadUserDate()
         {
-            
-            for (int i=0;i< KSCS.monthScheduleList[Convert.ToInt32(lblDate.Text) - 1].Count; i++)
+
+            for (int i = 0; i < MainForm.monthScheduleList[Convert.ToInt32(lblDate.Text) - 1].Count; i++)
             {
-                AddEvent(KSCS.monthScheduleList[Convert.ToInt32(lblDate.Text) - 1][i].title, int.Parse(KSCS.categoryDict[KSCS.monthScheduleList[Convert.ToInt32(lblDate.Text) - 1][i].category][1]));
+                AddEvent(
+                    MainForm.monthScheduleList[Convert.ToInt32(lblDate.Text) - 1][i].title,
+                    int.Parse(MainForm.categoryDict[MainForm.monthScheduleList[Convert.ToInt32(lblDate.Text) - 1][i].category][1])
+                    );
             }
-            
+
         }
 
+        public void ChangeBlank()
+        {
+            BackColor = Color.White;
+            lblDate.Visible = false;
+            MouseEnter -= UserDate_MouseEnter;
+            MouseLeave -= UserDate_MouseLeave;
+            MouseClick -= UserDate_Click;
+        }
+
+
+        //Form 모양 둥글게 하는 함수, 필요 시 전역으로 따로 관리
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn(int nLeftRect,
-          int nTopRect, int nRightRect, int nBottomRect, int nWidthEllipse, int nHeightEllipse);
+        private static extern IntPtr CreateRoundRectRgn(int nLeftRect, int nTopRect, int nRightRect, int nBottomRect, int nWidthEllipse, int nHeightEllipse);
+
+
+        //Date 설정 함수
         public void SetDate(int date)
         {
+            BackColor = Color.FromArgb(255, 249, 229);
+            lblDate.Visible = true;
+            MouseEnter += UserDate_MouseEnter;
+            MouseLeave += UserDate_MouseLeave;
+            MouseClick += UserDate_Click;
             lblDate.Text = date.ToString();
-            LoadUserDate();
+            //LoadUserDate();
         }
 
-        private void UserDate_MouseMove(object sender, MouseEventArgs e)
+        private void UserDate_MouseEnter(object sender, EventArgs e)
         {
-            this.BackColor = Color.Gray;
+            Cursor = Cursors.Hand;
+            BackColor = Color.FromArgb(218, 213, 196);
         }
 
         private void UserDate_MouseLeave(object sender, EventArgs e)
         {
-            this.BackColor = Color.Gainsboro;
+            Cursor = Cursors.Default;
+            BackColor = Color.FromArgb(255, 249, 229);
         }
 
         private void UserDate_Click(object sender, MouseEventArgs e)
         {
+            Cursor = Cursors.Default;
             static_date = Convert.ToInt32(lblDate.Text); //날
             ScheDetailForm eventForm = new ScheDetailForm();
             eventForm.AddEvent += new EventHandler(SaveEvent); //이벤트 발생
@@ -64,9 +88,9 @@ namespace KSCS
         {
             ScheDetailForm userControl = sender as ScheDetailForm;
             flpEvent.Controls.Clear(); //userEvent 컨트롤 초기화
-            LoadUserDate();
+            //LoadUserDate();
         }
-        
+
         private void AddEvent(string dateEvent, int eventType) //userEvent 생성
         {
             if (dateEvent.Equals(string.Empty))
@@ -74,7 +98,8 @@ namespace KSCS
             UserEvent userEvent = new UserEvent();
             userEvent.SetEventInfo(dateEvent);
             userEvent.SetColor(eventType);
-            flpEvent.Controls.Add(userEvent); 
+            flpEvent.Controls.Add(userEvent);
         }
+
     }
 }

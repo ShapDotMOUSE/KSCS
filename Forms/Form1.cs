@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Guna.UI2.WinForms;
+using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Org.BouncyCastle.Crypto;
@@ -31,7 +32,7 @@ namespace KSCS
         MySqlConnection connection = DatabaseConnection.getDBConnection(); //MySQL
         public static List<List<Schedule>> monthScheduleList = new List<List<Schedule>>(); //한달 단위 schedule list
         public static Dictionary<string, string[]> categoryDict = new Dictionary<string, string[]>(); //category dictionary
-        
+
         private Dictionary<string, List<Schedule>> KlasSchedule = new Dictionary<string, List<Schedule>>();
         public static string student_id = "2019203082"; //초기 학번
 
@@ -69,9 +70,9 @@ namespace KSCS
 
                 monthScheduleList[Convert.ToInt32(schedule.startDate.ToString("dd")) - 1].Add(schedule);
             }
-            
+
             table.Close();
-            LoadCategory(); //추가
+            //LoadCategory(); //추가
         }
 
         private void LoadCategory()
@@ -98,19 +99,19 @@ namespace KSCS
             //초기 탭 설정 
             TabName = btnTestTab1.Name; //수정되어야함
 
-            dispalyDate();
-            DisplayCategery();
-            SetCheckedCategoryByTab();
-            await Klas_Load();
-            MagamButtonEnable();
-            Guna2MessageDialog message = new Guna2MessageDialog();
-            message.Show("KLAS 로딩 완료");
+            //dispalyDate();
+            //DisplayCategery();
+            //SetCheckedCategoryByTab();
+            //await Klas_Load();
+            //MagamButtonEnable();
+            //Guna2MessageDialog message = new Guna2MessageDialog();
+            //message.Show("KLAS 로딩 완료");
         }
 
         //카테고리 함수---------------------------------------------------------------------------------------------------------------------------------------
         private void DisplayCategery()
         {
-            
+
             foreach (var item in Category.ParentCategorys["SchoolCategory"] as HashSet<string>)
             {
                 UserCategory uc = new UserCategory();
@@ -148,12 +149,12 @@ namespace KSCS
         }
         private void SetCheckedCategoryByTab()
         {
-            FlowLayoutPanel[]flp = { flpSchoolCategory, flpPersonalCategory, flpEtcCategory };
+            FlowLayoutPanel[] flp = { flpSchoolCategory, flpPersonalCategory, flpEtcCategory };
             foreach (FlowLayoutPanel panel in flp)
             {
                 foreach (UserCategory category in panel.Controls)
                 {
-                    
+
                     category.SetChecked(Category.IsChecked(TabName, category.GetText()));
                 }
             }
@@ -205,9 +206,9 @@ namespace KSCS
             Close();
         }
 
-         private void MagamButtonEnable()
+        private void MagamButtonEnable()
         {
-            btnMagam_Click(btnMagam_HomeWork,new EventArgs());
+            btnMagam_Click(btnMagam_HomeWork, new EventArgs());
             btnMagamLecture.Enabled = true;
             btnMagam_HomeWork.Enabled = true;
             btnMagam_Quiz.Enabled = true;
@@ -254,7 +255,7 @@ namespace KSCS
             httpClient.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 Edge/16.16299");
 
 
-            var publicKeyRequest = new HttpRequestMessage(HttpMethod.Post, KLAS_URL["LoginSecurity"]){Content = new StringContent("")};
+            var publicKeyRequest = new HttpRequestMessage(HttpMethod.Post, KLAS_URL["LoginSecurity"]) { Content = new StringContent("") };
             try
             {
                 publicKeyRequest.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json; charset=UTF-8");
@@ -268,8 +269,8 @@ namespace KSCS
                 // 로그인 토큰 생성
                 var input = new
                 {
-                    loginId = "2019203082",
-                    loginPwd = "setset612@",
+                    loginId = "",
+                    loginPwd = "",
                     storeIdYn = "N"
                 };
 
@@ -355,17 +356,17 @@ namespace KSCS
                     foreach (JToken p in prjct)
                     {
                         schedule = Schedule.KLAS_Schedule(p["title"].ToString(), "팀플", subj["subjNm"].ToString(), p["expiredate"].ToString());
-                        if (schedule.MagamBeforeNow())  KlasSchedule["팀플"].Add(schedule);
+                        if (schedule.MagamBeforeNow()) KlasSchedule["팀플"].Add(schedule);
                     }
 
                 }
-                
+
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
 
-private void btnMagam_Click(object sender, EventArgs e)
+        private void btnMagam_Click(object sender, EventArgs e)
         {
             Guna2CircleButton btn = (Guna2CircleButton)sender;
             Panel panel = (Panel)btn.Parent;
@@ -420,9 +421,9 @@ private void btnMagam_Click(object sender, EventArgs e)
         private void MagamDanger()
         {
             //foreach(var data in )
-            foreach(Guna2CircleButton btn in panelMagam.Controls)
+            foreach (Guna2CircleButton btn in panelMagam.Controls)
             {
-                
+
             }
         }
 
@@ -497,7 +498,7 @@ private void btnMagam_Click(object sender, EventArgs e)
 
             // 드래그 중인 버튼의 복사본 생성
             MouseLocation = new Point((Cursor.Position.X - e.X) - Left, (Cursor.Position.Y - e.Y) - Top); // 현제 마우스 위치
-            cloneUcCategory = new UserCategory{Location = MouseLocation};
+            cloneUcCategory = new UserCategory { Location = MouseLocation };
             cloneUcCategory.DragMode(draggedUcCategory.GetText());
             this.Controls.Add(cloneUcCategory);
             flpMainCategory.SendToBack();
@@ -508,11 +509,11 @@ private void btnMagam_Click(object sender, EventArgs e)
         private void UcCategory_MouseClick(object sender, MouseEventArgs e)
         {
             string NewMainCategory;
-            if(MouseLocation.Y < flpMainCategory.Location.Y + flpPersonalCategory.Location.Y)
+            if (MouseLocation.Y < flpMainCategory.Location.Y + flpPersonalCategory.Location.Y)
             {
                 //학교
                 NewMainCategory = "SchoolCategory";
-                
+
             }
             else if (MouseLocation.Y < flpMainCategory.Location.Y + flpEtcCategory.Location.Y)
             {
@@ -525,7 +526,7 @@ private void btnMagam_Click(object sender, EventArgs e)
                 NewMainCategory = "EtcCategory";
             }
 
-            if(NewMainCategory.Length > 0)
+            if (NewMainCategory.Length > 0)
             {
                 draggedUcCategory.Visible = true;
                 string OringMainCategory = Category.SubCategorys[cloneUcCategory.GetText()] as string;
@@ -545,13 +546,13 @@ private void btnMagam_Click(object sender, EventArgs e)
                     cloneUcCategory = null;
                 }
             }
-            
+
         }
 
         private void UcCategory_MouseMove(object sender, MouseEventArgs e)
         {
-            MouseLocation = new Point((Cursor.Position.X - cloneUcCategory.Width/2) - Left, (Cursor.Position.Y - cloneUcCategory.Height / 2) - Top);
-            if ((MouseLocation.X < flpMainCategory.Location.X - 100 || MouseLocation.X > flpMainCategory.Location.X + 130) 
+            MouseLocation = new Point((Cursor.Position.X - cloneUcCategory.Width / 2) - Left, (Cursor.Position.Y - cloneUcCategory.Height / 2) - Top);
+            if ((MouseLocation.X < flpMainCategory.Location.X - 100 || MouseLocation.X > flpMainCategory.Location.X + 130)
                 || (MouseLocation.Y < flpMainCategory.Location.Y || MouseLocation.Y > flpMainCategory.Location.Y + 450))
             {
                 UndoCategory();

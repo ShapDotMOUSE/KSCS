@@ -35,7 +35,7 @@
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.tbPassword = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnLogin = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2CustomCheckBox1 = new Guna.UI2.WinForms.Guna2CustomCheckBox();
+            this.btnAutoLogin = new Guna.UI2.WinForms.Guna2CustomCheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -131,23 +131,28 @@
             this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "로그인";
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            this.btnLogin.MouseEnter += new System.EventHandler(this.btnCursorHand_MouseEnter);
+            this.btnLogin.MouseLeave += new System.EventHandler(this.btnCursorHand_MouseLeave);
             // 
-            // guna2CustomCheckBox1
+            // btnAutoLogin
             // 
-            this.guna2CustomCheckBox1.CheckedState.BorderColor = System.Drawing.Color.Black;
-            this.guna2CustomCheckBox1.CheckedState.BorderRadius = 2;
-            this.guna2CustomCheckBox1.CheckedState.BorderThickness = 1;
-            this.guna2CustomCheckBox1.CheckedState.FillColor = System.Drawing.Color.White;
-            this.guna2CustomCheckBox1.CheckMarkColor = System.Drawing.Color.Black;
-            this.guna2CustomCheckBox1.Location = new System.Drawing.Point(159, 327);
-            this.guna2CustomCheckBox1.Name = "guna2CustomCheckBox1";
-            this.guna2CustomCheckBox1.Size = new System.Drawing.Size(14, 14);
-            this.guna2CustomCheckBox1.TabIndex = 6;
-            this.guna2CustomCheckBox1.Text = "guna2CustomCheckBox1";
-            this.guna2CustomCheckBox1.UncheckedState.BorderColor = System.Drawing.Color.Black;
-            this.guna2CustomCheckBox1.UncheckedState.BorderRadius = 2;
-            this.guna2CustomCheckBox1.UncheckedState.BorderThickness = 1;
-            this.guna2CustomCheckBox1.UncheckedState.FillColor = System.Drawing.Color.White;
+            this.btnAutoLogin.CheckedState.BorderColor = System.Drawing.Color.Black;
+            this.btnAutoLogin.CheckedState.BorderRadius = 4;
+            this.btnAutoLogin.CheckedState.BorderThickness = 1;
+            this.btnAutoLogin.CheckedState.FillColor = System.Drawing.Color.White;
+            this.btnAutoLogin.CheckMarkColor = System.Drawing.Color.Brown;
+            this.btnAutoLogin.Location = new System.Drawing.Point(116, 324);
+            this.btnAutoLogin.Name = "btnAutoLogin";
+            this.btnAutoLogin.Size = new System.Drawing.Size(22, 29);
+            this.btnAutoLogin.TabIndex = 6;
+            this.btnAutoLogin.Text = "guna2CustomCheckBox1";
+            this.btnAutoLogin.UncheckedState.BorderColor = System.Drawing.Color.Black;
+            this.btnAutoLogin.UncheckedState.BorderRadius = 4;
+            this.btnAutoLogin.UncheckedState.BorderThickness = 1;
+            this.btnAutoLogin.UncheckedState.FillColor = System.Drawing.Color.White;
+            this.btnAutoLogin.Click += new System.EventHandler(this.btnAutoLogin_Click);
+            this.btnAutoLogin.MouseLeave += new System.EventHandler(this.btnCursorHand_MouseLeave);
+            this.btnAutoLogin.MouseHover += new System.EventHandler(this.btnCursorHand_MouseEnter);
             // 
             // label1
             // 
@@ -189,7 +194,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("나눔고딕", 10F);
-            this.label3.Location = new System.Drawing.Point(33, 324);
+            this.label3.Location = new System.Drawing.Point(33, 329);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(111, 23);
             this.label3.TabIndex = 17;
@@ -248,6 +253,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 500);
+            this.Controls.Add(this.btnAutoLogin);
             this.Controls.Add(this.lblMsg);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.guna2PictureBox2);
@@ -255,7 +261,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.guna2CustomCheckBox1);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.tbPassword);
             this.Controls.Add(this.tbStdNum);
@@ -279,7 +284,7 @@
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox7;
         private Guna.UI2.WinForms.Guna2TextBox tbStdNum;
         private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
-        private Guna.UI2.WinForms.Guna2CustomCheckBox guna2CustomCheckBox1;
+        private Guna.UI2.WinForms.Guna2CustomCheckBox btnAutoLogin;
         private Guna.UI2.WinForms.Guna2Button btnLogin;
         private Guna.UI2.WinForms.Guna2TextBox tbPassword;
         private System.Windows.Forms.Label label4;

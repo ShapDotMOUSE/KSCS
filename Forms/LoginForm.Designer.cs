@@ -35,7 +35,6 @@
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.tbPassword = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnLogin = new Guna.UI2.WinForms.Guna2Button();
-            this.btnAutoLogin = new Guna.UI2.WinForms.Guna2CustomCheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -45,6 +44,7 @@
             this.btnClose = new Guna.UI2.WinForms.Guna2ImageButton();
             this.guna2PictureBox7 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.lblMsg = new System.Windows.Forms.Label();
+            this.toggleAutoLogin = new Guna.UI2.WinForms.Guna2ToggleSwitch();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox7)).BeginInit();
             this.SuspendLayout();
@@ -117,7 +117,10 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.BorderRadius = 5;
+            this.btnLogin.Animated = true;
+            this.btnLogin.AutoRoundedCorners = true;
+            this.btnLogin.BackColor = System.Drawing.Color.Transparent;
+            this.btnLogin.BorderRadius = 21;
             this.btnLogin.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnLogin.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnLogin.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -125,34 +128,16 @@
             this.btnLogin.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(5)))), ((int)(((byte)(31)))));
             this.btnLogin.Font = new System.Drawing.Font("나눔고딕", 9F);
             this.btnLogin.ForeColor = System.Drawing.Color.White;
+            this.btnLogin.IndicateFocus = true;
             this.btnLogin.Location = new System.Drawing.Point(31, 384);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(283, 45);
             this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "로그인";
+            this.btnLogin.UseTransparentBackground = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             this.btnLogin.MouseEnter += new System.EventHandler(this.btnCursorHand_MouseEnter);
             this.btnLogin.MouseLeave += new System.EventHandler(this.btnCursorHand_MouseLeave);
-            // 
-            // btnAutoLogin
-            // 
-            this.btnAutoLogin.CheckedState.BorderColor = System.Drawing.Color.Black;
-            this.btnAutoLogin.CheckedState.BorderRadius = 4;
-            this.btnAutoLogin.CheckedState.BorderThickness = 1;
-            this.btnAutoLogin.CheckedState.FillColor = System.Drawing.Color.White;
-            this.btnAutoLogin.CheckMarkColor = System.Drawing.Color.Brown;
-            this.btnAutoLogin.Location = new System.Drawing.Point(116, 324);
-            this.btnAutoLogin.Name = "btnAutoLogin";
-            this.btnAutoLogin.Size = new System.Drawing.Size(22, 29);
-            this.btnAutoLogin.TabIndex = 6;
-            this.btnAutoLogin.Text = "guna2CustomCheckBox1";
-            this.btnAutoLogin.UncheckedState.BorderColor = System.Drawing.Color.Black;
-            this.btnAutoLogin.UncheckedState.BorderRadius = 4;
-            this.btnAutoLogin.UncheckedState.BorderThickness = 1;
-            this.btnAutoLogin.UncheckedState.FillColor = System.Drawing.Color.White;
-            this.btnAutoLogin.Click += new System.EventHandler(this.btnAutoLogin_Click);
-            this.btnAutoLogin.MouseLeave += new System.EventHandler(this.btnCursorHand_MouseLeave);
-            this.btnAutoLogin.MouseHover += new System.EventHandler(this.btnCursorHand_MouseEnter);
             // 
             // label1
             // 
@@ -248,12 +233,29 @@
             this.lblMsg.Size = new System.Drawing.Size(0, 18);
             this.lblMsg.TabIndex = 18;
             // 
+            // toggleAutoLogin
+            // 
+            this.toggleAutoLogin.CheckedState.BorderColor = System.Drawing.Color.Maroon;
+            this.toggleAutoLogin.CheckedState.FillColor = System.Drawing.Color.Maroon;
+            this.toggleAutoLogin.CheckedState.InnerBorderColor = System.Drawing.Color.White;
+            this.toggleAutoLogin.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.toggleAutoLogin.Location = new System.Drawing.Point(109, 327);
+            this.toggleAutoLogin.Name = "toggleAutoLogin";
+            this.toggleAutoLogin.Size = new System.Drawing.Size(35, 20);
+            this.toggleAutoLogin.TabIndex = 19;
+            this.toggleAutoLogin.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.toggleAutoLogin.UncheckedState.BorderThickness = 2;
+            this.toggleAutoLogin.UncheckedState.FillColor = System.Drawing.Color.White;
+            this.toggleAutoLogin.UncheckedState.InnerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.toggleAutoLogin.UncheckedState.InnerBorderThickness = 2;
+            this.toggleAutoLogin.UncheckedState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            // 
             // LoginForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 500);
-            this.Controls.Add(this.btnAutoLogin);
+            this.Controls.Add(this.toggleAutoLogin);
             this.Controls.Add(this.lblMsg);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.guna2PictureBox2);
@@ -284,7 +286,6 @@
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox7;
         private Guna.UI2.WinForms.Guna2TextBox tbStdNum;
         private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
-        private Guna.UI2.WinForms.Guna2CustomCheckBox btnAutoLogin;
         private Guna.UI2.WinForms.Guna2Button btnLogin;
         private Guna.UI2.WinForms.Guna2TextBox tbPassword;
         private System.Windows.Forms.Label label4;
@@ -295,5 +296,6 @@
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblMsg;
+        private Guna.UI2.WinForms.Guna2ToggleSwitch toggleAutoLogin;
     }
 }

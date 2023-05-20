@@ -53,6 +53,7 @@
             this.btnTap.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnTap.Size = new System.Drawing.Size(45, 94);
             this.btnTap.TabIndex = 23;
+            this.btnTap.Click += new System.EventHandler(this.customTapButton_Click);
             this.btnTap.MouseEnter += new System.EventHandler(this.btnTab_MouseHover);
             this.btnTap.MouseLeave += new System.EventHandler(this.btnTap_MouseLeave);
             // 
@@ -64,9 +65,10 @@
             // panelWhite
             // 
             this.panelWhite.BackColor = System.Drawing.Color.White;
+            this.panelWhite.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelWhite.Location = new System.Drawing.Point(0, 0);
             this.panelWhite.Name = "panelWhite";
-            this.panelWhite.Size = new System.Drawing.Size(21, 102);
+            this.panelWhite.Size = new System.Drawing.Size(17, 94);
             this.panelWhite.TabIndex = 25;
             this.panelWhite.MouseEnter += new System.EventHandler(this.btnTab_MouseHover);
             this.panelWhite.MouseLeave += new System.EventHandler(this.btnTap_MouseLeave);
@@ -80,7 +82,6 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "customTapButton";
             this.Size = new System.Drawing.Size(45, 94);
-            this.Click += new System.EventHandler(this.customTapButton_Click);
             this.ResumeLayout(false);
 
         }

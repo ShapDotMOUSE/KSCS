@@ -50,20 +50,20 @@ namespace KSCS
         {
             InitializeComponent();
             connection.Open();
-            //LoginForm loginForm = new LoginForm();
+            LoginForm loginForm = new LoginForm();
 
-            //DialogResult Result = loginForm.ShowDialog();
+            DialogResult Result = loginForm.ShowDialog();
 
-            //if (Result == DialogResult.OK)
-            //{
-            //    dispalyDate();
-            //    lblStdNum.Text = stdNum;
-            //    LoadMagam();
-            //}
-            //else
-            //{
-            //    Close();
-            //}
+            if (Result == DialogResult.OK)
+            {
+                dispalyDate();
+                lblStdNum.Text = stdNum;
+                LoadMagam();
+            }
+            else
+            {
+                Close();
+            }
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -71,9 +71,9 @@ namespace KSCS
             Category.TestCategory();
             //초기 탭 설정 
             TabName = btnTab1.Name; //수정되어야함
-            btnTab1.Click += ChangeTab;
-            btnTab2.Click += ChangeTab;
-            btnTab3.Click += ChangeTab;
+            btnTab1.Clicked += ChangeTab;
+            btnTab2.Clicked += ChangeTab;
+            btnTab3.Clicked += ChangeTab;
             dispalyDate();
             DisplayCategery();
             SetCheckedCategoryByTab();
@@ -161,7 +161,6 @@ namespace KSCS
             /*
              * TODO: 이 부분에 DB에 연결하는 함수 추가 필요
              */
-            MessageBox.Show("왜 안나와..");
             customTapButton btn = sender as customTapButton;
             TabName = btn.Name;
             SetCheckedCategoryByTab();

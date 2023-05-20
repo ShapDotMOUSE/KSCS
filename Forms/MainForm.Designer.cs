@@ -68,6 +68,15 @@
             this.lblMonth = new System.Windows.Forms.Label();
             this.guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.flpDays = new System.Windows.Forms.TableLayoutPanel();
+            this.guna2Elipse3 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2Elipse4 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2Elipse5 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.btnTab6 = new KSCS.customTapButton();
+            this.btnTab5 = new KSCS.customTapButton();
+            this.btnTab4 = new KSCS.customTapButton();
+            this.btnTab3 = new KSCS.customTapButton();
+            this.btnTab2 = new KSCS.customTapButton();
+            this.btnTab1 = new KSCS.customTapButton();
             this.userDate1 = new KSCS.UserDate();
             this.userDate2 = new KSCS.UserDate();
             this.userDate3 = new KSCS.UserDate();
@@ -110,15 +119,6 @@
             this.userDate40 = new KSCS.UserDate();
             this.userDate41 = new KSCS.UserDate();
             this.userDate42 = new KSCS.UserDate();
-            this.guna2Elipse3 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.guna2Elipse4 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.guna2Elipse5 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.btnTab5 = new KSCS.customTapButton();
-            this.btnTab6 = new KSCS.customTapButton();
-            this.btnTab4 = new KSCS.customTapButton();
-            this.btnTab3 = new KSCS.customTapButton();
-            this.btnTab2 = new KSCS.customTapButton();
-            this.btnTab1 = new KSCS.customTapButton();
             this.guna2Panel2.SuspendLayout();
             this.flpMainCategory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox4)).BeginInit();
@@ -706,6 +706,72 @@
             this.flpDays.Size = new System.Drawing.Size(1054, 710);
             this.flpDays.TabIndex = 42;
             // 
+            // guna2Elipse3
+            // 
+            this.guna2Elipse3.BorderRadius = 10;
+            this.guna2Elipse3.TargetControl = this.guna2Panel3;
+            // 
+            // guna2Elipse4
+            // 
+            this.guna2Elipse4.BorderRadius = 10;
+            this.guna2Elipse4.TargetControl = this.guna2Panel4;
+            // 
+            // guna2Elipse5
+            // 
+            this.guna2Elipse5.BorderRadius = 10;
+            this.guna2Elipse5.TargetControl = this.guna2Panel5;
+            // 
+            // btnTab6
+            // 
+            this.btnTab6.Location = new System.Drawing.Point(1203, 1002);
+            this.btnTab6.Margin = new System.Windows.Forms.Padding(5);
+            this.btnTab6.Name = "btnTab6";
+            this.btnTab6.Size = new System.Drawing.Size(45, 94);
+            this.btnTab6.TabIndex = 22;
+            // 
+            // btnTab5
+            // 
+            this.btnTab5.Location = new System.Drawing.Point(1203, 882);
+            this.btnTab5.Margin = new System.Windows.Forms.Padding(5);
+            this.btnTab5.Name = "btnTab5";
+            this.btnTab5.Size = new System.Drawing.Size(45, 94);
+            this.btnTab5.TabIndex = 22;
+            // 
+            // btnTab4
+            // 
+            this.btnTab4.Location = new System.Drawing.Point(1203, 762);
+            this.btnTab4.Margin = new System.Windows.Forms.Padding(5);
+            this.btnTab4.Name = "btnTab4";
+            this.btnTab4.Size = new System.Drawing.Size(45, 94);
+            this.btnTab4.TabIndex = 22;
+            // 
+            // btnTab3
+            // 
+            this.btnTab3.Location = new System.Drawing.Point(1203, 642);
+            this.btnTab3.Margin = new System.Windows.Forms.Padding(5);
+            this.btnTab3.Name = "btnTab3";
+            this.btnTab3.Size = new System.Drawing.Size(45, 94);
+            this.btnTab3.TabIndex = 22;
+            this.btnTab3.Click += new System.EventHandler(this.ChangeTab);
+            // 
+            // btnTab2
+            // 
+            this.btnTab2.Location = new System.Drawing.Point(1203, 516);
+            this.btnTab2.Margin = new System.Windows.Forms.Padding(5);
+            this.btnTab2.Name = "btnTab2";
+            this.btnTab2.Size = new System.Drawing.Size(45, 94);
+            this.btnTab2.TabIndex = 22;
+            this.btnTab2.Click += new System.EventHandler(this.ChangeTab);
+            // 
+            // btnTab1
+            // 
+            this.btnTab1.Location = new System.Drawing.Point(1203, 399);
+            this.btnTab1.Margin = new System.Windows.Forms.Padding(5);
+            this.btnTab1.Name = "btnTab1";
+            this.btnTab1.Size = new System.Drawing.Size(45, 94);
+            this.btnTab1.TabIndex = 22;
+            this.btnTab1.Click += new System.EventHandler(this.ChangeTab);
+            // 
             // userDate1
             // 
             this.userDate1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
@@ -1084,72 +1150,6 @@
             this.userDate42.Size = new System.Drawing.Size(150, 118);
             this.userDate42.TabIndex = 41;
             // 
-            // guna2Elipse3
-            // 
-            this.guna2Elipse3.BorderRadius = 10;
-            this.guna2Elipse3.TargetControl = this.guna2Panel3;
-            // 
-            // guna2Elipse4
-            // 
-            this.guna2Elipse4.BorderRadius = 10;
-            this.guna2Elipse4.TargetControl = this.guna2Panel4;
-            // 
-            // guna2Elipse5
-            // 
-            this.guna2Elipse5.BorderRadius = 10;
-            this.guna2Elipse5.TargetControl = this.guna2Panel5;
-            // 
-            // btnTab5
-            // 
-            this.btnTab5.Location = new System.Drawing.Point(1198, 880);
-            this.btnTab5.Margin = new System.Windows.Forms.Padding(5);
-            this.btnTab5.Name = "btnTab5";
-            this.btnTab5.Size = new System.Drawing.Size(45, 94);
-            this.btnTab5.TabIndex = 22;
-            // 
-            // btnTab6
-            // 
-            this.btnTab6.Location = new System.Drawing.Point(1198, 1000);
-            this.btnTab6.Margin = new System.Windows.Forms.Padding(5);
-            this.btnTab6.Name = "btnTab6";
-            this.btnTab6.Size = new System.Drawing.Size(45, 94);
-            this.btnTab6.TabIndex = 22;
-            // 
-            // btnTab4
-            // 
-            this.btnTab4.Location = new System.Drawing.Point(1198, 760);
-            this.btnTab4.Margin = new System.Windows.Forms.Padding(5);
-            this.btnTab4.Name = "btnTab4";
-            this.btnTab4.Size = new System.Drawing.Size(45, 94);
-            this.btnTab4.TabIndex = 22;
-            // 
-            // btnTab3
-            // 
-            this.btnTab3.Location = new System.Drawing.Point(1198, 640);
-            this.btnTab3.Margin = new System.Windows.Forms.Padding(5);
-            this.btnTab3.Name = "btnTab3";
-            this.btnTab3.Size = new System.Drawing.Size(45, 94);
-            this.btnTab3.TabIndex = 22;
-            this.btnTab3.Click += new System.EventHandler(this.ChangeTab);
-            // 
-            // btnTab2
-            // 
-            this.btnTab2.Location = new System.Drawing.Point(1198, 514);
-            this.btnTab2.Margin = new System.Windows.Forms.Padding(5);
-            this.btnTab2.Name = "btnTab2";
-            this.btnTab2.Size = new System.Drawing.Size(45, 94);
-            this.btnTab2.TabIndex = 22;
-            this.btnTab2.Click += new System.EventHandler(this.ChangeTab);
-            // 
-            // btnTab1
-            // 
-            this.btnTab1.Location = new System.Drawing.Point(1198, 397);
-            this.btnTab1.Margin = new System.Windows.Forms.Padding(5);
-            this.btnTab1.Name = "btnTab1";
-            this.btnTab1.Size = new System.Drawing.Size(45, 94);
-            this.btnTab1.TabIndex = 22;
-            this.btnTab1.Click += new System.EventHandler(this.ChangeTab);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -1157,8 +1157,8 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(1600, 1152);
-            this.Controls.Add(this.btnTab5);
             this.Controls.Add(this.btnTab6);
+            this.Controls.Add(this.btnTab5);
             this.Controls.Add(this.btnTab4);
             this.Controls.Add(this.btnTab3);
             this.Controls.Add(this.btnTab2);

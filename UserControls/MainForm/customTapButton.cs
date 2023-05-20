@@ -12,7 +12,7 @@ namespace KSCS
 {
     public partial class customTapButton : UserControl
     {
-        public event EventHandler Click;
+        public event EventHandler Clicked;
         public customTapButton()
         {
             InitializeComponent();
@@ -20,23 +20,24 @@ namespace KSCS
 
         protected override void OnClick(EventArgs e)
         {
-            base.OnClick(e);
-            Click?.Invoke(this, e);
+            Clicked?.Invoke(this, e);
         }
 
         private void btnTab_MouseHover(object sender, EventArgs e)
         {
-            panelWhite.Visible = false;
+            btnTap.BringToFront();
+            //panelWhite.Visible = false;
         }
 
         private void btnTap_MouseLeave(object sender, EventArgs e)
         {
-            panelWhite.Visible = true;
+            //panelWhite.Visible = true;
+            panelWhite.BringToFront();
         }
 
         private void customTapButton_Click(object sender, EventArgs e)
         {
-            OnClick(EventArgs.Empty);
+            OnClick(e);
         }
     }
 }

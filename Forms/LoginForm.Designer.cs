@@ -62,6 +62,7 @@
             // 
             // tbStdNum
             // 
+            this.tbStdNum.Animated = true;
             this.tbStdNum.BorderRadius = 5;
             this.tbStdNum.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.tbStdNum.DefaultText = "";
@@ -70,19 +71,23 @@
             this.tbStdNum.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.tbStdNum.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.tbStdNum.FillColor = System.Drawing.Color.LightGray;
-            this.tbStdNum.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tbStdNum.FocusedState.BorderColor = System.Drawing.Color.Maroon;
             this.tbStdNum.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.tbStdNum.ForeColor = System.Drawing.Color.Maroon;
-            this.tbStdNum.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tbStdNum.HoverState.BorderColor = System.Drawing.Color.IndianRed;
             this.tbStdNum.Location = new System.Drawing.Point(31, 203);
             this.tbStdNum.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbStdNum.MaxLength = 10;
             this.tbStdNum.Name = "tbStdNum";
             this.tbStdNum.PasswordChar = '\0';
-            this.tbStdNum.PlaceholderText = "";
+            this.tbStdNum.PlaceholderForeColor = System.Drawing.Color.White;
+            this.tbStdNum.PlaceholderText = "ID";
             this.tbStdNum.SelectedText = "";
             this.tbStdNum.Size = new System.Drawing.Size(283, 41);
             this.tbStdNum.TabIndex = 1;
-            this.tbStdNum.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbID_KeyDown);
+            this.tbStdNum.WordWrap = false;
+            this.tbStdNum.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbStdNum_KeyDown);
+            this.tbStdNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStdNum_KeyPress);
             // 
             // guna2BorderlessForm1
             // 
@@ -93,6 +98,7 @@
             // 
             // tbPassword
             // 
+            this.tbPassword.Animated = true;
             this.tbPassword.BorderRadius = 5;
             this.tbPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.tbPassword.DefaultText = "";
@@ -101,18 +107,20 @@
             this.tbPassword.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.tbPassword.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.tbPassword.FillColor = System.Drawing.Color.LightGray;
-            this.tbPassword.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tbPassword.FocusedState.BorderColor = System.Drawing.Color.Maroon;
             this.tbPassword.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.tbPassword.ForeColor = System.Drawing.Color.Maroon;
-            this.tbPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tbPassword.HoverState.BorderColor = System.Drawing.Color.IndianRed;
             this.tbPassword.Location = new System.Drawing.Point(31, 279);
             this.tbPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.PasswordChar = '*';
-            this.tbPassword.PlaceholderText = "";
+            this.tbPassword.PlaceholderForeColor = System.Drawing.Color.White;
+            this.tbPassword.PlaceholderText = "Password";
             this.tbPassword.SelectedText = "";
             this.tbPassword.Size = new System.Drawing.Size(283, 41);
             this.tbPassword.TabIndex = 2;
+            this.tbPassword.WordWrap = false;
             this.tbPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbPassword_KeyDown);
             // 
             // btnLogin
@@ -126,7 +134,7 @@
             this.btnLogin.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnLogin.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnLogin.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(5)))), ((int)(((byte)(31)))));
-            this.btnLogin.Font = new System.Drawing.Font("나눔고딕", 10F);
+            this.btnLogin.Font = new System.Drawing.Font("나눔고딕", 9F);
             this.btnLogin.ForeColor = System.Drawing.Color.White;
             this.btnLogin.HoverState.Font = new System.Drawing.Font("나눔고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnLogin.IndicateFocus = true;
@@ -236,6 +244,7 @@
             // 
             // toggleAutoLogin
             // 
+            this.toggleAutoLogin.Animated = true;
             this.toggleAutoLogin.CheckedState.BorderColor = System.Drawing.Color.Maroon;
             this.toggleAutoLogin.CheckedState.FillColor = System.Drawing.Color.Maroon;
             this.toggleAutoLogin.CheckedState.InnerBorderColor = System.Drawing.Color.White;

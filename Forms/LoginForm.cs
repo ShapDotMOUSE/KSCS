@@ -36,7 +36,7 @@ namespace KSCS
         //--------------------------------------------------------------
 
 
-        private void tbID_KeyDown(object sendder,KeyEventArgs e)
+        private void tbStdNum_KeyDown(object sendder,KeyEventArgs e)
         {
             if (!string.IsNullOrEmpty(lblMsg.Text))
                 lblMsg.Text = "";
@@ -100,9 +100,12 @@ namespace KSCS
             this.Size = new Size(800, 500);
         }
 
-        private void btnAutoLogin_Click(object sender, EventArgs e)
+        private void tbStdNum_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

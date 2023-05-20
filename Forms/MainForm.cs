@@ -1,12 +1,26 @@
-﻿using System;
+﻿using crypto;
+using Guna.UI2.WinForms;
+using Org.BouncyCastle.Crypto;
+using Org.BouncyCastle.Security;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http.Headers;
+using System.Net.Http;
+using System.Net;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
+using Label = System.Windows.Forms.Label;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using Panel = System.Windows.Forms.Panel;
 
 namespace KSCS
 {
@@ -14,6 +28,8 @@ namespace KSCS
     {
         private int year, month;
         public static int static_month, static_year;
+
+        
         public static Category Category = new Category();
         public static string TabName;
         public MainForm()
@@ -67,6 +83,12 @@ namespace KSCS
             }
         }
 
+       
+
+        private void guna2ControlBox1_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
         //컨트롤 함수------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         //달력 컨트롤--------------------------------------------------------------------------------------------------------------------------------------
@@ -83,6 +105,7 @@ namespace KSCS
             createDates();
         }
 
+
         private void btnPrvious_Click(object sender, EventArgs e)
         {
             if (month == 1)
@@ -95,5 +118,9 @@ namespace KSCS
             }
             createDates();
         }
+
+        
+
+
     }
 }

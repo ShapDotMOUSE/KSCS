@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblStdNum = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
@@ -61,15 +61,6 @@
             this.btnNext = new Guna.UI2.WinForms.Guna2Button();
             this.lblMonth = new System.Windows.Forms.Label();
             this.guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.guna2Elipse3 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.guna2Elipse4 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.guna2Elipse5 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.customTapButton6 = new KSCS.customTapButton();
-            this.customTapButton5 = new KSCS.customTapButton();
-            this.customTapButton4 = new KSCS.customTapButton();
-            this.customTapButton3 = new KSCS.customTapButton();
-            this.customTapButton2 = new KSCS.customTapButton();
-            this.customTapButton1 = new KSCS.customTapButton();
             this.flpDays = new System.Windows.Forms.TableLayoutPanel();
             this.userDate1 = new KSCS.UserDate();
             this.userDate2 = new KSCS.UserDate();
@@ -113,6 +104,15 @@
             this.userDate40 = new KSCS.UserDate();
             this.userDate41 = new KSCS.UserDate();
             this.userDate42 = new KSCS.UserDate();
+            this.guna2Elipse3 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2Elipse4 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2Elipse5 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.customTapButton6 = new KSCS.customTapButton();
+            this.customTapButton5 = new KSCS.customTapButton();
+            this.customTapButton4 = new KSCS.customTapButton();
+            this.customTapButton3 = new KSCS.customTapButton();
+            this.customTapButton2 = new KSCS.customTapButton();
+            this.customTapButton1 = new KSCS.customTapButton();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox4)).BeginInit();
@@ -140,19 +140,19 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "팡운머";
             // 
-            // label3
+            // lblStdNum
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.White;
-            this.label3.Font = new System.Drawing.Font("나눔고딕", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(155, 80);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(144, 24);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "20XX2030XX";
+            this.lblStdNum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblStdNum.AutoSize = true;
+            this.lblStdNum.BackColor = System.Drawing.Color.White;
+            this.lblStdNum.Font = new System.Drawing.Font("나눔고딕", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblStdNum.ForeColor = System.Drawing.Color.Black;
+            this.lblStdNum.Location = new System.Drawing.Point(155, 80);
+            this.lblStdNum.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblStdNum.Name = "lblStdNum";
+            this.lblStdNum.Size = new System.Drawing.Size(144, 24);
+            this.lblStdNum.TabIndex = 6;
+            this.lblStdNum.Text = "20XX2030XX";
             // 
             // label1
             // 
@@ -290,7 +290,7 @@
             this.guna2Panel2.BorderThickness = 1;
             this.guna2Panel2.Controls.Add(this.guna2PictureBox4);
             this.guna2Panel2.Controls.Add(this.guna2Panel1);
-            this.guna2Panel2.Controls.Add(this.label3);
+            this.guna2Panel2.Controls.Add(this.lblStdNum);
             this.guna2Panel2.Controls.Add(this.category_underline);
             this.guna2Panel2.Controls.Add(this.label2);
             this.guna2Panel2.Controls.Add(this.guna2Button1);
@@ -557,69 +557,6 @@
             this.guna2PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.guna2PictureBox3.TabIndex = 0;
             this.guna2PictureBox3.TabStop = false;
-            // 
-            // guna2Elipse3
-            // 
-            this.guna2Elipse3.BorderRadius = 10;
-            this.guna2Elipse3.TargetControl = this.guna2Panel3;
-            // 
-            // guna2Elipse4
-            // 
-            this.guna2Elipse4.BorderRadius = 10;
-            this.guna2Elipse4.TargetControl = this.guna2Panel4;
-            // 
-            // guna2Elipse5
-            // 
-            this.guna2Elipse5.BorderRadius = 10;
-            this.guna2Elipse5.TargetControl = this.guna2Panel5;
-            // 
-            // customTapButton6
-            // 
-            this.customTapButton6.Location = new System.Drawing.Point(1198, 880);
-            this.customTapButton6.Margin = new System.Windows.Forms.Padding(5);
-            this.customTapButton6.Name = "customTapButton6";
-            this.customTapButton6.Size = new System.Drawing.Size(45, 94);
-            this.customTapButton6.TabIndex = 22;
-            // 
-            // customTapButton5
-            // 
-            this.customTapButton5.Location = new System.Drawing.Point(1198, 1000);
-            this.customTapButton5.Margin = new System.Windows.Forms.Padding(5);
-            this.customTapButton5.Name = "customTapButton5";
-            this.customTapButton5.Size = new System.Drawing.Size(45, 94);
-            this.customTapButton5.TabIndex = 22;
-            // 
-            // customTapButton4
-            // 
-            this.customTapButton4.Location = new System.Drawing.Point(1198, 760);
-            this.customTapButton4.Margin = new System.Windows.Forms.Padding(5);
-            this.customTapButton4.Name = "customTapButton4";
-            this.customTapButton4.Size = new System.Drawing.Size(45, 94);
-            this.customTapButton4.TabIndex = 22;
-            // 
-            // customTapButton3
-            // 
-            this.customTapButton3.Location = new System.Drawing.Point(1198, 640);
-            this.customTapButton3.Margin = new System.Windows.Forms.Padding(5);
-            this.customTapButton3.Name = "customTapButton3";
-            this.customTapButton3.Size = new System.Drawing.Size(45, 94);
-            this.customTapButton3.TabIndex = 22;
-            // 
-            // customTapButton2
-            // 
-            this.customTapButton2.Location = new System.Drawing.Point(1198, 514);
-            this.customTapButton2.Margin = new System.Windows.Forms.Padding(5);
-            this.customTapButton2.Name = "customTapButton2";
-            this.customTapButton2.Size = new System.Drawing.Size(45, 94);
-            this.customTapButton2.TabIndex = 22;
-            // 
-            // customTapButton1
-            // 
-            this.customTapButton1.Location = new System.Drawing.Point(1198, 397);
-            this.customTapButton1.Margin = new System.Windows.Forms.Padding(5);
-            this.customTapButton1.Name = "customTapButton1";
-            this.customTapButton1.Size = new System.Drawing.Size(45, 94);
-            this.customTapButton1.TabIndex = 22;
             // 
             // flpDays
             // 
@@ -1063,6 +1000,69 @@
             this.userDate42.Size = new System.Drawing.Size(154, 120);
             this.userDate42.TabIndex = 41;
             // 
+            // guna2Elipse3
+            // 
+            this.guna2Elipse3.BorderRadius = 10;
+            this.guna2Elipse3.TargetControl = this.guna2Panel3;
+            // 
+            // guna2Elipse4
+            // 
+            this.guna2Elipse4.BorderRadius = 10;
+            this.guna2Elipse4.TargetControl = this.guna2Panel4;
+            // 
+            // guna2Elipse5
+            // 
+            this.guna2Elipse5.BorderRadius = 10;
+            this.guna2Elipse5.TargetControl = this.guna2Panel5;
+            // 
+            // customTapButton6
+            // 
+            this.customTapButton6.Location = new System.Drawing.Point(1198, 880);
+            this.customTapButton6.Margin = new System.Windows.Forms.Padding(5);
+            this.customTapButton6.Name = "customTapButton6";
+            this.customTapButton6.Size = new System.Drawing.Size(45, 94);
+            this.customTapButton6.TabIndex = 22;
+            // 
+            // customTapButton5
+            // 
+            this.customTapButton5.Location = new System.Drawing.Point(1198, 1000);
+            this.customTapButton5.Margin = new System.Windows.Forms.Padding(5);
+            this.customTapButton5.Name = "customTapButton5";
+            this.customTapButton5.Size = new System.Drawing.Size(45, 94);
+            this.customTapButton5.TabIndex = 22;
+            // 
+            // customTapButton4
+            // 
+            this.customTapButton4.Location = new System.Drawing.Point(1198, 760);
+            this.customTapButton4.Margin = new System.Windows.Forms.Padding(5);
+            this.customTapButton4.Name = "customTapButton4";
+            this.customTapButton4.Size = new System.Drawing.Size(45, 94);
+            this.customTapButton4.TabIndex = 22;
+            // 
+            // customTapButton3
+            // 
+            this.customTapButton3.Location = new System.Drawing.Point(1198, 640);
+            this.customTapButton3.Margin = new System.Windows.Forms.Padding(5);
+            this.customTapButton3.Name = "customTapButton3";
+            this.customTapButton3.Size = new System.Drawing.Size(45, 94);
+            this.customTapButton3.TabIndex = 22;
+            // 
+            // customTapButton2
+            // 
+            this.customTapButton2.Location = new System.Drawing.Point(1198, 514);
+            this.customTapButton2.Margin = new System.Windows.Forms.Padding(5);
+            this.customTapButton2.Name = "customTapButton2";
+            this.customTapButton2.Size = new System.Drawing.Size(45, 94);
+            this.customTapButton2.TabIndex = 22;
+            // 
+            // customTapButton1
+            // 
+            this.customTapButton1.Location = new System.Drawing.Point(1198, 397);
+            this.customTapButton1.Margin = new System.Windows.Forms.Padding(5);
+            this.customTapButton1.Name = "customTapButton1";
+            this.customTapButton1.Size = new System.Drawing.Size(45, 94);
+            this.customTapButton1.TabIndex = 22;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -1110,7 +1110,7 @@
 
         #endregion
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblStdNum;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;

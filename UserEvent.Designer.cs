@@ -42,7 +42,7 @@
             this.flpEventInfo.Controls.Add(this.txtEventInfo);
             this.flpEventInfo.Controls.Add(this.guna2HtmlLabel1);
             this.flpEventInfo.Location = new System.Drawing.Point(0, 0);
-            this.flpEventInfo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flpEventInfo.Margin = new System.Windows.Forms.Padding(4);
             this.flpEventInfo.Name = "flpEventInfo";
             this.flpEventInfo.Size = new System.Drawing.Size(146, 22);
             this.flpEventInfo.TabIndex = 0;
@@ -60,19 +60,19 @@
             // 
             this.txtEventInfo.AutoSize = false;
             this.txtEventInfo.BackColor = System.Drawing.Color.Transparent;
-            this.txtEventInfo.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEventInfo.Font = new System.Drawing.Font("Pretendard", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEventInfo.Location = new System.Drawing.Point(21, 0);
             this.txtEventInfo.Margin = new System.Windows.Forms.Padding(7, 0, 0, 0);
             this.txtEventInfo.Name = "txtEventInfo";
-            this.txtEventInfo.Size = new System.Drawing.Size(124, 22);
+            this.txtEventInfo.Size = new System.Drawing.Size(124, 38);
             this.txtEventInfo.TabIndex = 2;
             this.txtEventInfo.Text = "guna2HtmlLabel2";
             // 
             // guna2HtmlLabel1
             // 
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(4, 26);
-            this.guna2HtmlLabel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(4, 42);
+            this.guna2HtmlLabel1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
             this.guna2HtmlLabel1.Size = new System.Drawing.Size(139, 20);
             this.guna2HtmlLabel1.TabIndex = 1;
@@ -83,7 +83,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.flpEventInfo);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UserEvent";
             this.Size = new System.Drawing.Size(146, 22);
             this.flpEventInfo.ResumeLayout(false);

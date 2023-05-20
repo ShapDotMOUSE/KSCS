@@ -13,7 +13,7 @@ namespace KSCS
 {
     public partial class UserDate : UserControl
     {
-        public static int static_date;
+        public static int static_date; //추가(클릭한 날)
 
         public UserDate()
         {
@@ -23,6 +23,7 @@ namespace KSCS
 
         private void LoadUserDate()
         {
+            
             for (int i=0;i< KSCS.monthScheduleList[Convert.ToInt32(lblDate.Text) - 1].Count; i++)
             {
                 AddEvent(KSCS.monthScheduleList[Convert.ToInt32(lblDate.Text) - 1][i].title, int.Parse(KSCS.categoryDict[KSCS.monthScheduleList[Convert.ToInt32(lblDate.Text) - 1][i].category][1]));
@@ -51,16 +52,18 @@ namespace KSCS
             static_date = Convert.ToInt32(lblDate.Text); //날
             ScheDetailForm eventForm = new ScheDetailForm();
             eventForm.AddEvent += new EventHandler(SaveEvent); //이벤트 발생
+            //추가
             eventForm.Show();
         }
 
         private void SaveEvent(object sender, EventArgs e)
         {
             ScheDetailForm userControl = sender as ScheDetailForm;
-            AddEvent(userControl.GetTbTitle(), userControl.GetCbCategory());
-
+            flpEvent.Controls.Clear(); //userEvent 컨트롤 초기화
+            LoadUserDate();
+            //AddEvent(userControl.GetTbTitle(),int.Parse(KSCS.categoryDict[userControl.GetCbCategory()][1])); //수정
         }
-
+        
         private void AddEvent(string dateEvent, int eventType) //userEvent 생성
         {
             if (dateEvent.Equals(string.Empty))

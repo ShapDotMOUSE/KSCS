@@ -29,13 +29,25 @@ namespace KSCS
         private int year, month;
         public static int static_month, static_year;
 
-        
+        public static string stdNum;
         public static Category Category = new Category();
         public static string TabName;
         public MainForm()
         {
             InitializeComponent();
-            dispalyDate();
+            LoginForm loginForm=new LoginForm();
+
+            DialogResult Result=loginForm.ShowDialog();
+
+            if(Result == DialogResult.OK)
+            {
+                dispalyDate();
+                lblStdNum.Text = stdNum;
+            }
+            else
+            {
+                Close();
+            }
         }
 
         private void MainForm_Resize(object sender, EventArgs e)

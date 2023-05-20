@@ -45,12 +45,13 @@
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2PictureBox4 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.guna2CircleButton1 = new Guna.UI2.WinForms.Guna2CircleButton();
-            this.guna2CircleButton2 = new Guna.UI2.WinForms.Guna2CircleButton();
-            this.guna2CircleButton3 = new Guna.UI2.WinForms.Guna2CircleButton();
-            this.guna2CircleButton4 = new Guna.UI2.WinForms.Guna2CircleButton();
-            this.guna2CircleButton5 = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.panelMagam = new System.Windows.Forms.FlowLayoutPanel();
+            this.panelMagamBtns = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnMagam_Task = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.btnMagam_Quiz = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.btnMagam_Online = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.btnMagam_Prjct = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.btnMagam_Personal = new Guna.UI2.WinForms.Guna2CircleButton();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
@@ -62,6 +63,15 @@
             this.lblMonth = new System.Windows.Forms.Label();
             this.guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.flpDays = new System.Windows.Forms.TableLayoutPanel();
+            this.guna2Elipse3 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2Elipse4 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2Elipse5 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.customTapButton6 = new KSCS.customTapButton();
+            this.customTapButton5 = new KSCS.customTapButton();
+            this.customTapButton4 = new KSCS.customTapButton();
+            this.customTapButton3 = new KSCS.customTapButton();
+            this.customTapButton2 = new KSCS.customTapButton();
+            this.customTapButton1 = new KSCS.customTapButton();
             this.userDate1 = new KSCS.UserDate();
             this.userDate2 = new KSCS.UserDate();
             this.userDate3 = new KSCS.UserDate();
@@ -104,20 +114,11 @@
             this.userDate40 = new KSCS.UserDate();
             this.userDate41 = new KSCS.UserDate();
             this.userDate42 = new KSCS.UserDate();
-            this.guna2Elipse3 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.guna2Elipse4 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.guna2Elipse5 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.customTapButton6 = new KSCS.customTapButton();
-            this.customTapButton5 = new KSCS.customTapButton();
-            this.customTapButton4 = new KSCS.customTapButton();
-            this.customTapButton3 = new KSCS.customTapButton();
-            this.customTapButton2 = new KSCS.customTapButton();
-            this.customTapButton1 = new KSCS.customTapButton();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox4)).BeginInit();
             this.guna2Panel3.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
+            this.panelMagamBtns.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.guna2Panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
@@ -321,7 +322,8 @@
             this.guna2Panel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.guna2Panel3.BackColor = System.Drawing.Color.White;
             this.guna2Panel3.BorderRadius = 10;
-            this.guna2Panel3.Controls.Add(this.flowLayoutPanel2);
+            this.guna2Panel3.Controls.Add(this.panelMagam);
+            this.guna2Panel3.Controls.Add(this.panelMagamBtns);
             this.guna2Panel3.Controls.Add(this.guna2PictureBox1);
             this.guna2Panel3.Controls.Add(this.label4);
             this.guna2Panel3.Location = new System.Drawing.Point(635, 22);
@@ -330,98 +332,111 @@
             this.guna2Panel3.Size = new System.Drawing.Size(588, 210);
             this.guna2Panel3.TabIndex = 19;
             // 
-            // flowLayoutPanel2
+            // panelMagam
             // 
-            this.flowLayoutPanel2.Controls.Add(this.guna2CircleButton1);
-            this.flowLayoutPanel2.Controls.Add(this.guna2CircleButton2);
-            this.flowLayoutPanel2.Controls.Add(this.guna2CircleButton3);
-            this.flowLayoutPanel2.Controls.Add(this.guna2CircleButton4);
-            this.flowLayoutPanel2.Controls.Add(this.guna2CircleButton5);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(18, 24);
-            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(360, 53);
-            this.flowLayoutPanel2.TabIndex = 9;
+            this.panelMagam.Location = new System.Drawing.Point(18, 84);
+            this.panelMagam.Name = "panelMagam";
+            this.panelMagam.Size = new System.Drawing.Size(427, 123);
+            this.panelMagam.TabIndex = 10;
             // 
-            // guna2CircleButton1
+            // panelMagamBtns
             // 
-            this.guna2CircleButton1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2CircleButton1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2CircleButton1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2CircleButton1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2CircleButton1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
-            this.guna2CircleButton1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2CircleButton1.ForeColor = System.Drawing.Color.White;
-            this.guna2CircleButton1.Location = new System.Drawing.Point(5, 5);
-            this.guna2CircleButton1.Margin = new System.Windows.Forms.Padding(5);
-            this.guna2CircleButton1.Name = "guna2CircleButton1";
-            this.guna2CircleButton1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CircleButton1.Size = new System.Drawing.Size(38, 36);
-            this.guna2CircleButton1.TabIndex = 0;
+            this.panelMagamBtns.AutoScroll = true;
+            this.panelMagamBtns.Controls.Add(this.btnMagam_Task);
+            this.panelMagamBtns.Controls.Add(this.btnMagam_Quiz);
+            this.panelMagamBtns.Controls.Add(this.btnMagam_Online);
+            this.panelMagamBtns.Controls.Add(this.btnMagam_Prjct);
+            this.panelMagamBtns.Controls.Add(this.btnMagam_Personal);
+            this.panelMagamBtns.Location = new System.Drawing.Point(18, 24);
+            this.panelMagamBtns.Margin = new System.Windows.Forms.Padding(4);
+            this.panelMagamBtns.Name = "panelMagamBtns";
+            this.panelMagamBtns.Size = new System.Drawing.Size(360, 53);
+            this.panelMagamBtns.TabIndex = 9;
             // 
-            // guna2CircleButton2
+            // btnMagam_Task
             // 
-            this.guna2CircleButton2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2CircleButton2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2CircleButton2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2CircleButton2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2CircleButton2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(0)))));
-            this.guna2CircleButton2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2CircleButton2.ForeColor = System.Drawing.Color.White;
-            this.guna2CircleButton2.Location = new System.Drawing.Point(53, 5);
-            this.guna2CircleButton2.Margin = new System.Windows.Forms.Padding(5);
-            this.guna2CircleButton2.Name = "guna2CircleButton2";
-            this.guna2CircleButton2.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CircleButton2.Size = new System.Drawing.Size(38, 36);
-            this.guna2CircleButton2.TabIndex = 1;
+            this.btnMagam_Task.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnMagam_Task.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnMagam_Task.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnMagam_Task.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnMagam_Task.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
+            this.btnMagam_Task.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnMagam_Task.ForeColor = System.Drawing.Color.White;
+            this.btnMagam_Task.Location = new System.Drawing.Point(5, 5);
+            this.btnMagam_Task.Margin = new System.Windows.Forms.Padding(5);
+            this.btnMagam_Task.Name = "btnMagam_Task";
+            this.btnMagam_Task.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.btnMagam_Task.Size = new System.Drawing.Size(38, 36);
+            this.btnMagam_Task.TabIndex = 0;
+            this.btnMagam_Task.Click += new System.EventHandler(this.btnMagam_Click);
             // 
-            // guna2CircleButton3
+            // btnMagam_Quiz
             // 
-            this.guna2CircleButton3.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2CircleButton3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2CircleButton3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2CircleButton3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2CircleButton3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.guna2CircleButton3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2CircleButton3.ForeColor = System.Drawing.Color.White;
-            this.guna2CircleButton3.Location = new System.Drawing.Point(101, 5);
-            this.guna2CircleButton3.Margin = new System.Windows.Forms.Padding(5);
-            this.guna2CircleButton3.Name = "guna2CircleButton3";
-            this.guna2CircleButton3.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CircleButton3.Size = new System.Drawing.Size(38, 36);
-            this.guna2CircleButton3.TabIndex = 2;
+            this.btnMagam_Quiz.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnMagam_Quiz.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnMagam_Quiz.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnMagam_Quiz.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnMagam_Quiz.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(0)))));
+            this.btnMagam_Quiz.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnMagam_Quiz.ForeColor = System.Drawing.Color.White;
+            this.btnMagam_Quiz.Location = new System.Drawing.Point(53, 5);
+            this.btnMagam_Quiz.Margin = new System.Windows.Forms.Padding(5);
+            this.btnMagam_Quiz.Name = "btnMagam_Quiz";
+            this.btnMagam_Quiz.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.btnMagam_Quiz.Size = new System.Drawing.Size(38, 36);
+            this.btnMagam_Quiz.TabIndex = 1;
+            this.btnMagam_Quiz.Click += new System.EventHandler(this.btnMagam_Click);
             // 
-            // guna2CircleButton4
+            // btnMagam_Online
             // 
-            this.guna2CircleButton4.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2CircleButton4.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2CircleButton4.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2CircleButton4.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2CircleButton4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.guna2CircleButton4.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2CircleButton4.ForeColor = System.Drawing.Color.White;
-            this.guna2CircleButton4.Location = new System.Drawing.Point(149, 5);
-            this.guna2CircleButton4.Margin = new System.Windows.Forms.Padding(5);
-            this.guna2CircleButton4.Name = "guna2CircleButton4";
-            this.guna2CircleButton4.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CircleButton4.Size = new System.Drawing.Size(38, 36);
-            this.guna2CircleButton4.TabIndex = 3;
+            this.btnMagam_Online.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnMagam_Online.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnMagam_Online.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnMagam_Online.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnMagam_Online.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.btnMagam_Online.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnMagam_Online.ForeColor = System.Drawing.Color.White;
+            this.btnMagam_Online.Location = new System.Drawing.Point(101, 5);
+            this.btnMagam_Online.Margin = new System.Windows.Forms.Padding(5);
+            this.btnMagam_Online.Name = "btnMagam_Online";
+            this.btnMagam_Online.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.btnMagam_Online.Size = new System.Drawing.Size(38, 36);
+            this.btnMagam_Online.TabIndex = 2;
+            this.btnMagam_Online.Click += new System.EventHandler(this.btnMagam_Click);
             // 
-            // guna2CircleButton5
+            // btnMagam_Prjct
             // 
-            this.guna2CircleButton5.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2CircleButton5.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2CircleButton5.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2CircleButton5.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2CircleButton5.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.guna2CircleButton5.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2CircleButton5.ForeColor = System.Drawing.Color.White;
-            this.guna2CircleButton5.Location = new System.Drawing.Point(197, 5);
-            this.guna2CircleButton5.Margin = new System.Windows.Forms.Padding(5);
-            this.guna2CircleButton5.Name = "guna2CircleButton5";
-            this.guna2CircleButton5.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CircleButton5.Size = new System.Drawing.Size(38, 36);
-            this.guna2CircleButton5.TabIndex = 4;
+            this.btnMagam_Prjct.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnMagam_Prjct.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnMagam_Prjct.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnMagam_Prjct.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnMagam_Prjct.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.btnMagam_Prjct.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnMagam_Prjct.ForeColor = System.Drawing.Color.White;
+            this.btnMagam_Prjct.Location = new System.Drawing.Point(149, 5);
+            this.btnMagam_Prjct.Margin = new System.Windows.Forms.Padding(5);
+            this.btnMagam_Prjct.Name = "btnMagam_Prjct";
+            this.btnMagam_Prjct.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.btnMagam_Prjct.Size = new System.Drawing.Size(38, 36);
+            this.btnMagam_Prjct.TabIndex = 3;
+            this.btnMagam_Prjct.Click += new System.EventHandler(this.btnMagam_Click);
+            // 
+            // btnMagam_Personal
+            // 
+            this.btnMagam_Personal.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnMagam_Personal.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnMagam_Personal.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnMagam_Personal.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnMagam_Personal.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.btnMagam_Personal.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnMagam_Personal.ForeColor = System.Drawing.Color.White;
+            this.btnMagam_Personal.Location = new System.Drawing.Point(197, 5);
+            this.btnMagam_Personal.Margin = new System.Windows.Forms.Padding(5);
+            this.btnMagam_Personal.Name = "btnMagam_Personal";
+            this.btnMagam_Personal.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.btnMagam_Personal.Size = new System.Drawing.Size(38, 36);
+            this.btnMagam_Personal.TabIndex = 4;
+            this.btnMagam_Personal.Click += new System.EventHandler(this.btnMagam_Click);
             // 
             // guna2PictureBox1
             // 
@@ -621,6 +636,69 @@
             this.flpDays.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.flpDays.Size = new System.Drawing.Size(1054, 710);
             this.flpDays.TabIndex = 42;
+            // 
+            // guna2Elipse3
+            // 
+            this.guna2Elipse3.BorderRadius = 10;
+            this.guna2Elipse3.TargetControl = this.guna2Panel3;
+            // 
+            // guna2Elipse4
+            // 
+            this.guna2Elipse4.BorderRadius = 10;
+            this.guna2Elipse4.TargetControl = this.guna2Panel4;
+            // 
+            // guna2Elipse5
+            // 
+            this.guna2Elipse5.BorderRadius = 10;
+            this.guna2Elipse5.TargetControl = this.guna2Panel5;
+            // 
+            // customTapButton6
+            // 
+            this.customTapButton6.Location = new System.Drawing.Point(1198, 880);
+            this.customTapButton6.Margin = new System.Windows.Forms.Padding(5);
+            this.customTapButton6.Name = "customTapButton6";
+            this.customTapButton6.Size = new System.Drawing.Size(45, 94);
+            this.customTapButton6.TabIndex = 22;
+            // 
+            // customTapButton5
+            // 
+            this.customTapButton5.Location = new System.Drawing.Point(1198, 1000);
+            this.customTapButton5.Margin = new System.Windows.Forms.Padding(5);
+            this.customTapButton5.Name = "customTapButton5";
+            this.customTapButton5.Size = new System.Drawing.Size(45, 94);
+            this.customTapButton5.TabIndex = 22;
+            // 
+            // customTapButton4
+            // 
+            this.customTapButton4.Location = new System.Drawing.Point(1198, 760);
+            this.customTapButton4.Margin = new System.Windows.Forms.Padding(5);
+            this.customTapButton4.Name = "customTapButton4";
+            this.customTapButton4.Size = new System.Drawing.Size(45, 94);
+            this.customTapButton4.TabIndex = 22;
+            // 
+            // customTapButton3
+            // 
+            this.customTapButton3.Location = new System.Drawing.Point(1198, 640);
+            this.customTapButton3.Margin = new System.Windows.Forms.Padding(5);
+            this.customTapButton3.Name = "customTapButton3";
+            this.customTapButton3.Size = new System.Drawing.Size(45, 94);
+            this.customTapButton3.TabIndex = 22;
+            // 
+            // customTapButton2
+            // 
+            this.customTapButton2.Location = new System.Drawing.Point(1198, 514);
+            this.customTapButton2.Margin = new System.Windows.Forms.Padding(5);
+            this.customTapButton2.Name = "customTapButton2";
+            this.customTapButton2.Size = new System.Drawing.Size(45, 94);
+            this.customTapButton2.TabIndex = 22;
+            // 
+            // customTapButton1
+            // 
+            this.customTapButton1.Location = new System.Drawing.Point(1198, 397);
+            this.customTapButton1.Margin = new System.Windows.Forms.Padding(5);
+            this.customTapButton1.Name = "customTapButton1";
+            this.customTapButton1.Size = new System.Drawing.Size(45, 94);
+            this.customTapButton1.TabIndex = 22;
             // 
             // userDate1
             // 
@@ -1000,69 +1078,6 @@
             this.userDate42.Size = new System.Drawing.Size(154, 120);
             this.userDate42.TabIndex = 41;
             // 
-            // guna2Elipse3
-            // 
-            this.guna2Elipse3.BorderRadius = 10;
-            this.guna2Elipse3.TargetControl = this.guna2Panel3;
-            // 
-            // guna2Elipse4
-            // 
-            this.guna2Elipse4.BorderRadius = 10;
-            this.guna2Elipse4.TargetControl = this.guna2Panel4;
-            // 
-            // guna2Elipse5
-            // 
-            this.guna2Elipse5.BorderRadius = 10;
-            this.guna2Elipse5.TargetControl = this.guna2Panel5;
-            // 
-            // customTapButton6
-            // 
-            this.customTapButton6.Location = new System.Drawing.Point(1198, 880);
-            this.customTapButton6.Margin = new System.Windows.Forms.Padding(5);
-            this.customTapButton6.Name = "customTapButton6";
-            this.customTapButton6.Size = new System.Drawing.Size(45, 94);
-            this.customTapButton6.TabIndex = 22;
-            // 
-            // customTapButton5
-            // 
-            this.customTapButton5.Location = new System.Drawing.Point(1198, 1000);
-            this.customTapButton5.Margin = new System.Windows.Forms.Padding(5);
-            this.customTapButton5.Name = "customTapButton5";
-            this.customTapButton5.Size = new System.Drawing.Size(45, 94);
-            this.customTapButton5.TabIndex = 22;
-            // 
-            // customTapButton4
-            // 
-            this.customTapButton4.Location = new System.Drawing.Point(1198, 760);
-            this.customTapButton4.Margin = new System.Windows.Forms.Padding(5);
-            this.customTapButton4.Name = "customTapButton4";
-            this.customTapButton4.Size = new System.Drawing.Size(45, 94);
-            this.customTapButton4.TabIndex = 22;
-            // 
-            // customTapButton3
-            // 
-            this.customTapButton3.Location = new System.Drawing.Point(1198, 640);
-            this.customTapButton3.Margin = new System.Windows.Forms.Padding(5);
-            this.customTapButton3.Name = "customTapButton3";
-            this.customTapButton3.Size = new System.Drawing.Size(45, 94);
-            this.customTapButton3.TabIndex = 22;
-            // 
-            // customTapButton2
-            // 
-            this.customTapButton2.Location = new System.Drawing.Point(1198, 514);
-            this.customTapButton2.Margin = new System.Windows.Forms.Padding(5);
-            this.customTapButton2.Name = "customTapButton2";
-            this.customTapButton2.Size = new System.Drawing.Size(45, 94);
-            this.customTapButton2.TabIndex = 22;
-            // 
-            // customTapButton1
-            // 
-            this.customTapButton1.Location = new System.Drawing.Point(1198, 397);
-            this.customTapButton1.Margin = new System.Windows.Forms.Padding(5);
-            this.customTapButton1.Name = "customTapButton1";
-            this.customTapButton1.Size = new System.Drawing.Size(45, 94);
-            this.customTapButton1.TabIndex = 22;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -1095,7 +1110,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox4)).EndInit();
             this.guna2Panel3.ResumeLayout(false);
             this.guna2Panel3.PerformLayout();
-            this.flowLayoutPanel2.ResumeLayout(false);
+            this.panelMagamBtns.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.guna2Panel4.ResumeLayout(false);
             this.guna2Panel4.PerformLayout();
@@ -1134,12 +1149,12 @@
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse4;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse5;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton1;
-        private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton2;
-        private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton3;
-        private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton4;
-        private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton5;
+        private System.Windows.Forms.FlowLayoutPanel panelMagamBtns;
+        private Guna.UI2.WinForms.Guna2CircleButton btnMagam_Task;
+        private Guna.UI2.WinForms.Guna2CircleButton btnMagam_Quiz;
+        private Guna.UI2.WinForms.Guna2CircleButton btnMagam_Online;
+        private Guna.UI2.WinForms.Guna2CircleButton btnMagam_Prjct;
+        private Guna.UI2.WinForms.Guna2CircleButton btnMagam_Personal;
         private Guna.UI2.WinForms.Guna2CustomCheckBox guna2CustomCheckBox2;
         private customTapButton customTapButton1;
         private customTapButton customTapButton6;
@@ -1192,6 +1207,7 @@
         private UserDate userDate40;
         private UserDate userDate41;
         private UserDate userDate42;
+        private System.Windows.Forms.FlowLayoutPanel panelMagam;
     }
 }
 

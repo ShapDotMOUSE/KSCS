@@ -17,8 +17,15 @@ using System.Windows.Forms;
 namespace KSCS.Class
 {
     public class KLAS
-    {   
-        public KLAS() {
+    {
+        public KLAS()
+        {
+            KlasSchedule.Add("Task", new List<Schedule>());
+            KlasSchedule.Add("Quiz", new List<Schedule>());
+            KlasSchedule.Add("Online", new List<Schedule>());
+            KlasSchedule.Add("Prjct", new List<Schedule>());
+            KlasSchedule.Add("Personal", new List<Schedule>());
+
             cookieContainer = new CookieContainer();
             httpClientHandler = new HttpClientHandler()
             {
@@ -48,22 +55,29 @@ namespace KSCS.Class
                 { "PrjctStdList","https://klas.kw.ac.kr/std/lis/evltn/PrjctStdList.do"},
                 { "QuizStdList","https://klas.kw.ac.kr/std/lis/evltn/AnytmQuizStdList.do" }
             };
+        public static Dictionary<string, string> klasMagamNames = new Dictionary<string, string>()
+        {
+            { "Task","과제" },
+            { "Quiz","퀴즈" },
+            { "Online","강의" },
+            { "Prjct","팀플" }
+        };
         public Dictionary<string, List<Schedule>> KlasSchedule = new Dictionary<string, List<Schedule>>();
         public Dictionary<string, string> KLAS_LECTURE_NUM = new Dictionary<string, string>();
         public HttpClientHandler httpClientHandler;
         private CookieContainer cookieContainer;
 
         //KLAS 로그인 함수
-        public async Task<bool> LoginKLAS(string ID,string PW)
+        public async Task<bool> LoginKLAS(string ID, string PW)
         {
             string publicKeyJson = await CreateRequestAsync("LoginSecurity", "POST", "{}"); //klas 공개키 얻어오기
             if (string.IsNullOrEmpty(publicKeyJson)) //네트워크 비정상 상태 로그인 불가능
-              return false;
-            
+                return false;
+
             JObject security = JObject.Parse(publicKeyJson);
             byte[] publicKeyBytes = Convert.FromBase64String(security["publicKey"].ToString());
             AsymmetricKeyParameter publicKey = PublicKeyFactory.CreateKey(publicKeyBytes);
-            var loginJson = JsonConvert.SerializeObject(new 
+            var loginJson = JsonConvert.SerializeObject(new
             {
                 loginId = ID,
                 loginPwd = PW,
@@ -82,9 +96,9 @@ namespace KSCS.Class
             });
             string result = await CreateRequestAsync("LoginConfirm", "POST", loginToken);
             if (string.IsNullOrEmpty(result)) return false;
-            
-            JObject loginResult= JObject.Parse(result);
-            if(int.Parse(loginResult["errorCount"].ToString())>0)//로그인에 에러가 있을 경우
+
+            JObject loginResult = JObject.Parse(result);
+            if (int.Parse(loginResult["errorCount"].ToString()) > 0)//로그인에 에러가 있을 경우
             {
                 MessageBox.Show(loginResult["fieldErrors"][0]["message"].ToString());
                 return false;
@@ -116,6 +130,46 @@ namespace KSCS.Class
                     break;
             }
             return "";
+        }
+        public async Task LoadMagamData()
+        {
+            string list = await CreateRequestAsync("StdHome", "POST", "{}");
+            JObject sbjectList = JObject.Parse(list);
+            foreach (JToken subj in sbjectList["atnlcSbjectList"])
+            {
+                KLAS_LECTURE_NUM.Add(subj["subjNm"].ToString(), subj["subj"].ToString());
+                var magamContent = new
+                {
+                    selectSubj = subj["subj"].ToString(),
+                    selectYearhakgi = "2023,1",
+                    selectChangeYn = "Y"
+                };
+                Schedule schedule;
+                string taskData = await CreateRequestAsync("TaskStdList", "POST", JsonConvert.SerializeObject(magamContent));
+                foreach (JToken task in JArray.Parse(taskData))
+                {
+                    schedule = Schedule.KLAS_Schedule(task["title"].ToString(), "Task", subj["subjNm"].ToString(), task["expiredate"].ToString());
+                    if (schedule.MagamBeforeNow() && string.Equals(task["submityn"].ToString(),"N")) KlasSchedule["Task"].Add(schedule);
+                }
+                string quizData = await CreateRequestAsync("QuizStdList", "POST", JsonConvert.SerializeObject(magamContent));
+                foreach (JToken quiz in JArray.Parse(quizData))
+                {
+                    schedule = Schedule.KLAS_Schedule(quiz["papernm"].ToString(), "Quiz", subj["subjNm"].ToString(), quiz["edt"].ToString());
+                    if (schedule.MagamBeforeNow() && string.Equals(quiz["issubmit"].ToString(),"N")) KlasSchedule["Quiz"].Add(schedule);
+                }
+                string onlineData = await CreateRequestAsync("OnlineStdList", "POST", JsonConvert.SerializeObject(magamContent));
+                foreach (JToken online in JArray.Parse(onlineData))
+                {
+                    schedule = Schedule.KLAS_Schedule(online["moduletitle"].ToString(), "Online", subj["subjNm"].ToString(), online["endDate"].ToString());
+                    if (schedule.MagamBeforeNow() && string.Equals(online["ispreview"].ToString(),"N")) KlasSchedule["Online"].Add(schedule);
+                }
+                string prjctData = await CreateRequestAsync("PrjctStdList", "POST", JsonConvert.SerializeObject(magamContent));
+                foreach (JToken prjct in JArray.Parse(prjctData))
+                {
+                    schedule = Schedule.KLAS_Schedule(prjct["title"].ToString(), "Prjct", subj["subjNm"].ToString(), prjct["expiredate"].ToString());
+                    if (schedule.MagamBeforeNow() && string.Equals(prjct["submityn"].ToString(), "N")) KlasSchedule["Prjct"].Add(schedule);
+                }
+            }
         }
     }
 }

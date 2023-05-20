@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KSCS.Class;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,15 +18,21 @@ namespace KSCS
         {
             InitializeComponent();
         }
-
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
         }
 
+        private void tbID_KeyDown(object sendder,KeyEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(lblMsg.Text))
+                lblMsg.Text = "";
+        }
         private void tbPassword_KeyDown(object sender, KeyEventArgs e)
         {
-            // PW 에 Enter Key가 입력되면 btnLogin_Click 을 호출
+            if (!string.IsNullOrEmpty(lblMsg.Text))
+                lblMsg.Text = "";
+;            // PW 에 Enter Key가 입력되면 btnLogin_Click 을 호출
             if (e.KeyCode == Keys.Enter)
             {
                 btnLogin_Click(sender, e);
@@ -33,14 +40,14 @@ namespace KSCS
             }
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private async void btnLogin_Click(object sender, EventArgs e)
         {
             string ID = tbStdNum.Text;
             string PW = tbPassword.Text;
 
             if (EmptyCheck())
             {
-                if (ID == "2019203082" && PW == "setset612@")
+                if (await MainForm.klas.LoginKLAS(ID,PW))//KLAS 로그인
                 {
                     this.DialogResult = DialogResult.OK;
                     KSCS.MainForm.stdNum = ID;
@@ -48,8 +55,8 @@ namespace KSCS
                 }
                 else
                 {
-                   lblMsg.Text = "죄송합니다. 학번과 비밀번호가 올바르지 않습니다.";
-                    tbPassword.Focus();
+                   lblMsg.Text = "죄송합니다. 로그인할 수 없습니다.";
+                   tbPassword.Focus();
                 }
             }
         }

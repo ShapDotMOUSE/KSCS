@@ -82,6 +82,7 @@
             this.tbStdNum.SelectedText = "";
             this.tbStdNum.Size = new System.Drawing.Size(283, 41);
             this.tbStdNum.TabIndex = 1;
+            this.tbStdNum.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbID_KeyDown);
             // 
             // guna2BorderlessForm1
             // 

@@ -21,17 +21,21 @@ using Label = System.Windows.Forms.Label;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using Panel = System.Windows.Forms.Panel;
+using KSCS.Class;
 
 namespace KSCS
 {
     public partial class MainForm : Form
     {
+        public static KLAS klas = new KLAS();
+
         private int year, month;
         public static int static_month, static_year;
 
         public static string stdNum;
         public static Category Category = new Category();
         public static string TabName;
+
         public MainForm()
         {
             InitializeComponent();

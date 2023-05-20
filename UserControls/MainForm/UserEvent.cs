@@ -12,18 +12,10 @@ namespace KSCS
 {
     public partial class UserEvent : UserControl
     {
-        public enum EventType
-        {
-            None = 0,
-            School = 1,
-            Personal = 2,
-            Etc = 3
-        }
         public UserEvent()
         {
             InitializeComponent();
         }
-
 
         public void SetEventInfo(string enventInfo)
         {
@@ -32,26 +24,8 @@ namespace KSCS
 
         public void SetColor(int type)
         {
-            switch((EventType)type)
-            {
-                case EventType.None:
-                    pnl.BackColor= Color.SteelBlue;
-                    flpEventInfo.BackColor= Color.LightSkyBlue;
-                    break;
-                case EventType.School:
-                    pnl.BackColor = Color.FromArgb(205,80,80);
-                    flpEventInfo.BackColor = Color.FromArgb(211, 149, 149);
-                    break;
-                case EventType.Personal:
-                    pnl.BackColor = Color.FromArgb(160, 223, 80);
-                    flpEventInfo.BackColor = Color.FromArgb(189, 220, 149);
-                    break;
-                case EventType.Etc:
-                    pnl.BackColor = Color.SteelBlue;
-                    flpEventInfo.BackColor = Color.LightSkyBlue;
-                    break;
-                default: break;
-            }
+            pnl.BackColor = Color.FromArgb(type); //둘이 뭐가 다른건가요
+            flpEventInfo.BackColor = Color.FromArgb(type);
         }
     }
 }

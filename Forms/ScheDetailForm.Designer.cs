@@ -596,7 +596,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ScheDetailForm";
-            this.Text = "ScheduleDetailForm";
+            this.Text = "2";
             this.panelTop.ResumeLayout(false);
             this.panelLabel.ResumeLayout(false);
             this.panelLabel.PerformLayout();

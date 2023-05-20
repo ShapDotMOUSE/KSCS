@@ -1,38 +1,36 @@
-﻿using crypto;
-using Guna.UI2.WinForms;
-using Org.BouncyCastle.Crypto;
-using Org.BouncyCastle.Security;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Net.Http.Headers;
-using System.Net.Http;
 using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web;
-using System.Web.UI.WebControls;
 using System.Windows.Forms;
-using Label = System.Windows.Forms.Label;
-using Newtonsoft.Json.Linq;
+using Guna.UI2.WinForms;
 using Newtonsoft.Json;
-using Panel = System.Windows.Forms.Panel;
+using Newtonsoft.Json.Linq;
+using Org.BouncyCastle.Crypto;
+using Org.BouncyCastle.Security;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
+using static Guna.UI2.WinForms.Helpers.GraphicsHelper;
 
 namespace KSCS
 {
-    public partial class KSCS : Form
+    public partial class form : Form
     {
-        private Point mousePoint;
         private int year, month;
         public static int static_month, static_year;
+        public static Category Category = new Category();
+        public static string TabName;
+        
         private Dictionary<string, List<Schedule>> KlasSchedule = new Dictionary<string, List<Schedule>>();
         Dictionary<string, string> KLAS_LECTURE_NUM = new Dictionary<string, string>();
-
-        public KSCS()
+        public form()
         {
             InitializeComponent();
         }
@@ -42,16 +40,75 @@ namespace KSCS
             this.BackColor = Color.FromArgb(58, 5, 31);
             seperator_vertical.FillColor = Color.FromArgb(245, 245, 245);
             seperator_horizon.FillColor = Color.FromArgb(245, 245, 245);
-            category_underline.BackColor = Color.FromArgb(58, 5, 31);
+            Category.TestCategory();
+
+
+            //초기 탭 설정 
+            TabName = btnTestTab1.Name; //수정되어야함
+
             dispalyDate();
-            AddCategory("학사일정");
-            AddCategory("테스트용");
+            DisplayCategery();
+            SetCheckedCategoryByTab();
             await Klas_Load();
             MagamButtonEnable();
             Guna2MessageDialog message = new Guna2MessageDialog();
             message.Show("KLAS 로딩 완료");
         }
 
+        //카테고리 함수---------------------------------------------------------------------------------------------------------------------------------------
+        private void DisplayCategery()
+        {
+            
+            foreach (var item in Category.ParentCategorys["SchoolCategory"] as HashSet<string>)
+            {
+                UserCategory uc = new UserCategory();
+                uc.SetBasicMode(item);
+                uc.MouseDoubleClick += UcCategory_MouseDoubleClick;
+                flpSchoolCategory.Controls.Add(uc);
+            }
+
+            foreach (var item in Category.ParentCategorys["PersonalCategory"] as HashSet<string>)
+            {
+                UserCategory uc = new UserCategory();
+                uc.SetBasicMode(item);
+                uc.MouseDoubleClick += UcCategory_MouseDoubleClick;
+                flpPersonalCategory.Controls.Add(uc);
+            }
+
+            foreach (var item in Category.ParentCategorys["EtcCategory"] as HashSet<string>)
+            {
+                UserCategory uc = new UserCategory();
+                uc.SetBasicMode(item);
+                uc.MouseDoubleClick += UcCategory_MouseDoubleClick;
+                flpEtcCategory.Controls.Add(uc);
+            }
+        }
+
+        //탭 함수-------------------------------------------------------------------------------------------------------------------------------------------
+        private void ChangeTab(object sender)
+        {
+            /*
+             * TODO: 이 부분에 DB에 연결하는 함수 추가 필요
+             */
+
+            TabName = ((Guna2Button)sender).Name;
+            SetCheckedCategoryByTab();
+        }
+        private void SetCheckedCategoryByTab()
+        {
+            FlowLayoutPanel[]flp = { flpSchoolCategory, flpPersonalCategory, flpEtcCategory };
+            foreach (FlowLayoutPanel panel in flp)
+            {
+                foreach (UserCategory category in panel.Controls)
+                {
+                    
+                    category.SetChecked(Category.IsChecked(TabName, category.GetText()));
+                }
+            }
+
+        }
+
+        //달력 함수-----------------------------------------------------------------------------------------------------------------------------------------
         private void dispalyDate()
         {
             DateTime now = DateTime.Now;
@@ -73,22 +130,28 @@ namespace KSCS
             int dates = DateTime.DaysInMonth(year, month);
             int dayOfWeek = Convert.ToInt32(startOfMonth.DayOfWeek.ToString("d")) + 1;
 
-            daysConatiner.Controls.Clear();
+            flpDays.Controls.Clear();
             for (int i = 1; i < dayOfWeek; i++)
             {
                 UserBlankDate userblankDate = new UserBlankDate();
-                daysConatiner.Controls.Add(userblankDate);
+                flpDays.Controls.Add(userblankDate);
             }
 
             for (int i = 1; i < dates; i++)
             {
                 UserDate userDate = new UserDate();
                 userDate.SetDate(i);
-                daysConatiner.Controls.Add(userDate);
+                flpDays.Controls.Add(userDate);
             }
         }
 
-        private void MagamButtonEnable()
+        //기타---------------------------------------------------------------------------------------------------------------------------------------------
+        private void guna2ControlBox1_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+         private void MagamButtonEnable()
         {
             btnMagam_Click(btnMagam_HomeWork,new EventArgs());
             btnMagamLecture.Enabled = true;
@@ -154,12 +217,11 @@ namespace KSCS
                 // 로그인 토큰 생성
                 var input = new
                 {
-                    loginId = "",
-                    loginPwd = "",
+                    loginId = "2019203082",
+                    loginPwd = "setset612@",
                     storeIdYn = "N"
                 };
 
-                return;
                 var loginJson = JsonConvert.SerializeObject(input);
 
 
@@ -252,71 +314,7 @@ namespace KSCS
         }
 
 
-        private void MagamDanger()
-        {
-            //foreach(var data in )
-            foreach(Guna2CircleButton btn in panelMagam.Controls)
-            {
-                
-            }
-        }
-
-        private void guna2ControlBox1_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void KSCS_MouseDown(object sender, MouseEventArgs e)
-        {
-            mousePoint = new Point(e.X, e.Y);
-        }
-
-        private void KSCS_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                int x = mousePoint.X - e.X;
-                int y = mousePoint.Y - e.Y;
-                Location = new Point(this.Left - x, this.Top - y);
-            }
-        }
-
-        private void btnNext_Click(object sender, EventArgs e)
-        {
-            if (month == 12)
-            {
-                month = 1; year++;
-            }
-            else
-            {
-                month++;
-            }
-            createDates();
-        }
-
-
-        private void btnPrvious_Click(object sender, EventArgs e)
-        {
-            if (month == 1)
-            {
-                month = 12; year--;
-            }
-            else
-            {
-                month--;
-            }
-            createDates();
-
-        }
-
-        private void AddCategory(string category)
-        {
-            UserCheckedCategory checkedCategory = new UserCheckedCategory();
-            checkedCategory.SetlblCategoryName(category);
-            categoryContainer.Controls.Add(checkedCategory);
-        }
-
-        private void btnMagam_Click(object sender, EventArgs e)
+private void btnMagam_Click(object sender, EventArgs e)
         {
             Guna2CircleButton btn = (Guna2CircleButton)sender;
             Panel panel = (Panel)btn.Parent;
@@ -368,7 +366,153 @@ namespace KSCS
 
         }
 
+        private void MagamDanger()
+        {
+            //foreach(var data in )
+            foreach(Guna2CircleButton btn in panelMagam.Controls)
+            {
+                
+            }
+        }
+
+        //컨트롤 함수------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+        //달력 컨트롤--------------------------------------------------------------------------------------------------------------------------------------
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if (month == 12)
+            {
+                month = 1; year++;
+            }
+            else
+            {
+                month++;
+            }
+            createDates();
+        }
+
+        private void btnPrvious_Click(object sender, EventArgs e)
+        {
+            if (month == 1)
+            {
+                month = 12; year--;
+            }
+            else
+            {
+                month--;
+            }
+            createDates();
+
+        }
+
+        //카테고리 컨트롤------------------------------------------------------------------------------------------------------------------------------------
+        private void btnSchoolCategory_Click(object sender, EventArgs e)
+        {
+            flpSchoolCategory.Visible = !flpSchoolCategory.Visible;
+        }
+
+        private void btnPersonalCategory_Click(object sender, EventArgs e)
+        {
+            flpPersonalCategory.Visible = !flpPersonalCategory.Visible;
+        }
+
+        private void btnEtcCategory_Click(object sender, EventArgs e)
+        {
+            flpEtcCategory.Visible = !flpEtcCategory.Visible;
+        }
+
+        private void btnPlusCategory_Click(object sender, EventArgs e)
+        {
+            UserCategory category = new UserCategory();
+            category.MouseDoubleClick += UcCategory_MouseDoubleClick;
+            flpEtcCategory.Controls.Add(category);
+        }
+
+        //카테고리 유저 컨트롤------------------------------------------------------------------------------------------------------------------------------------
+        private UserCategory draggedUcCategory; // 드래그 중인 카테고리 유저 컨트롤
+        private UserCategory cloneUcCategory; // 드래그 중인 카테고리 유저 컨트롤 복사본
+        private Point MouseLocation;
+
+        public void UndoCategory()
+        {
+            this.Controls.Remove(cloneUcCategory);
+            cloneUcCategory.Dispose();
+            draggedUcCategory.Visible = true;
+        }
+        private void UcCategory_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            draggedUcCategory = (UserCategory)sender;
+            draggedUcCategory.Visible = false;
+
+            // 드래그 중인 버튼의 복사본 생성
+            MouseLocation = new Point((Cursor.Position.X - e.X) - Left, (Cursor.Position.Y - e.Y) - Top); // 현제 마우스 위치
+            cloneUcCategory = new UserCategory{Location = MouseLocation};
+            cloneUcCategory.DragMode(draggedUcCategory.GetText());
+            this.Controls.Add(cloneUcCategory);
+            flpMainCategory.SendToBack();
+            cloneUcCategory.MouseMove += UcCategory_MouseMove;
+            cloneUcCategory.MouseClick += UcCategory_MouseClick;
+        }
+
+        private void UcCategory_MouseClick(object sender, MouseEventArgs e)
+        {
+            string NewMainCategory;
+            if(MouseLocation.Y < flpMainCategory.Location.Y + flpPersonalCategory.Location.Y)
+            {
+                //학교
+                NewMainCategory = "SchoolCategory";
+                
+            }
+            else if (MouseLocation.Y < flpMainCategory.Location.Y + flpEtcCategory.Location.Y)
+            {
+                //개인
+                NewMainCategory = "PersonalCategory";
+            }
+            else
+            {
+                //기타
+                NewMainCategory = "EtcCategory";
+            }
+
+            if(NewMainCategory.Length > 0)
+            {
+                draggedUcCategory.Visible = true;
+                string OringMainCategory = Category.SubCategorys[cloneUcCategory.GetText()] as string;
+                if (OringMainCategory == NewMainCategory)
+                {
+                    UndoCategory();
+                }
+                else
+                {
+                    this.Controls.Remove(cloneUcCategory);
+                    FlowLayoutPanel FlpNewCategory = flpMainCategory.Controls["flp" + NewMainCategory] as FlowLayoutPanel;
+                    FlowLayoutPanel FlpOriginCategory = flpMainCategory.Controls["flp" + OringMainCategory] as FlowLayoutPanel;
+                    FlpOriginCategory.Controls.Remove(draggedUcCategory);
+                    FlpNewCategory.Controls.Add(draggedUcCategory);
+                    Category.ChangeParentOfSub(NewMainCategory, cloneUcCategory.GetText());
+                    draggedUcCategory = null;
+                    cloneUcCategory = null;
+                }
+            }
+            
+        }
+
+        private void UcCategory_MouseMove(object sender, MouseEventArgs e)
+        {
+            MouseLocation = new Point((Cursor.Position.X - cloneUcCategory.Width/2) - Left, (Cursor.Position.Y - cloneUcCategory.Height / 2) - Top);
+            if ((MouseLocation.X < flpMainCategory.Location.X - 100 || MouseLocation.X > flpMainCategory.Location.X + 130) 
+                || (MouseLocation.Y < flpMainCategory.Location.Y || MouseLocation.Y > flpMainCategory.Location.Y + 450))
+            {
+                UndoCategory();
+            }
+            cloneUcCategory.Location = MouseLocation;
+        }
 
 
+        //탭 컨트롤------------------------------------------------------------------------------------------------------------------------------------
+        private void btnTestTab1_Click(object sender, EventArgs e)
+        {
+            ChangeTab(sender);
+        }
     }
 }

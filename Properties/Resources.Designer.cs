@@ -63,9 +63,49 @@ namespace KSCS.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        internal static System.Drawing.Bitmap free_icon_font_cross_3917759 {
+            get {
+                object obj = ResourceManager.GetObject("free-icon-font-cross-3917759", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap free_icon_font_cross_39177591 {
+            get {
+                object obj = ResourceManager.GetObject("free-icon-font-cross-39177591", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap free_icon_font_plus_3917757 {
+            get {
+                object obj = ResourceManager.GetObject("free-icon-font-plus-3917757", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         internal static System.Drawing.Bitmap nextIcon {
             get {
                 object obj = ResourceManager.GetObject("nextIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap plus {
+            get {
+                object obj = ResourceManager.GetObject("plus", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +143,9 @@ namespace KSCS.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap free_icon_font_cross_3917759 {
+        internal static System.Drawing.Bitmap 우니열공 {
             get {
-                object obj = ResourceManager.GetObject("free-icon-font-cross-3917759", resourceCulture);
+                object obj = ResourceManager.GetObject("우니열공", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +153,9 @@ namespace KSCS.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap free_icon_font_cross_39177591 {
+        internal static System.Drawing.Bitmap 우니커피 {
             get {
-                object obj = ResourceManager.GetObject("free-icon-font-cross-39177591", resourceCulture);
+                object obj = ResourceManager.GetObject("우니커피", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +163,29 @@ namespace KSCS.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap free_icon_font_plus_3917757 {
+        internal static System.Drawing.Bitmap 우니팡이동그라미 {
             get {
-                object obj = ResourceManager.GetObject("free-icon-font-plus-3917757", resourceCulture);
+                object obj = ResourceManager.GetObject("우니팡이동그라미", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap 팡이비행 {
+            get {
+                object obj = ResourceManager.GetObject("팡이비행", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap 팡이우니_일기 {
+            get {
+                object obj = ResourceManager.GetObject("팡이우니 일기", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

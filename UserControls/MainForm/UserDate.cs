@@ -37,11 +37,19 @@ namespace KSCS
 
         public void ChangeBlank()
         {
-            BackColor = Color.White;
-            lblDate.Visible = false;
-            flpEvent.MouseEnter -= UserDate_MouseEnter;
-            flpEvent.MouseLeave -= UserDate_MouseLeave;
-            flpEvent.MouseClick -= UserDate_Click;
+            if (lblDate.Visible)
+            {
+                BackColor = Color.White;
+                lblDate.Visible = false;
+                flpEvent.MouseEnter -= UserDate_MouseEnter;
+                flpEvent.MouseLeave -= UserDate_MouseLeave;
+                flpEvent.MouseClick -= UserDate_Click;
+            }
+        }
+
+        public void ChangeColor(Color color)
+        {
+            lblDate.ForeColor=color;
         }
 
 
@@ -53,15 +61,14 @@ namespace KSCS
         //Date 설정 함수
         public void SetDate(int date)
         {
-            BackColor = Color.FromArgb(255, 249, 229);
-            if(!lblDate.Visible)
+            if (!lblDate.Visible)
             {
+                BackColor = Color.FromArgb(255, 249, 229);
                 lblDate.Visible = true;
                 flpEvent.MouseEnter += UserDate_MouseEnter;
                 flpEvent.MouseLeave += UserDate_MouseLeave;
                 flpEvent.MouseClick += UserDate_Click;
             }
-            
             lblDate.Text = date.ToString();
             LoadUserDate();
         }

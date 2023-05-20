@@ -55,9 +55,6 @@
             this.flpEvent.Name = "flpEvent";
             this.flpEvent.Size = new System.Drawing.Size(150, 85);
             this.flpEvent.TabIndex = 1;
-            this.flpEvent.MouseClick += new System.Windows.Forms.MouseEventHandler(this.UserDate_Click);
-            this.flpEvent.MouseEnter += new System.EventHandler(this.UserDate_MouseEnter);
-            this.flpEvent.MouseLeave += new System.EventHandler(this.UserDate_MouseLeave);
             // 
             // UserDate
             // 

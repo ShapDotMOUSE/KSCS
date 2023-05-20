@@ -226,6 +226,9 @@ namespace KSCS
                 if (++index < dayOfWeek) userDate.ChangeBlank();
                 else if (date <= dates) userDate.SetDate(date++);
                 else userDate.ChangeBlank();
+
+                if (index % 7 == 0) userDate.ChangeColor(Color.Blue);
+                else if (index % 7 == 1) userDate.ChangeColor(Color.Red);
             }
         }
 

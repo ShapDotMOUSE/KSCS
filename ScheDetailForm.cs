@@ -18,9 +18,6 @@ namespace KSCS
         public event EventHandler AddEvent;
 
         MySqlConnection connection = DatabaseConnection.getDBConnection();
-        //List<Schedule> scheduleList = new List<Schedule>(); //하루 내의 schedule list
-        //Dictionary<string, string[]> categoryDict = new Dictionary<string, string[]>();
-        string student_id = "2019203082"; //초기 학번
         int selectedScheduleIndex=-1; 
         DateTime click_date = new DateTime(KSCS.static_year, KSCS.static_month, UserDate.static_date); //추가
         public ScheDetailForm()
@@ -32,70 +29,8 @@ namespace KSCS
             panelSchedules.VerticalScroll.Visible = false; 
         }
 
-        //public void InitializeDatabase()
-        //{
-        //    string selectQuery = string.Format("SELECT * from Schedule JOIN Category ON Schedule.category_id=Category.id JOIN StudentCategory ON StudentCategory.student_id=Schedule.student_id and Schedule.category_id=Category.id and Category.id=StudentCategory.category_id WHERE Schedule.student_id={0} and DATE_FORMAT(startDate, '%Y-%m-%d') = '{1}' ORDER BY startDate ASC;", student_id, click_date.ToString("yyyy-MM-dd"));
-        //    MySqlCommand cmd = new MySqlCommand(selectQuery, connection);
-        //    MySqlDataReader table = cmd.ExecuteReader();
-        //    int index = 0;
-        //    scheduleList.Clear();
-        //    panelSchedules.Controls.Clear();
-
-        //    while (table.Read())
-        //    {
-        //        Schedule schedule = new Schedule(
-        //            table["title"].ToString(),
-        //            table["content"].ToString(),
-        //            table["place"].ToString(),
-        //            table["type"].ToString(),
-        //            DateTime.Parse(table["startDate"].ToString()),
-        //            DateTime.Parse(table["endDate"].ToString())
-        //            )
-        //        {
-        //            id = int.Parse(table["id"].ToString()),
-        //        };
-        //        scheduleList.Add(schedule);
-
-        //        scheduleUnit scheduleUnit = new scheduleUnit
-        //        {
-        //            Name = "scdUnit" + index.ToString(),
-        //            ScheduleTitle = schedule.title
-        //        };
-
-        //        scheduleUnit.ChangeScheduleColor(Color.FromArgb(int.Parse(table["color"].ToString())));
-        //        scheduleUnit.btnClick += btnSchedule_Click;
-        //        scheduleUnit.Location = new Point(9, 12 + index * (scheduleUnit.Height + 3));
-        //        panelSchedules.Controls.Add(scheduleUnit);
-        //        index++;
-        //    }
-        //    table.Close();
-        //    //LoadCategory();
-        //    btnAddSchedule.Location = new Point(24, 12 + index * 55);
-        //    panelSchedules.Controls.Add(btnAddSchedule);
-        //}
-
-        //private void LoadCategory()
-        //{
-        //    cbCategory.Items.Clear();
-        //    categoryDict.Clear();
-        //    string selectQuery = string.Format("SELECT * from Category JOIN StudentCategory ON Category.id=StudentCategory.category_id WHERE student_id='{0}';", student_id);
-        //    MySqlCommand cmd = new MySqlCommand(selectQuery, connection);
-        //    MySqlDataReader table = cmd.ExecuteReader();
-        //    while (table.Read())
-        //    {
-        //        if (!cbCategory.Items.Contains(table["type"].ToString()))
-        //        {
-        //            cbCategory.Items.Add(table["type"].ToString());
-        //            categoryDict.Add(table["type"].ToString(), new string[2] { table["id"].ToString(), table["color"].ToString() });
-        //        }
-        //    }
-        //    table.Close();
-        //}
-
         private void InitializeGuna2DateTimePicker()
         {
-            //DateTime.Now -> 클릭한 날짜
-            //DateTime click_date = new DateTime(KSCS.static_year, KSCS.static_month, UserDate.static_date);
             dtpStartDate.Value = DateTime.ParseExact(click_date.ToString("yyyy-MM-dd ddd"), "yyyy-MM-dd ddd", null);
             dtpStartTime.Value = DateTime.ParseExact("00:00", "HH:mm", null);
             dtpEndDate.Value = DateTime.ParseExact(click_date.ToString("yyyy-MM-dd ddd"), "yyyy-MM-dd ddd", null);
@@ -110,6 +45,11 @@ namespace KSCS
             tbPlace.Text = "";
             cbCategory.SelectedItem= null;
             InitializeGuna2DateTimePicker();
+
+            //추가
+            panelTop.BackColor = Color.Pink;
+            addBtn.FillColor = Color.CornflowerBlue;
+            addBtn.Text = "Add";
         }
 
         private DateTime GetStartDateTime()
@@ -160,6 +100,14 @@ namespace KSCS
                     schedule.endDate.ToString("yyyy-MM-dd, HH:mm"));
                 MySqlCommand cmd = new MySqlCommand(insertQuery, connection);
                 if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to insert Data.");
+                //추가 후, id 값 가져오기
+                string selectQuery = string.Format("SELECT LAST_INSERT_ID() AS id");
+                cmd = new MySqlCommand(selectQuery, connection);
+                MySqlDataReader table = cmd.ExecuteReader();
+                while (table.Read()) {
+                    schedule.id = int.Parse(table["id"].ToString());
+                }
+                table.Close();
                 //스케줄 리스트 추가
                 KSCS.monthScheduleList[UserDate.static_date - 1].Add(schedule);
                 //스케줄 리스트 시작 시간 순 정렬
@@ -196,8 +144,6 @@ namespace KSCS
             {
                 AddEvent(this, new EventArgs());
             }
-
-            //InitializeDatabase();
             ClearForm();
             //스케줄 유닛 다시 load
             InitializeScheDetailForm();
@@ -214,7 +160,6 @@ namespace KSCS
             //리스트 삭제
             KSCS.monthScheduleList[UserDate.static_date - 1].RemoveAt(selectedScheduleIndex);
             //스케줄 유닛 다시 load
-            //InitializeDatabase();
             if (AddEvent != null)
             {
                 AddEvent(this, new EventArgs());
@@ -253,7 +198,7 @@ namespace KSCS
         private void btnAddSchedule_Click(object sender, EventArgs e)
         {
             ClearForm();
-            panelTop.BackColor = Color.HotPink;
+            panelTop.BackColor = Color.Pink;
             addBtn.FillColor = Color.CornflowerBlue;
             addBtn.Text = "Add";
         }

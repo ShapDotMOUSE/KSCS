@@ -32,7 +32,6 @@ namespace KSCS
             string selectQuery = string.Format("SELECT * from Schedule JOIN Category ON Schedule.category_id=Category.id JOIN StudentCategory ON StudentCategory.student_id=Schedule.student_id and Schedule.category_id=Category.id and Category.id=StudentCategory.category_id WHERE Schedule.student_id={0} and  startDate BETWEEN DATE_FORMAT('{1}', '%Y-%m-%d') AND LAST_DAY('{1}') ORDER BY startDate ASC;", student_id, new DateTime(year, month, 1).ToString("yyyy-MM-dd"));
             MySqlCommand cmd = new MySqlCommand(selectQuery, connection);
             MySqlDataReader table = cmd.ExecuteReader();
-            //MessageBox.Show(new DateTime(year, month, 1).ToString("yyyy-MM-dd"));
             monthScheduleList.Clear(); //한달 스케줄 초기화
 
             //하루 단위 리스트 생성
@@ -43,8 +42,6 @@ namespace KSCS
 
             while (table.Read())
             {
-                //MessageBox.Show(table["type"].ToString());
-
                 Schedule schedule = new Schedule(
                     table["title"].ToString(),
                     table["content"].ToString(),
@@ -121,7 +118,6 @@ namespace KSCS
             {
                 UserDate userDate = new UserDate();
                 userDate.SetDate(i);
-                //UserDate userDate = new UserDate(i);
                 daysConatiner.Controls.Add(userDate);
             }
         }

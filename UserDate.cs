@@ -18,7 +18,6 @@ namespace KSCS
         public UserDate()
         {
             InitializeComponent();
-            //LoadUserDate();
         }
 
         private void LoadUserDate()
@@ -61,7 +60,6 @@ namespace KSCS
             ScheDetailForm userControl = sender as ScheDetailForm;
             flpEvent.Controls.Clear(); //userEvent 컨트롤 초기화
             LoadUserDate();
-            //AddEvent(userControl.GetTbTitle(),int.Parse(KSCS.categoryDict[userControl.GetCbCategory()][1])); //수정
         }
         
         private void AddEvent(string dateEvent, int eventType) //userEvent 생성

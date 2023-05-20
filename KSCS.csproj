@@ -93,12 +93,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database.cs" />
-    <Compile Include="TempAddEventForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TempAddEventForm.Designer.cs">
-      <DependentUpon>TempAddEventForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserBlankDate.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -131,9 +125,6 @@
     <Compile Include="UserEvent.Designer.cs">
       <DependentUpon>UserEvent.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="TempAddEventForm.resx">
-      <DependentUpon>TempAddEventForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserBlankDate.resx">
       <DependentUpon>UserBlankDate.cs</DependentUpon>
     </EmbeddedResource>

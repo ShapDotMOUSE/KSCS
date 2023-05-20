@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.btnTap = new Guna.UI2.WinForms.Guna2Button();
-            this.txtboxTapButton = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.panelWhite = new Guna.UI2.WinForms.Guna2Panel();
             this.SuspendLayout();
             // 
             // btnTap
@@ -48,47 +48,39 @@
             this.btnTap.Font = new System.Drawing.Font("Segoe UI", 6F);
             this.btnTap.ForeColor = System.Drawing.Color.White;
             this.btnTap.Location = new System.Drawing.Point(0, 0);
+            this.btnTap.Margin = new System.Windows.Forms.Padding(4);
             this.btnTap.Name = "btnTap";
             this.btnTap.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnTap.Size = new System.Drawing.Size(36, 78);
+            this.btnTap.Size = new System.Drawing.Size(45, 94);
             this.btnTap.TabIndex = 23;
+            this.btnTap.MouseEnter += new System.EventHandler(this.btnTab_MouseHover);
             this.btnTap.MouseLeave += new System.EventHandler(this.btnTap_MouseLeave);
-            this.btnTap.MouseHover += new System.EventHandler(this.guna2Button2_MouseHover);
-            // 
-            // txtboxTapButton
-            // 
-            this.txtboxTapButton.BorderThickness = 0;
-            this.txtboxTapButton.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtboxTapButton.DefaultText = "";
-            this.txtboxTapButton.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtboxTapButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtboxTapButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtboxTapButton.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtboxTapButton.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtboxTapButton.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtboxTapButton.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtboxTapButton.Location = new System.Drawing.Point(0, 0);
-            this.txtboxTapButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtboxTapButton.Name = "txtboxTapButton";
-            this.txtboxTapButton.PasswordChar = '\0';
-            this.txtboxTapButton.PlaceholderText = "";
-            this.txtboxTapButton.SelectedText = "";
-            this.txtboxTapButton.Size = new System.Drawing.Size(18, 78);
-            this.txtboxTapButton.TabIndex = 24;
             // 
             // guna2Elipse1
             // 
             this.guna2Elipse1.BorderRadius = 20;
             this.guna2Elipse1.TargetControl = this;
             // 
+            // panelWhite
+            // 
+            this.panelWhite.BackColor = System.Drawing.Color.White;
+            this.panelWhite.Location = new System.Drawing.Point(0, 0);
+            this.panelWhite.Name = "panelWhite";
+            this.panelWhite.Size = new System.Drawing.Size(21, 102);
+            this.panelWhite.TabIndex = 25;
+            this.panelWhite.MouseEnter += new System.EventHandler(this.btnTab_MouseHover);
+            this.panelWhite.MouseLeave += new System.EventHandler(this.btnTap_MouseLeave);
+            // 
             // customTapButton
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.txtboxTapButton);
+            this.Controls.Add(this.panelWhite);
             this.Controls.Add(this.btnTap);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "customTapButton";
-            this.Size = new System.Drawing.Size(36, 78);
+            this.Size = new System.Drawing.Size(45, 94);
+            this.Click += new System.EventHandler(this.customTapButton_Click);
             this.ResumeLayout(false);
 
         }
@@ -96,7 +88,7 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2Button btnTap;
-        private Guna.UI2.WinForms.Guna2TextBox txtboxTapButton;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
+        private Guna.UI2.WinForms.Guna2Panel panelWhite;
     }
 }

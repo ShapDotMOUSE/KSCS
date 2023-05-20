@@ -62,11 +62,11 @@ namespace KSCS
                 {
                     if (lblCategory.Text.Length > 0)
                     {
-                        form.Category.ChageSubdivisionName(lblCategory.Text, txtCategory.Text);
+                        MainForm.Category.ChageSubdivisionName(lblCategory.Text, txtCategory.Text);
                     }
                     else
                     {
-                        form.Category.AddSubdivision("EtcCategory", txtCategory.Text);
+                        MainForm.Category.AddSubdivision("EtcCategory", txtCategory.Text);
                     }
                     lblCategory.Text = txtCategory.Text;
                     this.Name = "UCCategory" + txtCategory.Text;
@@ -99,11 +99,11 @@ namespace KSCS
         {
             if(chkCategory.Checked)
             {
-                form.Category.AddChecked(form.TabName, lblCategory.Text);
+                MainForm.Category.AddChecked(MainForm.TabName, lblCategory.Text);
             }
             else
             {
-                form.Category.DeletChecked(form.TabName, lblCategory.Text);
+                MainForm.Category.DeletChecked(MainForm.TabName, lblCategory.Text);
             }
         }
     }

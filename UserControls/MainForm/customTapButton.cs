@@ -12,19 +12,31 @@ namespace KSCS
 {
     public partial class customTapButton : UserControl
     {
+        public event EventHandler Click;
         public customTapButton()
         {
             InitializeComponent();
         }
 
-        private void guna2Button2_MouseHover(object sender, EventArgs e)
+        protected override void OnClick(EventArgs e)
         {
-            txtboxTapButton.Visible = false;
+            base.OnClick(e);
+            Click?.Invoke(this, e);
+        }
+
+        private void btnTab_MouseHover(object sender, EventArgs e)
+        {
+            panelWhite.Visible = false;
         }
 
         private void btnTap_MouseLeave(object sender, EventArgs e)
         {
-            txtboxTapButton.Visible = true;
+            panelWhite.Visible = true;
+        }
+
+        private void customTapButton_Click(object sender, EventArgs e)
+        {
+            OnClick(EventArgs.Empty);
         }
     }
 }

@@ -116,18 +116,6 @@
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\TempAddEventForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\TempAddEventForm.Designer.cs">
-      <DependentUpon>TempAddEventForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\MainForm\UserBlankDate.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\MainForm\UserBlankDate.Designer.cs">
-      <DependentUpon>UserBlankDate.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\MainForm\UserCategory.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -145,12 +133,6 @@
     </Compile>
     <Compile Include="UserControls\MainForm\UserDate.Designer.cs">
       <DependentUpon>UserDate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -182,12 +164,6 @@
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\TempAddEventForm.resx">
-      <DependentUpon>TempAddEventForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\MainForm\UserBlankDate.resx">
-      <DependentUpon>UserBlankDate.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\MainForm\UserCategory.resx">
       <DependentUpon>UserCategory.cs</DependentUpon>
     </EmbeddedResource>
@@ -196,9 +172,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\MainForm\UserDate.resx">
       <DependentUpon>UserDate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -55,7 +55,9 @@
             this.flpEvent.Name = "flpEvent";
             this.flpEvent.Size = new System.Drawing.Size(150, 85);
             this.flpEvent.TabIndex = 1;
-            this.flpEvent.MouseUp += new System.Windows.Forms.MouseEventHandler(this.UserDate_Click);
+            this.flpEvent.MouseClick += new System.Windows.Forms.MouseEventHandler(this.UserDate_Click);
+            this.flpEvent.MouseEnter += new System.EventHandler(this.UserDate_MouseEnter);
+            this.flpEvent.MouseLeave += new System.EventHandler(this.UserDate_MouseLeave);
             // 
             // UserDate
             // 
@@ -67,8 +69,6 @@
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "UserDate";
             this.Size = new System.Drawing.Size(150, 118);
-            this.MouseEnter += new System.EventHandler(this.UserDate_MouseEnter);
-            this.MouseLeave += new System.EventHandler(this.UserDate_MouseLeave);
             this.ResumeLayout(false);
 
         }

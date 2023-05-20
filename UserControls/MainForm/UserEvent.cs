@@ -17,9 +17,9 @@ namespace KSCS
             InitializeComponent();
         }
 
-        public void SetEventInfo(string enventInfo)
+        public void SetEventInfo(string eventInfo)
         {
-            txtEventInfo.Text = enventInfo;
+            txtEventInfo.Text = eventInfo;
         }
 
         public void SetColor(int type)

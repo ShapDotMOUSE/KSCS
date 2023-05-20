@@ -39,9 +39,9 @@ namespace KSCS
         {
             BackColor = Color.White;
             lblDate.Visible = false;
-            MouseEnter -= UserDate_MouseEnter;
-            MouseLeave -= UserDate_MouseLeave;
-            MouseClick -= UserDate_Click;
+            flpEvent.MouseEnter -= UserDate_MouseEnter;
+            flpEvent.MouseLeave -= UserDate_MouseLeave;
+            flpEvent.MouseClick -= UserDate_Click;
         }
 
 
@@ -54,12 +54,16 @@ namespace KSCS
         public void SetDate(int date)
         {
             BackColor = Color.FromArgb(255, 249, 229);
-            lblDate.Visible = true;
-            MouseEnter += UserDate_MouseEnter;
-            MouseLeave += UserDate_MouseLeave;
-            MouseClick += UserDate_Click;
+            if(!lblDate.Visible)
+            {
+                lblDate.Visible = true;
+                flpEvent.MouseEnter += UserDate_MouseEnter;
+                flpEvent.MouseLeave += UserDate_MouseLeave;
+                flpEvent.MouseClick += UserDate_Click;
+            }
+            
             lblDate.Text = date.ToString();
-            //LoadUserDate();
+            LoadUserDate();
         }
 
         private void UserDate_MouseEnter(object sender, EventArgs e)
@@ -86,9 +90,8 @@ namespace KSCS
 
         private void SaveEvent(object sender, EventArgs e)
         {
-            ScheDetailForm userControl = sender as ScheDetailForm;
             flpEvent.Controls.Clear(); //userEvent 컨트롤 초기화
-            //LoadUserDate();
+            LoadUserDate();
         }
 
         private void AddEvent(string dateEvent, int eventType) //userEvent 생성

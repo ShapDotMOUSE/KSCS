@@ -51,7 +51,7 @@ namespace KSCS
             TabCategory1.Add("온라인강의");
             TabCategory1.Add("약속");
             TabCategory1.Add("기타1");
-            Tabs["btnTestTab1"] = TabCategory1;
+            Tabs["btnTab1"] = TabCategory1;
 
             HashSet<String> TabCategory2 = new HashSet<String>();
             TabCategory2.Add("학사일정");
@@ -60,7 +60,7 @@ namespace KSCS
             TabCategory2.Add("온라인강의");
             TabCategory2.Add("기타1");
             TabCategory2.Add("기타2");
-            Tabs["btnTestTab2"] = TabCategory2;
+            Tabs["btnTab2"] = TabCategory2;
 
             HashSet<String> TabCategory3 = new HashSet<String>();
             TabCategory3.Add("학사일정");
@@ -73,7 +73,7 @@ namespace KSCS
             TabCategory3.Add("기타1");
             TabCategory3.Add("기타2");
             TabCategory3.Add("기타3");
-            Tabs["btnTestTab3"] = TabCategory3;
+            Tabs["btnTab3"] = TabCategory3;
         }
 
         public void AddSubdivision(string Main, string Sub)
@@ -85,14 +85,14 @@ namespace KSCS
 
         public void ChageSubdivisionName(string Old, string New)
         {
-            string ParentCategory = form.Category.SubCategorys[Old] as string;
+            string ParentCategory = MainForm.Category.SubCategorys[Old] as string;
             //대분류단에서 이름 수정
-            HashSet<string> Set = form.Category.ParentCategorys[ParentCategory] as HashSet<string>;
+            HashSet<string> Set = MainForm.Category.ParentCategorys[ParentCategory] as HashSet<string>;
             Set.Remove(Old);
             Set.Add(New);
             //하위 카테고리 단에서의 수정
-            form.Category.SubCategorys.Remove(Old);
-            form.Category.SubCategorys.Add(New, ParentCategory);
+            MainForm.Category.SubCategorys.Remove(Old);
+            MainForm.Category.SubCategorys.Add(New, ParentCategory);
 
             foreach(DictionaryEntry tab in Tabs)
             {

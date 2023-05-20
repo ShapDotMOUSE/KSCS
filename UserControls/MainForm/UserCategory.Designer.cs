@@ -39,64 +39,65 @@
             this.lblCategory.BackColor = System.Drawing.Color.Transparent;
             this.lblCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblCategory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.lblCategory.Location = new System.Drawing.Point(6, 1);
-            this.lblCategory.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
+            this.lblCategory.Location = new System.Drawing.Point(9, 2);
+            this.lblCategory.Margin = new System.Windows.Forms.Padding(9, 0, 4, 0);
             this.lblCategory.Name = "lblCategory";
-            this.lblCategory.Size = new System.Drawing.Size(0, 17);
+            this.lblCategory.Size = new System.Drawing.Size(0, 25);
             this.lblCategory.TabIndex = 15;
             this.lblCategory.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lblCategory_MouseDoubleClick);
             // 
             // chkCategory
             // 
-            this.chkCategory.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.chkCategory.CheckedState.BorderRadius = 2;
-            this.chkCategory.CheckedState.BorderThickness = 0;
-            this.chkCategory.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.chkCategory.Location = new System.Drawing.Point(114, 1);
-            this.chkCategory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.chkCategory.CheckedState.BorderColor = System.Drawing.Color.Maroon;
+            this.chkCategory.CheckedState.BorderRadius = 4;
+            this.chkCategory.CheckedState.BorderThickness = 2;
+            this.chkCategory.CheckedState.FillColor = System.Drawing.Color.White;
+            this.chkCategory.CheckMarkColor = System.Drawing.Color.Maroon;
+            this.chkCategory.Location = new System.Drawing.Point(131, 3);
+            this.chkCategory.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.chkCategory.Name = "chkCategory";
-            this.chkCategory.Size = new System.Drawing.Size(18, 16);
+            this.chkCategory.Size = new System.Drawing.Size(26, 24);
             this.chkCategory.TabIndex = 16;
             this.chkCategory.Text = "guna2CustomCheckBox2";
-            this.chkCategory.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.chkCategory.UncheckedState.BorderRadius = 2;
-            this.chkCategory.UncheckedState.BorderThickness = 0;
-            this.chkCategory.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.chkCategory.UncheckedState.BorderColor = System.Drawing.Color.Maroon;
+            this.chkCategory.UncheckedState.BorderRadius = 4;
+            this.chkCategory.UncheckedState.BorderThickness = 2;
+            this.chkCategory.UncheckedState.FillColor = System.Drawing.Color.White;
             this.chkCategory.CheckedChanged += new System.EventHandler(this.chkCategory_CheckedChanged);
             // 
             // txtCategory
             // 
+            this.txtCategory.BackColor = System.Drawing.Color.White;
             this.txtCategory.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCategory.DefaultText = "";
             this.txtCategory.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtCategory.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txtCategory.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtCategory.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtCategory.FillColor = System.Drawing.Color.Transparent;
             this.txtCategory.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
             this.txtCategory.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCategory.Location = new System.Drawing.Point(0, 1);
-            this.txtCategory.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.txtCategory.Location = new System.Drawing.Point(0, 2);
+            this.txtCategory.Margin = new System.Windows.Forms.Padding(0, 0, 4, 0);
             this.txtCategory.Name = "txtCategory";
             this.txtCategory.PasswordChar = '\0';
             this.txtCategory.PlaceholderText = "";
             this.txtCategory.SelectedText = "";
-            this.txtCategory.Size = new System.Drawing.Size(108, 17);
+            this.txtCategory.Size = new System.Drawing.Size(123, 26);
             this.txtCategory.TabIndex = 17;
             this.txtCategory.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCategory_KeyDown);
             // 
             // UserCategory
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(5)))), ((int)(((byte)(31)))));
+            this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.txtCategory);
             this.Controls.Add(this.chkCategory);
             this.Controls.Add(this.lblCategory);
-            this.Margin = new System.Windows.Forms.Padding(0, 0, 0, 3);
+            this.Margin = new System.Windows.Forms.Padding(0, 0, 0, 4);
             this.Name = "UserCategory";
-            this.Size = new System.Drawing.Size(135, 19);
+            this.Size = new System.Drawing.Size(161, 28);
             this.Load += new System.EventHandler(this.UserCategory_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

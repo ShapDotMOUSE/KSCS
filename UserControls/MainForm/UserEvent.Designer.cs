@@ -28,22 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.flpEventInfo = new System.Windows.Forms.FlowLayoutPanel();
-            this.pnl = new Guna.UI2.WinForms.Guna2Panel();
             this.txtEventInfo = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.pnl = new Guna.UI2.WinForms.Guna2Panel();
+            this.flpEventInfo = new System.Windows.Forms.FlowLayoutPanel();
             this.flpEventInfo.SuspendLayout();
             this.SuspendLayout();
             // 
-            // flpEventInfo
+            // txtEventInfo
             // 
-            this.flpEventInfo.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.flpEventInfo.Controls.Add(this.pnl);
-            this.flpEventInfo.Controls.Add(this.txtEventInfo);
-            this.flpEventInfo.Location = new System.Drawing.Point(0, 0);
-            this.flpEventInfo.Margin = new System.Windows.Forms.Padding(4);
-            this.flpEventInfo.Name = "flpEventInfo";
-            this.flpEventInfo.Size = new System.Drawing.Size(146, 22);
-            this.flpEventInfo.TabIndex = 0;
+            this.txtEventInfo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtEventInfo.AutoSize = false;
+            this.txtEventInfo.BackColor = System.Drawing.Color.Transparent;
+            this.txtEventInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEventInfo.ForeColor = System.Drawing.Color.White;
+            this.txtEventInfo.Location = new System.Drawing.Point(14, 3);
+            this.txtEventInfo.Margin = new System.Windows.Forms.Padding(0);
+            this.txtEventInfo.Name = "txtEventInfo";
+            this.txtEventInfo.Size = new System.Drawing.Size(136, 28);
+            this.txtEventInfo.TabIndex = 2;
+            this.txtEventInfo.Text = "일정 정보";
             // 
             // pnl
             // 
@@ -51,21 +54,20 @@
             this.pnl.Location = new System.Drawing.Point(0, 0);
             this.pnl.Margin = new System.Windows.Forms.Padding(0);
             this.pnl.Name = "pnl";
-            this.pnl.Size = new System.Drawing.Size(14, 22);
+            this.pnl.Size = new System.Drawing.Size(14, 34);
             this.pnl.TabIndex = 0;
             // 
-            // txtEventInfo
+            // flpEventInfo
             // 
-            this.txtEventInfo.AutoSize = false;
-            this.txtEventInfo.BackColor = System.Drawing.Color.Transparent;
-            this.txtEventInfo.Dock = System.Windows.Forms.DockStyle.Right;
-            this.txtEventInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEventInfo.Location = new System.Drawing.Point(21, 0);
-            this.txtEventInfo.Margin = new System.Windows.Forms.Padding(7, 0, 0, 0);
-            this.txtEventInfo.Name = "txtEventInfo";
-            this.txtEventInfo.Size = new System.Drawing.Size(124, 22);
-            this.txtEventInfo.TabIndex = 2;
-            this.txtEventInfo.Text = "일정 정보";
+            this.flpEventInfo.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.flpEventInfo.Controls.Add(this.pnl);
+            this.flpEventInfo.Controls.Add(this.txtEventInfo);
+            this.flpEventInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpEventInfo.Location = new System.Drawing.Point(0, 0);
+            this.flpEventInfo.Margin = new System.Windows.Forms.Padding(0);
+            this.flpEventInfo.Name = "flpEventInfo";
+            this.flpEventInfo.Size = new System.Drawing.Size(150, 30);
+            this.flpEventInfo.TabIndex = 0;
             // 
             // UserEvent
             // 
@@ -74,7 +76,7 @@
             this.Controls.Add(this.flpEventInfo);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "UserEvent";
-            this.Size = new System.Drawing.Size(146, 22);
+            this.Size = new System.Drawing.Size(150, 30);
             this.flpEventInfo.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -82,8 +84,8 @@
 
         #endregion
 
-        private System.Windows.Forms.FlowLayoutPanel flpEventInfo;
-        private Guna.UI2.WinForms.Guna2Panel pnl;
         private Guna.UI2.WinForms.Guna2HtmlLabel txtEventInfo;
+        private Guna.UI2.WinForms.Guna2Panel pnl;
+        private System.Windows.Forms.FlowLayoutPanel flpEventInfo;
     }
 }

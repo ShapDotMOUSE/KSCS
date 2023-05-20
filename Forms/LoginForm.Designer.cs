@@ -126,8 +126,9 @@
             this.btnLogin.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnLogin.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnLogin.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(5)))), ((int)(((byte)(31)))));
-            this.btnLogin.Font = new System.Drawing.Font("나눔고딕", 9F);
+            this.btnLogin.Font = new System.Drawing.Font("나눔고딕", 10F);
             this.btnLogin.ForeColor = System.Drawing.Color.White;
+            this.btnLogin.HoverState.Font = new System.Drawing.Font("나눔고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnLogin.IndicateFocus = true;
             this.btnLogin.Location = new System.Drawing.Point(31, 384);
             this.btnLogin.Name = "btnLogin";

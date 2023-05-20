@@ -32,12 +32,12 @@
             // 
             // UserBlankDate
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Margin = new System.Windows.Forms.Padding(10);
+            this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "UserBlankDate";
-            this.Size = new System.Drawing.Size(102, 64);
+            this.Size = new System.Drawing.Size(155, 121);
             this.ResumeLayout(false);
 
         }

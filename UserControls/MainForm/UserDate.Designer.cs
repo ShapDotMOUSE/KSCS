@@ -39,7 +39,7 @@
             this.lblDate.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblDate.Font = new System.Drawing.Font("MS Reference Sans Serif", 10F);
             this.lblDate.Location = new System.Drawing.Point(0, 0);
-            this.lblDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lblDate.Margin = new System.Windows.Forms.Padding(0);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(155, 26);
             this.lblDate.TabIndex = 0;
@@ -51,7 +51,7 @@
             this.flpEvent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpEvent.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpEvent.Location = new System.Drawing.Point(0, 26);
-            this.flpEvent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flpEvent.Margin = new System.Windows.Forms.Padding(4);
             this.flpEvent.Name = "flpEvent";
             this.flpEvent.Size = new System.Drawing.Size(155, 95);
             this.flpEvent.TabIndex = 1;

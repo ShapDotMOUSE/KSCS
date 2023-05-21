@@ -97,6 +97,12 @@
   <ItemGroup>
     <Compile Include="Class\Category.cs" />
     <Compile Include="Class\KLAS.cs" />
+    <Compile Include="Forms\AddCategoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddCategoryForm.Designer.cs">
+      <DependentUpon>AddCategoryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\MainForm\customTapButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -155,6 +161,9 @@
     <Compile Include="UserControls\scheduleUnit.Designer.cs">
       <DependentUpon>scheduleUnit.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\AddCategoryForm.resx">
+      <DependentUpon>AddCategoryForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\MainForm\customTapButton.resx">
       <DependentUpon>customTapButton.cs</DependentUpon>
     </EmbeddedResource>

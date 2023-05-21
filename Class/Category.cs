@@ -76,6 +76,7 @@ namespace KSCS
             Tabs["btnTab3"] = TabCategory3;
         }
 
+        //하위 카테고리 추가
         public void AddSubdivision(string Main, string Sub)
         {
             HashSet<string> SubdivisionSet = ParentCategorys[Main] as HashSet<string>;
@@ -83,6 +84,8 @@ namespace KSCS
             SubCategorys[Sub] = Main;
         }
 
+
+        //하위 카테고리 이름 변경
         public void ChageSubdivisionName(string Old, string New)
         {
             string ParentCategory = MainForm.Category.SubCategorys[Old] as string;
@@ -105,6 +108,8 @@ namespace KSCS
             }
         }
 
+
+        //하위 카테고리가 속한 상위 카테고리 변경
         public void ChangeParentOfSub(string NewMain, string Sub)
         {
             string sourcsMain = SubCategorys[Sub] as string;
@@ -118,17 +123,21 @@ namespace KSCS
             AddSubIntoNewParent.Add(Sub);
         }
 
+        //하위 카테고리 선택 여부 확인
         public bool IsChecked(string Tab, string Sub)
         {
             HashSet<string> TabCategory = Tabs[Tab] as HashSet<string>;
             return TabCategory.Contains(Sub);
         }
+
+        //탭에 체크된 하위 카테고리 추가
         public void AddChecked(string Tab, string Sub)
         {
             HashSet<string> TabCategory = Tabs[Tab] as HashSet<string>;
             TabCategory.Add(Sub);
         }
 
+        //탭에 체크된 하위 카테고리 제거
         public void DeletChecked(string Tab, string Sub)
         {
             HashSet<string> TabCategory = Tabs[Tab] as HashSet<string>;

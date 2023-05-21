@@ -62,7 +62,7 @@ namespace KSCS
                 {
                     if (lblCategory.Text.Length > 0)
                     {
-                        MainForm.Category.ChageSubdivisionName(lblCategory.Text, txtCategory.Text);
+                        MainForm.Category.ChageSubdivisionName(((FlowLayoutPanel)this.Parent).Name,lblCategory.Text, txtCategory.Text);
                     }
                     else
                     {

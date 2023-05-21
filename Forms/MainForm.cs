@@ -309,6 +309,8 @@ namespace KSCS
                 };
                 lbl.Location = new Point(0, index * (lbl.Height + 3));
                 panelMagam.Controls.Add(lbl);
+                //if (panel.InvokeRequired) panelMagam.Invoke(new MethodInvoker(delegate { panelMagam.Controls.Add(lbl); }));
+                //else panelMagam.Controls.Add(lbl);
                 index++;
             }
         }

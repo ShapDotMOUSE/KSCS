@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using KSCS.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace KSCS
@@ -96,6 +97,14 @@ namespace KSCS
             txtCategory.Focus();
         }
 
+        //카테고리 이름 수정 중 다른 곳 클릭
+        private void txtCategory_Leave(object sender, EventArgs e)
+        {
+            lblCategory.Visible = true;
+            txtCategory.Visible = false;
+            txtCategory.Clear();
+        }
+
         //카테고리 체크 여부 확인해서 탭에 추가 및 삭제
         private void chkCategory_CheckedChanged(object sender, EventArgs e)
         {
@@ -108,5 +117,13 @@ namespace KSCS
                 MainForm.Category.DeletChecked(MainForm.TabName, lblCategory.Text);
             }
         }
+
+        private void UserCategory_DoubleClick(object sender, EventArgs e)
+        {
+            TempCategorySetting temp = new TempCategorySetting(((FlowLayoutPanel)this.Parent).Name , lblCategory.Text);
+            temp.ShowDialog();
+        }
+
+        
     }
 }

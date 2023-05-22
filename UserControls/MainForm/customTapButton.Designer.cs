@@ -48,10 +48,9 @@
             this.btnTap.Font = new System.Drawing.Font("Segoe UI", 6F);
             this.btnTap.ForeColor = System.Drawing.Color.White;
             this.btnTap.Location = new System.Drawing.Point(0, 0);
-            this.btnTap.Margin = new System.Windows.Forms.Padding(4);
             this.btnTap.Name = "btnTap";
             this.btnTap.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnTap.Size = new System.Drawing.Size(45, 94);
+            this.btnTap.Size = new System.Drawing.Size(36, 78);
             this.btnTap.TabIndex = 23;
             this.btnTap.Click += new System.EventHandler(this.customTapButton_Click);
             this.btnTap.MouseEnter += new System.EventHandler(this.btnTab_MouseHover);
@@ -67,21 +66,21 @@
             this.panelWhite.BackColor = System.Drawing.Color.White;
             this.panelWhite.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelWhite.Location = new System.Drawing.Point(0, 0);
+            this.panelWhite.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelWhite.Name = "panelWhite";
-            this.panelWhite.Size = new System.Drawing.Size(17, 94);
+            this.panelWhite.Size = new System.Drawing.Size(14, 78);
             this.panelWhite.TabIndex = 25;
             this.panelWhite.MouseEnter += new System.EventHandler(this.btnTab_MouseHover);
             this.panelWhite.MouseLeave += new System.EventHandler(this.btnTap_MouseLeave);
             // 
             // customTapButton
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panelWhite);
             this.Controls.Add(this.btnTap);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "customTapButton";
-            this.Size = new System.Drawing.Size(45, 94);
+            this.Size = new System.Drawing.Size(36, 78);
             this.ResumeLayout(false);
 
         }

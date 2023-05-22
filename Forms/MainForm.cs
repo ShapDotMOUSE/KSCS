@@ -129,13 +129,12 @@ namespace KSCS
         //카테고리 함수---------------------------------------------------------------------------------------------------------------------------------------
         private void DisplayCategery()
         {
-            foreach (var key in Category.Categorys.Keys)
+            foreach (var key in Category.Categories.Keys)
             {
-                foreach (var item in Category.Categorys[key])
+                foreach (var item in Category.Categories[key])
                 {
                     UserCategory uc = new UserCategory();
                     uc.SetBasicMode(item);
-                    uc.MouseDoubleClick += UcCategory_MouseDoubleClick;
                     ((FlowLayoutPanel)MainCategory.Controls[key]).Controls.Add(uc);
                 }
             }
@@ -153,7 +152,7 @@ namespace KSCS
         }
         private void SetCheckedCategoryByTab()
         {
-            FlowLayoutPanel[] flp = { SchoolCategory, PersonalCategory, EtcCategory };
+            FlowLayoutPanel[] flp = { 학교, 개인, 기타 };
             foreach (FlowLayoutPanel panel in flp)
             {
                 foreach (UserCategory category in panel.Controls)
@@ -324,45 +323,26 @@ namespace KSCS
         //카테고리 컨트롤------------------------------------------------------------------------------------------------------------------------------------
         private void btnSchoolCategory_Click(object sender, EventArgs e)
         {
-            SchoolCategory.Visible = !SchoolCategory.Visible;
+            학교.Visible = !학교.Visible;
         }
 
         private void btnPersonalCategory_Click(object sender, EventArgs e)
         {
-            PersonalCategory.Visible = !PersonalCategory.Visible;
+            개인.Visible = !개인.Visible;
         }
 
         private void btnEtcCategory_Click(object sender, EventArgs e)
         {
-            EtcCategory.Visible = !EtcCategory.Visible;
+            기타.Visible = !기타.Visible;
         }
 
         private void btnPlusCategory_Click(object sender, EventArgs e)
         {
             UserCategory category = new UserCategory();
-            category.MouseDoubleClick += UcCategory_MouseDoubleClick;
-            EtcCategory.Controls.Add(category);
+            기타.Controls.Add(category);
         }
 
         ////카테고리 유저 컨트롤------------------------------------------------------------------------------------------------------------------------------------
-        private UserCategory draggedUcCategory; // 드래그 중인 카테고리 유저 컨트롤
-        private UserCategory cloneUcCategory; // 드래그 중인 카테고리 유저 컨트롤 복사본
-        private Point MouseLocation;
-
-        public void UndoCategory()
-        {
-            this.Controls.Remove(cloneUcCategory);
-            cloneUcCategory.Dispose();
-            draggedUcCategory.Visible = true;
-        }
-
-
-        private void UcCategory_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            draggedUcCategory = (UserCategory)sender;
-            draggedUcCategory.Visible = false;
-
-            // 드래그 중인 버튼의 복사본 생성
-        }
+     
     }
 }

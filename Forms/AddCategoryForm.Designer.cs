@@ -56,7 +56,7 @@
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(280, 20);
+            this.guna2Panel1.Size = new System.Drawing.Size(280, 25);
             this.guna2Panel1.TabIndex = 0;
             // 
             // guna2DragControl1
@@ -81,9 +81,9 @@
             this.label2.Font = new System.Drawing.Font("나눔고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label2.Location = new System.Drawing.Point(18, 104);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 17);
+            this.label2.Size = new System.Drawing.Size(78, 17);
             this.label2.TabIndex = 1;
-            this.label2.Text = "하위 카테고리";
+            this.label2.Text = "카테고리명";
             // 
             // guna2ComboBox1
             // 

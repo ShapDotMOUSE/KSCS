@@ -256,6 +256,23 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\팡이비행.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\homework.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\individual.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lecture.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\quiz.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\team_proejct.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CategoryPlus.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

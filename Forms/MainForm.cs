@@ -260,9 +260,9 @@ namespace KSCS
             Panel panel = (Panel)btn.Parent;
             foreach (Guna2CircleButton magamBtn in panel.Controls)
             {
-                magamBtn.FillColor = SystemColors.HotTrack;
+                magamBtn.FillColor = Color.FromArgb(217, 217, 217); ;
             }
-            btn.FillColor = Color.SteelBlue;
+            //btn.FillColor = Color.FromArgb(217,217,217);
             panelMagam.Controls.Clear();
             int index = 0;
 

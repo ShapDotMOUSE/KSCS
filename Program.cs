@@ -17,7 +17,7 @@ namespace KSCS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AddCategoryForm());
+            Application.Run(new MainForm());
         }
     }
 }

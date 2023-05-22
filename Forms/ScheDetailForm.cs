@@ -156,17 +156,17 @@ namespace KSCS
                 string deleteQuery = string.Format("DELETE FROM Schedule WHERE id='{0}';", MainForm.monthScheduleList[UserDate.static_date - 1][selectedScheduleIndex].id);
                 MySqlCommand cmd = new MySqlCommand(deleteQuery, connection);
                 if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Delete Data.");
-            }
-            //리스트 삭제
-            MainForm.monthScheduleList[UserDate.static_date - 1].RemoveAt(selectedScheduleIndex);
-            //스케줄 유닛 다시 load
-            if (AddEvent != null)
-            {
-                AddEvent(this, new EventArgs());
-            }
+                //리스트 삭제
+                MainForm.monthScheduleList[UserDate.static_date - 1].RemoveAt(selectedScheduleIndex);
 
-            ClearForm();
-            InitializeScheDetailForm();
+                if (AddEvent != null)
+                {
+                    AddEvent(this, new EventArgs());
+                }
+                ClearForm();
+                //스케줄 유닛 다시 load
+                InitializeScheDetailForm();
+            }
         }
 
         private void btnMemSet_Click(object sender, EventArgs e)
@@ -193,6 +193,8 @@ namespace KSCS
             selectedScheduleIndex = index;
             addBtn.FillColor = Color.LimeGreen;
             addBtn.Text = "Modify";
+
+            deleteBtn.Visible = true; // 스케줄 클릭하고 나서야 활성화
         }
 
         private void btnAddSchedule_Click(object sender, EventArgs e)

@@ -94,7 +94,7 @@ namespace KSCS
             //추가
             eventForm.ShowDialog();
         }
-
+        // update(add/modify,delete) event
         private void SaveEvent(object sender, EventArgs e)
         {
             flpEvent.Controls.Clear(); //userEvent 컨트롤 초기화

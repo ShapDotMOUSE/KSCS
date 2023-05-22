@@ -33,16 +33,9 @@ namespace KSCS
            chkCategory.Checked = check;
         }
 
-        public void DragMode(string txt)
-        {
-            lblCategory.Text = txt;
-            txtCategory.Visible = false;
-            lblCategory.MouseDoubleClick -= lblCategory_MouseDoubleClick;
-        }
-
         public void SetBasicMode(string txt)
         {
-            this.Name = "UCCategory" + txt;
+            this.Name = txt;
             lblCategory.Text = txt;
             txtCategory.Visible = false;
         }
@@ -56,16 +49,20 @@ namespace KSCS
 
         private void txtCategory_KeyDown(object sender, KeyEventArgs e)
         {
+            //카테고리 이름 변경 사항 저장
             if (e.KeyCode == Keys.Enter)
             {
                 if (txtCategory.Text.Length > 0)
                 {
+                    //입력된 내용이 있을 경우
                     if (lblCategory.Text.Length > 0)
                     {
+                        //기존 카테고리인 경우
                         MainForm.Category.ChageSubdivisionName(((FlowLayoutPanel)this.Parent).Name,lblCategory.Text, txtCategory.Text);
                     }
                     else
                     {
+                        //신규 카테고리인 경우
                         MainForm.Category.AddSubdivision("EtcCategory", txtCategory.Text);
                     }
                     lblCategory.Text = txtCategory.Text;
@@ -75,19 +72,23 @@ namespace KSCS
                 }
             }else if(e.KeyCode == Keys.Escape)
             {
+                //카테고리 이름 변경 사항 취소
                 if (lblCategory.Text.Length > 0)
                 {
+                    //기존 카테고리인 경우 원복
                     lblCategory.Visible = true;
                     txtCategory.Visible = false;
                     txtCategory.Clear();
                 }
                 else
                 {
+                    //새로 만드는 카테고리인 경우 추가된 카테고리 삭제
                     ((FlowLayoutPanel)this.Parent).Controls.Remove(this);
                 }
             }
         }
 
+        //카테고리 이름 변경 시
         private void lblCategory_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             txtCategory.Visible = true;
@@ -95,6 +96,7 @@ namespace KSCS
             txtCategory.Focus();
         }
 
+        //카테고리 체크 여부 확인해서 탭에 추가 및 삭제
         private void chkCategory_CheckedChanged(object sender, EventArgs e)
         {
             if(chkCategory.Checked)

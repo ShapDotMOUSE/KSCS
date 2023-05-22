@@ -92,7 +92,7 @@ namespace KSCS
             ScheDetailForm eventForm = new ScheDetailForm();
             eventForm.AddEvent += new EventHandler(SaveEvent); //이벤트 발생
             //추가
-            eventForm.Show();
+            eventForm.ShowDialog();
         }
 
         private void SaveEvent(object sender, EventArgs e)

@@ -35,7 +35,7 @@ namespace KSCS
         //달력 관련
         private int year, month;
         public static int static_month, static_year;
-        //탭&카테고리 관련
+        //탭 & 카테고리 관련
         public static string TabName;
         public static Category Category = new Category();
         //스케줄 관련

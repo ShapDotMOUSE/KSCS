@@ -41,13 +41,13 @@
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.btnPlusCategory = new Guna.UI2.WinForms.Guna2Button();
             this.MainCategory = new System.Windows.Forms.FlowLayoutPanel();
-            this.SchoolCategory = new System.Windows.Forms.FlowLayoutPanel();
+            this.학교 = new System.Windows.Forms.FlowLayoutPanel();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
-            this.PersonalCategory = new System.Windows.Forms.FlowLayoutPanel();
+            this.개인 = new System.Windows.Forms.FlowLayoutPanel();
             this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Separator2 = new Guna.UI2.WinForms.Guna2Separator();
-            this.EtcCategory = new System.Windows.Forms.FlowLayoutPanel();
+            this.기타 = new System.Windows.Forms.FlowLayoutPanel();
             this.guna2PictureBox4 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
             this.panelMagam = new System.Windows.Forms.FlowLayoutPanel();
@@ -201,7 +201,7 @@
             this.guna2Button1.ForeColor = System.Drawing.Color.Black;
             this.guna2Button1.Location = new System.Drawing.Point(3, 3);
             this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(158, 25);
+            this.guna2Button1.Size = new System.Drawing.Size(150, 25);
             this.guna2Button1.TabIndex = 10;
             this.guna2Button1.Text = "학교                   ▼   ";
             this.guna2Button1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -253,7 +253,7 @@
             this.btnPlusCategory.Image = ((System.Drawing.Image)(resources.GetObject("btnPlusCategory.Image")));
             this.btnPlusCategory.ImageSize = new System.Drawing.Size(80, 80);
             this.btnPlusCategory.Location = new System.Drawing.Point(73, 660);
-            this.btnPlusCategory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPlusCategory.Margin = new System.Windows.Forms.Padding(2);
             this.btnPlusCategory.Name = "btnPlusCategory";
             this.btnPlusCategory.Size = new System.Drawing.Size(56, 53);
             this.btnPlusCategory.TabIndex = 25;
@@ -262,29 +262,30 @@
             // MainCategory
             // 
             this.MainCategory.AllowDrop = true;
+            this.MainCategory.AutoScroll = true;
             this.MainCategory.Controls.Add(this.guna2Button1);
             this.MainCategory.Controls.Add(this.category_underline);
-            this.MainCategory.Controls.Add(this.SchoolCategory);
+            this.MainCategory.Controls.Add(this.학교);
             this.MainCategory.Controls.Add(this.guna2Button2);
             this.MainCategory.Controls.Add(this.guna2Separator1);
-            this.MainCategory.Controls.Add(this.PersonalCategory);
+            this.MainCategory.Controls.Add(this.개인);
             this.MainCategory.Controls.Add(this.guna2Button3);
             this.MainCategory.Controls.Add(this.guna2Separator2);
-            this.MainCategory.Controls.Add(this.EtcCategory);
+            this.MainCategory.Controls.Add(this.기타);
             this.MainCategory.Location = new System.Drawing.Point(27, 207);
-            this.MainCategory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MainCategory.Margin = new System.Windows.Forms.Padding(2);
             this.MainCategory.Name = "MainCategory";
-            this.MainCategory.Size = new System.Drawing.Size(158, 361);
+            this.MainCategory.Size = new System.Drawing.Size(163, 361);
             this.MainCategory.TabIndex = 20;
             // 
-            // SchoolCategory
+            // 학교
             // 
-            this.SchoolCategory.AllowDrop = true;
-            this.SchoolCategory.Location = new System.Drawing.Point(9, 44);
-            this.SchoolCategory.Margin = new System.Windows.Forms.Padding(9, 0, 2, 2);
-            this.SchoolCategory.Name = "SchoolCategory";
-            this.SchoolCategory.Size = new System.Drawing.Size(136, 67);
-            this.SchoolCategory.TabIndex = 17;
+            this.학교.AllowDrop = true;
+            this.학교.Location = new System.Drawing.Point(9, 44);
+            this.학교.Margin = new System.Windows.Forms.Padding(9, 0, 2, 2);
+            this.학교.Name = "학교";
+            this.학교.Size = new System.Drawing.Size(136, 67);
+            this.학교.TabIndex = 17;
             // 
             // guna2Button2
             // 
@@ -298,8 +299,9 @@
             this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button2.ForeColor = System.Drawing.Color.Black;
             this.guna2Button2.Location = new System.Drawing.Point(3, 116);
+            this.guna2Button2.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
             this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(158, 25);
+            this.guna2Button2.Size = new System.Drawing.Size(150, 25);
             this.guna2Button2.TabIndex = 18;
             this.guna2Button2.Text = "개인                   ▼   ";
             this.guna2Button2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -315,15 +317,15 @@
             this.guna2Separator1.Size = new System.Drawing.Size(132, 8);
             this.guna2Separator1.TabIndex = 19;
             // 
-            // PersonalCategory
+            // 개인
             // 
-            this.PersonalCategory.AllowDrop = true;
-            this.PersonalCategory.AutoScroll = true;
-            this.PersonalCategory.Location = new System.Drawing.Point(9, 158);
-            this.PersonalCategory.Margin = new System.Windows.Forms.Padding(9, 0, 2, 2);
-            this.PersonalCategory.Name = "PersonalCategory";
-            this.PersonalCategory.Size = new System.Drawing.Size(136, 67);
-            this.PersonalCategory.TabIndex = 20;
+            this.개인.AllowDrop = true;
+            this.개인.AutoScroll = true;
+            this.개인.Location = new System.Drawing.Point(9, 158);
+            this.개인.Margin = new System.Windows.Forms.Padding(9, 0, 2, 2);
+            this.개인.Name = "개인";
+            this.개인.Size = new System.Drawing.Size(136, 67);
+            this.개인.TabIndex = 20;
             // 
             // guna2Button3
             // 
@@ -338,7 +340,7 @@
             this.guna2Button3.ForeColor = System.Drawing.Color.Black;
             this.guna2Button3.Location = new System.Drawing.Point(3, 230);
             this.guna2Button3.Name = "guna2Button3";
-            this.guna2Button3.Size = new System.Drawing.Size(158, 25);
+            this.guna2Button3.Size = new System.Drawing.Size(150, 25);
             this.guna2Button3.TabIndex = 21;
             this.guna2Button3.Text = "기타                   ▼   ";
             this.guna2Button3.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -354,15 +356,15 @@
             this.guna2Separator2.Size = new System.Drawing.Size(130, 8);
             this.guna2Separator2.TabIndex = 22;
             // 
-            // EtcCategory
+            // 기타
             // 
-            this.EtcCategory.AllowDrop = true;
-            this.EtcCategory.AutoScroll = true;
-            this.EtcCategory.Location = new System.Drawing.Point(9, 272);
-            this.EtcCategory.Margin = new System.Windows.Forms.Padding(9, 0, 2, 2);
-            this.EtcCategory.Name = "EtcCategory";
-            this.EtcCategory.Size = new System.Drawing.Size(136, 67);
-            this.EtcCategory.TabIndex = 23;
+            this.기타.AllowDrop = true;
+            this.기타.AutoScroll = true;
+            this.기타.Location = new System.Drawing.Point(9, 272);
+            this.기타.Margin = new System.Windows.Forms.Padding(9, 0, 2, 2);
+            this.기타.Name = "기타";
+            this.기타.Size = new System.Drawing.Size(136, 67);
+            this.기타.TabIndex = 23;
             // 
             // guna2PictureBox4
             // 
@@ -393,7 +395,7 @@
             // panelMagam
             // 
             this.panelMagam.Location = new System.Drawing.Point(13, 56);
-            this.panelMagam.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelMagam.Margin = new System.Windows.Forms.Padding(2);
             this.panelMagam.Name = "panelMagam";
             this.panelMagam.Size = new System.Drawing.Size(299, 82);
             this.panelMagam.TabIndex = 10;
@@ -675,7 +677,7 @@
             this.flpDays.Controls.Add(this.userDate41, 5, 5);
             this.flpDays.Controls.Add(this.userDate42, 6, 5);
             this.flpDays.Location = new System.Drawing.Point(49, 84);
-            this.flpDays.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flpDays.Margin = new System.Windows.Forms.Padding(2);
             this.flpDays.Name = "flpDays";
             this.flpDays.RowCount = 6;
             this.flpDays.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
@@ -1257,9 +1259,9 @@
         private UserDate userDate41;
         private UserDate userDate42;
         private System.Windows.Forms.FlowLayoutPanel MainCategory;
-        private System.Windows.Forms.FlowLayoutPanel SchoolCategory;
-        private System.Windows.Forms.FlowLayoutPanel PersonalCategory;
-        private System.Windows.Forms.FlowLayoutPanel EtcCategory;
+        private System.Windows.Forms.FlowLayoutPanel 학교;
+        private System.Windows.Forms.FlowLayoutPanel 개인;
+        private System.Windows.Forms.FlowLayoutPanel 기타;
         private Guna.UI2.WinForms.Guna2Button btnPlusCategory;
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator1;

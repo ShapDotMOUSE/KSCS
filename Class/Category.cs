@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,8 +10,8 @@ namespace KSCS
 {
     public class Category
     {
-        public Dictionary<string, HashSet<string>> Categorys = new Dictionary<string, HashSet<string>>();
-        public Hashtable SubCategorys = new Hashtable();
+        public Dictionary<string, HashSet<string>> Categories = new Dictionary<string, HashSet<string>>();
+        public Dictionary<string, Color> CategoryColor = new Dictionary<string, Color>();
         public Hashtable Tabs = new Hashtable();
 
         public void TestCategory()
@@ -29,9 +30,9 @@ namespace KSCS
             EtcCatergories.Add("기타2");
             EtcCatergories.Add("기타3");
 
-            Categorys["SchoolCategory"] = SchoolCategories;
-            Categorys["PersonalCategory"] = PersonalCategories;
-            Categorys["EtcCategory"] = EtcCatergories;
+            Categories["학교"] = SchoolCategories;
+            Categories["개인"] = PersonalCategories;
+            Categories["기타"] = EtcCatergories;
 
             HashSet<String> TabCategory1 = new HashSet<String>();
             TabCategory1.Add("학사일정");
@@ -66,15 +67,15 @@ namespace KSCS
         //하위 카테고리 추가
         public void AddSubdivision(string Main, string Sub)
         {
-            Categorys[Main].Add(Sub);
+            Categories[Main].Add(Sub);
         }
 
 
         //하위 카테고리 이름 변경
         public void ChageSubdivisionName(string Parent, string Old, string New)
         {
-            Categorys[Parent].Remove(Old);
-            Categorys[Parent].Add(Old);
+            Categories[Parent].Remove(Old);
+            Categories[Parent].Add(Old);
 
             foreach (DictionaryEntry tab in Tabs)
             {
@@ -93,9 +94,9 @@ namespace KSCS
         public void ChangeParentOfSub(string OldParent, string NewParent, string Sub)
         {
             //기존 main에서 sub 제거
-            Categorys[OldParent].Remove(Sub);
+            Categories[OldParent].Remove(Sub);
             //새로운 main에 sub 추가
-            Categorys[NewParent].Add(Sub);
+            Categories[NewParent].Add(Sub);
         }
 
         //탭에 카테고리가 속해있는지 판단

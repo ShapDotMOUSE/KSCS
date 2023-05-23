@@ -38,7 +38,7 @@
             this.lblDate.AutoSize = false;
             this.lblDate.BackColor = System.Drawing.Color.Transparent;
             this.lblDate.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblDate.Font = new System.Drawing.Font("Pretendard", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDate.Location = new System.Drawing.Point(0, 0);
             this.lblDate.Margin = new System.Windows.Forms.Padding(0);
             this.lblDate.Name = "lblDate";
@@ -81,6 +81,9 @@
             this.btnTransparent.Size = new System.Drawing.Size(150, 118);
             this.btnTransparent.TabIndex = 3;
             this.btnTransparent.UseTransparentBackground = true;
+            this.btnTransparent.MouseClick += new System.Windows.Forms.MouseEventHandler(this.UserDate_Click);
+            this.btnTransparent.MouseEnter += new System.EventHandler(this.UserDate_MouseEnter);
+            this.btnTransparent.MouseLeave += new System.EventHandler(this.UserDate_MouseLeave);
             // 
             // UserDate
             // 

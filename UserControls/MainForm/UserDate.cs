@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
+using static KSCS.Class.KSCS_static;
 
 namespace KSCS
 {
@@ -24,26 +19,19 @@ namespace KSCS
 
         private void LoadUserDate()
         {
-
-            for (int i = 0; i < MainForm.monthScheduleList[Convert.ToInt32(lblDate.Text) - 1].Count; i++)
-            {
-                AddEvent(
-                    MainForm.monthScheduleList[Convert.ToInt32(lblDate.Text) - 1][i].title,
-                    int.Parse(MainForm.categoryDict[MainForm.monthScheduleList[Convert.ToInt32(lblDate.Text) - 1][i].category][1])
-                    );
-            }
+            flpEvent.Controls.Clear(); //userEvent 컨트롤 초기화
+            foreach (Schedule schedule in monthScheduleList[Convert.ToInt32(lblDate.Text) - 1])
+                AddEvent(schedule.title, int.Parse(categoryDict[schedule.category][1]));
 
         }
 
         public void ChangeBlank()
         {
+            flpEvent.Controls.Clear();
             if (lblDate.Visible)
             {
                 BackColor = Color.White;
                 lblDate.Visible = false;
-                //flpEvent.MouseEnter -= UserDate_MouseEnter;
-                //flpEvent.MouseLeave -= UserDate_MouseLeave;
-                //flpEvent.MouseClick -= UserDate_Click;
                 Cursor = Cursors.Default;
                 btnTransparent.MouseEnter -= UserDate_MouseEnter;
                 btnTransparent.MouseLeave -= UserDate_MouseLeave;
@@ -55,7 +43,6 @@ namespace KSCS
         {
             lblDate.ForeColor=color;
         }
-
 
         //Form 모양 둥글게 하는 함수, 필요 시 전역으로 따로 관리
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -69,9 +56,6 @@ namespace KSCS
             {
                 BackColor = Color.FromArgb(255, 249, 229);
                 lblDate.Visible = true;
-                //flpEvent.MouseEnter += UserDate_MouseEnter;
-                //flpEvent.MouseLeave += UserDate_MouseLeave;
-                //flpEvent.MouseClick += UserDate_Click;
                 btnTransparent.MouseEnter += UserDate_MouseEnter;
                 btnTransparent.MouseLeave += UserDate_MouseLeave;
                 btnTransparent.MouseClick += UserDate_Click;
@@ -106,8 +90,8 @@ namespace KSCS
         // update(add/modify,delete) event
         private void SaveEvent(object sender, EventArgs e)
         {
-            flpEvent.Controls.Clear(); //userEvent 컨트롤 초기화
             LoadUserDate();
+            this.Refresh();
         }
 
         private void AddEvent(string dateEvent, int eventType) //userEvent 생성
@@ -118,6 +102,7 @@ namespace KSCS
             userEvent.SetEventInfo(dateEvent);
             userEvent.SetColor(eventType);
             flpEvent.Controls.Add(userEvent);
+            this.Refresh();
         }
     }
 }

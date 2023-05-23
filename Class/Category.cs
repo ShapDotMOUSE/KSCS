@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static KSCS.Class.KSCS_static;
 
 namespace KSCS
 {
@@ -85,14 +86,14 @@ namespace KSCS
 
         public void ChageSubdivisionName(string Old, string New)
         {
-            string ParentCategory = MainForm.Category.SubCategorys[Old] as string;
+            string ParentCategory = category.SubCategorys[Old] as string;
             //대분류단에서 이름 수정
-            HashSet<string> Set = MainForm.Category.ParentCategorys[ParentCategory] as HashSet<string>;
+            HashSet<string> Set = category.ParentCategorys[ParentCategory] as HashSet<string>;
             Set.Remove(Old);
             Set.Add(New);
             //하위 카테고리 단에서의 수정
-            MainForm.Category.SubCategorys.Remove(Old);
-            MainForm.Category.SubCategorys.Add(New, ParentCategory);
+            category.SubCategorys.Remove(Old);
+            category.SubCategorys.Add(New, ParentCategory);
 
             foreach(DictionaryEntry tab in Tabs)
             {

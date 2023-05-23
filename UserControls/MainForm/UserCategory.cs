@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static KSCS.Class.KSCS_static;
 
 namespace KSCS
 {
@@ -62,11 +62,11 @@ namespace KSCS
                 {
                     if (lblCategory.Text.Length > 0)
                     {
-                        MainForm.Category.ChageSubdivisionName(lblCategory.Text, txtCategory.Text);
+                        category.ChageSubdivisionName(lblCategory.Text, txtCategory.Text);
                     }
                     else
                     {
-                        MainForm.Category.AddSubdivision("EtcCategory", txtCategory.Text);
+                        category.AddSubdivision("EtcCategory", txtCategory.Text);
                     }
                     lblCategory.Text = txtCategory.Text;
                     this.Name = "UCCategory" + txtCategory.Text;
@@ -99,11 +99,11 @@ namespace KSCS
         {
             if(chkCategory.Checked)
             {
-                MainForm.Category.AddChecked(MainForm.TabName, lblCategory.Text);
+                category.AddChecked(MainForm.TabName, lblCategory.Text);
             }
             else
             {
-                MainForm.Category.DeletChecked(MainForm.TabName, lblCategory.Text);
+                category.DeletChecked(MainForm.TabName, lblCategory.Text);
             }
         }
     }

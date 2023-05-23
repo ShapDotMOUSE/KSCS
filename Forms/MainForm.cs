@@ -1,74 +1,39 @@
-﻿using crypto;
-using Guna.UI2.WinForms;
-using Org.BouncyCastle.Crypto;
-using Org.BouncyCastle.Security;
+﻿using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Net.Http.Headers;
-using System.Net.Http;
-using System.Net;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using Label = System.Windows.Forms.Label;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
 using Panel = System.Windows.Forms.Panel;
 using KSCS.Class;
 using MySql.Data.MySqlClient;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
-using System.Web.UI;
+using static KSCS.Class.KSCS_static;
 
 namespace KSCS
 {
     public partial class MainForm : Form
     {
-        public static KLAS klas = new KLAS();
-
-        //달력 관련
-        private int year, month;
-        public static int static_month, static_year;
         //탭 & 카테고리 관련
         public static string TabName;
-        public static Category Category = new Category();
         //스케줄 관련
-        public static Dictionary<string, string[]> categoryDict = new Dictionary<string, string[]>(); //category dictionary
-        public static List<List<Schedule>> monthScheduleList = new List<List<Schedule>>(); //한달 단위 schedule list
-
-        public static string stdNum = "2019203082";
-        readonly MySqlConnection connection = DatabaseConnection.getDBConnection(); //MySQL
-
-
         public MainForm()
         {
             InitializeComponent();
-            connection.Open();
-            LoginForm loginForm = new LoginForm();
-
-            DialogResult Result = loginForm.ShowDialog();
-
-            if (Result == DialogResult.OK)
-            {
-                dispalyDate();
-                lblStdNum.Text = stdNum;
-                LoadMagam();
-            }
-            else
-            {
-                Close();
-            }
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            Category.TestCategory();
+            KLAS.initializeKLAS();
+            LoginForm loginForm = new LoginForm();
+            DialogResult Result = loginForm.ShowDialog();
+            if (Result == DialogResult.OK)
+                LoadMagam();
+            else
+                Close();
+            lblStdNum.Text = stdNum;
+            category.TestCategory();
+            Database.ReadCategory();
             //초기 탭 설정 
             TabName = btnTab1.Name; //수정되어야함
             btnTab1.Clicked += ChangeTab;
@@ -81,7 +46,7 @@ namespace KSCS
 
         private async void LoadMagam()
         {
-            await klas.LoadMagamData();
+            await KLAS.LoadMagamData();
             MagamButtonEnable();
         }
 
@@ -91,46 +56,11 @@ namespace KSCS
         }
 
 
-
-        public void InitializeDatabase()
-        {
-            string selectQuery = string.Format("SELECT * from Schedule JOIN Category ON Schedule.category_id=Category.id JOIN StudentCategory ON StudentCategory.student_id=Schedule.student_id and Schedule.category_id=Category.id and Category.id=StudentCategory.category_id WHERE Schedule.student_id={0} and  startDate BETWEEN DATE_FORMAT('{1}', '%Y-%m-%d') AND LAST_DAY('{1}') ORDER BY startDate ASC;", stdNum, new DateTime(year, month, 1).ToString("yyyy-MM-dd"));
-            MySqlCommand cmd = new MySqlCommand(selectQuery, connection);
-            MySqlDataReader table = cmd.ExecuteReader();
-            monthScheduleList.Clear(); //한달 스케줄 초기화
-
-            //하루 단위 리스트 생성
-            for (int i = 0; i < DateTime.DaysInMonth(year, month); i++)
-            {
-                monthScheduleList.Add(new List<Schedule>());
-            }
-
-            while (table.Read())
-            {
-                Schedule schedule = new Schedule(
-                    table["title"].ToString(),
-                    table["content"].ToString(),
-                    table["place"].ToString(),
-                    table["type"].ToString(),
-                    DateTime.Parse(table["startDate"].ToString()),
-                    DateTime.Parse(table["endDate"].ToString()))
-                {
-                    id = int.Parse(table["id"].ToString()),
-                };
-
-                monthScheduleList[Convert.ToInt32(schedule.startDate.ToString("dd")) - 1].Add(schedule);
-            }
-
-            table.Close();
-            LoadCategory(); //추가
-        }
-
-
         //카테고리 함수---------------------------------------------------------------------------------------------------------------------------------------
         private void DisplayCategery()
         {
 
-            foreach (var item in Category.ParentCategorys["SchoolCategory"] as HashSet<string>)
+            foreach (var item in category.ParentCategorys["SchoolCategory"] as HashSet<string>)
             {
                 UserCategory uc = new UserCategory();
                 uc.SetBasicMode(item);
@@ -138,7 +68,7 @@ namespace KSCS
                 flpSchoolCategory.Controls.Add(uc);
             }
 
-            foreach (var item in Category.ParentCategorys["PersonalCategory"] as HashSet<string>)
+            foreach (var item in category.ParentCategorys["PersonalCategory"] as HashSet<string>)
             {
                 UserCategory uc = new UserCategory();
                 uc.SetBasicMode(item);
@@ -146,7 +76,7 @@ namespace KSCS
                 flpPersonalCategory.Controls.Add(uc);
             }
 
-            foreach (var item in Category.ParentCategorys["EtcCategory"] as HashSet<string>)
+            foreach (var item in category.ParentCategorys["EtcCategory"] as HashSet<string>)
             {
                 UserCategory uc = new UserCategory();
                 uc.SetBasicMode(item);
@@ -170,30 +100,12 @@ namespace KSCS
             FlowLayoutPanel[] flp = { flpSchoolCategory, flpPersonalCategory, flpEtcCategory };
             foreach (FlowLayoutPanel panel in flp)
             {
-                foreach (UserCategory category in panel.Controls)
+                foreach (UserCategory userCategory in panel.Controls)
                 {
-                    category.SetChecked(Category.IsChecked(TabName, category.GetText()));
+                    userCategory.SetChecked(category.IsChecked(TabName, userCategory.GetText()));
                 }
             }
-
         }
-
-
-        private void LoadCategory()
-        {
-            categoryDict.Clear();
-            string selectQuery = string.Format("SELECT * from Category JOIN StudentCategory ON Category.id=StudentCategory.category_id WHERE student_id='{0}';", stdNum);
-            MySqlCommand cmd = new MySqlCommand(selectQuery, connection);
-            MySqlDataReader table = cmd.ExecuteReader();
-            while (table.Read())
-            {
-                categoryDict.Add(table["type"].ToString(), new string[2] { table["id"].ToString(), table["color"].ToString() });
-            }
-            table.Close();
-        }
-
-
-
 
         //달력 함수-----------------------------------------------------------------------------------------------------------------------------------------
         private void dispalyDate()
@@ -207,10 +119,7 @@ namespace KSCS
 
         private void createDates()
         {
-            static_month = month;
-            static_year = year;
-
-            InitializeDatabase();
+            Database.ReadScheduleList();
 
             lblMonth.Text = month.ToString() + "월";
             lblMonth.TextAlign = ContentAlignment.MiddleCenter;
@@ -234,7 +143,6 @@ namespace KSCS
 
 
         //컨트롤 함수------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 
         //화면 컨트롤-------------------------------------------
         private void btnClose_Click(object sender, EventArgs e)
@@ -269,7 +177,7 @@ namespace KSCS
             Dictionary<string, int[]> MagamLectureDic = new Dictionary<string, int[]>();
             Dictionary<string, DateTime> MagamMinDate = new Dictionary<string, DateTime>();
 
-            foreach (Schedule schedule in klas.KlasSchedule[btn.Name.Substring(9)])
+            foreach (Schedule schedule in KlasSchedule[btn.Name.Substring(9)])
             {
                 //총 개수 구하는 부분
                 //ex) 몇 개 중
@@ -289,7 +197,7 @@ namespace KSCS
                 }
                 else MagamMinDate.Add(schedule.content, schedule.endDate);
             }
-            foreach (Schedule schedule in klas.KlasSchedule[btn.Name.Substring(9)])
+            foreach (Schedule schedule in KlasSchedule[btn.Name.Substring(9)])
             {
                 //가장 최근 마감 일정 갯수 구하는 부분
                 //ex) 몇 개가
@@ -315,12 +223,10 @@ namespace KSCS
             }
         }
 
-
         //달력 컨트롤--------------------------------------------------------------------------------------------------------------------------------------
         private void btnMonth_Click(object sender, EventArgs e)
         {
-            Guna2Button btn = sender as Guna2Button;
-            switch (btn.Name.Substring(3))
+            switch (((Guna2Button)sender).Name.Substring(3))
             {
                 case "Next":
                     if (month == 12) { month = 1; year++; }
@@ -331,7 +237,6 @@ namespace KSCS
                     else month--;
                     break;
             }
-
             createDates();
         }
 
@@ -407,7 +312,7 @@ namespace KSCS
             if (NewMainCategory.Length > 0)
             {
                 draggedUcCategory.Visible = true;
-                string OringMainCategory = Category.SubCategorys[cloneUcCategory.GetText()] as string;
+                string OringMainCategory = category.SubCategorys[cloneUcCategory.GetText()] as string;
                 if (OringMainCategory == NewMainCategory)
                 {
                     UndoCategory();
@@ -419,12 +324,11 @@ namespace KSCS
                     FlowLayoutPanel FlpOriginCategory = flpMainCategory.Controls["flp" + OringMainCategory] as FlowLayoutPanel;
                     FlpOriginCategory.Controls.Remove(draggedUcCategory);
                     FlpNewCategory.Controls.Add(draggedUcCategory);
-                    Category.ChangeParentOfSub(NewMainCategory, cloneUcCategory.GetText());
+                    category.ChangeParentOfSub(NewMainCategory, cloneUcCategory.GetText());
                     draggedUcCategory = null;
                     cloneUcCategory = null;
                 }
             }
-
         }
 
         private void UcCategory_MouseMove(object sender, MouseEventArgs e)

@@ -50,6 +50,9 @@ namespace KSCS
             panelTop.BackColor = Color.Pink;
             addBtn.FillColor = Color.CornflowerBlue;
             addBtn.Text = "Add";
+
+            //추가
+            deleteBtn.Visible = false;
         }
 
         private DateTime GetStartDateTime()
@@ -89,8 +92,6 @@ namespace KSCS
             Schedule schedule = new Schedule(tbTitle.Text, tbMemo.Text, tbPlace.Text, cbCategory.Text, GetStartDateTime(), GetEndDateTime());
             if (addBtn.Text == "Add")
             {
-                
-                
                 string insertQuery = string.Format("INSERT INTO Schedule(student_id,title,content,place,category_id,startDate,endDate) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}');",
                     MainForm.stdNum,
                     schedule.title,
@@ -140,11 +141,12 @@ namespace KSCS
                     MainForm.monthScheduleList[UserDate.static_date - 1][selectedScheduleIndex].endDate = schedule.endDate;
                 }
             }
-
+            
             if (AddEvent != null)
             {
                 AddEvent(this, new EventArgs());
-            }
+            }   
+
             ClearForm();
             //스케줄 유닛 다시 load
             InitializeScheDetailForm();

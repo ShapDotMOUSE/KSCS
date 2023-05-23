@@ -53,10 +53,9 @@ namespace KSCS
             LoginForm loginForm = new LoginForm();
 
             DialogResult Result = loginForm.ShowDialog();
-
             if (Result == DialogResult.OK)
             {
-                dispalyDate();
+                //dispalyDate();
                 lblStdNum.Text = stdNum;
                 LoadMagam();
             }
@@ -198,7 +197,7 @@ namespace KSCS
         //달력 함수-----------------------------------------------------------------------------------------------------------------------------------------
         private void dispalyDate()
         {
-            DateTime now = DateTime.Now;
+            DateTime now = DateTime.Now; //수정 필요
 
             year = now.Year;
             month = now.Month;
@@ -325,10 +324,12 @@ namespace KSCS
                 case "Next":
                     if (month == 12) { month = 1; year++; }
                     else month++;
+                    
                     break;
                 case "Previsous":
                     if (month == 1) { month = 12; year--; }
                     else month--;
+                    
                     break;
             }
 

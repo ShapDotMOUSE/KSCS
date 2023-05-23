@@ -24,10 +24,10 @@ namespace KSCS
 
         private void LoadUserDate()
         {
-
+            flpEvent.Controls.Clear(); //userEvent 컨트롤 초기화 추가
             for (int i = 0; i < MainForm.monthScheduleList[Convert.ToInt32(lblDate.Text) - 1].Count; i++)
             {
-                AddEvent(
+                 AddEvent(
                     MainForm.monthScheduleList[Convert.ToInt32(lblDate.Text) - 1][i].title,
                     int.Parse(MainForm.categoryDict[MainForm.monthScheduleList[Convert.ToInt32(lblDate.Text) - 1][i].category][1])
                     );
@@ -44,6 +44,7 @@ namespace KSCS
                 //flpEvent.MouseEnter -= UserDate_MouseEnter;
                 //flpEvent.MouseLeave -= UserDate_MouseLeave;
                 //flpEvent.MouseClick -= UserDate_Click;
+
                 Cursor = Cursors.Default;
                 btnTransparent.MouseEnter -= UserDate_MouseEnter;
                 btnTransparent.MouseLeave -= UserDate_MouseLeave;
@@ -72,13 +73,14 @@ namespace KSCS
                 //flpEvent.MouseEnter += UserDate_MouseEnter;
                 //flpEvent.MouseLeave += UserDate_MouseLeave;
                 //flpEvent.MouseClick += UserDate_Click;
-                btnTransparent.MouseEnter += UserDate_MouseEnter;
-                btnTransparent.MouseLeave += UserDate_MouseLeave;
-                btnTransparent.MouseClick += UserDate_Click;
 
+                //btnTransparent.MouseEnter += UserDate_MouseEnter;
+                //btnTransparent.MouseLeave += UserDate_MouseLeave;
+                //btnTransparent.MouseClick += UserDate_Click;
             }
             lblDate.Text = date.ToString();
             LoadUserDate();
+            this.Refresh(); //추가
         }
 
         private void UserDate_MouseEnter(object sender, EventArgs e)
@@ -118,6 +120,7 @@ namespace KSCS
             userEvent.SetEventInfo(dateEvent);
             userEvent.SetColor(eventType);
             flpEvent.Controls.Add(userEvent);
+            this.Refresh();
         }
     }
 }

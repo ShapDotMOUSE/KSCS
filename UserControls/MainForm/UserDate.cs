@@ -44,11 +44,7 @@ namespace KSCS
                 //flpEvent.MouseEnter -= UserDate_MouseEnter;
                 //flpEvent.MouseLeave -= UserDate_MouseLeave;
                 //flpEvent.MouseClick -= UserDate_Click;
-
                 Cursor = Cursors.Default;
-                btnLblTransparent.MouseEnter -= UserDate_MouseEnter;
-                btnLblTransparent.MouseLeave -= UserDate_MouseLeave;
-                btnLblTransparent.MouseClick -= UserDate_Click;
                 btnTransparent.MouseEnter -= UserDate_MouseEnter;
                 btnTransparent.MouseLeave -= UserDate_MouseLeave;
                 btnTransparent.MouseClick -= UserDate_Click;
@@ -76,10 +72,6 @@ namespace KSCS
                 //flpEvent.MouseEnter += UserDate_MouseEnter;
                 //flpEvent.MouseLeave += UserDate_MouseLeave;
                 //flpEvent.MouseClick += UserDate_Click;
-
-                btnLblTransparent.MouseEnter += UserDate_MouseEnter;
-                btnLblTransparent.MouseLeave += UserDate_MouseLeave;
-                btnLblTransparent.MouseClick += UserDate_Click;
                 btnTransparent.MouseEnter += UserDate_MouseEnter;
                 btnTransparent.MouseLeave += UserDate_MouseLeave;
                 btnTransparent.MouseClick += UserDate_Click;

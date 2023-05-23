@@ -82,9 +82,10 @@ namespace KSCS
             {
                 if (await MainForm.klas.LoginKLAS(ID, PW)) //KLAS 로그인
                 {
+                   
                     this.Cursor = Cursors.Default;
                     this.DialogResult = DialogResult.OK;
-                    KSCS.MainForm.stdNum = ID;
+                    MainForm.stdNum = ID;
                     this.Close();
                 }
                 else

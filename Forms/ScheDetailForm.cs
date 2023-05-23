@@ -91,7 +91,8 @@ namespace KSCS
             {
                 
                 
-                string insertQuery = string.Format("INSERT INTO Schedule(student_id,title,content,place,category_id,startDate,endDate) VALUES ('2019203082','{0}','{1}','{2}','{3}','{4}','{5}');",
+                string insertQuery = string.Format("INSERT INTO Schedule(student_id,title,content,place,category_id,startDate,endDate) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}');",
+                    MainForm.stdNum,
                     schedule.title,
                     schedule.content,
                     schedule.place,

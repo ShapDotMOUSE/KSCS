@@ -41,9 +41,17 @@ namespace KSCS
             {
                 BackColor = Color.White;
                 lblDate.Visible = false;
-                flpEvent.MouseEnter -= UserDate_MouseEnter;
-                flpEvent.MouseLeave -= UserDate_MouseLeave;
-                flpEvent.MouseClick -= UserDate_Click;
+                //flpEvent.MouseEnter -= UserDate_MouseEnter;
+                //flpEvent.MouseLeave -= UserDate_MouseLeave;
+                //flpEvent.MouseClick -= UserDate_Click;
+
+                Cursor = Cursors.Default;
+                btnLblTransparent.MouseEnter -= UserDate_MouseEnter;
+                btnLblTransparent.MouseLeave -= UserDate_MouseLeave;
+                btnLblTransparent.MouseClick -= UserDate_Click;
+                btnTransparent.MouseEnter -= UserDate_MouseEnter;
+                btnTransparent.MouseLeave -= UserDate_MouseLeave;
+                btnTransparent.MouseClick -= UserDate_Click;
             }
         }
 
@@ -65,9 +73,17 @@ namespace KSCS
             {
                 BackColor = Color.FromArgb(255, 249, 229);
                 lblDate.Visible = true;
-                flpEvent.MouseEnter += UserDate_MouseEnter;
-                flpEvent.MouseLeave += UserDate_MouseLeave;
-                flpEvent.MouseClick += UserDate_Click;
+                //flpEvent.MouseEnter += UserDate_MouseEnter;
+                //flpEvent.MouseLeave += UserDate_MouseLeave;
+                //flpEvent.MouseClick += UserDate_Click;
+
+                btnLblTransparent.MouseEnter += UserDate_MouseEnter;
+                btnLblTransparent.MouseLeave += UserDate_MouseLeave;
+                btnLblTransparent.MouseClick += UserDate_Click;
+                btnTransparent.MouseEnter += UserDate_MouseEnter;
+                btnTransparent.MouseLeave += UserDate_MouseLeave;
+                btnTransparent.MouseClick += UserDate_Click;
+
             }
             lblDate.Text = date.ToString();
             LoadUserDate();
@@ -75,25 +91,26 @@ namespace KSCS
 
         private void UserDate_MouseEnter(object sender, EventArgs e)
         {
-            Cursor = Cursors.Hand;
+            //Cursor = Cursors.Hand;
             BackColor = Color.FromArgb(218, 213, 196);
         }
 
         private void UserDate_MouseLeave(object sender, EventArgs e)
         {
-            Cursor = Cursors.Default;
+            //Cursor = Cursors.Default;
             BackColor = Color.FromArgb(255, 249, 229);
         }
 
         private void UserDate_Click(object sender, MouseEventArgs e)
         {
-            Cursor = Cursors.Default;
+            //Cursor = Cursors.Default;
             static_date = Convert.ToInt32(lblDate.Text); //날
             ScheDetailForm eventForm = new ScheDetailForm();
             eventForm.AddEvent += new EventHandler(SaveEvent); //이벤트 발생
             //추가
             eventForm.ShowDialog();
         }
+
         // update(add/modify,delete) event
         private void SaveEvent(object sender, EventArgs e)
         {
@@ -110,6 +127,5 @@ namespace KSCS
             userEvent.SetColor(eventType);
             flpEvent.Controls.Add(userEvent);
         }
-
     }
 }

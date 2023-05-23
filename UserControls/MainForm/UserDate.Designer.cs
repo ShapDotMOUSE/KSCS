@@ -30,6 +30,9 @@
         {
             this.lblDate = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.flpEvent = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnTransparent = new Guna.UI2.WinForms.Guna2Button();
+            this.btnLblTransparent = new Guna.UI2.WinForms.Guna2Button();
+            this.flpEvent.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblDate
@@ -37,7 +40,7 @@
             this.lblDate.AutoSize = false;
             this.lblDate.BackColor = System.Drawing.Color.Transparent;
             this.lblDate.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblDate.Font = new System.Drawing.Font("MS Reference Sans Serif", 10F);
+            this.lblDate.Font = new System.Drawing.Font("Pretendard", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDate.Location = new System.Drawing.Point(0, 0);
             this.lblDate.Margin = new System.Windows.Forms.Padding(0);
             this.lblDate.Name = "lblDate";
@@ -48,6 +51,7 @@
             // 
             // flpEvent
             // 
+            this.flpEvent.Controls.Add(this.btnTransparent);
             this.flpEvent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpEvent.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpEvent.Location = new System.Drawing.Point(0, 33);
@@ -56,16 +60,68 @@
             this.flpEvent.Size = new System.Drawing.Size(150, 85);
             this.flpEvent.TabIndex = 1;
             // 
+            // btnTransparent
+            // 
+            this.btnTransparent.BackColor = System.Drawing.Color.Transparent;
+            this.btnTransparent.BorderColor = System.Drawing.Color.Transparent;
+            this.btnTransparent.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
+            this.btnTransparent.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnTransparent.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnTransparent.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnTransparent.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnTransparent.FillColor = System.Drawing.Color.Transparent;
+            this.btnTransparent.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnTransparent.ForeColor = System.Drawing.Color.Transparent;
+            this.btnTransparent.HoverState.BorderColor = System.Drawing.Color.Transparent;
+            this.btnTransparent.HoverState.CustomBorderColor = System.Drawing.Color.Transparent;
+            this.btnTransparent.HoverState.FillColor = System.Drawing.Color.Transparent;
+            this.btnTransparent.HoverState.ForeColor = System.Drawing.Color.Transparent;
+            this.btnTransparent.Location = new System.Drawing.Point(0, 0);
+            this.btnTransparent.Margin = new System.Windows.Forms.Padding(0);
+            this.btnTransparent.Name = "btnTransparent";
+            this.btnTransparent.PressedColor = System.Drawing.Color.Transparent;
+            this.btnTransparent.Size = new System.Drawing.Size(150, 85);
+            this.btnTransparent.TabIndex = 1;
+            this.btnTransparent.UseTransparentBackground = true;
+            // 
+            // btnLblTransparent
+            // 
+            this.btnLblTransparent.BackColor = System.Drawing.Color.Transparent;
+            this.btnLblTransparent.BorderColor = System.Drawing.Color.Transparent;
+            this.btnLblTransparent.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
+            this.btnLblTransparent.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnLblTransparent.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnLblTransparent.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnLblTransparent.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnLblTransparent.FillColor = System.Drawing.Color.Transparent;
+            this.btnLblTransparent.FocusedColor = System.Drawing.Color.Transparent;
+            this.btnLblTransparent.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnLblTransparent.ForeColor = System.Drawing.Color.Transparent;
+            this.btnLblTransparent.HoverState.BorderColor = System.Drawing.Color.Transparent;
+            this.btnLblTransparent.HoverState.CustomBorderColor = System.Drawing.Color.Transparent;
+            this.btnLblTransparent.HoverState.FillColor = System.Drawing.Color.Transparent;
+            this.btnLblTransparent.HoverState.ForeColor = System.Drawing.Color.Transparent;
+            this.btnLblTransparent.Location = new System.Drawing.Point(0, 0);
+            this.btnLblTransparent.Margin = new System.Windows.Forms.Padding(0);
+            this.btnLblTransparent.Name = "btnLblTransparent";
+            this.btnLblTransparent.PressedColor = System.Drawing.Color.Transparent;
+            this.btnLblTransparent.Size = new System.Drawing.Size(150, 33);
+            this.btnLblTransparent.TabIndex = 3;
+            this.btnLblTransparent.UseTransparentBackground = true;
+            // 
             // UserDate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.Controls.Add(this.btnLblTransparent);
             this.Controls.Add(this.flpEvent);
             this.Controls.Add(this.lblDate);
+            this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "UserDate";
             this.Size = new System.Drawing.Size(150, 118);
+            this.flpEvent.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -74,5 +130,7 @@
 
         private Guna.UI2.WinForms.Guna2HtmlLabel lblDate;
         private System.Windows.Forms.FlowLayoutPanel flpEvent;
+        private Guna.UI2.WinForms.Guna2Button btnTransparent;
+        private Guna.UI2.WinForms.Guna2Button btnLblTransparent;
     }
 }

@@ -59,6 +59,15 @@
             this.lblMonth = new System.Windows.Forms.Label();
             this.guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.flpDays = new System.Windows.Forms.TableLayoutPanel();
+            this.guna2Elipse3 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2Elipse4 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2Elipse5 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.btnTab6 = new KSCS.UserTapButton();
+            this.btnTab5 = new KSCS.UserTapButton();
+            this.btnTab4 = new KSCS.UserTapButton();
+            this.btnTab3 = new KSCS.UserTapButton();
+            this.btnTab2 = new KSCS.UserTapButton();
+            this.btnTab1 = new KSCS.UserTapButton();
             this.userDate1 = new KSCS.UserDate();
             this.userDate2 = new KSCS.UserDate();
             this.userDate3 = new KSCS.UserDate();
@@ -101,15 +110,6 @@
             this.userDate40 = new KSCS.UserDate();
             this.userDate41 = new KSCS.UserDate();
             this.userDate42 = new KSCS.UserDate();
-            this.guna2Elipse3 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.guna2Elipse4 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.guna2Elipse5 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.btnTab6 = new KSCS.UserTapButton();
-            this.btnTab5 = new KSCS.UserTapButton();
-            this.btnTab4 = new KSCS.UserTapButton();
-            this.btnTab3 = new KSCS.UserTapButton();
-            this.btnTab2 = new KSCS.UserTapButton();
-            this.btnTab1 = new KSCS.UserTapButton();
             this.guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox4)).BeginInit();
             this.guna2Panel3.SuspendLayout();
@@ -227,7 +227,7 @@
             this.MainCategory.Location = new System.Drawing.Point(27, 207);
             this.MainCategory.Margin = new System.Windows.Forms.Padding(2);
             this.MainCategory.Name = "MainCategory";
-            this.MainCategory.Size = new System.Drawing.Size(163, 449);
+            this.MainCategory.Size = new System.Drawing.Size(180, 449);
             this.MainCategory.TabIndex = 20;
             // 
             // guna2PictureBox4
@@ -552,6 +552,72 @@
             this.flpDays.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.flpDays.Size = new System.Drawing.Size(738, 473);
             this.flpDays.TabIndex = 42;
+            // 
+            // guna2Elipse3
+            // 
+            this.guna2Elipse3.BorderRadius = 10;
+            this.guna2Elipse3.TargetControl = this.guna2Panel3;
+            // 
+            // guna2Elipse4
+            // 
+            this.guna2Elipse4.BorderRadius = 10;
+            this.guna2Elipse4.TargetControl = this.guna2Panel4;
+            // 
+            // guna2Elipse5
+            // 
+            this.guna2Elipse5.BorderRadius = 10;
+            this.guna2Elipse5.TargetControl = this.guna2Panel5;
+            // 
+            // btnTab6
+            // 
+            this.btnTab6.Location = new System.Drawing.Point(842, 668);
+            this.btnTab6.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnTab6.Name = "btnTab6";
+            this.btnTab6.Size = new System.Drawing.Size(32, 63);
+            this.btnTab6.TabIndex = 22;
+            // 
+            // btnTab5
+            // 
+            this.btnTab5.Location = new System.Drawing.Point(842, 588);
+            this.btnTab5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnTab5.Name = "btnTab5";
+            this.btnTab5.Size = new System.Drawing.Size(32, 63);
+            this.btnTab5.TabIndex = 22;
+            // 
+            // btnTab4
+            // 
+            this.btnTab4.Location = new System.Drawing.Point(842, 508);
+            this.btnTab4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnTab4.Name = "btnTab4";
+            this.btnTab4.Size = new System.Drawing.Size(32, 63);
+            this.btnTab4.TabIndex = 22;
+            // 
+            // btnTab3
+            // 
+            this.btnTab3.Location = new System.Drawing.Point(842, 428);
+            this.btnTab3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnTab3.Name = "btnTab3";
+            this.btnTab3.Size = new System.Drawing.Size(32, 63);
+            this.btnTab3.TabIndex = 22;
+            this.btnTab3.Click += new System.EventHandler(this.ChangeTab);
+            // 
+            // btnTab2
+            // 
+            this.btnTab2.Location = new System.Drawing.Point(842, 344);
+            this.btnTab2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnTab2.Name = "btnTab2";
+            this.btnTab2.Size = new System.Drawing.Size(32, 63);
+            this.btnTab2.TabIndex = 22;
+            this.btnTab2.Click += new System.EventHandler(this.ChangeTab);
+            // 
+            // btnTab1
+            // 
+            this.btnTab1.Location = new System.Drawing.Point(842, 266);
+            this.btnTab1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnTab1.Name = "btnTab1";
+            this.btnTab1.Size = new System.Drawing.Size(32, 63);
+            this.btnTab1.TabIndex = 22;
+            this.btnTab1.Click += new System.EventHandler(this.ChangeTab);
             // 
             // userDate1
             // 
@@ -930,72 +996,6 @@
             this.userDate42.Name = "userDate42";
             this.userDate42.Size = new System.Drawing.Size(105, 79);
             this.userDate42.TabIndex = 41;
-            // 
-            // guna2Elipse3
-            // 
-            this.guna2Elipse3.BorderRadius = 10;
-            this.guna2Elipse3.TargetControl = this.guna2Panel3;
-            // 
-            // guna2Elipse4
-            // 
-            this.guna2Elipse4.BorderRadius = 10;
-            this.guna2Elipse4.TargetControl = this.guna2Panel4;
-            // 
-            // guna2Elipse5
-            // 
-            this.guna2Elipse5.BorderRadius = 10;
-            this.guna2Elipse5.TargetControl = this.guna2Panel5;
-            // 
-            // btnTab6
-            // 
-            this.btnTab6.Location = new System.Drawing.Point(842, 668);
-            this.btnTab6.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnTab6.Name = "btnTab6";
-            this.btnTab6.Size = new System.Drawing.Size(32, 63);
-            this.btnTab6.TabIndex = 22;
-            // 
-            // btnTab5
-            // 
-            this.btnTab5.Location = new System.Drawing.Point(842, 588);
-            this.btnTab5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnTab5.Name = "btnTab5";
-            this.btnTab5.Size = new System.Drawing.Size(32, 63);
-            this.btnTab5.TabIndex = 22;
-            // 
-            // btnTab4
-            // 
-            this.btnTab4.Location = new System.Drawing.Point(842, 508);
-            this.btnTab4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnTab4.Name = "btnTab4";
-            this.btnTab4.Size = new System.Drawing.Size(32, 63);
-            this.btnTab4.TabIndex = 22;
-            // 
-            // btnTab3
-            // 
-            this.btnTab3.Location = new System.Drawing.Point(842, 428);
-            this.btnTab3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnTab3.Name = "btnTab3";
-            this.btnTab3.Size = new System.Drawing.Size(32, 63);
-            this.btnTab3.TabIndex = 22;
-            this.btnTab3.Click += new System.EventHandler(this.ChangeTab);
-            // 
-            // btnTab2
-            // 
-            this.btnTab2.Location = new System.Drawing.Point(842, 344);
-            this.btnTab2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnTab2.Name = "btnTab2";
-            this.btnTab2.Size = new System.Drawing.Size(32, 63);
-            this.btnTab2.TabIndex = 22;
-            this.btnTab2.Click += new System.EventHandler(this.ChangeTab);
-            // 
-            // btnTab1
-            // 
-            this.btnTab1.Location = new System.Drawing.Point(842, 266);
-            this.btnTab1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnTab1.Name = "btnTab1";
-            this.btnTab1.Size = new System.Drawing.Size(32, 63);
-            this.btnTab1.TabIndex = 22;
-            this.btnTab1.Click += new System.EventHandler(this.ChangeTab);
             // 
             // MainForm
             // 

@@ -52,7 +52,8 @@
             // flpSubCategory
             // 
             this.flpSubCategory.AllowDrop = true;
-            this.flpSubCategory.AutoScroll = true;
+            this.flpSubCategory.AutoSize = true;
+            this.flpSubCategory.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpSubCategory.Location = new System.Drawing.Point(0, 41);
             this.flpSubCategory.Margin = new System.Windows.Forms.Padding(9, 0, 2, 2);
             this.flpSubCategory.Name = "flpSubCategory";
@@ -152,6 +153,7 @@
             this.tableLayoutPanel.ResumeLayout(false);
             this.guna2Panel1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

@@ -32,7 +32,7 @@ namespace KSCS
                     int.Parse(MainForm.categoryDict[MainForm.monthScheduleList[Convert.ToInt32(lblDate.Text) - 1][i].category][1])
                     );
             }
-
+            this.Refresh(); //추가
         }
 
         public void ChangeBlank()
@@ -41,9 +41,6 @@ namespace KSCS
             {
                 BackColor = Color.White;
                 lblDate.Visible = false;
-                //flpEvent.MouseEnter -= UserDate_MouseEnter;
-                //flpEvent.MouseLeave -= UserDate_MouseLeave;
-                //flpEvent.MouseClick -= UserDate_Click;
 
                 Cursor = Cursors.Default;
                 btnTransparent.MouseEnter -= UserDate_MouseEnter;
@@ -70,39 +67,27 @@ namespace KSCS
             {
                 BackColor = Color.FromArgb(255, 249, 229);
                 lblDate.Visible = true;
-                //flpEvent.MouseEnter += UserDate_MouseEnter;
-                //flpEvent.MouseLeave += UserDate_MouseLeave;
-                //flpEvent.MouseClick += UserDate_Click;
-
-                //btnTransparent.MouseEnter += UserDate_MouseEnter;
-                //btnTransparent.MouseLeave += UserDate_MouseLeave;
-                //btnTransparent.MouseClick += UserDate_Click;
             }
             lblDate.Text = date.ToString();
             LoadUserDate();
-            this.Refresh(); //추가
         }
 
         private void UserDate_MouseEnter(object sender, EventArgs e)
         {
-            //Cursor = Cursors.Hand;
             BackColor = Color.FromArgb(218, 213, 196);
         }
 
         private void UserDate_MouseLeave(object sender, EventArgs e)
         {
-            //Cursor = Cursors.Default;
             BackColor = Color.FromArgb(255, 249, 229);
         }
 
         private void UserDate_Click(object sender, MouseEventArgs e)
         {
-            //Cursor = Cursors.Default;
             static_date = Convert.ToInt32(lblDate.Text); //날
             ScheDetailForm eventForm = new ScheDetailForm();
             eventForm.AddEvent += new EventHandler(SaveEvent); //이벤트 발생
-            //추가
-            eventForm.ShowDialog();
+            eventForm.ShowDialog(); //수정
         }
 
         // update(add/modify,delete) event
@@ -120,7 +105,6 @@ namespace KSCS
             userEvent.SetEventInfo(dateEvent);
             userEvent.SetColor(eventType);
             flpEvent.Controls.Add(userEvent);
-            this.Refresh();
         }
     }
 }

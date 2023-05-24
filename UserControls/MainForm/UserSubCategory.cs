@@ -118,6 +118,7 @@ namespace KSCS
             }
         }
 
+        //유저 카테고리 수정 폼 로드
         private void UserCategory_DoubleClick(object sender, EventArgs e)
         {
            TempCategorySetting temp = new TempCategorySetting((FlowLayoutPanel)((FlowLayoutPanel)this.Parent).Parent, ((FlowLayoutPanel)this.Parent).Name , lblCategory.Text);

@@ -31,6 +31,10 @@
             this.lblCategory = new System.Windows.Forms.Label();
             this.chkCategory = new Guna.UI2.WinForms.Guna2CustomCheckBox();
             this.txtCategory = new Guna.UI2.WinForms.Guna2TextBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblCategory
@@ -39,7 +43,7 @@
             this.lblCategory.BackColor = System.Drawing.Color.Transparent;
             this.lblCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblCategory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.lblCategory.Location = new System.Drawing.Point(6, 1);
+            this.lblCategory.Location = new System.Drawing.Point(0, 0);
             this.lblCategory.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
             this.lblCategory.Name = "lblCategory";
             this.lblCategory.Size = new System.Drawing.Size(0, 17);
@@ -53,10 +57,10 @@
             this.chkCategory.CheckedState.BorderThickness = 2;
             this.chkCategory.CheckedState.FillColor = System.Drawing.Color.White;
             this.chkCategory.CheckMarkColor = System.Drawing.Color.Maroon;
-            this.chkCategory.Location = new System.Drawing.Point(92, 2);
-            this.chkCategory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.chkCategory.Location = new System.Drawing.Point(93, 2);
+            this.chkCategory.Margin = new System.Windows.Forms.Padding(0, 2, 3, 2);
             this.chkCategory.Name = "chkCategory";
-            this.chkCategory.Size = new System.Drawing.Size(18, 16);
+            this.chkCategory.Size = new System.Drawing.Size(17, 15);
             this.chkCategory.TabIndex = 16;
             this.chkCategory.Text = "guna2CustomCheckBox2";
             this.chkCategory.UncheckedState.BorderColor = System.Drawing.Color.Maroon;
@@ -77,32 +81,58 @@
             this.txtCategory.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
             this.txtCategory.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCategory.Location = new System.Drawing.Point(0, 1);
-            this.txtCategory.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.txtCategory.Location = new System.Drawing.Point(0, 0);
+            this.txtCategory.Margin = new System.Windows.Forms.Padding(0);
             this.txtCategory.Name = "txtCategory";
             this.txtCategory.PasswordChar = '\0';
             this.txtCategory.PlaceholderText = "";
             this.txtCategory.SelectedText = "";
-            this.txtCategory.Size = new System.Drawing.Size(86, 17);
+            this.txtCategory.Size = new System.Drawing.Size(73, 19);
             this.txtCategory.TabIndex = 17;
             this.txtCategory.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCategory_KeyDown);
             this.txtCategory.Leave += new System.EventHandler(this.txtCategory_Leave);
             // 
-            // UserCategory
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 73F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Controls.Add(this.guna2Panel1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.chkCategory, 2, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(113, 19);
+            this.tableLayoutPanel1.TabIndex = 18;
+            // 
+            // guna2Panel1
+            // 
+            this.guna2Panel1.Controls.Add(this.txtCategory);
+            this.guna2Panel1.Controls.Add(this.lblCategory);
+            this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
+            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(0);
+            this.guna2Panel1.Name = "guna2Panel1";
+            this.guna2Panel1.Size = new System.Drawing.Size(73, 19);
+            this.guna2Panel1.TabIndex = 19;
+            // 
+            // UserSubCategory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.txtCategory);
-            this.Controls.Add(this.chkCategory);
-            this.Controls.Add(this.lblCategory);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Margin = new System.Windows.Forms.Padding(0, 0, 0, 3);
-            this.Name = "UserCategory";
+            this.Name = "UserSubCategory";
             this.Size = new System.Drawing.Size(113, 19);
             this.Load += new System.EventHandler(this.UserCategory_Load);
             this.DoubleClick += new System.EventHandler(this.UserCategory_DoubleClick);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.guna2Panel1.ResumeLayout(false);
+            this.guna2Panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -111,5 +141,7 @@
         private System.Windows.Forms.Label lblCategory;
         private Guna.UI2.WinForms.Guna2CustomCheckBox chkCategory;
         private Guna.UI2.WinForms.Guna2TextBox txtCategory;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
     }
 }

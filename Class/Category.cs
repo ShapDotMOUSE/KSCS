@@ -36,10 +36,16 @@ namespace KSCS
 
             HashSet<String> TabCategory1 = new HashSet<String>();
             TabCategory1.Add("학사일정");
+            TabCategory1.Add("과제");
+            TabCategory1.Add("퀴즈");
             TabCategory1.Add("온라인강의");
+            TabCategory1.Add("생일");
             TabCategory1.Add("약속");
+            TabCategory1.Add("식사");
             TabCategory1.Add("기타1");
-            Tabs["btnTab1"] = TabCategory1;
+            TabCategory1.Add("기타2");
+            TabCategory1.Add("기타3");
+            Tabs["탭1"] = TabCategory1;
 
             HashSet<String> TabCategory2 = new HashSet<String>();
             TabCategory2.Add("학사일정");
@@ -48,20 +54,26 @@ namespace KSCS
             TabCategory2.Add("온라인강의");
             TabCategory2.Add("기타1");
             TabCategory2.Add("기타2");
-            Tabs["btnTab2"] = TabCategory2;
+            Tabs["탭2"] = TabCategory2;
 
             HashSet<String> TabCategory3 = new HashSet<String>();
             TabCategory3.Add("학사일정");
             TabCategory3.Add("과제");
             TabCategory3.Add("퀴즈");
             TabCategory3.Add("온라인강의");
-            TabCategory3.Add("생일");
-            TabCategory3.Add("약속");
-            TabCategory3.Add("식사");
-            TabCategory3.Add("기타1");
-            TabCategory3.Add("기타2");
-            TabCategory3.Add("기타3");
-            Tabs["btnTab3"] = TabCategory3;
+            Tabs["탭3"] = TabCategory3; 
+            
+            HashSet<String> TabCategory4 = new HashSet<String>();
+            TabCategory4.Add("생일");
+            TabCategory4.Add("약속");
+            TabCategory4.Add("식사");
+            Tabs["탭4"] = TabCategory4; 
+            
+            HashSet<String> TabCategory5 = new HashSet<String>();
+            TabCategory5.Add("기타1");
+            TabCategory5.Add("기타2");
+            TabCategory5.Add("기타3");
+            Tabs["탭5"] = TabCategory5;
         }
 
         //하위 카테고리 추가
@@ -123,10 +135,18 @@ namespace KSCS
             }
         }
 
+        //상위 카테고리 이름 변경
         public void ChangeMainName(string Old, string New)
         {
             Categories[New] = Categories[Old];
             Categories.Remove(Old);
+        }
+
+        //탭이름 변경
+        public void ChangeTabName(string Old, string New)
+        {
+            Tabs[New] = Tabs[Old];
+            Tabs.Remove(Old);
         }
 
     }

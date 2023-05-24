@@ -20,12 +20,10 @@ namespace KSCS
             InitializeComponent();
         }
 
-        private void btn_Click(object sender, EventArgs e)
-        {
-            flpSubCategory.Visible = !flpSubCategory.Visible;
-        }
+        
         public void SetNewMode()
         {
+            txtMainCategory.Enabled= true;
             txtMainCategory.Visible = true;
             lblMainCategory.Visible = false;
             lblMainCategory.Text = "";
@@ -35,13 +33,29 @@ namespace KSCS
 
         public void SetAddMode(string Main)
         {
+            txtMainCategory.Enabled= false;
             txtMainCategory.Visible = false;
             lblMainCategory.Visible = true;
             lblMainCategory.Text = Main;
             this.Name= Main;
         }
+
+        private void ResetName()
+        {
+            lblMainCategory.Visible = true;
+            txtMainCategory.Visible = false;
+            txtMainCategory.Enabled = false;
+            txtMainCategory.Clear();
+        }
+
+        //이벤트 핸들러 ----------------------------------------------------------------------------------------------
+        private void btn_Click(object sender, EventArgs e)
+        {
+            flpSubCategory.Visible = !flpSubCategory.Visible;
+        }
         private void lblMainCategory_DoubleClick(object sender, EventArgs e)
         {
+            txtMainCategory.Enabled= true;
             txtMainCategory.Visible = true;
             lblMainCategory.Visible = false;
             txtMainCategory.BringToFront();
@@ -69,6 +83,7 @@ namespace KSCS
                     this.Name = txtMainCategory.Text;
                     lblMainCategory.Text = txtMainCategory.Text;
                     txtMainCategory.Visible = false;
+                    txtMainCategory.Enabled= false;
                 }
             }
             else if (e.KeyCode == Keys.Escape)
@@ -77,9 +92,7 @@ namespace KSCS
                 if (lblMainCategory.Text.Length > 0)
                 {
                     //기존 메인 카테고리인 경우 원복
-                    lblMainCategory.Visible = true;
-                    txtMainCategory.Visible = false;
-                    txtMainCategory.Clear();
+                    ResetName();
                 }
                 else
                 {
@@ -91,13 +104,12 @@ namespace KSCS
 
         private void txtMainCategory_Leave(object sender, EventArgs e)
         {
-            txtMainCategory.Visible = false;
-            lblMainCategory.Visible = true;
-            txtMainCategory.Clear();
+            ResetName();
             if (lblMainCategory.Text.Length == 0)
             {
                 ((FlowLayoutPanel)this.Parent).Controls.Remove(this);
             }
         }
+
     }
 }

@@ -59,15 +59,6 @@
             this.lblMonth = new System.Windows.Forms.Label();
             this.guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.flpDays = new System.Windows.Forms.TableLayoutPanel();
-            this.guna2Elipse3 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.guna2Elipse4 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.guna2Elipse5 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.btnTab6 = new KSCS.UserTapButton();
-            this.btnTab5 = new KSCS.UserTapButton();
-            this.btnTab4 = new KSCS.UserTapButton();
-            this.btnTab3 = new KSCS.UserTapButton();
-            this.btnTab2 = new KSCS.UserTapButton();
-            this.btnTab1 = new KSCS.UserTapButton();
             this.userDate1 = new KSCS.UserDate();
             this.userDate2 = new KSCS.UserDate();
             this.userDate3 = new KSCS.UserDate();
@@ -110,6 +101,15 @@
             this.userDate40 = new KSCS.UserDate();
             this.userDate41 = new KSCS.UserDate();
             this.userDate42 = new KSCS.UserDate();
+            this.guna2Elipse3 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2Elipse4 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2Elipse5 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.btnTab6 = new KSCS.UserTabButton();
+            this.탭5 = new KSCS.UserTabButton();
+            this.탭4 = new KSCS.UserTabButton();
+            this.탭3 = new KSCS.UserTabButton();
+            this.탭2 = new KSCS.UserTabButton();
+            this.탭1 = new KSCS.UserTabButton();
             this.guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox4)).BeginInit();
             this.guna2Panel3.SuspendLayout();
@@ -553,72 +553,6 @@
             this.flpDays.Size = new System.Drawing.Size(738, 473);
             this.flpDays.TabIndex = 42;
             // 
-            // guna2Elipse3
-            // 
-            this.guna2Elipse3.BorderRadius = 10;
-            this.guna2Elipse3.TargetControl = this.guna2Panel3;
-            // 
-            // guna2Elipse4
-            // 
-            this.guna2Elipse4.BorderRadius = 10;
-            this.guna2Elipse4.TargetControl = this.guna2Panel4;
-            // 
-            // guna2Elipse5
-            // 
-            this.guna2Elipse5.BorderRadius = 10;
-            this.guna2Elipse5.TargetControl = this.guna2Panel5;
-            // 
-            // btnTab6
-            // 
-            this.btnTab6.Location = new System.Drawing.Point(842, 668);
-            this.btnTab6.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnTab6.Name = "btnTab6";
-            this.btnTab6.Size = new System.Drawing.Size(32, 63);
-            this.btnTab6.TabIndex = 22;
-            // 
-            // btnTab5
-            // 
-            this.btnTab5.Location = new System.Drawing.Point(842, 588);
-            this.btnTab5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnTab5.Name = "btnTab5";
-            this.btnTab5.Size = new System.Drawing.Size(32, 63);
-            this.btnTab5.TabIndex = 22;
-            // 
-            // btnTab4
-            // 
-            this.btnTab4.Location = new System.Drawing.Point(842, 508);
-            this.btnTab4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnTab4.Name = "btnTab4";
-            this.btnTab4.Size = new System.Drawing.Size(32, 63);
-            this.btnTab4.TabIndex = 22;
-            // 
-            // btnTab3
-            // 
-            this.btnTab3.Location = new System.Drawing.Point(842, 428);
-            this.btnTab3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnTab3.Name = "btnTab3";
-            this.btnTab3.Size = new System.Drawing.Size(32, 63);
-            this.btnTab3.TabIndex = 22;
-            this.btnTab3.Click += new System.EventHandler(this.ChangeTab);
-            // 
-            // btnTab2
-            // 
-            this.btnTab2.Location = new System.Drawing.Point(842, 344);
-            this.btnTab2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnTab2.Name = "btnTab2";
-            this.btnTab2.Size = new System.Drawing.Size(32, 63);
-            this.btnTab2.TabIndex = 22;
-            this.btnTab2.Click += new System.EventHandler(this.ChangeTab);
-            // 
-            // btnTab1
-            // 
-            this.btnTab1.Location = new System.Drawing.Point(842, 266);
-            this.btnTab1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnTab1.Name = "btnTab1";
-            this.btnTab1.Size = new System.Drawing.Size(32, 63);
-            this.btnTab1.TabIndex = 22;
-            this.btnTab1.Click += new System.EventHandler(this.ChangeTab);
-            // 
             // userDate1
             // 
             this.userDate1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
@@ -997,6 +931,72 @@
             this.userDate42.Size = new System.Drawing.Size(105, 79);
             this.userDate42.TabIndex = 41;
             // 
+            // guna2Elipse3
+            // 
+            this.guna2Elipse3.BorderRadius = 10;
+            this.guna2Elipse3.TargetControl = this.guna2Panel3;
+            // 
+            // guna2Elipse4
+            // 
+            this.guna2Elipse4.BorderRadius = 10;
+            this.guna2Elipse4.TargetControl = this.guna2Panel4;
+            // 
+            // guna2Elipse5
+            // 
+            this.guna2Elipse5.BorderRadius = 10;
+            this.guna2Elipse5.TargetControl = this.guna2Panel5;
+            // 
+            // btnTab6
+            // 
+            this.btnTab6.Location = new System.Drawing.Point(842, 668);
+            this.btnTab6.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnTab6.Name = "btnTab6";
+            this.btnTab6.Size = new System.Drawing.Size(32, 63);
+            this.btnTab6.TabIndex = 22;
+            // 
+            // 탭5
+            // 
+            this.탭5.Location = new System.Drawing.Point(842, 588);
+            this.탭5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.탭5.Name = "탭5";
+            this.탭5.Size = new System.Drawing.Size(32, 63);
+            this.탭5.TabIndex = 22;
+            // 
+            // 탭4
+            // 
+            this.탭4.Location = new System.Drawing.Point(842, 508);
+            this.탭4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.탭4.Name = "탭4";
+            this.탭4.Size = new System.Drawing.Size(32, 63);
+            this.탭4.TabIndex = 22;
+            // 
+            // 탭3
+            // 
+            this.탭3.Location = new System.Drawing.Point(842, 428);
+            this.탭3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.탭3.Name = "탭3";
+            this.탭3.Size = new System.Drawing.Size(32, 63);
+            this.탭3.TabIndex = 22;
+            this.탭3.Click += new System.EventHandler(this.ChangeTab);
+            // 
+            // 탭2
+            // 
+            this.탭2.Location = new System.Drawing.Point(842, 344);
+            this.탭2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.탭2.Name = "탭2";
+            this.탭2.Size = new System.Drawing.Size(32, 63);
+            this.탭2.TabIndex = 22;
+            this.탭2.Click += new System.EventHandler(this.ChangeTab);
+            // 
+            // 탭1
+            // 
+            this.탭1.Location = new System.Drawing.Point(842, 266);
+            this.탭1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.탭1.Name = "탭1";
+            this.탭1.Size = new System.Drawing.Size(32, 63);
+            this.탭1.TabIndex = 22;
+            this.탭1.Click += new System.EventHandler(this.ChangeTab);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -1005,11 +1005,11 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(1120, 768);
             this.Controls.Add(this.btnTab6);
-            this.Controls.Add(this.btnTab5);
-            this.Controls.Add(this.btnTab4);
-            this.Controls.Add(this.btnTab3);
-            this.Controls.Add(this.btnTab2);
-            this.Controls.Add(this.btnTab1);
+            this.Controls.Add(this.탭5);
+            this.Controls.Add(this.탭4);
+            this.Controls.Add(this.탭3);
+            this.Controls.Add(this.탭2);
+            this.Controls.Add(this.탭1);
             this.Controls.Add(this.guna2Panel5);
             this.Controls.Add(this.guna2Panel4);
             this.Controls.Add(this.guna2Panel3);
@@ -1067,12 +1067,12 @@
         private Guna.UI2.WinForms.Guna2CircleButton btnMagam_Online;
         private Guna.UI2.WinForms.Guna2CircleButton btnMagam_Prjct;
         private Guna.UI2.WinForms.Guna2CircleButton btnMagam_Personal;
-        private UserTapButton btnTab1;
-        private UserTapButton btnTab5;
-        private UserTapButton btnTab6;
-        private UserTapButton btnTab4;
-        private UserTapButton btnTab3;
-        private UserTapButton btnTab2;
+        private UserTabButton 탭1;
+        private UserTabButton 탭5;
+        private UserTabButton btnTab6;
+        private UserTabButton 탭4;
+        private UserTabButton 탭3;
+        private UserTabButton 탭2;
         private Guna.UI2.WinForms.Guna2Button btnPrevisous;
         private Guna.UI2.WinForms.Guna2Button btnNext;
         private System.Windows.Forms.TableLayoutPanel flpDays;

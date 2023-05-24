@@ -27,5 +27,13 @@ namespace KSCS.Forms
         {
             this.Size = new Size(280, 240);
         }
+
+        private void guna2TextBox2_Click(object sender, EventArgs e)
+        {
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                guna2TextBox2.FillColor = colorDialog1.Color;
+            }
+        }
     }
 }

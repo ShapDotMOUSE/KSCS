@@ -39,6 +39,7 @@
             this.category_underline = new Guna.UI2.WinForms.Guna2Separator();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnPlusCategory = new Guna.UI2.WinForms.Guna2Button();
             this.flpMainCategory = new System.Windows.Forms.FlowLayoutPanel();
             this.flpSchoolCategory = new System.Windows.Forms.FlowLayoutPanel();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
@@ -47,30 +48,29 @@
             this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Separator2 = new Guna.UI2.WinForms.Guna2Separator();
             this.flpEtcCategory = new System.Windows.Forms.FlowLayoutPanel();
+            this.guna2PictureBox4 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
             this.panelMagam = new System.Windows.Forms.FlowLayoutPanel();
             this.panelMagamBtns = new System.Windows.Forms.FlowLayoutPanel();
-            this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
-            this.lblMonth = new System.Windows.Forms.Label();
-            this.flpDays = new System.Windows.Forms.TableLayoutPanel();
-            this.guna2Elipse3 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.guna2Elipse4 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.guna2Elipse5 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.btnPrevisous = new Guna.UI2.WinForms.Guna2Button();
-            this.btnNext = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.btnMagam_Task = new Guna.UI2.WinForms.Guna2CircleButton();
             this.btnMagam_Quiz = new Guna.UI2.WinForms.Guna2CircleButton();
             this.btnMagam_Online = new Guna.UI2.WinForms.Guna2CircleButton();
             this.btnMagam_Prjct = new Guna.UI2.WinForms.Guna2CircleButton();
             this.guna2CircleButton5 = new Guna.UI2.WinForms.Guna2CircleButton();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.btnPlusCategory = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2PictureBox4 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnPrevisous = new Guna.UI2.WinForms.Guna2Button();
+            this.btnNext = new Guna.UI2.WinForms.Guna2Button();
+            this.lblMonth = new System.Windows.Forms.Label();
+            this.guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.flpDays = new System.Windows.Forms.TableLayoutPanel();
+            this.guna2Elipse3 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2Elipse4 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2Elipse5 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.btnSharing = new KSCS.UserControls.MainForm.SharingButton();
             this.btnTab5 = new KSCS.customTapButton();
             this.btnTab4 = new KSCS.customTapButton();
@@ -119,17 +119,26 @@
             this.userDate40 = new KSCS.UserDate();
             this.userDate41 = new KSCS.UserDate();
             this.userDate42 = new KSCS.UserDate();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
             this.guna2Panel2.SuspendLayout();
             this.flpMainCategory.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox4)).BeginInit();
             this.guna2Panel3.SuspendLayout();
             this.panelMagamBtns.SuspendLayout();
-            this.guna2Panel4.SuspendLayout();
-            this.guna2Panel5.SuspendLayout();
-            this.flpDays.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox4)).BeginInit();
+            this.guna2Panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
+            this.guna2Panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox3)).BeginInit();
+            this.flpDays.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label2
@@ -241,6 +250,23 @@
             this.guna2Panel2.Size = new System.Drawing.Size(246, 930);
             this.guna2Panel2.TabIndex = 18;
             // 
+            // btnPlusCategory
+            // 
+            this.btnPlusCategory.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnPlusCategory.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnPlusCategory.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnPlusCategory.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnPlusCategory.FillColor = System.Drawing.Color.White;
+            this.btnPlusCategory.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnPlusCategory.ForeColor = System.Drawing.Color.White;
+            this.btnPlusCategory.Image = global::KSCS.Properties.Resources.CategoryPlus;
+            this.btnPlusCategory.ImageOffset = new System.Drawing.Point(1, 0);
+            this.btnPlusCategory.Location = new System.Drawing.Point(168, 211);
+            this.btnPlusCategory.Name = "btnPlusCategory";
+            this.btnPlusCategory.Size = new System.Drawing.Size(28, 25);
+            this.btnPlusCategory.TabIndex = 26;
+            this.btnPlusCategory.Click += new System.EventHandler(this.btnPlusCategory_Click);
+            // 
             // flpMainCategory
             // 
             this.flpMainCategory.AllowDrop = true;
@@ -346,6 +372,18 @@
             this.flpEtcCategory.Size = new System.Drawing.Size(156, 83);
             this.flpEtcCategory.TabIndex = 23;
             // 
+            // guna2PictureBox4
+            // 
+            this.guna2PictureBox4.BackColor = System.Drawing.Color.White;
+            this.guna2PictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox4.Image")));
+            this.guna2PictureBox4.ImageRotate = 0F;
+            this.guna2PictureBox4.Location = new System.Drawing.Point(19, 16);
+            this.guna2PictureBox4.Name = "guna2PictureBox4";
+            this.guna2PictureBox4.Size = new System.Drawing.Size(81, 85);
+            this.guna2PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox4.TabIndex = 17;
+            this.guna2PictureBox4.TabStop = false;
+            // 
             // guna2Panel3
             // 
             this.guna2Panel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -380,200 +418,6 @@
             this.panelMagamBtns.Name = "panelMagamBtns";
             this.panelMagamBtns.Size = new System.Drawing.Size(288, 44);
             this.panelMagamBtns.TabIndex = 9;
-            // 
-            // guna2Elipse2
-            // 
-            this.guna2Elipse2.BorderRadius = 10;
-            this.guna2Elipse2.TargetControl = this.guna2Panel2;
-            // 
-            // guna2Panel4
-            // 
-            this.guna2Panel4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.guna2Panel4.BackColor = System.Drawing.Color.White;
-            this.guna2Panel4.BorderRadius = 10;
-            this.guna2Panel4.Controls.Add(this.guna2PictureBox2);
-            this.guna2Panel4.Controls.Add(this.label5);
-            this.guna2Panel4.Location = new System.Drawing.Point(22, 18);
-            this.guna2Panel4.Name = "guna2Panel4";
-            this.guna2Panel4.Size = new System.Drawing.Size(470, 175);
-            this.guna2Panel4.TabIndex = 19;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(288, 20);
-            this.label5.Name = "label5";
-            this.label5.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label5.Size = new System.Drawing.Size(152, 32);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "오늘의 일정";
-            // 
-            // guna2Panel5
-            // 
-            this.guna2Panel5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.guna2Panel5.BackColor = System.Drawing.Color.White;
-            this.guna2Panel5.BorderRadius = 10;
-            this.guna2Panel5.Controls.Add(this.btnPrevisous);
-            this.guna2Panel5.Controls.Add(this.btnNext);
-            this.guna2Panel5.Controls.Add(this.lblMonth);
-            this.guna2Panel5.Controls.Add(this.guna2PictureBox3);
-            this.guna2Panel5.Controls.Add(this.flpDays);
-            this.guna2Panel5.Location = new System.Drawing.Point(22, 215);
-            this.guna2Panel5.Name = "guna2Panel5";
-            this.guna2Panel5.Size = new System.Drawing.Size(956, 733);
-            this.guna2Panel5.TabIndex = 21;
-            // 
-            // lblMonth
-            // 
-            this.lblMonth.AutoSize = true;
-            this.lblMonth.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblMonth.Location = new System.Drawing.Point(454, 31);
-            this.lblMonth.Name = "lblMonth";
-            this.lblMonth.Size = new System.Drawing.Size(82, 46);
-            this.lblMonth.TabIndex = 2;
-            this.lblMonth.Text = "5월";
-            // 
-            // flpDays
-            // 
-            this.flpDays.ColumnCount = 7;
-            this.flpDays.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
-            this.flpDays.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
-            this.flpDays.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
-            this.flpDays.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
-            this.flpDays.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
-            this.flpDays.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
-            this.flpDays.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
-            this.flpDays.Controls.Add(this.userDate1, 0, 0);
-            this.flpDays.Controls.Add(this.userDate2, 1, 0);
-            this.flpDays.Controls.Add(this.userDate3, 2, 0);
-            this.flpDays.Controls.Add(this.userDate4, 3, 0);
-            this.flpDays.Controls.Add(this.userDate5, 4, 0);
-            this.flpDays.Controls.Add(this.userDate6, 5, 0);
-            this.flpDays.Controls.Add(this.userDate7, 6, 0);
-            this.flpDays.Controls.Add(this.userDate8, 0, 1);
-            this.flpDays.Controls.Add(this.userDate9, 1, 1);
-            this.flpDays.Controls.Add(this.userDate10, 2, 1);
-            this.flpDays.Controls.Add(this.userDate11, 3, 1);
-            this.flpDays.Controls.Add(this.userDate12, 4, 1);
-            this.flpDays.Controls.Add(this.userDate13, 5, 1);
-            this.flpDays.Controls.Add(this.userDate14, 6, 1);
-            this.flpDays.Controls.Add(this.userDate15, 0, 2);
-            this.flpDays.Controls.Add(this.userDate16, 1, 2);
-            this.flpDays.Controls.Add(this.userDate17, 2, 2);
-            this.flpDays.Controls.Add(this.userDate18, 3, 2);
-            this.flpDays.Controls.Add(this.userDate19, 4, 2);
-            this.flpDays.Controls.Add(this.userDate20, 5, 2);
-            this.flpDays.Controls.Add(this.userDate21, 6, 2);
-            this.flpDays.Controls.Add(this.userDate22, 0, 3);
-            this.flpDays.Controls.Add(this.userDate23, 1, 3);
-            this.flpDays.Controls.Add(this.userDate24, 2, 3);
-            this.flpDays.Controls.Add(this.userDate25, 3, 3);
-            this.flpDays.Controls.Add(this.userDate26, 4, 3);
-            this.flpDays.Controls.Add(this.userDate27, 5, 3);
-            this.flpDays.Controls.Add(this.userDate28, 6, 3);
-            this.flpDays.Controls.Add(this.userDate29, 0, 4);
-            this.flpDays.Controls.Add(this.userDate30, 1, 4);
-            this.flpDays.Controls.Add(this.userDate31, 2, 4);
-            this.flpDays.Controls.Add(this.userDate32, 3, 4);
-            this.flpDays.Controls.Add(this.userDate33, 4, 4);
-            this.flpDays.Controls.Add(this.userDate34, 5, 4);
-            this.flpDays.Controls.Add(this.userDate35, 6, 4);
-            this.flpDays.Controls.Add(this.userDate36, 0, 5);
-            this.flpDays.Controls.Add(this.userDate37, 1, 5);
-            this.flpDays.Controls.Add(this.userDate38, 2, 5);
-            this.flpDays.Controls.Add(this.userDate39, 3, 5);
-            this.flpDays.Controls.Add(this.userDate40, 4, 5);
-            this.flpDays.Controls.Add(this.userDate41, 5, 5);
-            this.flpDays.Controls.Add(this.userDate42, 6, 5);
-            this.flpDays.Location = new System.Drawing.Point(56, 105);
-            this.flpDays.Margin = new System.Windows.Forms.Padding(2);
-            this.flpDays.Name = "flpDays";
-            this.flpDays.RowCount = 6;
-            this.flpDays.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.flpDays.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.flpDays.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.flpDays.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.flpDays.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.flpDays.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.flpDays.Size = new System.Drawing.Size(843, 592);
-            this.flpDays.TabIndex = 42;
-            // 
-            // guna2Elipse3
-            // 
-            this.guna2Elipse3.BorderRadius = 10;
-            this.guna2Elipse3.TargetControl = this.guna2Panel3;
-            // 
-            // guna2Elipse4
-            // 
-            this.guna2Elipse4.BorderRadius = 10;
-            this.guna2Elipse4.TargetControl = this.guna2Panel4;
-            // 
-            // guna2Elipse5
-            // 
-            this.guna2Elipse5.BorderRadius = 10;
-            this.guna2Elipse5.TargetControl = this.guna2Panel5;
-            // 
-            // btnPrevisous
-            // 
-            this.btnPrevisous.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnPrevisous.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnPrevisous.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnPrevisous.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnPrevisous.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnPrevisous.FillColor = System.Drawing.Color.White;
-            this.btnPrevisous.Font = new System.Drawing.Font("Microsoft YaHei UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrevisous.ForeColor = System.Drawing.Color.Black;
-            this.btnPrevisous.Image = ((System.Drawing.Image)(resources.GetObject("btnPrevisous.Image")));
-            this.btnPrevisous.ImageSize = new System.Drawing.Size(20, 30);
-            this.btnPrevisous.Location = new System.Drawing.Point(409, 31);
-            this.btnPrevisous.Name = "btnPrevisous";
-            this.btnPrevisous.Size = new System.Drawing.Size(32, 57);
-            this.btnPrevisous.TabIndex = 27;
-            this.btnPrevisous.Click += new System.EventHandler(this.btnMonth_Click);
-            // 
-            // btnNext
-            // 
-            this.btnNext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnNext.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnNext.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnNext.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnNext.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnNext.FillColor = System.Drawing.Color.White;
-            this.btnNext.Font = new System.Drawing.Font("Microsoft YaHei UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNext.ForeColor = System.Drawing.Color.Black;
-            this.btnNext.Image = ((System.Drawing.Image)(resources.GetObject("btnNext.Image")));
-            this.btnNext.ImageSize = new System.Drawing.Size(20, 30);
-            this.btnNext.Location = new System.Drawing.Point(539, 31);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(32, 57);
-            this.btnNext.TabIndex = 26;
-            this.btnNext.Click += new System.EventHandler(this.btnMonth_Click);
-            // 
-            // guna2PictureBox3
-            // 
-            this.guna2PictureBox3.Cursor = System.Windows.Forms.Cursors.No;
-            this.guna2PictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox3.Image")));
-            this.guna2PictureBox3.ImageRotate = 0F;
-            this.guna2PictureBox3.Location = new System.Drawing.Point(7, 670);
-            this.guna2PictureBox3.Name = "guna2PictureBox3";
-            this.guna2PictureBox3.Size = new System.Drawing.Size(43, 46);
-            this.guna2PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox3.TabIndex = 0;
-            this.guna2PictureBox3.TabStop = false;
-            // 
-            // guna2PictureBox2
-            // 
-            this.guna2PictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2PictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox2.Image")));
-            this.guna2PictureBox2.ImageRotate = 0F;
-            this.guna2PictureBox2.Location = new System.Drawing.Point(15, 14);
-            this.guna2PictureBox2.Name = "guna2PictureBox2";
-            this.guna2PictureBox2.Size = new System.Drawing.Size(88, 105);
-            this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox2.TabIndex = 8;
-            this.guna2PictureBox2.TabStop = false;
             // 
             // btnMagam_Task
             // 
@@ -680,34 +524,200 @@
             this.guna2PictureBox1.TabIndex = 8;
             this.guna2PictureBox1.TabStop = false;
             // 
-            // btnPlusCategory
+            // guna2Elipse2
             // 
-            this.btnPlusCategory.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnPlusCategory.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnPlusCategory.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnPlusCategory.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnPlusCategory.FillColor = System.Drawing.Color.White;
-            this.btnPlusCategory.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnPlusCategory.ForeColor = System.Drawing.Color.White;
-            this.btnPlusCategory.Image = global::KSCS.Properties.Resources.CategoryPlus;
-            this.btnPlusCategory.ImageOffset = new System.Drawing.Point(1, 0);
-            this.btnPlusCategory.Location = new System.Drawing.Point(168, 211);
-            this.btnPlusCategory.Name = "btnPlusCategory";
-            this.btnPlusCategory.Size = new System.Drawing.Size(28, 25);
-            this.btnPlusCategory.TabIndex = 26;
-            this.btnPlusCategory.Click += new System.EventHandler(this.btnPlusCategory_Click);
+            this.guna2Elipse2.BorderRadius = 10;
+            this.guna2Elipse2.TargetControl = this.guna2Panel2;
             // 
-            // guna2PictureBox4
+            // guna2Panel4
             // 
-            this.guna2PictureBox4.BackColor = System.Drawing.Color.White;
-            this.guna2PictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox4.Image")));
-            this.guna2PictureBox4.ImageRotate = 0F;
-            this.guna2PictureBox4.Location = new System.Drawing.Point(19, 16);
-            this.guna2PictureBox4.Name = "guna2PictureBox4";
-            this.guna2PictureBox4.Size = new System.Drawing.Size(81, 85);
-            this.guna2PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox4.TabIndex = 17;
-            this.guna2PictureBox4.TabStop = false;
+            this.guna2Panel4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.guna2Panel4.BackColor = System.Drawing.Color.White;
+            this.guna2Panel4.BorderRadius = 10;
+            this.guna2Panel4.Controls.Add(this.guna2PictureBox2);
+            this.guna2Panel4.Controls.Add(this.label5);
+            this.guna2Panel4.Location = new System.Drawing.Point(22, 18);
+            this.guna2Panel4.Name = "guna2Panel4";
+            this.guna2Panel4.Size = new System.Drawing.Size(470, 175);
+            this.guna2Panel4.TabIndex = 19;
+            // 
+            // guna2PictureBox2
+            // 
+            this.guna2PictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.guna2PictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox2.Image")));
+            this.guna2PictureBox2.ImageRotate = 0F;
+            this.guna2PictureBox2.Location = new System.Drawing.Point(15, 14);
+            this.guna2PictureBox2.Name = "guna2PictureBox2";
+            this.guna2PictureBox2.Size = new System.Drawing.Size(88, 105);
+            this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox2.TabIndex = 8;
+            this.guna2PictureBox2.TabStop = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(288, 20);
+            this.label5.Name = "label5";
+            this.label5.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label5.Size = new System.Drawing.Size(152, 32);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "오늘의 일정";
+            // 
+            // guna2Panel5
+            // 
+            this.guna2Panel5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.guna2Panel5.BackColor = System.Drawing.Color.White;
+            this.guna2Panel5.BorderRadius = 10;
+            this.guna2Panel5.Controls.Add(this.flowLayoutPanel1);
+            this.guna2Panel5.Controls.Add(this.btnPrevisous);
+            this.guna2Panel5.Controls.Add(this.btnNext);
+            this.guna2Panel5.Controls.Add(this.lblMonth);
+            this.guna2Panel5.Controls.Add(this.guna2PictureBox3);
+            this.guna2Panel5.Controls.Add(this.flpDays);
+            this.guna2Panel5.Location = new System.Drawing.Point(22, 215);
+            this.guna2Panel5.Name = "guna2Panel5";
+            this.guna2Panel5.Size = new System.Drawing.Size(956, 733);
+            this.guna2Panel5.TabIndex = 21;
+            // 
+            // btnPrevisous
+            // 
+            this.btnPrevisous.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnPrevisous.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnPrevisous.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnPrevisous.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnPrevisous.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnPrevisous.FillColor = System.Drawing.Color.White;
+            this.btnPrevisous.Font = new System.Drawing.Font("Microsoft YaHei UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrevisous.ForeColor = System.Drawing.Color.Black;
+            this.btnPrevisous.Image = ((System.Drawing.Image)(resources.GetObject("btnPrevisous.Image")));
+            this.btnPrevisous.ImageSize = new System.Drawing.Size(20, 30);
+            this.btnPrevisous.Location = new System.Drawing.Point(408, 20);
+            this.btnPrevisous.Name = "btnPrevisous";
+            this.btnPrevisous.Size = new System.Drawing.Size(32, 57);
+            this.btnPrevisous.TabIndex = 27;
+            this.btnPrevisous.Click += new System.EventHandler(this.btnMonth_Click);
+            // 
+            // btnNext
+            // 
+            this.btnNext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnNext.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnNext.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnNext.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnNext.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnNext.FillColor = System.Drawing.Color.White;
+            this.btnNext.Font = new System.Drawing.Font("Microsoft YaHei UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNext.ForeColor = System.Drawing.Color.Black;
+            this.btnNext.Image = ((System.Drawing.Image)(resources.GetObject("btnNext.Image")));
+            this.btnNext.ImageSize = new System.Drawing.Size(20, 30);
+            this.btnNext.Location = new System.Drawing.Point(539, 17);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(32, 57);
+            this.btnNext.TabIndex = 26;
+            this.btnNext.Click += new System.EventHandler(this.btnMonth_Click);
+            // 
+            // lblMonth
+            // 
+            this.lblMonth.AutoSize = true;
+            this.lblMonth.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblMonth.Location = new System.Drawing.Point(454, 20);
+            this.lblMonth.Name = "lblMonth";
+            this.lblMonth.Size = new System.Drawing.Size(82, 46);
+            this.lblMonth.TabIndex = 2;
+            this.lblMonth.Text = "5월";
+            // 
+            // guna2PictureBox3
+            // 
+            this.guna2PictureBox3.Cursor = System.Windows.Forms.Cursors.No;
+            this.guna2PictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox3.Image")));
+            this.guna2PictureBox3.ImageRotate = 0F;
+            this.guna2PictureBox3.Location = new System.Drawing.Point(7, 670);
+            this.guna2PictureBox3.Name = "guna2PictureBox3";
+            this.guna2PictureBox3.Size = new System.Drawing.Size(43, 46);
+            this.guna2PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox3.TabIndex = 0;
+            this.guna2PictureBox3.TabStop = false;
+            // 
+            // flpDays
+            // 
+            this.flpDays.ColumnCount = 7;
+            this.flpDays.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
+            this.flpDays.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
+            this.flpDays.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
+            this.flpDays.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
+            this.flpDays.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
+            this.flpDays.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
+            this.flpDays.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
+            this.flpDays.Controls.Add(this.userDate1, 0, 0);
+            this.flpDays.Controls.Add(this.userDate2, 1, 0);
+            this.flpDays.Controls.Add(this.userDate3, 2, 0);
+            this.flpDays.Controls.Add(this.userDate4, 3, 0);
+            this.flpDays.Controls.Add(this.userDate5, 4, 0);
+            this.flpDays.Controls.Add(this.userDate6, 5, 0);
+            this.flpDays.Controls.Add(this.userDate7, 6, 0);
+            this.flpDays.Controls.Add(this.userDate8, 0, 1);
+            this.flpDays.Controls.Add(this.userDate9, 1, 1);
+            this.flpDays.Controls.Add(this.userDate10, 2, 1);
+            this.flpDays.Controls.Add(this.userDate11, 3, 1);
+            this.flpDays.Controls.Add(this.userDate12, 4, 1);
+            this.flpDays.Controls.Add(this.userDate13, 5, 1);
+            this.flpDays.Controls.Add(this.userDate14, 6, 1);
+            this.flpDays.Controls.Add(this.userDate15, 0, 2);
+            this.flpDays.Controls.Add(this.userDate16, 1, 2);
+            this.flpDays.Controls.Add(this.userDate17, 2, 2);
+            this.flpDays.Controls.Add(this.userDate18, 3, 2);
+            this.flpDays.Controls.Add(this.userDate19, 4, 2);
+            this.flpDays.Controls.Add(this.userDate20, 5, 2);
+            this.flpDays.Controls.Add(this.userDate21, 6, 2);
+            this.flpDays.Controls.Add(this.userDate22, 0, 3);
+            this.flpDays.Controls.Add(this.userDate23, 1, 3);
+            this.flpDays.Controls.Add(this.userDate24, 2, 3);
+            this.flpDays.Controls.Add(this.userDate25, 3, 3);
+            this.flpDays.Controls.Add(this.userDate26, 4, 3);
+            this.flpDays.Controls.Add(this.userDate27, 5, 3);
+            this.flpDays.Controls.Add(this.userDate28, 6, 3);
+            this.flpDays.Controls.Add(this.userDate29, 0, 4);
+            this.flpDays.Controls.Add(this.userDate30, 1, 4);
+            this.flpDays.Controls.Add(this.userDate31, 2, 4);
+            this.flpDays.Controls.Add(this.userDate32, 3, 4);
+            this.flpDays.Controls.Add(this.userDate33, 4, 4);
+            this.flpDays.Controls.Add(this.userDate34, 5, 4);
+            this.flpDays.Controls.Add(this.userDate35, 6, 4);
+            this.flpDays.Controls.Add(this.userDate36, 0, 5);
+            this.flpDays.Controls.Add(this.userDate37, 1, 5);
+            this.flpDays.Controls.Add(this.userDate38, 2, 5);
+            this.flpDays.Controls.Add(this.userDate39, 3, 5);
+            this.flpDays.Controls.Add(this.userDate40, 4, 5);
+            this.flpDays.Controls.Add(this.userDate41, 5, 5);
+            this.flpDays.Controls.Add(this.userDate42, 6, 5);
+            this.flpDays.Location = new System.Drawing.Point(56, 129);
+            this.flpDays.Margin = new System.Windows.Forms.Padding(2);
+            this.flpDays.Name = "flpDays";
+            this.flpDays.RowCount = 6;
+            this.flpDays.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.flpDays.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.flpDays.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.flpDays.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.flpDays.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.flpDays.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.flpDays.Size = new System.Drawing.Size(843, 592);
+            this.flpDays.TabIndex = 42;
+            // 
+            // guna2Elipse3
+            // 
+            this.guna2Elipse3.BorderRadius = 10;
+            this.guna2Elipse3.TargetControl = this.guna2Panel3;
+            // 
+            // guna2Elipse4
+            // 
+            this.guna2Elipse4.BorderRadius = 10;
+            this.guna2Elipse4.TargetControl = this.guna2Panel4;
+            // 
+            // guna2Elipse5
+            // 
+            this.guna2Elipse5.BorderRadius = 10;
+            this.guna2Elipse5.TargetControl = this.guna2Panel5;
             // 
             // btnSharing
             // 
@@ -1137,13 +1147,118 @@
             this.userDate42.Size = new System.Drawing.Size(120, 98);
             this.userDate42.TabIndex = 41;
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.textBox1);
+            this.flowLayoutPanel1.Controls.Add(this.textBox2);
+            this.flowLayoutPanel1.Controls.Add(this.textBox3);
+            this.flowLayoutPanel1.Controls.Add(this.textBox4);
+            this.flowLayoutPanel1.Controls.Add(this.textBox5);
+            this.flowLayoutPanel1.Controls.Add(this.textBox6);
+            this.flowLayoutPanel1.Controls.Add(this.textBox7);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(56, 94);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(843, 29);
+            this.flowLayoutPanel1.TabIndex = 43;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("맑은 고딕", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.textBox1.Location = new System.Drawing.Point(0, 0);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(120, 41);
+            this.textBox1.TabIndex = 0;
+            this.textBox1.Text = "일요일";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox2
+            // 
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.Font = new System.Drawing.Font("맑은 고딕", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.textBox2.Location = new System.Drawing.Point(120, 0);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(0);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(120, 41);
+            this.textBox2.TabIndex = 1;
+            this.textBox2.Text = "월요일";
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox3
+            // 
+            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox3.Font = new System.Drawing.Font("맑은 고딕", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.textBox3.Location = new System.Drawing.Point(240, 0);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(0);
+            this.textBox3.Multiline = true;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(120, 41);
+            this.textBox3.TabIndex = 2;
+            this.textBox3.Text = "화요일";
+            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox4
+            // 
+            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox4.Font = new System.Drawing.Font("맑은 고딕", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.textBox4.Location = new System.Drawing.Point(360, 0);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(0);
+            this.textBox4.Multiline = true;
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(120, 41);
+            this.textBox4.TabIndex = 3;
+            this.textBox4.Text = "수요일";
+            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox5
+            // 
+            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox5.Font = new System.Drawing.Font("맑은 고딕", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.textBox5.Location = new System.Drawing.Point(480, 0);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(0);
+            this.textBox5.Multiline = true;
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(120, 41);
+            this.textBox5.TabIndex = 4;
+            this.textBox5.Text = "목요일";
+            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox6
+            // 
+            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox6.Font = new System.Drawing.Font("맑은 고딕", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.textBox6.Location = new System.Drawing.Point(600, 0);
+            this.textBox6.Margin = new System.Windows.Forms.Padding(0);
+            this.textBox6.Multiline = true;
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(120, 41);
+            this.textBox6.TabIndex = 5;
+            this.textBox6.Text = "금요일";
+            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox7
+            // 
+            this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox7.Font = new System.Drawing.Font("맑은 고딕", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.textBox7.Location = new System.Drawing.Point(720, 0);
+            this.textBox7.Margin = new System.Windows.Forms.Padding(0);
+            this.textBox7.Multiline = true;
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(120, 41);
+            this.textBox7.TabIndex = 6;
+            this.textBox7.Text = "토요일";
+            this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(1280, 918);
+            this.ClientSize = new System.Drawing.Size(1280, 960);
             this.Controls.Add(this.btnSharing);
             this.Controls.Add(this.btnTab5);
             this.Controls.Add(this.btnTab4);
@@ -1165,18 +1280,20 @@
             this.guna2Panel2.ResumeLayout(false);
             this.guna2Panel2.PerformLayout();
             this.flpMainCategory.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox4)).EndInit();
             this.guna2Panel3.ResumeLayout(false);
             this.guna2Panel3.PerformLayout();
             this.panelMagamBtns.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.guna2Panel4.ResumeLayout(false);
             this.guna2Panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).EndInit();
             this.guna2Panel5.ResumeLayout(false);
             this.guna2Panel5.PerformLayout();
-            this.flpDays.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox4)).EndInit();
+            this.flpDays.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1271,6 +1388,14 @@
         private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton5;
         private Guna.UI2.WinForms.Guna2Button btnPlusCategory;
         private UserControls.MainForm.SharingButton btnSharing;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox textBox7;
     }
 }
 

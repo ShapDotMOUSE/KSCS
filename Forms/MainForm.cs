@@ -25,6 +25,7 @@ using KSCS.Class;
 using MySql.Data.MySqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 using System.Web.UI;
+using KSCS.UserControls.MainForm;
 
 namespace KSCS
 {
@@ -87,7 +88,7 @@ namespace KSCS
 
         private void MainForm_Resize(object sender, EventArgs e)
         {
-            this.Size = new Size(1280, 960);
+            this.Size = new Size(1280, 1080);
         }
 
 
@@ -437,7 +438,5 @@ namespace KSCS
             }
             cloneUcCategory.Location = MouseLocation;
         }
-
-
     }
 }

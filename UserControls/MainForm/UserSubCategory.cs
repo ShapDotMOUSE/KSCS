@@ -12,9 +12,9 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace KSCS
 {
-    public partial class UserCategory : UserControl
+    public partial class UserSubCategory : UserControl
     {
-        public UserCategory()
+        public UserSubCategory()
         {
             InitializeComponent();
         }
@@ -120,8 +120,8 @@ namespace KSCS
 
         private void UserCategory_DoubleClick(object sender, EventArgs e)
         {
-            TempCategorySetting temp = new TempCategorySetting(((FlowLayoutPanel)this.Parent).Name , lblCategory.Text);
-            temp.ShowDialog();
+           // TempCategorySetting temp = new TempCategorySetting(((FlowLayoutPanel)this.Parent).Name , lblCategory.Text);
+           // temp.ShowDialog();
         }
 
         

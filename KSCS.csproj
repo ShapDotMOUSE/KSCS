@@ -122,11 +122,11 @@
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\MainForm\UserCategory.cs">
+    <Compile Include="UserControls\MainForm\UserSubCategory.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\MainForm\UserCategory.Designer.cs">
-      <DependentUpon>UserCategory.cs</DependentUpon>
+    <Compile Include="UserControls\MainForm\UserSubCategory.Designer.cs">
+      <DependentUpon>UserSubCategory.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\MainForm\UserCheckedCategory.cs">
       <SubType>UserControl</SubType>
@@ -173,8 +173,8 @@
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\MainForm\UserCategory.resx">
-      <DependentUpon>UserCategory.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\MainForm\UserSubCategory.resx">
+      <DependentUpon>UserSubCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\MainForm\UserCheckedCategory.resx">
       <DependentUpon>UserCheckedCategory.cs</DependentUpon>

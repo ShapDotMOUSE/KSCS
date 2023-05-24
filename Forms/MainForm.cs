@@ -133,7 +133,7 @@ namespace KSCS
             {
                 foreach (var item in Category.Categories[key])
                 {
-                    UserCategory uc = new UserCategory();
+                    UserSubCategory uc = new UserSubCategory();
                     uc.SetBasicMode(item);
                     ((FlowLayoutPanel)MainCategory.Controls[key]).Controls.Add(uc);
                 }
@@ -155,7 +155,7 @@ namespace KSCS
             FlowLayoutPanel[] flp = { 학교, 개인, 기타 };
             foreach (FlowLayoutPanel panel in flp)
             {
-                foreach (UserCategory category in panel.Controls)
+                foreach (UserSubCategory category in panel.Controls)
                 {
                     category.SetChecked(Category.IsChecked(TabName, category.GetText()));
                 }
@@ -338,7 +338,7 @@ namespace KSCS
 
         private void btnPlusCategory_Click(object sender, EventArgs e)
         {
-            UserCategory category = new UserCategory();
+            UserSubCategory category = new UserSubCategory();
             기타.Controls.Add(category);
         }
 

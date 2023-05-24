@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Configuration;
+using System.Linq; //추가
 
 namespace KSCS
 {
@@ -111,12 +112,35 @@ namespace KSCS
                 }
                 table.Close();
                 //스케줄 리스트 추가
-                MainForm.monthScheduleList[UserDate.static_date - 1].Add(schedule);
-                //스케줄 리스트 시작 시간 순 정렬
-                MainForm.monthScheduleList[UserDate.static_date - 1].OrderBy(sche => sche.startDate);
-                
+                //startDate와 endDate 일자가 다른 경우(추가)
+                if (!String.Equals(schedule.startDate.ToString("MM-dd"), schedule.endDate.ToString("MM-dd")))
+                {
+                    //두 날짜 사이 기간 계산(월이 다른 경우 포함)
+                    TimeSpan duration = schedule.endDate - schedule.startDate;
+                    for (int i = 0; i <= duration.Days; i++)
+                    {
+                        if (Convert.ToInt32(schedule.startDate.AddDays(i).ToString("MM")) == MainForm.static_month)
+                        {
+                            MainForm.monthScheduleList[Convert.ToInt32(schedule.startDate.AddDays(i).ToString("dd")) - 1].Add(schedule);
+                            AddEvent += new EventHandler(Application.OpenForms.OfType<MainForm>().FirstOrDefault().GetUserDate().SingleOrDefault(userDate => Convert.ToInt32(userDate.GetLblDate()) == Convert.ToInt32(schedule.startDate.AddDays(i).ToString("dd"))).SaveEvent);
+                        }
+                    }
+                }
+                else
+                {
+                    MainForm.monthScheduleList[Convert.ToInt32(schedule.startDate.ToString("dd")) - 1].Add(schedule);
+                }
+                //MainForm.monthScheduleList[UserDate.static_date - 1].Add(schedule);
+                //스케줄 리스트 기간 순 -> 시작 시간 순 정렬 후 다시 리스트 할당
+                //for (int i = 0; i <= (schedule.endDate - schedule.startDate).Days; i++)
+                //{
+                //    if (Convert.ToInt32(schedule.startDate.AddDays(i).ToString("MM")) == MainForm.static_month)
+                //    {
+                //        MainForm.monthScheduleList[Convert.ToInt32(schedule.startDate.AddDays(i).ToString("dd")) - 1] = MainForm.monthScheduleList[Convert.ToInt32(schedule.startDate.AddDays(i).ToString("dd")) - 1].OrderBy(sche => sche.startDate).OrderByDescending(sche => (sche.endDate - sche.startDate).Days).ToList();
+                //    }
+                //}
             }
-            else if(addBtn.Text == "Modify")
+            else if (addBtn.Text == "Modify")
             {
                 if (selectedScheduleIndex != -1)
                 {
@@ -142,6 +166,7 @@ namespace KSCS
                 }
             }
             
+            //여기가 문제
             if (AddEvent != null)
             {
                 AddEvent(this, new EventArgs());

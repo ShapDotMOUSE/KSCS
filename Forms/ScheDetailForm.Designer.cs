@@ -376,7 +376,7 @@
             this.btnAddSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddSchedule.ForeColor = System.Drawing.Color.Black;
             this.btnAddSchedule.Image = global::KSCS.Properties.Resources.free_icon_font_plus_3917757;
-            this.btnAddSchedule.Location = new System.Drawing.Point(22, 58);
+            this.btnAddSchedule.Location = new System.Drawing.Point(22, 70);
             this.btnAddSchedule.Name = "btnAddSchedule";
             this.btnAddSchedule.Size = new System.Drawing.Size(167, 40);
             this.btnAddSchedule.TabIndex = 45;
@@ -422,6 +422,7 @@
             // 
             // dtpEndTime
             // 
+            this.dtpEndTime.BackColor = System.Drawing.Color.Transparent;
             this.dtpEndTime.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dtpEndTime.Checked = true;
             this.dtpEndTime.CustomFormat = "HH:mm";
@@ -439,6 +440,7 @@
             // 
             // dtpStartTime
             // 
+            this.dtpStartTime.BackColor = System.Drawing.Color.Transparent;
             this.dtpStartTime.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dtpStartTime.Checked = true;
             this.dtpStartTime.CustomFormat = "HH:mm";
@@ -456,6 +458,7 @@
             // 
             // dtpEndDate
             // 
+            this.dtpEndDate.BackColor = System.Drawing.Color.Transparent;
             this.dtpEndDate.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dtpEndDate.Checked = true;
             this.dtpEndDate.CustomFormat = "yyyy-MM-dd ddd";
@@ -473,6 +476,7 @@
             // 
             // dtpStartDate
             // 
+            this.dtpStartDate.BackColor = System.Drawing.Color.Transparent;
             this.dtpStartDate.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dtpStartDate.Checked = true;
             this.dtpStartDate.CustomFormat = "yyyy-MM-dd ddd";

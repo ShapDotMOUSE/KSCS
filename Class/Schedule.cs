@@ -8,6 +8,7 @@ namespace KSCS
 {
     public class Schedule
     {
+
         public int id;
         public string title { get; set; }
         public string content { get; set; }

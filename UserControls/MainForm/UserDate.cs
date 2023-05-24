@@ -37,6 +37,7 @@ namespace KSCS
 
         public void ChangeBlank()
         {
+            flpEvent.Controls.Clear();
             if (lblDate.Visible)
             {
                 BackColor = Color.White;
@@ -67,6 +68,10 @@ namespace KSCS
             {
                 BackColor = Color.FromArgb(255, 249, 229);
                 lblDate.Visible = true;
+                Cursor = Cursors.Hand;
+                btnTransparent.MouseEnter += UserDate_MouseEnter;
+                btnTransparent.MouseLeave += UserDate_MouseLeave;
+                btnTransparent.MouseClick += UserDate_Click;
             }
             lblDate.Text = date.ToString();
             LoadUserDate();
@@ -90,8 +95,8 @@ namespace KSCS
             eventForm.ShowDialog(); //수정
         }
 
-        // update(add/modify,delete) event
-        private void SaveEvent(object sender, EventArgs e)
+        // update(add/modify,delete) event & public 으로 수정
+        public void SaveEvent(object sender, EventArgs e)
         {
             flpEvent.Controls.Clear(); //userEvent 컨트롤 초기화
             LoadUserDate();
@@ -105,6 +110,12 @@ namespace KSCS
             userEvent.SetEventInfo(dateEvent);
             userEvent.SetColor(eventType);
             flpEvent.Controls.Add(userEvent);
+        }
+
+        //추가
+        public string GetLblDate()
+        {
+            return lblDate.Text;
         }
     }
 }

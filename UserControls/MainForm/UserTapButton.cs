@@ -90,10 +90,12 @@ namespace KSCS
             {
                 if (txtTab.Text.Length > 0)
                 {
+                    MainForm.Category.ChangeTabName(this.Name, txtTab.Text);
                     btnTap.Text = txtTab.Text;
                     this.Name = txtTab.Text;
                     txtTab.Visible = false;
                     MainForm.TabName = this.Name;
+                    
                 }
             }
             else if (e.KeyCode == Keys.Escape)

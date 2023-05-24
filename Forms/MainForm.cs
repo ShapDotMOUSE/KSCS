@@ -25,6 +25,7 @@ using KSCS.Class;
 using MySql.Data.MySqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 using System.Web.UI;
+using KSCS.UserControls.MainForm;
 
 namespace KSCS
 {
@@ -69,7 +70,7 @@ namespace KSCS
         private void MainForm_Load(object sender, EventArgs e)
         {
             Category.TestCategory();
-            
+
 
             //초기 메인 카테고리 설정
             UserMainCategory school = new UserMainCategory();
@@ -107,7 +108,7 @@ namespace KSCS
 
         private void MainForm_Resize(object sender, EventArgs e)
         {
-            this.Size = new Size(1280, 960);
+            this.Size = new Size(1280, 1080);
         }
 
 
@@ -266,9 +267,9 @@ namespace KSCS
             Panel panel = (Panel)btn.Parent;
             foreach (Guna2CircleButton magamBtn in panel.Controls)
             {
-                magamBtn.FillColor = SystemColors.HotTrack;
+                magamBtn.FillColor = Color.FromArgb(217, 217, 217); ;
             }
-            btn.FillColor = Color.SteelBlue;
+            //btn.FillColor = Color.FromArgb(217,217,217);
             panelMagam.Controls.Clear();
             int index = 0;
 
@@ -351,6 +352,5 @@ namespace KSCS
         }
 
         ////카테고리 유저 컨트롤------------------------------------------------------------------------------------------------------------------------------------
-     
     }
 }

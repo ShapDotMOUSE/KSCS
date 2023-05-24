@@ -97,13 +97,19 @@
   <ItemGroup>
     <Compile Include="Class\Category.cs" />
     <Compile Include="Class\KLAS.cs" />
+    <Compile Include="Forms\AddCategoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddCategoryForm.Designer.cs">
+      <DependentUpon>AddCategoryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\TempCategorySetting.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\TempCategorySetting.Designer.cs">
       <DependentUpon>TempCategorySetting.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\MainForm\UserTapButton.cs">
+    <Compile Include="UserControls\MainForm\UserTapButton.cs"> 
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\MainForm\UserTapButton.Designer.cs">
@@ -121,6 +127,18 @@
     </Compile>
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MainForm\MemberAdd.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\MainForm\MemberAdd.Designer.cs">
+      <DependentUpon>MemberAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MainForm\SharingButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\MainForm\SharingButton.Designer.cs">
+      <DependentUpon>SharingButton.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\MainForm\UserMainCategory.cs">
       <SubType>UserControl</SubType>
@@ -167,6 +185,9 @@
     <Compile Include="UserControls\scheduleUnit.Designer.cs">
       <DependentUpon>scheduleUnit.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\AddCategoryForm.resx">
+      <DependentUpon>AddCategoryForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\TempCategorySetting.resx">
       <DependentUpon>TempCategorySetting.cs</DependentUpon>
     </EmbeddedResource>
@@ -178,6 +199,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\MainForm\MemberAdd.resx">
+      <DependentUpon>MemberAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\MainForm\SharingButton.resx">
+      <DependentUpon>SharingButton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\MainForm\UserMainCategory.resx">
       <DependentUpon>UserMainCategory.cs</DependentUpon>
@@ -265,6 +292,26 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\팡이비행.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\homework.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\individual.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lecture.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\quiz.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\team_proejct.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CategoryPlus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LOGO.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -77,33 +77,7 @@
             this.panelWhite.MouseEnter += new System.EventHandler(this.btnTab_MouseHover);
             this.panelWhite.MouseLeave += new System.EventHandler(this.btnTap_MouseLeave);
             // 
-            // txtTab
-            // 
-            this.txtTab.BackColor = System.Drawing.Color.Transparent;
-            this.txtTab.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtTab.DefaultText = "";
-            this.txtTab.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtTab.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtTab.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtTab.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtTab.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(5)))), ((int)(((byte)(31)))));
-            this.txtTab.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTab.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTab.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTab.Location = new System.Drawing.Point(0, 0);
-            this.txtTab.Multiline = true;
-            this.txtTab.Name = "txtTab";
-            this.txtTab.PasswordChar = '\0';
-            this.txtTab.PlaceholderText = "";
-            this.txtTab.SelectedText = "";
-            this.txtTab.Size = new System.Drawing.Size(32, 63);
-            this.txtTab.TabIndex = 0;
-            this.txtTab.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtTab.Visible = false;
-            this.txtTab.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTab_KeyDown);
-            this.txtTab.Leave += new System.EventHandler(this.txtTab_Leave);
-            // 
-            // UserTabButton
+            // customTapButton
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;

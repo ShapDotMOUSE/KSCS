@@ -67,7 +67,7 @@ namespace KSCS
                         MainForm.Category.AddSubdivision("EtcCategory", txtCategory.Text);
                     }
                     lblCategory.Text = txtCategory.Text;
-                    this.Name = "UCCategory" + txtCategory.Text;
+                    this.Name = txtCategory.Text;
                     txtCategory.Visible = false;
                     lblCategory.Visible = true;
                 }

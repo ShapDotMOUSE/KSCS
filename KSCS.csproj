@@ -103,11 +103,17 @@
     <Compile Include="Forms\AddCategoryForm.Designer.cs">
       <DependentUpon>AddCategoryForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\MainForm\customTapButton.cs">
+    <Compile Include="Forms\TempCategorySetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TempCategorySetting.Designer.cs">
+      <DependentUpon>TempCategorySetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MainForm\UserTapButton.cs"> 
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\MainForm\customTapButton.Designer.cs">
-      <DependentUpon>customTapButton.cs</DependentUpon>
+    <Compile Include="UserControls\MainForm\UserTapButton.Designer.cs">
+      <DependentUpon>UserTapButton.cs</DependentUpon>
     </Compile>
     <Compile Include="Class\Database.cs" />
     <Compile Include="Forms\LoginForm.cs">
@@ -134,11 +140,17 @@
     <Compile Include="UserControls\MainForm\SharingButton.Designer.cs">
       <DependentUpon>SharingButton.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\MainForm\UserCategory.cs">
+    <Compile Include="UserControls\MainForm\UserMainCategory.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\MainForm\UserCategory.Designer.cs">
-      <DependentUpon>UserCategory.cs</DependentUpon>
+    <Compile Include="UserControls\MainForm\UserMainCategory.Designer.cs">
+      <DependentUpon>UserMainCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MainForm\UserSubCategory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\MainForm\UserSubCategory.Designer.cs">
+      <DependentUpon>UserSubCategory.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\MainForm\UserCheckedCategory.cs">
       <SubType>UserControl</SubType>
@@ -176,8 +188,11 @@
     <EmbeddedResource Include="Forms\AddCategoryForm.resx">
       <DependentUpon>AddCategoryForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\MainForm\customTapButton.resx">
-      <DependentUpon>customTapButton.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\TempCategorySetting.resx">
+      <DependentUpon>TempCategorySetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\MainForm\UserTapButton.resx">
+      <DependentUpon>UserTapButton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -191,8 +206,11 @@
     <EmbeddedResource Include="UserControls\MainForm\SharingButton.resx">
       <DependentUpon>SharingButton.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\MainForm\UserCategory.resx">
-      <DependentUpon>UserCategory.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\MainForm\UserMainCategory.resx">
+      <DependentUpon>UserMainCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\MainForm\UserSubCategory.resx">
+      <DependentUpon>UserSubCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\MainForm\UserCheckedCategory.resx">
       <DependentUpon>UserCheckedCategory.cs</DependentUpon>

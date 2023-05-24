@@ -70,14 +70,34 @@ namespace KSCS
         private void MainForm_Load(object sender, EventArgs e)
         {
             Category.TestCategory();
-            //초기 탭 설정 
-            TabName = btnTab1.Name; //수정되어야함
-            btnTab1.Clicked += ChangeTab;
-            btnTab2.Clicked += ChangeTab;
-            btnTab3.Clicked += ChangeTab;
-            dispalyDate();
+
+
+            //초기 메인 카테고리 설정
+            UserMainCategory school = new UserMainCategory();
+            school.SetAddMode("학교");
+            UserMainCategory personal = new UserMainCategory();
+            personal.SetAddMode("개인");
+            UserMainCategory Etc = new UserMainCategory();
+            Etc.SetAddMode("기타");
+            MainCategory.Controls.Add(school);
+            MainCategory.Controls.Add(personal);
+            MainCategory.Controls.Add(Etc);
+            //카테고리 로드
             DisplayCategery();
+
+            //초기 탭 설정 
+            TabName = 탭1.Name; //수정되어야함
+            탭1.Clicked += ChangeTab;
+            탭2.Clicked += ChangeTab;
+            탭3.Clicked += ChangeTab;
+            탭4.Clicked += ChangeTab;
+            탭5.Clicked += ChangeTab;
+            //탭 로드
             SetCheckedCategoryByTab();
+            탭1.ShowTab();
+
+            //달력
+            dispalyDate();
         }
 
         private async void LoadMagam()
@@ -130,29 +150,14 @@ namespace KSCS
         //카테고리 함수---------------------------------------------------------------------------------------------------------------------------------------
         private void DisplayCategery()
         {
-
-            foreach (var item in Category.ParentCategorys["SchoolCategory"] as HashSet<string>)
+            foreach (var key in Category.Categories.Keys)
             {
-                UserCategory uc = new UserCategory();
-                uc.SetBasicMode(item);
-                uc.MouseDoubleClick += UcCategory_MouseDoubleClick;
-                flpSchoolCategory.Controls.Add(uc);
-            }
-
-            foreach (var item in Category.ParentCategorys["PersonalCategory"] as HashSet<string>)
-            {
-                UserCategory uc = new UserCategory();
-                uc.SetBasicMode(item);
-                uc.MouseDoubleClick += UcCategory_MouseDoubleClick;
-                flpPersonalCategory.Controls.Add(uc);
-            }
-
-            foreach (var item in Category.ParentCategorys["EtcCategory"] as HashSet<string>)
-            {
-                UserCategory uc = new UserCategory();
-                uc.SetBasicMode(item);
-                uc.MouseDoubleClick += UcCategory_MouseDoubleClick;
-                flpEtcCategory.Controls.Add(uc);
+                foreach (var item in Category.Categories[key])
+                {
+                    UserSubCategory uc = new UserSubCategory();
+                    uc.SetBasicMode(item);
+                    ((FlowLayoutPanel)((UserMainCategory)MainCategory.Controls[key]).flpSubCategory).Controls.Add(uc);
+                }
             }
         }
 
@@ -162,23 +167,24 @@ namespace KSCS
             /*
              * TODO: 이 부분에 DB에 연결하는 함수 추가 필요
              */
-            customTapButton btn = sender as customTapButton;
+            UserTabButton OldTab = this.Controls[TabName] as UserTabButton;
+            UserTabButton btn = sender as UserTabButton;
             TabName = btn.Name;
+            OldTab.HideTab();
             SetCheckedCategoryByTab();
         }
         private void SetCheckedCategoryByTab()
         {
-            FlowLayoutPanel[] flp = { flpSchoolCategory, flpPersonalCategory, flpEtcCategory };
-            foreach (FlowLayoutPanel panel in flp)
+            foreach (string key in Category.Categories.Keys)
             {
-                foreach (UserCategory category in panel.Controls)
+                FlowLayoutPanel flp = ((UserMainCategory)MainCategory.Controls[key]).flpSubCategory;
+                foreach (UserSubCategory category in flp.Controls)
                 {
                     category.SetChecked(Category.IsChecked(TabName, category.GetText()));
                 }
             }
 
         }
-
 
         private void LoadCategory()
         {
@@ -337,106 +343,14 @@ namespace KSCS
         }
 
         //카테고리 컨트롤------------------------------------------------------------------------------------------------------------------------------------
-        private void btnSchoolCategory_Click(object sender, EventArgs e)
-        {
-            flpSchoolCategory.Visible = !flpSchoolCategory.Visible;
-        }
-
-        private void btnPersonalCategory_Click(object sender, EventArgs e)
-        {
-            flpPersonalCategory.Visible = !flpPersonalCategory.Visible;
-        }
-
-        private void btnEtcCategory_Click(object sender, EventArgs e)
-        {
-            flpEtcCategory.Visible = !flpEtcCategory.Visible;
-        }
 
         private void btnPlusCategory_Click(object sender, EventArgs e)
         {
-            UserCategory category = new UserCategory();
-            category.MouseDoubleClick += UcCategory_MouseDoubleClick;
-            flpEtcCategory.Controls.Add(category);
+            UserMainCategory category = new UserMainCategory();
+            category.SetNewMode();
+            MainCategory.Controls.Add(category);
         }
 
         ////카테고리 유저 컨트롤------------------------------------------------------------------------------------------------------------------------------------
-        private UserCategory draggedUcCategory; // 드래그 중인 카테고리 유저 컨트롤
-        private UserCategory cloneUcCategory; // 드래그 중인 카테고리 유저 컨트롤 복사본
-        private Point MouseLocation;
-
-        public void UndoCategory()
-        {
-            this.Controls.Remove(cloneUcCategory);
-            cloneUcCategory.Dispose();
-            draggedUcCategory.Visible = true;
-        }
-        private void UcCategory_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            draggedUcCategory = (UserCategory)sender;
-            draggedUcCategory.Visible = false;
-
-            // 드래그 중인 버튼의 복사본 생성
-            MouseLocation = new Point((Cursor.Position.X - e.X) - Left, (Cursor.Position.Y - e.Y) - Top); // 현제 마우스 위치
-            cloneUcCategory = new UserCategory { Location = MouseLocation };
-            cloneUcCategory.DragMode(draggedUcCategory.GetText());
-            this.Controls.Add(cloneUcCategory);
-            flpMainCategory.SendToBack();
-            cloneUcCategory.MouseMove += UcCategory_MouseMove;
-            cloneUcCategory.MouseClick += UcCategory_MouseClick;
-        }
-
-        private void UcCategory_MouseClick(object sender, MouseEventArgs e)
-        {
-            string NewMainCategory;
-            if (MouseLocation.Y < flpMainCategory.Location.Y + flpPersonalCategory.Location.Y)
-            {
-                //학교
-                NewMainCategory = "SchoolCategory";
-
-            }
-            else if (MouseLocation.Y < flpMainCategory.Location.Y + flpEtcCategory.Location.Y)
-            {
-                //개인
-                NewMainCategory = "PersonalCategory";
-            }
-            else
-            {
-                //기타
-                NewMainCategory = "EtcCategory";
-            }
-
-            if (NewMainCategory.Length > 0)
-            {
-                draggedUcCategory.Visible = true;
-                string OringMainCategory = Category.SubCategorys[cloneUcCategory.GetText()] as string;
-                if (OringMainCategory == NewMainCategory)
-                {
-                    UndoCategory();
-                }
-                else
-                {
-                    this.Controls.Remove(cloneUcCategory);
-                    FlowLayoutPanel FlpNewCategory = flpMainCategory.Controls["flp" + NewMainCategory] as FlowLayoutPanel;
-                    FlowLayoutPanel FlpOriginCategory = flpMainCategory.Controls["flp" + OringMainCategory] as FlowLayoutPanel;
-                    FlpOriginCategory.Controls.Remove(draggedUcCategory);
-                    FlpNewCategory.Controls.Add(draggedUcCategory);
-                    Category.ChangeParentOfSub(NewMainCategory, cloneUcCategory.GetText());
-                    draggedUcCategory = null;
-                    cloneUcCategory = null;
-                }
-            }
-
-        }
-
-        private void UcCategory_MouseMove(object sender, MouseEventArgs e)
-        {
-            MouseLocation = new Point((Cursor.Position.X - cloneUcCategory.Width / 2) - Left, (Cursor.Position.Y - cloneUcCategory.Height / 2) - Top);
-            if ((MouseLocation.X < flpMainCategory.Location.X - 100 || MouseLocation.X > flpMainCategory.Location.X + 130)
-                || (MouseLocation.Y < flpMainCategory.Location.Y || MouseLocation.Y > flpMainCategory.Location.Y + 450))
-            {
-                UndoCategory();
-            }
-            cloneUcCategory.Location = MouseLocation;
-        }
     }
 }

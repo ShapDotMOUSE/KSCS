@@ -74,6 +74,9 @@ namespace KSCS
             btnTab1.Clicked += ChangeTab;
             btnTab2.Clicked += ChangeTab;
             btnTab3.Clicked += ChangeTab;
+
+            //초기 메인 카테고리 설정
+            UserMainCategory school = UserMainCategory()
             dispalyDate();
             DisplayCategery();
             SetCheckedCategoryByTab();
@@ -338,8 +341,9 @@ namespace KSCS
 
         private void btnPlusCategory_Click(object sender, EventArgs e)
         {
-            UserSubCategory category = new UserSubCategory();
-            기타.Controls.Add(category);
+            UserMainCategory category = new UserMainCategory();
+            category.SetNewMode();
+            MainCategory.Controls.Add(category);
         }
 
         ////카테고리 유저 컨트롤------------------------------------------------------------------------------------------------------------------------------------

@@ -70,10 +70,10 @@ namespace KSCS
         {
             Category.TestCategory();
             //초기 탭 설정 
-            TabName = btnTab1.Name; //수정되어야함
-            btnTab1.Clicked += ChangeTab;
-            btnTab2.Clicked += ChangeTab;
-            btnTab3.Clicked += ChangeTab;
+            TabName = 탭1.Name; //수정되어야함
+            탭1.Clicked += ChangeTab;
+            탭2.Clicked += ChangeTab;
+            탭3.Clicked += ChangeTab;
 
             //초기 메인 카테고리 설정
             UserMainCategory school = new UserMainCategory();
@@ -157,8 +157,10 @@ namespace KSCS
             /*
              * TODO: 이 부분에 DB에 연결하는 함수 추가 필요
              */
-            UserTapButton btn = sender as UserTapButton;
+            UserTabButton OldTab = this.Controls[TabName] as UserTabButton;
+            UserTabButton btn = sender as UserTabButton;
             TabName = btn.Name;
+            OldTab.HideTab();
             SetCheckedCategoryByTab();
         }
         private void SetCheckedCategoryByTab()
@@ -173,7 +175,6 @@ namespace KSCS
             }
 
         }
-
 
         private void LoadCategory()
         {

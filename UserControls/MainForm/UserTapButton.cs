@@ -24,6 +24,11 @@ namespace KSCS
             panelWhite.BringToFront();
         }
 
+        public void ShowTab()
+        {
+            btnTap.Text = this.Name;
+            btnTap.BringToFront();
+        }
         protected override void OnClick(EventArgs e)
         {
             if (MainForm.TabName != this.Name)
@@ -36,8 +41,7 @@ namespace KSCS
         {
             if (MainForm.TabName != this.Name)
             {
-                btnTap.Text = this.Name;
-                btnTap.BringToFront();
+                ShowTab();
                 //panelWhite.Visible = false;
             }
         }
@@ -54,7 +58,6 @@ namespace KSCS
         private void customTapButton_Click(object sender, EventArgs e)
         {
             OnClick(e);
-            
         }
 
         private void btnTap_DoubleClick(object sender, EventArgs e)

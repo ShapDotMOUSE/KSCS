@@ -90,14 +90,15 @@
             this.txtTab.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTab.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTab.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTab.Location = new System.Drawing.Point(3, 0);
+            this.txtTab.Location = new System.Drawing.Point(0, 0);
             this.txtTab.Multiline = true;
             this.txtTab.Name = "txtTab";
             this.txtTab.PasswordChar = '\0';
             this.txtTab.PlaceholderText = "";
             this.txtTab.SelectedText = "";
-            this.txtTab.Size = new System.Drawing.Size(26, 63);
+            this.txtTab.Size = new System.Drawing.Size(32, 63);
             this.txtTab.TabIndex = 0;
+            this.txtTab.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtTab.Visible = false;
             this.txtTab.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTab_KeyDown);
             this.txtTab.Leave += new System.EventHandler(this.txtTab_Leave);

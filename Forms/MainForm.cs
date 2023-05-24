@@ -69,11 +69,7 @@ namespace KSCS
         private void MainForm_Load(object sender, EventArgs e)
         {
             Category.TestCategory();
-            //초기 탭 설정 
-            TabName = 탭1.Name; //수정되어야함
-            탭1.Clicked += ChangeTab;
-            탭2.Clicked += ChangeTab;
-            탭3.Clicked += ChangeTab;
+            
 
             //초기 메인 카테고리 설정
             UserMainCategory school = new UserMainCategory();
@@ -85,9 +81,22 @@ namespace KSCS
             MainCategory.Controls.Add(school);
             MainCategory.Controls.Add(personal);
             MainCategory.Controls.Add(Etc);
-            dispalyDate();
+            //카테고리 로드
             DisplayCategery();
+
+            //초기 탭 설정 
+            TabName = 탭1.Name; //수정되어야함
+            탭1.Clicked += ChangeTab;
+            탭2.Clicked += ChangeTab;
+            탭3.Clicked += ChangeTab;
+            탭4.Clicked += ChangeTab;
+            탭5.Clicked += ChangeTab;
+            //탭 로드
             SetCheckedCategoryByTab();
+            탭1.ShowTab();
+
+            //달력
+            dispalyDate();
         }
 
         private async void LoadMagam()

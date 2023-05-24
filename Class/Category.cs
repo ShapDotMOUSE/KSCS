@@ -122,5 +122,12 @@ namespace KSCS
                 TabCategory.Remove(Sub);
             }
         }
+
+        public void ChangeMainName(string Old, string New)
+        {
+            Categories[New] = Categories[Old];
+            Categories.Remove(Old);
+        }
+
     }
 }

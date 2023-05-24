@@ -103,11 +103,11 @@
     <Compile Include="Forms\TempCategorySetting.Designer.cs">
       <DependentUpon>TempCategorySetting.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\MainForm\customTapButton.cs">
+    <Compile Include="UserControls\MainForm\UserTapButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\MainForm\customTapButton.Designer.cs">
-      <DependentUpon>customTapButton.cs</DependentUpon>
+    <Compile Include="UserControls\MainForm\UserTapButton.Designer.cs">
+      <DependentUpon>UserTapButton.cs</DependentUpon>
     </Compile>
     <Compile Include="Class\Database.cs" />
     <Compile Include="Forms\LoginForm.cs">
@@ -170,8 +170,8 @@
     <EmbeddedResource Include="Forms\TempCategorySetting.resx">
       <DependentUpon>TempCategorySetting.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\MainForm\customTapButton.resx">
-      <DependentUpon>customTapButton.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\MainForm\UserTapButton.resx">
+      <DependentUpon>UserTapButton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

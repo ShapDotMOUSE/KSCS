@@ -35,19 +35,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.category_underline = new Guna.UI2.WinForms.Guna2Separator();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.btnPlusCategory = new Guna.UI2.WinForms.Guna2Button();
             this.MainCategory = new System.Windows.Forms.FlowLayoutPanel();
-            this.학교 = new System.Windows.Forms.FlowLayoutPanel();
-            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
-            this.개인 = new System.Windows.Forms.FlowLayoutPanel();
-            this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Separator2 = new Guna.UI2.WinForms.Guna2Separator();
-            this.기타 = new System.Windows.Forms.FlowLayoutPanel();
             this.guna2PictureBox4 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
             this.panelMagam = new System.Windows.Forms.FlowLayoutPanel();
@@ -68,15 +59,6 @@
             this.lblMonth = new System.Windows.Forms.Label();
             this.guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.flpDays = new System.Windows.Forms.TableLayoutPanel();
-            this.guna2Elipse3 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.guna2Elipse4 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.guna2Elipse5 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.btnTab6 = new KSCS.customTapButton();
-            this.btnTab5 = new KSCS.customTapButton();
-            this.btnTab4 = new KSCS.customTapButton();
-            this.btnTab3 = new KSCS.customTapButton();
-            this.btnTab2 = new KSCS.customTapButton();
-            this.btnTab1 = new KSCS.customTapButton();
             this.userDate1 = new KSCS.UserDate();
             this.userDate2 = new KSCS.UserDate();
             this.userDate3 = new KSCS.UserDate();
@@ -119,8 +101,16 @@
             this.userDate40 = new KSCS.UserDate();
             this.userDate41 = new KSCS.UserDate();
             this.userDate42 = new KSCS.UserDate();
+            this.guna2Elipse3 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2Elipse4 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2Elipse5 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.btnTab6 = new KSCS.UserTapButton();
+            this.btnTab5 = new KSCS.UserTapButton();
+            this.btnTab4 = new KSCS.UserTapButton();
+            this.btnTab3 = new KSCS.UserTapButton();
+            this.btnTab2 = new KSCS.UserTapButton();
+            this.btnTab1 = new KSCS.UserTapButton();
             this.guna2Panel2.SuspendLayout();
-            this.MainCategory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox4)).BeginInit();
             this.guna2Panel3.SuspendLayout();
             this.panelMagamBtns.SuspendLayout();
@@ -188,35 +178,6 @@
             this.guna2Elipse1.BorderRadius = 15;
             this.guna2Elipse1.TargetControl = this;
             // 
-            // guna2Button1
-            // 
-            this.guna2Button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2Button1.BackColor = System.Drawing.Color.White;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.White;
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button1.ForeColor = System.Drawing.Color.Black;
-            this.guna2Button1.Location = new System.Drawing.Point(3, 3);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(150, 25);
-            this.guna2Button1.TabIndex = 10;
-            this.guna2Button1.Text = "학교                   ▼   ";
-            this.guna2Button1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button1.Click += new System.EventHandler(this.btnSchoolCategory_Click);
-            // 
-            // category_underline
-            // 
-            this.category_underline.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.category_underline.BackColor = System.Drawing.Color.White;
-            this.category_underline.FillColor = System.Drawing.Color.Black;
-            this.category_underline.Location = new System.Drawing.Point(3, 34);
-            this.category_underline.Name = "category_underline";
-            this.category_underline.Size = new System.Drawing.Size(130, 7);
-            this.category_underline.TabIndex = 11;
-            // 
             // guna2DragControl1
             // 
             this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
@@ -263,109 +224,11 @@
             // 
             this.MainCategory.AllowDrop = true;
             this.MainCategory.AutoScroll = true;
-            this.MainCategory.Controls.Add(this.guna2Button1);
-            this.MainCategory.Controls.Add(this.category_underline);
-            this.MainCategory.Controls.Add(this.학교);
-            this.MainCategory.Controls.Add(this.guna2Button2);
-            this.MainCategory.Controls.Add(this.guna2Separator1);
-            this.MainCategory.Controls.Add(this.개인);
-            this.MainCategory.Controls.Add(this.guna2Button3);
-            this.MainCategory.Controls.Add(this.guna2Separator2);
-            this.MainCategory.Controls.Add(this.기타);
             this.MainCategory.Location = new System.Drawing.Point(27, 207);
             this.MainCategory.Margin = new System.Windows.Forms.Padding(2);
             this.MainCategory.Name = "MainCategory";
             this.MainCategory.Size = new System.Drawing.Size(163, 449);
             this.MainCategory.TabIndex = 20;
-            // 
-            // 학교
-            // 
-            this.학교.AllowDrop = true;
-            this.학교.AutoScroll = true;
-            this.학교.Location = new System.Drawing.Point(9, 44);
-            this.학교.Margin = new System.Windows.Forms.Padding(9, 0, 2, 2);
-            this.학교.Name = "학교";
-            this.학교.Size = new System.Drawing.Size(136, 67);
-            this.학교.TabIndex = 17;
-            // 
-            // guna2Button2
-            // 
-            this.guna2Button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2Button2.BackColor = System.Drawing.Color.White;
-            this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button2.FillColor = System.Drawing.Color.White;
-            this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button2.ForeColor = System.Drawing.Color.Black;
-            this.guna2Button2.Location = new System.Drawing.Point(3, 116);
-            this.guna2Button2.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
-            this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(150, 25);
-            this.guna2Button2.TabIndex = 18;
-            this.guna2Button2.Text = "개인                   ▼   ";
-            this.guna2Button2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button2.Click += new System.EventHandler(this.btnPersonalCategory_Click);
-            // 
-            // guna2Separator1
-            // 
-            this.guna2Separator1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2Separator1.BackColor = System.Drawing.Color.White;
-            this.guna2Separator1.FillColor = System.Drawing.Color.Black;
-            this.guna2Separator1.Location = new System.Drawing.Point(3, 147);
-            this.guna2Separator1.Name = "guna2Separator1";
-            this.guna2Separator1.Size = new System.Drawing.Size(132, 8);
-            this.guna2Separator1.TabIndex = 19;
-            // 
-            // 개인
-            // 
-            this.개인.AllowDrop = true;
-            this.개인.AutoScroll = true;
-            this.개인.Location = new System.Drawing.Point(9, 158);
-            this.개인.Margin = new System.Windows.Forms.Padding(9, 0, 2, 2);
-            this.개인.Name = "개인";
-            this.개인.Size = new System.Drawing.Size(136, 67);
-            this.개인.TabIndex = 20;
-            // 
-            // guna2Button3
-            // 
-            this.guna2Button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2Button3.BackColor = System.Drawing.Color.White;
-            this.guna2Button3.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button3.FillColor = System.Drawing.Color.White;
-            this.guna2Button3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button3.ForeColor = System.Drawing.Color.Black;
-            this.guna2Button3.Location = new System.Drawing.Point(3, 230);
-            this.guna2Button3.Name = "guna2Button3";
-            this.guna2Button3.Size = new System.Drawing.Size(150, 25);
-            this.guna2Button3.TabIndex = 21;
-            this.guna2Button3.Text = "기타                   ▼   ";
-            this.guna2Button3.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button3.Click += new System.EventHandler(this.btnEtcCategory_Click);
-            // 
-            // guna2Separator2
-            // 
-            this.guna2Separator2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2Separator2.BackColor = System.Drawing.Color.White;
-            this.guna2Separator2.FillColor = System.Drawing.Color.Black;
-            this.guna2Separator2.Location = new System.Drawing.Point(3, 261);
-            this.guna2Separator2.Name = "guna2Separator2";
-            this.guna2Separator2.Size = new System.Drawing.Size(130, 8);
-            this.guna2Separator2.TabIndex = 22;
-            // 
-            // 기타
-            // 
-            this.기타.AllowDrop = true;
-            this.기타.AutoScroll = true;
-            this.기타.Location = new System.Drawing.Point(9, 272);
-            this.기타.Margin = new System.Windows.Forms.Padding(9, 0, 2, 2);
-            this.기타.Name = "기타";
-            this.기타.Size = new System.Drawing.Size(136, 67);
-            this.기타.TabIndex = 23;
             // 
             // guna2PictureBox4
             // 
@@ -689,72 +552,6 @@
             this.flpDays.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.flpDays.Size = new System.Drawing.Size(738, 473);
             this.flpDays.TabIndex = 42;
-            // 
-            // guna2Elipse3
-            // 
-            this.guna2Elipse3.BorderRadius = 10;
-            this.guna2Elipse3.TargetControl = this.guna2Panel3;
-            // 
-            // guna2Elipse4
-            // 
-            this.guna2Elipse4.BorderRadius = 10;
-            this.guna2Elipse4.TargetControl = this.guna2Panel4;
-            // 
-            // guna2Elipse5
-            // 
-            this.guna2Elipse5.BorderRadius = 10;
-            this.guna2Elipse5.TargetControl = this.guna2Panel5;
-            // 
-            // btnTab6
-            // 
-            this.btnTab6.Location = new System.Drawing.Point(842, 668);
-            this.btnTab6.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnTab6.Name = "btnTab6";
-            this.btnTab6.Size = new System.Drawing.Size(32, 63);
-            this.btnTab6.TabIndex = 22;
-            // 
-            // btnTab5
-            // 
-            this.btnTab5.Location = new System.Drawing.Point(842, 588);
-            this.btnTab5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnTab5.Name = "btnTab5";
-            this.btnTab5.Size = new System.Drawing.Size(32, 63);
-            this.btnTab5.TabIndex = 22;
-            // 
-            // btnTab4
-            // 
-            this.btnTab4.Location = new System.Drawing.Point(842, 508);
-            this.btnTab4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnTab4.Name = "btnTab4";
-            this.btnTab4.Size = new System.Drawing.Size(32, 63);
-            this.btnTab4.TabIndex = 22;
-            // 
-            // btnTab3
-            // 
-            this.btnTab3.Location = new System.Drawing.Point(842, 428);
-            this.btnTab3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnTab3.Name = "btnTab3";
-            this.btnTab3.Size = new System.Drawing.Size(32, 63);
-            this.btnTab3.TabIndex = 22;
-            this.btnTab3.Click += new System.EventHandler(this.ChangeTab);
-            // 
-            // btnTab2
-            // 
-            this.btnTab2.Location = new System.Drawing.Point(842, 344);
-            this.btnTab2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnTab2.Name = "btnTab2";
-            this.btnTab2.Size = new System.Drawing.Size(32, 63);
-            this.btnTab2.TabIndex = 22;
-            this.btnTab2.Click += new System.EventHandler(this.ChangeTab);
-            // 
-            // btnTab1
-            // 
-            this.btnTab1.Location = new System.Drawing.Point(842, 266);
-            this.btnTab1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnTab1.Name = "btnTab1";
-            this.btnTab1.Size = new System.Drawing.Size(32, 63);
-            this.btnTab1.TabIndex = 22;
-            this.btnTab1.Click += new System.EventHandler(this.ChangeTab);
             // 
             // userDate1
             // 
@@ -1134,6 +931,72 @@
             this.userDate42.Size = new System.Drawing.Size(105, 79);
             this.userDate42.TabIndex = 41;
             // 
+            // guna2Elipse3
+            // 
+            this.guna2Elipse3.BorderRadius = 10;
+            this.guna2Elipse3.TargetControl = this.guna2Panel3;
+            // 
+            // guna2Elipse4
+            // 
+            this.guna2Elipse4.BorderRadius = 10;
+            this.guna2Elipse4.TargetControl = this.guna2Panel4;
+            // 
+            // guna2Elipse5
+            // 
+            this.guna2Elipse5.BorderRadius = 10;
+            this.guna2Elipse5.TargetControl = this.guna2Panel5;
+            // 
+            // btnTab6
+            // 
+            this.btnTab6.Location = new System.Drawing.Point(842, 668);
+            this.btnTab6.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnTab6.Name = "btnTab6";
+            this.btnTab6.Size = new System.Drawing.Size(32, 63);
+            this.btnTab6.TabIndex = 22;
+            // 
+            // btnTab5
+            // 
+            this.btnTab5.Location = new System.Drawing.Point(842, 588);
+            this.btnTab5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnTab5.Name = "btnTab5";
+            this.btnTab5.Size = new System.Drawing.Size(32, 63);
+            this.btnTab5.TabIndex = 22;
+            // 
+            // btnTab4
+            // 
+            this.btnTab4.Location = new System.Drawing.Point(842, 508);
+            this.btnTab4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnTab4.Name = "btnTab4";
+            this.btnTab4.Size = new System.Drawing.Size(32, 63);
+            this.btnTab4.TabIndex = 22;
+            // 
+            // btnTab3
+            // 
+            this.btnTab3.Location = new System.Drawing.Point(842, 428);
+            this.btnTab3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnTab3.Name = "btnTab3";
+            this.btnTab3.Size = new System.Drawing.Size(32, 63);
+            this.btnTab3.TabIndex = 22;
+            this.btnTab3.Click += new System.EventHandler(this.ChangeTab);
+            // 
+            // btnTab2
+            // 
+            this.btnTab2.Location = new System.Drawing.Point(842, 344);
+            this.btnTab2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnTab2.Name = "btnTab2";
+            this.btnTab2.Size = new System.Drawing.Size(32, 63);
+            this.btnTab2.TabIndex = 22;
+            this.btnTab2.Click += new System.EventHandler(this.ChangeTab);
+            // 
+            // btnTab1
+            // 
+            this.btnTab1.Location = new System.Drawing.Point(842, 266);
+            this.btnTab1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnTab1.Name = "btnTab1";
+            this.btnTab1.Size = new System.Drawing.Size(32, 63);
+            this.btnTab1.TabIndex = 22;
+            this.btnTab1.Click += new System.EventHandler(this.ChangeTab);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -1161,7 +1024,6 @@
             this.Resize += new System.EventHandler(this.MainForm_Resize);
             this.guna2Panel2.ResumeLayout(false);
             this.guna2Panel2.PerformLayout();
-            this.MainCategory.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox4)).EndInit();
             this.guna2Panel3.ResumeLayout(false);
             this.guna2Panel3.PerformLayout();
@@ -1183,8 +1045,6 @@
         private System.Windows.Forms.Label lblStdNum;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
-        private Guna.UI2.WinForms.Guna2Separator category_underline;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
@@ -1207,12 +1067,12 @@
         private Guna.UI2.WinForms.Guna2CircleButton btnMagam_Online;
         private Guna.UI2.WinForms.Guna2CircleButton btnMagam_Prjct;
         private Guna.UI2.WinForms.Guna2CircleButton btnMagam_Personal;
-        private customTapButton btnTab1;
-        private customTapButton btnTab5;
-        private customTapButton btnTab6;
-        private customTapButton btnTab4;
-        private customTapButton btnTab3;
-        private customTapButton btnTab2;
+        private UserTapButton btnTab1;
+        private UserTapButton btnTab5;
+        private UserTapButton btnTab6;
+        private UserTapButton btnTab4;
+        private UserTapButton btnTab3;
+        private UserTapButton btnTab2;
         private Guna.UI2.WinForms.Guna2Button btnPrevisous;
         private Guna.UI2.WinForms.Guna2Button btnNext;
         private System.Windows.Forms.TableLayoutPanel flpDays;
@@ -1260,14 +1120,7 @@
         private UserDate userDate41;
         private UserDate userDate42;
         private System.Windows.Forms.FlowLayoutPanel MainCategory;
-        private System.Windows.Forms.FlowLayoutPanel 학교;
-        private System.Windows.Forms.FlowLayoutPanel 개인;
-        private System.Windows.Forms.FlowLayoutPanel 기타;
         private Guna.UI2.WinForms.Guna2Button btnPlusCategory;
-        private Guna.UI2.WinForms.Guna2Button guna2Button2;
-        private Guna.UI2.WinForms.Guna2Separator guna2Separator1;
-        private Guna.UI2.WinForms.Guna2Button guna2Button3;
-        private Guna.UI2.WinForms.Guna2Separator guna2Separator2;
     }
 }
 

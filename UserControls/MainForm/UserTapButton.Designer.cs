@@ -1,6 +1,6 @@
 ﻿namespace KSCS
 {
-    partial class customTapButton
+    partial class UserTapButton
     {
         /// <summary> 
         /// 필수 디자이너 변수입니다.

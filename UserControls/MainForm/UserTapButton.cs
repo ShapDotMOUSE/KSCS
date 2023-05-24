@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace KSCS
 {
-    public partial class customTapButton : UserControl
+    public partial class UserTapButton : UserControl
     {
         public event EventHandler Clicked;
-        public customTapButton()
+        public UserTapButton()
         {
             InitializeComponent();
         }

@@ -44,7 +44,7 @@
             this.category_underline.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.category_underline.BackColor = System.Drawing.Color.White;
             this.category_underline.FillColor = System.Drawing.Color.Black;
-            this.category_underline.Location = new System.Drawing.Point(0, 31);
+            this.category_underline.Location = new System.Drawing.Point(3, 31);
             this.category_underline.Name = "category_underline";
             this.category_underline.Size = new System.Drawing.Size(130, 7);
             this.category_underline.TabIndex = 19;
@@ -115,7 +115,6 @@
             this.lblMainCategory.TabIndex = 1;
             this.lblMainCategory.Text = null;
             this.lblMainCategory.DoubleClick += new System.EventHandler(this.lblMainCategory_DoubleClick);
-            this.lblMainCategory.Leave += new System.EventHandler(this.lblMainCategory_Leave);
             // 
             // txtMainCategory
             // 
@@ -138,6 +137,7 @@
             this.txtMainCategory.TabIndex = 0;
             this.txtMainCategory.Visible = false;
             this.txtMainCategory.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtMainCategory_KeyDown);
+            this.txtMainCategory.Leave += new System.EventHandler(this.txtMainCategory_Leave);
             // 
             // UserMainCategory
             // 
@@ -149,7 +149,6 @@
             this.Controls.Add(this.flpSubCategory);
             this.Name = "UserMainCategory";
             this.Size = new System.Drawing.Size(150, 110);
-            this.Load += new System.EventHandler(this.UserMainCategory_Load);
             this.tableLayoutPanel.ResumeLayout(false);
             this.guna2Panel1.ResumeLayout(false);
             this.ResumeLayout(false);

@@ -24,16 +24,22 @@ namespace KSCS
         {
             flpSubCategory.Visible = !flpSubCategory.Visible;
         }
-
-        private void UserMainCategory_Load(object sender, EventArgs e)
+        public void SetNewMode()
         {
             txtMainCategory.Visible = true;
             lblMainCategory.Visible = false;
+            lblMainCategory.Text = "";
             txtMainCategory.Text = lblMainCategory.Text;
             txtMainCategory.Focus();
-
         }
 
+        public void SetAddMode(string Main)
+        {
+            txtMainCategory.Visible = false;
+            lblMainCategory.Visible = true;
+            lblMainCategory.Text = Main;
+            this.Name= Main;
+        }
         private void lblMainCategory_DoubleClick(object sender, EventArgs e)
         {
             txtMainCategory.Visible = true;
@@ -41,17 +47,6 @@ namespace KSCS
             txtMainCategory.BringToFront();
             txtMainCategory.Focus();
             txtMainCategory.Text = lblMainCategory.Text;
-        }
-
-        private void lblMainCategory_Leave(object sender, EventArgs e)
-        {
-            txtMainCategory.Visible = false;
-            lblMainCategory.Visible = true;
-            txtMainCategory.Clear();
-            if (txtMainCategory.Text.Length == 0)
-            {
-                ((FlowLayoutPanel)this.Parent).Controls.Remove(this);
-            }
         }
 
         private void txtMainCategory_KeyDown(object sender, KeyEventArgs e)
@@ -64,11 +59,12 @@ namespace KSCS
                     //입력된 내용이 있을 경우
                     if (lblMainCategory.Text.Length > 0)
                     {
+                        MainForm.Category.ChangeMainName(lblMainCategory.Text, txtMainCategory.Text);
                     }
                     else
                     {
                         //신규 카테고리인 경우
-                        MainForm.C
+                        MainForm.Category.Categories.Add(lblMainCategory.Text, new HashSet<string>());
                     }
                     this.Name = txtMainCategory.Text;
                     lblMainCategory.Text = txtMainCategory.Text;
@@ -80,16 +76,27 @@ namespace KSCS
                 //카테고리 이름 변경 사항 취소
                 if (lblMainCategory.Text.Length > 0)
                 {
-                    //기존 카테고리인 경우 원복
+                    //기존 메인 카테고리인 경우 원복
                     lblMainCategory.Visible = true;
                     txtMainCategory.Visible = false;
                     txtMainCategory.Clear();
                 }
                 else
                 {
-                    //새로 만드는 카테고리인 경우 추가된 카테고리 삭제
+                    //새로 만든 메인 카테고리인 경우 추가된 카테고리 삭제
                     ((FlowLayoutPanel)this.Parent).Controls.Remove(this);
                 }
+            }
+        }
+
+        private void txtMainCategory_Leave(object sender, EventArgs e)
+        {
+            txtMainCategory.Visible = false;
+            lblMainCategory.Visible = true;
+            txtMainCategory.Clear();
+            if (lblMainCategory.Text.Length == 0)
+            {
+                ((FlowLayoutPanel)this.Parent).Controls.Remove(this);
             }
         }
     }

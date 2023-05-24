@@ -120,8 +120,8 @@ namespace KSCS
 
         private void UserCategory_DoubleClick(object sender, EventArgs e)
         {
-           // TempCategorySetting temp = new TempCategorySetting(((FlowLayoutPanel)this.Parent).Name , lblCategory.Text);
-           // temp.ShowDialog();
+           TempCategorySetting temp = new TempCategorySetting((FlowLayoutPanel)((FlowLayoutPanel)this.Parent).Parent, ((FlowLayoutPanel)this.Parent).Name , lblCategory.Text);
+           temp.ShowDialog();
         }
 
         

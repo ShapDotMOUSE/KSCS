@@ -71,7 +71,7 @@
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.btnPlusCategory = new Guna.UI2.WinForms.Guna2Button();
             this.guna2PictureBox4 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.btnTab6 = new KSCS.customTapButton();
+            this.btnSharing = new KSCS.UserControls.MainForm.SharingButton();
             this.btnTab5 = new KSCS.customTapButton();
             this.btnTab4 = new KSCS.customTapButton();
             this.btnTab3 = new KSCS.customTapButton();
@@ -119,7 +119,6 @@
             this.userDate40 = new KSCS.UserDate();
             this.userDate41 = new KSCS.UserDate();
             this.userDate42 = new KSCS.UserDate();
-            this.sharingButton1 = new KSCS.UserControls.MainForm.SharingButton();
             this.guna2Panel2.SuspendLayout();
             this.flpMainCategory.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
@@ -710,13 +709,12 @@
             this.guna2PictureBox4.TabIndex = 17;
             this.guna2PictureBox4.TabStop = false;
             // 
-            // btnTab6
+            // btnSharing
             // 
-            this.btnTab6.Location = new System.Drawing.Point(962, 835);
-            this.btnTab6.Margin = new System.Windows.Forms.Padding(4);
-            this.btnTab6.Name = "btnTab6";
-            this.btnTab6.Size = new System.Drawing.Size(36, 78);
-            this.btnTab6.TabIndex = 22;
+            this.btnSharing.Location = new System.Drawing.Point(962, 832);
+            this.btnSharing.Name = "btnSharing";
+            this.btnSharing.Size = new System.Drawing.Size(36, 78);
+            this.btnSharing.TabIndex = 23;
             // 
             // btnTab5
             // 
@@ -1139,13 +1137,6 @@
             this.userDate42.Size = new System.Drawing.Size(120, 98);
             this.userDate42.TabIndex = 41;
             // 
-            // sharingButton1
-            // 
-            this.sharingButton1.Location = new System.Drawing.Point(962, 834);
-            this.sharingButton1.Name = "sharingButton1";
-            this.sharingButton1.Size = new System.Drawing.Size(36, 78);
-            this.sharingButton1.TabIndex = 23;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -1153,8 +1144,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(1280, 918);
-            this.Controls.Add(this.sharingButton1);
-            this.Controls.Add(this.btnTab6);
+            this.Controls.Add(this.btnSharing);
             this.Controls.Add(this.btnTab5);
             this.Controls.Add(this.btnTab4);
             this.Controls.Add(this.btnTab3);
@@ -1280,8 +1270,7 @@
         private Guna.UI2.WinForms.Guna2CircleButton btnMagam_Prjct;
         private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton5;
         private Guna.UI2.WinForms.Guna2Button btnPlusCategory;
-        private customTapButton btnTab6;
-        private UserControls.MainForm.SharingButton sharingButton1;
+        private UserControls.MainForm.SharingButton btnSharing;
     }
 }
 

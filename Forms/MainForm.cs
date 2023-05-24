@@ -76,7 +76,15 @@ namespace KSCS
             btnTab3.Clicked += ChangeTab;
 
             //초기 메인 카테고리 설정
-            UserMainCategory school = UserMainCategory()
+            UserMainCategory school = new UserMainCategory();
+            school.SetAddMode("학교");
+            UserMainCategory personal = new UserMainCategory();
+            personal.SetAddMode("개인");
+            UserMainCategory Etc = new UserMainCategory();
+            Etc.SetAddMode("기타");
+            MainCategory.Controls.Add(school);
+            MainCategory.Controls.Add(personal);
+            MainCategory.Controls.Add(Etc);
             dispalyDate();
             DisplayCategery();
             SetCheckedCategoryByTab();
@@ -138,7 +146,7 @@ namespace KSCS
                 {
                     UserSubCategory uc = new UserSubCategory();
                     uc.SetBasicMode(item);
-                    ((FlowLayoutPanel)MainCategory.Controls[key]).Controls.Add(uc);
+                    ((FlowLayoutPanel)((UserMainCategory)MainCategory.Controls[key]).flpSubCategory).Controls.Add(uc);
                 }
             }
         }
@@ -149,16 +157,16 @@ namespace KSCS
             /*
              * TODO: 이 부분에 DB에 연결하는 함수 추가 필요
              */
-            customTapButton btn = sender as customTapButton;
+            UserTapButton btn = sender as UserTapButton;
             TabName = btn.Name;
             SetCheckedCategoryByTab();
         }
         private void SetCheckedCategoryByTab()
         {
-            FlowLayoutPanel[] flp = { 학교, 개인, 기타 };
-            foreach (FlowLayoutPanel panel in flp)
+            foreach (string key in Category.Categories.Keys)
             {
-                foreach (UserSubCategory category in panel.Controls)
+                FlowLayoutPanel flp = ((UserMainCategory)MainCategory.Controls[key]).flpSubCategory;
+                foreach (UserSubCategory category in flp.Controls)
                 {
                     category.SetChecked(Category.IsChecked(TabName, category.GetText()));
                 }
@@ -324,20 +332,6 @@ namespace KSCS
         }
 
         //카테고리 컨트롤------------------------------------------------------------------------------------------------------------------------------------
-        private void btnSchoolCategory_Click(object sender, EventArgs e)
-        {
-            학교.Visible = !학교.Visible;
-        }
-
-        private void btnPersonalCategory_Click(object sender, EventArgs e)
-        {
-            개인.Visible = !개인.Visible;
-        }
-
-        private void btnEtcCategory_Click(object sender, EventArgs e)
-        {
-            기타.Visible = !기타.Visible;
-        }
 
         private void btnPlusCategory_Click(object sender, EventArgs e)
         {

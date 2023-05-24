@@ -174,7 +174,7 @@ namespace KSCS
         {
             //guna2ContextMenuStrip1.Show(MousePosition);
             btnMemSet.Visible = false;
-            flowLayoutPanel1.Visible = true;
+            flpMember.Visible = true;
         }
 
         private void btnSchedule_Click(object sender, EventArgs e)
@@ -258,31 +258,46 @@ namespace KSCS
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            switch (e.KeyChar)
+            if (e.KeyChar == (Char)Keys.Enter || e.KeyChar == (Char)Keys.Space)
             {
-                case (char)Keys.Enter:
-
+                if (txtMember.Text.Length > 0)
+                {
                     MemberAdd memberAdd = new MemberAdd();
-                    memberAdd.txtMember.Text = textBox1.Text;
+                    memberAdd.txtMember.Text = txtMember.Text;
                     Size size = TextRenderer.MeasureText(memberAdd.txtMember.Text, memberAdd.txtMember.Font);
                     memberAdd.txtMember.ClientSize = new Size(size.Width, size.Height);
                     memberAdd.ClientSize = new Size(size.Width + 25, 18);
                     memberAdd.pictureBox1.ClientSize = new Size(10, 9);
-
-                    flowLayoutPanel1.Controls.Add(memberAdd);
-                    break;
-                case (char)Keys.Space:
-
-                    MemberAdd memberAdd2 = new MemberAdd();
-                    memberAdd2.txtMember.Text = textBox1.Text;
-                    Size size2 = TextRenderer.MeasureText(memberAdd2.txtMember.Text, memberAdd2.txtMember.Font);
-                    memberAdd2.txtMember.ClientSize = new Size(size2.Width, size2.Height);
-                    memberAdd2.ClientSize = new Size(size2.Width + 25, 18);
-                    memberAdd2.pictureBox1.ClientSize = new Size(10, 9);
-
-                    flowLayoutPanel1.Controls.Add(memberAdd2);
-                    break;
+                    txtMember.Text = "";
+                    flpMember.Controls.Add(memberAdd);
+                }
             }
+            else
+        {
+                if(txtMember.Text == "\r\n")
+                {
+                    txtMember.Text = "";
+                }
+            }
+        }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            
+            //if(e.KeyCode == Keys.Enter || e.KeyCode == Keys.Space)
+            //{
+            //    if (textBox1.Text.Length > 0)
+            //    {
+            //        MemberAdd memberAdd = new MemberAdd();
+            //        memberAdd.txtMember.Text = textBox1.Text;
+            //        Size size = TextRenderer.MeasureText(memberAdd.txtMember.Text, memberAdd.txtMember.Font);
+            //        memberAdd.txtMember.ClientSize = new Size(size.Width, size.Height);
+            //        memberAdd.ClientSize = new Size(size.Width + 25, 18);
+            //        memberAdd.pictureBox1.ClientSize = new Size(10, 9);
+            //        textBox1.Text = "";
+            //        flowLayoutPanel1.Controls.Add(memberAdd);
+            //    }
+            //}
         }
     }
 }

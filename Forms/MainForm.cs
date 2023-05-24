@@ -93,7 +93,8 @@ namespace KSCS
 
         public void InitializeDatabase()
         {
-            string selectQuery = string.Format("SELECT * from Schedule JOIN Category ON Schedule.category_id=Category.id JOIN StudentCategory ON StudentCategory.student_id=Schedule.student_id and Schedule.category_id=Category.id and Category.id=StudentCategory.category_id WHERE Schedule.student_id={0} and  startDate BETWEEN DATE_FORMAT('{1}', '%Y-%m-%d') AND LAST_DAY('{1}') ORDER BY startDate ASC;", stdNum, new DateTime(year, month, 1).ToString("yyyy-MM-dd"));
+            //쿼리 수정(endDate 까지 포함)
+            string selectQuery = string.Format("SELECT * from Schedule JOIN Category ON Schedule.category_id=Category.id JOIN StudentCategory ON StudentCategory.student_id=Schedule.student_id and Schedule.category_id=Category.id and Category.id=StudentCategory.category_id WHERE Schedule.student_id={0} and  (startDate BETWEEN DATE_FORMAT('{1}', '%Y-%m-%d') AND LAST_DAY('{1}') or endDate BETWEEN DATE_FORMAT('{1}', '%Y-%m-%d') AND LAST_DAY('{1}')) ORDER BY startDate ASC;", stdNum, new DateTime(year, month, 1).ToString("yyyy-MM-dd"));
             MySqlCommand cmd = new MySqlCommand(selectQuery, connection);
             MySqlDataReader table = cmd.ExecuteReader();
             monthScheduleList.Clear(); //한달 스케줄 초기화
@@ -117,7 +118,23 @@ namespace KSCS
                     id = int.Parse(table["id"].ToString()),
                 };
 
-                monthScheduleList[Convert.ToInt32(schedule.startDate.ToString("dd")) - 1].Add(schedule);
+                //startDate와 endDate 일자가 다른 경우
+                if(!String.Equals(schedule.startDate.ToString("MM-dd"), schedule.endDate.ToString("MM- dd")))
+                {
+                    //두 날짜 사이 기간 계산(월이 다른 경우 포함)
+                    TimeSpan duration = schedule.endDate - schedule.startDate; 
+                    for (int i = 0; i <= duration.Days; i++)
+                    {
+                        if(Convert.ToInt32(schedule.startDate.AddDays(i).ToString("MM")) == month)
+                        {
+                            monthScheduleList[Convert.ToInt32(schedule.startDate.AddDays(i).ToString("dd")) - 1].Add(schedule);
+                        }
+                    }
+                }
+                else
+                {
+                    monthScheduleList[Convert.ToInt32(schedule.startDate.ToString("dd")) - 1].Add(schedule);
+                }
             }
 
             table.Close();

@@ -127,7 +127,7 @@ namespace KSCS
                     int.Parse(MainForm.categoryDict[schedule.category][0]),
                     schedule.startDate.ToString("yyyy-MM-dd, HH:mm"),
                     schedule.endDate.ToString("yyyy-MM-dd, HH:mm"),
-                    //scheduleList[selectedScheduleIndex].id
+
                     MainForm.monthScheduleList[UserDate.static_date - 1][selectedScheduleIndex].id
                     );
                     MySqlCommand cmd = new MySqlCommand(updateQuery, connection);

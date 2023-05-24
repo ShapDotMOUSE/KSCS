@@ -39,12 +39,12 @@
             this.txtEventInfo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtEventInfo.AutoSize = false;
             this.txtEventInfo.BackColor = System.Drawing.Color.Transparent;
-            this.txtEventInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEventInfo.Font = new System.Drawing.Font("Pretendard Variable SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.txtEventInfo.ForeColor = System.Drawing.Color.White;
             this.txtEventInfo.Location = new System.Drawing.Point(14, 3);
             this.txtEventInfo.Margin = new System.Windows.Forms.Padding(0);
             this.txtEventInfo.Name = "txtEventInfo";
-            this.txtEventInfo.Size = new System.Drawing.Size(136, 28);
+            this.txtEventInfo.Size = new System.Drawing.Size(136, 27);
             this.txtEventInfo.TabIndex = 2;
             this.txtEventInfo.Text = "일정 정보";
             // 

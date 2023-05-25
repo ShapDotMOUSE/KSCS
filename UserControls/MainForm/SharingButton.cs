@@ -8,12 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace KSCS
+namespace KSCS.UserControls.MainForm
 {
-    public partial class customTapButton : UserControl
+    public partial class SharingButton : UserControl
     {
         public event EventHandler Clicked;
-        public customTapButton()
+
+        public SharingButton()
         {
             InitializeComponent();
         }
@@ -23,21 +24,21 @@ namespace KSCS
             Clicked?.Invoke(this, e);
         }
 
-        private void btnTab_MouseHover(object sender, EventArgs e)
-        {
-            btnTap.BringToFront();
-            //panelWhite.Visible = false;
-        }
-
-        private void btnTap_MouseLeave(object sender, EventArgs e)
+        private void btnSharing_MouseLeave(object sender, EventArgs e)
         {
             //panelWhite.Visible = true;
             panelWhite.BringToFront();
         }
 
-        private void customTapButton_Click(object sender, EventArgs e)
+        private void SharingButton_Click(object sender, EventArgs e)
         {
             OnClick(e);
+        }
+
+        private void btnSharing_MouseHover(object sender, EventArgs e)
+        {
+            btnSharing.BringToFront();
+            //panelWhite.Visible = false;
         }
     }
 }

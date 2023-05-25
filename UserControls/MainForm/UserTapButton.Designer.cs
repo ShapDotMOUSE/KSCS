@@ -1,6 +1,6 @@
 ﻿namespace KSCS
 {
-    partial class customTapButton
+    partial class UserTabButton
     {
         /// <summary> 
         /// 필수 디자이너 변수입니다.
@@ -32,6 +32,8 @@
             this.btnTap = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.panelWhite = new Guna.UI2.WinForms.Guna2Panel();
+            this.txtTab = new Guna.UI2.WinForms.Guna2TextBox();
+            this.panelWhite.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnTap
@@ -45,15 +47,15 @@
             this.btnTap.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnTap.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(5)))), ((int)(((byte)(31)))));
             this.btnTap.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(5)))), ((int)(((byte)(31)))));
-            this.btnTap.Font = new System.Drawing.Font("Segoe UI", 6F);
+            this.btnTap.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTap.ForeColor = System.Drawing.Color.White;
             this.btnTap.Location = new System.Drawing.Point(0, 0);
-            this.btnTap.Margin = new System.Windows.Forms.Padding(4);
             this.btnTap.Name = "btnTap";
             this.btnTap.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnTap.Size = new System.Drawing.Size(45, 94);
+            this.btnTap.Size = new System.Drawing.Size(32, 63);
             this.btnTap.TabIndex = 23;
             this.btnTap.Click += new System.EventHandler(this.customTapButton_Click);
+            this.btnTap.DoubleClick += new System.EventHandler(this.btnTap_DoubleClick);
             this.btnTap.MouseEnter += new System.EventHandler(this.btnTab_MouseHover);
             this.btnTap.MouseLeave += new System.EventHandler(this.btnTap_MouseLeave);
             // 
@@ -65,31 +67,34 @@
             // panelWhite
             // 
             this.panelWhite.BackColor = System.Drawing.Color.White;
+            this.panelWhite.Controls.Add(this.txtTab);
             this.panelWhite.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelWhite.Location = new System.Drawing.Point(0, 0);
+            this.panelWhite.Margin = new System.Windows.Forms.Padding(2);
             this.panelWhite.Name = "panelWhite";
-            this.panelWhite.Size = new System.Drawing.Size(17, 94);
+            this.panelWhite.Size = new System.Drawing.Size(12, 63);
             this.panelWhite.TabIndex = 25;
             this.panelWhite.MouseEnter += new System.EventHandler(this.btnTab_MouseHover);
             this.panelWhite.MouseLeave += new System.EventHandler(this.btnTap_MouseLeave);
             // 
             // customTapButton
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panelWhite);
             this.Controls.Add(this.btnTap);
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "customTapButton";
-            this.Size = new System.Drawing.Size(45, 94);
+            this.Name = "UserTabButton";
+            this.Size = new System.Drawing.Size(32, 63);
+            this.Load += new System.EventHandler(this.UserTabButton_Load);
+            this.panelWhite.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private Guna.UI2.WinForms.Guna2Button btnTap;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
         private Guna.UI2.WinForms.Guna2Panel panelWhite;
+        private Guna.UI2.WinForms.Guna2Button btnTap;
+        private Guna.UI2.WinForms.Guna2TextBox txtTab;
     }
 }

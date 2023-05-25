@@ -10,7 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Configuration;
-using System.Linq; //추가
+using System.Linq;
+using KSCS.UserControls.MainForm;
 
 namespace KSCS
 {
@@ -243,7 +244,9 @@ namespace KSCS
 
         private void btnMemSet_Click(object sender, EventArgs e)
         {
-            guna2ContextMenuStrip1.Show(MousePosition);
+            //guna2ContextMenuStrip1.Show(MousePosition);
+            btnMemSet.Visible = false;
+            flowLayoutPanel1.Visible = true;
         }
 
         private void btnSchedule_Click(object sender, EventArgs e)
@@ -327,12 +330,39 @@ namespace KSCS
             panelSchedules.Controls.Add(btnAddSchedule);
         }
 
-        //추가
         public void ClearAllDelegatesOfTheEventHandler()
         {
             foreach (Delegate d in AddEvent.GetInvocationList())
             {
                 AddEvent -= (EventHandler)d;
+        }
+        
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            switch (e.KeyChar)
+            {
+                case (char)Keys.Enter:
+
+                    MemberAdd memberAdd = new MemberAdd();
+                    memberAdd.txtMember.Text = textBox1.Text;
+                    Size size = TextRenderer.MeasureText(memberAdd.txtMember.Text, memberAdd.txtMember.Font);
+                    memberAdd.txtMember.ClientSize = new Size(size.Width, size.Height);
+                    memberAdd.ClientSize = new Size(size.Width + 25, 18);
+                    memberAdd.pictureBox1.ClientSize = new Size(10, 9);
+
+                    flowLayoutPanel1.Controls.Add(memberAdd);
+                    break;
+                case (char)Keys.Space:
+
+                    MemberAdd memberAdd2 = new MemberAdd();
+                    memberAdd2.txtMember.Text = textBox1.Text;
+                    Size size2 = TextRenderer.MeasureText(memberAdd2.txtMember.Text, memberAdd2.txtMember.Font);
+                    memberAdd2.txtMember.ClientSize = new Size(size2.Width, size2.Height);
+                    memberAdd2.ClientSize = new Size(size2.Width + 25, 18);
+                    memberAdd2.pictureBox1.ClientSize = new Size(10, 9);
+
+                    flowLayoutPanel1.Controls.Add(memberAdd2);
+                    break;
             }
         }
     }

@@ -25,6 +25,7 @@ using KSCS.Class;
 using MySql.Data.MySqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 using System.Web.UI;
+using KSCS.UserControls.MainForm;
 
 namespace KSCS
 {
@@ -68,14 +69,34 @@ namespace KSCS
         private void MainForm_Load(object sender, EventArgs e)
         {
             Category.TestCategory();
-            //초기 탭 설정 
-            TabName = btnTab1.Name; //수정되어야함
-            btnTab1.Clicked += ChangeTab;
-            btnTab2.Clicked += ChangeTab;
-            btnTab3.Clicked += ChangeTab;
-            dispalyDate();
+
+
+            //초기 메인 카테고리 설정
+            UserMainCategory school = new UserMainCategory();
+            school.SetAddMode("학교");
+            UserMainCategory personal = new UserMainCategory();
+            personal.SetAddMode("개인");
+            UserMainCategory Etc = new UserMainCategory();
+            Etc.SetAddMode("기타");
+            MainCategory.Controls.Add(school);
+            MainCategory.Controls.Add(personal);
+            MainCategory.Controls.Add(Etc);
+            //카테고리 로드
             DisplayCategery();
+
+            //초기 탭 설정 
+            TabName = 탭1.Name; //수정되어야함
+            탭1.Clicked += ChangeTab;
+            탭2.Clicked += ChangeTab;
+            탭3.Clicked += ChangeTab;
+            탭4.Clicked += ChangeTab;
+            탭5.Clicked += ChangeTab;
+            //탭 로드
             SetCheckedCategoryByTab();
+            탭1.ShowTab();
+
+            //달력
+            dispalyDate();
         }
 
         private async void LoadMagam()
@@ -86,7 +107,7 @@ namespace KSCS
 
         private void MainForm_Resize(object sender, EventArgs e)
         {
-            this.Size = new Size(1280, 960);
+            this.Size = new Size(1280, 1080);
         }
 
 
@@ -137,29 +158,14 @@ namespace KSCS
         //카테고리 함수---------------------------------------------------------------------------------------------------------------------------------------
         private void DisplayCategery()
         {
-
-            foreach (var item in Category.ParentCategorys["SchoolCategory"] as HashSet<string>)
+            foreach (var key in Category.Categories.Keys)
             {
-                UserCategory uc = new UserCategory();
-                uc.SetBasicMode(item);
-                uc.MouseDoubleClick += UcCategory_MouseDoubleClick;
-                flpSchoolCategory.Controls.Add(uc);
-            }
-
-            foreach (var item in Category.ParentCategorys["PersonalCategory"] as HashSet<string>)
-            {
-                UserCategory uc = new UserCategory();
-                uc.SetBasicMode(item);
-                uc.MouseDoubleClick += UcCategory_MouseDoubleClick;
-                flpPersonalCategory.Controls.Add(uc);
-            }
-
-            foreach (var item in Category.ParentCategorys["EtcCategory"] as HashSet<string>)
-            {
-                UserCategory uc = new UserCategory();
-                uc.SetBasicMode(item);
-                uc.MouseDoubleClick += UcCategory_MouseDoubleClick;
-                flpEtcCategory.Controls.Add(uc);
+                foreach (var item in Category.Categories[key])
+                {
+                    UserSubCategory uc = new UserSubCategory();
+                    uc.SetBasicMode(item);
+                    ((FlowLayoutPanel)((UserMainCategory)MainCategory.Controls[key]).flpSubCategory).Controls.Add(uc);
+                }
             }
         }
 
@@ -169,23 +175,24 @@ namespace KSCS
             /*
              * TODO: 이 부분에 DB에 연결하는 함수 추가 필요
              */
-            customTapButton btn = sender as customTapButton;
+            UserTabButton OldTab = this.Controls[TabName] as UserTabButton;
+            UserTabButton btn = sender as UserTabButton;
             TabName = btn.Name;
+            OldTab.HideTab();
             SetCheckedCategoryByTab();
         }
         private void SetCheckedCategoryByTab()
         {
-            FlowLayoutPanel[] flp = { flpSchoolCategory, flpPersonalCategory, flpEtcCategory };
-            foreach (FlowLayoutPanel panel in flp)
+            foreach (string key in Category.Categories.Keys)
             {
-                foreach (UserCategory category in panel.Controls)
+                FlowLayoutPanel flp = ((UserMainCategory)MainCategory.Controls[key]).flpSubCategory;
+                foreach (UserSubCategory category in flp.Controls)
                 {
                     category.SetChecked(Category.IsChecked(TabName, category.GetText()));
                 }
             }
 
         }
-
 
         private void LoadCategory()
         {
@@ -268,9 +275,9 @@ namespace KSCS
             Panel panel = (Panel)btn.Parent;
             foreach (Guna2CircleButton magamBtn in panel.Controls)
             {
-                magamBtn.FillColor = SystemColors.HotTrack;
+                magamBtn.FillColor = Color.FromArgb(217, 217, 217); ;
             }
-            btn.FillColor = Color.SteelBlue;
+            //btn.FillColor = Color.FromArgb(217,217,217);
             panelMagam.Controls.Clear();
             int index = 0;
 
@@ -346,26 +353,12 @@ namespace KSCS
         }
 
         //카테고리 컨트롤------------------------------------------------------------------------------------------------------------------------------------
-        private void btnSchoolCategory_Click(object sender, EventArgs e)
-        {
-            flpSchoolCategory.Visible = !flpSchoolCategory.Visible;
-        }
-
-        private void btnPersonalCategory_Click(object sender, EventArgs e)
-        {
-            flpPersonalCategory.Visible = !flpPersonalCategory.Visible;
-        }
-
-        private void btnEtcCategory_Click(object sender, EventArgs e)
-        {
-            flpEtcCategory.Visible = !flpEtcCategory.Visible;
-        }
 
         private void btnPlusCategory_Click(object sender, EventArgs e)
         {
-            UserCategory category = new UserCategory();
-            category.MouseDoubleClick += UcCategory_MouseDoubleClick;
-            flpEtcCategory.Controls.Add(category);
+            UserMainCategory category = new UserMainCategory();
+            category.SetNewMode();
+            MainCategory.Controls.Add(category);
         }
 
         ////카테고리 유저 컨트롤------------------------------------------------------------------------------------------------------------------------------------

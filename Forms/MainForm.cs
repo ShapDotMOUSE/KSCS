@@ -127,23 +127,6 @@ namespace KSCS
                         MainForm.monthScheduleList[Convert.ToInt32(schedule.startDate.AddDays(i).ToString("dd")) - 1].Add(schedule);
                     }
                 }
-
-                //if(!String.Equals(schedule.startDate.ToString("MM-dd"), schedule.endDate.ToString("MM- dd")))
-                //{
-                //    //두 날짜 사이 기간 계산(월이 다른 경우 포함)
-                //    TimeSpan duration = schedule.endDate - schedule.startDate; 
-                //    for (int i = 0; i <= duration.Days; i++)
-                //    {
-                //        if(Convert.ToInt32(schedule.startDate.AddDays(i).ToString("MM")) == month)
-                //        {
-                //            monthScheduleList[Convert.ToInt32(schedule.startDate.AddDays(i).ToString("dd")) - 1].Add(schedule);
-                //        }
-                //    }
-                //}
-                //else
-                //{
-                //    monthScheduleList[Convert.ToInt32(schedule.startDate.ToString("dd")) - 1].Add(schedule);
-                //}
             }
 
             table.Close();
@@ -470,7 +453,5 @@ namespace KSCS
         {
             return flpDays.Controls.OfType<UserDate>();
         }
-
-
     }
 }

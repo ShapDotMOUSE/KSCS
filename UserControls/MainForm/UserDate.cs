@@ -40,6 +40,7 @@ namespace KSCS
             flpEvent.Controls.Clear();
             if (lblDate.Visible)
             {
+                lblDate.Text = "0";
                 BackColor = Color.White;
                 lblDate.Visible = false;
 

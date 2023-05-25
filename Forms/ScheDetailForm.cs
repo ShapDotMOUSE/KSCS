@@ -122,15 +122,6 @@ namespace KSCS
                         AddEvent += new EventHandler(Application.OpenForms.OfType<MainForm>().FirstOrDefault().GetUserDate().SingleOrDefault(userDate => Convert.ToInt32(userDate.GetLblDate()) == Convert.ToInt32(schedule.startDate.AddDays(i).ToString("dd"))).SaveEvent);
                     }
                 }
-
-                //스케줄 리스트 기간 순 -> 시작 시간 순 정렬 후 다시 리스트 할당
-                //for (int i = 0; i <= (schedule.endDate - schedule.startDate).Days; i++)
-                //{
-                //    if (Convert.ToInt32(schedule.startDate.AddDays(i).ToString("MM")) == MainForm.static_month)
-                //    {
-                //        MainForm.monthScheduleList[Convert.ToInt32(schedule.startDate.AddDays(i).ToString("dd")) - 1] = MainForm.monthScheduleList[Convert.ToInt32(schedule.startDate.AddDays(i).ToString("dd")) - 1].OrderBy(sche => sche.startDate).OrderByDescending(sche => (sche.endDate - sche.startDate).Days).ToList();
-                //    }
-                //}
             }
             else if (addBtn.Text == "Modify")
             {
@@ -156,7 +147,6 @@ namespace KSCS
                     Schedule selectedSchedule = MainForm.monthScheduleList[UserDate.static_date - 1][selectedScheduleIndex]; //클릭한 날짜의 원래 스케줄
                     if ((selectedSchedule.startDate - schedule.startDate).Days < 0)
                     {
-                        //Schedule selectedSchedule = MainForm.monthScheduleList[UserDate.static_date - 1][selectedScheduleIndex]; //클릭한 날짜의 원래 스케줄
                         TimeSpan diff = schedule.startDate - selectedSchedule.startDate;
                         for (int i = 0; i < diff.Days; i++)
                         {
@@ -169,7 +159,6 @@ namespace KSCS
                     }
                     if ((selectedSchedule.endDate - schedule.endDate).Days > 0)
                     {
-                        //Schedule selectedSchedule = MainForm.monthScheduleList[UserDate.static_date - 1][selectedScheduleIndex]; //클릭한 날짜의 원래 스케줄
                         TimeSpan diff = selectedSchedule.endDate - schedule.endDate;
                         for (int i = 1; i <= diff.Days; i++)
                         {
@@ -207,23 +196,20 @@ namespace KSCS
                                 MainForm.monthScheduleList[Convert.ToInt32(schedule.startDate.AddDays(i).ToString("dd")) - 1].Add(selectedSchedule); //schedule->selectedSchedule 하니까 바로 오류 사라짐;;;
                                 
                             }
+
                             AddEvent += new EventHandler(Application.OpenForms.OfType<MainForm>().FirstOrDefault().GetUserDate().SingleOrDefault(userDate => Convert.ToInt32(userDate.GetLblDate()) == Convert.ToInt32(schedule.startDate.AddDays(i).ToString("dd"))).SaveEvent); //이벤트 핸들러 추가
                         }
                        
                     }
                 }
             }
-            
-            //if (AddEvent != null)
-            //{
-            //    AddEvent(this, new EventArgs());
-            //}
-            AddEvent?.Invoke(this, EventArgs.Empty);
+                
+            AddEvent?.Invoke(this, EventArgs.Empty); //이벤트 핸들러 발생
 
             ClearForm();
             //스케줄 유닛 다시 load
             InitializeScheDetailForm();
-            ClearAllDelegatesOfTheEventHandler(); //추가
+            ClearAllDelegatesOfTheEventHandler(); //이벤트 핸들러 초기화
         }
 
         private void deleteBtn_Click(object sender, EventArgs e) //삭제
@@ -246,16 +232,12 @@ namespace KSCS
                     }
                 }
 
-                //if (AddEvent != null)
-                //{
-                //    AddEvent(this, new EventArgs());
-                //}
-                AddEvent?.Invoke(this, EventArgs.Empty);
+                AddEvent?.Invoke(this, EventArgs.Empty); //이벤트 핸들러 발생
 
                 ClearForm();
                 //스케줄 유닛 다시 load
                 InitializeScheDetailForm();
-                ClearAllDelegatesOfTheEventHandler(); //추가
+                ClearAllDelegatesOfTheEventHandler(); //이벤트 핸들러 초기화
             }
         }
 

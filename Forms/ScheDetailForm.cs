@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Configuration;
-using System.Linq;
 using KSCS.UserControls.MainForm;
 
 namespace KSCS
@@ -20,7 +19,7 @@ namespace KSCS
         public event EventHandler AddEvent;
 
         MySqlConnection connection = DatabaseConnection.getDBConnection();
-        int selectedScheduleIndex=-1; 
+        int selectedScheduleIndex = -1;
         DateTime click_date = new DateTime(MainForm.static_year, MainForm.static_month, UserDate.static_date); //추가
         public ScheDetailForm()
         {
@@ -28,7 +27,7 @@ namespace KSCS
             InitializeGuna2DateTimePicker();
             //connection.Open();
             InitializeScheDetailForm();
-            panelSchedules.VerticalScroll.Visible = false; 
+            panelSchedules.VerticalScroll.Visible = false;
         }
 
         private void InitializeGuna2DateTimePicker()
@@ -45,7 +44,7 @@ namespace KSCS
             tbTitle.Text = "";
             tbMemo.Text = "";
             tbPlace.Text = "";
-            cbCategory.SelectedItem= null;
+            cbCategory.SelectedItem = null;
             InitializeGuna2DateTimePicker();
 
             //추가
@@ -192,19 +191,19 @@ namespace KSCS
                                     exist = true;
                                 }
                             });
-                            if(!exist) //startDate 혹은 endDate가 날짜가 바뀐 경우, 해당 일정 없으면 수정한 것 "추가"
+                            if (!exist) //startDate 혹은 endDate가 날짜가 바뀐 경우, 해당 일정 없으면 수정한 것 "추가"
                             {
                                 MainForm.monthScheduleList[Convert.ToInt32(schedule.startDate.AddDays(i).ToString("dd")) - 1].Add(selectedSchedule); //schedule->selectedSchedule 하니까 바로 오류 사라짐;;;
-                                
+
                             }
 
                             AddEvent += new EventHandler(Application.OpenForms.OfType<MainForm>().FirstOrDefault().GetUserDate().SingleOrDefault(userDate => Convert.ToInt32(userDate.GetLblDate()) == Convert.ToInt32(schedule.startDate.AddDays(i).ToString("dd"))).SaveEvent); //이벤트 핸들러 추가
                         }
-                       
+
                     }
                 }
             }
-                
+
             AddEvent?.Invoke(this, EventArgs.Empty); //이벤트 핸들러 발생
 
             ClearForm();
@@ -261,7 +260,7 @@ namespace KSCS
             int categoryIndex = cbCategory.Items.IndexOf(MainForm.monthScheduleList[UserDate.static_date - 1][index].category);
             panelTop.BackColor = Color.FromArgb(int.Parse(MainForm.categoryDict[MainForm.monthScheduleList[UserDate.static_date - 1][index].category][1]));
             cbCategory.SelectedIndex = categoryIndex;
-            cbCategory.Text= MainForm.monthScheduleList[UserDate.static_date - 1][index].category;
+            cbCategory.Text = MainForm.monthScheduleList[UserDate.static_date - 1][index].category;
             dtpEndDate.Value = MainForm.monthScheduleList[UserDate.static_date - 1][index].endDate;
             dtpEndTime.Value = MainForm.monthScheduleList[UserDate.static_date - 1][index].endDate;
 
@@ -282,7 +281,7 @@ namespace KSCS
 
         private void cbCategory_DropDownClosed(object sender, EventArgs e)
         {
-            if(cbCategory.SelectedIndex!=0&& addBtn.Text=="Modify") 
+            if (cbCategory.SelectedIndex != 0 && addBtn.Text == "Modify")
             {
                 scheduleUnit scheduleUnit = (scheduleUnit)(panelSchedules.Controls[selectedScheduleIndex]);
                 scheduleUnit.ChangeScheduleColor(Color.FromArgb(int.Parse(MainForm.categoryDict[cbCategory.Text][1]))); //수정
@@ -305,7 +304,7 @@ namespace KSCS
             int index = 0;
 
             //클릭한 날짜의 하루 스케줄 리스트
-            for (int i = 0; i < MainForm.monthScheduleList[UserDate.static_date-1].Count; i++)
+            for (int i = 0; i < MainForm.monthScheduleList[UserDate.static_date - 1].Count; i++)
             {
                 scheduleUnit scheduleUnit = new scheduleUnit
                 {
@@ -322,8 +321,8 @@ namespace KSCS
             cbCategory.Items.Clear();
             foreach (string Key in MainForm.categoryDict.Keys)
             {
-                if (!cbCategory.Items.Contains(Key)) { 
-                    cbCategory.Items.Add(Key); 
+                if (!cbCategory.Items.Contains(Key)) {
+                    cbCategory.Items.Add(Key);
                 }
             }
             btnAddSchedule.Location = new Point(24, 12 + index * 55);
@@ -335,8 +334,9 @@ namespace KSCS
             foreach (Delegate d in AddEvent.GetInvocationList())
             {
                 AddEvent -= (EventHandler)d;
+            }
         }
-        
+
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             switch (e.KeyChar)

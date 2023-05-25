@@ -111,26 +111,18 @@ namespace KSCS
                     schedule.id = int.Parse(table["id"].ToString());
                 }
                 table.Close();
+
                 //스케줄 리스트 추가
-                //startDate와 endDate 일자가 다른 경우(추가)
-                if (!String.Equals(schedule.startDate.ToString("MM-dd"), schedule.endDate.ToString("MM-dd")))
+                TimeSpan duration = schedule.endDate - schedule.startDate;
+                for (int i = 0; i <= duration.Days; i++)
                 {
-                    //두 날짜 사이 기간 계산(월이 다른 경우 포함)
-                    TimeSpan duration = schedule.endDate - schedule.startDate;
-                    for (int i = 0; i <= duration.Days; i++)
+                    if (Convert.ToInt32(schedule.startDate.AddDays(i).ToString("MM")) == MainForm.static_month)
                     {
-                        if (Convert.ToInt32(schedule.startDate.AddDays(i).ToString("MM")) == MainForm.static_month)
-                        {
-                            MainForm.monthScheduleList[Convert.ToInt32(schedule.startDate.AddDays(i).ToString("dd")) - 1].Add(schedule);
-                            AddEvent += new EventHandler(Application.OpenForms.OfType<MainForm>().FirstOrDefault().GetUserDate().SingleOrDefault(userDate => Convert.ToInt32(userDate.GetLblDate()) == Convert.ToInt32(schedule.startDate.AddDays(i).ToString("dd"))).SaveEvent);
-                        }
+                        MainForm.monthScheduleList[Convert.ToInt32(schedule.startDate.AddDays(i).ToString("dd")) - 1].Add(schedule);
+                        AddEvent += new EventHandler(Application.OpenForms.OfType<MainForm>().FirstOrDefault().GetUserDate().SingleOrDefault(userDate => Convert.ToInt32(userDate.GetLblDate()) == Convert.ToInt32(schedule.startDate.AddDays(i).ToString("dd"))).SaveEvent);
                     }
                 }
-                else
-                {
-                    MainForm.monthScheduleList[Convert.ToInt32(schedule.startDate.ToString("dd")) - 1].Add(schedule);
-                }
-                //MainForm.monthScheduleList[UserDate.static_date - 1].Add(schedule);
+
                 //스케줄 리스트 기간 순 -> 시작 시간 순 정렬 후 다시 리스트 할당
                 //for (int i = 0; i <= (schedule.endDate - schedule.startDate).Days; i++)
                 //{
@@ -151,18 +143,28 @@ namespace KSCS
                     int.Parse(MainForm.categoryDict[schedule.category][0]),
                     schedule.startDate.ToString("yyyy-MM-dd, HH:mm"),
                     schedule.endDate.ToString("yyyy-MM-dd, HH:mm"),
-
                     MainForm.monthScheduleList[UserDate.static_date - 1][selectedScheduleIndex].id
                     );
                     MySqlCommand cmd = new MySqlCommand(updateQuery, connection);
                     if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Update Data.");
+
                     // 리스트 수정
-                    MainForm.monthScheduleList[UserDate.static_date - 1][selectedScheduleIndex].title = schedule.title;
-                    MainForm.monthScheduleList[UserDate.static_date - 1][selectedScheduleIndex].content = schedule.content;
-                    MainForm.monthScheduleList[UserDate.static_date - 1][selectedScheduleIndex].place = schedule.place;
-                    MainForm.monthScheduleList[UserDate.static_date - 1][selectedScheduleIndex].category = schedule.category;
-                    MainForm.monthScheduleList[UserDate.static_date - 1][selectedScheduleIndex].startDate = schedule.startDate;
-                    MainForm.monthScheduleList[UserDate.static_date - 1][selectedScheduleIndex].endDate = schedule.endDate;
+                    TimeSpan duration = schedule.endDate - schedule.startDate;
+                    for (int i = 0; i <= duration.Days; i++)
+                    {
+                        if (Convert.ToInt32(schedule.startDate.AddDays(i).ToString("MM")) == MainForm.static_month)
+                        {
+                            MainForm.monthScheduleList[Convert.ToInt32(schedule.startDate.AddDays(i).ToString("dd")) - 1][selectedScheduleIndex].title = schedule.title;
+                            MainForm.monthScheduleList[Convert.ToInt32(schedule.startDate.AddDays(i).ToString("dd")) - 1][selectedScheduleIndex].content = schedule.content;
+                            MainForm.monthScheduleList[Convert.ToInt32(schedule.startDate.AddDays(i).ToString("dd")) - 1][selectedScheduleIndex].place = schedule.place;
+                            MainForm.monthScheduleList[Convert.ToInt32(schedule.startDate.AddDays(i).ToString("dd")) - 1][selectedScheduleIndex].category = schedule.category;
+                            MainForm.monthScheduleList[Convert.ToInt32(schedule.startDate.AddDays(i).ToString("dd")) - 1][selectedScheduleIndex].startDate = schedule.startDate;
+                            MainForm.monthScheduleList[Convert.ToInt32(schedule.startDate.AddDays(i).ToString("dd")) - 1][selectedScheduleIndex].endDate = schedule.endDate;
+                        }
+                    }
+
+
+                    
                 }
             }
             
@@ -184,8 +186,18 @@ namespace KSCS
                 string deleteQuery = string.Format("DELETE FROM Schedule WHERE id='{0}';", MainForm.monthScheduleList[UserDate.static_date - 1][selectedScheduleIndex].id);
                 MySqlCommand cmd = new MySqlCommand(deleteQuery, connection);
                 if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Delete Data.");
+
                 //리스트 삭제
-                MainForm.monthScheduleList[UserDate.static_date - 1].RemoveAt(selectedScheduleIndex);
+                Schedule selectedSchedule = MainForm.monthScheduleList[UserDate.static_date - 1][selectedScheduleIndex]; //클릭한 날짜의 스케줄
+                TimeSpan duration = selectedSchedule.endDate - selectedSchedule.startDate; //클릭한 날짜의 스케줄의 기간
+                for (int i = 0; i <= duration.Days; i++)
+                {
+                    if (Convert.ToInt32(selectedSchedule.startDate.AddDays(i).ToString("MM")) == MainForm.static_month)
+                    {
+                        MainForm.monthScheduleList[Convert.ToInt32(selectedSchedule.startDate.AddDays(i).ToString("dd")) - 1].Remove(selectedSchedule);
+                        AddEvent += new EventHandler(Application.OpenForms.OfType<MainForm>().FirstOrDefault().GetUserDate().SingleOrDefault(userDate => Convert.ToInt32(userDate.GetLblDate()) == Convert.ToInt32(selectedSchedule.startDate.AddDays(i).ToString("dd"))).SaveEvent);
+                    }
+                }
 
                 if (AddEvent != null)
                 {

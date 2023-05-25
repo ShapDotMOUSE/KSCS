@@ -148,35 +148,82 @@ namespace KSCS
                     MySqlCommand cmd = new MySqlCommand(updateQuery, connection);
                     if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Update Data.");
 
+                    /* 리스트 수정 로직*/
+                    //수정 후, id값 가져오기
+                    schedule.id = MainForm.monthScheduleList[UserDate.static_date - 1][selectedScheduleIndex].id;
+
+                    //startDate 혹은 endDate가 날짜가 바뀐 경우, 해당 일정 "삭제"
+                    Schedule selectedSchedule = MainForm.monthScheduleList[UserDate.static_date - 1][selectedScheduleIndex]; //클릭한 날짜의 원래 스케줄
+                    if ((selectedSchedule.startDate - schedule.startDate).Days < 0)
+                    {
+                        //Schedule selectedSchedule = MainForm.monthScheduleList[UserDate.static_date - 1][selectedScheduleIndex]; //클릭한 날짜의 원래 스케줄
+                        TimeSpan diff = schedule.startDate - selectedSchedule.startDate;
+                        for (int i = 0; i < diff.Days; i++)
+                        {
+                            if (Convert.ToInt32(selectedSchedule.startDate.AddDays(i).ToString("MM")) == MainForm.static_month)
+                            {
+                                MainForm.monthScheduleList[Convert.ToInt32(selectedSchedule.startDate.AddDays(i).ToString("dd")) - 1].Remove(selectedSchedule);
+                                AddEvent += new EventHandler(Application.OpenForms.OfType<MainForm>().FirstOrDefault().GetUserDate().SingleOrDefault(userDate => Convert.ToInt32(userDate.GetLblDate()) == Convert.ToInt32(selectedSchedule.startDate.AddDays(i).ToString("dd"))).SaveEvent);
+                            }
+                        }
+                    }
+                    if ((selectedSchedule.endDate - schedule.endDate).Days > 0)
+                    {
+                        //Schedule selectedSchedule = MainForm.monthScheduleList[UserDate.static_date - 1][selectedScheduleIndex]; //클릭한 날짜의 원래 스케줄
+                        TimeSpan diff = selectedSchedule.endDate - schedule.endDate;
+                        for (int i = 1; i <= diff.Days; i++)
+                        {
+                            if (Convert.ToInt32(schedule.endDate.AddDays(i).ToString("MM")) == MainForm.static_month)
+                            {
+                                MainForm.monthScheduleList[Convert.ToInt32(schedule.endDate.AddDays(i).ToString("dd")) - 1].Remove(selectedSchedule);
+                                AddEvent += new EventHandler(Application.OpenForms.OfType<MainForm>().FirstOrDefault().GetUserDate().SingleOrDefault(userDate => Convert.ToInt32(userDate.GetLblDate()) == Convert.ToInt32(schedule.endDate.AddDays(i).ToString("dd"))).SaveEvent);
+                            }
+                        }
+                    }
                     // 리스트 수정
                     TimeSpan duration = schedule.endDate - schedule.startDate;
                     for (int i = 0; i <= duration.Days; i++)
                     {
+                        bool exist = false;
                         if (Convert.ToInt32(schedule.startDate.AddDays(i).ToString("MM")) == MainForm.static_month)
                         {
-                            MainForm.monthScheduleList[Convert.ToInt32(schedule.startDate.AddDays(i).ToString("dd")) - 1][selectedScheduleIndex].title = schedule.title;
-                            MainForm.monthScheduleList[Convert.ToInt32(schedule.startDate.AddDays(i).ToString("dd")) - 1][selectedScheduleIndex].content = schedule.content;
-                            MainForm.monthScheduleList[Convert.ToInt32(schedule.startDate.AddDays(i).ToString("dd")) - 1][selectedScheduleIndex].place = schedule.place;
-                            MainForm.monthScheduleList[Convert.ToInt32(schedule.startDate.AddDays(i).ToString("dd")) - 1][selectedScheduleIndex].category = schedule.category;
-                            MainForm.monthScheduleList[Convert.ToInt32(schedule.startDate.AddDays(i).ToString("dd")) - 1][selectedScheduleIndex].startDate = schedule.startDate;
-                            MainForm.monthScheduleList[Convert.ToInt32(schedule.startDate.AddDays(i).ToString("dd")) - 1][selectedScheduleIndex].endDate = schedule.endDate;
+                            MainForm.monthScheduleList[Convert.ToInt32(schedule.startDate.AddDays(i).ToString("dd")) - 1].ForEach(sche =>
+                            {
+                                if (sche.Equals(selectedSchedule))
+                                {
+                                    sche.id = schedule.id;
+                                    sche.title = schedule.title;
+                                    sche.content = schedule.content;
+                                    sche.place = schedule.place;
+                                    sche.category = schedule.category;
+                                    sche.startDate = schedule.startDate;
+                                    sche.endDate = schedule.endDate;
+                                    //sche=schedule;
+                                    exist = true;
+                                }
+                            });
+                            if(!exist) //startDate 혹은 endDate가 날짜가 바뀐 경우, 해당 일정 없으면 수정한 것 "추가"
+                            {
+                                MainForm.monthScheduleList[Convert.ToInt32(schedule.startDate.AddDays(i).ToString("dd")) - 1].Add(selectedSchedule); //schedule->selectedSchedule 하니까 바로 오류 사라짐;;;
+                                
+                            }
+                            AddEvent += new EventHandler(Application.OpenForms.OfType<MainForm>().FirstOrDefault().GetUserDate().SingleOrDefault(userDate => Convert.ToInt32(userDate.GetLblDate()) == Convert.ToInt32(schedule.startDate.AddDays(i).ToString("dd"))).SaveEvent); //이벤트 핸들러 추가
                         }
+                       
                     }
-
-
-                    
                 }
             }
             
-            //여기가 문제
-            if (AddEvent != null)
-            {
-                AddEvent(this, new EventArgs());
-            }   
+            //if (AddEvent != null)
+            //{
+            //    AddEvent(this, new EventArgs());
+            //}
+            AddEvent?.Invoke(this, EventArgs.Empty);
 
             ClearForm();
             //스케줄 유닛 다시 load
             InitializeScheDetailForm();
+            ClearAllDelegatesOfTheEventHandler(); //추가
         }
 
         private void deleteBtn_Click(object sender, EventArgs e) //삭제
@@ -199,13 +246,16 @@ namespace KSCS
                     }
                 }
 
-                if (AddEvent != null)
-                {
-                    AddEvent(this, new EventArgs());
-                }
+                //if (AddEvent != null)
+                //{
+                //    AddEvent(this, new EventArgs());
+                //}
+                AddEvent?.Invoke(this, EventArgs.Empty);
+
                 ClearForm();
                 //스케줄 유닛 다시 load
                 InitializeScheDetailForm();
+                ClearAllDelegatesOfTheEventHandler(); //추가
             }
         }
 
@@ -293,6 +343,15 @@ namespace KSCS
             }
             btnAddSchedule.Location = new Point(24, 12 + index * 55);
             panelSchedules.Controls.Add(btnAddSchedule);
+        }
+
+        //추가
+        public void ClearAllDelegatesOfTheEventHandler()
+        {
+            foreach (Delegate d in AddEvent.GetInvocationList())
+            {
+                AddEvent -= (EventHandler)d;
+            }
         }
     }
 }

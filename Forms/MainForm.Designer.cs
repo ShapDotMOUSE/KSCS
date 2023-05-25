@@ -136,11 +136,11 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.White;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label2.Font = new System.Drawing.Font("Pretendard", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(124, 38);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 20);
+            this.label2.Size = new System.Drawing.Size(61, 24);
             this.label2.TabIndex = 6;
             this.label2.Text = "팡운머";
             // 
@@ -149,11 +149,11 @@
             this.lblStdNum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblStdNum.AutoSize = true;
             this.lblStdNum.BackColor = System.Drawing.Color.White;
-            this.lblStdNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblStdNum.Font = new System.Drawing.Font("Pretendard", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblStdNum.ForeColor = System.Drawing.Color.Black;
             this.lblStdNum.Location = new System.Drawing.Point(124, 67);
             this.lblStdNum.Name = "lblStdNum";
-            this.lblStdNum.Size = new System.Drawing.Size(113, 20);
+            this.lblStdNum.Size = new System.Drawing.Size(130, 24);
             this.lblStdNum.TabIndex = 6;
             this.lblStdNum.Text = "20XX2030XX";
             // 
@@ -162,23 +162,24 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.Font = new System.Drawing.Font("Pretendard", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(26, 211);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(96, 25);
+            this.label1.Size = new System.Drawing.Size(102, 31);
             this.label1.TabIndex = 7;
             this.label1.Text = "카테고리";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label4.Font = new System.Drawing.Font("Pretendard", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(295, 20);
+            this.label4.Location = new System.Drawing.Point(386, 24);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label4.Size = new System.Drawing.Size(142, 32);
+            this.label4.Size = new System.Drawing.Size(150, 38);
             this.label4.TabIndex = 7;
             this.label4.Text = "마 감 임 박";
             // 
@@ -425,14 +426,14 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label5.Font = new System.Drawing.Font("Pretendard", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label5.ForeColor = System.Drawing.Color.Black;
             this.label5.Location = new System.Drawing.Point(288, 20);
             this.label5.Name = "label5";
             this.label5.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label5.Size = new System.Drawing.Size(152, 32);
+            this.label5.Size = new System.Drawing.Size(185, 38);
             this.label5.TabIndex = 7;
-            this.label5.Text = "오늘의 일정";
+            this.label5.Text = "오 늘 의 일 정";
             // 
             // guna2Panel5
             // 
@@ -458,7 +459,7 @@
             this.btnPrevisous.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnPrevisous.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnPrevisous.FillColor = System.Drawing.Color.White;
-            this.btnPrevisous.Font = new System.Drawing.Font("Microsoft YaHei UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrevisous.Font = new System.Drawing.Font("Pretendard", 27F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrevisous.ForeColor = System.Drawing.Color.Black;
             this.btnPrevisous.Image = ((System.Drawing.Image)(resources.GetObject("btnPrevisous.Image")));
             this.btnPrevisous.ImageSize = new System.Drawing.Size(20, 30);
@@ -476,7 +477,7 @@
             this.btnNext.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnNext.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnNext.FillColor = System.Drawing.Color.White;
-            this.btnNext.Font = new System.Drawing.Font("Microsoft YaHei UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNext.Font = new System.Drawing.Font("Pretendard", 27F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNext.ForeColor = System.Drawing.Color.Black;
             this.btnNext.Image = ((System.Drawing.Image)(resources.GetObject("btnNext.Image")));
             this.btnNext.ImageSize = new System.Drawing.Size(20, 30);
@@ -489,10 +490,11 @@
             // lblMonth
             // 
             this.lblMonth.AutoSize = true;
-            this.lblMonth.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblMonth.Font = new System.Drawing.Font("Pretendard ExtraBold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblMonth.Location = new System.Drawing.Point(454, 20);
+            this.lblMonth.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMonth.Name = "lblMonth";
-            this.lblMonth.Size = new System.Drawing.Size(82, 46);
+            this.lblMonth.Size = new System.Drawing.Size(97, 58);
             this.lblMonth.TabIndex = 2;
             this.lblMonth.Text = "5월";
             // 
@@ -641,6 +643,7 @@
             // userDate1
             // 
             this.userDate1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.userDate1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userDate1.Location = new System.Drawing.Point(0, 0);
             this.userDate1.Margin = new System.Windows.Forms.Padding(0);
             this.userDate1.Name = "userDate1";
@@ -650,6 +653,7 @@
             // userDate2
             // 
             this.userDate2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.userDate2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userDate2.Location = new System.Drawing.Point(120, 0);
             this.userDate2.Margin = new System.Windows.Forms.Padding(0);
             this.userDate2.Name = "userDate2";
@@ -659,6 +663,7 @@
             // userDate3
             // 
             this.userDate3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.userDate3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userDate3.Location = new System.Drawing.Point(240, 0);
             this.userDate3.Margin = new System.Windows.Forms.Padding(0);
             this.userDate3.Name = "userDate3";
@@ -668,6 +673,7 @@
             // userDate4
             // 
             this.userDate4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.userDate4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userDate4.Location = new System.Drawing.Point(360, 0);
             this.userDate4.Margin = new System.Windows.Forms.Padding(0);
             this.userDate4.Name = "userDate4";
@@ -677,6 +683,7 @@
             // userDate5
             // 
             this.userDate5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.userDate5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userDate5.Location = new System.Drawing.Point(480, 0);
             this.userDate5.Margin = new System.Windows.Forms.Padding(0);
             this.userDate5.Name = "userDate5";
@@ -686,6 +693,7 @@
             // userDate6
             // 
             this.userDate6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.userDate6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userDate6.Location = new System.Drawing.Point(600, 0);
             this.userDate6.Margin = new System.Windows.Forms.Padding(0);
             this.userDate6.Name = "userDate6";
@@ -695,6 +703,7 @@
             // userDate7
             // 
             this.userDate7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.userDate7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userDate7.Location = new System.Drawing.Point(720, 0);
             this.userDate7.Margin = new System.Windows.Forms.Padding(0);
             this.userDate7.Name = "userDate7";
@@ -704,6 +713,7 @@
             // userDate8
             // 
             this.userDate8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.userDate8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userDate8.Location = new System.Drawing.Point(0, 98);
             this.userDate8.Margin = new System.Windows.Forms.Padding(0);
             this.userDate8.Name = "userDate8";
@@ -713,6 +723,7 @@
             // userDate9
             // 
             this.userDate9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.userDate9.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userDate9.Location = new System.Drawing.Point(120, 98);
             this.userDate9.Margin = new System.Windows.Forms.Padding(0);
             this.userDate9.Name = "userDate9";
@@ -722,6 +733,7 @@
             // userDate10
             // 
             this.userDate10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.userDate10.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userDate10.Location = new System.Drawing.Point(240, 98);
             this.userDate10.Margin = new System.Windows.Forms.Padding(0);
             this.userDate10.Name = "userDate10";
@@ -731,6 +743,7 @@
             // userDate11
             // 
             this.userDate11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.userDate11.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userDate11.Location = new System.Drawing.Point(360, 98);
             this.userDate11.Margin = new System.Windows.Forms.Padding(0);
             this.userDate11.Name = "userDate11";
@@ -740,6 +753,7 @@
             // userDate12
             // 
             this.userDate12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.userDate12.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userDate12.Location = new System.Drawing.Point(480, 98);
             this.userDate12.Margin = new System.Windows.Forms.Padding(0);
             this.userDate12.Name = "userDate12";
@@ -749,6 +763,7 @@
             // userDate13
             // 
             this.userDate13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.userDate13.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userDate13.Location = new System.Drawing.Point(600, 98);
             this.userDate13.Margin = new System.Windows.Forms.Padding(0);
             this.userDate13.Name = "userDate13";
@@ -758,6 +773,7 @@
             // userDate14
             // 
             this.userDate14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.userDate14.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userDate14.Location = new System.Drawing.Point(720, 98);
             this.userDate14.Margin = new System.Windows.Forms.Padding(0);
             this.userDate14.Name = "userDate14";
@@ -767,6 +783,7 @@
             // userDate15
             // 
             this.userDate15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.userDate15.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userDate15.Location = new System.Drawing.Point(0, 196);
             this.userDate15.Margin = new System.Windows.Forms.Padding(0);
             this.userDate15.Name = "userDate15";
@@ -776,6 +793,7 @@
             // userDate16
             // 
             this.userDate16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.userDate16.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userDate16.Location = new System.Drawing.Point(120, 196);
             this.userDate16.Margin = new System.Windows.Forms.Padding(0);
             this.userDate16.Name = "userDate16";
@@ -785,6 +803,7 @@
             // userDate17
             // 
             this.userDate17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.userDate17.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userDate17.Location = new System.Drawing.Point(240, 196);
             this.userDate17.Margin = new System.Windows.Forms.Padding(0);
             this.userDate17.Name = "userDate17";
@@ -794,6 +813,7 @@
             // userDate18
             // 
             this.userDate18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.userDate18.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userDate18.Location = new System.Drawing.Point(360, 196);
             this.userDate18.Margin = new System.Windows.Forms.Padding(0);
             this.userDate18.Name = "userDate18";
@@ -803,6 +823,7 @@
             // userDate19
             // 
             this.userDate19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.userDate19.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userDate19.Location = new System.Drawing.Point(480, 196);
             this.userDate19.Margin = new System.Windows.Forms.Padding(0);
             this.userDate19.Name = "userDate19";
@@ -812,6 +833,7 @@
             // userDate20
             // 
             this.userDate20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.userDate20.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userDate20.Location = new System.Drawing.Point(600, 196);
             this.userDate20.Margin = new System.Windows.Forms.Padding(0);
             this.userDate20.Name = "userDate20";
@@ -821,6 +843,7 @@
             // userDate21
             // 
             this.userDate21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.userDate21.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userDate21.Location = new System.Drawing.Point(720, 196);
             this.userDate21.Margin = new System.Windows.Forms.Padding(0);
             this.userDate21.Name = "userDate21";
@@ -830,6 +853,7 @@
             // userDate22
             // 
             this.userDate22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.userDate22.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userDate22.Location = new System.Drawing.Point(0, 294);
             this.userDate22.Margin = new System.Windows.Forms.Padding(0);
             this.userDate22.Name = "userDate22";
@@ -839,6 +863,7 @@
             // userDate23
             // 
             this.userDate23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.userDate23.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userDate23.Location = new System.Drawing.Point(120, 294);
             this.userDate23.Margin = new System.Windows.Forms.Padding(0);
             this.userDate23.Name = "userDate23";
@@ -848,6 +873,7 @@
             // userDate24
             // 
             this.userDate24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.userDate24.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userDate24.Location = new System.Drawing.Point(240, 294);
             this.userDate24.Margin = new System.Windows.Forms.Padding(0);
             this.userDate24.Name = "userDate24";
@@ -857,6 +883,7 @@
             // userDate25
             // 
             this.userDate25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.userDate25.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userDate25.Location = new System.Drawing.Point(360, 294);
             this.userDate25.Margin = new System.Windows.Forms.Padding(0);
             this.userDate25.Name = "userDate25";
@@ -866,6 +893,7 @@
             // userDate26
             // 
             this.userDate26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.userDate26.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userDate26.Location = new System.Drawing.Point(480, 294);
             this.userDate26.Margin = new System.Windows.Forms.Padding(0);
             this.userDate26.Name = "userDate26";
@@ -875,6 +903,7 @@
             // userDate27
             // 
             this.userDate27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.userDate27.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userDate27.Location = new System.Drawing.Point(600, 294);
             this.userDate27.Margin = new System.Windows.Forms.Padding(0);
             this.userDate27.Name = "userDate27";
@@ -884,6 +913,7 @@
             // userDate28
             // 
             this.userDate28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.userDate28.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userDate28.Location = new System.Drawing.Point(720, 294);
             this.userDate28.Margin = new System.Windows.Forms.Padding(0);
             this.userDate28.Name = "userDate28";
@@ -893,6 +923,7 @@
             // userDate29
             // 
             this.userDate29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.userDate29.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userDate29.Location = new System.Drawing.Point(0, 392);
             this.userDate29.Margin = new System.Windows.Forms.Padding(0);
             this.userDate29.Name = "userDate29";
@@ -902,6 +933,7 @@
             // userDate30
             // 
             this.userDate30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.userDate30.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userDate30.Location = new System.Drawing.Point(120, 392);
             this.userDate30.Margin = new System.Windows.Forms.Padding(0);
             this.userDate30.Name = "userDate30";
@@ -911,6 +943,7 @@
             // userDate31
             // 
             this.userDate31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.userDate31.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userDate31.Location = new System.Drawing.Point(240, 392);
             this.userDate31.Margin = new System.Windows.Forms.Padding(0);
             this.userDate31.Name = "userDate31";
@@ -920,6 +953,7 @@
             // userDate32
             // 
             this.userDate32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.userDate32.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userDate32.Location = new System.Drawing.Point(360, 392);
             this.userDate32.Margin = new System.Windows.Forms.Padding(0);
             this.userDate32.Name = "userDate32";
@@ -929,6 +963,7 @@
             // userDate33
             // 
             this.userDate33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.userDate33.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userDate33.Location = new System.Drawing.Point(480, 392);
             this.userDate33.Margin = new System.Windows.Forms.Padding(0);
             this.userDate33.Name = "userDate33";
@@ -938,6 +973,7 @@
             // userDate34
             // 
             this.userDate34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.userDate34.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userDate34.Location = new System.Drawing.Point(600, 392);
             this.userDate34.Margin = new System.Windows.Forms.Padding(0);
             this.userDate34.Name = "userDate34";
@@ -947,6 +983,7 @@
             // userDate35
             // 
             this.userDate35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.userDate35.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userDate35.Location = new System.Drawing.Point(720, 392);
             this.userDate35.Margin = new System.Windows.Forms.Padding(0);
             this.userDate35.Name = "userDate35";
@@ -956,6 +993,7 @@
             // userDate36
             // 
             this.userDate36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.userDate36.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userDate36.Location = new System.Drawing.Point(0, 490);
             this.userDate36.Margin = new System.Windows.Forms.Padding(0);
             this.userDate36.Name = "userDate36";
@@ -965,6 +1003,7 @@
             // userDate37
             // 
             this.userDate37.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.userDate37.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userDate37.Location = new System.Drawing.Point(120, 490);
             this.userDate37.Margin = new System.Windows.Forms.Padding(0);
             this.userDate37.Name = "userDate37";
@@ -974,6 +1013,7 @@
             // userDate38
             // 
             this.userDate38.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.userDate38.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userDate38.Location = new System.Drawing.Point(240, 490);
             this.userDate38.Margin = new System.Windows.Forms.Padding(0);
             this.userDate38.Name = "userDate38";
@@ -983,6 +1023,7 @@
             // userDate39
             // 
             this.userDate39.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.userDate39.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userDate39.Location = new System.Drawing.Point(360, 490);
             this.userDate39.Margin = new System.Windows.Forms.Padding(0);
             this.userDate39.Name = "userDate39";
@@ -992,6 +1033,7 @@
             // userDate40
             // 
             this.userDate40.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.userDate40.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userDate40.Location = new System.Drawing.Point(480, 490);
             this.userDate40.Margin = new System.Windows.Forms.Padding(0);
             this.userDate40.Name = "userDate40";
@@ -1001,6 +1043,7 @@
             // userDate41
             // 
             this.userDate41.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.userDate41.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userDate41.Location = new System.Drawing.Point(600, 490);
             this.userDate41.Margin = new System.Windows.Forms.Padding(0);
             this.userDate41.Name = "userDate41";
@@ -1010,6 +1053,7 @@
             // userDate42
             // 
             this.userDate42.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.userDate42.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userDate42.Location = new System.Drawing.Point(720, 490);
             this.userDate42.Margin = new System.Windows.Forms.Padding(0);
             this.userDate42.Name = "userDate42";
@@ -1126,7 +1170,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.BackColor = System.Drawing.Color.Pink;
             this.ClientSize = new System.Drawing.Size(1280, 960);
             this.Controls.Add(this.btnSharing);
             this.Controls.Add(this.탭5);

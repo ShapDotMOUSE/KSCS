@@ -36,7 +36,7 @@ namespace KSCS
         //달력 관련
         private int year, month;
         public static int static_month, static_year;
-        //탭&카테고리 관련
+        //탭 & 카테고리 관련
         public static string TabName;
         public static Category Category = new Category();
         //스케줄 관련
@@ -54,10 +54,9 @@ namespace KSCS
             LoginForm loginForm = new LoginForm();
 
             DialogResult Result = loginForm.ShowDialog();
-
             if (Result == DialogResult.OK)
             {
-                dispalyDate();
+                //dispalyDate();
                 lblStdNum.Text = stdNum;
                 LoadMagam();
             }
@@ -115,7 +114,8 @@ namespace KSCS
 
         public void InitializeDatabase()
         {
-            string selectQuery = string.Format("SELECT * from Schedule JOIN Category ON Schedule.category_id=Category.id JOIN StudentCategory ON StudentCategory.student_id=Schedule.student_id and Schedule.category_id=Category.id and Category.id=StudentCategory.category_id WHERE Schedule.student_id={0} and  startDate BETWEEN DATE_FORMAT('{1}', '%Y-%m-%d') AND LAST_DAY('{1}') ORDER BY startDate ASC;", stdNum, new DateTime(year, month, 1).ToString("yyyy-MM-dd"));
+            //쿼리 수정(endDate 까지 포함)
+            string selectQuery = string.Format("SELECT * from Schedule JOIN Category ON Schedule.category_id=Category.id JOIN StudentCategory ON StudentCategory.student_id=Schedule.student_id and Schedule.category_id=Category.id and Category.id=StudentCategory.category_id WHERE Schedule.student_id={0} and  (startDate BETWEEN DATE_FORMAT('{1}', '%Y-%m-%d') AND LAST_DAY('{1}') or endDate BETWEEN DATE_FORMAT('{1}', '%Y-%m-%d') AND LAST_DAY('{1}')) ORDER BY startDate ASC;", stdNum, new DateTime(year, month, 1).ToString("yyyy-MM-dd"));
             MySqlCommand cmd = new MySqlCommand(selectQuery, connection);
             MySqlDataReader table = cmd.ExecuteReader();
             monthScheduleList.Clear(); //한달 스케줄 초기화
@@ -139,7 +139,15 @@ namespace KSCS
                     id = int.Parse(table["id"].ToString()),
                 };
 
-                monthScheduleList[Convert.ToInt32(schedule.startDate.ToString("dd")) - 1].Add(schedule);
+                //startDate와 endDate 일자가 다른 경우도 포함(추가)
+                TimeSpan duration = schedule.endDate - schedule.startDate;
+                for (int i = 0; i <= duration.Days; i++)
+                {
+                    if (Convert.ToInt32(schedule.startDate.AddDays(i).ToString("MM")) == MainForm.static_month)
+                    {
+                        MainForm.monthScheduleList[Convert.ToInt32(schedule.startDate.AddDays(i).ToString("dd")) - 1].Add(schedule);
+                    }
+                }
             }
 
             table.Close();
@@ -205,7 +213,7 @@ namespace KSCS
         //달력 함수-----------------------------------------------------------------------------------------------------------------------------------------
         private void dispalyDate()
         {
-            DateTime now = DateTime.Now;
+            DateTime now = DateTime.Now; //수정 필요
 
             year = now.Year;
             month = now.Month;
@@ -332,10 +340,12 @@ namespace KSCS
                 case "Next":
                     if (month == 12) { month = 1; year++; }
                     else month++;
+                    
                     break;
                 case "Previsous":
                     if (month == 1) { month = 12; year--; }
                     else month--;
+                    
                     break;
             }
 
@@ -352,5 +362,89 @@ namespace KSCS
         }
 
         ////카테고리 유저 컨트롤------------------------------------------------------------------------------------------------------------------------------------
+        private UserCategory draggedUcCategory; // 드래그 중인 카테고리 유저 컨트롤
+        private UserCategory cloneUcCategory; // 드래그 중인 카테고리 유저 컨트롤 복사본
+        private Point MouseLocation;
+
+        public void UndoCategory()
+        {
+            this.Controls.Remove(cloneUcCategory);
+            cloneUcCategory.Dispose();
+            draggedUcCategory.Visible = true;
+        }
+        private void UcCategory_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            draggedUcCategory = (UserCategory)sender;
+            draggedUcCategory.Visible = false;
+
+            // 드래그 중인 버튼의 복사본 생성
+            MouseLocation = new Point((Cursor.Position.X - e.X) - Left, (Cursor.Position.Y - e.Y) - Top); // 현제 마우스 위치
+            cloneUcCategory = new UserCategory { Location = MouseLocation };
+            cloneUcCategory.DragMode(draggedUcCategory.GetText());
+            this.Controls.Add(cloneUcCategory);
+            flpMainCategory.SendToBack();
+            cloneUcCategory.MouseMove += UcCategory_MouseMove;
+            cloneUcCategory.MouseClick += UcCategory_MouseClick;
+        }
+
+        private void UcCategory_MouseClick(object sender, MouseEventArgs e)
+        {
+            string NewMainCategory;
+            if (MouseLocation.Y < flpMainCategory.Location.Y + flpPersonalCategory.Location.Y)
+            {
+                //학교
+                NewMainCategory = "SchoolCategory";
+
+            }
+            else if (MouseLocation.Y < flpMainCategory.Location.Y + flpEtcCategory.Location.Y)
+            {
+                //개인
+                NewMainCategory = "PersonalCategory";
+            }
+            else
+            {
+                //기타
+                NewMainCategory = "EtcCategory";
+            }
+
+            if (NewMainCategory.Length > 0)
+            {
+                draggedUcCategory.Visible = true;
+                string OringMainCategory = Category.SubCategorys[cloneUcCategory.GetText()] as string;
+                if (OringMainCategory == NewMainCategory)
+                {
+                    UndoCategory();
+                }
+                else
+                {
+                    this.Controls.Remove(cloneUcCategory);
+                    FlowLayoutPanel FlpNewCategory = flpMainCategory.Controls["flp" + NewMainCategory] as FlowLayoutPanel;
+                    FlowLayoutPanel FlpOriginCategory = flpMainCategory.Controls["flp" + OringMainCategory] as FlowLayoutPanel;
+                    FlpOriginCategory.Controls.Remove(draggedUcCategory);
+                    FlpNewCategory.Controls.Add(draggedUcCategory);
+                    Category.ChangeParentOfSub(NewMainCategory, cloneUcCategory.GetText());
+                    draggedUcCategory = null;
+                    cloneUcCategory = null;
+                }
+            }
+
+        }
+
+        private void UcCategory_MouseMove(object sender, MouseEventArgs e)
+        {
+            MouseLocation = new Point((Cursor.Position.X - cloneUcCategory.Width / 2) - Left, (Cursor.Position.Y - cloneUcCategory.Height / 2) - Top);
+            if ((MouseLocation.X < flpMainCategory.Location.X - 100 || MouseLocation.X > flpMainCategory.Location.X + 130)
+                || (MouseLocation.Y < flpMainCategory.Location.Y || MouseLocation.Y > flpMainCategory.Location.Y + 450))
+            {
+                UndoCategory();
+            }
+            cloneUcCategory.Location = MouseLocation;
+        }
+
+        //추가
+        public IEnumerable<UserDate> GetUserDate()
+        {
+            return flpDays.Controls.OfType<UserDate>();
+        }
     }
 }

@@ -285,11 +285,12 @@
             this.deleteBtn.FillColor = System.Drawing.Color.LightCoral;
             this.deleteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.deleteBtn.ForeColor = System.Drawing.Color.White;
-            this.deleteBtn.Location = new System.Drawing.Point(514, 538);
+            this.deleteBtn.Location = new System.Drawing.Point(382, 513);
             this.deleteBtn.Name = "deleteBtn";
             this.deleteBtn.Size = new System.Drawing.Size(110, 40);
             this.deleteBtn.TabIndex = 29;
             this.deleteBtn.Text = "Delete";
+            this.deleteBtn.Visible = false;
             this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
             // 
             // addBtnRadius
@@ -306,7 +307,7 @@
             this.addBtn.FillColor = System.Drawing.Color.CornflowerBlue;
             this.addBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addBtn.ForeColor = System.Drawing.Color.White;
-            this.addBtn.Location = new System.Drawing.Point(382, 538);
+            this.addBtn.Location = new System.Drawing.Point(511, 513);
             this.addBtn.Name = "addBtn";
             this.addBtn.Size = new System.Drawing.Size(110, 40);
             this.addBtn.TabIndex = 33;
@@ -406,6 +407,7 @@
             // 
             // dtpEndTime
             // 
+            this.dtpEndTime.BackColor = System.Drawing.Color.Transparent;
             this.dtpEndTime.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dtpEndTime.Checked = true;
             this.dtpEndTime.CustomFormat = "HH:mm";
@@ -423,6 +425,7 @@
             // 
             // dtpStartTime
             // 
+            this.dtpStartTime.BackColor = System.Drawing.Color.Transparent;
             this.dtpStartTime.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dtpStartTime.Checked = true;
             this.dtpStartTime.CustomFormat = "HH:mm";
@@ -440,6 +443,7 @@
             // 
             // dtpEndDate
             // 
+            this.dtpEndDate.BackColor = System.Drawing.Color.Transparent;
             this.dtpEndDate.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dtpEndDate.Checked = true;
             this.dtpEndDate.CustomFormat = "yyyy-MM-dd ddd";
@@ -457,6 +461,7 @@
             // 
             // dtpStartDate
             // 
+            this.dtpStartDate.BackColor = System.Drawing.Color.Transparent;
             this.dtpStartDate.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dtpStartDate.Checked = true;
             this.dtpStartDate.CustomFormat = "yyyy-MM-dd ddd";

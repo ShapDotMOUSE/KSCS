@@ -56,7 +56,6 @@
             this.tsmDeleteMem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelSchedules = new Guna.UI2.WinForms.Guna2Panel();
             this.btnAddSchedule = new Guna.UI2.WinForms.Guna2Button();
-            this.btnMemSet = new Guna.UI2.WinForms.Guna2Button();
             this.guna2HtmlLabel8 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel7 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.dtpEndTime = new Guna.UI2.WinForms.Guna2DateTimePicker();
@@ -67,10 +66,14 @@
             this.tbMemo = new Guna.UI2.WinForms.Guna2TextBox();
             this.tbPlace = new Guna.UI2.WinForms.Guna2TextBox();
             this.tbTitle = new Guna.UI2.WinForms.Guna2TextBox();
+            this.btnMemSet = new Guna.UI2.WinForms.Guna2Button();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panelTop.SuspendLayout();
             this.panelLabel.SuspendLayout();
             this.guna2ContextMenuStrip1.SuspendLayout();
             this.panelSchedules.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // formRadius
@@ -120,7 +123,7 @@
             this.panelLabel.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLabel.Location = new System.Drawing.Point(208, 44);
             this.panelLabel.Name = "panelLabel";
-            this.panelLabel.Size = new System.Drawing.Size(147, 526);
+            this.panelLabel.Size = new System.Drawing.Size(147, 546);
             this.panelLabel.TabIndex = 0;
             // 
             // guna2ImageButton6
@@ -131,7 +134,7 @@
             this.guna2ImageButton6.ImageOffset = new System.Drawing.Point(0, 0);
             this.guna2ImageButton6.ImageRotate = 0F;
             this.guna2ImageButton6.ImageSize = new System.Drawing.Size(20, 20);
-            this.guna2ImageButton6.Location = new System.Drawing.Point(14, 378);
+            this.guna2ImageButton6.Location = new System.Drawing.Point(14, 304);
             this.guna2ImageButton6.Name = "guna2ImageButton6";
             this.guna2ImageButton6.PressedState.ImageSize = new System.Drawing.Size(0, 0);
             this.guna2ImageButton6.Size = new System.Drawing.Size(39, 28);
@@ -145,7 +148,7 @@
             this.guna2ImageButton5.ImageOffset = new System.Drawing.Point(0, 0);
             this.guna2ImageButton5.ImageRotate = 0F;
             this.guna2ImageButton5.ImageSize = new System.Drawing.Size(20, 20);
-            this.guna2ImageButton5.Location = new System.Drawing.Point(14, 309);
+            this.guna2ImageButton5.Location = new System.Drawing.Point(14, 235);
             this.guna2ImageButton5.Name = "guna2ImageButton5";
             this.guna2ImageButton5.PressedState.ImageSize = new System.Drawing.Size(0, 0);
             this.guna2ImageButton5.Size = new System.Drawing.Size(39, 28);
@@ -159,7 +162,7 @@
             this.guna2ImageButton4.ImageOffset = new System.Drawing.Point(0, 0);
             this.guna2ImageButton4.ImageRotate = 0F;
             this.guna2ImageButton4.ImageSize = new System.Drawing.Size(20, 20);
-            this.guna2ImageButton4.Location = new System.Drawing.Point(14, 239);
+            this.guna2ImageButton4.Location = new System.Drawing.Point(14, 165);
             this.guna2ImageButton4.Name = "guna2ImageButton4";
             this.guna2ImageButton4.PressedState.ImageSize = new System.Drawing.Size(0, 0);
             this.guna2ImageButton4.Size = new System.Drawing.Size(39, 28);
@@ -201,7 +204,7 @@
             this.guna2ImageButton1.ImageOffset = new System.Drawing.Point(0, 0);
             this.guna2ImageButton1.ImageRotate = 0F;
             this.guna2ImageButton1.ImageSize = new System.Drawing.Size(20, 20);
-            this.guna2ImageButton1.Location = new System.Drawing.Point(14, 167);
+            this.guna2ImageButton1.Location = new System.Drawing.Point(14, 406);
             this.guna2ImageButton1.Name = "guna2ImageButton1";
             this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(0, 0);
             this.guna2ImageButton1.Size = new System.Drawing.Size(39, 28);
@@ -211,9 +214,9 @@
             // 
             this.labelCategory.BackColor = System.Drawing.Color.Transparent;
             this.labelCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labelCategory.Location = new System.Drawing.Point(59, 311);
+            this.labelCategory.Location = new System.Drawing.Point(59, 237);
             this.labelCategory.Name = "labelCategory";
-            this.labelCategory.Size = new System.Drawing.Size(91, 28);
+            this.labelCategory.Size = new System.Drawing.Size(76, 24);
             this.labelCategory.TabIndex = 31;
             this.labelCategory.Text = "Category";
             // 
@@ -221,9 +224,9 @@
             // 
             this.labelMemo.BackColor = System.Drawing.Color.Transparent;
             this.labelMemo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labelMemo.Location = new System.Drawing.Point(59, 380);
+            this.labelMemo.Location = new System.Drawing.Point(59, 306);
             this.labelMemo.Name = "labelMemo";
-            this.labelMemo.Size = new System.Drawing.Size(64, 28);
+            this.labelMemo.Size = new System.Drawing.Size(51, 24);
             this.labelMemo.TabIndex = 30;
             this.labelMemo.Text = "Memo";
             // 
@@ -233,7 +236,7 @@
             this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.labelTitle.Location = new System.Drawing.Point(59, 24);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(43, 28);
+            this.labelTitle.Size = new System.Drawing.Size(38, 24);
             this.labelTitle.TabIndex = 29;
             this.labelTitle.Text = "Title";
             // 
@@ -243,7 +246,7 @@
             this.labelSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.labelSchedule.Location = new System.Drawing.Point(59, 89);
             this.labelSchedule.Name = "labelSchedule";
-            this.labelSchedule.Size = new System.Drawing.Size(94, 28);
+            this.labelSchedule.Size = new System.Drawing.Size(78, 24);
             this.labelSchedule.TabIndex = 26;
             this.labelSchedule.Text = "Schedule";
             // 
@@ -251,9 +254,9 @@
             // 
             this.labelPlace.BackColor = System.Drawing.Color.Transparent;
             this.labelPlace.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labelPlace.Location = new System.Drawing.Point(59, 241);
+            this.labelPlace.Location = new System.Drawing.Point(59, 167);
             this.labelPlace.Name = "labelPlace";
-            this.labelPlace.Size = new System.Drawing.Size(58, 28);
+            this.labelPlace.Size = new System.Drawing.Size(48, 24);
             this.labelPlace.TabIndex = 28;
             this.labelPlace.Text = "Place";
             // 
@@ -261,9 +264,9 @@
             // 
             this.labelMember.BackColor = System.Drawing.Color.Transparent;
             this.labelMember.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labelMember.Location = new System.Drawing.Point(59, 169);
+            this.labelMember.Location = new System.Drawing.Point(59, 408);
             this.labelMember.Name = "labelMember";
-            this.labelMember.Size = new System.Drawing.Size(83, 28);
+            this.labelMember.Size = new System.Drawing.Size(67, 24);
             this.labelMember.TabIndex = 27;
             this.labelMember.Text = "Member";
             // 
@@ -282,7 +285,7 @@
             this.deleteBtn.FillColor = System.Drawing.Color.LightCoral;
             this.deleteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.deleteBtn.ForeColor = System.Drawing.Color.White;
-            this.deleteBtn.Location = new System.Drawing.Point(512, 513);
+            this.deleteBtn.Location = new System.Drawing.Point(514, 538);
             this.deleteBtn.Name = "deleteBtn";
             this.deleteBtn.Size = new System.Drawing.Size(110, 40);
             this.deleteBtn.TabIndex = 29;
@@ -303,7 +306,7 @@
             this.addBtn.FillColor = System.Drawing.Color.CornflowerBlue;
             this.addBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addBtn.ForeColor = System.Drawing.Color.White;
-            this.addBtn.Location = new System.Drawing.Point(384, 513);
+            this.addBtn.Location = new System.Drawing.Point(382, 538);
             this.addBtn.Name = "addBtn";
             this.addBtn.Size = new System.Drawing.Size(110, 40);
             this.addBtn.TabIndex = 33;
@@ -333,20 +336,20 @@
             this.guna2ContextMenuStrip1.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
             this.guna2ContextMenuStrip1.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
             this.guna2ContextMenuStrip1.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.guna2ContextMenuStrip1.Size = new System.Drawing.Size(138, 60);
+            this.guna2ContextMenuStrip1.Size = new System.Drawing.Size(133, 48);
             // 
             // tsmAddmem
             // 
             this.tsmAddmem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.tsmAddmem.Name = "tsmAddmem";
-            this.tsmAddmem.Size = new System.Drawing.Size(137, 28);
+            this.tsmAddmem.Size = new System.Drawing.Size(132, 22);
             this.tsmAddmem.Text = "멤버 추가";
             // 
             // tsmDeleteMem
             // 
             this.tsmDeleteMem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.tsmDeleteMem.Name = "tsmDeleteMem";
-            this.tsmDeleteMem.Size = new System.Drawing.Size(137, 28);
+            this.tsmDeleteMem.Size = new System.Drawing.Size(132, 22);
             this.tsmDeleteMem.Text = "멤버 삭제";
             // 
             // panelSchedules
@@ -359,7 +362,7 @@
             this.panelSchedules.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.panelSchedules.Location = new System.Drawing.Point(0, 44);
             this.panelSchedules.Name = "panelSchedules";
-            this.panelSchedules.Size = new System.Drawing.Size(208, 526);
+            this.panelSchedules.Size = new System.Drawing.Size(208, 546);
             this.panelSchedules.TabIndex = 28;
             // 
             // btnAddSchedule
@@ -375,29 +378,11 @@
             this.btnAddSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddSchedule.ForeColor = System.Drawing.Color.Black;
             this.btnAddSchedule.Image = global::KSCS.Properties.Resources.free_icon_font_plus_3917757;
-            this.btnAddSchedule.Location = new System.Drawing.Point(22, 46);
+            this.btnAddSchedule.Location = new System.Drawing.Point(-15, 82);
             this.btnAddSchedule.Name = "btnAddSchedule";
             this.btnAddSchedule.Size = new System.Drawing.Size(167, 40);
             this.btnAddSchedule.TabIndex = 45;
             this.btnAddSchedule.Click += new System.EventHandler(this.btnAddSchedule_Click);
-            // 
-            // btnMemSet
-            // 
-            this.btnMemSet.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
-            this.btnMemSet.BorderThickness = 1;
-            this.btnMemSet.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnMemSet.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnMemSet.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnMemSet.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnMemSet.FillColor = System.Drawing.Color.White;
-            this.btnMemSet.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.btnMemSet.ForeColor = System.Drawing.Color.Black;
-            this.btnMemSet.Location = new System.Drawing.Point(342, 211);
-            this.btnMemSet.Name = "btnMemSet";
-            this.btnMemSet.Size = new System.Drawing.Size(279, 36);
-            this.btnMemSet.TabIndex = 41;
-            this.btnMemSet.Text = "Member Setting";
-            this.btnMemSet.Click += new System.EventHandler(this.btnMemSet_Click);
             // 
             // guna2HtmlLabel8
             // 
@@ -405,7 +390,7 @@
             this.guna2HtmlLabel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.guna2HtmlLabel8.Location = new System.Drawing.Point(342, 160);
             this.guna2HtmlLabel8.Name = "guna2HtmlLabel8";
-            this.guna2HtmlLabel8.Size = new System.Drawing.Size(45, 24);
+            this.guna2HtmlLabel8.Size = new System.Drawing.Size(37, 20);
             this.guna2HtmlLabel8.TabIndex = 40;
             this.guna2HtmlLabel8.Text = "End :";
             // 
@@ -415,7 +400,7 @@
             this.guna2HtmlLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.guna2HtmlLabel7.Location = new System.Drawing.Point(342, 135);
             this.guna2HtmlLabel7.Name = "guna2HtmlLabel7";
-            this.guna2HtmlLabel7.Size = new System.Drawing.Size(51, 24);
+            this.guna2HtmlLabel7.Size = new System.Drawing.Size(42, 20);
             this.guna2HtmlLabel7.TabIndex = 39;
             this.guna2HtmlLabel7.Text = "Start :";
             // 
@@ -501,7 +486,7 @@
             "KLAS",
             "공유 일정",
             "개인"});
-            this.cbCategory.Location = new System.Drawing.Point(342, 355);
+            this.cbCategory.Location = new System.Drawing.Point(342, 281);
             this.cbCategory.Name = "cbCategory";
             this.cbCategory.Size = new System.Drawing.Size(280, 36);
             this.cbCategory.TabIndex = 34;
@@ -519,7 +504,7 @@
             this.tbMemo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.tbMemo.ForeColor = System.Drawing.Color.Black;
             this.tbMemo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tbMemo.Location = new System.Drawing.Point(342, 424);
+            this.tbMemo.Location = new System.Drawing.Point(342, 350);
             this.tbMemo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tbMemo.Name = "tbMemo";
             this.tbMemo.PasswordChar = '\0';
@@ -540,7 +525,7 @@
             this.tbPlace.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.tbPlace.ForeColor = System.Drawing.Color.Black;
             this.tbPlace.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tbPlace.Location = new System.Drawing.Point(342, 285);
+            this.tbPlace.Location = new System.Drawing.Point(342, 211);
             this.tbPlace.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tbPlace.Name = "tbPlace";
             this.tbPlace.PasswordChar = '\0';
@@ -570,12 +555,50 @@
             this.tbTitle.Size = new System.Drawing.Size(280, 36);
             this.tbTitle.TabIndex = 30;
             // 
+            // btnMemSet
+            // 
+            this.btnMemSet.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
+            this.btnMemSet.BorderThickness = 1;
+            this.btnMemSet.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnMemSet.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnMemSet.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnMemSet.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnMemSet.FillColor = System.Drawing.Color.White;
+            this.btnMemSet.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btnMemSet.ForeColor = System.Drawing.Color.Black;
+            this.btnMemSet.Location = new System.Drawing.Point(343, 451);
+            this.btnMemSet.Name = "btnMemSet";
+            this.btnMemSet.Size = new System.Drawing.Size(279, 36);
+            this.btnMemSet.TabIndex = 41;
+            this.btnMemSet.Text = "일정 함께하는 친구 추가";
+            this.btnMemSet.Click += new System.EventHandler(this.btnMemSet_Click);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.Controls.Add(this.textBox1);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(340, 450);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(284, 75);
+            this.flowLayoutPanel1.TabIndex = 1;
+            this.flowLayoutPanel1.Visible = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(3, 3);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(278, 33);
+            this.textBox1.TabIndex = 0;
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            // 
             // ScheDetailForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 26F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(650, 570);
+            this.ClientSize = new System.Drawing.Size(650, 590);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.btnMemSet);
             this.Controls.Add(this.guna2HtmlLabel8);
             this.Controls.Add(this.guna2HtmlLabel7);
@@ -603,6 +626,8 @@
             this.panelLabel.PerformLayout();
             this.guna2ContextMenuStrip1.ResumeLayout(false);
             this.panelSchedules.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -626,14 +651,11 @@
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton4;
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton3;
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton2;
-        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;
         private Guna.UI2.WinForms.Guna2HtmlLabel labelCategory;
         private Guna.UI2.WinForms.Guna2HtmlLabel labelMemo;
         private Guna.UI2.WinForms.Guna2HtmlLabel labelTitle;
         private Guna.UI2.WinForms.Guna2HtmlLabel labelSchedule;
         private Guna.UI2.WinForms.Guna2HtmlLabel labelPlace;
-        private Guna.UI2.WinForms.Guna2HtmlLabel labelMember;
-        private Guna.UI2.WinForms.Guna2Button btnMemSet;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel8;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel7;
         private Guna.UI2.WinForms.Guna2DateTimePicker dtpEndTime;
@@ -647,5 +669,10 @@
         private Guna.UI2.WinForms.Guna2TextBox tbPlace;
         private Guna.UI2.WinForms.Guna2TextBox tbTitle;
         private Guna.UI2.WinForms.Guna2Button btnAddSchedule;
+        private Guna.UI2.WinForms.Guna2Button btnMemSet;
+        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;
+        private Guna.UI2.WinForms.Guna2HtmlLabel labelMember;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

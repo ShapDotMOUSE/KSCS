@@ -109,7 +109,7 @@
     <Compile Include="Forms\TempCategorySetting.Designer.cs">
       <DependentUpon>TempCategorySetting.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\MainForm\UserTapButton.cs"> 
+    <Compile Include="UserControls\MainForm\UserTapButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\MainForm\UserTapButton.Designer.cs">
@@ -312,6 +312,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\LOGO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\down.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

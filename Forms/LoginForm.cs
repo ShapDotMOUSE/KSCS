@@ -80,11 +80,11 @@ namespace KSCS
             string PW = tbPassword.Text;
             if (EmptyCheck())
             {
-                if (await MainForm.klas.LoginKLAS(ID, PW)) //KLAS 로그인
+                if (await KLAS.LoginKLAS(ID, PW)) //KLAS 로그인
                 {
+                   
                     this.Cursor = Cursors.Default;
                     this.DialogResult = DialogResult.OK;
-                    KSCS.MainForm.stdNum = ID;
                     this.Close();
                 }
                 else

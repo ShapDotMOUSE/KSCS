@@ -13,19 +13,45 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
+using static KSCS.Class.KSCS_static;
 
 namespace KSCS.Class
 {
     public class KLAS
     {
-        public KLAS()
+        public static Dictionary<string, string> KLAS_URL = new Dictionary<string, string>
+            {
+                { "LoginSecurity", "https://klas.kw.ac.kr/usr/cmn/login/LoginSecurity.do" },
+                { "LoginConfirm","https://klas.kw.ac.kr/usr/cmn/login/LoginConfirm.do" },
+                { "StdHome","https://klas.kw.ac.kr/std/cmn/frame/StdHome.do" },
+                { "OnlineStdList","https://klas.kw.ac.kr/std/lis/evltn/SelectOnlineCntntsStdList.do" },
+                { "TaskStdList","https://klas.kw.ac.kr/std/lis/evltn/TaskStdList.do" },
+                { "PrjctStdList","https://klas.kw.ac.kr/std/lis/evltn/PrjctStdList.do"},
+                { "QuizStdList","https://klas.kw.ac.kr/std/lis/evltn/AnytmQuizStdList.do" }
+            };
+        public static Dictionary<string, string> klasMagamNames = new Dictionary<string, string>()
         {
-            KlasSchedule.Add("Task", new List<Schedule>());
-            KlasSchedule.Add("Quiz", new List<Schedule>());
-            KlasSchedule.Add("Online", new List<Schedule>());
-            KlasSchedule.Add("Prjct", new List<Schedule>());
-            KlasSchedule.Add("Personal", new List<Schedule>());
+            { "Task","과제" },
+            { "Quiz","퀴즈" },
+            { "Online","강의" },
+            { "Prjct","팀플" }
+        };
+        public static Dictionary<string, string> KLAS_LECTURE_NUM = new Dictionary<string, string>();
+        public static HttpClientHandler httpClientHandler;
+        public static HttpClient httpClient;
+        public static CookieContainer cookieContainer;
 
+        public static void ClearKlasSchedule()
+        {
+            KlasSchedule["Task"].Clear();
+            KlasSchedule["Quiz"].Clear();
+            KlasSchedule["Online"].Clear();
+            KlasSchedule["Prjct"].Clear();
+            KlasSchedule["Personal"].Clear();
+        }
+
+        public static void initializeKLAS()
+        {
             cookieContainer = new CookieContainer();
             httpClientHandler = new HttpClientHandler()
             {
@@ -44,31 +70,11 @@ namespace KSCS.Class
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("*/*"));
             httpClient.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 Edge/16.16299");
         }
-        public HttpClient httpClient;
-        public static Dictionary<string, string> KLAS_URL = new Dictionary<string, string>
-            {
-                { "LoginSecurity", "https://klas.kw.ac.kr/usr/cmn/login/LoginSecurity.do" },
-                { "LoginConfirm","https://klas.kw.ac.kr/usr/cmn/login/LoginConfirm.do" },
-                { "StdHome","https://klas.kw.ac.kr/std/cmn/frame/StdHome.do" },
-                { "OnlineStdList","https://klas.kw.ac.kr/std/lis/evltn/SelectOnlineCntntsStdList.do" },
-                { "TaskStdList","https://klas.kw.ac.kr/std/lis/evltn/TaskStdList.do" },
-                { "PrjctStdList","https://klas.kw.ac.kr/std/lis/evltn/PrjctStdList.do"},
-                { "QuizStdList","https://klas.kw.ac.kr/std/lis/evltn/AnytmQuizStdList.do" }
-            };
-        public static Dictionary<string, string> klasMagamNames = new Dictionary<string, string>()
-        {
-            { "Task","과제" },
-            { "Quiz","퀴즈" },
-            { "Online","강의" },
-            { "Prjct","팀플" }
-        };
-        public Dictionary<string, List<Schedule>> KlasSchedule = new Dictionary<string, List<Schedule>>();
-        public Dictionary<string, string> KLAS_LECTURE_NUM = new Dictionary<string, string>();
-        public HttpClientHandler httpClientHandler;
-        private CookieContainer cookieContainer;
+
+
 
         //KLAS 로그인 함수
-        public async Task<bool> LoginKLAS(string ID, string PW)
+        public static async Task<bool> LoginKLAS(string ID, string PW)
         {
             string publicKeyJson = await CreateRequestAsync("LoginSecurity", "POST", "{}"); //klas 공개키 얻어오기
             if (string.IsNullOrEmpty(publicKeyJson)) //네트워크 비정상 상태 로그인 불가능
@@ -103,11 +109,12 @@ namespace KSCS.Class
                 MessageBox.Show(loginResult["fieldErrors"][0]["message"].ToString());
                 return false;
             }
+            stdNum = ID;
             return true;
         }
 
         //KLAS 사이트로 HTTP 요청하는 함수
-        public async Task<string> CreateRequestAsync(string urlName, string type, string data)
+        public static async Task<string> CreateRequestAsync(string urlName, string type, string data)
         {
             HttpRequestMessage request;
             switch (type)
@@ -131,8 +138,10 @@ namespace KSCS.Class
             }
             return "";
         }
-        public async Task LoadMagamData()
+
+        public static async Task LoadMagamData()
         {
+            ClearKlasSchedule();
             string list = await CreateRequestAsync("StdHome", "POST", "{}");
             JObject sbjectList = JObject.Parse(list);
             foreach (JToken subj in sbjectList["atnlcSbjectList"])
@@ -161,7 +170,7 @@ namespace KSCS.Class
                 foreach (JToken online in JArray.Parse(onlineData))
                 {
                     schedule = Schedule.KLAS_Schedule(online["moduletitle"].ToString(), "Online", subj["subjNm"].ToString(), online["endDate"].ToString());
-                    if (schedule.MagamBeforeNow() && string.Equals(online["ispreview"].ToString(),"N")) KlasSchedule["Online"].Add(schedule);
+                    if (schedule.MagamBeforeNow() && string.Equals(online["ispreview"]?.ToString(),"N")) KlasSchedule["Online"].Add(schedule);
                 }
                 string prjctData = await CreateRequestAsync("PrjctStdList", "POST", JsonConvert.SerializeObject(magamContent));
                 foreach (JToken prjct in JArray.Parse(prjctData))

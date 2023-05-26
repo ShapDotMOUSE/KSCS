@@ -14,6 +14,7 @@ namespace KSCS
 {
     public partial class UserSubCategory : UserControl
     {
+        string MainCategory;
         public UserSubCategory()
         {
             InitializeComponent();
@@ -27,6 +28,11 @@ namespace KSCS
         public string GetText()
         {
             return lblCategory.Text;
+        }
+
+        public void setMain(string Main)
+        {
+            MainCategory = Main;
         }
 
         public void SetChecked(bool check)
@@ -64,7 +70,7 @@ namespace KSCS
                     else
                     {
                         //신규 카테고리인 경우
-                        MainForm.Category.AddSubdivision("EtcCategory", txtCategory.Text);
+                        MainForm.Category.AddSubdivision(MainCategory, txtCategory.Text);
                     }
                     lblCategory.Text = txtCategory.Text;
                     this.Name = txtCategory.Text;
@@ -103,6 +109,8 @@ namespace KSCS
             lblCategory.Visible = true;
             txtCategory.Visible = false;
             txtCategory.Clear();
+            if(lblCategory.Text.Length == 0 )
+                ((FlowLayoutPanel)this.Parent).Controls.Remove(this);
         }
 
         //카테고리 체크 여부 확인해서 탭에 추가 및 삭제

@@ -67,13 +67,13 @@
             this.tbPlace = new Guna.UI2.WinForms.Guna2TextBox();
             this.tbTitle = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnMemSet = new Guna.UI2.WinForms.Guna2Button();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.flpMember = new System.Windows.Forms.FlowLayoutPanel();
+            this.txtMember = new System.Windows.Forms.TextBox();
             this.panelTop.SuspendLayout();
             this.panelLabel.SuspendLayout();
             this.guna2ContextMenuStrip1.SuspendLayout();
             this.panelSchedules.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.flpMember.SuspendLayout();
             this.SuspendLayout();
             // 
             // formRadius
@@ -578,24 +578,24 @@
             this.btnMemSet.Text = "일정 함께하는 친구 추가";
             this.btnMemSet.Click += new System.EventHandler(this.btnMemSet_Click);
             // 
-            // flowLayoutPanel1
+            // flpMember
             // 
-            this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Controls.Add(this.textBox1);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(340, 450);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(284, 75);
-            this.flowLayoutPanel1.TabIndex = 1;
-            this.flowLayoutPanel1.Visible = false;
+            this.flpMember.AutoScroll = true;
+            this.flpMember.Controls.Add(this.txtMember);
+            this.flpMember.Location = new System.Drawing.Point(340, 450);
+            this.flpMember.Name = "flpMember";
+            this.flpMember.Size = new System.Drawing.Size(284, 75);
+            this.flpMember.TabIndex = 1;
+            this.flpMember.Visible = false;
             // 
-            // textBox1
+            // txtMember
             // 
-            this.textBox1.Location = new System.Drawing.Point(3, 3);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(278, 33);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            this.txtMember.Location = new System.Drawing.Point(3, 3);
+            this.txtMember.Multiline = true;
+            this.txtMember.Name = "txtMember";
+            this.txtMember.Size = new System.Drawing.Size(278, 33);
+            this.txtMember.TabIndex = 0;
+            this.txtMember.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // ScheDetailForm
             // 
@@ -603,7 +603,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(650, 590);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.flpMember);
             this.Controls.Add(this.btnMemSet);
             this.Controls.Add(this.guna2HtmlLabel8);
             this.Controls.Add(this.guna2HtmlLabel7);
@@ -631,8 +631,8 @@
             this.panelLabel.PerformLayout();
             this.guna2ContextMenuStrip1.ResumeLayout(false);
             this.panelSchedules.ResumeLayout(false);
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
+            this.flpMember.ResumeLayout(false);
+            this.flpMember.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -677,7 +677,7 @@
         private Guna.UI2.WinForms.Guna2Button btnMemSet;
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;
         private Guna.UI2.WinForms.Guna2HtmlLabel labelMember;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.FlowLayoutPanel flpMember;
+        private System.Windows.Forms.TextBox txtMember;
     }
 }

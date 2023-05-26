@@ -57,7 +57,8 @@ namespace KSCS
                     id = int.Parse(table["id"].ToString()),
                 };
 
-                //startDate와 endDate 일자가 다른 경우도 포함(추가)
+                /* 리스트 추가 */
+                //startDate와 endDate 일자가 다른 경우도 포함
                 TimeSpan duration = schedule.endDate - schedule.startDate;
                 for (int i = 0; i <= duration.Days; i++)
                 {
@@ -90,8 +91,6 @@ namespace KSCS
             table.Read();
             schedule.id = int.Parse(table["id"].ToString());
             table.Close();
-
-            
         }
 
         public static void UpdateSchedule(Schedule schedule,int index)
@@ -107,14 +106,6 @@ namespace KSCS
                     );
             MySqlCommand cmd = new MySqlCommand(updateQuery, getDBConnection());
             if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Update Data.");
-            // 리스트 수정
-            var selectedSchedule = monthScheduleList[UserDate.static_date - 1][index];
-            selectedSchedule.title = schedule.title;
-            selectedSchedule.content = schedule.content;
-            selectedSchedule.place = schedule.place;
-            selectedSchedule.category = schedule.category;
-            selectedSchedule.startDate = schedule.startDate;
-            selectedSchedule.endDate = schedule.endDate;
         }
 
         public static void DeleteSchedule(int index)
@@ -122,7 +113,6 @@ namespace KSCS
             string deleteQuery = string.Format("DELETE FROM Schedule WHERE id='{0}';", monthScheduleList[UserDate.static_date - 1][index].id);
             MySqlCommand cmd = new MySqlCommand(deleteQuery, getDBConnection());
             if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Delete Data.");
-            
         }
 
 

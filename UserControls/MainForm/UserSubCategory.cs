@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KSCS.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,8 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using KSCS.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static KSCS.Class.KSCS_static;
 
 namespace KSCS
 {
@@ -59,12 +59,12 @@ namespace KSCS
                     if (lblCategory.Text.Length > 0)
                     {
                         //기존 카테고리인 경우
-                        MainForm.Category.ChageSubdivisionName(((FlowLayoutPanel)this.Parent).Name,lblCategory.Text, txtCategory.Text);
+                        category.ChageSubdivisionName(((FlowLayoutPanel)this.Parent).Name,lblCategory.Text, txtCategory.Text);
                     }
                     else
                     {
                         //신규 카테고리인 경우
-                        MainForm.Category.AddSubdivision("EtcCategory", txtCategory.Text);
+                        category.AddSubdivision("EtcCategory", txtCategory.Text);
                     }
                     lblCategory.Text = txtCategory.Text;
                     this.Name = txtCategory.Text;
@@ -110,11 +110,11 @@ namespace KSCS
         {
             if(chkCategory.Checked)
             {
-                MainForm.Category.AddChecked(MainForm.TabName, lblCategory.Text);
+                category.AddChecked(MainForm.TabName, lblCategory.Text);
             }
             else
             {
-                MainForm.Category.DeletChecked(MainForm.TabName, lblCategory.Text);
+                category.DeletChecked(MainForm.TabName, lblCategory.Text);
             }
         }
 

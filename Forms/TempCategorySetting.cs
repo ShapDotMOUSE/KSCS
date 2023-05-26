@@ -8,6 +8,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static KSCS.Class.KSCS_static;
 
 namespace KSCS.Forms
 {
@@ -29,7 +30,7 @@ namespace KSCS.Forms
         //처음 폼 로드 시 카테고리 정보 세팅
         private void TempCategorySetting_Load(object sender, EventArgs e)
         {
-            foreach(string Main in MainForm.Category.Categories.Keys)
+            foreach(string Main in category.Categories.Keys)
             {
                 cmbMain.Items.Add(Main);
                 if (originMain== Main)
@@ -53,7 +54,7 @@ namespace KSCS.Forms
             {
                 string NewMain = cmbMain.SelectedItem.ToString();
                 //변경 사항 Category에 적용
-                MainForm.Category.ChangeParentOfSub(originMain, NewMain, originSub);
+                category.ChangeParentOfSub(originMain, NewMain, originSub);
                 //변경 사항 MainForm에 적용
                 FlowLayoutPanel NewParent = MainCategory.Controls[NewMain] as FlowLayoutPanel;
                 FlowLayoutPanel OldParent = MainCategory.Controls[originMain] as FlowLayoutPanel;
@@ -70,7 +71,7 @@ namespace KSCS.Forms
             {
                 string NewSub = txtboxSub.Text;
                 //변경 사항 Category에 적용
-                MainForm.Category.ChageSubdivisionName(originMain, originSub, NewSub);
+                category.ChageSubdivisionName(originMain, originSub, NewSub);
                 FlowLayoutPanel Parent = MainCategory.Controls[originMain] as FlowLayoutPanel;
                 ((UserSubCategory)Parent.Controls[originSub]).SetBasicMode(NewSub);
 

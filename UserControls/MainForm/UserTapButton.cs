@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static KSCS.Class.KSCS_static;
 
 namespace KSCS
 {
@@ -90,7 +91,7 @@ namespace KSCS
             {
                 if (txtTab.Text.Length > 0)
                 {
-                    MainForm.Category.ChangeTabName(this.Name, txtTab.Text);
+                    category.ChangeTabName(this.Name, txtTab.Text);
                     btnTap.Text = txtTab.Text;
                     this.Name = txtTab.Text;
                     txtTab.Visible = false;

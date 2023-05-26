@@ -25,7 +25,8 @@ namespace KSCS
             InitializeComponent();
             InitializeGuna2DateTimePicker();
             InitializeScheDetailForm();
-            panelSchedules.VerticalScroll.Visible = false; 
+            panelSchedules.VerticalScroll.Visible = false;
+
         }
 
         private void InitializeGuna2DateTimePicker()
@@ -88,7 +89,7 @@ namespace KSCS
             Schedule schedule = new Schedule(tbTitle.Text, tbMemo.Text, tbPlace.Text, cbCategory.Text, GetStartDateTime(), GetEndDateTime());
             if (addBtn.Text == "Add")
             {
-                Database.AddScheudle(schedule);
+                Database.CreateScheudle(schedule);
             }
             else if(addBtn.Text == "Modify")
             {

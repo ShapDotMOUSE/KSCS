@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -26,6 +27,8 @@ namespace KSCS
             return connection;
         }
 
+
+        //스케줄 관련=======================================================================
         public static void ReadScheduleList()
         {
             string selectQuery = string.Format("SELECT * from Schedule JOIN Category ON Schedule.category_id=Category.id JOIN StudentCategory ON StudentCategory.student_id=Schedule.student_id and Schedule.category_id=Category.id and Category.id=StudentCategory.category_id WHERE Schedule.student_id={0} and  startDate BETWEEN DATE_FORMAT('{1}', '%Y-%m-%d') AND LAST_DAY('{1}') ORDER BY startDate ASC;", stdNum, new DateTime(year, month, 1).ToString("yyyy-MM-dd"));
@@ -58,20 +61,8 @@ namespace KSCS
             table.Close();
         }
 
-        public static void ReadCategory()
-        {
-            categoryDict.Clear();
-            string selectQuery = string.Format("SELECT * from Category JOIN StudentCategory ON Category.id=StudentCategory.category_id WHERE student_id='{0}';", stdNum);
-            MySqlCommand cmd = new MySqlCommand(selectQuery, getDBConnection());
-            MySqlDataReader table = cmd.ExecuteReader();
-            while (table.Read())
-            {
-                categoryDict.Add(table["type"].ToString(), new string[2] { table["id"].ToString(), table["color"].ToString() });
-            }
-            table.Close();
-        }
 
-        public static void AddScheudle(Schedule schedule)
+        public static void CreateScheudle(Schedule schedule)
         {
             string insertQuery = string.Format("INSERT INTO Schedule(student_id,title,content,place,category_id,startDate,endDate) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}');",
                     stdNum,
@@ -129,6 +120,148 @@ namespace KSCS
             monthScheduleList[UserDate.static_date - 1].RemoveAt(index);
         }
 
+
+        //이전 카테고리========================
+        public static void ReadCategory()
+        {
+            categoryDict.Clear();
+            string selectQuery = string.Format("SELECT * from Category JOIN StudentCategory ON Category.id=StudentCategory.category_id WHERE student_id='{0}';", stdNum);
+            MySqlCommand cmd = new MySqlCommand(selectQuery, getDBConnection());
+            MySqlDataReader table = cmd.ExecuteReader();
+            while (table.Read())
+            {
+                categoryDict.Add(table["type"].ToString(), new string[2] { table["id"].ToString(), table["color"].ToString() });
+            }
+            table.Close();
+        }
+
+        //탭관련=============================
+
+        public static void CreateTab()//최초 탭 생성 기본값 : ALL, Tab1, Tab2, Tab3,Tab4
+        {
+
+            string insertQuery = string.Format("INSERT INTO StudentTab(tabName,student_id)" +
+                " VALUES ('All',{0}),('Tab1',{0}),('Tab2',{0}),('Tab3',{0}),('Tab4',{0});",stdNum);
+            MySqlCommand cmd = new MySqlCommand(insertQuery, connection);
+            if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to insert Data.");
+        }
+
+        public static void ReadTab()//탭 이름 얻어오기
+        {
+            string selectQuery = string.Format("SELECT tab_name FROM StudentTab WHERE student_id={0}",stdNum);
+            MySqlCommand cmd = new MySqlCommand(selectQuery, getDBConnection());
+            MySqlDataReader table = cmd.ExecuteReader();
+
+            while (table.Read())
+            {
+
+            }
+
+            table.Close();
+        }
+
+        public static void UpdateTabName(string name,int index)
+        {
+            string updateQuery = string.Format("UPDATE StudentTab SET tab_name={0} WHERE student_id={1} ORDER BY id LIMIT 1 OFFSET {2}",name,stdNum,index);
+            MySqlCommand cmd = new MySqlCommand(updateQuery, getDBConnection());
+            if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Update Data.");
+        }
+
+
+
+        public static void ReadTabCategory()
+        {
+            string selectQuery = string.Format("SELECT * FROM ");
+            MySqlCommand cmd = new MySqlCommand(selectQuery, getDBConnection());
+            MySqlDataReader table = cmd.ExecuteReader();
+
+            while (table.Read())
+            {
+
+            }
+            table.Close();
+        }
+
+        public static void UpdateTabCategory()
+        {
+            string updateQuery = string.Format("UPDATE Schedule SET ");
+            MySqlCommand cmd = new MySqlCommand(updateQuery, getDBConnection());
+            if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Update Data.");
+
+        }
+
+        public static void DeleteTabCategory()
+        {
+            string deleteQuery = string.Format("DELETE FROM   WHERE id='{0}';");
+            MySqlCommand cmd = new MySqlCommand(deleteQuery, getDBConnection());
+            if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Delete Data.");
+        }
+
+        public static void ReadCategoryList()
+        {
+            //대분류 소분류 한번에
+            string selectQuery = string.Format("SELECT * FROM ");
+            MySqlCommand cmd = new MySqlCommand(selectQuery, getDBConnection());
+            MySqlDataReader table = cmd.ExecuteReader();
+
+            while (table.Read())
+            {
+
+            }
+            table.Close();
+
+        }
+
+        public static void CreateSubCategory()
+        {
+            string insertQuery = string.Format("INSERT INTO () VALUES ();");
+            MySqlCommand cmd = new MySqlCommand(insertQuery, connection);
+            if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to insert Data.");
+            //cmd.CommandText = "SELECT LAST_INSERT_ID() AS id";
+            //MySqlDataReader table = cmd.ExecuteReader();
+            //table.Read();
+            //.id = int.Parse(table["id"].ToString());
+            //table.Close();
+        }
+
+        public static void UpdateSubCategory()
+        {
+            string updateQuery = string.Format("UPDATE Schedule SET ");
+            MySqlCommand cmd = new MySqlCommand(updateQuery, getDBConnection());
+            if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Update Data.");
+        }
+
+        public static void DeleteSubCategory()
+        {
+            string deleteQuery = string.Format("DELETE FROM   WHERE id='{0}';");
+            MySqlCommand cmd = new MySqlCommand(deleteQuery, getDBConnection());
+            if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Delete Data.");
+        }
+
+        public static void CreateParentCategory()
+        {
+            string insertQuery = string.Format("INSERT INTO () VALUES ();");
+            MySqlCommand cmd = new MySqlCommand(insertQuery, connection);
+            if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to insert Data.");
+            //cmd.CommandText = "SELECT LAST_INSERT_ID() AS id";
+            //MySqlDataReader table = cmd.ExecuteReader();
+            //table.Read();
+            //.id = int.Parse(table["id"].ToString());
+            //table.Close();
+        }
+        public static void UpdateParentCategory()
+        {
+            string updateQuery = string.Format("UPDATE Schedule SET ");
+            MySqlCommand cmd = new MySqlCommand(updateQuery, getDBConnection());
+            if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Update Data.");
+        }
+
+        public static void DeleteParentCategory()
+        {
+            string deleteQuery = string.Format("DELETE FROM   WHERE id='{0}';");
+            MySqlCommand cmd = new MySqlCommand(deleteQuery, getDBConnection());
+            if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Delete Data.");
+        }
 
     }
 }

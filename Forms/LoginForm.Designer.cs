@@ -40,11 +40,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.label3 = new System.Windows.Forms.Label();
+            this.lblMsg = new System.Windows.Forms.Label();
+            this.toggleAutoLogin = new Guna.UI2.WinForms.Guna2ToggleSwitch();
             this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.btnClose = new Guna.UI2.WinForms.Guna2ImageButton();
             this.guna2PictureBox7 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.lblMsg = new System.Windows.Forms.Label();
-            this.toggleAutoLogin = new Guna.UI2.WinForms.Guna2ToggleSwitch();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox7)).BeginInit();
             this.SuspendLayout();
@@ -154,7 +154,7 @@
             this.label1.Font = new System.Drawing.Font("나눔고딕", 10F);
             this.label1.Location = new System.Drawing.Point(33, 179);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 23);
+            this.label1.Size = new System.Drawing.Size(41, 20);
             this.label1.TabIndex = 7;
             this.label1.Text = "학번";
             // 
@@ -164,7 +164,7 @@
             this.label2.Font = new System.Drawing.Font("나눔고딕", 10F);
             this.label2.Location = new System.Drawing.Point(33, 255);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 23);
+            this.label2.Size = new System.Drawing.Size(73, 20);
             this.label2.TabIndex = 7;
             this.label2.Text = "비밀번호";
             // 
@@ -175,7 +175,7 @@
             this.label4.ForeColor = System.Drawing.Color.DimGray;
             this.label4.Location = new System.Drawing.Point(34, 432);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(379, 19);
+            this.label4.Size = new System.Drawing.Size(330, 16);
             this.label4.TabIndex = 8;
             this.label4.Text = "학번과 비번은 저장되지 않으며 로그인에만 사용됩니다.";
             // 
@@ -190,9 +190,36 @@
             this.label3.Font = new System.Drawing.Font("나눔고딕", 10F);
             this.label3.Location = new System.Drawing.Point(33, 329);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(111, 23);
+            this.label3.Size = new System.Drawing.Size(94, 20);
             this.label3.TabIndex = 17;
             this.label3.Text = "자동 로그인";
+            // 
+            // lblMsg
+            // 
+            this.lblMsg.AutoSize = true;
+            this.lblMsg.ForeColor = System.Drawing.Color.IndianRed;
+            this.lblMsg.Location = new System.Drawing.Point(35, 363);
+            this.lblMsg.Name = "lblMsg";
+            this.lblMsg.Size = new System.Drawing.Size(0, 15);
+            this.lblMsg.TabIndex = 18;
+            // 
+            // toggleAutoLogin
+            // 
+            this.toggleAutoLogin.Animated = true;
+            this.toggleAutoLogin.CheckedState.BorderColor = System.Drawing.Color.Maroon;
+            this.toggleAutoLogin.CheckedState.FillColor = System.Drawing.Color.Maroon;
+            this.toggleAutoLogin.CheckedState.InnerBorderColor = System.Drawing.Color.White;
+            this.toggleAutoLogin.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.toggleAutoLogin.Location = new System.Drawing.Point(109, 327);
+            this.toggleAutoLogin.Name = "toggleAutoLogin";
+            this.toggleAutoLogin.Size = new System.Drawing.Size(35, 20);
+            this.toggleAutoLogin.TabIndex = 19;
+            this.toggleAutoLogin.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.toggleAutoLogin.UncheckedState.BorderThickness = 2;
+            this.toggleAutoLogin.UncheckedState.FillColor = System.Drawing.Color.White;
+            this.toggleAutoLogin.UncheckedState.InnerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.toggleAutoLogin.UncheckedState.InnerBorderThickness = 2;
+            this.toggleAutoLogin.UncheckedState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
             // 
             // guna2PictureBox2
             // 
@@ -224,41 +251,14 @@
             // guna2PictureBox7
             // 
             this.guna2PictureBox7.BackColor = System.Drawing.Color.White;
-            this.guna2PictureBox7.Image = global::KSCS.Properties.Resources.우니팡이동그라미;
+            this.guna2PictureBox7.Image = global::KSCS.Properties.Resources.LOGO;
             this.guna2PictureBox7.ImageRotate = 0F;
-            this.guna2PictureBox7.Location = new System.Drawing.Point(116, 64);
+            this.guna2PictureBox7.Location = new System.Drawing.Point(109, 53);
             this.guna2PictureBox7.Name = "guna2PictureBox7";
-            this.guna2PictureBox7.Size = new System.Drawing.Size(127, 90);
+            this.guna2PictureBox7.Size = new System.Drawing.Size(124, 112);
             this.guna2PictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.guna2PictureBox7.TabIndex = 1;
             this.guna2PictureBox7.TabStop = false;
-            // 
-            // lblMsg
-            // 
-            this.lblMsg.AutoSize = true;
-            this.lblMsg.ForeColor = System.Drawing.Color.IndianRed;
-            this.lblMsg.Location = new System.Drawing.Point(35, 363);
-            this.lblMsg.Name = "lblMsg";
-            this.lblMsg.Size = new System.Drawing.Size(0, 18);
-            this.lblMsg.TabIndex = 18;
-            // 
-            // toggleAutoLogin
-            // 
-            this.toggleAutoLogin.Animated = true;
-            this.toggleAutoLogin.CheckedState.BorderColor = System.Drawing.Color.Maroon;
-            this.toggleAutoLogin.CheckedState.FillColor = System.Drawing.Color.Maroon;
-            this.toggleAutoLogin.CheckedState.InnerBorderColor = System.Drawing.Color.White;
-            this.toggleAutoLogin.CheckedState.InnerColor = System.Drawing.Color.White;
-            this.toggleAutoLogin.Location = new System.Drawing.Point(109, 327);
-            this.toggleAutoLogin.Name = "toggleAutoLogin";
-            this.toggleAutoLogin.Size = new System.Drawing.Size(35, 20);
-            this.toggleAutoLogin.TabIndex = 19;
-            this.toggleAutoLogin.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.toggleAutoLogin.UncheckedState.BorderThickness = 2;
-            this.toggleAutoLogin.UncheckedState.FillColor = System.Drawing.Color.White;
-            this.toggleAutoLogin.UncheckedState.InnerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.toggleAutoLogin.UncheckedState.InnerBorderThickness = 2;
-            this.toggleAutoLogin.UncheckedState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
             // 
             // LoginForm
             // 

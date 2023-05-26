@@ -28,10 +28,12 @@ namespace KSCS
         }
 
 
-        //스케줄 관련=======================================================================
+        //스케줄 관련======================================================================
         public static void ReadScheduleList()
         {
-            string selectQuery = string.Format("SELECT * from Schedule JOIN Category ON Schedule.category_id=Category.id JOIN StudentCategory ON StudentCategory.student_id=Schedule.student_id and Schedule.category_id=Category.id and Category.id=StudentCategory.category_id WHERE Schedule.student_id={0} and  startDate BETWEEN DATE_FORMAT('{1}', '%Y-%m-%d') AND LAST_DAY('{1}') ORDER BY startDate ASC;", stdNum, new DateTime(year, month, 1).ToString("yyyy-MM-dd"));
+            string selectQuery = string.Format("SELECT * FROM Schedule JOIN Category ON Schedule.category_id=Category.id JOIN StudentCategory ON StudentCategory.student_id=Schedule.student_id and Schedule.category_id=Category.id and Category.id=StudentCategory.category_id"+
+            " WHERE Schedule.student_id={0} AND (startDate BETWEEN DATE_FORMAT('{1}', '%Y-%m-%d') AND LAST_DAY('{1}') OR"+
+            " endDate BETWEEN DATE_FORMAT('{1}', '%Y-%m-%d') AND LAST_DAY('{1}')) ORDER BY startDate ASC;", stdNum, new DateTime(year, month, 1).ToString("yyyy-MM-dd"));
             MySqlCommand cmd = new MySqlCommand(selectQuery, getDBConnection());
             MySqlDataReader table = cmd.ExecuteReader();
             monthScheduleList.Clear(); //한달 스케줄 초기화
@@ -55,7 +57,15 @@ namespace KSCS
                     id = int.Parse(table["id"].ToString()),
                 };
 
-                monthScheduleList[Convert.ToInt32(schedule.startDate.ToString("dd")) - 1].Add(schedule);
+                //startDate와 endDate 일자가 다른 경우도 포함(추가)
+                TimeSpan duration = schedule.endDate - schedule.startDate;
+                for (int i = 0; i <= duration.Days; i++)
+                {
+                    if (Convert.ToInt32(schedule.startDate.AddDays(i).ToString("MM")) == month)
+                    {
+                        monthScheduleList[Convert.ToInt32(schedule.startDate.AddDays(i).ToString("dd")) - 1].Add(schedule);
+                    }
+                }
             }
 
             table.Close();
@@ -77,15 +87,11 @@ namespace KSCS
             //추가 후, id 값 가져오기
             cmd.CommandText = "SELECT LAST_INSERT_ID() AS id";
             MySqlDataReader table = cmd.ExecuteReader();
-            while (table.Read())
-            {
-                schedule.id = int.Parse(table["id"].ToString());
-            }
+            table.Read();
+            schedule.id = int.Parse(table["id"].ToString());
             table.Close();
-            //스케줄 리스트 추가
-            monthScheduleList[UserDate.static_date - 1].Add(schedule);
-            //스케줄 리스트 시작 시간 순 정렬
-            monthScheduleList[UserDate.static_date - 1].OrderBy(sche => sche.startDate);
+
+            
         }
 
         public static void UpdateSchedule(Schedule schedule,int index)
@@ -116,8 +122,7 @@ namespace KSCS
             string deleteQuery = string.Format("DELETE FROM Schedule WHERE id='{0}';", monthScheduleList[UserDate.static_date - 1][index].id);
             MySqlCommand cmd = new MySqlCommand(deleteQuery, getDBConnection());
             if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Delete Data.");
-            //리스트 삭제
-            monthScheduleList[UserDate.static_date - 1].RemoveAt(index);
+            
         }
 
 

@@ -38,7 +38,7 @@
             this.lblDate.AutoSize = false;
             this.lblDate.BackColor = System.Drawing.Color.Transparent;
             this.lblDate.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate.Font = new System.Drawing.Font("Pretendard SemiBold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblDate.Location = new System.Drawing.Point(0, 0);
             this.lblDate.Margin = new System.Windows.Forms.Padding(0);
             this.lblDate.Name = "lblDate";

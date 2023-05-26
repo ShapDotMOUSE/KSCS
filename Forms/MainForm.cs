@@ -32,16 +32,39 @@ namespace KSCS
             else
                 Close();
             lblStdNum.Text = stdNum;
-            category.TestCategory();
+            
             Database.ReadCategory();
-            //초기 탭 설정 
-            TabName = btnTab1.Name; //수정되어야함
-            btnTab1.Clicked += ChangeTab;
-            btnTab2.Clicked += ChangeTab;
-            btnTab3.Clicked += ChangeTab;
+
+            //달력
             dispalyDate();
+
+            //초기 메인 카테고리 설정
+            category.TestCategory();
+            UserMainCategory school = new UserMainCategory();
+            school.SetAddMode("학교");
+            UserMainCategory personal = new UserMainCategory();
+            personal.SetAddMode("개인");
+            UserMainCategory Etc = new UserMainCategory();
+            Etc.SetAddMode("기타");
+            MainCategory.Controls.Add(school);
+            MainCategory.Controls.Add(personal);
+            MainCategory.Controls.Add(Etc);
+
+
             DisplayCategery();
+
+            //초기 탭 설정 
+            TabName = 탭1.Name; //수정되어야함
+            탭1.Clicked += ChangeTab;
+            탭2.Clicked += ChangeTab;
+            탭3.Clicked += ChangeTab;
+            탭4.Clicked += ChangeTab;
+            탭5.Clicked += ChangeTab;
+            //탭 로드
             SetCheckedCategoryByTab();
+            탭1.ShowTab();
+
+            
         }
 
         private async void LoadMagam()
@@ -52,36 +75,21 @@ namespace KSCS
 
         private void MainForm_Resize(object sender, EventArgs e)
         {
-            this.Size = new Size(1280, 960);
+            this.Size = new Size(1280, 1080);
         }
 
 
         //카테고리 함수---------------------------------------------------------------------------------------------------------------------------------------
         private void DisplayCategery()
         {
-
-            foreach (var item in category.ParentCategorys["SchoolCategory"] as HashSet<string>)
+            foreach (var key in category.Categories.Keys)
             {
-                UserCategory uc = new UserCategory();
-                uc.SetBasicMode(item);
-                uc.MouseDoubleClick += UcCategory_MouseDoubleClick;
-                flpSchoolCategory.Controls.Add(uc);
-            }
-
-            foreach (var item in category.ParentCategorys["PersonalCategory"] as HashSet<string>)
-            {
-                UserCategory uc = new UserCategory();
-                uc.SetBasicMode(item);
-                uc.MouseDoubleClick += UcCategory_MouseDoubleClick;
-                flpPersonalCategory.Controls.Add(uc);
-            }
-
-            foreach (var item in category.ParentCategorys["EtcCategory"] as HashSet<string>)
-            {
-                UserCategory uc = new UserCategory();
-                uc.SetBasicMode(item);
-                uc.MouseDoubleClick += UcCategory_MouseDoubleClick;
-                flpEtcCategory.Controls.Add(uc);
+                foreach (var item in category.Categories[key])
+                {
+                    UserSubCategory uc = new UserSubCategory();
+                    uc.SetBasicMode(item);
+                    ((FlowLayoutPanel)((UserMainCategory)MainCategory.Controls[key]).flpSubCategory).Controls.Add(uc);
+                }
             }
         }
 
@@ -91,18 +99,20 @@ namespace KSCS
             /*
              * TODO: 이 부분에 DB에 연결하는 함수 추가 필요
              */
-            customTapButton btn = sender as customTapButton;
+            UserTabButton OldTab = this.Controls[TabName] as UserTabButton;
+            UserTabButton btn = sender as UserTabButton;
             TabName = btn.Name;
+            OldTab.HideTab();
             SetCheckedCategoryByTab();
         }
         private void SetCheckedCategoryByTab()
         {
-            FlowLayoutPanel[] flp = { flpSchoolCategory, flpPersonalCategory, flpEtcCategory };
-            foreach (FlowLayoutPanel panel in flp)
+            foreach (string key in category.Categories.Keys)
             {
-                foreach (UserCategory userCategory in panel.Controls)
+                FlowLayoutPanel flp = ((UserMainCategory)MainCategory.Controls[key]).flpSubCategory;
+                foreach (UserSubCategory subCategory in flp.Controls)
                 {
-                    userCategory.SetChecked(category.IsChecked(TabName, userCategory.GetText()));
+                    subCategory.SetChecked(category.IsChecked(TabName, subCategory.GetText()));
                 }
             }
         }
@@ -110,7 +120,7 @@ namespace KSCS
         //달력 함수-----------------------------------------------------------------------------------------------------------------------------------------
         private void dispalyDate()
         {
-            DateTime now = DateTime.Now;
+            DateTime now = DateTime.Now; //수정 필요
 
             year = now.Year;
             month = now.Month;
@@ -168,9 +178,9 @@ namespace KSCS
             Panel panel = (Panel)btn.Parent;
             foreach (Guna2CircleButton magamBtn in panel.Controls)
             {
-                magamBtn.FillColor = SystemColors.HotTrack;
+                magamBtn.FillColor = Color.FromArgb(217, 217, 217); ;
             }
-            btn.FillColor = Color.SteelBlue;
+            //btn.FillColor = Color.FromArgb(217,217,217);
             panelMagam.Controls.Clear();
             int index = 0;
 
@@ -231,117 +241,30 @@ namespace KSCS
                 case "Next":
                     if (month == 12) { month = 1; year++; }
                     else month++;
+                    
                     break;
                 case "Previsous":
                     if (month == 1) { month = 12; year--; }
                     else month--;
+                    
                     break;
             }
             createDates();
         }
 
         //카테고리 컨트롤------------------------------------------------------------------------------------------------------------------------------------
-        private void btnSchoolCategory_Click(object sender, EventArgs e)
-        {
-            flpSchoolCategory.Visible = !flpSchoolCategory.Visible;
-        }
-
-        private void btnPersonalCategory_Click(object sender, EventArgs e)
-        {
-            flpPersonalCategory.Visible = !flpPersonalCategory.Visible;
-        }
-
-        private void btnEtcCategory_Click(object sender, EventArgs e)
-        {
-            flpEtcCategory.Visible = !flpEtcCategory.Visible;
-        }
 
         private void btnPlusCategory_Click(object sender, EventArgs e)
         {
-            UserCategory category = new UserCategory();
-            category.MouseDoubleClick += UcCategory_MouseDoubleClick;
-            flpEtcCategory.Controls.Add(category);
+            UserMainCategory category = new UserMainCategory();
+            category.SetNewMode();
+            MainCategory.Controls.Add(category);
         }
 
-        ////카테고리 유저 컨트롤------------------------------------------------------------------------------------------------------------------------------------
-        private UserCategory draggedUcCategory; // 드래그 중인 카테고리 유저 컨트롤
-        private UserCategory cloneUcCategory; // 드래그 중인 카테고리 유저 컨트롤 복사본
-        private Point MouseLocation;
-
-        public void UndoCategory()
+        //추가
+        public IEnumerable<UserDate> GetUserDate()
         {
-            this.Controls.Remove(cloneUcCategory);
-            cloneUcCategory.Dispose();
-            draggedUcCategory.Visible = true;
+            return flpDays.Controls.OfType<UserDate>();
         }
-        private void UcCategory_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            draggedUcCategory = (UserCategory)sender;
-            draggedUcCategory.Visible = false;
-
-            // 드래그 중인 버튼의 복사본 생성
-            MouseLocation = new Point((Cursor.Position.X - e.X) - Left, (Cursor.Position.Y - e.Y) - Top); // 현제 마우스 위치
-            cloneUcCategory = new UserCategory { Location = MouseLocation };
-            cloneUcCategory.DragMode(draggedUcCategory.GetText());
-            this.Controls.Add(cloneUcCategory);
-            flpMainCategory.SendToBack();
-            cloneUcCategory.MouseMove += UcCategory_MouseMove;
-            cloneUcCategory.MouseClick += UcCategory_MouseClick;
-        }
-
-        private void UcCategory_MouseClick(object sender, MouseEventArgs e)
-        {
-            string NewMainCategory;
-            if (MouseLocation.Y < flpMainCategory.Location.Y + flpPersonalCategory.Location.Y)
-            {
-                //학교
-                NewMainCategory = "SchoolCategory";
-
-            }
-            else if (MouseLocation.Y < flpMainCategory.Location.Y + flpEtcCategory.Location.Y)
-            {
-                //개인
-                NewMainCategory = "PersonalCategory";
-            }
-            else
-            {
-                //기타
-                NewMainCategory = "EtcCategory";
-            }
-
-            if (NewMainCategory.Length > 0)
-            {
-                draggedUcCategory.Visible = true;
-                string OringMainCategory = category.SubCategorys[cloneUcCategory.GetText()] as string;
-                if (OringMainCategory == NewMainCategory)
-                {
-                    UndoCategory();
-                }
-                else
-                {
-                    this.Controls.Remove(cloneUcCategory);
-                    FlowLayoutPanel FlpNewCategory = flpMainCategory.Controls["flp" + NewMainCategory] as FlowLayoutPanel;
-                    FlowLayoutPanel FlpOriginCategory = flpMainCategory.Controls["flp" + OringMainCategory] as FlowLayoutPanel;
-                    FlpOriginCategory.Controls.Remove(draggedUcCategory);
-                    FlpNewCategory.Controls.Add(draggedUcCategory);
-                    category.ChangeParentOfSub(NewMainCategory, cloneUcCategory.GetText());
-                    draggedUcCategory = null;
-                    cloneUcCategory = null;
-                }
-            }
-        }
-
-        private void UcCategory_MouseMove(object sender, MouseEventArgs e)
-        {
-            MouseLocation = new Point((Cursor.Position.X - cloneUcCategory.Width / 2) - Left, (Cursor.Position.Y - cloneUcCategory.Height / 2) - Top);
-            if ((MouseLocation.X < flpMainCategory.Location.X - 100 || MouseLocation.X > flpMainCategory.Location.X + 130)
-                || (MouseLocation.Y < flpMainCategory.Location.Y || MouseLocation.Y > flpMainCategory.Location.Y + 450))
-            {
-                UndoCategory();
-            }
-            cloneUcCategory.Location = MouseLocation;
-        }
-
-
     }
 }

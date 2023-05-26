@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,8 +11,8 @@ namespace KSCS
 {
     public class Category
     {
-        public Hashtable ParentCategorys = new Hashtable();
-        public Hashtable SubCategorys = new Hashtable();
+        public Dictionary<string, HashSet<string>> Categories = new Dictionary<string, HashSet<string>>();
+        public Dictionary<string, Color> CategoryColor = new Dictionary<string, Color>();
         public Hashtable Tabs = new Hashtable();
 
         public void TestCategory()
@@ -30,29 +31,22 @@ namespace KSCS
             EtcCatergories.Add("기타2");
             EtcCatergories.Add("기타3");
 
-            ParentCategorys["SchoolCategory"] = SchoolCategories;
-            ParentCategorys["PersonalCategory"] = PersonalCategories;
-            ParentCategorys["EtcCategory"] = EtcCatergories;
-
-            SubCategorys["학사일정"] = "SchoolCategory";
-            SubCategorys["과제"] = "SchoolCategory";
-            SubCategorys["퀴즈"] = "SchoolCategory";
-            SubCategorys["온라인 강의"] = "SchoolCategory";
-
-            SubCategorys["생일"] = "PersonalCategory";
-            SubCategorys["약속"] = "PersonalCategory";
-            SubCategorys["식사"] = "PersonalCategory";
-
-            SubCategorys["기타1"] = "EtcCategory";
-            SubCategorys["기타2"] = "EtcCategory";
-            SubCategorys["기타3"] = "EtcCategory";
+            Categories["학교"] = SchoolCategories;
+            Categories["개인"] = PersonalCategories;
+            Categories["기타"] = EtcCatergories;
 
             HashSet<String> TabCategory1 = new HashSet<String>();
             TabCategory1.Add("학사일정");
+            TabCategory1.Add("과제");
+            TabCategory1.Add("퀴즈");
             TabCategory1.Add("온라인강의");
+            TabCategory1.Add("생일");
             TabCategory1.Add("약속");
+            TabCategory1.Add("식사");
             TabCategory1.Add("기타1");
-            Tabs["btnTab1"] = TabCategory1;
+            TabCategory1.Add("기타2");
+            TabCategory1.Add("기타3");
+            Tabs["탭1"] = TabCategory1;
 
             HashSet<String> TabCategory2 = new HashSet<String>();
             TabCategory2.Add("학사일정");
@@ -61,41 +55,42 @@ namespace KSCS
             TabCategory2.Add("온라인강의");
             TabCategory2.Add("기타1");
             TabCategory2.Add("기타2");
-            Tabs["btnTab2"] = TabCategory2;
+            Tabs["탭2"] = TabCategory2;
 
             HashSet<String> TabCategory3 = new HashSet<String>();
             TabCategory3.Add("학사일정");
             TabCategory3.Add("과제");
             TabCategory3.Add("퀴즈");
             TabCategory3.Add("온라인강의");
-            TabCategory3.Add("생일");
-            TabCategory3.Add("약속");
-            TabCategory3.Add("식사");
-            TabCategory3.Add("기타1");
-            TabCategory3.Add("기타2");
-            TabCategory3.Add("기타3");
-            Tabs["btnTab3"] = TabCategory3;
+            Tabs["탭3"] = TabCategory3; 
+            
+            HashSet<String> TabCategory4 = new HashSet<String>();
+            TabCategory4.Add("생일");
+            TabCategory4.Add("약속");
+            TabCategory4.Add("식사");
+            Tabs["탭4"] = TabCategory4; 
+            
+            HashSet<String> TabCategory5 = new HashSet<String>();
+            TabCategory5.Add("기타1");
+            TabCategory5.Add("기타2");
+            TabCategory5.Add("기타3");
+            Tabs["탭5"] = TabCategory5;
         }
 
+        //하위 카테고리 추가
         public void AddSubdivision(string Main, string Sub)
         {
-            HashSet<string> SubdivisionSet = ParentCategorys[Main] as HashSet<string>;
-            SubdivisionSet.Add(Sub);
-            SubCategorys[Sub] = Main;
+            Categories[Main].Add(Sub);
         }
 
-        public void ChageSubdivisionName(string Old, string New)
-        {
-            string ParentCategory = category.SubCategorys[Old] as string;
-            //대분류단에서 이름 수정
-            HashSet<string> Set = category.ParentCategorys[ParentCategory] as HashSet<string>;
-            Set.Remove(Old);
-            Set.Add(New);
-            //하위 카테고리 단에서의 수정
-            category.SubCategorys.Remove(Old);
-            category.SubCategorys.Add(New, ParentCategory);
 
-            foreach(DictionaryEntry tab in Tabs)
+        //하위 카테고리 이름 변경
+        public void ChageSubdivisionName(string Parent, string Old, string New)
+        {
+            Categories[Parent].Remove(Old);
+            Categories[Parent].Add(Old);
+
+            foreach (DictionaryEntry tab in Tabs)
             {
                 HashSet<string> tabCategorys = tab.Value as HashSet<string>;
                 if (tabCategorys.Contains(Old))
@@ -106,30 +101,32 @@ namespace KSCS
             }
         }
 
-        public void ChangeParentOfSub(string NewMain, string Sub)
+
+        //하위 카테고리가 속한 상위 카테고리 변경
+        //Sub의 소속을 OldParent에서 NewParent로 변경
+        public void ChangeParentOfSub(string OldParent, string NewParent, string Sub)
         {
-            string sourcsMain = SubCategorys[Sub] as string;
             //기존 main에서 sub 제거
-            HashSet<string> deleteSubformSourceMain = ParentCategorys[sourcsMain] as HashSet<string>;
-            deleteSubformSourceMain.Remove(Sub);
-            //sub에 대한 main 변경
-            SubCategorys[Sub] = NewMain;
+            Categories[OldParent].Remove(Sub);
             //새로운 main에 sub 추가
-            HashSet<string> AddSubIntoNewParent = ParentCategorys[NewMain] as HashSet<string>;
-            AddSubIntoNewParent.Add(Sub);
+            Categories[NewParent].Add(Sub);
         }
 
+        //탭에 카테고리가 속해있는지 판단
         public bool IsChecked(string Tab, string Sub)
         {
             HashSet<string> TabCategory = Tabs[Tab] as HashSet<string>;
             return TabCategory.Contains(Sub);
         }
+
+        //탭에 하위 카테고리 추가
         public void AddChecked(string Tab, string Sub)
         {
             HashSet<string> TabCategory = Tabs[Tab] as HashSet<string>;
             TabCategory.Add(Sub);
         }
 
+        //탭에 하위 카테고리 제거
         public void DeletChecked(string Tab, string Sub)
         {
             HashSet<string> TabCategory = Tabs[Tab] as HashSet<string>;
@@ -138,5 +135,20 @@ namespace KSCS
                 TabCategory.Remove(Sub);
             }
         }
+
+        //상위 카테고리 이름 변경
+        public void ChangeMainName(string Old, string New)
+        {
+            Categories[New] = Categories[Old];
+            Categories.Remove(Old);
+        }
+
+        //탭이름 변경
+        public void ChangeTabName(string Old, string New)
+        {
+            Tabs[New] = Tabs[Old];
+            Tabs.Remove(Old);
+        }
+
     }
 }

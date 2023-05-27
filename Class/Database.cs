@@ -30,16 +30,39 @@ namespace KSCS
         }
 
         //초기 데이터 생성================================================================
-        public static void CreateData(Schedule schedule)
+        public static void CreateData()
         {
-            string insertQuery = string.Format("INSERT INTO Student(id) SELECT '{0}' FROM dual WHERE NOT EXISTS(SELECT id FROM Student WHERE id = '{0}');");
-            MySqlCommand cmd = new MySqlCommand(insertQuery, connection);
-            if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to insert Data.");
+            string selectQuery = string.Format("SELECT id from Student WHERE id='{0}';",stdNum);
+            
+            MySqlCommand cmd = new MySqlCommand(selectQuery, getDBConnection());
+            MySqlDataReader table = cmd.ExecuteReader();
+            if (!table.HasRows)
+            {
+                table.Close();
+                cmd.CommandText= string.Format("INSERT INTO Student(id) VALUES('{0}')", stdNum);
+                if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to insert Data.");
+
+                cmd.CommandText = string.Format("INSERT INTO Category(category_name, parent_category_id, color, student_id) VALUES" +
+                        "('KLAS', null, null, '{0}')," +
+                        "('개인', null, null, '{0}')," +
+                        "('기타', null, null, '{0}')", stdNum);
+                if (cmd.ExecuteNonQuery() != 3) MessageBox.Show("Failed to insert Data.");
+
+                cmd.CommandText = string.Format("INSERT INTO StudentTab(tab_name, student_id) VALUES " +
+                        "('All','{0}')," +
+                        "('Tab1','{0}')," +
+                        "('Tab2','{0}')," +
+                        "('Tab3','{0}')," +
+                        "('Tab4','{0}')", stdNum);
+                if (cmd.ExecuteNonQuery() != 5) MessageBox.Show("Failed to insert Data.");
+
+            }
+            else table.Close();
         }
 
 
         //스케줄 관련======================================================================
-            public static void ReadScheduleList()
+        public static void ReadScheduleList()
         {
             string selectQuery = string.Format("SELECT * FROM Schedule JOIN Category ON Schedule.category_id=Category.id"+
             " WHERE Schedule.student_id={0} AND (startDate BETWEEN DATE_FORMAT('{1}', '%Y-%m-%d') AND LAST_DAY('{1}') OR"+
@@ -94,7 +117,7 @@ namespace KSCS
                     schedule.category,
                     schedule.startDate.ToString("yyyy-MM-dd HH:mm"),
                     schedule.endDate.ToString("yyyy-MM-dd HH:mm"));
-            MySqlCommand cmd = new MySqlCommand(insertQuery, connection);
+            MySqlCommand cmd = new MySqlCommand(insertQuery, getDBConnection());
             if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to insert Data.");
             //추가 후, id 값 가져오기
             cmd.CommandText = "SELECT LAST_INSERT_ID() AS id";
@@ -129,15 +152,6 @@ namespace KSCS
 
 
         //탭관련=============================
-        
-        public static void CreateTab()//최초 탭 생성 기본값 : ALL, Tab1, Tab2, Tab3,Tab4
-        {
-            string insertQuery = string.Format("INSERT INTO StudentTab(tab_name,student_id)" +
-                " VALUES ('All',{0}),('Tab1',{0}),('Tab2',{0}),('Tab3',{0}),('Tab4',{0});",stdNum);
-            MySqlCommand cmd = new MySqlCommand(insertQuery, connection);
-            if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to insert Data.");
-        }
-
         public static List<string> ReadTab()
         {
             List<string> list = new List<string>();
@@ -156,7 +170,7 @@ namespace KSCS
         public static void ReadTabAndCategory()//탭 이름 얻어오기
         {
             string selectQuery = string.Format("SELECT * FROM StudentTab LEFT OUTER JOIN TabCategory on StudentTab.id=TabCategory.tab_id" +
-                " LEFT OUTER JOIN Category on Category.id=TabCategory.category_id WHERE StudentTab.student_id={0} ORDER BY StudentTab.id",stdNum);
+                " LEFT OUTER JOIN Category on Category.id=TabCategory.category_id WHERE StudentTab.student_id={0} ",stdNum);
             MySqlCommand cmd = new MySqlCommand(selectQuery, getDBConnection());
             MySqlDataReader table = cmd.ExecuteReader();
 

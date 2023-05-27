@@ -128,20 +128,6 @@ namespace KSCS
         }
 
 
-        //이전 카테고리========================
-        //public static void ReadCategory()
-        //{
-        //    categoryDict.Clear();
-        //    string selectQuery = string.Format("SELECT * from Category JOIN StudentCategory ON Category.id=StudentCategory.category_id WHERE student_id='{0}';", stdNum);
-        //    MySqlCommand cmd = new MySqlCommand(selectQuery, getDBConnection());
-        //    MySqlDataReader table = cmd.ExecuteReader();
-        //    while (table.Read())
-        //    {
-        //        categoryDict.Add(table["type"].ToString(), new string[2] { table["id"].ToString(), table["color"].ToString() });
-        //    }
-        //    table.Close();
-        //}
-
         //탭관련=============================
         
         public static void CreateTab()//최초 탭 생성 기본값 : ALL, Tab1, Tab2, Tab3,Tab4
@@ -163,13 +149,14 @@ namespace KSCS
             {
                 list.Add(table["tab_name"].ToString());
             }
+            table.Close();
             return list;
         }
 
         public static void ReadTabAndCategory()//탭 이름 얻어오기
         {
             string selectQuery = string.Format("SELECT * FROM StudentTab LEFT OUTER JOIN TabCategory on StudentTab.id=TabCategory.tab_id" +
-                " LEFT OUTER JOIN Category on Category_id=TabCategory.category_id WHERE StudentTab.student_id={0} ORDER BY StudentTab.id",stdNum);
+                " LEFT OUTER JOIN Category on Category.id=TabCategory.category_id WHERE StudentTab.student_id={0} ORDER BY StudentTab.id",stdNum);
             MySqlCommand cmd = new MySqlCommand(selectQuery, getDBConnection());
             MySqlDataReader table = cmd.ExecuteReader();
 

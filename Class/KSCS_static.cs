@@ -17,7 +17,6 @@ namespace KSCS.Class
         public static KLAS klas = new KLAS();
         //카테고리
         public static Category category = new Category();
-        public static Dictionary<string, string[]> categoryDict = new Dictionary<string, string[]>(); //category dictionary
         //스케줄
         public static List<List<Schedule>> monthScheduleList = new List<List<Schedule>>(); //한달 단위 schedule list
         //클라스 스케줄

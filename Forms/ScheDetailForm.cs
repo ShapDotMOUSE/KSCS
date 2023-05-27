@@ -224,7 +224,7 @@ namespace KSCS
             dtpStartDate.Value = monthScheduleList[UserDate.static_date - 1][index].startDate;
             dtpStartTime.Value = monthScheduleList[UserDate.static_date - 1][index].startDate;
             int categoryIndex = cbCategory.Items.IndexOf(monthScheduleList[UserDate.static_date - 1][index].category);
-            panelTop.BackColor = Color.FromArgb(int.Parse(categoryDict[monthScheduleList[UserDate.static_date - 1][index].category][1]));
+            panelTop.BackColor = category.GetColor(monthScheduleList[UserDate.static_date - 1][index].category);
             cbCategory.SelectedIndex = categoryIndex;
             cbCategory.Text = monthScheduleList[UserDate.static_date - 1][index].category;
             dtpEndDate.Value = monthScheduleList[UserDate.static_date - 1][index].endDate;
@@ -250,7 +250,7 @@ namespace KSCS
             if (cbCategory.SelectedIndex != 0 && addBtn.Text == "Modify")
             {
                 scheduleUnit scheduleUnit = (scheduleUnit)(panelSchedules.Controls[selectedScheduleIndex]);
-                scheduleUnit.ChangeScheduleColor(Color.FromArgb(int.Parse(categoryDict[cbCategory.Text][1]))); //수정
+                scheduleUnit.ChangeScheduleColor(category.GetColor(cbCategory.Text)); //수정
             }
         }
 
@@ -277,7 +277,7 @@ namespace KSCS
                     Name = "scdUnit" + index.ToString(),
                     ScheduleTitle = monthScheduleList[UserDate.static_date - 1][i].title
                 };
-                scheduleUnit.ChangeScheduleColor(Color.FromArgb(int.Parse(categoryDict[monthScheduleList[UserDate.static_date - 1][i].category][1])));
+                scheduleUnit.ChangeScheduleColor(category.GetColor(monthScheduleList[UserDate.static_date - 1][i].category));
                 scheduleUnit.btnClick += btnSchedule_Click;
                 scheduleUnit.Location = new Point(9, 12 + index * (scheduleUnit.Height + 3));
                 panelSchedules.Controls.Add(scheduleUnit);
@@ -285,11 +285,14 @@ namespace KSCS
             }
 
             cbCategory.Items.Clear();
-            foreach (string Key in categoryDict.Keys)
+            foreach (string Key in category.Categories.Keys)
             {
-                if (!cbCategory.Items.Contains(Key))
+                foreach(string Value in category.Categories[Key])
                 {
-                    cbCategory.Items.Add(Key);
+                    if (!cbCategory.Items.Contains(Value))
+                    {
+                        cbCategory.Items.Add(Value);
+                    }
                 }
             }
             btnAddSchedule.Location = new Point(24, 12 + index * 55);

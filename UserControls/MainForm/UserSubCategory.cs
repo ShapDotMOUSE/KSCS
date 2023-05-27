@@ -110,11 +110,11 @@ namespace KSCS
         {
             if(chkCategory.Checked)
             {
-                category.AddChecked(MainForm.TabName, lblCategory.Text);
+                category.AddChecked(TabName, lblCategory.Text);
             }
             else
             {
-                category.DeletChecked(MainForm.TabName, lblCategory.Text);
+                category.DeletChecked(TabName, lblCategory.Text);
             }
         }
 

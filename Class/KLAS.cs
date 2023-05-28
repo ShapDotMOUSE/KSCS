@@ -142,7 +142,7 @@ namespace KSCS.Class
         public static async Task LoadMagamData()
         {
             ClearKlasSchedule();
-            string list = await CreateRequestAsync("StdHome", "POST", "{}");
+            string list = await CreateRequestAsync("StdHome", "POST", "{\"searchYearhakgi\":\"2023,1\"}");
             JObject sbjectList = JObject.Parse(list);
             foreach (JToken subj in sbjectList["atnlcSbjectList"])
             {

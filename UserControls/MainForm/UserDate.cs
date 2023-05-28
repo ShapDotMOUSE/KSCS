@@ -1,20 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
+using static KSCS.Class.KSCS_static;
 
 namespace KSCS
 {
     public partial class UserDate : UserControl
     {
-        public static int static_date; //추가(클릭한 날)
+        public static int static_date; //클릭한 날
 
         public UserDate()
         {
@@ -24,15 +19,10 @@ namespace KSCS
 
         private void LoadUserDate()
         {
-            flpEvent.Controls.Clear(); //userEvent 컨트롤 초기화 추가
-            for (int i = 0; i < MainForm.monthScheduleList[Convert.ToInt32(lblDate.Text) - 1].Count; i++)
-            {
-                 AddEvent(
-                    MainForm.monthScheduleList[Convert.ToInt32(lblDate.Text) - 1][i].title,
-                    int.Parse(MainForm.categoryDict[MainForm.monthScheduleList[Convert.ToInt32(lblDate.Text) - 1][i].category][1])
-                    );
-            }
-            this.Refresh(); //추가
+            flpEvent.Controls.Clear(); //userEvent 컨트롤 초기화
+            foreach (Schedule schedule in monthScheduleList[Convert.ToInt32(lblDate.Text) - 1])
+                AddEvent(schedule.title, int.Parse(categoryDict[schedule.category][1]));
+            this.Refresh();
         }
 
         public void ChangeBlank()
@@ -40,10 +30,9 @@ namespace KSCS
             flpEvent.Controls.Clear();
             if (lblDate.Visible)
             {
-                lblDate.Text = "0";
+                lblDate.Text = "";
                 BackColor = Color.White;
                 lblDate.Visible = false;
-
                 Cursor = Cursors.Default;
                 btnTransparent.MouseEnter -= UserDate_MouseEnter;
                 btnTransparent.MouseLeave -= UserDate_MouseLeave;
@@ -55,7 +44,6 @@ namespace KSCS
         {
             lblDate.ForeColor=color;
         }
-
 
         //Form 모양 둥글게 하는 함수, 필요 시 전역으로 따로 관리
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -93,7 +81,7 @@ namespace KSCS
             static_date = Convert.ToInt32(lblDate.Text); //날
             ScheDetailForm eventForm = new ScheDetailForm();
             eventForm.AddEvent += new EventHandler(SaveEvent); //이벤트 발생
-            eventForm.ShowDialog(); //수정
+            eventForm.ShowDialog();
         }
 
         // update(add/modify,delete) event & public 으로 수정
@@ -112,8 +100,6 @@ namespace KSCS
             userEvent.SetColor(eventType);
             flpEvent.Controls.Add(userEvent);
         }
-
-        //추가
         public string GetLblDate()
         {
             return lblDate.Text;

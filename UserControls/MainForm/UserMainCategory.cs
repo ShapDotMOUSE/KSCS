@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Hosting;
 using System.Windows.Forms;
-using KSCS.Forms;
+using static KSCS.Class.KSCS_static;
 
 
 namespace KSCS
@@ -73,12 +73,12 @@ namespace KSCS
                     //입력된 내용이 있을 경우
                     if (lblMainCategory.Text.Length > 0)
                     {
-                        MainForm.Category.ChangeMainName(lblMainCategory.Text, txtMainCategory.Text);
+                        category.ChangeMainName(lblMainCategory.Text, txtMainCategory.Text);
                     }
                     else
                     {
                         //신규 카테고리인 경우
-                        MainForm.Category.Categories.Add(lblMainCategory.Text, new HashSet<string>());
+                        category.Categories.Add(lblMainCategory.Text, new HashSet<string>());
                     }
                     this.Name = txtMainCategory.Text;
                     lblMainCategory.Text = txtMainCategory.Text;

@@ -32,14 +32,15 @@
             this.category_underline = new Guna.UI2.WinForms.Guna2Separator();
             this.flpSubCategory = new System.Windows.Forms.FlowLayoutPanel();
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.btn = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.txtMainCategory = new Guna.UI2.WinForms.Guna2TextBox();
             this.lblMainCategory = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.MenuAddSub = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuAddSub = new System.Windows.Forms.ToolStripMenuItem();
+            this.txtMainCategory = new Guna.UI2.WinForms.Guna2TextBox();
+            this.btnAddSubCategory = new Guna.UI2.WinForms.Guna2Button();
+            this.btnShowSubCategory = new Guna.UI2.WinForms.Guna2Button();
             this.tableLayoutPanel.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -50,9 +51,10 @@
             this.category_underline.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.category_underline.BackColor = System.Drawing.Color.White;
             this.category_underline.FillColor = System.Drawing.Color.Black;
-            this.category_underline.Location = new System.Drawing.Point(-9, 31);
+            this.category_underline.Location = new System.Drawing.Point(-17, 62);
+            this.category_underline.Margin = new System.Windows.Forms.Padding(6);
             this.category_underline.Name = "category_underline";
-            this.category_underline.Size = new System.Drawing.Size(140, 7);
+            this.category_underline.Size = new System.Drawing.Size(260, 14);
             this.category_underline.TabIndex = 19;
             // 
             // flpSubCategory
@@ -60,46 +62,28 @@
             this.flpSubCategory.AllowDrop = true;
             this.flpSubCategory.AutoSize = true;
             this.flpSubCategory.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flpSubCategory.Location = new System.Drawing.Point(0, 41);
-            this.flpSubCategory.Margin = new System.Windows.Forms.Padding(9, 0, 2, 2);
+            this.flpSubCategory.Location = new System.Drawing.Point(0, 82);
+            this.flpSubCategory.Margin = new System.Windows.Forms.Padding(17, 0, 4, 4);
             this.flpSubCategory.Name = "flpSubCategory";
-            this.flpSubCategory.Size = new System.Drawing.Size(136, 67);
+            this.flpSubCategory.Size = new System.Drawing.Size(253, 134);
             this.flpSubCategory.TabIndex = 20;
             // 
             // tableLayoutPanel
             // 
-            this.tableLayoutPanel.ColumnCount = 2;
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel.Controls.Add(this.btn, 1, 0);
+            this.tableLayoutPanel.ColumnCount = 3;
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 169F));
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel.Controls.Add(this.guna2Panel1, 0, 0);
-            this.tableLayoutPanel.Location = new System.Drawing.Point(0, 3);
+            this.tableLayoutPanel.Controls.Add(this.btnAddSubCategory, 1, 0);
+            this.tableLayoutPanel.Controls.Add(this.btnShowSubCategory, 2, 0);
+            this.tableLayoutPanel.Location = new System.Drawing.Point(0, 6);
             this.tableLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel.Name = "tableLayoutPanel";
             this.tableLayoutPanel.RowCount = 1;
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel.Size = new System.Drawing.Size(145, 25);
+            this.tableLayoutPanel.Size = new System.Drawing.Size(269, 50);
             this.tableLayoutPanel.TabIndex = 21;
-            // 
-            // btn
-            // 
-            this.btn.BackColor = System.Drawing.Color.White;
-            this.btn.BorderColor = System.Drawing.Color.BlanchedAlmond;
-            this.btn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn.FillColor = System.Drawing.Color.Transparent;
-            this.btn.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.btn.ForeColor = System.Drawing.Color.Black;
-            this.btn.Location = new System.Drawing.Point(110, 0);
-            this.btn.Margin = new System.Windows.Forms.Padding(0);
-            this.btn.Name = "btn";
-            this.btn.Size = new System.Drawing.Size(35, 25);
-            this.btn.TabIndex = 19;
-            this.btn.Text = "▼";
-            this.btn.Click += new System.EventHandler(this.btn_Click);
             // 
             // guna2Panel1
             // 
@@ -108,8 +92,51 @@
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Margin = new System.Windows.Forms.Padding(0);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(105, 25);
+            this.guna2Panel1.Size = new System.Drawing.Size(169, 50);
             this.guna2Panel1.TabIndex = 20;
+            // 
+            // lblMainCategory
+            // 
+            this.lblMainCategory.ContextMenuStrip = this.contextMenuStrip1;
+            this.lblMainCategory.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.lblMainCategory.Location = new System.Drawing.Point(0, 6);
+            this.lblMainCategory.Margin = new System.Windows.Forms.Padding(0);
+            this.lblMainCategory.Name = "lblMainCategory";
+            this.lblMainCategory.Size = new System.Drawing.Size(169, 50);
+            this.lblMainCategory.TabIndex = 1;
+            this.lblMainCategory.Text = "label1";
+            this.lblMainCategory.DoubleClick += new System.EventHandler(this.lblMainCategory_DoubleClick);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuAddSub,
+            this.MenuEdit,
+            this.MenuDelete});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(295, 118);
+            // 
+            // MenuAddSub
+            // 
+            this.MenuAddSub.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MenuAddSub.Name = "MenuAddSub";
+            this.MenuAddSub.Size = new System.Drawing.Size(294, 38);
+            this.MenuAddSub.Text = "하위 카테고리 추가";
+            // 
+            // MenuEdit
+            // 
+            this.MenuEdit.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.MenuEdit.Name = "MenuEdit";
+            this.MenuEdit.Size = new System.Drawing.Size(294, 38);
+            this.MenuEdit.Text = "이름 수정";
+            // 
+            // MenuDelete
+            // 
+            this.MenuDelete.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MenuDelete.Name = "MenuDelete";
+            this.MenuDelete.Size = new System.Drawing.Size(294, 38);
+            this.MenuDelete.Text = "삭제";
             // 
             // txtMainCategory
             // 
@@ -123,62 +150,52 @@
             this.txtMainCategory.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtMainCategory.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtMainCategory.Location = new System.Drawing.Point(0, 0);
-            this.txtMainCategory.Margin = new System.Windows.Forms.Padding(11, 0, 0, 0);
+            this.txtMainCategory.Margin = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.txtMainCategory.Name = "txtMainCategory";
             this.txtMainCategory.PasswordChar = '\0';
             this.txtMainCategory.PlaceholderText = "";
             this.txtMainCategory.SelectedText = "";
-            this.txtMainCategory.Size = new System.Drawing.Size(99, 25);
+            this.txtMainCategory.Size = new System.Drawing.Size(184, 50);
             this.txtMainCategory.TabIndex = 0;
             this.txtMainCategory.Visible = false;
             this.txtMainCategory.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtMainCategory_KeyDown);
             this.txtMainCategory.Leave += new System.EventHandler(this.txtMainCategory_Leave);
             // 
-            // lblMainCategory
+            // btnAddSubCategory
             // 
-            this.lblMainCategory.ContextMenuStrip = this.contextMenuStrip1;
-            this.lblMainCategory.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.lblMainCategory.Location = new System.Drawing.Point(0, 3);
-            this.lblMainCategory.Margin = new System.Windows.Forms.Padding(0);
-            this.lblMainCategory.Name = "lblMainCategory";
-            this.lblMainCategory.Size = new System.Drawing.Size(110, 25);
-            this.lblMainCategory.TabIndex = 1;
-            this.lblMainCategory.Text = "label1";
-            this.lblMainCategory.DoubleClick += new System.EventHandler(this.lblMainCategory_DoubleClick);
+            this.btnAddSubCategory.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnAddSubCategory.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnAddSubCategory.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnAddSubCategory.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnAddSubCategory.FillColor = System.Drawing.Color.Transparent;
+            this.btnAddSubCategory.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnAddSubCategory.ForeColor = System.Drawing.Color.White;
+            this.btnAddSubCategory.Image = global::KSCS.Properties.Resources.free_icon_font_plus_3917757;
+            this.btnAddSubCategory.Location = new System.Drawing.Point(172, 3);
+            this.btnAddSubCategory.Name = "btnAddSubCategory";
+            this.btnAddSubCategory.Size = new System.Drawing.Size(44, 44);
+            this.btnAddSubCategory.TabIndex = 23;
+            this.btnAddSubCategory.Click += new System.EventHandler(this.btnAddSubCategory_Click);
             // 
-            // contextMenuStrip1
+            // btnShowSubCategory
             // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MenuAddSub,
-            this.MenuEdit,
-            this.MenuDelete});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(177, 70);
-            // 
-            // MenuEdit
-            // 
-            this.MenuEdit.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.MenuEdit.Name = "MenuEdit";
-            this.MenuEdit.Size = new System.Drawing.Size(176, 22);
-            this.MenuEdit.Text = "이름 수정";
-            // 
-            // MenuDelete
-            // 
-            this.MenuDelete.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MenuDelete.Name = "MenuDelete";
-            this.MenuDelete.Size = new System.Drawing.Size(176, 22);
-            this.MenuDelete.Text = "삭제";
-            // 
-            // MenuAddSub
-            // 
-            this.MenuAddSub.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MenuAddSub.Name = "MenuAddSub";
-            this.MenuAddSub.Size = new System.Drawing.Size(176, 22);
-            this.MenuAddSub.Text = "하위 카테고리 추가";
+            this.btnShowSubCategory.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnShowSubCategory.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnShowSubCategory.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnShowSubCategory.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnShowSubCategory.FillColor = System.Drawing.Color.Transparent;
+            this.btnShowSubCategory.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnShowSubCategory.ForeColor = System.Drawing.Color.White;
+            this.btnShowSubCategory.Image = global::KSCS.Properties.Resources.down;
+            this.btnShowSubCategory.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnShowSubCategory.Location = new System.Drawing.Point(222, 3);
+            this.btnShowSubCategory.Name = "btnShowSubCategory";
+            this.btnShowSubCategory.Size = new System.Drawing.Size(44, 44);
+            this.btnShowSubCategory.TabIndex = 24;
             // 
             // UserMainCategory
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.Controls.Add(this.tableLayoutPanel);
@@ -186,7 +203,7 @@
             this.Controls.Add(this.flpSubCategory);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "UserMainCategory";
-            this.Size = new System.Drawing.Size(150, 110);
+            this.Size = new System.Drawing.Size(279, 220);
             this.tableLayoutPanel.ResumeLayout(false);
             this.guna2Panel1.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
@@ -199,7 +216,6 @@
         private Guna.UI2.WinForms.Guna2Separator category_underline;
         public System.Windows.Forms.FlowLayoutPanel flpSubCategory;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
-        private Guna.UI2.WinForms.Guna2Button btn;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2TextBox txtMainCategory;
         private System.Windows.Forms.Label lblMainCategory;
@@ -207,5 +223,7 @@
         private System.Windows.Forms.ToolStripMenuItem MenuAddSub;
         private System.Windows.Forms.ToolStripMenuItem MenuEdit;
         private System.Windows.Forms.ToolStripMenuItem MenuDelete;
+        private Guna.UI2.WinForms.Guna2Button btnAddSubCategory;
+        private Guna.UI2.WinForms.Guna2Button btnShowSubCategory;
     }
 }

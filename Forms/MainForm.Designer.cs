@@ -38,7 +38,7 @@
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.btnPlusCategory = new Guna.UI2.WinForms.Guna2Button();
-            this.MainCategory = new System.Windows.Forms.FlowLayoutPanel();
+            this.panelMainCategory = new System.Windows.Forms.FlowLayoutPanel();
             this.guna2PictureBox4 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
             this.panelMagam = new System.Windows.Forms.FlowLayoutPanel();
@@ -67,12 +67,6 @@
             this.lblMonth = new System.Windows.Forms.Label();
             this.guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.flpDays = new System.Windows.Forms.TableLayoutPanel();
-            this.btnSharing = new KSCS.UserControls.MainForm.SharingButton();
-            this.탭5 = new KSCS.UserTabButton();
-            this.탭4 = new KSCS.UserTabButton();
-            this.탭3 = new KSCS.UserTabButton();
-            this.탭2 = new KSCS.UserTabButton();
-            this.탭1 = new KSCS.UserTabButton();
             this.userDate1 = new KSCS.UserDate();
             this.userDate2 = new KSCS.UserDate();
             this.userDate3 = new KSCS.UserDate();
@@ -118,6 +112,12 @@
             this.guna2Elipse3 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Elipse4 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Elipse5 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.btnSharing = new KSCS.UserControls.MainForm.SharingButton();
+            this.Tab4 = new KSCS.UserTabButton();
+            this.Tab3 = new KSCS.UserTabButton();
+            this.Tab2 = new KSCS.UserTabButton();
+            this.Tab1 = new KSCS.UserTabButton();
+            this.TabAll = new KSCS.UserTabButton();
             this.guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox4)).BeginInit();
             this.guna2Panel3.SuspendLayout();
@@ -136,12 +136,12 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.White;
-            this.label2.Font = new System.Drawing.Font("Pretendard", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(155, 46);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 24);
+            this.label2.Size = new System.Drawing.Size(57, 25);
             this.label2.TabIndex = 6;
             this.label2.Text = "팡운머";
             // 
@@ -150,12 +150,12 @@
             this.lblStdNum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblStdNum.AutoSize = true;
             this.lblStdNum.BackColor = System.Drawing.Color.White;
-            this.lblStdNum.Font = new System.Drawing.Font("Pretendard", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblStdNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblStdNum.ForeColor = System.Drawing.Color.Black;
             this.lblStdNum.Location = new System.Drawing.Point(155, 80);
             this.lblStdNum.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStdNum.Name = "lblStdNum";
-            this.lblStdNum.Size = new System.Drawing.Size(130, 24);
+            this.lblStdNum.Size = new System.Drawing.Size(134, 25);
             this.lblStdNum.TabIndex = 6;
             this.lblStdNum.Text = "20XX2030XX";
             // 
@@ -164,25 +164,25 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.Font = new System.Drawing.Font("Pretendard", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(32, 253);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(102, 31);
+            this.label1.Size = new System.Drawing.Size(97, 30);
             this.label1.TabIndex = 7;
             this.label1.Text = "카테고리";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Pretendard", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(404, 19);
             this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
             this.label4.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label4.Size = new System.Drawing.Size(150, 38);
+            this.label4.Size = new System.Drawing.Size(147, 37);
             this.label4.TabIndex = 7;
             this.label4.Text = "마 감 임 박";
             // 
@@ -203,7 +203,7 @@
             this.guna2Panel2.BackColor = System.Drawing.Color.White;
             this.guna2Panel2.BorderThickness = 1;
             this.guna2Panel2.Controls.Add(this.btnPlusCategory);
-            this.guna2Panel2.Controls.Add(this.MainCategory);
+            this.guna2Panel2.Controls.Add(this.panelMainCategory);
             this.guna2Panel2.Controls.Add(this.guna2PictureBox4);
             this.guna2Panel2.Controls.Add(this.lblStdNum);
             this.guna2Panel2.Controls.Add(this.label2);
@@ -211,7 +211,7 @@
             this.guna2Panel2.CustomBorderColor = System.Drawing.Color.White;
             this.guna2Panel2.FillColor = System.Drawing.Color.White;
             this.guna2Panel2.Location = new System.Drawing.Point(1266, 22);
-            this.guna2Panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2Panel2.Margin = new System.Windows.Forms.Padding(4);
             this.guna2Panel2.Name = "guna2Panel2";
             this.guna2Panel2.Size = new System.Drawing.Size(308, 1116);
             this.guna2Panel2.TabIndex = 18;
@@ -228,21 +228,21 @@
             this.btnPlusCategory.Image = global::KSCS.Properties.Resources.CategoryPlus;
             this.btnPlusCategory.ImageOffset = new System.Drawing.Point(1, 0);
             this.btnPlusCategory.Location = new System.Drawing.Point(210, 253);
-            this.btnPlusCategory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPlusCategory.Margin = new System.Windows.Forms.Padding(4);
             this.btnPlusCategory.Name = "btnPlusCategory";
             this.btnPlusCategory.Size = new System.Drawing.Size(35, 30);
             this.btnPlusCategory.TabIndex = 26;
             this.btnPlusCategory.Click += new System.EventHandler(this.btnPlusCategory_Click);
             // 
-            // MainCategory
+            // panelMainCategory
             // 
-            this.MainCategory.AllowDrop = true;
-            this.MainCategory.AutoScroll = true;
-            this.MainCategory.Location = new System.Drawing.Point(38, 310);
-            this.MainCategory.Margin = new System.Windows.Forms.Padding(2);
-            this.MainCategory.Name = "MainCategory";
-            this.MainCategory.Size = new System.Drawing.Size(225, 541);
-            this.MainCategory.TabIndex = 20;
+            this.panelMainCategory.AllowDrop = true;
+            this.panelMainCategory.AutoScroll = true;
+            this.panelMainCategory.Location = new System.Drawing.Point(38, 310);
+            this.panelMainCategory.Margin = new System.Windows.Forms.Padding(2);
+            this.panelMainCategory.Name = "panelMainCategory";
+            this.panelMainCategory.Size = new System.Drawing.Size(225, 541);
+            this.panelMainCategory.TabIndex = 20;
             // 
             // guna2PictureBox4
             // 
@@ -250,7 +250,7 @@
             this.guna2PictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox4.Image")));
             this.guna2PictureBox4.ImageRotate = 0F;
             this.guna2PictureBox4.Location = new System.Drawing.Point(24, 19);
-            this.guna2PictureBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2PictureBox4.Margin = new System.Windows.Forms.Padding(4);
             this.guna2PictureBox4.Name = "guna2PictureBox4";
             this.guna2PictureBox4.Size = new System.Drawing.Size(101, 102);
             this.guna2PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -267,7 +267,7 @@
             this.guna2Panel3.Controls.Add(this.guna2PictureBox1);
             this.guna2Panel3.Controls.Add(this.label4);
             this.guna2Panel3.Location = new System.Drawing.Point(635, 22);
-            this.guna2Panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2Panel3.Margin = new System.Windows.Forms.Padding(4);
             this.guna2Panel3.Name = "guna2Panel3";
             this.guna2Panel3.Size = new System.Drawing.Size(588, 210);
             this.guna2Panel3.TabIndex = 19;
@@ -289,7 +289,7 @@
             this.panelMagamBtns.Controls.Add(this.btnMagam_Prjct);
             this.panelMagamBtns.Controls.Add(this.guna2CircleButton5);
             this.panelMagamBtns.Location = new System.Drawing.Point(18, 19);
-            this.panelMagamBtns.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelMagamBtns.Margin = new System.Windows.Forms.Padding(4);
             this.panelMagamBtns.Name = "panelMagamBtns";
             this.panelMagamBtns.Size = new System.Drawing.Size(360, 53);
             this.panelMagamBtns.TabIndex = 9;
@@ -305,7 +305,7 @@
             this.btnMagam_Task.ForeColor = System.Drawing.Color.White;
             this.btnMagam_Task.Image = global::KSCS.Properties.Resources.lecture;
             this.btnMagam_Task.Location = new System.Drawing.Point(4, 4);
-            this.btnMagam_Task.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMagam_Task.Margin = new System.Windows.Forms.Padding(4);
             this.btnMagam_Task.Name = "btnMagam_Task";
             this.btnMagam_Task.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.btnMagam_Task.Size = new System.Drawing.Size(44, 42);
@@ -325,7 +325,7 @@
             this.btnMagam_Quiz.ImageOffset = new System.Drawing.Point(1, 0);
             this.btnMagam_Quiz.ImageSize = new System.Drawing.Size(22, 20);
             this.btnMagam_Quiz.Location = new System.Drawing.Point(56, 4);
-            this.btnMagam_Quiz.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMagam_Quiz.Margin = new System.Windows.Forms.Padding(4);
             this.btnMagam_Quiz.Name = "btnMagam_Quiz";
             this.btnMagam_Quiz.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.btnMagam_Quiz.Size = new System.Drawing.Size(44, 42);
@@ -345,7 +345,7 @@
             this.btnMagam_Online.ImageOffset = new System.Drawing.Point(1, 0);
             this.btnMagam_Online.ImageSize = new System.Drawing.Size(25, 25);
             this.btnMagam_Online.Location = new System.Drawing.Point(108, 4);
-            this.btnMagam_Online.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMagam_Online.Margin = new System.Windows.Forms.Padding(4);
             this.btnMagam_Online.Name = "btnMagam_Online";
             this.btnMagam_Online.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.btnMagam_Online.Size = new System.Drawing.Size(44, 42);
@@ -365,7 +365,7 @@
             this.btnMagam_Prjct.ImageOffset = new System.Drawing.Point(1, 0);
             this.btnMagam_Prjct.ImageSize = new System.Drawing.Size(35, 35);
             this.btnMagam_Prjct.Location = new System.Drawing.Point(160, 4);
-            this.btnMagam_Prjct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMagam_Prjct.Margin = new System.Windows.Forms.Padding(4);
             this.btnMagam_Prjct.Name = "btnMagam_Prjct";
             this.btnMagam_Prjct.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.btnMagam_Prjct.Size = new System.Drawing.Size(44, 42);
@@ -385,7 +385,7 @@
             this.guna2CircleButton5.ImageOffset = new System.Drawing.Point(1, 0);
             this.guna2CircleButton5.ImageSize = new System.Drawing.Size(26, 20);
             this.guna2CircleButton5.Location = new System.Drawing.Point(212, 4);
-            this.guna2CircleButton5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2CircleButton5.Margin = new System.Windows.Forms.Padding(4);
             this.guna2CircleButton5.Name = "guna2CircleButton5";
             this.guna2CircleButton5.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.guna2CircleButton5.Size = new System.Drawing.Size(44, 42);
@@ -398,7 +398,7 @@
             this.guna2PictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox1.Image")));
             this.guna2PictureBox1.ImageRotate = 0F;
             this.guna2PictureBox1.Location = new System.Drawing.Point(465, 72);
-            this.guna2PictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2PictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2PictureBox1.Name = "guna2PictureBox1";
             this.guna2PictureBox1.Size = new System.Drawing.Size(100, 126);
             this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -418,7 +418,7 @@
             this.guna2Panel4.Controls.Add(this.guna2PictureBox2);
             this.guna2Panel4.Controls.Add(this.label5);
             this.guna2Panel4.Location = new System.Drawing.Point(28, 22);
-            this.guna2Panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2Panel4.Margin = new System.Windows.Forms.Padding(4);
             this.guna2Panel4.Name = "guna2Panel4";
             this.guna2Panel4.Size = new System.Drawing.Size(588, 210);
             this.guna2Panel4.TabIndex = 19;
@@ -429,7 +429,7 @@
             this.guna2PictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox2.Image")));
             this.guna2PictureBox2.ImageRotate = 0F;
             this.guna2PictureBox2.Location = new System.Drawing.Point(19, 17);
-            this.guna2PictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2PictureBox2.Margin = new System.Windows.Forms.Padding(4);
             this.guna2PictureBox2.Name = "guna2PictureBox2";
             this.guna2PictureBox2.Size = new System.Drawing.Size(110, 126);
             this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -439,13 +439,13 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Pretendard", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label5.ForeColor = System.Drawing.Color.Black;
             this.label5.Location = new System.Drawing.Point(363, 19);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label5.Size = new System.Drawing.Size(185, 38);
+            this.label5.Size = new System.Drawing.Size(182, 37);
             this.label5.TabIndex = 7;
             this.label5.Text = "오 늘 의 일 정";
             // 
@@ -461,7 +461,7 @@
             this.guna2Panel5.Controls.Add(this.guna2PictureBox3);
             this.guna2Panel5.Controls.Add(this.flpDays);
             this.guna2Panel5.Location = new System.Drawing.Point(28, 258);
-            this.guna2Panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2Panel5.Margin = new System.Windows.Forms.Padding(4);
             this.guna2Panel5.Name = "guna2Panel5";
             this.guna2Panel5.Size = new System.Drawing.Size(1195, 880);
             this.guna2Panel5.TabIndex = 21;
@@ -476,7 +476,7 @@
             this.flowLayoutPanel1.Controls.Add(this.textBox6);
             this.flowLayoutPanel1.Controls.Add(this.textBox7);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(70, 113);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(1054, 35);
             this.flowLayoutPanel1.TabIndex = 43;
@@ -484,7 +484,7 @@
             // textBox1
             // 
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Pretendard", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.textBox1.ForeColor = System.Drawing.Color.Firebrick;
             this.textBox1.Location = new System.Drawing.Point(0, 0);
             this.textBox1.Margin = new System.Windows.Forms.Padding(0);
@@ -498,7 +498,7 @@
             // textBox2
             // 
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Pretendard", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.textBox2.Location = new System.Drawing.Point(150, 0);
             this.textBox2.Margin = new System.Windows.Forms.Padding(0);
             this.textBox2.Multiline = true;
@@ -511,7 +511,7 @@
             // textBox3
             // 
             this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox3.Font = new System.Drawing.Font("Pretendard", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.textBox3.Location = new System.Drawing.Point(300, 0);
             this.textBox3.Margin = new System.Windows.Forms.Padding(0);
             this.textBox3.Multiline = true;
@@ -524,7 +524,7 @@
             // textBox4
             // 
             this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox4.Font = new System.Drawing.Font("Pretendard", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.textBox4.Location = new System.Drawing.Point(450, 0);
             this.textBox4.Margin = new System.Windows.Forms.Padding(0);
             this.textBox4.Multiline = true;
@@ -537,7 +537,7 @@
             // textBox5
             // 
             this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox5.Font = new System.Drawing.Font("Pretendard", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.textBox5.Location = new System.Drawing.Point(600, 0);
             this.textBox5.Margin = new System.Windows.Forms.Padding(0);
             this.textBox5.Multiline = true;
@@ -550,7 +550,7 @@
             // textBox6
             // 
             this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox6.Font = new System.Drawing.Font("Pretendard", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.textBox6.Location = new System.Drawing.Point(750, 0);
             this.textBox6.Margin = new System.Windows.Forms.Padding(0);
             this.textBox6.Multiline = true;
@@ -563,7 +563,7 @@
             // textBox7
             // 
             this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox7.Font = new System.Drawing.Font("Pretendard", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.textBox7.Location = new System.Drawing.Point(900, 0);
             this.textBox7.Margin = new System.Windows.Forms.Padding(0);
             this.textBox7.Multiline = true;
@@ -581,12 +581,12 @@
             this.btnPrevisous.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnPrevisous.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnPrevisous.FillColor = System.Drawing.Color.White;
-            this.btnPrevisous.Font = new System.Drawing.Font("Pretendard", 27F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrevisous.Font = new System.Drawing.Font("Microsoft Sans Serif", 27F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrevisous.ForeColor = System.Drawing.Color.Black;
             this.btnPrevisous.Image = ((System.Drawing.Image)(resources.GetObject("btnPrevisous.Image")));
             this.btnPrevisous.ImageSize = new System.Drawing.Size(20, 30);
             this.btnPrevisous.Location = new System.Drawing.Point(510, 24);
-            this.btnPrevisous.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPrevisous.Margin = new System.Windows.Forms.Padding(4);
             this.btnPrevisous.Name = "btnPrevisous";
             this.btnPrevisous.Size = new System.Drawing.Size(40, 68);
             this.btnPrevisous.TabIndex = 27;
@@ -600,12 +600,12 @@
             this.btnNext.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnNext.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnNext.FillColor = System.Drawing.Color.White;
-            this.btnNext.Font = new System.Drawing.Font("Pretendard", 27F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 27F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNext.ForeColor = System.Drawing.Color.Black;
             this.btnNext.Image = ((System.Drawing.Image)(resources.GetObject("btnNext.Image")));
             this.btnNext.ImageSize = new System.Drawing.Size(20, 30);
             this.btnNext.Location = new System.Drawing.Point(674, 20);
-            this.btnNext.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnNext.Margin = new System.Windows.Forms.Padding(4);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(40, 68);
             this.btnNext.TabIndex = 26;
@@ -614,11 +614,11 @@
             // lblMonth
             // 
             this.lblMonth.AutoSize = true;
-            this.lblMonth.Font = new System.Drawing.Font("Pretendard ExtraBold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblMonth.Location = new System.Drawing.Point(568, 24);
             this.lblMonth.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblMonth.Name = "lblMonth";
-            this.lblMonth.Size = new System.Drawing.Size(97, 58);
+            this.lblMonth.Size = new System.Drawing.Size(91, 55);
             this.lblMonth.TabIndex = 2;
             this.lblMonth.Text = "5월";
             // 
@@ -628,7 +628,7 @@
             this.guna2PictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox3.Image")));
             this.guna2PictureBox3.ImageRotate = 0F;
             this.guna2PictureBox3.Location = new System.Drawing.Point(9, 804);
-            this.guna2PictureBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2PictureBox3.Margin = new System.Windows.Forms.Padding(4);
             this.guna2PictureBox3.Name = "guna2PictureBox3";
             this.guna2PictureBox3.Size = new System.Drawing.Size(54, 55);
             this.guna2PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -699,72 +699,6 @@
             this.flpDays.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.flpDays.Size = new System.Drawing.Size(1054, 710);
             this.flpDays.TabIndex = 42;
-            // 
-            // guna2Elipse3
-            // 
-            this.guna2Elipse3.BorderRadius = 10;
-            this.guna2Elipse3.TargetControl = this.guna2Panel3;
-            // 
-            // guna2Elipse4
-            // 
-            this.guna2Elipse4.BorderRadius = 10;
-            this.guna2Elipse4.TargetControl = this.guna2Panel4;
-            // 
-            // guna2Elipse5
-            // 
-            this.guna2Elipse5.BorderRadius = 10;
-            this.guna2Elipse5.TargetControl = this.guna2Panel5;
-            // 
-            // btnSharing
-            // 
-            this.btnSharing.Location = new System.Drawing.Point(1202, 998);
-            this.btnSharing.Margin = new System.Windows.Forms.Padding(5);
-            this.btnSharing.Name = "btnSharing";
-            this.btnSharing.Size = new System.Drawing.Size(45, 94);
-            this.btnSharing.TabIndex = 23;
-            // 
-            // 탭5
-            // 
-            this.탭5.Location = new System.Drawing.Point(1202, 882);
-            this.탭5.Margin = new System.Windows.Forms.Padding(5);
-            this.탭5.Name = "탭5";
-            this.탭5.Size = new System.Drawing.Size(45, 94);
-            this.탭5.TabIndex = 22;
-            // 
-            // 탭4
-            // 
-            this.탭4.Location = new System.Drawing.Point(1202, 762);
-            this.탭4.Margin = new System.Windows.Forms.Padding(5);
-            this.탭4.Name = "탭4";
-            this.탭4.Size = new System.Drawing.Size(45, 94);
-            this.탭4.TabIndex = 22;
-            // 
-            // 탭3
-            // 
-            this.탭3.Location = new System.Drawing.Point(1202, 642);
-            this.탭3.Margin = new System.Windows.Forms.Padding(5);
-            this.탭3.Name = "탭3";
-            this.탭3.Size = new System.Drawing.Size(45, 94);
-            this.탭3.TabIndex = 22;
-            this.탭3.Click += new System.EventHandler(this.ChangeTab);
-            // 
-            // 탭2
-            // 
-            this.탭2.Location = new System.Drawing.Point(1202, 516);
-            this.탭2.Margin = new System.Windows.Forms.Padding(5);
-            this.탭2.Name = "탭2";
-            this.탭2.Size = new System.Drawing.Size(45, 94);
-            this.탭2.TabIndex = 22;
-            this.탭2.Click += new System.EventHandler(this.ChangeTab);
-            // 
-            // 탭1
-            // 
-            this.탭1.Location = new System.Drawing.Point(1202, 398);
-            this.탭1.Margin = new System.Windows.Forms.Padding(5);
-            this.탭1.Name = "탭1";
-            this.탭1.Size = new System.Drawing.Size(45, 94);
-            this.탭1.TabIndex = 22;
-            this.탭1.Click += new System.EventHandler(this.ChangeTab);
             // 
             // userDate1
             // 
@@ -1201,26 +1135,77 @@
             this.guna2Elipse5.BorderRadius = 10;
             this.guna2Elipse5.TargetControl = this.guna2Panel5;
             // 
+            // btnSharing
+            // 
+            this.btnSharing.Location = new System.Drawing.Point(1202, 998);
+            this.btnSharing.Margin = new System.Windows.Forms.Padding(5);
+            this.btnSharing.Name = "btnSharing";
+            this.btnSharing.Size = new System.Drawing.Size(45, 94);
+            this.btnSharing.TabIndex = 23;
+            // 
+            // Tab4
+            // 
+            this.Tab4.Location = new System.Drawing.Point(1202, 882);
+            this.Tab4.Margin = new System.Windows.Forms.Padding(5);
+            this.Tab4.Name = "Tab4";
+            this.Tab4.Size = new System.Drawing.Size(45, 94);
+            this.Tab4.TabIndex = 22;
+            // 
+            // Tab3
+            // 
+            this.Tab3.Location = new System.Drawing.Point(1202, 762);
+            this.Tab3.Margin = new System.Windows.Forms.Padding(5);
+            this.Tab3.Name = "Tab3";
+            this.Tab3.Size = new System.Drawing.Size(45, 94);
+            this.Tab3.TabIndex = 22;
+            // 
+            // Tab2
+            // 
+            this.Tab2.Location = new System.Drawing.Point(1202, 642);
+            this.Tab2.Margin = new System.Windows.Forms.Padding(5);
+            this.Tab2.Name = "Tab2";
+            this.Tab2.Size = new System.Drawing.Size(45, 94);
+            this.Tab2.TabIndex = 22;
+            this.Tab2.Click += new System.EventHandler(this.ChangeTab);
+            // 
+            // Tab1
+            // 
+            this.Tab1.Location = new System.Drawing.Point(1202, 516);
+            this.Tab1.Margin = new System.Windows.Forms.Padding(5);
+            this.Tab1.Name = "Tab1";
+            this.Tab1.Size = new System.Drawing.Size(45, 94);
+            this.Tab1.TabIndex = 22;
+            this.Tab1.Click += new System.EventHandler(this.ChangeTab);
+            // 
+            // TabAll
+            // 
+            this.TabAll.Location = new System.Drawing.Point(1202, 398);
+            this.TabAll.Margin = new System.Windows.Forms.Padding(5);
+            this.TabAll.Name = "TabAll";
+            this.TabAll.Size = new System.Drawing.Size(45, 94);
+            this.TabAll.TabIndex = 22;
+            this.TabAll.Click += new System.EventHandler(this.ChangeTab);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackColor = System.Drawing.Color.Pink;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
             this.ClientSize = new System.Drawing.Size(1600, 1106);
             this.Controls.Add(this.btnSharing);
-            this.Controls.Add(this.탭5);
-            this.Controls.Add(this.탭4);
-            this.Controls.Add(this.탭3);
-            this.Controls.Add(this.탭2);
-            this.Controls.Add(this.탭1);
+            this.Controls.Add(this.Tab4);
+            this.Controls.Add(this.Tab3);
+            this.Controls.Add(this.Tab2);
+            this.Controls.Add(this.Tab1);
+            this.Controls.Add(this.TabAll);
             this.Controls.Add(this.guna2Panel5);
             this.Controls.Add(this.guna2Panel4);
             this.Controls.Add(this.guna2Panel3);
             this.Controls.Add(this.guna2Panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximumSize = new System.Drawing.Size(1600, 1152);
             this.MinimumSize = new System.Drawing.Size(1600, 1006);
             this.Name = "MainForm";
@@ -1274,11 +1259,11 @@
         private Guna.UI2.WinForms.Guna2CircleButton btnMagam_Online;
         private Guna.UI2.WinForms.Guna2CircleButton btnMagam_Prjct;
         private Guna.UI2.WinForms.Guna2CircleButton btnMagam_Personal;
-        private UserTabButton 탭1;
-        private UserTabButton 탭5;
-        private UserTabButton 탭4;
-        private UserTabButton 탭3;
-        private UserTabButton 탭2;
+        private UserTabButton TabAll;
+        private UserTabButton Tab4;
+        private UserTabButton Tab3;
+        private UserTabButton Tab2;
+        private UserTabButton Tab1;
         private Guna.UI2.WinForms.Guna2Button btnPrevisous;
         private Guna.UI2.WinForms.Guna2Button btnNext;
         private System.Windows.Forms.TableLayoutPanel flpDays;
@@ -1325,7 +1310,7 @@
         private UserDate userDate40;
         private UserDate userDate41;
         private UserDate userDate42;
-        private System.Windows.Forms.FlowLayoutPanel MainCategory;
+        private System.Windows.Forms.FlowLayoutPanel panelMainCategory;
         private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton5;
         private Guna.UI2.WinForms.Guna2Button btnPlusCategory;
         private UserControls.MainForm.SharingButton btnSharing;

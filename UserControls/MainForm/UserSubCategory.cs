@@ -116,13 +116,13 @@ namespace KSCS
         //카테고리 체크 여부 확인해서 탭에 추가 및 삭제
         private void chkCategory_CheckedChanged(object sender, EventArgs e)
         {
-            if(chkCategory.Checked)
+            if (chkCategory.Checked)
             {
-                category.AddChecked(MainForm.TabName, lblCategory.Text);
+                category.AddChecked(TabName, lblCategory.Text);
             }
             else
             {
-                category.DeletChecked(MainForm.TabName, lblCategory.Text);
+                category.DeletChecked(TabName, lblCategory.Text);
             }
         }
 

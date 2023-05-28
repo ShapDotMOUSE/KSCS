@@ -32,7 +32,7 @@ namespace KSCS
         }
         protected override void OnClick(EventArgs e)
         {
-            if (MainForm.TabName != this.Name)
+            if (TabName != this.Name)
             {
                 Clicked?.Invoke(this, e);
             }
@@ -40,7 +40,7 @@ namespace KSCS
 
         private void btnTab_MouseHover(object sender, EventArgs e)
         {
-            if (MainForm.TabName != this.Name)
+            if (TabName != this.Name)
             {
                 ShowTab();
                 //panelWhite.Visible = false;
@@ -49,7 +49,7 @@ namespace KSCS
 
         private void btnTap_MouseLeave(object sender, EventArgs e)
         {
-            if (MainForm.TabName != this.Name)
+            if (TabName != this.Name)
             {
                 //panelWhite.Visible = true;
                 HideTab();
@@ -63,7 +63,7 @@ namespace KSCS
 
         private void btnTap_DoubleClick(object sender, EventArgs e)
         {
-            if (MainForm.TabName == this.Name)
+            if (TabName == this.Name)
             {
                 txtTab.Visible = true;
                 txtTab.Focus();
@@ -95,7 +95,7 @@ namespace KSCS
                     btnTap.Text = txtTab.Text;
                     this.Name = txtTab.Text;
                     txtTab.Visible = false;
-                    MainForm.TabName = this.Name;
+                    TabName = this.Name;
                     
                 }
             }

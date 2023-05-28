@@ -14,8 +14,7 @@ namespace KSCS
 {
     public partial class MainForm : Form
     {
-        //탭 & 카테고리 관련
-        public static string TabName;
+        
         //스케줄 관련
         public MainForm()
         {
@@ -33,40 +32,45 @@ namespace KSCS
                 Close();
             lblStdNum.Text = stdNum;
             
-            Database.ReadCategory();
+            //초기 메인 카테고리 설정
+            Database.ReadCategoryList();
+            Database.ReadTabAndCategory();
+            foreach (string Main in category.Categories.Keys)
+            {
+                UserMainCategory category = new UserMainCategory
+                {
+                    Name = "mainCategory_" + Main
+                };
+                category.SetAddMode(Main);
+                panelMainCategory.Controls.Add(category);
+            }
 
             //달력
             dispalyDate();
-
-            //초기 메인 카테고리 설정
-            category.TestCategory();
-            UserMainCategory school = new UserMainCategory();
-            school.SetAddMode("학교");
-            UserMainCategory personal = new UserMainCategory();
-            personal.SetAddMode("개인");
-            UserMainCategory Etc = new UserMainCategory();
-            Etc.SetAddMode("기타");
-            MainCategory.Controls.Add(school);
-            MainCategory.Controls.Add(personal);
-            MainCategory.Controls.Add(Etc);
-
-
             DisplayCategery();
 
             //초기 탭 설정 
-            TabName = 탭1.Name; //수정되어야함
-            탭1.Clicked += ChangeTab;
-            탭2.Clicked += ChangeTab;
-            탭3.Clicked += ChangeTab;
-            탭4.Clicked += ChangeTab;
-            탭5.Clicked += ChangeTab;
+            TabAll.Clicked += ChangeTab;
+            Tab1.Clicked += ChangeTab;
+            Tab2.Clicked += ChangeTab;
+            Tab3.Clicked += ChangeTab;
+            Tab4.Clicked += ChangeTab;
+            setTab();
             //탭 로드
             SetCheckedCategoryByTab();
-            탭1.ShowTab();
-
+            TabAll.ShowTab();
             
         }
 
+        private void setTab()
+        {
+            List<string> tabNameList = Database.ReadTab();
+            TabAll.Name = tabNameList[0];
+            Tab1.Name = tabNameList[1];
+            Tab2.Name = tabNameList[2];
+            Tab3.Name = tabNameList[3];
+            Tab4.Name = tabNameList[4];
+        }
         private async void LoadMagam()
         {
             await KLAS.LoadMagamData();
@@ -88,7 +92,7 @@ namespace KSCS
                 {
                     UserSubCategory uc = new UserSubCategory();
                     uc.SetBasicMode(item);
-                    ((FlowLayoutPanel)((UserMainCategory)MainCategory.Controls[key]).flpSubCategory).Controls.Add(uc);
+                    ((FlowLayoutPanel)((UserMainCategory)panelMainCategory.Controls[key]).flpSubCategory).Controls.Add(uc);
                 }
             }
         }
@@ -109,7 +113,7 @@ namespace KSCS
         {
             foreach (string key in category.Categories.Keys)
             {
-                FlowLayoutPanel flp = ((UserMainCategory)MainCategory.Controls[key]).flpSubCategory;
+                FlowLayoutPanel flp = ((UserMainCategory)panelMainCategory.Controls[key]).flpSubCategory;
                 foreach (UserSubCategory subCategory in flp.Controls)
                 {
                     subCategory.SetChecked(category.IsChecked(TabName, subCategory.GetText()));
@@ -258,7 +262,7 @@ namespace KSCS
         {
             UserMainCategory category = new UserMainCategory();
             category.SetNewMode();
-            MainCategory.Controls.Add(category);
+            panelMainCategory.Controls.Add(category);
         }
 
         //추가

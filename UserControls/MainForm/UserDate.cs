@@ -21,7 +21,7 @@ namespace KSCS
         {
             flpEvent.Controls.Clear(); //userEvent 컨트롤 초기화
             foreach (Schedule schedule in monthScheduleList[Convert.ToInt32(lblDate.Text) - 1])
-                AddEvent(schedule.title, int.Parse(categoryDict[schedule.category][1]));
+                AddEvent(schedule.title, category.GetColor(schedule.category));
             this.Refresh();
         }
 
@@ -91,13 +91,13 @@ namespace KSCS
             LoadUserDate();
         }
 
-        private void AddEvent(string dateEvent, int eventType) //userEvent 생성
+        private void AddEvent(string dateEvent, Color eventColor) //userEvent 생성
         {
             if (dateEvent.Equals(string.Empty))
                 return;
             UserEvent userEvent = new UserEvent();
             userEvent.SetEventInfo(dateEvent);
-            userEvent.SetColor(eventType);
+            userEvent.SetColor(eventColor);
             flpEvent.Controls.Add(userEvent);
         }
         public string GetLblDate()

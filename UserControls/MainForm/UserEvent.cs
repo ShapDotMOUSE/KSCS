@@ -22,10 +22,10 @@ namespace KSCS
             txtEventInfo.Text = eventInfo;
         }
 
-        public void SetColor(int type)
+        public void SetColor(Color color)
         {
-            pnl.BackColor = Color.FromArgb(type); //둘이 뭐가 다른건가요
-            flpEventInfo.BackColor = Color.FromArgb(type);
+            pnl.BackColor = color; //둘이 뭐가 다른건가요
+            flpEventInfo.BackColor = color;
         }
     }
 }

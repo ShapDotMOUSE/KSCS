@@ -11,9 +11,9 @@ namespace KSCS
 {
     public class Category
     {
-        public Dictionary<string, HashSet<string>> Categories = new Dictionary<string, HashSet<string>>();
-        public Dictionary<string, Color> CategoryColor = new Dictionary<string, Color>();
-        public Hashtable Tabs = new Hashtable();
+        public Dictionary<string, HashSet<string>> Categories=new Dictionary<string, HashSet<string>>();
+        public Dictionary<string, Color> CategoryColor= new Dictionary<string, Color>();
+        public Hashtable Tabs=new Hashtable();
 
         public void TestCategory()
         {
@@ -46,7 +46,7 @@ namespace KSCS
             TabCategory1.Add("기타1");
             TabCategory1.Add("기타2");
             TabCategory1.Add("기타3");
-            Tabs["탭1"] = TabCategory1;
+            Tabs["TabAll"] = TabCategory1;
 
             HashSet<String> TabCategory2 = new HashSet<String>();
             TabCategory2.Add("학사일정");
@@ -55,31 +55,52 @@ namespace KSCS
             TabCategory2.Add("온라인강의");
             TabCategory2.Add("기타1");
             TabCategory2.Add("기타2");
-            Tabs["탭2"] = TabCategory2;
+            Tabs["Tab1"] = TabCategory2;
 
             HashSet<String> TabCategory3 = new HashSet<String>();
             TabCategory3.Add("학사일정");
             TabCategory3.Add("과제");
             TabCategory3.Add("퀴즈");
             TabCategory3.Add("온라인강의");
-            Tabs["탭3"] = TabCategory3; 
+            Tabs["Tab2"] = TabCategory3; 
             
             HashSet<String> TabCategory4 = new HashSet<String>();
             TabCategory4.Add("생일");
             TabCategory4.Add("약속");
             TabCategory4.Add("식사");
-            Tabs["탭4"] = TabCategory4; 
+            Tabs["Tab3"] = TabCategory4; 
             
             HashSet<String> TabCategory5 = new HashSet<String>();
             TabCategory5.Add("기타1");
             TabCategory5.Add("기타2");
             TabCategory5.Add("기타3");
-            Tabs["탭5"] = TabCategory5;
+            Tabs["Tab4"] = TabCategory5;
+        }
+
+        //카테고리 Color 
+        public void SetColor(string Sub,Color color)
+        {
+            CategoryColor.Add(Sub, color);
+        }
+
+        public Color GetColor(string Sub)
+        {
+            return CategoryColor[Sub];
+        }
+
+        //탭에 카테고리 설정
+        public void LoadTab(Hashtable tabs)
+        {
+            Tabs = tabs;
         }
 
         //하위 카테고리 추가
         public void AddSubdivision(string Main, string Sub)
         {
+            if (!Categories.ContainsKey(Main))
+            {
+                Categories.Add(Main,new HashSet<string>());
+            }
             Categories[Main].Add(Sub);
         }
 
@@ -123,7 +144,11 @@ namespace KSCS
         public void AddChecked(string Tab, string Sub)
         {
             HashSet<string> TabCategory = Tabs[Tab] as HashSet<string>;
-            TabCategory.Add(Sub);
+            if (!TabCategory.Contains(Sub))
+            { 
+                Database.InsertTabCategory(Tab, Sub);
+                TabCategory.Add(Sub);
+            }
         }
 
         //탭에 하위 카테고리 제거
@@ -132,6 +157,7 @@ namespace KSCS
             HashSet<string> TabCategory = Tabs[Tab] as HashSet<string>;
             if (TabCategory.Contains(Sub))
             {
+                Database.DeleteTabCategory(Tab, Sub);
                 TabCategory.Remove(Sub);
             }
         }

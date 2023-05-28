@@ -82,7 +82,8 @@ namespace KSCS
             {
                 if (await KLAS.LoginKLAS(ID, PW)) //KLAS 로그인
                 {
-                   
+                    Database.CreateData();
+
                     this.Cursor = Cursors.Default;
                     this.DialogResult = DialogResult.OK;
                     this.Close();

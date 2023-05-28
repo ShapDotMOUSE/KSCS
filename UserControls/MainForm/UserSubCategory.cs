@@ -64,7 +64,7 @@ namespace KSCS
                     else
                     {
                         //신규 카테고리인 경우
-                        category.AddSubdivision("EtcCategory", txtCategory.Text);
+                        category.AddSubdivision("기타", txtCategory.Text);
                     }
                     lblCategory.Text = txtCategory.Text;
                     this.Name = txtCategory.Text;
@@ -108,7 +108,7 @@ namespace KSCS
         //카테고리 체크 여부 확인해서 탭에 추가 및 삭제
         private void chkCategory_CheckedChanged(object sender, EventArgs e)
         {
-            if(chkCategory.Checked)
+            if (chkCategory.Checked)
             {
                 category.AddChecked(TabName, lblCategory.Text);
             }

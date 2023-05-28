@@ -37,8 +37,10 @@ namespace KSCS
             Database.ReadTabAndCategory();
             foreach (string Main in category.Categories.Keys)
             {
-                UserMainCategory category = new UserMainCategory();
-                category.Name = "mainCategory_"+Main;
+                UserMainCategory category = new UserMainCategory
+                {
+                    Name = "mainCategory_" + Main
+                };
                 category.SetAddMode(Main);
                 panelMainCategory.Controls.Add(category);
             }

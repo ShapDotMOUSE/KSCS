@@ -79,7 +79,9 @@ namespace KSCS
 
         private void MainForm_Resize(object sender, EventArgs e)
         {
-            this.Size = new Size(1280, 1080);
+            this.Size = new Size(1440, 1080);
+            this.MaximumSize = new Size(1440, 1080);
+            this.MinimumSize = new Size(1440, 1080);
         }
 
 

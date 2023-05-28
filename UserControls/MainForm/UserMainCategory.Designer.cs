@@ -192,6 +192,7 @@
             this.btnShowSubCategory.Name = "btnShowSubCategory";
             this.btnShowSubCategory.Size = new System.Drawing.Size(44, 44);
             this.btnShowSubCategory.TabIndex = 24;
+            this.btnShowSubCategory.Click += new System.EventHandler(this.btnShowSubCategory_Click);
             // 
             // UserMainCategory
             // 
@@ -204,6 +205,7 @@
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "UserMainCategory";
             this.Size = new System.Drawing.Size(279, 220);
+            this.Load += new System.EventHandler(this.UserMainCategory_Load);
             this.tableLayoutPanel.ResumeLayout(false);
             this.guna2Panel1.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);

@@ -78,7 +78,7 @@ namespace KSCS
                     else
                     {
                         //신규 카테고리인 경우
-                        category.Categories.Add(lblMainCategory.Text, new HashSet<string>());
+                        category.Categories.Add(txtMainCategory.Text, new HashSet<string>());
                     }
                     this.Name = txtMainCategory.Text;
                     lblMainCategory.Text = txtMainCategory.Text;
@@ -116,6 +116,11 @@ namespace KSCS
             UserSubCategory userSub = new UserSubCategory();
             userSub.setMain(this.Name);
             flpSubCategory.Controls.Add(userSub);
+        }
+
+        private void UserMainCategory_Load(object sender, EventArgs e)
+        {
+            txtMainCategory.Focus();
         }
     }
 }

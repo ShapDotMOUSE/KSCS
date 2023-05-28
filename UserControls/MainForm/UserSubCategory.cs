@@ -1,4 +1,5 @@
-﻿using KSCS.Forms;
+﻿using KSCS.Class;
+using KSCS.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -70,7 +71,7 @@ namespace KSCS
                     else
                     {
                         //신규 카테고리인 경우
-                        MainForm.Category.AddSubdivision(MainCategory, txtCategory.Text);
+                        KSCS_static.category.AddSubdivision(MainCategory, txtCategory.Text);
                     }
                     lblCategory.Text = txtCategory.Text;
                     this.Name = txtCategory.Text;

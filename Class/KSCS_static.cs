@@ -30,6 +30,5 @@ namespace KSCS.Class
         };
         //달력 년도, 월
         public static int year, month;
-
     }
 }

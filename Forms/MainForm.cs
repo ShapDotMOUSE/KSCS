@@ -189,10 +189,10 @@ namespace KSCS
             //btn.FillColor = Color.FromArgb(217,217,217);
             panelMagam.Controls.Clear();
             int index = 0;
-
+           
             Dictionary<string, int[]> MagamLectureDic = new Dictionary<string, int[]>();
             Dictionary<string, DateTime> MagamMinDate = new Dictionary<string, DateTime>();
-
+           
             foreach (Schedule schedule in KlasSchedule[btn.Name.Substring(9)])
             {
                 //총 개수 구하는 부분

@@ -104,6 +104,18 @@
     <Compile Include="Forms\AddCategoryForm.Designer.cs">
       <DependentUpon>AddCategoryForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\LoadingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LoadingForm.Designer.cs">
+      <DependentUpon>LoadingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SharingClickForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SharingClickForm.Designer.cs">
+      <DependentUpon>SharingClickForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\TempCategorySetting.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -188,6 +200,12 @@
     </Compile>
     <EmbeddedResource Include="Forms\AddCategoryForm.resx">
       <DependentUpon>AddCategoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LoadingForm.resx">
+      <DependentUpon>LoadingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SharingClickForm.resx">
+      <DependentUpon>SharingClickForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TempCategorySetting.resx">
       <DependentUpon>TempCategorySetting.cs</DependentUpon>
@@ -313,6 +331,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\LOGO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\팡이놀람.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\팡이마술봉.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\팡이신남.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

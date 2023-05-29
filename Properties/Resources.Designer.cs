@@ -243,9 +243,39 @@ namespace KSCS.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        internal static System.Drawing.Bitmap 팡이놀람 {
+            get {
+                object obj = ResourceManager.GetObject("팡이놀람", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap 팡이마술봉 {
+            get {
+                object obj = ResourceManager.GetObject("팡이마술봉", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         internal static System.Drawing.Bitmap 팡이비행 {
             get {
                 object obj = ResourceManager.GetObject("팡이비행", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap 팡이신남 {
+            get {
+                object obj = ResourceManager.GetObject("팡이신남", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

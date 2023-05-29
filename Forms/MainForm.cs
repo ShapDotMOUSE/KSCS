@@ -9,6 +9,7 @@ using Panel = System.Windows.Forms.Panel;
 using KSCS.Class;
 using MySql.Data.MySqlClient;
 using static KSCS.Class.KSCS_static;
+using KSCS.Forms;
 
 namespace KSCS
 {

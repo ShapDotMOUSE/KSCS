@@ -217,13 +217,20 @@ namespace KSCS
         public static void ReadCategoryList()
         {
             //대분류 소분류 한번에
-            string selectQuery = string.Format("SELECT parent.category_name AS parent_category_name, category.category_name AS category_name, category.color AS color FROM KSCS.Category AS parent LEFT OUTER JOIN KSCS.Category AS category on category.parent_category_id=parent.id WHERE category.student_id='{0}';", stdNum);
+            string selectQuery = string.Format("SELECT parent.category_name AS parent_category_name, category.category_name AS category_name, category.color AS color FROM KSCS.Category AS parent RIGHT OUTER JOIN KSCS.Category AS category on category.parent_category_id=parent.id WHERE category.student_id='{0}';", stdNum);
             MySqlCommand cmd = new MySqlCommand(selectQuery, getDBConnection());
             MySqlDataReader table = cmd.ExecuteReader();
             while (table.Read())
             {
-                category.AddSubdivision(table["parent_category_name"].ToString(), table["category_name"].ToString());
-                category.SetColor(table["category_name"].ToString(), Color.FromArgb(int.Parse(table["color"].ToString())));
+                if (!string.IsNullOrEmpty(table["parent_category_name"].ToString()))
+                {
+                    category.AddSubdivision(table["parent_category_name"].ToString(), table["category_name"].ToString());
+                    category.SetColor(table["category_name"].ToString(), Color.FromArgb(int.Parse(table["color"].ToString())));
+                }
+                else
+                {
+                    category.AddParent(table["category_name"].ToString());
+                }
             }
 
             table.Close();

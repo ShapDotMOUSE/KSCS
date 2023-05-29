@@ -25,7 +25,7 @@ namespace KSCS.UserControls.MainForm
             Clicked?.Invoke(this, e);
         }
 
-        protected override void OnDoubleClick(EventArgs e)
+        protected override void OnMouseDoubleClick(MouseEventArgs e)
         {
             DoubleClicked?.Invoke(this, e);
         }
@@ -43,7 +43,7 @@ namespace KSCS.UserControls.MainForm
 
         private void SharingButton_DoubleClick(object sender, MouseEventArgs e)
         {
-            OnDoubleClick(e);
+            OnMouseDoubleClick(e);
         }
 
         private void btnSharing_MouseHover(object sender, EventArgs e)

@@ -49,7 +49,7 @@ namespace KSCS
         }
 
         //이벤트 핸들러 ----------------------------------------------------------------------------------------------
-        private void btn_Click(object sender, EventArgs e)
+        private void btnShowSubCategory_Click(object sender, EventArgs e)
         {
             flpSubCategory.Visible = !flpSubCategory.Visible;
         }
@@ -78,7 +78,7 @@ namespace KSCS
                     else
                     {
                         //신규 카테고리인 경우
-                        category.Categories.Add(lblMainCategory.Text, new HashSet<string>());
+                        category.Categories.Add(txtMainCategory.Text, new HashSet<string>());
                     }
                     this.Name = txtMainCategory.Text;
                     lblMainCategory.Text = txtMainCategory.Text;
@@ -111,5 +111,16 @@ namespace KSCS
             }
         }
 
+        private void btnAddSubCategory_Click(object sender, EventArgs e)
+        {
+            UserSubCategory userSub = new UserSubCategory();
+            userSub.setMain(this.Name);
+            flpSubCategory.Controls.Add(userSub);
+        }
+
+        private void UserMainCategory_Load(object sender, EventArgs e)
+        {
+            txtMainCategory.Focus();
+        }
     }
 }

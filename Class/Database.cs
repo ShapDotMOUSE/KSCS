@@ -1,5 +1,6 @@
 ﻿using KSCS.Class;
 using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Crypto;
 using Org.BouncyCastle.Utilities.Collections;
 using System;
 using System.Collections;
@@ -7,9 +8,11 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using static KSCS.Class.KSCS_static;
 using static System.ComponentModel.Design.ObjectSelectorEditor;
@@ -61,6 +64,47 @@ namespace KSCS
             else table.Close();
         }
 
+
+        //아이피 얻기
+        public static Dictionary<string,string> GetAddress(List<string> stdNumList)
+        {
+            Dictionary<string, string> addressList = new Dictionary<string, string>();
+            string selectQuery = string.Format("SELECT * FROM Student WHERE id IN ({0})", string.Join(",", stdNumList.Select(id => string.Format("'{0}'", id))));
+            MySqlCommand cmd = new MySqlCommand(selectQuery, getDBConnection());
+            MySqlDataReader table = cmd.ExecuteReader();
+            while (table.Read())
+            {
+                if (!string.IsNullOrEmpty(table["address"].ToString()))
+                    addressList[table["id"].ToString()]= table["address"].ToString();
+            }
+            table.Close();
+            return addressList;
+        }
+
+        public static void SetAddress()
+        {
+            string localIP = string.Empty;
+            IPHostEntry host = Dns.GetHostEntry(Dns.GetHostName());
+
+            foreach (IPAddress ip in host.AddressList)
+            {
+                if (ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                {
+                    localIP = ip.ToString();
+                    break;
+                }
+            }
+            string updateQuery = string.Format("UPDATE Student SET address='{0}' WHERE id='{1}'",localIP, stdNum);
+            MySqlCommand cmd = new MySqlCommand(updateQuery, getDBConnection());
+            if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to insert Data.");
+        }   
+
+        public static void DeleteAddress()
+        {
+            string updateQuery = string.Format("UPDATE Student SET address='' WHERE id='{0}'", stdNum);
+            MySqlCommand cmd = new MySqlCommand(updateQuery, getDBConnection());
+            if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to insert Data.");
+        }
 
         //스케줄 관련======================================================================
         public static void ReadScheduleList()

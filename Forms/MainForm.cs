@@ -75,6 +75,9 @@ namespace KSCS
             SetCheckedCategoryByTab();
             TabAll.ShowTab();
 
+
+            btnSharing.Click += btnShare_Click;
+            btnSharing.MouseDoubleClick += CreateSharing;
         }
 
         private void setTab()

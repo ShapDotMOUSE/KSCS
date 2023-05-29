@@ -1166,8 +1166,6 @@
             this.btnSharing.Name = "btnSharing";
             this.btnSharing.Size = new System.Drawing.Size(45, 94);
             this.btnSharing.TabIndex = 23;
-            this.btnSharing.Click += new System.EventHandler(this.btnShare_Click);
-            this.btnSharing.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.CreateSharing);
             // 
             // Tab4
             // 

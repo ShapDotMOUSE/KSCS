@@ -93,7 +93,7 @@ namespace KSCS
         {
             Tabs = tabs;
         }
-
+            
         //하위 카테고리 추가
         public void AddSubdivision(string Main, string Sub)
         {

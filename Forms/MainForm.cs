@@ -44,10 +44,7 @@ namespace KSCS
                 category.SetAddMode(Main);
                 panelMainCategory.Controls.Add(category);
             }
-
-            //달력
-            dispalyDate();
-            DisplayCategery();
+   
 
             //초기 탭 설정 
             TabAll.Clicked += ChangeTab;
@@ -56,10 +53,14 @@ namespace KSCS
             Tab3.Clicked += ChangeTab;
             Tab4.Clicked += ChangeTab;
             setTab();
+
+            //달력 (탭 위에 위치 -> 현재)
+            dispalyDate();
+            DisplayCategery();
+
             //탭 로드
             SetCheckedCategoryByTab();
             TabAll.ShowTab();
-            
         }
 
         private void setTab()
@@ -110,6 +111,8 @@ namespace KSCS
             TabName = btn.Name;
             OldTab.HideTab();
             SetCheckedCategoryByTab();
+
+            createDates(); // 추가
         }
         private void SetCheckedCategoryByTab()
         {
@@ -135,7 +138,8 @@ namespace KSCS
 
         private void createDates()
         {
-            Database.ReadScheduleList();
+            //Database.ReadScheduleList();
+            Database.ReadTabScheduleList();
 
             lblMonth.Text = month.ToString() + "월";
             lblMonth.TextAlign = ContentAlignment.MiddleCenter;

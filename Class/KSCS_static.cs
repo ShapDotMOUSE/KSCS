@@ -12,7 +12,7 @@ namespace KSCS.Class
         //학번
         public static string stdNum;
         //탭
-        public static string TabName=null;
+        public static string TabName = null; //null -> 수정
         //클라스
         public static KLAS klas = new KLAS();
         //카테고리

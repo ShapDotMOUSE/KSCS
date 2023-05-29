@@ -13,6 +13,7 @@ namespace KSCS.UserControls.MainForm
     public partial class SharingButton : UserControl
     {
         public event EventHandler Clicked;
+        public event MouseEventHandler DoubleClicked;
 
         public SharingButton()
         {
@@ -24,6 +25,11 @@ namespace KSCS.UserControls.MainForm
             Clicked?.Invoke(this, e);
         }
 
+        protected override void OnDoubleClick(EventArgs e)
+        {
+            DoubleClicked?.Invoke(this, e);
+        }
+
         private void btnSharing_MouseLeave(object sender, EventArgs e)
         {
             //panelWhite.Visible = true;
@@ -33,6 +39,11 @@ namespace KSCS.UserControls.MainForm
         private void SharingButton_Click(object sender, EventArgs e)
         {
             OnClick(e);
+        }
+
+        private void SharingButton_DoubleClick(object sender, MouseEventArgs e)
+        {
+            OnDoubleClick(e);
         }
 
         private void btnSharing_MouseHover(object sender, EventArgs e)

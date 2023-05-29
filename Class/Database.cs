@@ -151,6 +151,52 @@ namespace KSCS
             if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Delete Data.");
         }
 
+        //tabScheduleList
+        public static void ReadTabScheduleList()
+        {
+            string selectQuery = string.Format("SELECT * FROM Schedule JOIN Category ON Schedule.category_id=Category.id" +
+            " WHERE Schedule.student_id='{0}' AND (startDate BETWEEN DATE_FORMAT('{1}', '%Y-%m-%d') AND LAST_DAY('{1}') OR" +
+            " endDate BETWEEN DATE_FORMAT('{1}', '%Y-%m-%d') AND LAST_DAY('{1}'))" +
+            "AND Schedule.category_id IN (SELECT TabCategory.category_id FROM TabCategory JOIN StudentTab ON StudentTab.id=TabCategory.tab_id WHERE StudentTab.tab_name='{2}' AND Schedule.student_id='{0}') " +
+            "ORDER BY startDate ASC;", stdNum, new DateTime(year, month, 1).ToString("yyyy-MM-dd"),TabName);
+            MySqlCommand cmd = new MySqlCommand(selectQuery, getDBConnection());
+            MySqlDataReader table = cmd.ExecuteReader();
+            monthScheduleList.Clear(); //한달 스케줄 초기화
+
+            //하루 단위 리스트 생성
+            for (int i = 0; i < DateTime.DaysInMonth(year, month); i++)
+            {
+                monthScheduleList.Add(new List<Schedule>());
+            }
+
+            while (table.Read())
+            {
+                Schedule schedule = new Schedule(
+                    table["title"].ToString(),
+                    table["content"].ToString(),
+                    table["place"].ToString(),
+                    table["category_name"].ToString(),
+                    DateTime.Parse(table["startDate"].ToString()),
+                    DateTime.Parse(table["endDate"].ToString()))
+                {
+                    id = int.Parse(table["id"].ToString()),
+                };
+
+                /* 리스트 추가 */
+                //startDate와 endDate 일자가 다른 경우도 포함
+                TimeSpan duration = schedule.endDate - schedule.startDate;
+                for (int i = 0; i <= duration.Days; i++)
+                {
+                    if (Convert.ToInt32(schedule.startDate.AddDays(i).ToString("MM")) == month)
+                    {
+                        monthScheduleList[Convert.ToInt32(schedule.startDate.AddDays(i).ToString("dd")) - 1].Add(schedule);
+                    }
+                }
+            }
+
+            table.Close();
+        }
+
 
         //탭관련=============================
         public static List<string> ReadTab()
@@ -190,7 +236,7 @@ namespace KSCS
 
         public static void UpdateTabName(string name, int index)
         {
-            string updateQuery = string.Format(" SUPDATEtudentTab SET tab_name={0} WHERE student_id={1} ORDER BY id LIMIT 1 OFFSET {2}", name, stdNum, index);
+            string updateQuery = string.Format(" UPDATE StudentTab SET tab_name={0} WHERE student_id={1} ORDER BY id LIMIT 1 OFFSET {2}", name, stdNum, index);
             MySqlCommand cmd = new MySqlCommand(updateQuery, getDBConnection());
             if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Update Data.");
         }

@@ -53,6 +53,7 @@
             this.btnSharing.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnSharing.Size = new System.Drawing.Size(45, 94);
             this.btnSharing.TabIndex = 26;
+            this.btnSharing.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.SharingButton_DoubleClick);
             this.btnSharing.MouseLeave += new System.EventHandler(this.btnSharing_MouseLeave);
             this.btnSharing.MouseHover += new System.EventHandler(this.btnSharing_MouseHover);
             // 
@@ -92,8 +93,6 @@
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "SharingButton";
             this.Size = new System.Drawing.Size(45, 94);
-            this.Click += new System.EventHandler(this.SharingButton_Click);
-            this.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.SharingButton_DoubleClick);
             this.ResumeLayout(false);
 
         }

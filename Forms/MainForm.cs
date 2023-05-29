@@ -70,13 +70,13 @@ namespace KSCS
             Tab2.Clicked += ChangeTab;
             Tab3.Clicked += ChangeTab;
             Tab4.Clicked += ChangeTab;
+            btnSharing.Clicked += btnShare_Click;
+            btnSharing.DoubleClicked += CreateSharing;
             setTab();
             //탭 로드
             SetCheckedCategoryByTab();
             TabAll.ShowTab();
 
-            btnSharing.Clicked += btnShare_Click;
-            btnSharing.DoubleClicked += CreateSharing;
         }
 
         private void setTab()
@@ -305,6 +305,7 @@ namespace KSCS
         //실시간 일정 공유 생성 : 현재 더블클릭
         public void CreateSharing(object sender, MouseEventArgs e)
         {
+            MessageBox.Show("시작");
             Database.SetAddress();
             List<string> test= new List<string>();
             test.Add("2019203055");
@@ -387,6 +388,7 @@ namespace KSCS
         //실시간 일정 공유 참가 : 현재 클릭
         public void btnShare_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("시작");
             thread = new Thread(new ThreadStart(ParticipateSharing));
             thread.Start();
         }

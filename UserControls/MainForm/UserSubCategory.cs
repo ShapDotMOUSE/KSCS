@@ -125,6 +125,7 @@ namespace KSCS
             {
                 category.DeletChecked(TabName, lblCategory.Text);
             }
+            MainForm.LoadMainForm(); //추가
         }
 
         //유저 카테고리 수정 폼 로드

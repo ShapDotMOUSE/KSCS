@@ -12,7 +12,7 @@ namespace KSCS.Class
         //학번
         public static string stdNum;
         //탭
-        public static string TabName=null;
+        public static string TabName = null; //null -> 수정
         //클라스
         public static KLAS klas = new KLAS();
         //카테고리
@@ -30,6 +30,5 @@ namespace KSCS.Class
         };
         //달력 년도, 월
         public static int year, month;
-
     }
 }

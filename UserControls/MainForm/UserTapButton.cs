@@ -96,7 +96,6 @@ namespace KSCS
                     this.Name = txtTab.Text;
                     txtTab.Visible = false;
                     TabName = this.Name;
-                    
                 }
             }
             else if (e.KeyCode == Keys.Escape)

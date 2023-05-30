@@ -442,18 +442,19 @@ namespace KSCS
             if (listener != null)
             {
                 this.listener.Stop();
-                foreach (KeyValuePair<string,NetworkStream>keyValue in networkStreamDict)
+                foreach (KeyValuePair<string, NetworkStream> keyValue in networkStreamDict)
                     keyValue.Value.Close();
                 this.thread.Abort();
             }
             else if (clientDict.Count != 0)
             {
-                foreach (KeyValuePair<string,TcpClient> keyValue in clientDict)
+                foreach (KeyValuePair<string, TcpClient> keyValue in clientDict)
                     keyValue.Value.Close();
                 foreach (KeyValuePair<string, NetworkStream> keyValue in networkStreamDict)
                     keyValue.Value.Close();
             }
             Database.DeleteAddress();
+        }
         public static void LoadMainForm()
         {
             Database.ReadTabScheduleList();

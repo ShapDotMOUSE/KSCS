@@ -93,7 +93,14 @@ namespace KSCS
         {
             Tabs = tabs;
         }
-            
+        public void AddParent(string Main)
+        {
+            if (!Categories.ContainsKey(Main))
+            {
+                Categories.Add(Main, new HashSet<string>());
+            }
+        }
+
         //하위 카테고리 추가
         public void AddSubdivision(string Main, string Sub)
         {

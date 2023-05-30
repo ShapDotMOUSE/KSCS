@@ -47,13 +47,14 @@
             this.btnMagam_Quiz = new Guna.UI2.WinForms.Guna2CircleButton();
             this.btnMagam_Online = new Guna.UI2.WinForms.Guna2CircleButton();
             this.btnMagam_Prjct = new Guna.UI2.WinForms.Guna2CircleButton();
-            this.guna2CircleButton5 = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.btnMagam_Personal = new Guna.UI2.WinForms.Guna2CircleButton();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -172,11 +173,12 @@
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(323, 16);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(641, 19);
+            this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
             this.label4.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label4.Size = new System.Drawing.Size(122, 31);
@@ -196,6 +198,7 @@
             // 
             // guna2Panel2
             // 
+            this.guna2Panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2Panel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.guna2Panel2.BackColor = System.Drawing.Color.White;
             this.guna2Panel2.BorderThickness = 1;
@@ -207,7 +210,8 @@
             this.guna2Panel2.Controls.Add(this.label1);
             this.guna2Panel2.CustomBorderColor = System.Drawing.Color.White;
             this.guna2Panel2.FillColor = System.Drawing.Color.White;
-            this.guna2Panel2.Location = new System.Drawing.Point(1013, 18);
+            this.guna2Panel2.Location = new System.Drawing.Point(1572, 22);
+            this.guna2Panel2.Margin = new System.Windows.Forms.Padding(4);
             this.guna2Panel2.Name = "guna2Panel2";
             this.guna2Panel2.Size = new System.Drawing.Size(246, 930);
             this.guna2Panel2.TabIndex = 18;
@@ -253,6 +257,7 @@
             // 
             // guna2Panel3
             // 
+            this.guna2Panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2Panel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.guna2Panel3.BackColor = System.Drawing.Color.White;
             this.guna2Panel3.BorderRadius = 10;
@@ -260,14 +265,16 @@
             this.guna2Panel3.Controls.Add(this.panelMagamBtns);
             this.guna2Panel3.Controls.Add(this.guna2PictureBox1);
             this.guna2Panel3.Controls.Add(this.label4);
-            this.guna2Panel3.Location = new System.Drawing.Point(508, 18);
+            this.guna2Panel3.Location = new System.Drawing.Point(704, 22);
+            this.guna2Panel3.Margin = new System.Windows.Forms.Padding(4);
             this.guna2Panel3.Name = "guna2Panel3";
-            this.guna2Panel3.Size = new System.Drawing.Size(470, 175);
+            this.guna2Panel3.Size = new System.Drawing.Size(825, 210);
             this.guna2Panel3.TabIndex = 19;
             // 
             // panelMagam
             // 
-            this.panelMagam.Location = new System.Drawing.Point(14, 70);
+            this.panelMagam.AutoScroll = true;
+            this.panelMagam.Location = new System.Drawing.Point(18, 84);
             this.panelMagam.Margin = new System.Windows.Forms.Padding(2);
             this.panelMagam.Name = "panelMagam";
             this.panelMagam.Size = new System.Drawing.Size(342, 102);
@@ -280,8 +287,9 @@
             this.panelMagamBtns.Controls.Add(this.btnMagam_Quiz);
             this.panelMagamBtns.Controls.Add(this.btnMagam_Online);
             this.panelMagamBtns.Controls.Add(this.btnMagam_Prjct);
-            this.panelMagamBtns.Controls.Add(this.guna2CircleButton5);
-            this.panelMagamBtns.Location = new System.Drawing.Point(14, 16);
+            this.panelMagamBtns.Controls.Add(this.btnMagam_Personal);
+            this.panelMagamBtns.Location = new System.Drawing.Point(18, 19);
+            this.panelMagamBtns.Margin = new System.Windows.Forms.Padding(4);
             this.panelMagamBtns.Name = "panelMagamBtns";
             this.panelMagamBtns.Size = new System.Drawing.Size(288, 44);
             this.panelMagamBtns.TabIndex = 9;
@@ -358,33 +366,37 @@
             this.btnMagam_Prjct.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.btnMagam_Prjct.Size = new System.Drawing.Size(35, 35);
             this.btnMagam_Prjct.TabIndex = 14;
-            this.btnMagam_Prjct.Click += new System.EventHandler(this.btnClose_Click);
+
+            this.btnMagam_Prjct.Click += new System.EventHandler(this.btnMagam_Click);
             // 
-            // guna2CircleButton5
+            // btnMagam_Personal
             // 
-            this.guna2CircleButton5.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2CircleButton5.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2CircleButton5.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2CircleButton5.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2CircleButton5.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.guna2CircleButton5.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2CircleButton5.ForeColor = System.Drawing.Color.White;
-            this.guna2CircleButton5.Image = global::KSCS.Properties.Resources.individual;
-            this.guna2CircleButton5.ImageOffset = new System.Drawing.Point(1, 0);
-            this.guna2CircleButton5.ImageSize = new System.Drawing.Size(26, 20);
-            this.guna2CircleButton5.Location = new System.Drawing.Point(167, 3);
-            this.guna2CircleButton5.Name = "guna2CircleButton5";
-            this.guna2CircleButton5.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CircleButton5.Size = new System.Drawing.Size(35, 35);
-            this.guna2CircleButton5.TabIndex = 15;
-            this.guna2CircleButton5.Click += new System.EventHandler(this.btnMagam_Click);
+            this.btnMagam_Personal.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnMagam_Personal.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnMagam_Personal.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnMagam_Personal.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnMagam_Personal.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.btnMagam_Personal.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnMagam_Personal.ForeColor = System.Drawing.Color.White;
+            this.btnMagam_Personal.Image = global::KSCS.Properties.Resources.individual;
+            this.btnMagam_Personal.ImageOffset = new System.Drawing.Point(1, 0);
+            this.btnMagam_Personal.ImageSize = new System.Drawing.Size(26, 20);
+            this.btnMagam_Personal.Location = new System.Drawing.Point(212, 4);
+            this.btnMagam_Personal.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMagam_Personal.Name = "btnMagam_Personal";
+            this.btnMagam_Personal.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.btnMagam_Personal.Size = new System.Drawing.Size(44, 42);
+            this.btnMagam_Personal.TabIndex = 15;
+            this.btnMagam_Personal.Click += new System.EventHandler(this.btnMagam_Click);
             // 
             // guna2PictureBox1
             // 
+            this.guna2PictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2PictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.guna2PictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox1.Image")));
             this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(372, 60);
+            this.guna2PictureBox1.Location = new System.Drawing.Point(702, 72);
+            this.guna2PictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2PictureBox1.Name = "guna2PictureBox1";
             this.guna2PictureBox1.Size = new System.Drawing.Size(80, 105);
             this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -398,14 +410,17 @@
             // 
             // guna2Panel4
             // 
+            this.guna2Panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2Panel4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.guna2Panel4.BackColor = System.Drawing.Color.White;
             this.guna2Panel4.BorderRadius = 10;
             this.guna2Panel4.Controls.Add(this.guna2PictureBox2);
             this.guna2Panel4.Controls.Add(this.label5);
-            this.guna2Panel4.Location = new System.Drawing.Point(22, 18);
+            this.guna2Panel4.Location = new System.Drawing.Point(32, 22);
+            this.guna2Panel4.Margin = new System.Windows.Forms.Padding(4);
             this.guna2Panel4.Name = "guna2Panel4";
-            this.guna2Panel4.Size = new System.Drawing.Size(470, 175);
+            this.guna2Panel4.Size = new System.Drawing.Size(644, 210);
+
             this.guna2Panel4.TabIndex = 19;
             // 
             // guna2PictureBox2
@@ -422,10 +437,13 @@
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(290, 16);
+            this.label5.Location = new System.Drawing.Point(419, 19);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+
             this.label5.Name = "label5";
             this.label5.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label5.Size = new System.Drawing.Size(151, 31);
@@ -434,22 +452,35 @@
             // 
             // guna2Panel5
             // 
+            this.guna2Panel5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2Panel5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.guna2Panel5.BackColor = System.Drawing.Color.White;
             this.guna2Panel5.BorderRadius = 10;
+            this.guna2Panel5.Controls.Add(this.flowLayoutPanel2);
             this.guna2Panel5.Controls.Add(this.flowLayoutPanel1);
             this.guna2Panel5.Controls.Add(this.btnPrevisous);
             this.guna2Panel5.Controls.Add(this.btnNext);
             this.guna2Panel5.Controls.Add(this.lblMonth);
             this.guna2Panel5.Controls.Add(this.guna2PictureBox3);
             this.guna2Panel5.Controls.Add(this.flpDays);
-            this.guna2Panel5.Location = new System.Drawing.Point(22, 215);
+            this.guna2Panel5.Location = new System.Drawing.Point(32, 258);
+            this.guna2Panel5.Margin = new System.Windows.Forms.Padding(4);
             this.guna2Panel5.Name = "guna2Panel5";
-            this.guna2Panel5.Size = new System.Drawing.Size(956, 733);
+            this.guna2Panel5.Size = new System.Drawing.Size(1496, 880);
             this.guna2Panel5.TabIndex = 21;
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.BackColor = System.Drawing.Color.Snow;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(35, 155);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(306, 605);
+            this.flowLayoutPanel2.TabIndex = 44;
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanel1.Controls.Add(this.textBox1);
             this.flowLayoutPanel1.Controls.Add(this.textBox2);
             this.flowLayoutPanel1.Controls.Add(this.textBox3);
@@ -457,7 +488,9 @@
             this.flowLayoutPanel1.Controls.Add(this.textBox5);
             this.flowLayoutPanel1.Controls.Add(this.textBox6);
             this.flowLayoutPanel1.Controls.Add(this.textBox7);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(56, 94);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(371, 113);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
+
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(843, 29);
             this.flowLayoutPanel1.TabIndex = 43;
@@ -556,6 +589,7 @@
             // 
             // btnPrevisous
             // 
+            this.btnPrevisous.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPrevisous.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnPrevisous.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnPrevisous.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -566,7 +600,9 @@
             this.btnPrevisous.ForeColor = System.Drawing.Color.Black;
             this.btnPrevisous.Image = ((System.Drawing.Image)(resources.GetObject("btnPrevisous.Image")));
             this.btnPrevisous.ImageSize = new System.Drawing.Size(20, 30);
-            this.btnPrevisous.Location = new System.Drawing.Point(415, 14);
+            this.btnPrevisous.Location = new System.Drawing.Point(604, 17);
+            this.btnPrevisous.Margin = new System.Windows.Forms.Padding(4);
+
             this.btnPrevisous.Name = "btnPrevisous";
             this.btnPrevisous.Size = new System.Drawing.Size(32, 57);
             this.btnPrevisous.TabIndex = 27;
@@ -574,6 +610,7 @@
             // 
             // btnNext
             // 
+            this.btnNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnNext.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnNext.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -584,7 +621,8 @@
             this.btnNext.ForeColor = System.Drawing.Color.Black;
             this.btnNext.Image = ((System.Drawing.Image)(resources.GetObject("btnNext.Image")));
             this.btnNext.ImageSize = new System.Drawing.Size(20, 30);
-            this.btnNext.Location = new System.Drawing.Point(536, 14);
+            this.btnNext.Location = new System.Drawing.Point(755, 17);
+            this.btnNext.Margin = new System.Windows.Forms.Padding(4);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(32, 57);
             this.btnNext.TabIndex = 26;
@@ -592,10 +630,11 @@
             // 
             // lblMonth
             // 
+            this.lblMonth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMonth.AutoSize = true;
             this.lblMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblMonth.Location = new System.Drawing.Point(454, 20);
-            this.lblMonth.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblMonth.Location = new System.Drawing.Point(652, 24);
+            this.lblMonth.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblMonth.Name = "lblMonth";
             this.lblMonth.Size = new System.Drawing.Size(76, 46);
             this.lblMonth.TabIndex = 2;
@@ -615,6 +654,7 @@
             // 
             // flpDays
             // 
+            this.flpDays.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.flpDays.ColumnCount = 7;
             this.flpDays.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
             this.flpDays.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
@@ -665,7 +705,7 @@
             this.flpDays.Controls.Add(this.userDate40, 4, 5);
             this.flpDays.Controls.Add(this.userDate41, 5, 5);
             this.flpDays.Controls.Add(this.userDate42, 6, 5);
-            this.flpDays.Location = new System.Drawing.Point(56, 129);
+            this.flpDays.Location = new System.Drawing.Point(371, 155);
             this.flpDays.Margin = new System.Windows.Forms.Padding(2);
             this.flpDays.Name = "flpDays";
             this.flpDays.RowCount = 6;
@@ -1115,32 +1155,32 @@
             // 
             // btnSharing
             // 
-            this.btnSharing.Location = new System.Drawing.Point(962, 832);
-            this.btnSharing.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSharing.Location = new System.Drawing.Point(1511, 998);
+            this.btnSharing.Margin = new System.Windows.Forms.Padding(5);
             this.btnSharing.Name = "btnSharing";
             this.btnSharing.Size = new System.Drawing.Size(36, 78);
             this.btnSharing.TabIndex = 23;
             // 
             // Tab4
             // 
-            this.Tab4.Location = new System.Drawing.Point(962, 735);
-            this.Tab4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Tab4.Location = new System.Drawing.Point(1511, 882);
+            this.Tab4.Margin = new System.Windows.Forms.Padding(5);
             this.Tab4.Name = "Tab4";
             this.Tab4.Size = new System.Drawing.Size(36, 78);
             this.Tab4.TabIndex = 22;
             // 
             // Tab3
             // 
-            this.Tab3.Location = new System.Drawing.Point(962, 635);
-            this.Tab3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Tab3.Location = new System.Drawing.Point(1511, 762);
+            this.Tab3.Margin = new System.Windows.Forms.Padding(5);
             this.Tab3.Name = "Tab3";
             this.Tab3.Size = new System.Drawing.Size(36, 78);
             this.Tab3.TabIndex = 22;
             // 
             // Tab2
             // 
-            this.Tab2.Location = new System.Drawing.Point(962, 535);
-            this.Tab2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Tab2.Location = new System.Drawing.Point(1511, 642);
+            this.Tab2.Margin = new System.Windows.Forms.Padding(5);
             this.Tab2.Name = "Tab2";
             this.Tab2.Size = new System.Drawing.Size(36, 78);
             this.Tab2.TabIndex = 22;
@@ -1148,8 +1188,8 @@
             // 
             // Tab1
             // 
-            this.Tab1.Location = new System.Drawing.Point(962, 430);
-            this.Tab1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Tab1.Location = new System.Drawing.Point(1511, 516);
+            this.Tab1.Margin = new System.Windows.Forms.Padding(5);
             this.Tab1.Name = "Tab1";
             this.Tab1.Size = new System.Drawing.Size(36, 78);
             this.Tab1.TabIndex = 22;
@@ -1157,8 +1197,8 @@
             // 
             // TabAll
             // 
-            this.TabAll.Location = new System.Drawing.Point(962, 332);
-            this.TabAll.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TabAll.Location = new System.Drawing.Point(1511, 398);
+            this.TabAll.Margin = new System.Windows.Forms.Padding(5);
             this.TabAll.Name = "TabAll";
             this.TabAll.Size = new System.Drawing.Size(36, 78);
             this.TabAll.TabIndex = 22;
@@ -1170,7 +1210,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
-            this.ClientSize = new System.Drawing.Size(1280, 918);
+            this.ClientSize = new System.Drawing.Size(1800, 1240);
             this.Controls.Add(this.btnSharing);
             this.Controls.Add(this.Tab4);
             this.Controls.Add(this.Tab3);
@@ -1183,8 +1223,9 @@
             this.Controls.Add(this.guna2Panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(1280, 960);
-            this.MinimumSize = new System.Drawing.Size(1280, 838);
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximumSize = new System.Drawing.Size(1800, 1296);
+            this.MinimumSize = new System.Drawing.Size(1800, 1222);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -1235,7 +1276,6 @@
         private Guna.UI2.WinForms.Guna2CircleButton btnMagam_Quiz;
         private Guna.UI2.WinForms.Guna2CircleButton btnMagam_Online;
         private Guna.UI2.WinForms.Guna2CircleButton btnMagam_Prjct;
-        private Guna.UI2.WinForms.Guna2CircleButton btnMagam_Personal;
         private UserTabButton TabAll;
         private UserTabButton Tab4;
         private UserTabButton Tab3;
@@ -1288,7 +1328,7 @@
         private UserDate userDate41;
         private UserDate userDate42;
         private System.Windows.Forms.FlowLayoutPanel panelMainCategory;
-        private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton5;
+        private Guna.UI2.WinForms.Guna2CircleButton btnMagam_Personal;
         private Guna.UI2.WinForms.Guna2Button btnPlusCategory;
         private UserControls.MainForm.SharingButton btnSharing;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
@@ -1299,6 +1339,7 @@
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
     }
 }
 

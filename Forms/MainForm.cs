@@ -9,19 +9,37 @@ using Panel = System.Windows.Forms.Panel;
 using KSCS.Class;
 using MySql.Data.MySqlClient;
 using static KSCS.Class.KSCS_static;
-using KSCS.Forms;
+using System.Net.Sockets;
+using System.Threading;
+using System.Web.UI.WebControls;
+using Socket;
+using System.Net;
 
 namespace KSCS
 {
     public partial class MainForm : Form
     {
-        
+
         //스케줄 관련
         public MainForm()
         {
             InitializeComponent();
         }
 
+        private NetworkStream networkStream;
+        private TcpListener listener;
+        private TcpClient client;
+
+
+        private byte[] sendBuffer = new byte[1024 * 4];
+        private byte[] readBuffer = new byte[1024 * 4];
+
+        private bool ClientOn = false;
+        private bool Connect = false;
+
+        private Thread thread;
+
+        private Init InitClass;
         private void MainForm_Load(object sender, EventArgs e)
         {
             KLAS.initializeKLAS();
@@ -32,21 +50,16 @@ namespace KSCS
             else
                 Close();
             lblStdNum.Text = stdNum;
-            
             //초기 메인 카테고리 설정
             Database.ReadCategoryList();
             Database.ReadTabAndCategory();
             foreach (string Main in category.Categories.Keys)
             {
                 UserMainCategory category = new UserMainCategory();
-                category.Name = "mainCategory_"+Main;
                 category.SetAddMode(Main);
                 panelMainCategory.Controls.Add(category);
             }
-
-            //달력
-            dispalyDate();
-            DisplayCategery();
+   
 
             //초기 탭 설정 
             TabAll.Clicked += ChangeTab;
@@ -54,11 +67,17 @@ namespace KSCS
             Tab2.Clicked += ChangeTab;
             Tab3.Clicked += ChangeTab;
             Tab4.Clicked += ChangeTab;
+            btnSharing.Clicked += btnShare_Click;
+            btnSharing.DoubleClicked += CreateSharing;
             setTab();
+
+            //달력 (탭 위에 위치 -> 현재)
+            dispalyDate();
+            DisplayCategery();
+
             //탭 로드
             SetCheckedCategoryByTab();
             TabAll.ShowTab();
-            
         }
 
         private void setTab()
@@ -78,7 +97,9 @@ namespace KSCS
 
         private void MainForm_Resize(object sender, EventArgs e)
         {
-            this.Size = new Size(1280, 1080);
+            this.Size = new Size(1440, 1080);
+            this.MaximumSize = new Size(1440, 1080);
+            this.MinimumSize = new Size(1440, 1080);
         }
 
 
@@ -107,6 +128,8 @@ namespace KSCS
             TabName = btn.Name;
             OldTab.HideTab();
             SetCheckedCategoryByTab();
+
+            LoadMainForm(); //추가
         }
         private void SetCheckedCategoryByTab()
         {
@@ -132,7 +155,8 @@ namespace KSCS
 
         private void createDates()
         {
-            Database.ReadScheduleList();
+            //Database.ReadScheduleList();
+            Database.ReadTabScheduleList();
 
             lblMonth.Text = month.ToString() + "월";
             lblMonth.TextAlign = ContentAlignment.MiddleCenter;
@@ -244,12 +268,12 @@ namespace KSCS
                 case "Next":
                     if (month == 12) { month = 1; year++; }
                     else month++;
-                    
+
                     break;
                 case "Previsous":
                     if (month == 1) { month = 12; year--; }
                     else month--;
-                    
+
                     break;
             }
             createDates();
@@ -264,10 +288,149 @@ namespace KSCS
             panelMainCategory.Controls.Add(category);
         }
 
-        //추가
         public IEnumerable<UserDate> GetUserDate()
         {
             return flpDays.Controls.OfType<UserDate>();
+        }
+
+        public void Send()
+        {
+            networkStream.Write(this.sendBuffer, 0, this.sendBuffer.Length);
+            networkStream.Flush();
+
+            for (int i = 0; i < 1024 * 4; i++)
+            {
+                this.sendBuffer[i] = 0;
+            }
+        }
+
+        
+        //실시간 일정 공유 생성 : 현재 더블클릭
+        public void CreateSharing(object sender, MouseEventArgs e)
+        {
+            MessageBox.Show("시작");
+            Database.SetAddress();
+            List<string> test= new List<string>();
+            test.Add("2019203055");
+            test.Add("2021203078");
+            client = new TcpClient();
+            Dictionary<string, string> addressDict = Database.GetAddress(test);
+            try
+            {
+                client.Connect(addressDict["2019203055"], 7777);
+            }
+            catch
+            {
+                MessageBox.Show("접속 에러");
+                return;
+            }
+            networkStream = client.GetStream();
+
+            Init Init = new Init
+            {
+                Type = (int)PacketType.INIT,
+                members = test,
+                addressDict = addressDict
+            };
+
+            Packet.Serialize(Init).CopyTo(this.sendBuffer, 0);
+            this.Send();
+        }
+
+        public void ParticipateSharing()
+        {
+            Database.SetAddress();
+            listener = new TcpListener(IPAddress.Any, 7777);
+            listener.Start();
+            TcpClient client = listener.AcceptTcpClient();
+            if (client.Connected)
+            {
+                ClientOn = true;
+                networkStream = client.GetStream();
+            }
+            int nRead = 0;  
+
+            while (ClientOn)
+            {
+                try
+                {
+                    nRead = 0;
+                    nRead = networkStream.Read(readBuffer, 0, 1024 * 4);
+                }
+                catch
+                {
+                    ClientOn = false;
+                    networkStream = null;
+                }
+                Packet packet = (Packet)Packet.Deserialize(readBuffer);
+
+                switch ((int)packet.Type)
+                {
+                    case (int)PacketType.INIT:
+                        {
+                            InitClass = (Init)Packet.Deserialize(readBuffer);
+                            this.Invoke(new MethodInvoker(delegate ()
+                            {
+                                foreach (string s in InitClass.members)
+                                {
+                                    if (InitClass.addressDict.ContainsKey(s))
+                                    {
+                                        MessageBox.Show(s + " : " + InitClass.addressDict[s]);
+                                    }
+                                    else
+                                        MessageBox.Show(s + " : 연결 할 수 없습니다.");
+                                }
+                            }));
+                            break;
+                        }
+                }
+            }
+
+        }
+
+        //실시간 일정 공유 참가 : 현재 클릭
+        public void btnShare_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("시작");
+            thread = new Thread(new ThreadStart(ParticipateSharing));
+            thread.Start();
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (listener != null)
+            {
+                this.listener.Stop();
+                this.networkStream.Close();
+                this.thread.Abort();
+            }
+            else if (client != null)
+            {
+                this.client.Close();
+                this.networkStream.Close();
+
+            }
+            Database.DeleteAddress();
+        }
+        public static void LoadMainForm()
+        {
+            Database.ReadTabScheduleList();
+
+            DateTime startOfMonth = new DateTime(year, month, 1);
+            int dates = DateTime.DaysInMonth(year, month);
+            int dayOfWeek = Convert.ToInt32(startOfMonth.DayOfWeek.ToString("d")) + 1;
+            int index = 0;
+            int date = 1;
+
+            foreach (UserDate userDate in Application.OpenForms.OfType<MainForm>().FirstOrDefault().GetUserDate())
+            {
+                if (++index < dayOfWeek) userDate.ChangeBlank();
+                else if (date <= dates) userDate.SetDate(date++);
+                else userDate.ChangeBlank();
+
+                if (index % 7 == 0) userDate.ChangeColor(Color.Blue);
+                else if (index % 7 == 1) userDate.ChangeColor(Color.Red);
+            }
         }
     }
 }

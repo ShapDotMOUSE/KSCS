@@ -77,19 +77,8 @@ namespace KSCS
             Tabs["Tab4"] = TabCategory5;
         }
 
-        //상위 카테고리 추가
-        public void AddParent(string Main)
-        {
-            Categories.Add(Main, new HashSet<string>());
-        }
-
-        public void AddParent(string Main,HashSet<string> categories)
-        {
-            Categories.Add(Main, categories);
-        }
-
         //카테고리 Color 
-        public void AddColor(string Sub,Color color)
+        public void SetColor(string Sub,Color color)
         {
             CategoryColor.Add(Sub, color);
         }
@@ -100,9 +89,16 @@ namespace KSCS
         }
 
         //탭에 카테고리 설정
-        public void AddTab(string Tab,HashSet<string> categories)
+        public void LoadTab(Hashtable tabs)
         {
-            Tabs[Tab] = categories;
+            Tabs = tabs;
+        }
+        public void AddParent(string Main)
+        {
+            if (!Categories.ContainsKey(Main))
+            {
+                Categories.Add(Main, new HashSet<string>());
+            }
         }
 
         //하위 카테고리 추가
@@ -155,7 +151,11 @@ namespace KSCS
         public void AddChecked(string Tab, string Sub)
         {
             HashSet<string> TabCategory = Tabs[Tab] as HashSet<string>;
-            TabCategory.Add(Sub);
+            if (!TabCategory.Contains(Sub))
+            { 
+                Database.InsertTabCategory(Tab, Sub);
+                TabCategory.Add(Sub);
+            }
         }
 
         //탭에 하위 카테고리 제거
@@ -164,6 +164,7 @@ namespace KSCS
             HashSet<string> TabCategory = Tabs[Tab] as HashSet<string>;
             if (TabCategory.Contains(Sub))
             {
+                Database.DeleteTabCategory(Tab, Sub);
                 TabCategory.Remove(Sub);
             }
         }

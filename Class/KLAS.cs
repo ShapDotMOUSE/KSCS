@@ -142,7 +142,7 @@ namespace KSCS.Class
         public static async Task LoadMagamData()
         {
             ClearKlasSchedule();
-            string list = await CreateRequestAsync("StdHome", "POST", "{}");
+            string list = await CreateRequestAsync("StdHome", "POST", "{\"searchYearhakgi\":\"2023,1\"}");
             JObject sbjectList = JObject.Parse(list);
             foreach (JToken subj in sbjectList["atnlcSbjectList"])
             {
@@ -170,7 +170,7 @@ namespace KSCS.Class
                 foreach (JToken online in JArray.Parse(onlineData))
                 {
                     schedule = Schedule.KLAS_Schedule(online["moduletitle"].ToString(), "Online", subj["subjNm"].ToString(), online["endDate"].ToString());
-                    if (schedule.MagamBeforeNow() && string.Equals(online["ispreview"]?.ToString(),"N")) KlasSchedule["Online"].Add(schedule);
+                    if (schedule.MagamBeforeNow() && online["prog"]!=null&& !string.Equals(online["prog"].ToString(),"100")) KlasSchedule["Online"].Add(schedule);
                 }
                 string prjctData = await CreateRequestAsync("PrjctStdList", "POST", JsonConvert.SerializeObject(magamContent));
                 foreach (JToken prjct in JArray.Parse(prjctData))

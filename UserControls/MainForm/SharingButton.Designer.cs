@@ -48,11 +48,12 @@
             this.btnSharing.Font = new System.Drawing.Font("Segoe UI", 6F);
             this.btnSharing.ForeColor = System.Drawing.Color.White;
             this.btnSharing.Location = new System.Drawing.Point(0, 0);
-            this.btnSharing.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSharing.Margin = new System.Windows.Forms.Padding(4);
             this.btnSharing.Name = "btnSharing";
             this.btnSharing.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnSharing.Size = new System.Drawing.Size(45, 94);
             this.btnSharing.TabIndex = 26;
+            this.btnSharing.Click += new System.EventHandler(this.SharingButton_Click);
             this.btnSharing.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.SharingButton_DoubleClick);
             this.btnSharing.MouseLeave += new System.EventHandler(this.btnSharing_MouseLeave);
             this.btnSharing.MouseHover += new System.EventHandler(this.btnSharing_MouseHover);
@@ -90,7 +91,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panelWhite);
             this.Controls.Add(this.btnSharing);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SharingButton";
             this.Size = new System.Drawing.Size(45, 94);
             this.ResumeLayout(false);

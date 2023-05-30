@@ -66,6 +66,7 @@ namespace KSCS
             Tab2.Clicked += ChangeTab;
             Tab3.Clicked += ChangeTab;
             Tab4.Clicked += ChangeTab;
+            btnSharing.Clicked += CreateSharing;
             //btnSharing.Clicked += btnShare_Click;
             //btnSharing.DoubleClicked += CreateSharing;
             setTab();
@@ -306,14 +307,15 @@ namespace KSCS
 
         //    //실시간 일정 공유 생성 : 현재 더블클릭
         //    //사용자 본인은 포트를 열지 않음. 모두 Listner에게 연결시도
-        public void CreateSharing(object sender, MouseEventArgs e)
+        public void CreateSharing(object sender, EventArgs e)
         {
             MessageBox.Show("실시간 일정 공유 생성");
             List<string> testAddress = new List<string>
                 {
                     "2019203055",
                     "2021203078",
-                    "2019203082"
+                    "2019203082",
+                    "2021203043"
                 };
             List<string> testTodo = testAddress.ToList();
 

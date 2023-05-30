@@ -14,6 +14,7 @@ using System.Threading;
 using System.Web.UI.WebControls;
 using Socket;
 using System.Net;
+using KSCS.UserControls.MainForm;
 
 namespace KSCS
 {
@@ -40,8 +41,12 @@ namespace KSCS
         private Thread thread;
 
         private Init InitClass;
+        public static FlowLayoutPanel flowLayoutPanelLable;
         private void MainForm_Load(object sender, EventArgs e)
         {
+
+            flowLayoutPanelLable = flpLabel;
+
             KLAS.initializeKLAS();
             LoginForm loginForm = new LoginForm();
             DialogResult Result = loginForm.ShowDialog();
@@ -78,6 +83,7 @@ namespace KSCS
             //탭 로드
             SetCheckedCategoryByTab();
             TabAll.ShowTab();
+
         }
 
         private void setTab()
@@ -117,6 +123,8 @@ namespace KSCS
             }
         }
 
+
+
         //탭 함수-------------------------------------------------------------------------------------------------------------------------------------------
         private void ChangeTab(object sender, EventArgs e)
         {
@@ -133,15 +141,18 @@ namespace KSCS
         }
         private void SetCheckedCategoryByTab()
         {
+            flpLabel.Controls.Clear();
             foreach (string key in category.Categories.Keys)
             {
                 FlowLayoutPanel flp = ((UserMainCategory)panelMainCategory.Controls[key]).flpSubCategory;
                 foreach (UserSubCategory subCategory in flp.Controls)
                 {
-                    if(TabName != TabAll.Name)
+                    Color subColor = KSCS_static.category.GetColor(subCategory.GetText());
+                    if (TabName != TabAll.Name)
                     {
+                        bool check = category.IsChecked(TabName, subCategory.GetText());
                         subCategory.SetCheckedEnable(true);
-                        subCategory.SetChecked(category.IsChecked(TabName, subCategory.GetText()));
+                        subCategory.SetChecked(check);
                     }
                     else
                     {
@@ -149,7 +160,7 @@ namespace KSCS
                         subCategory.SetChecked(true);
                     }
 
-                    subCategory.SetColor(KSCS_static.category.GetColor(subCategory.GetText()));
+                    subCategory.SetColor(subColor);
                 }
             }
         }
@@ -398,6 +409,8 @@ namespace KSCS
             }
 
         }
+
+        
 
         //실시간 일정 공유 참가 : 현재 클릭
         public void btnShare_Click(object sender, EventArgs e)

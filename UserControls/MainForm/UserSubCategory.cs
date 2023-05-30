@@ -1,5 +1,6 @@
 ﻿using KSCS.Class;
 using KSCS.Forms;
+using KSCS.UserControls.MainForm;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -135,10 +136,12 @@ namespace KSCS
             if (chkCategory.Checked)
             {
                 category.AddChecked(TabName, lblCategory.Text);
+                MainForm.flowLayoutPanelLable.Controls.Add(new UserLabel(lblCategory.Text, KSCS_static.category.GetColor(lblCategory.Text)));
             }
             else
             {
                 category.DeletChecked(TabName, lblCategory.Text);
+                MainForm.flowLayoutPanelLable.Controls.Remove(MainForm.flowLayoutPanelLable.Controls["label" + lblCategory.Text]);
             }
             MainForm.LoadMainForm(); //추가
         }

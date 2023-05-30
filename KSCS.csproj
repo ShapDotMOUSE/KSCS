@@ -317,5 +317,11 @@
   <ItemGroup>
     <None Include="Resources\down.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Socket\Socket.csproj">
+      <Project>{dda9c866-b606-41cc-b40e-baade2225b41}</Project>
+      <Name>Socket</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -58,10 +58,7 @@ namespace KSCS
                 category.SetAddMode(Main);
                 panelMainCategory.Controls.Add(category);
             }
-
-            //달력
-            dispalyDate();
-            DisplayCategery();
+   
 
             //초기 탭 설정 
             TabAll.Clicked += ChangeTab;
@@ -72,10 +69,14 @@ namespace KSCS
             //btnSharing.Clicked += btnShare_Click;
             //btnSharing.DoubleClicked += CreateSharing;
             setTab();
+
+            //달력 (탭 위에 위치 -> 현재)
+            dispalyDate();
+            DisplayCategery();
+
             //탭 로드
             SetCheckedCategoryByTab();
             TabAll.ShowTab();
-
         }
 
         private void setTab()
@@ -126,6 +127,8 @@ namespace KSCS
             TabName = btn.Name;
             OldTab.HideTab();
             SetCheckedCategoryByTab();
+
+            LoadMainForm(); //추가
         }
         private void SetCheckedCategoryByTab()
         {
@@ -151,7 +154,8 @@ namespace KSCS
 
         private void createDates()
         {
-            Database.ReadScheduleList();
+            //Database.ReadScheduleList();
+            Database.ReadTabScheduleList();
 
             lblMonth.Text = month.ToString() + "월";
             lblMonth.TextAlign = ContentAlignment.MiddleCenter;
@@ -283,7 +287,6 @@ namespace KSCS
             panelMainCategory.Controls.Add(category);
         }
 
-        //추가
         public IEnumerable<UserDate> GetUserDate()
         {
             return flpDays.Controls.OfType<UserDate>();
@@ -451,6 +454,25 @@ namespace KSCS
                     keyValue.Value.Close();
             }
             Database.DeleteAddress();
+        public static void LoadMainForm()
+        {
+            Database.ReadTabScheduleList();
+
+            DateTime startOfMonth = new DateTime(year, month, 1);
+            int dates = DateTime.DaysInMonth(year, month);
+            int dayOfWeek = Convert.ToInt32(startOfMonth.DayOfWeek.ToString("d")) + 1;
+            int index = 0;
+            int date = 1;
+
+            foreach (UserDate userDate in Application.OpenForms.OfType<MainForm>().FirstOrDefault().GetUserDate())
+            {
+                if (++index < dayOfWeek) userDate.ChangeBlank();
+                else if (date <= dates) userDate.SetDate(date++);
+                else userDate.ChangeBlank();
+
+                if (index % 7 == 0) userDate.ChangeColor(Color.Blue);
+                else if (index % 7 == 1) userDate.ChangeColor(Color.Red);
+            }
         }
     }
 }

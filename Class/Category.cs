@@ -93,7 +93,6 @@ namespace KSCS
         {
             Tabs = tabs;
         }
-
         public void AddParent(string Main)
         {
             if (!Categories.ContainsKey(Main))

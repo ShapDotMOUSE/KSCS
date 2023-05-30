@@ -318,9 +318,10 @@ namespace KSCS
                     Size size = TextRenderer.MeasureText(memberAdd.txtMember.Text, memberAdd.txtMember.Font);
                     memberAdd.txtMember.ClientSize = new Size(size.Width, size.Height);
                     memberAdd.ClientSize = new Size(size.Width + 25, 18);
-                    memberAdd.pictureBox1.ClientSize = new Size(10, 9);
+                    memberAdd.btnClose.ClientSize = new Size(10, 9);
                     txtMember.Text = "";
                     flpMember.Controls.Add(memberAdd);
+                    memberAdd.AddEvent += new EventHandler(DeleteMemberEvent); //삭제 이벤트 핸들러 추가
                 }
             }
             else
@@ -330,6 +331,11 @@ namespace KSCS
                     txtMember.Text = "";
                 }
             }
+        }
+
+        private void DeleteMemberEvent(object sender, EventArgs e)
+        {
+            flpMember.Controls.Remove((Control)sender);
         }
     }
 }

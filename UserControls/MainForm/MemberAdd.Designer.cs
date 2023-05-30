@@ -31,9 +31,9 @@
             this.components = new System.ComponentModel.Container();
             this.txtMember = new System.Windows.Forms.TextBox();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnClose = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -41,10 +41,11 @@
             // 
             this.txtMember.BackColor = System.Drawing.Color.LightCyan;
             this.txtMember.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtMember.Location = new System.Drawing.Point(3, 3);
+            this.txtMember.Location = new System.Drawing.Point(4, 4);
+            this.txtMember.Margin = new System.Windows.Forms.Padding(4);
             this.txtMember.Multiline = true;
             this.txtMember.Name = "txtMember";
-            this.txtMember.Size = new System.Drawing.Size(100, 20);
+            this.txtMember.Size = new System.Drawing.Size(125, 24);
             this.txtMember.TabIndex = 0;
             // 
             // guna2Elipse1
@@ -52,36 +53,39 @@
             this.guna2Elipse1.BorderRadius = 10;
             this.guna2Elipse1.TargetControl = this;
             // 
-            // pictureBox1
+            // btnClose
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = global::KSCS.Properties.Resources.free_icon_font_cross_3917759;
-            this.pictureBox1.Location = new System.Drawing.Point(109, 5);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(19, 20);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.Image = global::KSCS.Properties.Resources.free_icon_font_cross_3917759;
+            this.btnClose.Location = new System.Drawing.Point(137, 6);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 6, 4, 4);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(24, 24);
+            this.btnClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnClose.TabIndex = 1;
+            this.btnClose.TabStop = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.txtMember);
-            this.flowLayoutPanel1.Controls.Add(this.pictureBox1);
+            this.flowLayoutPanel1.Controls.Add(this.btnClose);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(-1, 0);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(134, 20);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(168, 24);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
             // MemberAdd
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightCyan;
             this.Controls.Add(this.flowLayoutPanel1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MemberAdd";
-            this.Size = new System.Drawing.Size(134, 36);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.Size = new System.Drawing.Size(168, 43);
+            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -92,6 +96,6 @@
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
         public System.Windows.Forms.TextBox txtMember;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        public System.Windows.Forms.PictureBox pictureBox1;
+        public System.Windows.Forms.PictureBox btnClose;
     }
 }

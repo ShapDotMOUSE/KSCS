@@ -325,22 +325,22 @@ namespace KSCS
 
             Dictionary<string, string> addressDict = Database.GetAddress(testAddress);
 
-            foreach (string address in addressDict.Keys)
+            foreach (string studentNum in addressDict.Keys)
             {
                 try
                 {
                     TcpClient client = new TcpClient();
 
                     //각 사용자 들에게 접속 시도
-                    client.Connect(address, 7777);
+                    client.Connect(addressDict[studentNum], 7777);
                     NetworkStream networkStream = client.GetStream();
 
                     //접속 후 추가
-                    clientDict.Add(address, client);
-                    networkStreamDict.Add(address, networkStream);
+                    clientDict.Add(studentNum, client);
+                    networkStreamDict.Add(studentNum, networkStream);
 
                     //보내는 address 제거
-                    testTodo.Remove(address);
+                    testTodo.Remove(studentNum);
 
                     //Init 데이터 생성
                     Init Init = new Init
@@ -357,7 +357,7 @@ namespace KSCS
 
                 catch
                 {
-                    MessageBox.Show(address+" 연결 실패");
+                    MessageBox.Show(studentNum+" 연결 실패");
                     continue;
                 }
             }
@@ -403,7 +403,12 @@ namespace KSCS
                                 try
                                 {
                                     TcpClient todoClient = new TcpClient();
-                                    todoClient.Connect(todo, 7777);
+                                    if (!addressDict.ContainsKey(todo))
+                                    {
+                                        MessageBox.Show(todo + "연결 실패");
+                                        continue;
+                                    }
+                                    todoClient.Connect(addressDict[todo], 7777);
                                     clientDict.Add(todo, todoClient);
                                     networkStreamDict.Add(todo, todoClient.GetStream());
 

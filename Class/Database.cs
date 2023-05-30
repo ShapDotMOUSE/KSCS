@@ -142,6 +142,10 @@ namespace KSCS
                 MySqlCommand cmd = new MySqlCommand(insertQuery, getDBConnection());
                 if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to insert Data.");
             }
+            //main_schedule_id 도 db에 추가
+            string insertQuery2 = string.Format("INSERT INTO Members(schedule_id,student_id,main_schedule_id) VALUES ({0},'{1}',{2});", schedule.id, stdNum, schedule.id);
+            MySqlCommand cmd2 = new MySqlCommand(insertQuery2, getDBConnection());
+            if (cmd2.ExecuteNonQuery() != 1) MessageBox.Show("Failed to insert Data.");
         }
 
         public static void UpdateSchedule(Schedule schedule, int index)
@@ -175,13 +179,15 @@ namespace KSCS
             //" endDate BETWEEN DATE_FORMAT('{1}', '%Y-%m-%d') AND LAST_DAY('{1}'))" +
             //"AND Schedule.category_id IN (SELECT TabCategory.category_id FROM TabCategory JOIN StudentTab ON StudentTab.id=TabCategory.tab_id WHERE StudentTab.tab_name='{2}' AND Schedule.student_id='{0}') " +
             //"ORDER BY startDate ASC;", stdNum, new DateTime(year, month, 1).ToString("yyyy-MM-dd"),TabName);
+
             string selectQuery = string.Format("SELECT * FROM (SELECT Schedule.id AS schedule_id, Schedule.student_id, Category.id AS category_id, Schedule.startDate, Schedule.endDate," +
                 "Schedule.status, Schedule.title, Schedule.content, Schedule.place, Schedule.alarmStatus, Category.category_name, Category.parent_category_id, Category.color " +
                 "FROM Schedule JOIN Category ON Schedule.category_id = Category.id " +
                 "WHERE Schedule.student_id = '{0}' AND (startDate BETWEEN DATE_FORMAT('{1}', '%Y-%m-%d') AND LAST_DAY('{1}') " +
                 "OR endDate BETWEEN DATE_FORMAT('{1}', '%Y-%m-%d') AND LAST_DAY('{1}')) AND Schedule.category_id " +
                 "IN(SELECT TabCategory.category_id FROM TabCategory JOIN StudentTab ON StudentTab.id = TabCategory.tab_id WHERE StudentTab.tab_name = '{2}' AND Schedule.student_id = '{0}')) AS AllSchedule " +
-                "LEFT OUTER JOIN (SELECT schedule_id, GROUP_CONCAT(student_id) FROM Members GROUP BY schedule_id) AS MemberList ON AllSchedule.schedule_id = MemberList.schedule_id ORDER BY startDate ASC;", stdNum, new DateTime(year, month, 1).ToString("yyyy-MM-dd"), TabName);
+                "LEFT OUTER JOIN (SELECT m1.schedule_id, GROUP_CONCAT(m2.student_id) AS concatenated_student_ids FROM Members m1 INNER JOIN Members m2 ON m1.main_schedule_id = m2.main_schedule_id GROUP BY m1.schedule_id) AS MemberList ON AllSchedule.schedule_id = MemberList.schedule_id ORDER BY startDate ASC;",
+                stdNum, new DateTime(year, month, 1).ToString("yyyy-MM-dd"), TabName);
             MySqlCommand cmd = new MySqlCommand(selectQuery, getDBConnection());
             MySqlDataReader table = cmd.ExecuteReader();
             monthScheduleList.Clear(); //한달 스케줄 초기화
@@ -195,12 +201,9 @@ namespace KSCS
             while (table.Read())
             {
                 char delimiter = ','; // 구분자
-                string[] parts = table["GROUP_CONCAT(student_id)"].ToString().Split(delimiter);
-                List<string> members = new List<string>();
-                for(int i = 0; i < parts.Length; i++)
-                {
-                    members.Add(parts[0]);
-                }
+                string[] parts = table["concatenated_student_ids"].ToString().Split(new[] { delimiter }, StringSplitOptions.None);
+                List<string> members = new List<string>(parts);
+                members.Remove(stdNum); //자신의 학번은 삭제
 
                 Schedule schedule = new Schedule(
                     table["title"].ToString(),

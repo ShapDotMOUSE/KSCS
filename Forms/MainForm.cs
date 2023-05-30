@@ -121,7 +121,17 @@ namespace KSCS
                 FlowLayoutPanel flp = ((UserMainCategory)panelMainCategory.Controls[key]).flpSubCategory;
                 foreach (UserSubCategory subCategory in flp.Controls)
                 {
-                    subCategory.SetChecked(category.IsChecked(TabName, subCategory.GetText()));
+                    if(TabName != TabAll.Name)
+                    {
+                        subCategory.SetCheckedEnable(true);
+                        subCategory.SetChecked(category.IsChecked(TabName, subCategory.GetText()));
+                    }
+                    else
+                    {
+                        subCategory.SetCheckedEnable(false);
+                        subCategory.SetChecked(true);
+                    }
+                    
                 }
             }
         }

@@ -80,7 +80,15 @@ namespace KSCS
         //카테고리 Color 
         public void SetColor(string Sub,Color color)
         {
-            CategoryColor.Add(Sub, color);
+            if (CategoryColor.ContainsKey(Sub))
+            {
+                CategoryColor[Sub] = color;
+            }
+            else
+            {
+                CategoryColor.Add(Sub, color);
+            }
+           
         }
 
         public Color GetColor(string Sub)

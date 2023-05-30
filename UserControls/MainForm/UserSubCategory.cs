@@ -53,6 +53,10 @@ namespace KSCS
             txtCategory.Visible = false;
         }
 
+        public void SetColor(Color color)
+        {
+            lblCategory.ForeColor = color;
+        }
         private void UserCategory_Load(object sender, EventArgs e)
         {
             if (KSCS_static.TabName == "All")

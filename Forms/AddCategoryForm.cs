@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KSCS.Class;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,6 +21,7 @@ namespace KSCS.Forms
 
         string originMain;
         string originSub;
+        Color originColor;
         FlowLayoutPanel MainCategory;
 
         //폼 호출 시 해당 카테고리의 이름과 상위 카테고리의 이름 넘겨받기
@@ -28,6 +30,7 @@ namespace KSCS.Forms
             InitializeComponent();
             originMain = Main;
             originSub = Sub;
+            originColor = KSCS_static.category.GetColor(originSub);
             this.MainCategory = MainCategory;
         }
 
@@ -43,6 +46,8 @@ namespace KSCS.Forms
                 }
             }
 
+            boxColor.FillColor = originColor;
+            txtboxColor.Text = originColor.R.ToString() + "," + originColor.G.ToString() + "," + originColor.B.ToString();
             txtboxSub.Text = originSub;
             txtboxSub.MaxLength = 4;
         }
@@ -77,7 +82,14 @@ namespace KSCS.Forms
                 ((UserSubCategory)Parent.Controls[originSub]).SetBasicMode(NewSub);
 
                 Database.UpdateSubCategory(NewSub, originSub);
+                originSub = NewSub;
+            }
 
+            if(originColor != boxColor.FillColor)
+            {
+                ((UserSubCategory)(MainCategory.Controls[originMain].Controls["flpSubCategory"].Controls[originSub])).SetColor(boxColor.FillColor);
+                KSCS_static.category.SetColor(originSub, boxColor.FillColor);
+                Database.UpdateSubCategoryColor(originSub, boxColor.FillColor);
             }
             Close();
 
@@ -99,7 +111,10 @@ namespace KSCS.Forms
         {
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
-                guna2TextBox2.FillColor = colorDialog1.Color;
+                boxColor.FillColor = colorDialog1.Color;
+                Color color = colorDialog1.Color;
+                
+                txtboxColor.Text = color.R.ToString() +"," +  color.G.ToString() + "," + color.B.ToString();
             }
         }
     }

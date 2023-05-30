@@ -378,6 +378,14 @@ namespace KSCS
             if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Update Data.");
         }
 
+        public static void UpdateSubCategoryColor(string Sub, Color color)
+        {
+            string updateQuery = string.Format("UPDATE Category SET color=" +
+                "{0} WHERE category_name='{1}' AND student_id={2}", color.ToArgb(), Sub, stdNum);
+            MySqlCommand cmd = new MySqlCommand(updateQuery, getDBConnection());
+            if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Update Data.");
+        }
+
         public static void DeleteSubCategory()
         {
             string deleteQuery = string.Format("DELETE FROM   WHERE id='{0}';");

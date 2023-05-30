@@ -148,7 +148,8 @@ namespace KSCS
                         subCategory.SetCheckedEnable(false);
                         subCategory.SetChecked(true);
                     }
-                    
+
+                    subCategory.SetColor(KSCS_static.category.GetColor(subCategory.GetText()));
                 }
             }
         }

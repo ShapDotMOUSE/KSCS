@@ -15,6 +15,7 @@ using System.Web.UI.WebControls;
 using Socket;
 using System.Net;
 using KSCS.UserControls.MainForm;
+using KSCS.Forms;
 
 namespace KSCS
 {
@@ -54,6 +55,9 @@ namespace KSCS
                 LoadMagam();
             else
                 Close();
+
+            this.Size = new Size(1360, 960);
+            
             lblStdNum.Text = stdNum;
             //초기 메인 카테고리 설정
             Database.ReadCategoryList();
@@ -101,12 +105,12 @@ namespace KSCS
             MagamButtonEnable();
         }
 
-        private void MainForm_Resize(object sender, EventArgs e)
-        {
-            this.Size = new Size(1440, 1080);
-            this.MaximumSize = new Size(1440, 1080);
-            this.MinimumSize = new Size(1440, 1080);
-        }
+        //private void MainForm_Resize(object sender, EventArgs e)
+        //{
+        //    this.Size = new Size(1340, 960);
+        //    this.MaximumSize = new Size(1340, 960);
+        //    this.MinimumSize = new Size(1340, 960);
+        //}
 
 
         //카테고리 함수---------------------------------------------------------------------------------------------------------------------------------------
@@ -212,10 +216,10 @@ namespace KSCS
         //마감 일정 컨트롤---------------------------------------------------------------------------------------------------------------
         private void MagamButtonEnable()
         {
-            btnMagam_Click(btnMagam_Task, new EventArgs());
+            btnMagam_Click(btnMagam_Online, new EventArgs());
             btnMagam_Quiz.Enabled = true;
-            btnMagam_Task.Enabled = true;
             btnMagam_Online.Enabled = true;
+            btnMagam_Task.Enabled = true;
             btnMagam_Prjct.Enabled = true;
         }
 

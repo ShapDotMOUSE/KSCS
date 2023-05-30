@@ -235,6 +235,7 @@ namespace KSCS
             addBtn.Text = "Modify";
 
             deleteBtn.Visible = true; // 스케줄 클릭하고 나서야 활성화
+            btnMemSet.Visible = true; //추가
         }
 
         private void btnAddSchedule_Click(object sender, EventArgs e)

@@ -9,12 +9,12 @@ namespace Socket
     [Serializable]
     public class Init : Packet
     {
-        public Dictionary<string, string> addressDict;
         public List<string> members;
+        public List<string> todoLink;
+        public string boss;
 
         public Init()
         {
-            addressDict = new Dictionary<string, string>();
             members = new List<string>();
         }
     }

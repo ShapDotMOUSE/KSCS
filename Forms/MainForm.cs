@@ -19,16 +19,15 @@ namespace KSCS
 {
     public partial class MainForm : Form
     {
-
         //스케줄 관련
         public MainForm()
         {
             InitializeComponent();
         }
 
-        private NetworkStream networkStream;
+        private Dictionary<string, NetworkStream> networkStreamDict;
         private TcpListener listener;
-        private TcpClient client;
+        private Dictionary<string, TcpClient> clientDict;
 
 
         private byte[] sendBuffer = new byte[1024 * 4];
@@ -70,8 +69,8 @@ namespace KSCS
             Tab2.Clicked += ChangeTab;
             Tab3.Clicked += ChangeTab;
             Tab4.Clicked += ChangeTab;
-            btnSharing.Clicked += btnShare_Click;
-            btnSharing.DoubleClicked += CreateSharing;
+            //btnSharing.Clicked += btnShare_Click;
+            //btnSharing.DoubleClicked += CreateSharing;
             setTab();
             //탭 로드
             SetCheckedCategoryByTab();
@@ -290,7 +289,7 @@ namespace KSCS
             return flpDays.Controls.OfType<UserDate>();
         }
 
-        public void Send()
+        public void Send(NetworkStream networkStream)
         {
             networkStream.Write(this.sendBuffer, 0, this.sendBuffer.Length);
             networkStream.Flush();
@@ -301,57 +300,82 @@ namespace KSCS
             }
         }
 
-        
-        //실시간 일정 공유 생성 : 현재 더블클릭
+
+        //    //실시간 일정 공유 생성 : 현재 더블클릭
+        //    //사용자 본인은 포트를 열지 않음. 모두 Listner에게 연결시도
         public void CreateSharing(object sender, MouseEventArgs e)
         {
-            MessageBox.Show("시작");
-            Database.SetAddress();
-            List<string> test= new List<string>();
-            test.Add("2019203055");
-            test.Add("2021203078");
-            client = new TcpClient();
-            Dictionary<string, string> addressDict = Database.GetAddress(test);
-            try
-            {
-                client.Connect(addressDict["2019203055"], 7777);
-            }
-            catch
-            {
-                MessageBox.Show("접속 에러");
-                return;
-            }
-            networkStream = client.GetStream();
+            MessageBox.Show("실시간 일정 공유 생성");
+            List<string> testAddress = new List<string>
+                {
+                    "2019203055",
+                    "2021203078",
+                    "2019203082"
+                };
+            List<string> testTodo = testAddress.ToList();
 
-            Init Init = new Init
-            {
-                Type = (int)PacketType.INIT,
-                members = test,
-                addressDict = addressDict
-            };
+            testTodo.Remove(stdNum);
 
-            Packet.Serialize(Init).CopyTo(this.sendBuffer, 0);
-            this.Send();
+            clientDict = new Dictionary<string, TcpClient>();
+
+            Dictionary<string, string> addressDict = Database.GetAddress(testAddress);
+
+            foreach (string address in addressDict.Keys)
+            {
+                try
+                {
+                    TcpClient client = new TcpClient();
+
+                    //각 사용자 들에게 접속 시도
+                    client.Connect(address, 7777);
+                    NetworkStream networkStream = client.GetStream();
+
+                    //접속 후 추가
+                    clientDict.Add(address, client);
+                    networkStreamDict.Add(address, networkStream);
+
+                    //보내는 address 제거
+                    testTodo.Remove(address);
+
+                    //Init 데이터 생성
+                    Init Init = new Init
+                    {
+                        Type = (int)PacketType.INIT,
+                        members = testAddress,
+                        todoLink = testTodo,
+                        boss = stdNum
+                    };
+
+                    Packet.Serialize(Init).CopyTo(this.sendBuffer, 0);
+                    this.Send(networkStream);
+                }
+
+                catch
+                {
+                    MessageBox.Show(address+" 연결 실패");
+                    continue;
+                }
+            }
+
         }
 
         public void ParticipateSharing()
         {
             Database.SetAddress();
+            NetworkStream networkStream;
             listener = new TcpListener(IPAddress.Any, 7777);
             listener.Start();
-            TcpClient client = listener.AcceptTcpClient();
+            TcpClient client = listener.AcceptTcpClient(); //주최자 접속
+
             if (client.Connected)
             {
                 ClientOn = true;
                 networkStream = client.GetStream();
-            }
-            int nRead = 0;  
 
-            while (ClientOn)
-            {
+                int nRead = 0;
+
                 try
                 {
-                    nRead = 0;
                     nRead = networkStream.Read(readBuffer, 0, 1024 * 4);
                 }
                 catch
@@ -366,20 +390,37 @@ namespace KSCS
                     case (int)PacketType.INIT:
                         {
                             InitClass = (Init)Packet.Deserialize(readBuffer);
-                            this.Invoke(new MethodInvoker(delegate ()
+                            clientDict.Add(InitClass.boss, client);
+                            networkStreamDict.Add(InitClass.boss, networkStream);
+                            Dictionary<string, string> addressDict = Database.GetAddress(InitClass.members);
+                            foreach (string todo in InitClass.todoLink)
                             {
-                                foreach (string s in InitClass.members)
+                                try
                                 {
-                                    if (InitClass.addressDict.ContainsKey(s))
+                                    TcpClient todoClient = new TcpClient();
+                                    todoClient.Connect(todo, 7777);
+                                    clientDict.Add(todo, todoClient);
+                                    networkStreamDict.Add(todo, todoClient.GetStream());
+
+                                    Init Init = new Init()
                                     {
-                                        MessageBox.Show(s + " : " + InitClass.addressDict[s]);
-                                    }
-                                    else
-                                        MessageBox.Show(s + " : 연결 할 수 없습니다.");
+                                        boss = InitClass.boss,
+                                        members = InitClass.members,
+                                        todoLink = {}
+                                    };
+                                    Packet.Serialize(Init).CopyTo(this.sendBuffer, 0);
+                                    this.Send(networkStream);
                                 }
-                            }));
-                            break;
+                                catch
+                                {
+                                    MessageBox.Show(todo + " 연결 실패");
+                                    continue;
+                                }
+
+                            }
+                            break;   
                         }
+
                 }
             }
 
@@ -398,13 +439,16 @@ namespace KSCS
             if (listener != null)
             {
                 this.listener.Stop();
-                this.networkStream.Close();
+                foreach (KeyValuePair<string,NetworkStream>keyValue in networkStreamDict)
+                    keyValue.Value.Close();
                 this.thread.Abort();
-            }else if (client != null)
+            }
+            else if (clientDict.Count != 0)
             {
-                this.client.Close();
-                this.networkStream.Close();
-
+                foreach (KeyValuePair<string,TcpClient> keyValue in clientDict)
+                    keyValue.Value.Close();
+                foreach (KeyValuePair<string, NetworkStream> keyValue in networkStreamDict)
+                    keyValue.Value.Close();
             }
             Database.DeleteAddress();
         }

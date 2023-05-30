@@ -86,7 +86,9 @@ namespace KSCS
                     table["place"].ToString(),
                     table["category_name"].ToString(),
                     DateTime.Parse(table["startDate"].ToString()),
-                    DateTime.Parse(table["endDate"].ToString()))
+                    DateTime.Parse(table["endDate"].ToString()),
+                    null //쿼리바꾸고, 가져오는걸로 바꿔야 함.
+                    )
                 {
                     id = int.Parse(table["id"].ToString()),
                 };
@@ -107,11 +109,11 @@ namespace KSCS
         }
 
 
-        public static void CreateScheudle(Schedule schedule)
+        public static void CreateScheudle(Schedule schedule, String studentId)
         {
             string insertQuery = string.Format("INSERT INTO Schedule(student_id,title,content,place,category_id,startDate,endDate)" +
                 "VALUES ('{0}','{1}','{2}','{3}',(SELECT id FROM Category WHERE category_name='{4}' and student_id='{0}'),'{5}','{6}');",
-                    stdNum,
+                    studentId,
                     schedule.title,
                     schedule.content,
                     schedule.place,
@@ -126,6 +128,20 @@ namespace KSCS
             table.Read();
             schedule.id = int.Parse(table["id"].ToString());
             table.Close();
+        }
+
+        //추가(공유 멤버가 존재하는 경우)
+        public static void CreateMember(Schedule schedule)
+        {
+            for (int i = 0; i < schedule.members.Count; i++)
+            {
+                Schedule sharedSchedule = new Schedule(schedule.title, schedule.content, schedule.place, schedule.category, schedule.startDate, schedule.endDate, schedule.members);
+                CreateScheudle(sharedSchedule,schedule.members[i]);
+
+                string insertQuery = string.Format("INSERT INTO Members(schedule_id,student_id,main_schedule_id) VALUES ({0},'{1}',{2});", sharedSchedule.id, schedule.members[i], schedule.id);
+                MySqlCommand cmd = new MySqlCommand(insertQuery, getDBConnection());
+                if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to insert Data.");
+            }
         }
 
         public static void UpdateSchedule(Schedule schedule, int index)
@@ -154,11 +170,18 @@ namespace KSCS
         //tabScheduleList
         public static void ReadTabScheduleList()
         {
-            string selectQuery = string.Format("SELECT * FROM Schedule JOIN Category ON Schedule.category_id=Category.id" +
-            " WHERE Schedule.student_id='{0}' AND (startDate BETWEEN DATE_FORMAT('{1}', '%Y-%m-%d') AND LAST_DAY('{1}') OR" +
-            " endDate BETWEEN DATE_FORMAT('{1}', '%Y-%m-%d') AND LAST_DAY('{1}'))" +
-            "AND Schedule.category_id IN (SELECT TabCategory.category_id FROM TabCategory JOIN StudentTab ON StudentTab.id=TabCategory.tab_id WHERE StudentTab.tab_name='{2}' AND Schedule.student_id='{0}') " +
-            "ORDER BY startDate ASC;", stdNum, new DateTime(year, month, 1).ToString("yyyy-MM-dd"),TabName);
+            //string selectQuery = string.Format("SELECT * FROM Schedule JOIN Category ON Schedule.category_id=Category.id" +
+            //" WHERE Schedule.student_id='{0}' AND (startDate BETWEEN DATE_FORMAT('{1}', '%Y-%m-%d') AND LAST_DAY('{1}') OR" +
+            //" endDate BETWEEN DATE_FORMAT('{1}', '%Y-%m-%d') AND LAST_DAY('{1}'))" +
+            //"AND Schedule.category_id IN (SELECT TabCategory.category_id FROM TabCategory JOIN StudentTab ON StudentTab.id=TabCategory.tab_id WHERE StudentTab.tab_name='{2}' AND Schedule.student_id='{0}') " +
+            //"ORDER BY startDate ASC;", stdNum, new DateTime(year, month, 1).ToString("yyyy-MM-dd"),TabName);
+            string selectQuery = string.Format("SELECT * FROM (SELECT Schedule.id AS schedule_id, Schedule.student_id, Category.id AS category_id, Schedule.startDate, Schedule.endDate," +
+                "Schedule.status, Schedule.title, Schedule.content, Schedule.place, Schedule.alarmStatus, Category.category_name, Category.parent_category_id, Category.color " +
+                "FROM Schedule JOIN Category ON Schedule.category_id = Category.id " +
+                "WHERE Schedule.student_id = '{0}' AND (startDate BETWEEN DATE_FORMAT('{1}', '%Y-%m-%d') AND LAST_DAY('{1}') " +
+                "OR endDate BETWEEN DATE_FORMAT('{1}', '%Y-%m-%d') AND LAST_DAY('{1}')) AND Schedule.category_id " +
+                "IN(SELECT TabCategory.category_id FROM TabCategory JOIN StudentTab ON StudentTab.id = TabCategory.tab_id WHERE StudentTab.tab_name = '{2}' AND Schedule.student_id = '{0}')) AS AllSchedule " +
+                "LEFT OUTER JOIN (SELECT schedule_id, GROUP_CONCAT(student_id) FROM Members GROUP BY schedule_id) AS MemberList ON AllSchedule.schedule_id = MemberList.schedule_id ORDER BY startDate ASC;", stdNum, new DateTime(year, month, 1).ToString("yyyy-MM-dd"), TabName);
             MySqlCommand cmd = new MySqlCommand(selectQuery, getDBConnection());
             MySqlDataReader table = cmd.ExecuteReader();
             monthScheduleList.Clear(); //한달 스케줄 초기화
@@ -171,15 +194,25 @@ namespace KSCS
 
             while (table.Read())
             {
+                char delimiter = ','; // 구분자
+                string[] parts = table["GROUP_CONCAT(student_id)"].ToString().Split(delimiter);
+                List<string> members = new List<string>();
+                for(int i = 0; i < parts.Length; i++)
+                {
+                    members.Add(parts[0]);
+                }
+
                 Schedule schedule = new Schedule(
                     table["title"].ToString(),
                     table["content"].ToString(),
                     table["place"].ToString(),
                     table["category_name"].ToString(),
                     DateTime.Parse(table["startDate"].ToString()),
-                    DateTime.Parse(table["endDate"].ToString()))
+                    DateTime.Parse(table["endDate"].ToString()),
+                    members
+                    )
                 {
-                    id = int.Parse(table["id"].ToString()),
+                    id = int.Parse(table["schedule_id"].ToString()),
                 };
 
                 /* 리스트 추가 */

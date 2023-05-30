@@ -89,10 +89,25 @@ namespace KSCS
                 return;
             }
 
-            Schedule schedule = new Schedule(tbTitle.Text, tbMemo.Text, tbPlace.Text, cbCategory.Text, GetStartDateTime(), GetEndDateTime());
+            //추가
+            List<string> members = new List<string>();
+            foreach (MemberAdd memberAdd in flpMember.Controls.OfType<MemberAdd>())
+            {
+                members.Add(memberAdd.txtMember.Text);
+            }
+            
+
+            Schedule schedule = new Schedule(tbTitle.Text, tbMemo.Text, tbPlace.Text, cbCategory.Text, GetStartDateTime(), GetEndDateTime(),members);
             if (addBtn.Text == "Add")
             {
-                Database.CreateScheudle(schedule);
+                Database.CreateScheudle(schedule,stdNum); //수정
+
+                //추가(공유 멤버가 존재하는 경우)
+                if (schedule.members.Count != 0)
+                {
+                    Database.CreateMember(schedule);
+                }
+
                 //스케줄 리스트 추가
                 TimeSpan duration = schedule.endDate - schedule.startDate;
                 for (int i = 0; i <= duration.Days; i++)
@@ -207,6 +222,7 @@ namespace KSCS
             }
         }
 
+
         private void btnMemSet_Click(object sender, EventArgs e)
         {
             //guna2ContextMenuStrip1.Show(MousePosition);
@@ -235,7 +251,11 @@ namespace KSCS
             addBtn.Text = "Modify";
 
             deleteBtn.Visible = true; // 스케줄 클릭하고 나서야 활성화
-            btnMemSet.Visible = true; //추가
+
+            //추가(공유일정인 경우, member 로드)
+            btnMemSet.Visible = false;
+            flpMember.Visible = true;
+            LoadMembers(monthScheduleList[UserDate.static_date - 1][index]);
         }
 
         private void btnAddSchedule_Click(object sender, EventArgs e)
@@ -337,6 +357,25 @@ namespace KSCS
         private void DeleteMemberEvent(object sender, EventArgs e)
         {
             flpMember.Controls.Remove((Control)sender);
+        }
+
+        //추가
+        private void LoadMembers(Schedule schedule)
+        {
+            if (schedule.members == null) return; 
+            flpMember.Controls.Clear(); //flpMember 컨트롤 초기화
+            foreach ( String studentId in schedule.members)
+            {
+                MemberAdd memberAdd = new MemberAdd();
+                memberAdd.txtMember.Text = studentId;
+                Size size = TextRenderer.MeasureText(memberAdd.txtMember.Text, memberAdd.txtMember.Font);
+                memberAdd.txtMember.ClientSize = new Size(size.Width, size.Height);
+                memberAdd.ClientSize = new Size(size.Width + 25, 18);
+                memberAdd.btnClose.ClientSize = new Size(10, 9);
+                flpMember.Controls.Add(memberAdd);
+                memberAdd.AddEvent += new EventHandler(DeleteMemberEvent); //삭제 이벤트 핸들러 추가
+            }
+            this.Refresh();
         }
     }
 }

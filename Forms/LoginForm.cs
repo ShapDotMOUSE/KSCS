@@ -1,4 +1,5 @@
 ﻿using KSCS.Class;
+using KSCS.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
@@ -80,19 +82,29 @@ namespace KSCS
             string PW = tbPassword.Text;
             if (EmptyCheck())
             {
-                if (await KLAS.LoginKLAS(ID, PW)) //KLAS 로그인
-                {
-                    Database.CreateData();
+                LoadingForm loadingForm = new LoadingForm();
+                loadingForm.Show();
 
-                    this.Cursor = Cursors.Default;
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
-                }
-                else
+                bool login = await Task.Run(() => KLAS.LoginKLAS(ID, PW));
+
+                loadingForm.Invoke((MethodInvoker)delegate
                 {
-                    lblMsg.Text = "죄송합니다. 로그인할 수 없습니다.";
-                    tbPassword.Focus();
-                }
+                    if (login) //KLAS 로그인
+                    {
+                        Database.CreateData();
+
+                        this.Cursor = Cursors.Default;
+                        this.DialogResult = DialogResult.OK;
+                        loadingForm.Close();
+                        this.Close();
+                    }
+                    else
+                    {
+                        lblMsg.Text = "죄송합니다. 로그인할 수 없습니다.";
+                        tbPassword.Focus();
+                        loadingForm.Close();
+                    }
+                });
             }
         }
 

@@ -16,5 +16,10 @@ namespace KSCS.UserControls.MainForm
         {
             InitializeComponent();
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            ((FlowLayoutPanel)this.Parent).Controls.Remove(this);
+        }
     }
 }

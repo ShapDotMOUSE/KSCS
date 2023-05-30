@@ -139,10 +139,9 @@
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(155, 46);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(124, 38);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 25);
+            this.label2.Size = new System.Drawing.Size(45, 20);
             this.label2.TabIndex = 6;
             this.label2.Text = "팡운머";
             // 
@@ -153,10 +152,9 @@
             this.lblStdNum.BackColor = System.Drawing.Color.White;
             this.lblStdNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblStdNum.ForeColor = System.Drawing.Color.Black;
-            this.lblStdNum.Location = new System.Drawing.Point(155, 80);
-            this.lblStdNum.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblStdNum.Location = new System.Drawing.Point(124, 67);
             this.lblStdNum.Name = "lblStdNum";
-            this.lblStdNum.Size = new System.Drawing.Size(134, 25);
+            this.lblStdNum.Size = new System.Drawing.Size(107, 20);
             this.lblStdNum.TabIndex = 6;
             this.lblStdNum.Text = "20XX2030XX";
             // 
@@ -167,10 +165,9 @@
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(32, 253);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(26, 211);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 30);
+            this.label1.Size = new System.Drawing.Size(80, 26);
             this.label1.TabIndex = 7;
             this.label1.Text = "카테고리";
             // 
@@ -184,7 +181,7 @@
             this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
             this.label4.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label4.Size = new System.Drawing.Size(147, 37);
+            this.label4.Size = new System.Drawing.Size(122, 31);
             this.label4.TabIndex = 7;
             this.label4.Text = "마 감 임 박";
             // 
@@ -216,7 +213,7 @@
             this.guna2Panel2.Location = new System.Drawing.Point(1572, 22);
             this.guna2Panel2.Margin = new System.Windows.Forms.Padding(4);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(308, 1116);
+            this.guna2Panel2.Size = new System.Drawing.Size(246, 930);
             this.guna2Panel2.TabIndex = 18;
             // 
             // btnPlusCategory
@@ -230,10 +227,9 @@
             this.btnPlusCategory.ForeColor = System.Drawing.Color.White;
             this.btnPlusCategory.Image = global::KSCS.Properties.Resources.CategoryPlus;
             this.btnPlusCategory.ImageOffset = new System.Drawing.Point(1, 0);
-            this.btnPlusCategory.Location = new System.Drawing.Point(210, 253);
-            this.btnPlusCategory.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPlusCategory.Location = new System.Drawing.Point(168, 211);
             this.btnPlusCategory.Name = "btnPlusCategory";
-            this.btnPlusCategory.Size = new System.Drawing.Size(35, 30);
+            this.btnPlusCategory.Size = new System.Drawing.Size(28, 25);
             this.btnPlusCategory.TabIndex = 26;
             this.btnPlusCategory.Click += new System.EventHandler(this.btnPlusCategory_Click);
             // 
@@ -241,10 +237,10 @@
             // 
             this.panelMainCategory.AllowDrop = true;
             this.panelMainCategory.AutoScroll = true;
-            this.panelMainCategory.Location = new System.Drawing.Point(38, 310);
+            this.panelMainCategory.Location = new System.Drawing.Point(30, 258);
             this.panelMainCategory.Margin = new System.Windows.Forms.Padding(2);
             this.panelMainCategory.Name = "panelMainCategory";
-            this.panelMainCategory.Size = new System.Drawing.Size(225, 541);
+            this.panelMainCategory.Size = new System.Drawing.Size(180, 451);
             this.panelMainCategory.TabIndex = 20;
             // 
             // guna2PictureBox4
@@ -252,10 +248,9 @@
             this.guna2PictureBox4.BackColor = System.Drawing.Color.White;
             this.guna2PictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox4.Image")));
             this.guna2PictureBox4.ImageRotate = 0F;
-            this.guna2PictureBox4.Location = new System.Drawing.Point(24, 19);
-            this.guna2PictureBox4.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2PictureBox4.Location = new System.Drawing.Point(19, 16);
             this.guna2PictureBox4.Name = "guna2PictureBox4";
-            this.guna2PictureBox4.Size = new System.Drawing.Size(101, 102);
+            this.guna2PictureBox4.Size = new System.Drawing.Size(81, 85);
             this.guna2PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.guna2PictureBox4.TabIndex = 17;
             this.guna2PictureBox4.TabStop = false;
@@ -282,7 +277,7 @@
             this.panelMagam.Location = new System.Drawing.Point(18, 84);
             this.panelMagam.Margin = new System.Windows.Forms.Padding(2);
             this.panelMagam.Name = "panelMagam";
-            this.panelMagam.Size = new System.Drawing.Size(428, 122);
+            this.panelMagam.Size = new System.Drawing.Size(342, 102);
             this.panelMagam.TabIndex = 10;
             // 
             // panelMagamBtns
@@ -296,7 +291,7 @@
             this.panelMagamBtns.Location = new System.Drawing.Point(18, 19);
             this.panelMagamBtns.Margin = new System.Windows.Forms.Padding(4);
             this.panelMagamBtns.Name = "panelMagamBtns";
-            this.panelMagamBtns.Size = new System.Drawing.Size(360, 53);
+            this.panelMagamBtns.Size = new System.Drawing.Size(288, 44);
             this.panelMagamBtns.TabIndex = 9;
             // 
             // btnMagam_Task
@@ -309,11 +304,10 @@
             this.btnMagam_Task.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnMagam_Task.ForeColor = System.Drawing.Color.White;
             this.btnMagam_Task.Image = global::KSCS.Properties.Resources.lecture;
-            this.btnMagam_Task.Location = new System.Drawing.Point(4, 4);
-            this.btnMagam_Task.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMagam_Task.Location = new System.Drawing.Point(3, 3);
             this.btnMagam_Task.Name = "btnMagam_Task";
             this.btnMagam_Task.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.btnMagam_Task.Size = new System.Drawing.Size(44, 42);
+            this.btnMagam_Task.Size = new System.Drawing.Size(35, 35);
             this.btnMagam_Task.TabIndex = 11;
             this.btnMagam_Task.Click += new System.EventHandler(this.btnMagam_Click);
             // 
@@ -329,11 +323,10 @@
             this.btnMagam_Quiz.Image = global::KSCS.Properties.Resources.quiz;
             this.btnMagam_Quiz.ImageOffset = new System.Drawing.Point(1, 0);
             this.btnMagam_Quiz.ImageSize = new System.Drawing.Size(22, 20);
-            this.btnMagam_Quiz.Location = new System.Drawing.Point(56, 4);
-            this.btnMagam_Quiz.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMagam_Quiz.Location = new System.Drawing.Point(44, 3);
             this.btnMagam_Quiz.Name = "btnMagam_Quiz";
             this.btnMagam_Quiz.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.btnMagam_Quiz.Size = new System.Drawing.Size(44, 42);
+            this.btnMagam_Quiz.Size = new System.Drawing.Size(35, 35);
             this.btnMagam_Quiz.TabIndex = 12;
             this.btnMagam_Quiz.Click += new System.EventHandler(this.btnMagam_Click);
             // 
@@ -349,11 +342,10 @@
             this.btnMagam_Online.Image = global::KSCS.Properties.Resources.homework;
             this.btnMagam_Online.ImageOffset = new System.Drawing.Point(1, 0);
             this.btnMagam_Online.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnMagam_Online.Location = new System.Drawing.Point(108, 4);
-            this.btnMagam_Online.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMagam_Online.Location = new System.Drawing.Point(85, 3);
             this.btnMagam_Online.Name = "btnMagam_Online";
             this.btnMagam_Online.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.btnMagam_Online.Size = new System.Drawing.Size(44, 42);
+            this.btnMagam_Online.Size = new System.Drawing.Size(35, 35);
             this.btnMagam_Online.TabIndex = 13;
             this.btnMagam_Online.Click += new System.EventHandler(this.btnMagam_Click);
             // 
@@ -369,12 +361,12 @@
             this.btnMagam_Prjct.Image = global::KSCS.Properties.Resources.team_proejct;
             this.btnMagam_Prjct.ImageOffset = new System.Drawing.Point(1, 0);
             this.btnMagam_Prjct.ImageSize = new System.Drawing.Size(35, 35);
-            this.btnMagam_Prjct.Location = new System.Drawing.Point(160, 4);
-            this.btnMagam_Prjct.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMagam_Prjct.Location = new System.Drawing.Point(126, 3);
             this.btnMagam_Prjct.Name = "btnMagam_Prjct";
             this.btnMagam_Prjct.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.btnMagam_Prjct.Size = new System.Drawing.Size(44, 42);
+            this.btnMagam_Prjct.Size = new System.Drawing.Size(35, 35);
             this.btnMagam_Prjct.TabIndex = 14;
+
             this.btnMagam_Prjct.Click += new System.EventHandler(this.btnMagam_Click);
             // 
             // btnMagam_Personal
@@ -406,7 +398,7 @@
             this.guna2PictureBox1.Location = new System.Drawing.Point(702, 72);
             this.guna2PictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(100, 126);
+            this.guna2PictureBox1.Size = new System.Drawing.Size(80, 105);
             this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.guna2PictureBox1.TabIndex = 8;
             this.guna2PictureBox1.TabStop = false;
@@ -428,6 +420,7 @@
             this.guna2Panel4.Margin = new System.Windows.Forms.Padding(4);
             this.guna2Panel4.Name = "guna2Panel4";
             this.guna2Panel4.Size = new System.Drawing.Size(644, 210);
+
             this.guna2Panel4.TabIndex = 19;
             // 
             // guna2PictureBox2
@@ -435,10 +428,9 @@
             this.guna2PictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.guna2PictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox2.Image")));
             this.guna2PictureBox2.ImageRotate = 0F;
-            this.guna2PictureBox2.Location = new System.Drawing.Point(19, 17);
-            this.guna2PictureBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2PictureBox2.Location = new System.Drawing.Point(15, 14);
             this.guna2PictureBox2.Name = "guna2PictureBox2";
-            this.guna2PictureBox2.Size = new System.Drawing.Size(110, 126);
+            this.guna2PictureBox2.Size = new System.Drawing.Size(88, 105);
             this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.guna2PictureBox2.TabIndex = 8;
             this.guna2PictureBox2.TabStop = false;
@@ -451,9 +443,10 @@
             this.label5.ForeColor = System.Drawing.Color.Black;
             this.label5.Location = new System.Drawing.Point(419, 19);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+
             this.label5.Name = "label5";
             this.label5.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label5.Size = new System.Drawing.Size(182, 37);
+            this.label5.Size = new System.Drawing.Size(151, 31);
             this.label5.TabIndex = 7;
             this.label5.Text = "오 늘 의 일 정";
             // 
@@ -497,8 +490,9 @@
             this.flowLayoutPanel1.Controls.Add(this.textBox7);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(371, 113);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
+
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1054, 35);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(843, 29);
             this.flowLayoutPanel1.TabIndex = 43;
             // 
             // textBox1
@@ -510,7 +504,7 @@
             this.textBox1.Margin = new System.Windows.Forms.Padding(0);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(150, 49);
+            this.textBox1.Size = new System.Drawing.Size(120, 41);
             this.textBox1.TabIndex = 0;
             this.textBox1.Text = "Sun";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -519,11 +513,11 @@
             // 
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.textBox2.Location = new System.Drawing.Point(150, 0);
+            this.textBox2.Location = new System.Drawing.Point(120, 0);
             this.textBox2.Margin = new System.Windows.Forms.Padding(0);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(150, 49);
+            this.textBox2.Size = new System.Drawing.Size(120, 41);
             this.textBox2.TabIndex = 1;
             this.textBox2.Text = "Mon";
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -532,11 +526,11 @@
             // 
             this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.textBox3.Location = new System.Drawing.Point(300, 0);
+            this.textBox3.Location = new System.Drawing.Point(240, 0);
             this.textBox3.Margin = new System.Windows.Forms.Padding(0);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(150, 49);
+            this.textBox3.Size = new System.Drawing.Size(120, 41);
             this.textBox3.TabIndex = 2;
             this.textBox3.Text = "Tue";
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -545,11 +539,11 @@
             // 
             this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.textBox4.Location = new System.Drawing.Point(450, 0);
+            this.textBox4.Location = new System.Drawing.Point(360, 0);
             this.textBox4.Margin = new System.Windows.Forms.Padding(0);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(150, 49);
+            this.textBox4.Size = new System.Drawing.Size(120, 41);
             this.textBox4.TabIndex = 3;
             this.textBox4.Text = "Wed";
             this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -558,11 +552,11 @@
             // 
             this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.textBox5.Location = new System.Drawing.Point(600, 0);
+            this.textBox5.Location = new System.Drawing.Point(480, 0);
             this.textBox5.Margin = new System.Windows.Forms.Padding(0);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(150, 49);
+            this.textBox5.Size = new System.Drawing.Size(120, 41);
             this.textBox5.TabIndex = 4;
             this.textBox5.Text = "Thu";
             this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -571,11 +565,11 @@
             // 
             this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.textBox6.Location = new System.Drawing.Point(750, 0);
+            this.textBox6.Location = new System.Drawing.Point(600, 0);
             this.textBox6.Margin = new System.Windows.Forms.Padding(0);
             this.textBox6.Multiline = true;
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(150, 49);
+            this.textBox6.Size = new System.Drawing.Size(120, 41);
             this.textBox6.TabIndex = 5;
             this.textBox6.Text = "Fri";
             this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -584,11 +578,11 @@
             // 
             this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.textBox7.Location = new System.Drawing.Point(900, 0);
+            this.textBox7.Location = new System.Drawing.Point(720, 0);
             this.textBox7.Margin = new System.Windows.Forms.Padding(0);
             this.textBox7.Multiline = true;
             this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(150, 49);
+            this.textBox7.Size = new System.Drawing.Size(120, 41);
             this.textBox7.TabIndex = 6;
             this.textBox7.Text = "Sat";
             this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -608,8 +602,9 @@
             this.btnPrevisous.ImageSize = new System.Drawing.Size(20, 30);
             this.btnPrevisous.Location = new System.Drawing.Point(604, 17);
             this.btnPrevisous.Margin = new System.Windows.Forms.Padding(4);
+
             this.btnPrevisous.Name = "btnPrevisous";
-            this.btnPrevisous.Size = new System.Drawing.Size(40, 68);
+            this.btnPrevisous.Size = new System.Drawing.Size(32, 57);
             this.btnPrevisous.TabIndex = 27;
             this.btnPrevisous.Click += new System.EventHandler(this.btnMonth_Click);
             // 
@@ -629,7 +624,7 @@
             this.btnNext.Location = new System.Drawing.Point(755, 17);
             this.btnNext.Margin = new System.Windows.Forms.Padding(4);
             this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(40, 68);
+            this.btnNext.Size = new System.Drawing.Size(32, 57);
             this.btnNext.TabIndex = 26;
             this.btnNext.Click += new System.EventHandler(this.btnMonth_Click);
             // 
@@ -641,7 +636,7 @@
             this.lblMonth.Location = new System.Drawing.Point(652, 24);
             this.lblMonth.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblMonth.Name = "lblMonth";
-            this.lblMonth.Size = new System.Drawing.Size(91, 55);
+            this.lblMonth.Size = new System.Drawing.Size(76, 46);
             this.lblMonth.TabIndex = 2;
             this.lblMonth.Text = "5월";
             // 
@@ -650,10 +645,9 @@
             this.guna2PictureBox3.Cursor = System.Windows.Forms.Cursors.No;
             this.guna2PictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox3.Image")));
             this.guna2PictureBox3.ImageRotate = 0F;
-            this.guna2PictureBox3.Location = new System.Drawing.Point(9, 804);
-            this.guna2PictureBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2PictureBox3.Location = new System.Drawing.Point(7, 670);
             this.guna2PictureBox3.Name = "guna2PictureBox3";
-            this.guna2PictureBox3.Size = new System.Drawing.Size(54, 55);
+            this.guna2PictureBox3.Size = new System.Drawing.Size(43, 46);
             this.guna2PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.guna2PictureBox3.TabIndex = 0;
             this.guna2PictureBox3.TabStop = false;
@@ -721,7 +715,7 @@
             this.flpDays.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.flpDays.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.flpDays.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.flpDays.Size = new System.Drawing.Size(1054, 710);
+            this.flpDays.Size = new System.Drawing.Size(843, 592);
             this.flpDays.TabIndex = 42;
             // 
             // userDate1
@@ -731,417 +725,417 @@
             this.userDate1.Location = new System.Drawing.Point(0, 0);
             this.userDate1.Margin = new System.Windows.Forms.Padding(0);
             this.userDate1.Name = "userDate1";
-            this.userDate1.Size = new System.Drawing.Size(150, 118);
+            this.userDate1.Size = new System.Drawing.Size(120, 98);
             this.userDate1.TabIndex = 0;
             // 
             // userDate2
             // 
             this.userDate2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
             this.userDate2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userDate2.Location = new System.Drawing.Point(150, 0);
+            this.userDate2.Location = new System.Drawing.Point(120, 0);
             this.userDate2.Margin = new System.Windows.Forms.Padding(0);
             this.userDate2.Name = "userDate2";
-            this.userDate2.Size = new System.Drawing.Size(150, 118);
+            this.userDate2.Size = new System.Drawing.Size(120, 98);
             this.userDate2.TabIndex = 1;
             // 
             // userDate3
             // 
             this.userDate3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
             this.userDate3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userDate3.Location = new System.Drawing.Point(300, 0);
+            this.userDate3.Location = new System.Drawing.Point(240, 0);
             this.userDate3.Margin = new System.Windows.Forms.Padding(0);
             this.userDate3.Name = "userDate3";
-            this.userDate3.Size = new System.Drawing.Size(150, 118);
+            this.userDate3.Size = new System.Drawing.Size(120, 98);
             this.userDate3.TabIndex = 2;
             // 
             // userDate4
             // 
             this.userDate4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
             this.userDate4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userDate4.Location = new System.Drawing.Point(450, 0);
+            this.userDate4.Location = new System.Drawing.Point(360, 0);
             this.userDate4.Margin = new System.Windows.Forms.Padding(0);
             this.userDate4.Name = "userDate4";
-            this.userDate4.Size = new System.Drawing.Size(150, 118);
+            this.userDate4.Size = new System.Drawing.Size(120, 98);
             this.userDate4.TabIndex = 3;
             // 
             // userDate5
             // 
             this.userDate5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
             this.userDate5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userDate5.Location = new System.Drawing.Point(600, 0);
+            this.userDate5.Location = new System.Drawing.Point(480, 0);
             this.userDate5.Margin = new System.Windows.Forms.Padding(0);
             this.userDate5.Name = "userDate5";
-            this.userDate5.Size = new System.Drawing.Size(150, 118);
+            this.userDate5.Size = new System.Drawing.Size(120, 98);
             this.userDate5.TabIndex = 4;
             // 
             // userDate6
             // 
             this.userDate6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
             this.userDate6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userDate6.Location = new System.Drawing.Point(750, 0);
+            this.userDate6.Location = new System.Drawing.Point(600, 0);
             this.userDate6.Margin = new System.Windows.Forms.Padding(0);
             this.userDate6.Name = "userDate6";
-            this.userDate6.Size = new System.Drawing.Size(150, 118);
+            this.userDate6.Size = new System.Drawing.Size(120, 98);
             this.userDate6.TabIndex = 5;
             // 
             // userDate7
             // 
             this.userDate7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
             this.userDate7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userDate7.Location = new System.Drawing.Point(900, 0);
+            this.userDate7.Location = new System.Drawing.Point(720, 0);
             this.userDate7.Margin = new System.Windows.Forms.Padding(0);
             this.userDate7.Name = "userDate7";
-            this.userDate7.Size = new System.Drawing.Size(150, 118);
+            this.userDate7.Size = new System.Drawing.Size(120, 98);
             this.userDate7.TabIndex = 6;
             // 
             // userDate8
             // 
             this.userDate8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
             this.userDate8.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userDate8.Location = new System.Drawing.Point(0, 118);
+            this.userDate8.Location = new System.Drawing.Point(0, 98);
             this.userDate8.Margin = new System.Windows.Forms.Padding(0);
             this.userDate8.Name = "userDate8";
-            this.userDate8.Size = new System.Drawing.Size(150, 118);
+            this.userDate8.Size = new System.Drawing.Size(120, 98);
             this.userDate8.TabIndex = 7;
             // 
             // userDate9
             // 
             this.userDate9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
             this.userDate9.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userDate9.Location = new System.Drawing.Point(150, 118);
+            this.userDate9.Location = new System.Drawing.Point(120, 98);
             this.userDate9.Margin = new System.Windows.Forms.Padding(0);
             this.userDate9.Name = "userDate9";
-            this.userDate9.Size = new System.Drawing.Size(150, 118);
+            this.userDate9.Size = new System.Drawing.Size(120, 98);
             this.userDate9.TabIndex = 8;
             // 
             // userDate10
             // 
             this.userDate10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
             this.userDate10.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userDate10.Location = new System.Drawing.Point(300, 118);
+            this.userDate10.Location = new System.Drawing.Point(240, 98);
             this.userDate10.Margin = new System.Windows.Forms.Padding(0);
             this.userDate10.Name = "userDate10";
-            this.userDate10.Size = new System.Drawing.Size(150, 118);
+            this.userDate10.Size = new System.Drawing.Size(120, 98);
             this.userDate10.TabIndex = 9;
             // 
             // userDate11
             // 
             this.userDate11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
             this.userDate11.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userDate11.Location = new System.Drawing.Point(450, 118);
+            this.userDate11.Location = new System.Drawing.Point(360, 98);
             this.userDate11.Margin = new System.Windows.Forms.Padding(0);
             this.userDate11.Name = "userDate11";
-            this.userDate11.Size = new System.Drawing.Size(150, 118);
+            this.userDate11.Size = new System.Drawing.Size(120, 98);
             this.userDate11.TabIndex = 10;
             // 
             // userDate12
             // 
             this.userDate12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
             this.userDate12.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userDate12.Location = new System.Drawing.Point(600, 118);
+            this.userDate12.Location = new System.Drawing.Point(480, 98);
             this.userDate12.Margin = new System.Windows.Forms.Padding(0);
             this.userDate12.Name = "userDate12";
-            this.userDate12.Size = new System.Drawing.Size(150, 118);
+            this.userDate12.Size = new System.Drawing.Size(120, 98);
             this.userDate12.TabIndex = 11;
             // 
             // userDate13
             // 
             this.userDate13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
             this.userDate13.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userDate13.Location = new System.Drawing.Point(750, 118);
+            this.userDate13.Location = new System.Drawing.Point(600, 98);
             this.userDate13.Margin = new System.Windows.Forms.Padding(0);
             this.userDate13.Name = "userDate13";
-            this.userDate13.Size = new System.Drawing.Size(150, 118);
+            this.userDate13.Size = new System.Drawing.Size(120, 98);
             this.userDate13.TabIndex = 12;
             // 
             // userDate14
             // 
             this.userDate14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
             this.userDate14.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userDate14.Location = new System.Drawing.Point(900, 118);
+            this.userDate14.Location = new System.Drawing.Point(720, 98);
             this.userDate14.Margin = new System.Windows.Forms.Padding(0);
             this.userDate14.Name = "userDate14";
-            this.userDate14.Size = new System.Drawing.Size(150, 118);
+            this.userDate14.Size = new System.Drawing.Size(120, 98);
             this.userDate14.TabIndex = 13;
             // 
             // userDate15
             // 
             this.userDate15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
             this.userDate15.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userDate15.Location = new System.Drawing.Point(0, 236);
+            this.userDate15.Location = new System.Drawing.Point(0, 196);
             this.userDate15.Margin = new System.Windows.Forms.Padding(0);
             this.userDate15.Name = "userDate15";
-            this.userDate15.Size = new System.Drawing.Size(150, 118);
+            this.userDate15.Size = new System.Drawing.Size(120, 98);
             this.userDate15.TabIndex = 14;
             // 
             // userDate16
             // 
             this.userDate16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
             this.userDate16.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userDate16.Location = new System.Drawing.Point(150, 236);
+            this.userDate16.Location = new System.Drawing.Point(120, 196);
             this.userDate16.Margin = new System.Windows.Forms.Padding(0);
             this.userDate16.Name = "userDate16";
-            this.userDate16.Size = new System.Drawing.Size(150, 118);
+            this.userDate16.Size = new System.Drawing.Size(120, 98);
             this.userDate16.TabIndex = 15;
             // 
             // userDate17
             // 
             this.userDate17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
             this.userDate17.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userDate17.Location = new System.Drawing.Point(300, 236);
+            this.userDate17.Location = new System.Drawing.Point(240, 196);
             this.userDate17.Margin = new System.Windows.Forms.Padding(0);
             this.userDate17.Name = "userDate17";
-            this.userDate17.Size = new System.Drawing.Size(150, 118);
+            this.userDate17.Size = new System.Drawing.Size(120, 98);
             this.userDate17.TabIndex = 16;
             // 
             // userDate18
             // 
             this.userDate18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
             this.userDate18.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userDate18.Location = new System.Drawing.Point(450, 236);
+            this.userDate18.Location = new System.Drawing.Point(360, 196);
             this.userDate18.Margin = new System.Windows.Forms.Padding(0);
             this.userDate18.Name = "userDate18";
-            this.userDate18.Size = new System.Drawing.Size(150, 118);
+            this.userDate18.Size = new System.Drawing.Size(120, 98);
             this.userDate18.TabIndex = 17;
             // 
             // userDate19
             // 
             this.userDate19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
             this.userDate19.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userDate19.Location = new System.Drawing.Point(600, 236);
+            this.userDate19.Location = new System.Drawing.Point(480, 196);
             this.userDate19.Margin = new System.Windows.Forms.Padding(0);
             this.userDate19.Name = "userDate19";
-            this.userDate19.Size = new System.Drawing.Size(150, 118);
+            this.userDate19.Size = new System.Drawing.Size(120, 98);
             this.userDate19.TabIndex = 18;
             // 
             // userDate20
             // 
             this.userDate20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
             this.userDate20.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userDate20.Location = new System.Drawing.Point(750, 236);
+            this.userDate20.Location = new System.Drawing.Point(600, 196);
             this.userDate20.Margin = new System.Windows.Forms.Padding(0);
             this.userDate20.Name = "userDate20";
-            this.userDate20.Size = new System.Drawing.Size(150, 118);
+            this.userDate20.Size = new System.Drawing.Size(120, 98);
             this.userDate20.TabIndex = 19;
             // 
             // userDate21
             // 
             this.userDate21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
             this.userDate21.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userDate21.Location = new System.Drawing.Point(900, 236);
+            this.userDate21.Location = new System.Drawing.Point(720, 196);
             this.userDate21.Margin = new System.Windows.Forms.Padding(0);
             this.userDate21.Name = "userDate21";
-            this.userDate21.Size = new System.Drawing.Size(150, 118);
+            this.userDate21.Size = new System.Drawing.Size(120, 98);
             this.userDate21.TabIndex = 20;
             // 
             // userDate22
             // 
             this.userDate22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
             this.userDate22.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userDate22.Location = new System.Drawing.Point(0, 354);
+            this.userDate22.Location = new System.Drawing.Point(0, 294);
             this.userDate22.Margin = new System.Windows.Forms.Padding(0);
             this.userDate22.Name = "userDate22";
-            this.userDate22.Size = new System.Drawing.Size(150, 118);
+            this.userDate22.Size = new System.Drawing.Size(120, 98);
             this.userDate22.TabIndex = 21;
             // 
             // userDate23
             // 
             this.userDate23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
             this.userDate23.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userDate23.Location = new System.Drawing.Point(150, 354);
+            this.userDate23.Location = new System.Drawing.Point(120, 294);
             this.userDate23.Margin = new System.Windows.Forms.Padding(0);
             this.userDate23.Name = "userDate23";
-            this.userDate23.Size = new System.Drawing.Size(150, 118);
+            this.userDate23.Size = new System.Drawing.Size(120, 98);
             this.userDate23.TabIndex = 22;
             // 
             // userDate24
             // 
             this.userDate24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
             this.userDate24.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userDate24.Location = new System.Drawing.Point(300, 354);
+            this.userDate24.Location = new System.Drawing.Point(240, 294);
             this.userDate24.Margin = new System.Windows.Forms.Padding(0);
             this.userDate24.Name = "userDate24";
-            this.userDate24.Size = new System.Drawing.Size(150, 118);
+            this.userDate24.Size = new System.Drawing.Size(120, 98);
             this.userDate24.TabIndex = 23;
             // 
             // userDate25
             // 
             this.userDate25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
             this.userDate25.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userDate25.Location = new System.Drawing.Point(450, 354);
+            this.userDate25.Location = new System.Drawing.Point(360, 294);
             this.userDate25.Margin = new System.Windows.Forms.Padding(0);
             this.userDate25.Name = "userDate25";
-            this.userDate25.Size = new System.Drawing.Size(150, 118);
+            this.userDate25.Size = new System.Drawing.Size(120, 98);
             this.userDate25.TabIndex = 24;
             // 
             // userDate26
             // 
             this.userDate26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
             this.userDate26.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userDate26.Location = new System.Drawing.Point(600, 354);
+            this.userDate26.Location = new System.Drawing.Point(480, 294);
             this.userDate26.Margin = new System.Windows.Forms.Padding(0);
             this.userDate26.Name = "userDate26";
-            this.userDate26.Size = new System.Drawing.Size(150, 118);
+            this.userDate26.Size = new System.Drawing.Size(120, 98);
             this.userDate26.TabIndex = 25;
             // 
             // userDate27
             // 
             this.userDate27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
             this.userDate27.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userDate27.Location = new System.Drawing.Point(750, 354);
+            this.userDate27.Location = new System.Drawing.Point(600, 294);
             this.userDate27.Margin = new System.Windows.Forms.Padding(0);
             this.userDate27.Name = "userDate27";
-            this.userDate27.Size = new System.Drawing.Size(150, 118);
+            this.userDate27.Size = new System.Drawing.Size(120, 98);
             this.userDate27.TabIndex = 26;
             // 
             // userDate28
             // 
             this.userDate28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
             this.userDate28.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userDate28.Location = new System.Drawing.Point(900, 354);
+            this.userDate28.Location = new System.Drawing.Point(720, 294);
             this.userDate28.Margin = new System.Windows.Forms.Padding(0);
             this.userDate28.Name = "userDate28";
-            this.userDate28.Size = new System.Drawing.Size(150, 118);
+            this.userDate28.Size = new System.Drawing.Size(120, 98);
             this.userDate28.TabIndex = 27;
             // 
             // userDate29
             // 
             this.userDate29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
             this.userDate29.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userDate29.Location = new System.Drawing.Point(0, 472);
+            this.userDate29.Location = new System.Drawing.Point(0, 392);
             this.userDate29.Margin = new System.Windows.Forms.Padding(0);
             this.userDate29.Name = "userDate29";
-            this.userDate29.Size = new System.Drawing.Size(150, 118);
+            this.userDate29.Size = new System.Drawing.Size(120, 98);
             this.userDate29.TabIndex = 28;
             // 
             // userDate30
             // 
             this.userDate30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
             this.userDate30.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userDate30.Location = new System.Drawing.Point(150, 472);
+            this.userDate30.Location = new System.Drawing.Point(120, 392);
             this.userDate30.Margin = new System.Windows.Forms.Padding(0);
             this.userDate30.Name = "userDate30";
-            this.userDate30.Size = new System.Drawing.Size(150, 118);
+            this.userDate30.Size = new System.Drawing.Size(120, 98);
             this.userDate30.TabIndex = 29;
             // 
             // userDate31
             // 
             this.userDate31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
             this.userDate31.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userDate31.Location = new System.Drawing.Point(300, 472);
+            this.userDate31.Location = new System.Drawing.Point(240, 392);
             this.userDate31.Margin = new System.Windows.Forms.Padding(0);
             this.userDate31.Name = "userDate31";
-            this.userDate31.Size = new System.Drawing.Size(150, 118);
+            this.userDate31.Size = new System.Drawing.Size(120, 98);
             this.userDate31.TabIndex = 30;
             // 
             // userDate32
             // 
             this.userDate32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
             this.userDate32.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userDate32.Location = new System.Drawing.Point(450, 472);
+            this.userDate32.Location = new System.Drawing.Point(360, 392);
             this.userDate32.Margin = new System.Windows.Forms.Padding(0);
             this.userDate32.Name = "userDate32";
-            this.userDate32.Size = new System.Drawing.Size(150, 118);
+            this.userDate32.Size = new System.Drawing.Size(120, 98);
             this.userDate32.TabIndex = 31;
             // 
             // userDate33
             // 
             this.userDate33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
             this.userDate33.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userDate33.Location = new System.Drawing.Point(600, 472);
+            this.userDate33.Location = new System.Drawing.Point(480, 392);
             this.userDate33.Margin = new System.Windows.Forms.Padding(0);
             this.userDate33.Name = "userDate33";
-            this.userDate33.Size = new System.Drawing.Size(150, 118);
+            this.userDate33.Size = new System.Drawing.Size(120, 98);
             this.userDate33.TabIndex = 32;
             // 
             // userDate34
             // 
             this.userDate34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
             this.userDate34.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userDate34.Location = new System.Drawing.Point(750, 472);
+            this.userDate34.Location = new System.Drawing.Point(600, 392);
             this.userDate34.Margin = new System.Windows.Forms.Padding(0);
             this.userDate34.Name = "userDate34";
-            this.userDate34.Size = new System.Drawing.Size(150, 118);
+            this.userDate34.Size = new System.Drawing.Size(120, 98);
             this.userDate34.TabIndex = 33;
             // 
             // userDate35
             // 
             this.userDate35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
             this.userDate35.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userDate35.Location = new System.Drawing.Point(900, 472);
+            this.userDate35.Location = new System.Drawing.Point(720, 392);
             this.userDate35.Margin = new System.Windows.Forms.Padding(0);
             this.userDate35.Name = "userDate35";
-            this.userDate35.Size = new System.Drawing.Size(150, 118);
+            this.userDate35.Size = new System.Drawing.Size(120, 98);
             this.userDate35.TabIndex = 34;
             // 
             // userDate36
             // 
             this.userDate36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
             this.userDate36.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userDate36.Location = new System.Drawing.Point(0, 590);
+            this.userDate36.Location = new System.Drawing.Point(0, 490);
             this.userDate36.Margin = new System.Windows.Forms.Padding(0);
             this.userDate36.Name = "userDate36";
-            this.userDate36.Size = new System.Drawing.Size(150, 118);
+            this.userDate36.Size = new System.Drawing.Size(120, 98);
             this.userDate36.TabIndex = 35;
             // 
             // userDate37
             // 
             this.userDate37.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
             this.userDate37.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userDate37.Location = new System.Drawing.Point(150, 590);
+            this.userDate37.Location = new System.Drawing.Point(120, 490);
             this.userDate37.Margin = new System.Windows.Forms.Padding(0);
             this.userDate37.Name = "userDate37";
-            this.userDate37.Size = new System.Drawing.Size(150, 118);
+            this.userDate37.Size = new System.Drawing.Size(120, 98);
             this.userDate37.TabIndex = 36;
             // 
             // userDate38
             // 
             this.userDate38.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
             this.userDate38.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userDate38.Location = new System.Drawing.Point(300, 590);
+            this.userDate38.Location = new System.Drawing.Point(240, 490);
             this.userDate38.Margin = new System.Windows.Forms.Padding(0);
             this.userDate38.Name = "userDate38";
-            this.userDate38.Size = new System.Drawing.Size(150, 118);
+            this.userDate38.Size = new System.Drawing.Size(120, 98);
             this.userDate38.TabIndex = 37;
             // 
             // userDate39
             // 
             this.userDate39.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
             this.userDate39.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userDate39.Location = new System.Drawing.Point(450, 590);
+            this.userDate39.Location = new System.Drawing.Point(360, 490);
             this.userDate39.Margin = new System.Windows.Forms.Padding(0);
             this.userDate39.Name = "userDate39";
-            this.userDate39.Size = new System.Drawing.Size(150, 118);
+            this.userDate39.Size = new System.Drawing.Size(120, 98);
             this.userDate39.TabIndex = 38;
             // 
             // userDate40
             // 
             this.userDate40.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
             this.userDate40.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userDate40.Location = new System.Drawing.Point(600, 590);
+            this.userDate40.Location = new System.Drawing.Point(480, 490);
             this.userDate40.Margin = new System.Windows.Forms.Padding(0);
             this.userDate40.Name = "userDate40";
-            this.userDate40.Size = new System.Drawing.Size(150, 118);
+            this.userDate40.Size = new System.Drawing.Size(120, 98);
             this.userDate40.TabIndex = 39;
             // 
             // userDate41
             // 
             this.userDate41.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
             this.userDate41.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userDate41.Location = new System.Drawing.Point(750, 590);
+            this.userDate41.Location = new System.Drawing.Point(600, 490);
             this.userDate41.Margin = new System.Windows.Forms.Padding(0);
             this.userDate41.Name = "userDate41";
-            this.userDate41.Size = new System.Drawing.Size(150, 118);
+            this.userDate41.Size = new System.Drawing.Size(120, 98);
             this.userDate41.TabIndex = 40;
             // 
             // userDate42
             // 
             this.userDate42.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
             this.userDate42.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userDate42.Location = new System.Drawing.Point(900, 590);
+            this.userDate42.Location = new System.Drawing.Point(720, 490);
             this.userDate42.Margin = new System.Windows.Forms.Padding(0);
             this.userDate42.Name = "userDate42";
-            this.userDate42.Size = new System.Drawing.Size(150, 118);
+            this.userDate42.Size = new System.Drawing.Size(120, 98);
             this.userDate42.TabIndex = 41;
             // 
             // guna2Elipse3
@@ -1164,7 +1158,7 @@
             this.btnSharing.Location = new System.Drawing.Point(1511, 998);
             this.btnSharing.Margin = new System.Windows.Forms.Padding(5);
             this.btnSharing.Name = "btnSharing";
-            this.btnSharing.Size = new System.Drawing.Size(45, 94);
+            this.btnSharing.Size = new System.Drawing.Size(36, 78);
             this.btnSharing.TabIndex = 23;
             // 
             // Tab4
@@ -1172,7 +1166,7 @@
             this.Tab4.Location = new System.Drawing.Point(1511, 882);
             this.Tab4.Margin = new System.Windows.Forms.Padding(5);
             this.Tab4.Name = "Tab4";
-            this.Tab4.Size = new System.Drawing.Size(45, 94);
+            this.Tab4.Size = new System.Drawing.Size(36, 78);
             this.Tab4.TabIndex = 22;
             // 
             // Tab3
@@ -1180,7 +1174,7 @@
             this.Tab3.Location = new System.Drawing.Point(1511, 762);
             this.Tab3.Margin = new System.Windows.Forms.Padding(5);
             this.Tab3.Name = "Tab3";
-            this.Tab3.Size = new System.Drawing.Size(45, 94);
+            this.Tab3.Size = new System.Drawing.Size(36, 78);
             this.Tab3.TabIndex = 22;
             // 
             // Tab2
@@ -1188,7 +1182,7 @@
             this.Tab2.Location = new System.Drawing.Point(1511, 642);
             this.Tab2.Margin = new System.Windows.Forms.Padding(5);
             this.Tab2.Name = "Tab2";
-            this.Tab2.Size = new System.Drawing.Size(45, 94);
+            this.Tab2.Size = new System.Drawing.Size(36, 78);
             this.Tab2.TabIndex = 22;
             this.Tab2.Click += new System.EventHandler(this.ChangeTab);
             // 
@@ -1197,7 +1191,7 @@
             this.Tab1.Location = new System.Drawing.Point(1511, 516);
             this.Tab1.Margin = new System.Windows.Forms.Padding(5);
             this.Tab1.Name = "Tab1";
-            this.Tab1.Size = new System.Drawing.Size(45, 94);
+            this.Tab1.Size = new System.Drawing.Size(36, 78);
             this.Tab1.TabIndex = 22;
             this.Tab1.Click += new System.EventHandler(this.ChangeTab);
             // 
@@ -1206,13 +1200,13 @@
             this.TabAll.Location = new System.Drawing.Point(1511, 398);
             this.TabAll.Margin = new System.Windows.Forms.Padding(5);
             this.TabAll.Name = "TabAll";
-            this.TabAll.Size = new System.Drawing.Size(45, 94);
+            this.TabAll.Size = new System.Drawing.Size(36, 78);
             this.TabAll.TabIndex = 22;
             this.TabAll.Click += new System.EventHandler(this.ChangeTab);
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));

@@ -393,9 +393,9 @@ namespace KSCS
             if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Delete Data.");
         }
 
-        public static void CreateParentCategory()
+        public static void CreateParentCategory(string Main)
         {
-            string insertQuery = string.Format("INSERT INTO () VALUES ();");
+            string insertQuery = string.Format("INSERT INTO Category(category_name, student_id) VALUES ('{0}', {1});", Main, stdNum);
             MySqlCommand cmd = new MySqlCommand(insertQuery, connection);
             if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to insert Data.");
             //cmd.CommandText = "SELECT LAST_INSERT_ID() AS id";
@@ -404,16 +404,17 @@ namespace KSCS
             //.id = int.Parse(table["id"].ToString());
             //table.Close();
         }
-        public static void UpdateParentCategory()
+        public static void UpdateParentCategory(string Old, string New)
         {
-            string updateQuery = string.Format("UPDATE Schedule SET ");
+            string updateQuery = string.Format("UPDATE Category SET category_name = '{0}'" +
+                "WHERE category_name='{1}' AND student_id={2}", New,Old,stdNum);
             MySqlCommand cmd = new MySqlCommand(updateQuery, getDBConnection());
             if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Update Data.");
         }
 
-        public static void DeleteParentCategory()
+        public static void DeleteParentCategory(string Parent)
         {
-            string deleteQuery = string.Format("DELETE FROM   WHERE id='{0}';");
+            string deleteQuery = string.Format("DELETE FROM Category WHERE category_name='{0}'",Parent);
             MySqlCommand cmd = new MySqlCommand(deleteQuery, getDBConnection());
             if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Delete Data.");
         }

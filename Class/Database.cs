@@ -339,7 +339,7 @@ namespace KSCS
             string insertQuery = string.Format("INSERT INTO Category(category_name, parent_category_id,color,student_id) VALUES (" +
                 "'{0}'," +
                 "(SELECT id FROM (SELECT id FROM Category WHERE category_name='{1}' and student_id={2}) A)," +
-                "-16776961, '{2}');", Sub,Parent,stdNum);
+                "{3}, '{2}');", Sub,Parent,stdNum, Color.Black.ToArgb());
             MySqlCommand cmd = new MySqlCommand(insertQuery, connection);
             if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to insert Data.");
 

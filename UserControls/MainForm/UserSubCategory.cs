@@ -60,7 +60,7 @@ namespace KSCS
         }
         private void UserCategory_Load(object sender, EventArgs e)
         {
-            if (KSCS_static.TabName == "All")
+            if (TabName == "All")
             {
                 chkCategory.Enabled = false;
                 chkCategory.Checked = true;
@@ -77,22 +77,38 @@ namespace KSCS
             {
                 if (txtCategory.Text.Length > 0)
                 {
-                    //입력된 내용이 있을 경우
-                    if (lblCategory.Text.Length > 0)
+                    //카테고리 이름 중복
+                    if (!category.IsExitsSubCategory(txtCategory.Text))
                     {
-                        //기존 카테고리인 경우
-                        category.ChageSubdivisionName(((FlowLayoutPanel)this.Parent).Name,lblCategory.Text, txtCategory.Text);
+                        if (lblCategory.Text.Length > 0)
+                        {
+                            //기존 카테고리인 경우
+                            Database.UpdateSubCategory(txtCategory.Text, lblCategory.Text);
+                            category.ChageSubdivisionName((this.Parent).Parent.Name, lblCategory.Text, txtCategory.Text);
+                            ((UserLabel)MainForm.flowLayoutPanelLable.Controls["label" + lblCategory.Text]).SetName(txtCategory.Text);
+                        }
+                        else
+                        {
+                            //신규 카테고리인 경우
+                            category.AddSubdivision(MainCategory, txtCategory.Text);
+                            Database.CreateSubCategory(MainCategory, txtCategory.Text);
+                            lblCategory.ForeColor = Color.Black;
+                            category.SetColor(txtCategory.Text, Color.Black);
+                            if(TabName == "All")
+                                MainForm.flowLayoutPanelLable.Controls.Add(
+                                     new UserLabel(txtCategory.Text, category.GetColor(txtCategory.Text)));
+                        }
+
+                        //텍스트 박스 DisVisible 카테고리 이름 Visible
+                        lblCategory.Text = txtCategory.Text;
+                        this.Name = txtCategory.Text;
+                        txtCategory.Visible = false;
+                        lblCategory.Visible = true;
                     }
                     else
                     {
-                        //신규 카테고리인 경우
-                        KSCS_static.category.AddSubdivision(MainCategory, txtCategory.Text);
-                        Database.CreateSubCategory(MainCategory, txtCategory.Text);
+                        MessageBox.Show("이미 존재하는 카테고리 이름입니다!");
                     }
-                    lblCategory.Text = txtCategory.Text;
-                    this.Name = txtCategory.Text;
-                    txtCategory.Visible = false;
-                    lblCategory.Visible = true;
                 }
             }else if(e.KeyCode == Keys.Escape)
             {
@@ -136,7 +152,9 @@ namespace KSCS
             if (chkCategory.Checked)
             {
                 category.AddChecked(TabName, lblCategory.Text);
-                MainForm.flowLayoutPanelLable.Controls.Add(new UserLabel(lblCategory.Text, KSCS_static.category.GetColor(lblCategory.Text)));
+                if(lblCategory.Text.Length != 0 )
+                    MainForm.flowLayoutPanelLable.Controls.Add(
+                        new UserLabel(lblCategory.Text, category.GetColor(lblCategory.Text)));
             }
             else
             {

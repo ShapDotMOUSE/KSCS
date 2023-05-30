@@ -403,13 +403,15 @@ namespace KSCS
                 this.listener.Stop();
                 this.networkStream.Close();
                 this.thread.Abort();
-            }else if (client != null)
+            }
+            else if (client != null)
             {
                 this.client.Close();
                 this.networkStream.Close();
 
             }
             Database.DeleteAddress();
+        }
         public static void LoadMainForm()
         {
             Database.ReadTabScheduleList();

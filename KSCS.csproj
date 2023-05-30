@@ -122,6 +122,12 @@
     <Compile Include="Forms\TempCategorySetting.Designer.cs">
       <DependentUpon>TempCategorySetting.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\MainForm\UserLabel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\MainForm\UserLabel.Designer.cs">
+      <DependentUpon>UserLabel.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\MainForm\UserTapButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -209,6 +215,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TempCategorySetting.resx">
       <DependentUpon>TempCategorySetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\MainForm\UserLabel.resx">
+      <DependentUpon>UserLabel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\MainForm\UserTapButton.resx">
       <DependentUpon>UserTapButton.cs</DependentUpon>

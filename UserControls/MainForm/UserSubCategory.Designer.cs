@@ -44,9 +44,9 @@
             this.lblCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblCategory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.lblCategory.Location = new System.Drawing.Point(0, 0);
-            this.lblCategory.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
+            this.lblCategory.Margin = new System.Windows.Forms.Padding(11, 0, 6, 0);
             this.lblCategory.Name = "lblCategory";
-            this.lblCategory.Size = new System.Drawing.Size(0, 17);
+            this.lblCategory.Size = new System.Drawing.Size(0, 32);
             this.lblCategory.TabIndex = 15;
             this.lblCategory.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lblCategory_MouseDoubleClick);
             // 
@@ -57,10 +57,10 @@
             this.chkCategory.CheckedState.BorderThickness = 2;
             this.chkCategory.CheckedState.FillColor = System.Drawing.Color.White;
             this.chkCategory.CheckMarkColor = System.Drawing.Color.Maroon;
-            this.chkCategory.Location = new System.Drawing.Point(93, 2);
-            this.chkCategory.Margin = new System.Windows.Forms.Padding(0, 2, 3, 2);
+            this.chkCategory.Location = new System.Drawing.Point(173, 4);
+            this.chkCategory.Margin = new System.Windows.Forms.Padding(0, 4, 6, 4);
             this.chkCategory.Name = "chkCategory";
-            this.chkCategory.Size = new System.Drawing.Size(17, 15);
+            this.chkCategory.Size = new System.Drawing.Size(31, 30);
             this.chkCategory.TabIndex = 16;
             this.chkCategory.Text = "guna2CustomCheckBox2";
             this.chkCategory.UncheckedState.BorderColor = System.Drawing.Color.Maroon;
@@ -87,7 +87,7 @@
             this.txtCategory.PasswordChar = '\0';
             this.txtCategory.PlaceholderText = "";
             this.txtCategory.SelectedText = "";
-            this.txtCategory.Size = new System.Drawing.Size(93, 19);
+            this.txtCategory.Size = new System.Drawing.Size(173, 38);
             this.txtCategory.TabIndex = 17;
             this.txtCategory.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCategory_KeyDown);
             this.txtCategory.Leave += new System.EventHandler(this.txtCategory_Leave);
@@ -95,9 +95,9 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 93F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 173F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F));
             this.tableLayoutPanel1.Controls.Add(this.guna2Panel1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.chkCategory, 1, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -105,8 +105,9 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(113, 19);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(210, 38);
             this.tableLayoutPanel1.TabIndex = 18;
+            this.tableLayoutPanel1.DoubleClick += new System.EventHandler(this.UserCategory_DoubleClick);
             // 
             // guna2Panel1
             // 
@@ -115,18 +116,18 @@
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Margin = new System.Windows.Forms.Padding(0);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(73, 19);
+            this.guna2Panel1.Size = new System.Drawing.Size(136, 38);
             this.guna2Panel1.TabIndex = 19;
             // 
             // UserSubCategory
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(0, 0, 0, 3);
+            this.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
             this.Name = "UserSubCategory";
-            this.Size = new System.Drawing.Size(113, 19);
+            this.Size = new System.Drawing.Size(210, 38);
             this.Load += new System.EventHandler(this.UserCategory_Load);
             this.DoubleClick += new System.EventHandler(this.UserCategory_DoubleClick);
             this.tableLayoutPanel1.ResumeLayout(false);

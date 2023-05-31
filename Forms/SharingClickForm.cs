@@ -33,7 +33,7 @@ namespace KSCS.Forms
                 Size size = TextRenderer.MeasureText(memberAdd.txtMember.Text, memberAdd.txtMember.Font);
                 memberAdd.txtMember.ClientSize = new Size(size.Width, size.Height);
                 memberAdd.ClientSize = new Size(size.Width + 25, 22);
-                memberAdd.pictureBox1.ClientSize = new Size(10, 9);
+                memberAdd.btnClose.ClientSize = new Size(10, 9);
                 txtMember.Text = "";
                 flpMember.Controls.Add(memberAdd);
             }

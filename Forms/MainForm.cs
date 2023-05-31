@@ -65,8 +65,8 @@ namespace KSCS
                 Tab2.Clicked += ChangeTab;
                 Tab3.Clicked += ChangeTab;
                 Tab4.Clicked += ChangeTab;
-                btnSharing.Clicked += CreateSharing;
-                //btnSharing.Clicked += btnShare_Click;
+                //btnSharing.Clicked += CreateSharing;
+                btnSharing.Clicked += btnShare_Click;
                 //btnSharing.DoubleClicked += CreateSharing;
                 setTab();
 
@@ -418,11 +418,7 @@ namespace KSCS
                                     networkStreamDict.Add(InitClass.sender, networkStream);
 
                                     //todoLink가 비게 되면 종료
-                                    if (InitClass.todoLink.Count == 0)
-                                    {
-                                        finish = true;
-                                        break;
-                                    }
+                                    
                                     Dictionary<string, string> addressDict = Database.GetAddress(InitClass.members);
                                     this.Invoke(new MethodInvoker(delegate ()
                                     {
@@ -430,6 +426,12 @@ namespace KSCS
                                             + "\r\n 연결된 사람 : " + InitClass.sender
                                             + "\r\n todo : " + string.Join(",", InitClass.todoLink.Select(std => string.Format("'{0}'", std))));
                                     }));
+
+                                    if (InitClass.todoLink.Count == 0)
+                                    {
+                                        finish = true;
+                                        break;
+                                    }
                                     foreach (string todo in InitClass.todoLink)
                                     {
                                         if (!addressDict.ContainsKey(todo))

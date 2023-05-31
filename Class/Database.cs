@@ -63,7 +63,7 @@ namespace KSCS
 
 
         //스케줄 관련======================================================================
-        public static void ReadScheduleList()
+        public static void ReadScheduleList() //이제 사용 X
         {
             string selectQuery = string.Format("SELECT * FROM Schedule JOIN Category ON Schedule.category_id=Category.id" +
             " WHERE Schedule.student_id={0} AND (startDate BETWEEN DATE_FORMAT('{1}', '%Y-%m-%d') AND LAST_DAY('{1}') OR" +

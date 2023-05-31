@@ -105,7 +105,8 @@ namespace KSCS
             Schedule schedule = new Schedule(tbTitle.Text, tbMemo.Text, tbPlace.Text, cbCategory.Text, GetStartDateTime(), GetEndDateTime(),members);
             if (addBtn.Text == "Add")
             {
-                Database.CreateScheudle(schedule,stdNum); //수정
+                //내 일정 추가
+                Database.CreateScheudle(schedule,stdNum); 
 
                 //공유 멤버가 존재하는 경우
                 if (schedule.members.Count != 0)
@@ -130,6 +131,7 @@ namespace KSCS
                 {
                     //id값 가져오기
                     schedule.id = monthScheduleList[UserDate.static_date - 1][selectedScheduleIndex].id;
+                    //내 일정 수정
                     Database.UpdateSchedule(schedule,stdNum);
 
                     //공유 멤버가 존재하는 경우
@@ -220,16 +222,15 @@ namespace KSCS
                 {
                     for (int i = 0; i < selectedSchedule.members.Count; i++)
                     {
-                        MessageBox.Show(selectedSchedule.members[i].ToString());
                         Database.DeleteMemberSchedule(selectedScheduleIndex, selectedSchedule.members[i]);
                         //Database.DeleteMember(selectedScheduleIndex, selectedSchedule.members[0]);
                     }
                 }
 
-                Database.DeleteSchedule(selectedScheduleIndex);
+                //내 일정 삭제
+                Database.DeleteSchedule(selectedScheduleIndex); 
 
                 //리스트 삭제
-                //Schedule selectedSchedule = monthScheduleList[UserDate.static_date - 1][selectedScheduleIndex]; //클릭한 날짜의 스케줄
                 TimeSpan duration = selectedSchedule.endDate - selectedSchedule.startDate; //클릭한 날짜의 스케줄의 기간
                 for (int i = 0; i <= duration.Days; i++)
                 {

@@ -17,7 +17,7 @@ namespace KSCS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SharingScheduleForm());
+            Application.Run(new MainForm());
         }
     }
 }

@@ -12,6 +12,7 @@ namespace Socket
         public List<string> members;
         public List<string> todoLink;
         public string boss;
+        public string sender;
 
         public Init()
         {

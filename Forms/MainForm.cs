@@ -58,7 +58,7 @@ namespace KSCS
                 category.SetAddMode(Main);
                 panelMainCategory.Controls.Add(category);
             }
-   
+
 
             //초기 탭 설정 
             TabAll.Clicked += ChangeTab;
@@ -322,6 +322,7 @@ namespace KSCS
             testTodo.Remove(stdNum);
 
             clientDict = new Dictionary<string, TcpClient>();
+            networkStreamDict = new Dictionary<string, NetworkStream>();
 
             Dictionary<string, string> addressDict = Database.GetAddress(testAddress);
 
@@ -331,6 +332,13 @@ namespace KSCS
                 {
                     TcpClient client = new TcpClient();
 
+                    if (string.IsNullOrEmpty(addressDict[studentNum]))
+                    {
+                        this.Invoke(new MethodInvoker(delegate ()
+                        {
+                            MessageBox.Show(studentNum + "에게 연결 할 수 없습니다.");
+                        }));
+                    }
                     //각 사용자 들에게 접속 시도
                     client.Connect(addressDict[studentNum], 7777);
                     NetworkStream networkStream = client.GetStream();
@@ -348,16 +356,21 @@ namespace KSCS
                         Type = (int)PacketType.INIT,
                         members = testAddress,
                         todoLink = testTodo,
-                        boss = stdNum
+                        boss = stdNum,
+                        sender=stdNum
                     };
 
+                    this.Invoke(new MethodInvoker(delegate ()
+                    {
+                        MessageBox.Show(studentNum + "연결 요청 성공");
+                    }));
                     Packet.Serialize(Init).CopyTo(this.sendBuffer, 0);
                     this.Send(networkStream);
                 }
 
                 catch
                 {
-                    MessageBox.Show(studentNum+" 연결 실패");
+                    MessageBox.Show(studentNum + " 연결 실패");
                     continue;
                 }
             }
@@ -390,47 +403,62 @@ namespace KSCS
                 }
                 Packet packet = (Packet)Packet.Deserialize(readBuffer);
 
-                switch ((int)packet.Type)
+                if (ClientOn)
                 {
-                    case (int)PacketType.INIT:
-                        {
-                            InitClass = (Init)Packet.Deserialize(readBuffer);
-                            clientDict.Add(InitClass.boss, client);
-                            networkStreamDict.Add(InitClass.boss, networkStream);
-                            Dictionary<string, string> addressDict = Database.GetAddress(InitClass.members);
-                            foreach (string todo in InitClass.todoLink)
+                    switch ((int)packet.Type)
+                    {
+                        case (int)PacketType.INIT:
                             {
-                                try
+                                InitClass = (Init)Packet.Deserialize(readBuffer);
+                                clientDict.Add(InitClass.sender, client);
+                                networkStreamDict.Add(InitClass.sender, networkStream);
+                                Dictionary<string, string> addressDict = Database.GetAddress(InitClass.members);
+                                this.Invoke(new MethodInvoker(delegate ()
                                 {
-                                    TcpClient todoClient = new TcpClient();
-                                    if (!addressDict.ContainsKey(todo))
+                                    MessageBox.Show("연결 성공!\r\n 주최자 : " + InitClass.boss
+                                        + "\r\n 연결된 사람 : " + InitClass.sender
+                                        + "\r\n todo : " + InitClass.todoLink.Count);
+                                }));
+                                foreach (string todo in InitClass.todoLink)
+                                {
+                                    try
                                     {
-                                        MessageBox.Show(todo + "연결 실패");
+                                        TcpClient todoClient = new TcpClient();
+                                        if (!addressDict.ContainsKey(todo))
+                                        {
+                                            this.Invoke(new MethodInvoker(delegate ()
+                                            {
+                                                MessageBox.Show(todo + "연결 실패");
+                                            }));
+                                            continue;
+                                        }
+                                        todoClient.Connect(addressDict[todo], 7777);
+                                        clientDict.Add(todo, todoClient);
+                                        networkStreamDict.Add(todo, todoClient.GetStream());
+
+                                        Init Init = new Init()
+                                        {
+                                            Type = (int)PacketType.INIT,
+                                            boss = InitClass.boss,
+                                            members = InitClass.members,
+                                            todoLink = { },
+                                            sender = stdNum
+                                        };
+                                        Packet.Serialize(Init).CopyTo(this.sendBuffer, 0);
+                                        this.Send(networkStream);
+                                    }
+                                    catch
+                                    {
+                                        this.Invoke(new MethodInvoker(delegate ()
+                                        {
+                                            MessageBox.Show(todo + " 연결 실패");
+                                        }));
                                         continue;
                                     }
-                                    todoClient.Connect(addressDict[todo], 7777);
-                                    clientDict.Add(todo, todoClient);
-                                    networkStreamDict.Add(todo, todoClient.GetStream());
-
-                                    Init Init = new Init()
-                                    {
-                                        boss = InitClass.boss,
-                                        members = InitClass.members,
-                                        todoLink = {}
-                                    };
-                                    Packet.Serialize(Init).CopyTo(this.sendBuffer, 0);
-                                    this.Send(networkStream);
                                 }
-                                catch
-                                {
-                                    MessageBox.Show(todo + " 연결 실패");
-                                    continue;
-                                }
-
+                                break;
                             }
-                            break;   
-                        }
-
+                    }
                 }
             }
 

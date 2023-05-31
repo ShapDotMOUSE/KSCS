@@ -12,6 +12,8 @@ using System.Net.Sockets;
 using System.Threading;
 using Socket;
 using System.Net;
+using System.Threading.Tasks;
+using MySqlX.XDevAPI;
 
 namespace KSCS
 {
@@ -23,7 +25,6 @@ namespace KSCS
             InitializeComponent();
         }
 
-        private Dictionary<string, NetworkStream> networkStreamDict = new Dictionary<string, NetworkStream>();
         private TcpListener listener = null;
         private Dictionary<string, TcpClient> clientDict = new Dictionary<string, TcpClient>();
 
@@ -319,13 +320,22 @@ namespace KSCS
             List<string> testTodo = testStdnums.ToList();
 
             testTodo.Remove(stdNum);
+            //Init 데이터 생성
+            Init Init = new Init
+            {
+                Type = (int)PacketType.INIT,
+                members = testStdnums.ToList(),
+                todoLink = testTodo.ToList(),
+                boss = stdNum,
+                sender = stdNum
+            };
 
             Dictionary<string, string> addressDict = Database.GetAddress(testTodo);
 
             foreach (string studentNum in testTodo)
             {
                 //보내는 address 제거
-                testTodo.Remove(studentNum);
+                Init.todoLink.Remove(studentNum);
 
                 if (!addressDict.ContainsKey(studentNum))
                 {
@@ -345,19 +355,6 @@ namespace KSCS
 
                     //접속 후 추가
                     clientDict.Add(studentNum, client);
-                    networkStreamDict.Add(studentNum, networkStream);
-
-
-                    //Init 데이터 생성
-                    Init Init = new Init
-                    {
-                        Type = (int)PacketType.INIT,
-                        members = testStdnums,
-                        todoLink = testTodo,
-                        boss = stdNum,
-                        sender = stdNum
-                    };
-
 
                     this.Invoke(new MethodInvoker(delegate ()
                     {
@@ -365,6 +362,7 @@ namespace KSCS
                     }));
                     Packet.Serialize(Init).CopyTo(this.sendBuffer, 0);
                     this.Send(networkStream);
+                    networkStream.Close();
                 }
 
                 catch
@@ -375,119 +373,110 @@ namespace KSCS
             }
         }
 
-        public void HandleClient(TcpClient tcpClient)
+        public async Task HandleClient(TcpClient tcpClient)
         {
-            NetworkStream networkStream= tcpClient.GetStream();
-
+            NetworkStream networkStream = tcpClient.GetStream();
+            ClientOn = true;
             int nRead = 0;
-            this.Invoke(new MethodInvoker(delegate ()
-            {
-                MessageBox.Show("스트림 읽기");
-            }));
 
             try
             {
-                nRead = networkStream.Read(readBuffer, 0, 1024 * 4);
+                while (true)
+                {
+                    nRead = await networkStream.ReadAsync(readBuffer, 0, 1024 * 4);
+
+                    Packet packet = (Packet)Packet.Deserialize(readBuffer);
+
+                    switch ((int)packet.Type)
+                    {
+                        case (int)PacketType.INIT:
+                            {
+                                InitClass = (Init)Packet.Deserialize(readBuffer);
+
+                                clientDict.Add(InitClass.sender, tcpClient);
+
+                                this.Invoke(new MethodInvoker(delegate ()
+                                {
+                                    MessageBox.Show("연결 성공!\r\n 주최자 : " + InitClass.boss
+                                        + "\r\n 연결된 사람 : " + InitClass.sender
+                                        + "\r\n todo : " + string.Join(",", InitClass.todoLink.Select(std => string.Format("'{0}'", std))));
+                                }));
+
+                                //보낸 사람이 boss가 아니거나 더 이상 보낼 사람 없으면 종료.
+                                if (!InitClass.boss.Equals(InitClass.sender) || InitClass.todoLink.Count == 0)
+                                    break;
+
+                                Dictionary<string, string> addressDict = Database.GetAddress(InitClass.todoLink);
+                                foreach (string todo in InitClass.todoLink)
+                                {
+                                    if (!addressDict.ContainsKey(todo))
+                                    {
+                                        this.Invoke(new MethodInvoker(delegate ()
+                                        {
+                                            MessageBox.Show(todo + "연결 실패");
+                                        }));
+                                        continue;
+                                    }
+
+                                    try
+                                    {
+                                        TcpClient todoClient = new TcpClient();
+                                        todoClient.Connect(addressDict[todo], 7777);
+                                        clientDict.Add(todo, todoClient);
+
+                                        Init init = InitClass;
+                                        init.sender = stdNum;
+                                        init.todoLink =new List<string> ();
+
+                                        Packet.Serialize(init).CopyTo(this.sendBuffer, 0);
+                                        this.Send(networkStream);
+
+                                        this.Invoke(new MethodInvoker(delegate ()
+                                        {
+                                            MessageBox.Show(todo + "연결 요청 성공");
+                                        }));
+                                    }
+                                    catch
+                                    {
+                                        this.Invoke(new MethodInvoker(delegate ()
+                                        {
+                                            MessageBox.Show(todo + " 연결 실패");
+                                        }));
+                                        continue;
+                                    }
+                                }
+                                break;
+                            }
+                    }
+                }
             }
-            catch
+            catch (Exception e)
             {
+                Console.WriteLine("Error occurred for client " + tcpClient.Client.RemoteEndPoint + ": " + e.Message);
                 ClientOn = false;
                 networkStream = null;
             }
-
-            Packet packet = (Packet)Packet.Deserialize(readBuffer);
-
-            this.Invoke(new MethodInvoker(delegate ()
+            finally
             {
-                MessageBox.Show("연결 시도 ClientOn : " + ClientOn);
-            }));
-
-            if (ClientOn)
-            {
-                switch ((int)packet.Type)
-                {
-                    case (int)PacketType.INIT:
-                        {
-                            InitClass = (Init)Packet.Deserialize(readBuffer);
-                            clientDict.Add(InitClass.sender, tcpClient);
-                            networkStreamDict.Add(InitClass.sender, networkStream);
-
-                            this.Invoke(new MethodInvoker(delegate ()
-                            {
-                                MessageBox.Show("연결 성공!\r\n 주최자 : " + InitClass.boss
-                                    + "\r\n 연결된 사람 : " + InitClass.sender
-                                    + "\r\n todo : " + string.Join(",", InitClass.todoLink.Select(std => string.Format("'{0}'", std))));
-                            }));
-
-                            //보낸 사람이 boss가 아니거나 더 이상 보낼 사람 없으면 종료.
-                            if (!InitClass.boss.Equals(InitClass.sender) || InitClass.todoLink.Count == 0)
-                                break;
-
-                            Dictionary<string, string> addressDict = Database.GetAddress(InitClass.todoLink);
-                            foreach (string todo in InitClass.todoLink)
-                            {
-                                if (!addressDict.ContainsKey(todo))
-                                {
-                                    this.Invoke(new MethodInvoker(delegate ()
-                                    {
-                                        MessageBox.Show(todo + "연결 실패");
-                                    }));
-                                    continue;
-                                }
-
-                                try
-                                {
-                                    TcpClient todoClient = new TcpClient();
-                                    todoClient.Connect(addressDict[todo], 7777);
-                                    clientDict.Add(todo, todoClient);
-                                    networkStreamDict.Add(todo, todoClient.GetStream());
-
-                                    Init Init = new Init()
-                                    {
-                                        Type = (int)PacketType.INIT,
-                                        boss = InitClass.boss,
-                                        members = InitClass.members,
-                                        todoLink = { },
-                                        sender = stdNum
-                                    };
-
-                                    this.Invoke(new MethodInvoker(delegate ()
-                                    {
-                                        MessageBox.Show(todo + "연결 요청 성공");
-                                    }));
-                                    Packet.Serialize(Init).CopyTo(this.sendBuffer, 0);
-                                    this.Send(networkStream);
-                                }
-                                catch
-                                {
-                                    this.Invoke(new MethodInvoker(delegate ()
-                                    {
-                                        MessageBox.Show(todo + " 연결 실패");
-                                    }));
-                                    continue;
-                                }
-                            }
-                            break;
-                        }
-                }
+                // Close the client connection and remove it from the connected clients list
+                tcpClient.Close();
+                Console.WriteLine("Client disconnected: " + tcpClient.Client.RemoteEndPoint);
             }
 
         }
 
-        public void ParticipateSharing()
+        public async Task ParticipateSharing()
         {
-            bool finish = false;
             Database.SetAddress();
             listener = new TcpListener(IPAddress.Any, 7777);
             listener.Start();
 
-            while (finish!=true)
+            while (true)
             {
-                TcpClient client = listener.AcceptTcpClient(); //주최자 접속
+                TcpClient client = await listener.AcceptTcpClientAsync(); //주최자 접속
                 if (client.Connected)
                 {
-                    Thread clientThread = new Thread(() => HandleClient(client));
-                    clientThread.Start();
+                    Task.Run(() => HandleClient(client));
                 }
             }
 
@@ -497,8 +486,7 @@ namespace KSCS
         public void btnShare_Click(object sender, EventArgs e)
         {
             MessageBox.Show("시작");
-            thread = new Thread(new ThreadStart(ParticipateSharing));
-            thread.Start();
+            Task.Run(() => ParticipateSharing());
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -506,15 +494,11 @@ namespace KSCS
             if (listener != null)
             {
                 this.listener.Stop();
-                foreach (KeyValuePair<string, NetworkStream> keyValue in networkStreamDict)
-                    keyValue.Value.Close();
                 this.thread.Abort();
             }
             else if (clientDict.Count != 0)
             {
                 foreach (KeyValuePair<string, TcpClient> keyValue in clientDict)
-                    keyValue.Value.Close();
-                foreach (KeyValuePair<string, NetworkStream> keyValue in networkStreamDict)
                     keyValue.Value.Close();
             }
             Database.DeleteAddress();

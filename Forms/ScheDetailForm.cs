@@ -51,6 +51,11 @@ namespace KSCS
             addBtn.Text = "Add";
 
             deleteBtn.Visible = false;
+
+            flpMember.Controls.Clear();
+            flpMember.Controls.Add(txtMember);
+            btnMemSet.Visible = true;
+            flpMember.Visible = false;
         }
 
         private DateTime GetStartDateTime()
@@ -132,7 +137,7 @@ namespace KSCS
                     {
                         for(int i = 0; i < schedule.members.Count; i++)
                         {
-                            Database.UpdateMemberSchedule(schedule,schedule.members[0]);
+                            Database.UpdateMemberSchedule(schedule,schedule.members[i]);
                         }
                     }
 
@@ -163,6 +168,7 @@ namespace KSCS
                             }
                         }
                     }
+
                     // 리스트 수정
                     TimeSpan duration = schedule.endDate - schedule.startDate;
                     for (int i = 0; i <= duration.Days; i++)
@@ -207,10 +213,23 @@ namespace KSCS
         {
             if (selectedScheduleIndex != -1)
             {
+                Schedule selectedSchedule = monthScheduleList[UserDate.static_date - 1][selectedScheduleIndex]; //클릭한 날짜의 스케줄
+                
+                //공유 멤버가 존재하는 경우
+                if (selectedSchedule.members.Count > 0)
+                {
+                    for (int i = 0; i < selectedSchedule.members.Count; i++)
+                    {
+                        MessageBox.Show(selectedSchedule.members[i].ToString());
+                        Database.DeleteMemberSchedule(selectedScheduleIndex, selectedSchedule.members[i]);
+                        //Database.DeleteMember(selectedScheduleIndex, selectedSchedule.members[0]);
+                    }
+                }
+
                 Database.DeleteSchedule(selectedScheduleIndex);
 
                 //리스트 삭제
-                Schedule selectedSchedule = monthScheduleList[UserDate.static_date - 1][selectedScheduleIndex]; //클릭한 날짜의 스케줄
+                //Schedule selectedSchedule = monthScheduleList[UserDate.static_date - 1][selectedScheduleIndex]; //클릭한 날짜의 스케줄
                 TimeSpan duration = selectedSchedule.endDate - selectedSchedule.startDate; //클릭한 날짜의 스케줄의 기간
                 for (int i = 0; i <= duration.Days; i++)
                 {

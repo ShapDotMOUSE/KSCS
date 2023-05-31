@@ -25,9 +25,9 @@ namespace KSCS
             InitializeComponent();
         }
 
-        private Dictionary<string, NetworkStream> networkStreamDict;
-        private TcpListener listener;
-        private Dictionary<string, TcpClient> clientDict;
+        private Dictionary<string, NetworkStream> networkStreamDict =new Dictionary<string, NetworkStream>();
+        private TcpListener listener=null;
+        private Dictionary<string, TcpClient> clientDict=new Dictionary<string, TcpClient>();
 
 
         private byte[] sendBuffer = new byte[1024 * 4];
@@ -310,35 +310,33 @@ namespace KSCS
         public void CreateSharing(object sender, EventArgs e)
         {
             MessageBox.Show("실시간 일정 공유 생성");
-            List<string> testAddress = new List<string>
+            List<string> testStdnums = new List<string>
                 {
                     "2019203055",
                     "2021203078",
                     "2019203082",
                     "2021203043"
                 };
-            List<string> testTodo = testAddress.ToList();
+            List<string> testTodo = testStdnums.ToList();
 
             testTodo.Remove(stdNum);
 
-            clientDict = new Dictionary<string, TcpClient>();
-            networkStreamDict = new Dictionary<string, NetworkStream>();
+            Dictionary<string, string> addressDict = Database.GetAddress(testStdnums);
 
-            Dictionary<string, string> addressDict = Database.GetAddress(testAddress);
-
-            foreach (string studentNum in addressDict.Keys)
+            foreach (string studentNum in testStdnums)
             {
+                if (!addressDict.ContainsKey(studentNum))
+                {
+                    this.Invoke(new MethodInvoker(delegate ()
+                    {
+                        MessageBox.Show(studentNum + "에게 연결 할 수 없습니다.");
+                    }));
+                    continue;
+                }
                 try
                 {
                     TcpClient client = new TcpClient();
 
-                    if (string.IsNullOrEmpty(addressDict[studentNum]))
-                    {
-                        this.Invoke(new MethodInvoker(delegate ()
-                        {
-                            MessageBox.Show(studentNum + "에게 연결 할 수 없습니다.");
-                        }));
-                    }
                     //각 사용자 들에게 접속 시도
                     client.Connect(addressDict[studentNum], 7777);
                     NetworkStream networkStream = client.GetStream();
@@ -354,10 +352,10 @@ namespace KSCS
                     Init Init = new Init
                     {
                         Type = (int)PacketType.INIT,
-                        members = testAddress,
+                        members = testStdnums,
                         todoLink = testTodo,
                         boss = stdNum,
-                        sender=stdNum
+                        sender = stdNum
                     };
 
                     this.Invoke(new MethodInvoker(delegate ()
@@ -421,17 +419,18 @@ namespace KSCS
                                 }));
                                 foreach (string todo in InitClass.todoLink)
                                 {
+                                    if (!addressDict.ContainsKey(todo))
+                                    {
+                                        this.Invoke(new MethodInvoker(delegate ()
+                                        {
+                                            MessageBox.Show(todo + "연결 실패");
+                                        }));
+                                        continue;
+                                    }
+
                                     try
                                     {
                                         TcpClient todoClient = new TcpClient();
-                                        if (!addressDict.ContainsKey(todo))
-                                        {
-                                            this.Invoke(new MethodInvoker(delegate ()
-                                            {
-                                                MessageBox.Show(todo + "연결 실패");
-                                            }));
-                                            continue;
-                                        }
                                         todoClient.Connect(addressDict[todo], 7777);
                                         clientDict.Add(todo, todoClient);
                                         networkStreamDict.Add(todo, todoClient.GetStream());

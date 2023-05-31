@@ -136,7 +136,7 @@ namespace KSCS
             for (int i = 0; i < schedule.members.Count; i++)
             {
                 Schedule sharedSchedule = new Schedule(schedule.title, schedule.content, schedule.place, schedule.category, schedule.startDate, schedule.endDate, schedule.members);
-                CreateScheudle(sharedSchedule,schedule.members[i]);
+                CreateScheudle(sharedSchedule,schedule.members[i]); // 멤버들도 스케줄 추가
 
                 string insertQuery = string.Format("INSERT INTO Members(schedule_id,student_id,main_schedule_id) VALUES ({0},'{1}',{2});", sharedSchedule.id, schedule.members[i], schedule.id);
                 MySqlCommand cmd = new MySqlCommand(insertQuery, getDBConnection());
@@ -148,17 +148,36 @@ namespace KSCS
             if (cmd2.ExecuteNonQuery() != 1) MessageBox.Show("Failed to insert Data.");
         }
 
-        public static void UpdateSchedule(Schedule schedule, int index)
+        public static void UpdateSchedule(Schedule schedule, string studentId)
         {
             string updateQuery = string.Format("UPDATE Schedule SET title='{0}', content='{1}', place='{2}', category_id=(SELECT id FROM Category WHERE category_name='{3}' AND student_id='{4}'),startDate='{5}', endDate='{6}' WHERE id={7};",
                     schedule.title,
                     schedule.content,
                     schedule.place,
                     schedule.category,
-                    stdNum,
+                    studentId,
                     schedule.startDate.ToString("yyyy-MM-dd, HH:mm"),
                     schedule.endDate.ToString("yyyy-MM-dd, HH:mm"),
-                    monthScheduleList[UserDate.static_date - 1][index].id
+                    schedule.id
+                    //monthScheduleList[UserDate.static_date - 1][index].id
+                    );
+            MySqlCommand cmd = new MySqlCommand(updateQuery, getDBConnection());
+            if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Update Data.");
+        }
+
+        //멤버 스케줄 수정
+        public static void UpdateMemberSchedule(Schedule schedule, string studentId)
+        {
+            string updateQuery = string.Format("UPDATE Schedule SET title='{0}', content='{1}', place='{2}', category_id=(SELECT id FROM Category WHERE category_name='{3}' AND student_id='{4}'),startDate='{5}', endDate='{6}' WHERE id IN (SELECT schedule_id FROM Members WHERE student_id='{4}' AND main_schedule_id IN (SELECT main_schedule_id FROM Members WHERE schedule_id={7}));",
+                    schedule.title,
+                    schedule.content,
+                    schedule.place,
+                    schedule.category,
+                    studentId,
+                    schedule.startDate.ToString("yyyy-MM-dd, HH:mm"),
+                    schedule.endDate.ToString("yyyy-MM-dd, HH:mm"),
+                    schedule.id
+                    //monthScheduleList[UserDate.static_date - 1][index].id
                     );
             MySqlCommand cmd = new MySqlCommand(updateQuery, getDBConnection());
             if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Update Data.");

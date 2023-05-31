@@ -102,7 +102,7 @@ namespace KSCS
             {
                 Database.CreateScheudle(schedule,stdNum); //수정
 
-                //추가(공유 멤버가 존재하는 경우)
+                //공유 멤버가 존재하는 경우
                 if (schedule.members.Count != 0)
                 {
                     Database.CreateMember(schedule);
@@ -123,11 +123,21 @@ namespace KSCS
             {
                 if (selectedScheduleIndex != -1)
                 {
-                    Database.UpdateSchedule(schedule, selectedScheduleIndex);
+                    schedule.id = monthScheduleList[UserDate.static_date - 1][selectedScheduleIndex].id;
+                    Database.UpdateSchedule(schedule,stdNum);
+
+                    //공유 멤버가 존재하는 경우
+                    if (schedule.members.Count > 0)
+                    {
+                        for(int i = 0; i < schedule.members.Count; i++)
+                        {
+                            Database.UpdateMemberSchedule(schedule,schedule.members[0]);
+                        }
+                    }
 
                     /* 리스트 수정 로직*/
                     //수정 후, id값 가져오기
-                    schedule.id = monthScheduleList[UserDate.static_date - 1][selectedScheduleIndex].id;
+                    //schedule.id = monthScheduleList[UserDate.static_date - 1][selectedScheduleIndex].id;
 
                     //startDate 혹은 endDate가 날짜가 바뀐 경우, 해당 일정 "삭제"
                     Schedule selectedSchedule = monthScheduleList[UserDate.static_date - 1][selectedScheduleIndex]; //클릭한 날짜의 원래 스케줄
@@ -258,7 +268,6 @@ namespace KSCS
             //추가(공유일정인 경우, member 로드)
             if (monthScheduleList[UserDate.static_date - 1][index].members.Count > 0)
             {
-                MessageBox.Show(monthScheduleList[UserDate.static_date - 1][index].members.Count.ToString());
                 LoadMembers(monthScheduleList[UserDate.static_date - 1][index]);
             }
         }

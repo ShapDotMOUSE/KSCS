@@ -12,14 +12,16 @@ namespace KSCS.UserControls.MainForm
 {
     public partial class MemberAdd : UserControl
     {
+        public event EventHandler AddEvent; //추가
         public MemberAdd()
         {
             InitializeComponent();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void btnClose_Click(object sender, EventArgs e)
         {
-            ((FlowLayoutPanel)this.Parent).Controls.Remove(this);
+            AddEvent?.Invoke(this, EventArgs.Empty); //이벤트 핸들러 발생
+            //((FlowLayoutPanel)this.Parent).Controls.Remove(this);
         }
     }
 }

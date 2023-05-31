@@ -51,6 +51,11 @@ namespace KSCS
             addBtn.Text = "Add";
 
             deleteBtn.Visible = false;
+
+            flpMember.Controls.Clear();
+            flpMember.Controls.Add(txtMember);
+            btnMemSet.Visible = true;
+            flpMember.Visible = false;
         }
 
         private DateTime GetStartDateTime()
@@ -89,10 +94,26 @@ namespace KSCS
                 return;
             }
 
-            Schedule schedule = new Schedule(tbTitle.Text, tbMemo.Text, tbPlace.Text, cbCategory.Text, GetStartDateTime(), GetEndDateTime());
+            //추가
+            List<string> members = new List<string>();
+            foreach (MemberAdd memberAdd in flpMember.Controls.OfType<MemberAdd>())
+            {
+                members.Add(memberAdd.txtMember.Text);
+            }
+            
+
+            Schedule schedule = new Schedule(tbTitle.Text, tbMemo.Text, tbPlace.Text, cbCategory.Text, GetStartDateTime(), GetEndDateTime(),members);
             if (addBtn.Text == "Add")
             {
-                Database.CreateScheudle(schedule);
+                //내 일정 추가
+                Database.CreateScheudle(schedule,stdNum); 
+
+                //공유 멤버가 존재하는 경우
+                if (schedule.members.Count != 0)
+                {
+                    Database.CreateMember(schedule);
+                }
+
                 //스케줄 리스트 추가
                 TimeSpan duration = schedule.endDate - schedule.startDate;
                 for (int i = 0; i <= duration.Days; i++)
@@ -108,12 +129,21 @@ namespace KSCS
             {
                 if (selectedScheduleIndex != -1)
                 {
-                    Database.UpdateSchedule(schedule, selectedScheduleIndex);
+                    //id값 가져오기
+                    schedule.id = monthScheduleList[UserDate.static_date - 1][selectedScheduleIndex].id;
+                    //내 일정 수정
+                    Database.UpdateSchedule(schedule,stdNum);
+
+                    //공유 멤버가 존재하는 경우
+                    if (schedule.members.Count > 0)
+                    {
+                        for(int i = 0; i < schedule.members.Count; i++)
+                        {
+                            Database.UpdateMemberSchedule(schedule,schedule.members[i]);
+                        }
+                    }
 
                     /* 리스트 수정 로직*/
-                    //수정 후, id값 가져오기
-                    schedule.id = monthScheduleList[UserDate.static_date - 1][selectedScheduleIndex].id;
-
                     //startDate 혹은 endDate가 날짜가 바뀐 경우, 해당 일정 "삭제"
                     Schedule selectedSchedule = monthScheduleList[UserDate.static_date - 1][selectedScheduleIndex]; //클릭한 날짜의 원래 스케줄
                     if ((selectedSchedule.startDate - schedule.startDate).Days < 0)
@@ -140,6 +170,7 @@ namespace KSCS
                             }
                         }
                     }
+
                     // 리스트 수정
                     TimeSpan duration = schedule.endDate - schedule.startDate;
                     for (int i = 0; i <= duration.Days; i++)
@@ -184,10 +215,22 @@ namespace KSCS
         {
             if (selectedScheduleIndex != -1)
             {
-                Database.DeleteSchedule(selectedScheduleIndex);
+                Schedule selectedSchedule = monthScheduleList[UserDate.static_date - 1][selectedScheduleIndex]; //클릭한 날짜의 스케줄
+                
+                //공유 멤버가 존재하는 경우
+                if (selectedSchedule.members.Count > 0)
+                {
+                    for (int i = 0; i < selectedSchedule.members.Count; i++)
+                    {
+                        Database.DeleteMemberSchedule(selectedScheduleIndex, selectedSchedule.members[i]);
+                        //Database.DeleteMember(selectedScheduleIndex, selectedSchedule.members[0]);
+                    }
+                }
+
+                //내 일정 삭제
+                Database.DeleteSchedule(selectedScheduleIndex); 
 
                 //리스트 삭제
-                Schedule selectedSchedule = monthScheduleList[UserDate.static_date - 1][selectedScheduleIndex]; //클릭한 날짜의 스케줄
                 TimeSpan duration = selectedSchedule.endDate - selectedSchedule.startDate; //클릭한 날짜의 스케줄의 기간
                 for (int i = 0; i <= duration.Days; i++)
                 {
@@ -206,6 +249,7 @@ namespace KSCS
                 ClearAllDelegatesOfTheEventHandler(); //이벤트 핸들러 초기화
             }
         }
+
 
         private void btnMemSet_Click(object sender, EventArgs e)
         {
@@ -235,6 +279,15 @@ namespace KSCS
             addBtn.Text = "Modify";
 
             deleteBtn.Visible = true; // 스케줄 클릭하고 나서야 활성화
+
+            btnMemSet.Visible = true;
+            flpMember.Visible = false;
+
+            //추가(공유일정인 경우, member 로드)
+            if (monthScheduleList[UserDate.static_date - 1][index].members.Count > 0)
+            {
+                LoadMembers(monthScheduleList[UserDate.static_date - 1][index]);
+            }
         }
 
         private void btnAddSchedule_Click(object sender, EventArgs e)
@@ -318,9 +371,10 @@ namespace KSCS
                     Size size = TextRenderer.MeasureText(memberAdd.txtMember.Text, memberAdd.txtMember.Font);
                     memberAdd.txtMember.ClientSize = new Size(size.Width, size.Height);
                     memberAdd.ClientSize = new Size(size.Width + 25, 18);
-                    memberAdd.pictureBox1.ClientSize = new Size(10, 9);
+                    memberAdd.btnClose.ClientSize = new Size(10, 9);
                     txtMember.Text = "";
                     flpMember.Controls.Add(memberAdd);
+                    memberAdd.AddEvent += new EventHandler(DeleteMemberEvent); //삭제 이벤트 핸들러 추가
                 }
             }
             else
@@ -330,6 +384,30 @@ namespace KSCS
                     txtMember.Text = "";
                 }
             }
+        }
+
+        private void DeleteMemberEvent(object sender, EventArgs e)
+        {
+            flpMember.Controls.Remove((Control)sender);
+        }
+
+        //추가
+        private void LoadMembers(Schedule schedule)
+        {
+            btnMemSet.Visible = false;
+            flpMember.Visible = true;
+            flpMember.Controls.Clear(); //flpMember 컨트롤 초기화
+            foreach ( String studentId in schedule.members)
+            {
+                MemberAdd memberAdd = new MemberAdd();
+                memberAdd.txtMember.Text = studentId;
+                Size size = TextRenderer.MeasureText(memberAdd.txtMember.Text, memberAdd.txtMember.Font);
+                memberAdd.txtMember.ClientSize = new Size(size.Width, size.Height);
+                memberAdd.ClientSize = new Size(size.Width + 5, 18);
+                flpMember.Controls.Add(memberAdd);
+                memberAdd.btnClose.Visible = false;
+            }
+            this.Refresh();
         }
     }
 }

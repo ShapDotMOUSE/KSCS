@@ -16,10 +16,12 @@ namespace KSCS
         public string category { get; set; }
         public DateTime startDate { get; set; }
         public DateTime endDate { get; set; }
+        public List<string> members { get; set; } //추가
 
         public Schedule() { }
         
-        public Schedule(string title, string content, string place,string category, DateTime startDate, DateTime endDate)
+        //members 추가
+        public Schedule(string title, string content, string place,string category, DateTime startDate, DateTime endDate,List<string> members)
         {
             this.title = title;
             this.content = content;
@@ -27,6 +29,8 @@ namespace KSCS
             this.category = category;
             this.startDate = startDate;
             this.endDate = endDate;
+            this.members = members; //추간
+
         }
 
         public static Schedule KLAS_Schedule(string title,string type, string subjNm, string endDate)

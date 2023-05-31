@@ -21,6 +21,7 @@ namespace KSCS.UserControls.MainForm
         private void btnClose_Click(object sender, EventArgs e)
         {
             AddEvent?.Invoke(this, EventArgs.Empty); //이벤트 핸들러 발생
+            //((FlowLayoutPanel)this.Parent).Controls.Remove(this);
         }
     }
 }

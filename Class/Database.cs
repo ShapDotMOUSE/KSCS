@@ -1,5 +1,6 @@
 ﻿using KSCS.Class;
 using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Crypto;
 using Org.BouncyCastle.Utilities.Collections;
 using System;
 using System.Collections;
@@ -7,12 +8,15 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using static KSCS.Class.KSCS_static;
 using static System.ComponentModel.Design.ObjectSelectorEditor;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace KSCS
 {
@@ -49,6 +53,13 @@ namespace KSCS
                         "('기타', null, null, '{0}')", stdNum);
                 if (cmd.ExecuteNonQuery() != 3) MessageBox.Show("Failed to insert Data.");
 
+                cmd.CommandText = string.Format("INSERT INTO Category(category_name, parent_category_id, color, student_id) VALUES" +
+                       "('학사일정', {1}, null, '{0}')," +
+                       "('과제', {1}, null, '{0}')," +
+                       "('퀴즈', {1}, null, '{0}')" +
+                       "('온라인 강의', {1}, null, '{0}')", stdNum,1);
+                if (cmd.ExecuteNonQuery() != 3) MessageBox.Show("Failed to insert Data.");
+
                 cmd.CommandText = string.Format("INSERT INTO StudentTab(tab_name, student_id) VALUES " +
                         "('All','{0}')," +
                         "('Tab1','{0}')," +
@@ -61,6 +72,47 @@ namespace KSCS
             else table.Close();
         }
 
+
+        //아이피 얻기
+        public static Dictionary<string,string> GetAddress(List<string> stdNumList)
+        {
+            Dictionary<string, string> addressList = new Dictionary<string, string>();
+            string selectQuery = string.Format("SELECT * FROM Student WHERE id IN ({0})", string.Join(",", stdNumList.Select(id => string.Format("'{0}'", id))));
+            MySqlCommand cmd = new MySqlCommand(selectQuery, getDBConnection());
+            MySqlDataReader table = cmd.ExecuteReader();
+            while (table.Read())
+            {
+                if (!string.IsNullOrEmpty(table["address"].ToString()))
+                    addressList[table["id"].ToString()]= table["address"].ToString();
+            }
+            table.Close();
+            return addressList;
+        }
+
+        public static void SetAddress()
+        {
+            string localIP = string.Empty;
+            IPHostEntry host = Dns.GetHostEntry(Dns.GetHostName());
+
+            foreach (IPAddress ip in host.AddressList)
+            {
+                if (ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                {
+                    localIP = ip.ToString();
+                    break;
+                }
+            }
+            string updateQuery = string.Format("UPDATE Student SET address='{0}' WHERE id='{1}'",localIP, stdNum);
+            MySqlCommand cmd = new MySqlCommand(updateQuery, getDBConnection());
+            if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to insert Data.");
+        }   
+
+        public static void DeleteAddress()
+        {
+            string updateQuery = string.Format("UPDATE Student SET address='' WHERE id='{0}'", stdNum);
+            MySqlCommand cmd = new MySqlCommand(updateQuery, getDBConnection());
+            if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to insert Data.");
+        }
 
         //스케줄 관련======================================================================
         public static void ReadScheduleList() //이제 사용 X
@@ -328,23 +380,39 @@ namespace KSCS
         public static void ReadCategoryList()
         {
             //대분류 소분류 한번에
-            string selectQuery = string.Format("SELECT parent.category_name AS parent_category_name, category.category_name AS category_name, category.color AS color FROM KSCS.Category AS parent LEFT OUTER JOIN KSCS.Category AS category on category.parent_category_id=parent.id WHERE category.student_id='{0}';", stdNum);
+            string selectQuery = string.Format("SELECT parent.category_name AS parent_category_name, category.category_name AS category_name, category.color AS color FROM KSCS.Category AS parent RIGHT OUTER JOIN KSCS.Category AS category on category.parent_category_id=parent.id WHERE category.student_id='{0}';", stdNum);
             MySqlCommand cmd = new MySqlCommand(selectQuery, getDBConnection());
             MySqlDataReader table = cmd.ExecuteReader();
             while (table.Read())
             {
-                category.AddSubdivision(table["parent_category_name"].ToString(), table["category_name"].ToString());
-                category.SetColor(table["category_name"].ToString(), Color.FromArgb(int.Parse(table["color"].ToString())));
+                if (!string.IsNullOrEmpty(table["parent_category_name"].ToString()))
+                {
+                    category.AddSubdivision(table["parent_category_name"].ToString(), table["category_name"].ToString());
+                    category.SetColor(table["category_name"].ToString(), Color.FromArgb(int.Parse(table["color"].ToString())));
+                }
+                else
+                {
+                    category.AddParent(table["category_name"].ToString());
+                }
             }
 
             table.Close();
         }
 
-        public static void CreateSubCategory()
+        public static void CreateSubCategory(string Parent, string Sub)
         {
-            string insertQuery = string.Format("INSERT INTO () VALUES ();");
+            string insertQuery = string.Format("INSERT INTO Category(category_name, parent_category_id,color,student_id) VALUES (" +
+                "'{0}'," +
+                "(SELECT id FROM (SELECT id FROM Category WHERE category_name='{1}' and student_id={2}) A)," +
+                "-16776961, '{2}');", Sub,Parent,stdNum);
             MySqlCommand cmd = new MySqlCommand(insertQuery, connection);
             if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to insert Data.");
+
+            string insertQueryTab = string.Format("INSERT INTO TabCategory(tab_id,category_id) VALUES (" +
+                    "(SELECT id FROM StudentTab WHERE tab_name='All' AND student_id={0})," +
+                    "(SELECT id FROM Category WHERE student_id={0} AND category_name='{1}'))", stdNum, Sub);
+            MySqlCommand cmd2 = new MySqlCommand(insertQueryTab, connection);
+            if (cmd2.ExecuteNonQuery() != 1) MessageBox.Show("Failed to insert Data.");
             //cmd.CommandText = "SELECT LAST_INSERT_ID() AS id";
             //MySqlDataReader table = cmd.ExecuteReader();
             //table.Read();
@@ -352,9 +420,33 @@ namespace KSCS
             //table.Close();
         }
 
-        public static void UpdateSubCategory()
+        public static void UpdateSubCategory(string New, string old)
         {
-            string updateQuery = string.Format("UPDATE Schedule SET ");
+            string updateQuery = string.Format("UPDATE Category SET category_name='{0}'" +
+                "WHERE category_name='{1}' AND student_id={2}", New, old, stdNum);
+            MySqlCommand cmd = new MySqlCommand(updateQuery, getDBConnection());
+            if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Update Data.");
+        }
+
+        public static void UpdateParentCategoryOfSubCategory(string NewMain, string Sub)
+        {
+            //KEY가 아닌 값을 이용한 업데이트를 위한 일시적인 안전모드 해제
+            string setQuery = string.Format("set sql_safe_updates=0");
+            MySqlCommand cmd2 = new MySqlCommand(setQuery, getDBConnection());
+            cmd2.ExecuteNonQuery();
+
+            string updateQuery = string.Format("UPDATE Category SET parent_category_id=" +
+                "(SELECT id FROM " +
+                "(SELECT id FROM Category Where category_name='{0}' AND student_id={2}) A )" +
+                "WHERE category_name='{1}' AND student_id={2}", NewMain, Sub, stdNum);
+            MySqlCommand cmd = new MySqlCommand(updateQuery, getDBConnection());
+            if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Update Data.");
+        }
+
+        public static void UpdateSubCategoryColor(string Sub, Color color)
+        {
+            string updateQuery = string.Format("UPDATE Category SET color=" +
+                "{0} WHERE category_name='{1}' AND student_id={2}", color.ToArgb(), Sub, stdNum);
             MySqlCommand cmd = new MySqlCommand(updateQuery, getDBConnection());
             if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Update Data.");
         }

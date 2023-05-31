@@ -104,11 +104,29 @@
     <Compile Include="Forms\AddCategoryForm.Designer.cs">
       <DependentUpon>AddCategoryForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\LoadingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LoadingForm.Designer.cs">
+      <DependentUpon>LoadingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SharingClickForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SharingClickForm.Designer.cs">
+      <DependentUpon>SharingClickForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\TempCategorySetting.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\TempCategorySetting.Designer.cs">
       <DependentUpon>TempCategorySetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MainForm\UserLabel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\MainForm\UserLabel.Designer.cs">
+      <DependentUpon>UserLabel.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\MainForm\UserTapButton.cs">
       <SubType>UserControl</SubType>
@@ -189,8 +207,17 @@
     <EmbeddedResource Include="Forms\AddCategoryForm.resx">
       <DependentUpon>AddCategoryForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LoadingForm.resx">
+      <DependentUpon>LoadingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SharingClickForm.resx">
+      <DependentUpon>SharingClickForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\TempCategorySetting.resx">
       <DependentUpon>TempCategorySetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\MainForm\UserLabel.resx">
+      <DependentUpon>UserLabel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\MainForm\UserTapButton.resx">
       <DependentUpon>UserTapButton.cs</DependentUpon>
@@ -315,7 +342,22 @@
     <None Include="Resources\LOGO.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\팡이놀람.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\팡이마술봉.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\팡이신남.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Socket\Socket.csproj">
+      <Project>{dda9c866-b606-41cc-b40e-baade2225b41}</Project>
+      <Name>Socket</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

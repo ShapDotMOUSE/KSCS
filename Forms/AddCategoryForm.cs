@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KSCS.Class;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static KSCS.Class.KSCS_static;
 
 namespace KSCS.Forms
 {
@@ -17,7 +19,84 @@ namespace KSCS.Forms
             InitializeComponent();
         }
 
-        private void guna2Button2_Click(object sender, EventArgs e)
+        string originMain;
+        string originSub;
+        Color originColor;
+        FlowLayoutPanel MainCategory;
+
+        //폼 호출 시 해당 카테고리의 이름과 상위 카테고리의 이름 넘겨받기
+        public AddCategoryForm(FlowLayoutPanel MainCategory, string Main, string Sub)
+        {
+            InitializeComponent();
+            originMain = Main;
+            originSub = Sub;
+            originColor = KSCS_static.category.GetColor(originSub);
+            this.MainCategory = MainCategory;
+        }
+
+        //처음 폼 로드 시 카테고리 정보 세팅
+        private void TempCategorySetting_Load(object sender, EventArgs e)
+        {
+            foreach (string Main in category.Categories.Keys)
+            {
+                cmbMain.Items.Add(Main);
+                if (originMain == Main)
+                {
+                    cmbMain.SelectedItem = Main;
+                }
+            }
+
+            boxColor.FillColor = originColor;
+            txtboxColor.Text = originColor.R.ToString() + "," + originColor.G.ToString() + "," + originColor.B.ToString();
+            txtboxSub.Text = originSub;
+            txtboxSub.MaxLength = 4;
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (originMain != cmbMain.SelectedItem.ToString())
+            {
+                string NewMain = cmbMain.SelectedItem.ToString();
+                //변경 사항 Category에 적용
+                category.ChangeParentOfSub(originMain, NewMain, originSub);
+                //변경 사항 MainForm에 적용
+                UserMainCategory NewParent = MainCategory.Controls[NewMain] as UserMainCategory;
+                UserMainCategory OldParent = MainCategory.Controls[originMain] as UserMainCategory;
+                UserSubCategory OldUc = ((FlowLayoutPanel)((OldParent).Controls["flpSubCategory"]))
+                                        .Controls[originSub] as UserSubCategory;
+                UserSubCategory NewUc = new UserSubCategory();
+                NewUc.SetBasicMode(originSub);
+                NewParent.Controls["flpSubCategory"].Controls.Add(NewUc);
+                OldParent.Controls["flpSubCategory"].Controls.Remove(OldUc);
+
+                Database.UpdateParentCategoryOfSubCategory(NewMain, originSub);
+
+                originMain = NewMain;
+            }
+            if (originSub != txtboxSub.Text)
+            {
+                string NewSub = txtboxSub.Text;
+                //변경 사항 Category에 적용
+                category.ChageSubdivisionName(originMain, originSub, NewSub);
+                FlowLayoutPanel Parent = MainCategory.Controls[originMain].Controls["flpSubCategory"] as FlowLayoutPanel;
+                ((UserSubCategory)Parent.Controls[originSub]).SetBasicMode(NewSub);
+
+                Database.UpdateSubCategory(NewSub, originSub);
+                originSub = NewSub;
+            }
+
+            if(originColor != boxColor.FillColor)
+            {
+                ((UserSubCategory)(MainCategory.Controls[originMain].Controls["flpSubCategory"].Controls[originSub])).SetColor(boxColor.FillColor);
+                KSCS_static.category.SetColor(originSub, boxColor.FillColor);
+                Database.UpdateSubCategoryColor(originSub, boxColor.FillColor);
+            }
+            Close();
+
+        }
+    
+
+    private void guna2Button2_Click(object sender, EventArgs e)
         {
             this.Close();
 
@@ -32,7 +111,10 @@ namespace KSCS.Forms
         {
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
-                guna2TextBox2.FillColor = colorDialog1.Color;
+                boxColor.FillColor = colorDialog1.Color;
+                Color color = colorDialog1.Color;
+                
+                txtboxColor.Text = color.R.ToString() +"," +  color.G.ToString() + "," + color.B.ToString();
             }
         }
     }

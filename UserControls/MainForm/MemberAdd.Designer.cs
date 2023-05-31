@@ -57,10 +57,10 @@
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.Image = global::KSCS.Properties.Resources.free_icon_font_cross_3917759;
-            this.btnClose.Location = new System.Drawing.Point(137, 6);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 6, 4, 4);
+            this.btnClose.Location = new System.Drawing.Point(109, 5);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(24, 24);
+            this.btnClose.Size = new System.Drawing.Size(19, 20);
             this.btnClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnClose.TabIndex = 1;
             this.btnClose.TabStop = false;

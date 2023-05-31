@@ -80,7 +80,15 @@ namespace KSCS
         //카테고리 Color 
         public void SetColor(string Sub,Color color)
         {
-            CategoryColor.Add(Sub, color);
+            if (CategoryColor.ContainsKey(Sub))
+            {
+                CategoryColor[Sub] = color;
+            }
+            else
+            {
+                CategoryColor.Add(Sub, color);
+            }
+           
         }
 
         public Color GetColor(string Sub)
@@ -93,7 +101,14 @@ namespace KSCS
         {
             Tabs = tabs;
         }
-            
+        public void AddParent(string Main)
+        {
+            if (!Categories.ContainsKey(Main))
+            {
+                Categories.Add(Main, new HashSet<string>());
+            }
+        }
+
         //하위 카테고리 추가
         public void AddSubdivision(string Main, string Sub)
         {

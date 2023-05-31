@@ -190,6 +190,22 @@ namespace KSCS
             if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Delete Data.");
         }
 
+        //멤버 스케줄 삭제
+        public static void DeleteMemberSchedule(int index, string studentId)
+        {
+            string deleteQuery = string.Format("DELETE FROM Schedule WHERE id = (SELECT schedule_id FROM Members WHERE student_id='{1}' AND main_schedule_id = (SELECT main_schedule_id FROM Members WHERE schedule_id={0}));", monthScheduleList[UserDate.static_date - 1][index].id,studentId);
+            MySqlCommand cmd = new MySqlCommand(deleteQuery, getDBConnection());
+            if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Delete Data.");
+        }
+
+        //멤버 삭제(오류)
+        public static void DeleteMember(int index, string studentId)
+        {
+            string deleteQuery = string.Format("DELETE FROM Members WHERE main_schedule_id IN (SELECT main_schedule_id FROM Members WHERE schedule_id = {0}) AND student_id = '{1}';", monthScheduleList[UserDate.static_date - 1][index].id, studentId);
+            MySqlCommand cmd = new MySqlCommand(deleteQuery, getDBConnection());
+            if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Delete Data.");
+        }
+
         //tabScheduleList
         public static void ReadTabScheduleList()
         {

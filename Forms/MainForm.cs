@@ -380,91 +380,102 @@ namespace KSCS
 
         public void ParticipateSharing()
         {
+            bool finish = false;
             Database.SetAddress();
             NetworkStream networkStream;
             listener = new TcpListener(IPAddress.Any, 7777);
             listener.Start();
-            TcpClient client = listener.AcceptTcpClient(); //주최자 접속
 
-            if (client.Connected)
+            while (finish!=true)
             {
-                ClientOn = true;
-                networkStream = client.GetStream();
-
-                int nRead = 0;
-
-                try
+                TcpClient client = listener.AcceptTcpClient(); //주최자 접속
+                if (client.Connected)
                 {
-                    nRead = networkStream.Read(readBuffer, 0, 1024 * 4);
-                }
-                catch
-                {
-                    ClientOn = false;
-                    networkStream = null;
-                }
-                Packet packet = (Packet)Packet.Deserialize(readBuffer);
+                    ClientOn = true;
+                    networkStream = client.GetStream();
 
-                if (ClientOn)
-                {
-                    switch ((int)packet.Type)
+                    int nRead = 0;
+
+                    try
                     {
-                        case (int)PacketType.INIT:
-                            {
-                                InitClass = (Init)Packet.Deserialize(readBuffer);
-                                clientDict.Add(InitClass.sender, client);
-                                networkStreamDict.Add(InitClass.sender, networkStream);
-                                Dictionary<string, string> addressDict = Database.GetAddress(InitClass.members);
-                                this.Invoke(new MethodInvoker(delegate ()
+                        nRead = networkStream.Read(readBuffer, 0, 1024 * 4);
+                    }
+                    catch
+                    {
+                        ClientOn = false;
+                        networkStream = null;
+                    }
+                    Packet packet = (Packet)Packet.Deserialize(readBuffer);
+
+                    if (ClientOn)
+                    {
+                        switch ((int)packet.Type)
+                        {
+                            case (int)PacketType.INIT:
                                 {
-                                    MessageBox.Show("연결 성공!\r\n 주최자 : " + InitClass.boss
-                                        + "\r\n 연결된 사람 : " + InitClass.sender
-                                        + "\r\n todo : " + string.Join(",", InitClass.todoLink.Select(std => string.Format("'{0}'", std))));
-                                }));
-                                foreach (string todo in InitClass.todoLink)
-                                {
-                                    if (!addressDict.ContainsKey(todo))
-                                    {
-                                        this.Invoke(new MethodInvoker(delegate ()
-                                        {
-                                            MessageBox.Show(todo + "연결 실패");
-                                        }));
-                                        continue;
-                                    }
+                                    InitClass = (Init)Packet.Deserialize(readBuffer);
+                                    clientDict.Add(InitClass.sender, client);
+                                    networkStreamDict.Add(InitClass.sender, networkStream);
 
-                                    try
+                                    //todoLink가 비게 되면 종료
+                                    if (InitClass.todoLink.Count == 0)
                                     {
-                                        TcpClient todoClient = new TcpClient();
-                                        todoClient.Connect(addressDict[todo], 7777);
-                                        clientDict.Add(todo, todoClient);
-                                        networkStreamDict.Add(todo, todoClient.GetStream());
-
-                                        Init Init = new Init()
-                                        {
-                                            Type = (int)PacketType.INIT,
-                                            boss = InitClass.boss,
-                                            members = InitClass.members,
-                                            todoLink = { },
-                                            sender = stdNum
-                                        };
-
-                                        this.Invoke(new MethodInvoker(delegate ()
-                                        {
-                                            MessageBox.Show(todo + "연결 요청 성공");
-                                        }));
-                                        Packet.Serialize(Init).CopyTo(this.sendBuffer, 0);
-                                        this.Send(networkStream);
+                                        finish = true;
+                                        break;
                                     }
-                                    catch
+                                    Dictionary<string, string> addressDict = Database.GetAddress(InitClass.members);
+                                    this.Invoke(new MethodInvoker(delegate ()
                                     {
-                                        this.Invoke(new MethodInvoker(delegate ()
+                                        MessageBox.Show("연결 성공!\r\n 주최자 : " + InitClass.boss
+                                            + "\r\n 연결된 사람 : " + InitClass.sender
+                                            + "\r\n todo : " + string.Join(",", InitClass.todoLink.Select(std => string.Format("'{0}'", std))));
+                                    }));
+                                    foreach (string todo in InitClass.todoLink)
+                                    {
+                                        if (!addressDict.ContainsKey(todo))
                                         {
-                                            MessageBox.Show(todo + " 연결 실패");
-                                        }));
-                                        continue;
+                                            this.Invoke(new MethodInvoker(delegate ()
+                                            {
+                                                MessageBox.Show(todo + "연결 실패");
+                                            }));
+                                            continue;
+                                        }
+
+                                        try
+                                        {
+                                            TcpClient todoClient = new TcpClient();
+                                            todoClient.Connect(addressDict[todo], 7777);
+                                            clientDict.Add(todo, todoClient);
+                                            networkStreamDict.Add(todo, todoClient.GetStream());
+
+                                            Init Init = new Init()
+                                            {
+                                                Type = (int)PacketType.INIT,
+                                                boss = InitClass.boss,
+                                                members = InitClass.members,
+                                                todoLink = { },
+                                                sender = stdNum
+                                            };
+
+                                            this.Invoke(new MethodInvoker(delegate ()
+                                            {
+                                                MessageBox.Show(todo + "연결 요청 성공");
+                                            }));
+                                            Packet.Serialize(Init).CopyTo(this.sendBuffer, 0);
+                                            this.Send(networkStream);
+                                        }
+                                        catch
+                                        {
+                                            this.Invoke(new MethodInvoker(delegate ()
+                                            {
+                                                MessageBox.Show(todo + " 연결 실패");
+                                            }));
+                                            continue;
+                                        }
                                     }
+                                    break;
                                 }
-                                break;
-                            }
+                        }
                     }
                 }
             }

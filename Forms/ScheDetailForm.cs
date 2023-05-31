@@ -54,6 +54,7 @@ namespace KSCS
 
             flpMember.Controls.Clear();
             flpMember.Controls.Add(txtMember);
+            txtMember.Text = "";
             btnMemSet.Visible = true;
             flpMember.Visible = false;
         }

@@ -252,10 +252,15 @@ namespace KSCS
 
             deleteBtn.Visible = true; // 스케줄 클릭하고 나서야 활성화
 
+            btnMemSet.Visible = true;
+            flpMember.Visible = false;
+
             //추가(공유일정인 경우, member 로드)
-            btnMemSet.Visible = false;
-            flpMember.Visible = true;
-            LoadMembers(monthScheduleList[UserDate.static_date - 1][index]);
+            if (monthScheduleList[UserDate.static_date - 1][index].members.Count > 0)
+            {
+                MessageBox.Show(monthScheduleList[UserDate.static_date - 1][index].members.Count.ToString());
+                LoadMembers(monthScheduleList[UserDate.static_date - 1][index]);
+            }
         }
 
         private void btnAddSchedule_Click(object sender, EventArgs e)
@@ -362,7 +367,8 @@ namespace KSCS
         //추가
         private void LoadMembers(Schedule schedule)
         {
-            if (schedule.members == null) return; 
+            btnMemSet.Visible = false;
+            flpMember.Visible = true;
             flpMember.Controls.Clear(); //flpMember 컨트롤 초기화
             foreach ( String studentId in schedule.members)
             {
@@ -370,10 +376,9 @@ namespace KSCS
                 memberAdd.txtMember.Text = studentId;
                 Size size = TextRenderer.MeasureText(memberAdd.txtMember.Text, memberAdd.txtMember.Font);
                 memberAdd.txtMember.ClientSize = new Size(size.Width, size.Height);
-                memberAdd.ClientSize = new Size(size.Width + 25, 18);
-                memberAdd.btnClose.ClientSize = new Size(10, 9);
+                memberAdd.ClientSize = new Size(size.Width + 5, 18);
                 flpMember.Controls.Add(memberAdd);
-                memberAdd.AddEvent += new EventHandler(DeleteMemberEvent); //삭제 이벤트 핸들러 추가
+                memberAdd.btnClose.Visible = false;
             }
             this.Refresh();
         }

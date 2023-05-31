@@ -201,7 +201,7 @@ namespace KSCS
             while (table.Read())
             {
                 char delimiter = ','; // 구분자
-                string[] parts = table["concatenated_student_ids"].ToString().Split(new[] { delimiter }, StringSplitOptions.None);
+                string[] parts = table["concatenated_student_ids"].ToString().Split(new[] { delimiter }, StringSplitOptions.RemoveEmptyEntries);
                 List<string> members = new List<string>(parts);
                 members.Remove(stdNum); //자신의 학번은 삭제
 

@@ -35,8 +35,6 @@
             this.closeBtn = new Guna.UI2.WinForms.Guna2ImageButton();
             this.panelLabel = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2ImageButton6 = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.flpMember = new System.Windows.Forms.FlowLayoutPanel();
-            this.txtMember = new System.Windows.Forms.TextBox();
             this.guna2ImageButton5 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.guna2ImageButton4 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.guna2ImageButton3 = new Guna.UI2.WinForms.Guna2ImageButton();
@@ -48,6 +46,8 @@
             this.labelSchedule = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.labelPlace = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.labelMember = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.flpMember = new System.Windows.Forms.FlowLayoutPanel();
+            this.txtMember = new System.Windows.Forms.TextBox();
             this.deleteBtnRadius = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.deleteBtn = new Guna.UI2.WinForms.Guna2Button();
             this.addBtnRadius = new Guna.UI2.WinForms.Guna2Elipse(this.components);
@@ -139,25 +139,6 @@
             this.guna2ImageButton6.PressedState.ImageSize = new System.Drawing.Size(0, 0);
             this.guna2ImageButton6.Size = new System.Drawing.Size(39, 28);
             this.guna2ImageButton6.TabIndex = 37;
-            // 
-            // flpMember
-            // 
-            this.flpMember.AutoScroll = true;
-            this.flpMember.Controls.Add(this.txtMember);
-            this.flpMember.Location = new System.Drawing.Point(339, 449);
-            this.flpMember.Name = "flpMember";
-            this.flpMember.Size = new System.Drawing.Size(284, 75);
-            this.flpMember.TabIndex = 1;
-            this.flpMember.Visible = false;
-            // 
-            // txtMember
-            // 
-            this.txtMember.Location = new System.Drawing.Point(3, 3);
-            this.txtMember.Multiline = true;
-            this.txtMember.Name = "txtMember";
-            this.txtMember.Size = new System.Drawing.Size(278, 33);
-            this.txtMember.TabIndex = 0;
-            this.txtMember.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // guna2ImageButton5
             // 
@@ -289,6 +270,25 @@
             this.labelMember.TabIndex = 27;
             this.labelMember.Text = "Member";
             // 
+            // flpMember
+            // 
+            this.flpMember.AutoScroll = true;
+            this.flpMember.Controls.Add(this.txtMember);
+            this.flpMember.Location = new System.Drawing.Point(339, 449);
+            this.flpMember.Name = "flpMember";
+            this.flpMember.Size = new System.Drawing.Size(284, 75);
+            this.flpMember.TabIndex = 1;
+            this.flpMember.Visible = false;
+            // 
+            // txtMember
+            // 
+            this.txtMember.Location = new System.Drawing.Point(3, 3);
+            this.txtMember.Multiline = true;
+            this.txtMember.Name = "txtMember";
+            this.txtMember.Size = new System.Drawing.Size(278, 33);
+            this.txtMember.TabIndex = 0;
+            this.txtMember.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            // 
             // deleteBtnRadius
             // 
             this.deleteBtnRadius.BorderRadius = 10;
@@ -398,7 +398,7 @@
             this.btnAddSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddSchedule.ForeColor = System.Drawing.Color.Black;
             this.btnAddSchedule.Image = global::KSCS.Properties.Resources.free_icon_font_plus_3917757;
-            this.btnAddSchedule.Location = new System.Drawing.Point(-15, 90);
+            this.btnAddSchedule.Location = new System.Drawing.Point(-15, 94);
             this.btnAddSchedule.Name = "btnAddSchedule";
             this.btnAddSchedule.Size = new System.Drawing.Size(167, 40);
             this.btnAddSchedule.TabIndex = 45;
@@ -622,6 +622,7 @@
             this.Controls.Add(this.panelTop);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ScheDetailForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

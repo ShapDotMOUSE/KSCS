@@ -36,10 +36,11 @@
             // Circle
             // 
             this.Circle.ImageRotate = 0F;
-            this.Circle.Location = new System.Drawing.Point(72, 3);
+            this.Circle.Location = new System.Drawing.Point(16, 10);
+            this.Circle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Circle.Name = "Circle";
             this.Circle.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.Circle.Size = new System.Drawing.Size(41, 46);
+            this.Circle.Size = new System.Drawing.Size(12, 12);
             this.Circle.TabIndex = 0;
             this.Circle.TabStop = false;
             // 
@@ -47,20 +48,22 @@
             // 
             this.txtLabel.AutoSize = true;
             this.txtLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
-            this.txtLabel.Location = new System.Drawing.Point(132, 9);
+            this.txtLabel.Location = new System.Drawing.Point(38, 6);
+            this.txtLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.txtLabel.Name = "txtLabel";
-            this.txtLabel.Size = new System.Drawing.Size(92, 32);
+            this.txtLabel.Size = new System.Drawing.Size(53, 20);
             this.txtLabel.TabIndex = 1;
             this.txtLabel.Text = "label1";
             // 
             // UserLabel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.txtLabel);
             this.Controls.Add(this.Circle);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "UserLabel";
-            this.Size = new System.Drawing.Size(395, 49);
+            this.Size = new System.Drawing.Size(142, 31);
             ((System.ComponentModel.ISupportInitialize)(this.Circle)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -123,6 +123,7 @@ namespace KSCS
             {
                 if (selectedScheduleIndex != -1)
                 {
+                    //id값 가져오기
                     schedule.id = monthScheduleList[UserDate.static_date - 1][selectedScheduleIndex].id;
                     Database.UpdateSchedule(schedule,stdNum);
 
@@ -136,9 +137,6 @@ namespace KSCS
                     }
 
                     /* 리스트 수정 로직*/
-                    //수정 후, id값 가져오기
-                    //schedule.id = monthScheduleList[UserDate.static_date - 1][selectedScheduleIndex].id;
-
                     //startDate 혹은 endDate가 날짜가 바뀐 경우, 해당 일정 "삭제"
                     Schedule selectedSchedule = monthScheduleList[UserDate.static_date - 1][selectedScheduleIndex]; //클릭한 날짜의 원래 스케줄
                     if ((selectedSchedule.startDate - schedule.startDate).Days < 0)

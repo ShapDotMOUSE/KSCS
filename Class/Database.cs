@@ -193,12 +193,6 @@ namespace KSCS
         //tabScheduleList
         public static void ReadTabScheduleList()
         {
-            //string selectQuery = string.Format("SELECT * FROM Schedule JOIN Category ON Schedule.category_id=Category.id" +
-            //" WHERE Schedule.student_id='{0}' AND (startDate BETWEEN DATE_FORMAT('{1}', '%Y-%m-%d') AND LAST_DAY('{1}') OR" +
-            //" endDate BETWEEN DATE_FORMAT('{1}', '%Y-%m-%d') AND LAST_DAY('{1}'))" +
-            //"AND Schedule.category_id IN (SELECT TabCategory.category_id FROM TabCategory JOIN StudentTab ON StudentTab.id=TabCategory.tab_id WHERE StudentTab.tab_name='{2}' AND Schedule.student_id='{0}') " +
-            //"ORDER BY startDate ASC;", stdNum, new DateTime(year, month, 1).ToString("yyyy-MM-dd"),TabName);
-
             string selectQuery = string.Format("SELECT * FROM (SELECT Schedule.id AS schedule_id, Schedule.student_id, Category.id AS category_id, Schedule.startDate, Schedule.endDate," +
                 "Schedule.status, Schedule.title, Schedule.content, Schedule.place, Schedule.alarmStatus, Category.category_name, Category.parent_category_id, Category.color " +
                 "FROM Schedule JOIN Category ON Schedule.category_id = Category.id " +

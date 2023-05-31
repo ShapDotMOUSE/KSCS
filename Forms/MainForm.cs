@@ -25,9 +25,9 @@ namespace KSCS
             InitializeComponent();
         }
 
-        private Dictionary<string, NetworkStream> networkStreamDict =new Dictionary<string, NetworkStream>();
-        private TcpListener listener=null;
-        private Dictionary<string, TcpClient> clientDict=new Dictionary<string, TcpClient>();
+        private Dictionary<string, NetworkStream> networkStreamDict = new Dictionary<string, NetworkStream>();
+        private TcpListener listener = null;
+        private Dictionary<string, TcpClient> clientDict = new Dictionary<string, TcpClient>();
 
 
         private byte[] sendBuffer = new byte[1024 * 4];
@@ -45,39 +45,41 @@ namespace KSCS
             LoginForm loginForm = new LoginForm();
             DialogResult Result = loginForm.ShowDialog();
             if (Result == DialogResult.OK)
+            {
                 LoadMagam();
+                lblStdNum.Text = stdNum;
+                //초기 메인 카테고리 설정
+                Database.ReadCategoryList();
+                Database.ReadTabAndCategory();
+                foreach (string Main in category.Categories.Keys)
+                {
+                    UserMainCategory category = new UserMainCategory();
+                    category.SetAddMode(Main);
+                    panelMainCategory.Controls.Add(category);
+                }
+
+
+                //초기 탭 설정 
+                TabAll.Clicked += ChangeTab;
+                Tab1.Clicked += ChangeTab;
+                Tab2.Clicked += ChangeTab;
+                Tab3.Clicked += ChangeTab;
+                Tab4.Clicked += ChangeTab;
+                btnSharing.Clicked += CreateSharing;
+                //btnSharing.Clicked += btnShare_Click;
+                //btnSharing.DoubleClicked += CreateSharing;
+                setTab();
+
+                //달력 (탭 위에 위치 -> 현재)
+                dispalyDate();
+                DisplayCategery();
+
+                //탭 로드
+                SetCheckedCategoryByTab();
+                TabAll.ShowTab();
+            }
             else
                 Close();
-            lblStdNum.Text = stdNum;
-            //초기 메인 카테고리 설정
-            Database.ReadCategoryList();
-            Database.ReadTabAndCategory();
-            foreach (string Main in category.Categories.Keys)
-            {
-                UserMainCategory category = new UserMainCategory();
-                category.SetAddMode(Main);
-                panelMainCategory.Controls.Add(category);
-            }
-
-
-            //초기 탭 설정 
-            TabAll.Clicked += ChangeTab;
-            Tab1.Clicked += ChangeTab;
-            Tab2.Clicked += ChangeTab;
-            Tab3.Clicked += ChangeTab;
-            Tab4.Clicked += ChangeTab;
-            btnSharing.Clicked += CreateSharing;
-            //btnSharing.Clicked += btnShare_Click;
-            //btnSharing.DoubleClicked += CreateSharing;
-            setTab();
-
-            //달력 (탭 위에 위치 -> 현재)
-            dispalyDate();
-            DisplayCategery();
-
-            //탭 로드
-            SetCheckedCategoryByTab();
-            TabAll.ShowTab();
         }
 
         private void setTab()
@@ -315,13 +317,12 @@ namespace KSCS
                     "2019203055",
                     "2021203078",
                     "2019203082",
-                    "2021203043"
                 };
             List<string> testTodo = testStdnums.ToList();
 
             testTodo.Remove(stdNum);
 
-            Dictionary<string, string> addressDict = Database.GetAddress(testStdnums);
+            Dictionary<string, string> addressDict = Database.GetAddress(testTodo);
 
             foreach (string studentNum in testStdnums)
             {
@@ -331,6 +332,7 @@ namespace KSCS
                     {
                         MessageBox.Show(studentNum + "에게 연결 할 수 없습니다.");
                     }));
+                    testTodo.Remove(studentNum);
                     continue;
                 }
                 try
@@ -357,6 +359,7 @@ namespace KSCS
                         boss = stdNum,
                         sender = stdNum
                     };
+
 
                     this.Invoke(new MethodInvoker(delegate ()
                     {
@@ -415,7 +418,7 @@ namespace KSCS
                                 {
                                     MessageBox.Show("연결 성공!\r\n 주최자 : " + InitClass.boss
                                         + "\r\n 연결된 사람 : " + InitClass.sender
-                                        + "\r\n todo : " + InitClass.todoLink.Count);
+                                        + "\r\n todo : " + string.Join(",", InitClass.todoLink.Select(std => string.Format("'{0}'", std))));
                                 }));
                                 foreach (string todo in InitClass.todoLink)
                                 {
@@ -443,6 +446,11 @@ namespace KSCS
                                             todoLink = { },
                                             sender = stdNum
                                         };
+
+                                        this.Invoke(new MethodInvoker(delegate ()
+                                        {
+                                            MessageBox.Show(todo + "연결 요청 성공");
+                                        }));
                                         Packet.Serialize(Init).CopyTo(this.sendBuffer, 0);
                                         this.Send(networkStream);
                                     }

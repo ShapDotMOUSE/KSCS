@@ -27,7 +27,7 @@ namespace KSCS
             InitializeComponent();
         }
         TcpListener listener;
-        SocketClient s_client=null;
+        SocketClient s_client = null;
         private void MainForm_Load(object sender, EventArgs e)
         {
             KLAS.initializeKLAS();
@@ -291,13 +291,12 @@ namespace KSCS
         //    //사용자 본인은 포트를 열지 않음. 모두 Listner에게 연결시도
         public void CreateSharing(object sender, EventArgs e)
         {
-            
+
             MessageBox.Show("실시간 일정 공유 생성");
 
             List<string> testStdnums = new List<string>
                 {
-                    "2019203055",
-                    "2019203010",
+                    "2019203018",
                     "2019203082",
                 };
 
@@ -305,6 +304,10 @@ namespace KSCS
             testTodo.Remove(stdNum);
 
 
+            s_client = new SocketClient(stdNum);
+            s_client.OnConnect += new SocketClient.ConnectClientHandler(ConnectClient);
+            s_client.OnLoadAddress += new SocketClient.LoadAddress(LoadAddress);
+            s_client.addressDict = Database.GetAddress(testStdnums);
             //Init 데이터 생성
             s_client.InitClass = new Init
             {
@@ -314,20 +317,24 @@ namespace KSCS
                 boss = stdNum,
                 sender = stdNum
             };
-            s_client = new SocketClient(stdNum);
-            s_client.OnConnect += new SocketClient.ConnectClientHandler(ConnectClient);
-            s_client.OnLoadAddress += new SocketClient.LoadAddress(LoadAddress);
-            s_client.addressDict = Database.GetAddress(testStdnums);
             s_client.sendClientTodo();
         }
 
-        public void ConnectClient(string sender,List<string>todo)
+        public void ConnectClient(string sender, List<string> todo)
         {
             Invoke(new MethodInvoker(delegate ()
             {
                 MessageBox.Show("연결 성공!\r\n"
                     + "\r\n 연결된 사람 : " + sender
                     + "\r\n todo : " + string.Join(",", todo.Select(std => string.Format("'{0}'", std))));
+            }));
+        }
+
+        public void Message(string message)
+        {
+            Invoke(new MethodInvoker(delegate ()
+            {
+                MessageBox.Show(message);
             }));
         }
 
@@ -346,6 +353,7 @@ namespace KSCS
             s_client = new SocketClient(stdNum);
             s_client.OnConnect += new SocketClient.ConnectClientHandler(ConnectClient);
             s_client.OnLoadAddress += new SocketClient.LoadAddress(LoadAddress);
+            s_client.OnMessage += new SocketClient.MessageHandler(Message);
             while (true)
             {
                 try

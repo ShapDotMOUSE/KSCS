@@ -34,13 +34,13 @@ namespace Socket
         public delegate void ConnectClientHandler(string sender,List<string> todo);
         public event ConnectClientHandler OnConnect;
 
-        public delegate void CalculateClientCounter();
-        public event CalculateClientCounter OnCalculated;
+        public delegate void MessageHandler(string message);
+        public event MessageHandler OnMessage;
 
         public delegate void LoadAddress();
         public event LoadAddress OnLoadAddress;
 
-        public async void Send(NetworkStream networkStream)
+        public async Task Send(NetworkStream networkStream)
         {
             await networkStream.WriteAsync(this.sendBuffer, 0, this.sendBuffer.Length).ConfigureAwait(false);
             networkStream.Flush();
@@ -62,18 +62,18 @@ namespace Socket
                     continue;
                 }
                 todoLink.Remove(todo);
-                Thread thread = new Thread(() => createConnection(todo,todoLink));
-                thread.IsBackground = true;
-                thread.Start();
+                Task.Run(() => createConnection(todo,todoLink));
+                
             }
         }
-        private void createConnection(string stdNum,List<string> todoLink)
+        private async void createConnection(string stdNum,List<string> todoLink)
         {
             if (stdNum != null)
             {
                 NetworkStream networkStream=null;
                 try
                 {
+                    OnMessage("연결 시도" + stdNum);
                     TcpClient todoClient = new TcpClient();
                     //각 사용자 들에게 접속 시도
                     todoClient.Connect(addressDict[stdNum], 7777);
@@ -87,7 +87,7 @@ namespace Socket
                     init.todoLink = todoLink;
 
                     Packet.Serialize(init).CopyTo(this.sendBuffer, 0);
-                    Send(networkStream);
+                    await Send(networkStream);
                 }
                 catch
                 {

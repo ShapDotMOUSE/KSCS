@@ -325,7 +325,7 @@ namespace KSCS
         {
             Invoke(new MethodInvoker(delegate ()
             {
-                MessageBox.Show("연결 성공!\r\n
+                MessageBox.Show("연결 성공!\r\n"
                     + "\r\n 연결된 사람 : " + sender
                     + "\r\n todo : " + string.Join(",", todo.Select(std => string.Format("'{0}'", std))));
             }));

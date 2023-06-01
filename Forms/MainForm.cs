@@ -28,8 +28,12 @@ namespace KSCS
         }
         TcpListener listener;
         SocketClient s_client = null;
+
         private void MainForm_Load(object sender, EventArgs e)
         {
+
+            flowLayoutPanelLable = flpLabel;
+
             KLAS.initializeKLAS();
             LoginForm loginForm = new LoginForm();
             DialogResult Result = loginForm.ShowDialog();
@@ -69,6 +73,39 @@ namespace KSCS
             }
             else
                 Close();
+
+            this.Size = new Size(1360, 960);
+            
+            lblStdNum.Text = stdNum;
+            //초기 메인 카테고리 설정
+            Database.ReadCategoryList();
+            Database.ReadTabAndCategory();
+            foreach (string Main in category.Categories.Keys)
+            {
+                UserMainCategory category = new UserMainCategory();
+                category.SetAddMode(Main);
+                panelMainCategory.Controls.Add(category);
+            }
+   
+
+            //초기 탭 설정 
+            TabAll.Clicked += ChangeTab;
+            Tab1.Clicked += ChangeTab;
+            Tab2.Clicked += ChangeTab;
+            Tab3.Clicked += ChangeTab;
+            Tab4.Clicked += ChangeTab;
+            btnSharing.Clicked += btnShare_Click;
+            btnSharing.DoubleClicked += CreateSharing;
+            setTab();
+
+            //달력 (탭 위에 위치 -> 현재)
+            dispalyDate();
+            DisplayCategery();
+
+            //탭 로드
+            SetCheckedCategoryByTab();
+            TabAll.ShowTab();
+
         }
 
         private void setTab()
@@ -86,12 +123,12 @@ namespace KSCS
             MagamButtonEnable();
         }
 
-        private void MainForm_Resize(object sender, EventArgs e)
-        {
-            this.Size = new Size(1440, 1080);
-            this.MaximumSize = new Size(1440, 1080);
-            this.MinimumSize = new Size(1440, 1080);
-        }
+        //private void MainForm_Resize(object sender, EventArgs e)
+        //{
+        //    this.Size = new Size(1340, 960);
+        //    this.MaximumSize = new Size(1340, 960);
+        //    this.MinimumSize = new Size(1340, 960);
+        //}
 
 
         //카테고리 함수---------------------------------------------------------------------------------------------------------------------------------------
@@ -107,6 +144,8 @@ namespace KSCS
                 }
             }
         }
+
+
 
         //탭 함수-------------------------------------------------------------------------------------------------------------------------------------------
         private void ChangeTab(object sender, EventArgs e)
@@ -124,12 +163,26 @@ namespace KSCS
         }
         private void SetCheckedCategoryByTab()
         {
+            flpLabel.Controls.Clear();
             foreach (string key in category.Categories.Keys)
             {
                 FlowLayoutPanel flp = ((UserMainCategory)panelMainCategory.Controls[key]).flpSubCategory;
                 foreach (UserSubCategory subCategory in flp.Controls)
                 {
-                    subCategory.SetChecked(category.IsChecked(TabName, subCategory.GetText()));
+                    Color subColor = KSCS_static.category.GetColor(subCategory.GetText());
+                    if (TabName != TabAll.Name)
+                    {
+                        bool check = category.IsChecked(TabName, subCategory.GetText());
+                        subCategory.SetCheckedEnable(true);
+                        subCategory.SetChecked(check);
+                    }
+                    else
+                    {
+                        subCategory.SetCheckedEnable(false);
+                        subCategory.SetChecked(true);
+                    }
+
+                    subCategory.SetColor(subColor);
                 }
             }
         }
@@ -181,10 +234,10 @@ namespace KSCS
         //마감 일정 컨트롤---------------------------------------------------------------------------------------------------------------
         private void MagamButtonEnable()
         {
-            btnMagam_Click(btnMagam_Task, new EventArgs());
+            btnMagam_Click(btnMagam_Online, new EventArgs());
             btnMagam_Quiz.Enabled = true;
-            btnMagam_Task.Enabled = true;
             btnMagam_Online.Enabled = true;
+            btnMagam_Task.Enabled = true;
             btnMagam_Prjct.Enabled = true;
         }
 
@@ -376,6 +429,8 @@ namespace KSCS
             }
 
         }
+
+        
 
         //실시간 일정 공유 참가 : 현재 클릭
         public void btnShare_Click(object sender, EventArgs e)

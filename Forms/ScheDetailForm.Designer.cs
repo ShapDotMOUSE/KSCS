@@ -46,6 +46,8 @@
             this.labelSchedule = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.labelPlace = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.labelMember = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.flpMember = new System.Windows.Forms.FlowLayoutPanel();
+            this.txtMember = new System.Windows.Forms.TextBox();
             this.deleteBtnRadius = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.deleteBtn = new Guna.UI2.WinForms.Guna2Button();
             this.addBtnRadius = new Guna.UI2.WinForms.Guna2Elipse(this.components);
@@ -67,13 +69,11 @@
             this.tbPlace = new Guna.UI2.WinForms.Guna2TextBox();
             this.tbTitle = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnMemSet = new Guna.UI2.WinForms.Guna2Button();
-            this.flpMember = new System.Windows.Forms.FlowLayoutPanel();
-            this.txtMember = new System.Windows.Forms.TextBox();
             this.panelTop.SuspendLayout();
             this.panelLabel.SuspendLayout();
+            this.flpMember.SuspendLayout();
             this.guna2ContextMenuStrip1.SuspendLayout();
             this.panelSchedules.SuspendLayout();
-            this.flpMember.SuspendLayout();
             this.SuspendLayout();
             // 
             // formRadius
@@ -216,7 +216,7 @@
             this.labelCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.labelCategory.Location = new System.Drawing.Point(59, 237);
             this.labelCategory.Name = "labelCategory";
-            this.labelCategory.Size = new System.Drawing.Size(91, 28);
+            this.labelCategory.Size = new System.Drawing.Size(76, 24);
             this.labelCategory.TabIndex = 31;
             this.labelCategory.Text = "Category";
             // 
@@ -226,7 +226,7 @@
             this.labelMemo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.labelMemo.Location = new System.Drawing.Point(59, 306);
             this.labelMemo.Name = "labelMemo";
-            this.labelMemo.Size = new System.Drawing.Size(64, 28);
+            this.labelMemo.Size = new System.Drawing.Size(51, 24);
             this.labelMemo.TabIndex = 30;
             this.labelMemo.Text = "Memo";
             // 
@@ -236,7 +236,7 @@
             this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.labelTitle.Location = new System.Drawing.Point(59, 24);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(43, 28);
+            this.labelTitle.Size = new System.Drawing.Size(38, 24);
             this.labelTitle.TabIndex = 29;
             this.labelTitle.Text = "Title";
             // 
@@ -246,7 +246,7 @@
             this.labelSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.labelSchedule.Location = new System.Drawing.Point(59, 89);
             this.labelSchedule.Name = "labelSchedule";
-            this.labelSchedule.Size = new System.Drawing.Size(94, 28);
+            this.labelSchedule.Size = new System.Drawing.Size(78, 24);
             this.labelSchedule.TabIndex = 26;
             this.labelSchedule.Text = "Schedule";
             // 
@@ -256,7 +256,7 @@
             this.labelPlace.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.labelPlace.Location = new System.Drawing.Point(59, 167);
             this.labelPlace.Name = "labelPlace";
-            this.labelPlace.Size = new System.Drawing.Size(58, 28);
+            this.labelPlace.Size = new System.Drawing.Size(48, 24);
             this.labelPlace.TabIndex = 28;
             this.labelPlace.Text = "Place";
             // 
@@ -266,9 +266,28 @@
             this.labelMember.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.labelMember.Location = new System.Drawing.Point(59, 408);
             this.labelMember.Name = "labelMember";
-            this.labelMember.Size = new System.Drawing.Size(83, 28);
+            this.labelMember.Size = new System.Drawing.Size(67, 24);
             this.labelMember.TabIndex = 27;
             this.labelMember.Text = "Member";
+            // 
+            // flpMember
+            // 
+            this.flpMember.AutoScroll = true;
+            this.flpMember.Controls.Add(this.txtMember);
+            this.flpMember.Location = new System.Drawing.Point(339, 449);
+            this.flpMember.Name = "flpMember";
+            this.flpMember.Size = new System.Drawing.Size(284, 75);
+            this.flpMember.TabIndex = 1;
+            this.flpMember.Visible = false;
+            // 
+            // txtMember
+            // 
+            this.txtMember.Location = new System.Drawing.Point(3, 3);
+            this.txtMember.Multiline = true;
+            this.txtMember.Name = "txtMember";
+            this.txtMember.Size = new System.Drawing.Size(278, 33);
+            this.txtMember.TabIndex = 0;
+            this.txtMember.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // deleteBtnRadius
             // 
@@ -337,20 +356,20 @@
             this.guna2ContextMenuStrip1.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
             this.guna2ContextMenuStrip1.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
             this.guna2ContextMenuStrip1.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.guna2ContextMenuStrip1.Size = new System.Drawing.Size(138, 60);
+            this.guna2ContextMenuStrip1.Size = new System.Drawing.Size(133, 48);
             // 
             // tsmAddmem
             // 
             this.tsmAddmem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.tsmAddmem.Name = "tsmAddmem";
-            this.tsmAddmem.Size = new System.Drawing.Size(137, 28);
+            this.tsmAddmem.Size = new System.Drawing.Size(132, 22);
             this.tsmAddmem.Text = "멤버 추가";
             // 
             // tsmDeleteMem
             // 
             this.tsmDeleteMem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.tsmDeleteMem.Name = "tsmDeleteMem";
-            this.tsmDeleteMem.Size = new System.Drawing.Size(137, 28);
+            this.tsmDeleteMem.Size = new System.Drawing.Size(132, 22);
             this.tsmDeleteMem.Text = "멤버 삭제";
             // 
             // panelSchedules
@@ -379,7 +398,7 @@
             this.btnAddSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddSchedule.ForeColor = System.Drawing.Color.Black;
             this.btnAddSchedule.Image = global::KSCS.Properties.Resources.free_icon_font_plus_3917757;
-            this.btnAddSchedule.Location = new System.Drawing.Point(-15, 86);
+            this.btnAddSchedule.Location = new System.Drawing.Point(-15, 94);
             this.btnAddSchedule.Name = "btnAddSchedule";
             this.btnAddSchedule.Size = new System.Drawing.Size(167, 40);
             this.btnAddSchedule.TabIndex = 45;
@@ -391,7 +410,7 @@
             this.guna2HtmlLabel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.guna2HtmlLabel8.Location = new System.Drawing.Point(342, 160);
             this.guna2HtmlLabel8.Name = "guna2HtmlLabel8";
-            this.guna2HtmlLabel8.Size = new System.Drawing.Size(45, 24);
+            this.guna2HtmlLabel8.Size = new System.Drawing.Size(37, 20);
             this.guna2HtmlLabel8.TabIndex = 40;
             this.guna2HtmlLabel8.Text = "End :";
             // 
@@ -401,7 +420,7 @@
             this.guna2HtmlLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.guna2HtmlLabel7.Location = new System.Drawing.Point(342, 135);
             this.guna2HtmlLabel7.Name = "guna2HtmlLabel7";
-            this.guna2HtmlLabel7.Size = new System.Drawing.Size(51, 24);
+            this.guna2HtmlLabel7.Size = new System.Drawing.Size(42, 20);
             this.guna2HtmlLabel7.TabIndex = 39;
             this.guna2HtmlLabel7.Text = "Start :";
             // 
@@ -578,28 +597,9 @@
             this.btnMemSet.Text = "일정 함께하는 친구 추가";
             this.btnMemSet.Click += new System.EventHandler(this.btnMemSet_Click);
             // 
-            // flpMember
-            // 
-            this.flpMember.AutoScroll = true;
-            this.flpMember.Controls.Add(this.txtMember);
-            this.flpMember.Location = new System.Drawing.Point(340, 450);
-            this.flpMember.Name = "flpMember";
-            this.flpMember.Size = new System.Drawing.Size(284, 75);
-            this.flpMember.TabIndex = 1;
-            this.flpMember.Visible = false;
-            // 
-            // txtMember
-            // 
-            this.txtMember.Location = new System.Drawing.Point(3, 3);
-            this.txtMember.Multiline = true;
-            this.txtMember.Name = "txtMember";
-            this.txtMember.Size = new System.Drawing.Size(278, 33);
-            this.txtMember.TabIndex = 0;
-            this.txtMember.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
-            // 
             // ScheDetailForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 26F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(650, 590);
@@ -622,6 +622,7 @@
             this.Controls.Add(this.panelTop);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ScheDetailForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -629,10 +630,10 @@
             this.panelTop.ResumeLayout(false);
             this.panelLabel.ResumeLayout(false);
             this.panelLabel.PerformLayout();
-            this.guna2ContextMenuStrip1.ResumeLayout(false);
-            this.panelSchedules.ResumeLayout(false);
             this.flpMember.ResumeLayout(false);
             this.flpMember.PerformLayout();
+            this.guna2ContextMenuStrip1.ResumeLayout(false);
+            this.panelSchedules.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

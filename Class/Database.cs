@@ -16,6 +16,7 @@ using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using static KSCS.Class.KSCS_static;
 using static System.ComponentModel.Design.ObjectSelectorEditor;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace KSCS
 {
@@ -50,6 +51,13 @@ namespace KSCS
                         "('KLAS', null, null, '{0}')," +
                         "('개인', null, null, '{0}')," +
                         "('기타', null, null, '{0}')", stdNum);
+                if (cmd.ExecuteNonQuery() != 3) MessageBox.Show("Failed to insert Data.");
+
+                cmd.CommandText = string.Format("INSERT INTO Category(category_name, parent_category_id, color, student_id) VALUES" +
+                       "('학사일정', {1}, null, '{0}')," +
+                       "('과제', {1}, null, '{0}')," +
+                       "('퀴즈', {1}, null, '{0}')" +
+                       "('온라인 강의', {1}, null, '{0}')", stdNum,1);
                 if (cmd.ExecuteNonQuery() != 3) MessageBox.Show("Failed to insert Data.");
 
                 cmd.CommandText = string.Format("INSERT INTO StudentTab(tab_name, student_id) VALUES " +
@@ -107,7 +115,7 @@ namespace KSCS
         }
 
         //스케줄 관련======================================================================
-        public static void ReadScheduleList()
+        public static void ReadScheduleList() //이제 사용 X
         {
             string selectQuery = string.Format("SELECT * FROM Schedule JOIN Category ON Schedule.category_id=Category.id" +
             " WHERE Schedule.student_id={0} AND (startDate BETWEEN DATE_FORMAT('{1}', '%Y-%m-%d') AND LAST_DAY('{1}') OR" +
@@ -130,7 +138,9 @@ namespace KSCS
                     table["place"].ToString(),
                     table["category_name"].ToString(),
                     DateTime.Parse(table["startDate"].ToString()),
-                    DateTime.Parse(table["endDate"].ToString()))
+                    DateTime.Parse(table["endDate"].ToString()),
+                    null //쿼리바꾸고, 가져오는걸로 바꿔야 함.
+                    )
                 {
                     id = int.Parse(table["id"].ToString()),
                 };
@@ -151,11 +161,11 @@ namespace KSCS
         }
 
 
-        public static void CreateScheudle(Schedule schedule)
+        public static void CreateScheudle(Schedule schedule, String studentId)
         {
             string insertQuery = string.Format("INSERT INTO Schedule(student_id,title,content,place,category_id,startDate,endDate)" +
                 "VALUES ('{0}','{1}','{2}','{3}',(SELECT id FROM Category WHERE category_name='{4}' and student_id='{0}'),'{5}','{6}');",
-                    stdNum,
+                    studentId,
                     schedule.title,
                     schedule.content,
                     schedule.place,
@@ -172,17 +182,54 @@ namespace KSCS
             table.Close();
         }
 
-        public static void UpdateSchedule(Schedule schedule, int index)
+        //추가(공유 멤버가 존재하는 경우)
+        public static void CreateMember(Schedule schedule)
+        {
+            for (int i = 0; i < schedule.members.Count; i++)
+            {
+                Schedule sharedSchedule = new Schedule(schedule.title, schedule.content, schedule.place, schedule.category, schedule.startDate, schedule.endDate, schedule.members);
+                CreateScheudle(sharedSchedule,schedule.members[i]); // 멤버들도 스케줄 추가
+
+                string insertQuery = string.Format("INSERT INTO Members(schedule_id,student_id,main_schedule_id) VALUES ({0},'{1}',{2});", sharedSchedule.id, schedule.members[i], schedule.id);
+                MySqlCommand cmd = new MySqlCommand(insertQuery, getDBConnection());
+                if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to insert Data.");
+            }
+            //main_schedule_id 도 db에 추가
+            string insertQuery2 = string.Format("INSERT INTO Members(schedule_id,student_id,main_schedule_id) VALUES ({0},'{1}',{2});", schedule.id, stdNum, schedule.id);
+            MySqlCommand cmd2 = new MySqlCommand(insertQuery2, getDBConnection());
+            if (cmd2.ExecuteNonQuery() != 1) MessageBox.Show("Failed to insert Data.");
+        }
+
+        public static void UpdateSchedule(Schedule schedule, string studentId)
         {
             string updateQuery = string.Format("UPDATE Schedule SET title='{0}', content='{1}', place='{2}', category_id=(SELECT id FROM Category WHERE category_name='{3}' AND student_id='{4}'),startDate='{5}', endDate='{6}' WHERE id={7};",
                     schedule.title,
                     schedule.content,
                     schedule.place,
                     schedule.category,
-                    stdNum,
+                    studentId,
                     schedule.startDate.ToString("yyyy-MM-dd, HH:mm"),
                     schedule.endDate.ToString("yyyy-MM-dd, HH:mm"),
-                    monthScheduleList[UserDate.static_date - 1][index].id
+                    schedule.id
+                    //monthScheduleList[UserDate.static_date - 1][index].id
+                    );
+            MySqlCommand cmd = new MySqlCommand(updateQuery, getDBConnection());
+            if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Update Data.");
+        }
+
+        //멤버 스케줄 수정
+        public static void UpdateMemberSchedule(Schedule schedule, string studentId)
+        {
+            string updateQuery = string.Format("UPDATE Schedule SET title='{0}', content='{1}', place='{2}', category_id=(SELECT id FROM Category WHERE category_name='{3}' AND student_id='{4}'),startDate='{5}', endDate='{6}' WHERE id IN (SELECT schedule_id FROM Members WHERE student_id='{4}' AND main_schedule_id IN (SELECT main_schedule_id FROM Members WHERE schedule_id={7}));",
+                    schedule.title,
+                    schedule.content,
+                    schedule.place,
+                    schedule.category,
+                    studentId,
+                    schedule.startDate.ToString("yyyy-MM-dd, HH:mm"),
+                    schedule.endDate.ToString("yyyy-MM-dd, HH:mm"),
+                    schedule.id
+                    //monthScheduleList[UserDate.static_date - 1][index].id
                     );
             MySqlCommand cmd = new MySqlCommand(updateQuery, getDBConnection());
             if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Update Data.");
@@ -195,14 +242,33 @@ namespace KSCS
             if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Delete Data.");
         }
 
+        //멤버 스케줄 삭제(cascade Delete)
+        public static void DeleteMemberSchedule(int index, string studentId)
+        {
+            string deleteQuery = string.Format("DELETE FROM Schedule WHERE id = (SELECT schedule_id FROM Members WHERE student_id='{1}' AND main_schedule_id = (SELECT main_schedule_id FROM Members WHERE schedule_id={0}));", monthScheduleList[UserDate.static_date - 1][index].id,studentId);
+            MySqlCommand cmd = new MySqlCommand(deleteQuery, getDBConnection());
+            if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Delete Data.");
+        }
+
+        //멤버 삭제(사용 X)
+        //public static void DeleteMember(int index, string studentId)
+        //{
+        //    string deleteQuery = string.Format("DELETE FROM Members WHERE main_schedule_id IN (SELECT main_schedule_id FROM Members WHERE schedule_id = {0}) AND student_id = '{1}';", monthScheduleList[UserDate.static_date - 1][index].id, studentId);
+        //    MySqlCommand cmd = new MySqlCommand(deleteQuery, getDBConnection());
+        //    if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Delete Data.");
+        //}
+
         //tabScheduleList
         public static void ReadTabScheduleList()
         {
-            string selectQuery = string.Format("SELECT * FROM Schedule JOIN Category ON Schedule.category_id=Category.id" +
-            " WHERE Schedule.student_id='{0}' AND (startDate BETWEEN DATE_FORMAT('{1}', '%Y-%m-%d') AND LAST_DAY('{1}') OR" +
-            " endDate BETWEEN DATE_FORMAT('{1}', '%Y-%m-%d') AND LAST_DAY('{1}'))" +
-            "AND Schedule.category_id IN (SELECT TabCategory.category_id FROM TabCategory JOIN StudentTab ON StudentTab.id=TabCategory.tab_id WHERE StudentTab.tab_name='{2}' AND Schedule.student_id='{0}') " +
-            "ORDER BY startDate ASC;", stdNum, new DateTime(year, month, 1).ToString("yyyy-MM-dd"),TabName);
+            string selectQuery = string.Format("SELECT * FROM (SELECT Schedule.id AS schedule_id, Schedule.student_id, Category.id AS category_id, Schedule.startDate, Schedule.endDate," +
+                "Schedule.status, Schedule.title, Schedule.content, Schedule.place, Schedule.alarmStatus, Category.category_name, Category.parent_category_id, Category.color " +
+                "FROM Schedule JOIN Category ON Schedule.category_id = Category.id " +
+                "WHERE Schedule.student_id = '{0}' AND (startDate BETWEEN DATE_FORMAT('{1}', '%Y-%m-%d') AND LAST_DAY('{1}') " +
+                "OR endDate BETWEEN DATE_FORMAT('{1}', '%Y-%m-%d') AND LAST_DAY('{1}')) AND Schedule.category_id " +
+                "IN(SELECT TabCategory.category_id FROM TabCategory JOIN StudentTab ON StudentTab.id = TabCategory.tab_id WHERE StudentTab.tab_name = '{2}' AND Schedule.student_id = '{0}')) AS AllSchedule " +
+                "LEFT OUTER JOIN (SELECT m1.schedule_id, GROUP_CONCAT(m2.student_id) AS concatenated_student_ids FROM Members m1 INNER JOIN Members m2 ON m1.main_schedule_id = m2.main_schedule_id GROUP BY m1.schedule_id) AS MemberList ON AllSchedule.schedule_id = MemberList.schedule_id ORDER BY startDate ASC;",
+                stdNum, new DateTime(year, month, 1).ToString("yyyy-MM-dd"), TabName);
             MySqlCommand cmd = new MySqlCommand(selectQuery, getDBConnection());
             MySqlDataReader table = cmd.ExecuteReader();
             monthScheduleList.Clear(); //한달 스케줄 초기화
@@ -215,15 +281,22 @@ namespace KSCS
 
             while (table.Read())
             {
+                char delimiter = ','; // 구분자
+                string[] parts = table["concatenated_student_ids"].ToString().Split(new[] { delimiter }, StringSplitOptions.RemoveEmptyEntries);
+                List<string> members = new List<string>(parts);
+                members.Remove(stdNum); //자신의 학번은 삭제
+
                 Schedule schedule = new Schedule(
                     table["title"].ToString(),
                     table["content"].ToString(),
                     table["place"].ToString(),
                     table["category_name"].ToString(),
                     DateTime.Parse(table["startDate"].ToString()),
-                    DateTime.Parse(table["endDate"].ToString()))
+                    DateTime.Parse(table["endDate"].ToString()),
+                    members
+                    )
                 {
-                    id = int.Parse(table["id"].ToString()),
+                    id = int.Parse(table["schedule_id"].ToString()),
                 };
 
                 /* 리스트 추가 */
@@ -326,11 +399,20 @@ namespace KSCS
             table.Close();
         }
 
-        public static void CreateSubCategory()
+        public static void CreateSubCategory(string Parent, string Sub)
         {
-            string insertQuery = string.Format("INSERT INTO () VALUES ();");
+            string insertQuery = string.Format("INSERT INTO Category(category_name, parent_category_id,color,student_id) VALUES (" +
+                "'{0}'," +
+                "(SELECT id FROM (SELECT id FROM Category WHERE category_name='{1}' and student_id={2}) A)," +
+                "-16776961, '{2}');", Sub,Parent,stdNum);
             MySqlCommand cmd = new MySqlCommand(insertQuery, connection);
             if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to insert Data.");
+
+            string insertQueryTab = string.Format("INSERT INTO TabCategory(tab_id,category_id) VALUES (" +
+                    "(SELECT id FROM StudentTab WHERE tab_name='All' AND student_id={0})," +
+                    "(SELECT id FROM Category WHERE student_id={0} AND category_name='{1}'))", stdNum, Sub);
+            MySqlCommand cmd2 = new MySqlCommand(insertQueryTab, connection);
+            if (cmd2.ExecuteNonQuery() != 1) MessageBox.Show("Failed to insert Data.");
             //cmd.CommandText = "SELECT LAST_INSERT_ID() AS id";
             //MySqlDataReader table = cmd.ExecuteReader();
             //table.Read();
@@ -338,9 +420,33 @@ namespace KSCS
             //table.Close();
         }
 
-        public static void UpdateSubCategory()
+        public static void UpdateSubCategory(string New, string old)
         {
-            string updateQuery = string.Format("UPDATE Schedule SET ");
+            string updateQuery = string.Format("UPDATE Category SET category_name='{0}'" +
+                "WHERE category_name='{1}' AND student_id={2}", New, old, stdNum);
+            MySqlCommand cmd = new MySqlCommand(updateQuery, getDBConnection());
+            if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Update Data.");
+        }
+
+        public static void UpdateParentCategoryOfSubCategory(string NewMain, string Sub)
+        {
+            //KEY가 아닌 값을 이용한 업데이트를 위한 일시적인 안전모드 해제
+            string setQuery = string.Format("set sql_safe_updates=0");
+            MySqlCommand cmd2 = new MySqlCommand(setQuery, getDBConnection());
+            cmd2.ExecuteNonQuery();
+
+            string updateQuery = string.Format("UPDATE Category SET parent_category_id=" +
+                "(SELECT id FROM " +
+                "(SELECT id FROM Category Where category_name='{0}' AND student_id={2}) A )" +
+                "WHERE category_name='{1}' AND student_id={2}", NewMain, Sub, stdNum);
+            MySqlCommand cmd = new MySqlCommand(updateQuery, getDBConnection());
+            if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Update Data.");
+        }
+
+        public static void UpdateSubCategoryColor(string Sub, Color color)
+        {
+            string updateQuery = string.Format("UPDATE Category SET color=" +
+                "{0} WHERE category_name='{1}' AND student_id={2}", color.ToArgb(), Sub, stdNum);
             MySqlCommand cmd = new MySqlCommand(updateQuery, getDBConnection());
             if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Update Data.");
         }

@@ -1,5 +1,6 @@
 ﻿using KSCS.Class;
 using KSCS.Forms;
+using KSCS.UserControls.MainForm;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -41,6 +42,11 @@ namespace KSCS
            chkCategory.Checked = check;
         }
 
+        public void SetCheckedEnable(bool enable)
+        {
+            chkCategory.Enabled = enable;
+        }
+
         public void SetBasicMode(string txt)
         {
             this.Name = txt;
@@ -48,8 +54,17 @@ namespace KSCS
             txtCategory.Visible = false;
         }
 
+        public void SetColor(Color color)
+        {
+            lblCategory.ForeColor = color;
+        }
         private void UserCategory_Load(object sender, EventArgs e)
         {
+            if (KSCS_static.TabName == "All")
+            {
+                chkCategory.Enabled = false;
+                chkCategory.Checked = true;
+            }
             txtCategory.MaxLength = 4;
             this.ActiveControl = txtCategory;
             txtCategory.Focus();
@@ -72,6 +87,7 @@ namespace KSCS
                     {
                         //신규 카테고리인 경우
                         KSCS_static.category.AddSubdivision(MainCategory, txtCategory.Text);
+                        Database.CreateSubCategory(MainCategory, txtCategory.Text);
                     }
                     lblCategory.Text = txtCategory.Text;
                     this.Name = txtCategory.Text;
@@ -120,10 +136,12 @@ namespace KSCS
             if (chkCategory.Checked)
             {
                 category.AddChecked(TabName, lblCategory.Text);
+                MainForm.flowLayoutPanelLable.Controls.Add(new UserLabel(lblCategory.Text, KSCS_static.category.GetColor(lblCategory.Text)));
             }
             else
             {
                 category.DeletChecked(TabName, lblCategory.Text);
+                MainForm.flowLayoutPanelLable.Controls.Remove(MainForm.flowLayoutPanelLable.Controls["label" + lblCategory.Text]);
             }
             MainForm.LoadMainForm(); //추가
         }
@@ -131,7 +149,8 @@ namespace KSCS
         //유저 카테고리 수정 폼 로드
         private void UserCategory_DoubleClick(object sender, EventArgs e)
         {
-           TempCategorySetting temp = new TempCategorySetting((FlowLayoutPanel)((FlowLayoutPanel)this.Parent).Parent, ((FlowLayoutPanel)this.Parent).Name , lblCategory.Text);
+            UserMainCategory parent = (UserMainCategory)((FlowLayoutPanel)this.Parent).Parent;
+           AddCategoryForm temp = new AddCategoryForm((FlowLayoutPanel)(parent.Parent), parent.Name, lblCategory.Text);
            temp.ShowDialog();
         }
 

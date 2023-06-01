@@ -122,6 +122,7 @@ namespace KSCS.Forms
                 //라벨 수정
                 ((UserLabel)MainForm.flowLayoutPanelLable.Controls["label" + originSub]).SetColor(boxColor.FillColor);
             }
+
             Close();
 
         }

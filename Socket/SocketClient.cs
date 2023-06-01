@@ -30,13 +30,6 @@ namespace Socket
             this.clientStdNum = studentNum;
             clientSocketDict=new Dictionary<string, TcpClient>();
         }
-        public void startRead(TcpClient connectSocket)
-        {
-
-            Thread t_handler = new Thread(()=>readStreamData(connectSocket));
-            t_handler.IsBackground = true;
-            t_handler.Start();
-        }
 
         public delegate void ConnectClientHandler(string sender,List<string> todo);
         public event ConnectClientHandler OnConnect;
@@ -47,9 +40,9 @@ namespace Socket
         public delegate void LoadAddress();
         public event LoadAddress OnLoadAddress;
 
-        public void Send(NetworkStream networkStream)
+        public async void Send(NetworkStream networkStream)
         {
-            networkStream.Write(this.sendBuffer, 0, this.sendBuffer.Length);
+            await networkStream.WriteAsync(this.sendBuffer, 0, this.sendBuffer.Length).ConfigureAwait(false);
             networkStream.Flush();
 
             for (int i = 0; i < 1024 * 4; i++)
@@ -58,7 +51,7 @@ namespace Socket
             }
         }
 
-        public void sendClientAll()
+        public void sendClientTodo()
         {
             List<string> todoLink=InitClass.todoLink.ToList();
             foreach (string todo in InitClass.todoLink)
@@ -102,16 +95,16 @@ namespace Socket
                 }
             }
         }
-        private void readStreamData(TcpClient connectSocket)
+        public async void readStreamData(TcpClient connectSocket)
         {
             NetworkStream stream = null;
             int bytes = 0;
             try
             {
-                while (true)
+                while (connectSocket.Connected)
                 {
                     stream = connectSocket.GetStream();
-                    bytes = stream.Read(readBuffer, 0, readBuffer.Length);
+                    bytes = await stream.ReadAsync(readBuffer, 0, readBuffer.Length).ConfigureAwait(false);
                     Packet packet = (Packet)Packet.Deserialize(readBuffer);
                     switch ((int)packet.Type)
                     {
@@ -130,7 +123,7 @@ namespace Socket
                                 if (!InitClass.boss.Equals(InitClass.sender) || InitClass.todoLink.Count == 0)
                                     break;
 
-                                sendClientAll();
+                                sendClientTodo();
                                 break;
                             }
 

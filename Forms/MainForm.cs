@@ -318,7 +318,7 @@ namespace KSCS
             s_client.OnConnect += new SocketClient.ConnectClientHandler(ConnectClient);
             s_client.OnLoadAddress += new SocketClient.LoadAddress(LoadAddress);
             s_client.addressDict = Database.GetAddress(testStdnums);
-            s_client.sendClientAll();
+            s_client.sendClientTodo();
         }
 
         public void ConnectClient(string sender,List<string>todo)
@@ -338,21 +338,21 @@ namespace KSCS
                 s_client.addressDict = Database.GetAddress(s_client.InitClass.todoLink);
             }
         }
-        public void ParticipateSharing()
+        async public Task ParticipateSharing()
         {
             Database.SetAddress();
             listener = new TcpListener(IPAddress.Any, 7777);
             listener.Start();
-
+            s_client = new SocketClient(stdNum);
+            s_client.OnConnect += new SocketClient.ConnectClientHandler(ConnectClient);
+            s_client.OnLoadAddress += new SocketClient.LoadAddress(LoadAddress);
             while (true)
             {
                 try
                 {
-                    TcpClient client = listener.AcceptTcpClient(); //주최자 접속
-                    s_client = new SocketClient(stdNum);
-                    s_client.OnConnect += new SocketClient.ConnectClientHandler(ConnectClient);
-                    s_client.OnLoadAddress += new SocketClient.LoadAddress(LoadAddress);
-                    s_client.startRead(client);
+                    TcpClient client = await listener.AcceptTcpClientAsync().ConfigureAwait(false); //주최자 접속
+                    Task.Run(() => s_client.readStreamData(client));
+
                 }
                 catch (SocketException se)
                 {
@@ -370,9 +370,7 @@ namespace KSCS
         public void btnShare_Click(object sender, EventArgs e)
         {
             MessageBox.Show("시작");
-            Thread t = new Thread(ParticipateSharing);
-            t.IsBackground = true;
-            t.Start();
+            ParticipateSharing().Wait();
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)

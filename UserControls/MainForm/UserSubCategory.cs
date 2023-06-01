@@ -196,5 +196,20 @@ namespace KSCS
                 Database.DeleteSubCategory(this.Name);
             }
         }
+
+        private void UserSubCategory_MouseHover(object sender, EventArgs e)
+        {
+            this.BackColor = Color.Gainsboro;
+        }
+        
+        private void UserSubCategory_MouseLeave(object sender, EventArgs e)
+        {
+            this.BackColor = Color.White;
+        }
+
+        private void contextMenuStrip1_Opened(object sender, EventArgs e)
+        {
+            this.BackColor = Color.Gainsboro;
+        }
     }
 }

@@ -33,12 +33,12 @@
             this.chkCategory = new Guna.UI2.WinForms.Guna2CustomCheckBox();
             this.txtCategory = new Guna.UI2.WinForms.Guna2TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.tableLayoutPanel1.SuspendLayout();
-            this.guna2Panel1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
+            this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblCategory
@@ -113,6 +113,24 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(210, 38);
             this.tableLayoutPanel1.TabIndex = 18;
             this.tableLayoutPanel1.DoubleClick += new System.EventHandler(this.UserCategory_DoubleClick);
+            this.tableLayoutPanel1.MouseLeave += new System.EventHandler(this.UserSubCategory_MouseLeave);
+            this.tableLayoutPanel1.MouseHover += new System.EventHandler(this.UserSubCategory_MouseHover);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuDelete});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(137, 42);
+            this.contextMenuStrip1.Opened += new System.EventHandler(this.contextMenuStrip1_Opened);
+            // 
+            // menuDelete
+            // 
+            this.menuDelete.Name = "menuDelete";
+            this.menuDelete.Size = new System.Drawing.Size(136, 38);
+            this.menuDelete.Text = "삭제";
+            this.menuDelete.Click += new System.EventHandler(this.menuDelete_Click);
             // 
             // guna2Panel1
             // 
@@ -123,21 +141,6 @@
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(136, 38);
             this.guna2Panel1.TabIndex = 19;
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuDelete});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(137, 42);
-            // 
-            // menuDelete
-            // 
-            this.menuDelete.Name = "menuDelete";
-            this.menuDelete.Size = new System.Drawing.Size(136, 38);
-            this.menuDelete.Text = "삭제";
-            this.menuDelete.Click += new System.EventHandler(this.menuDelete_Click);
             // 
             // UserSubCategory
             // 
@@ -151,10 +154,12 @@
             this.Size = new System.Drawing.Size(210, 38);
             this.Load += new System.EventHandler(this.UserCategory_Load);
             this.DoubleClick += new System.EventHandler(this.UserCategory_DoubleClick);
+            this.MouseLeave += new System.EventHandler(this.UserSubCategory_MouseLeave);
+            this.MouseHover += new System.EventHandler(this.UserSubCategory_MouseHover);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

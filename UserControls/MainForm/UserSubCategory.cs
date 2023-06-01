@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static KSCS.Class.KSCS_static;
@@ -171,7 +172,15 @@ namespace KSCS
                     category.DeletChecked(TabName, lblCategory.Text);
                     MainForm.flowLayoutPanelLable.Controls.Remove(MainForm.flowLayoutPanelLable.Controls["label" + lblCategory.Text]);
                 }
-                MainForm.LoadMainForm(); //추가
+                Thread thread = new Thread(new ThreadStart(delegate ()
+                {
+                    this.Invoke(new Action(delegate ()
+                    {
+                        MainForm.CreateSchedule();
+                    }));
+
+                }));
+                thread.Start();
             }
         }
 
@@ -211,7 +220,7 @@ namespace KSCS
         private void btnEdit_Click(object sender, EventArgs e)
         {
             UserMainCategory parent = (UserMainCategory)((FlowLayoutPanel)this.Parent).Parent;
-            AddCategoryForm temp = new AddCategoryForm((FlowLayoutPanel)(parent.Parent), parent.Name, lblCategory.Text);
+            AddCategoryForm temp = new AddCategoryForm((MainForm)((parent.Parent).Parent).Parent, (FlowLayoutPanel)(parent.Parent), parent.Name, lblCategory.Text);
             temp.ShowDialog();
         }
     }

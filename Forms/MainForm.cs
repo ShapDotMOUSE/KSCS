@@ -9,13 +9,10 @@ using Panel = System.Windows.Forms.Panel;
 using KSCS.Class;
 using static KSCS.Class.KSCS_static;
 using System.Net.Sockets;
-using System.Threading;
 using Socket;
 using System.Net;
 using System.Threading.Tasks;
-using MySqlX.XDevAPI;
 using System.Diagnostics;
-using Org.BouncyCastle.Asn1.X509;
 
 namespace KSCS
 {
@@ -28,7 +25,7 @@ namespace KSCS
         }
         TcpListener listener;
         SocketClient s_client = null;
-
+        public static FlowLayoutPanel flowLayoutPanelLable;
         private void MainForm_Load(object sender, EventArgs e)
         {
 
@@ -75,36 +72,6 @@ namespace KSCS
                 Close();
 
             this.Size = new Size(1360, 960);
-            
-            lblStdNum.Text = stdNum;
-            //초기 메인 카테고리 설정
-            Database.ReadCategoryList();
-            Database.ReadTabAndCategory();
-            foreach (string Main in category.Categories.Keys)
-            {
-                UserMainCategory category = new UserMainCategory();
-                category.SetAddMode(Main);
-                panelMainCategory.Controls.Add(category);
-            }
-   
-
-            //초기 탭 설정 
-            TabAll.Clicked += ChangeTab;
-            Tab1.Clicked += ChangeTab;
-            Tab2.Clicked += ChangeTab;
-            Tab3.Clicked += ChangeTab;
-            Tab4.Clicked += ChangeTab;
-            btnSharing.Clicked += btnShare_Click;
-            btnSharing.DoubleClicked += CreateSharing;
-            setTab();
-
-            //달력 (탭 위에 위치 -> 현재)
-            dispalyDate();
-            DisplayCategery();
-
-            //탭 로드
-            SetCheckedCategoryByTab();
-            TabAll.ShowTab();
 
         }
 

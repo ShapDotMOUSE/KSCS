@@ -372,7 +372,7 @@ namespace KSCS
 
             string updateQuery = string.Format("UPDATE Category SET parent_category_id=" +
                 "(SELECT id FROM " +
-                "(SELECT id FROM Category Where category_name='{0}' AND student_id={2}) A )" +
+                "(SELECT id FROM Category WHERE category_name='{0}' AND student_id={2}) A )" +
                 "WHERE category_name='{1}' AND student_id={2}", NewMain, Sub, stdNum);
             MySqlCommand cmd = new MySqlCommand(updateQuery, getDBConnection());
             if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Update Data.");
@@ -386,11 +386,30 @@ namespace KSCS
             if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Update Data.");
         }
 
-        public static void DeleteSubCategory()
+        public static void DeleteSubCategory(string Sub)
         {
-            string deleteQuery = string.Format("DELETE FROM   WHERE id='{0}';");
-            MySqlCommand cmd = new MySqlCommand(deleteQuery, getDBConnection());
-            if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Delete Data.");
+            //해당 카테고리를 참고하던 스케줄 기타 카테고리로 변경
+            string updateSheduleQuery = string.Format("UPDATE Schedule SET category_id=" +
+                "(SELECT id FROM Category WHERE category_name='기타' AND student_id={0} AND parent_category_id IS NOT NULL) " +
+                "WHERE student_id={0} AND category_id=" +
+                "(SELECT id FROM Category WHERE student_id={0} AND category_name='{1}' AND parent_category_id IS NOT NULL)",
+                stdNum,Sub);
+            MySqlCommand cmd1 = new MySqlCommand(updateSheduleQuery, getDBConnection());
+            if (cmd1.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Update Data.");
+
+            //해당 카테고리를 참고하던 탭에서 해당 카테고리 삭제
+            string deleteTabQuery = string.Format("DELETE FROM TabCategory WHERE category_id=" +
+                "(SELECT id FROM Category WHERE student_id={0} AND category_name='{1}' AND parent_category_id IS NOT NULL);",
+                stdNum,Sub);
+            MySqlCommand cmd2 = new MySqlCommand(deleteTabQuery, getDBConnection());
+            if (cmd2.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Delete Data.");
+
+            //카테고리 삭제
+            string deleteQuery = string.Format("DELETE FROM Category " +
+                "WHERE student_id={0} AND category_name='{1}' AND parent_category_id IS NOT NULL;",
+                stdNum, Sub);
+            MySqlCommand cmd3 = new MySqlCommand(deleteQuery, getDBConnection());
+            if (cmd3.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Delete Data.");
         }
 
         public static void CreateParentCategory(string Main)

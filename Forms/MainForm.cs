@@ -118,6 +118,7 @@ namespace KSCS
                 {
                     UserSubCategory uc = new UserSubCategory();
                     uc.SetBasicMode(item);
+                    uc.setMain(key);
                     ((FlowLayoutPanel)((UserMainCategory)panelMainCategory.Controls[key]).flpSubCategory).Controls.Add(uc);
                 }
             }

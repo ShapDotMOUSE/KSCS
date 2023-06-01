@@ -62,6 +62,7 @@
             this.labelMember = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.userMemberStatus1 = new KSCS.UserControls.MainForm.UserMemberStatus();
+            this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
             this.panelSchedules.SuspendLayout();
             this.flpMember.SuspendLayout();
             this.panelTop.SuspendLayout();
@@ -495,6 +496,10 @@
             this.userMemberStatus1.Size = new System.Drawing.Size(170, 31);
             this.userMemberStatus1.TabIndex = 0;
             // 
+            // guna2ShadowForm1
+            // 
+            this.guna2ShadowForm1.TargetForm = this;
+            // 
             // SharingScheduleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -565,5 +570,6 @@
         private Guna.UI2.WinForms.Guna2ImageButton closeBtn;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
         private UserControls.MainForm.UserMemberStatus userMemberStatus1;
+        private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm1;
     }
 }

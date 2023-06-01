@@ -128,12 +128,6 @@
     <Compile Include="Forms\SharingScheduleForm.Designer.cs">
       <DependentUpon>SharingScheduleForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\TempCategorySetting.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\TempCategorySetting.Designer.cs">
-      <DependentUpon>TempCategorySetting.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\MainForm\UserLabel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -242,9 +236,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SharingScheduleForm.resx">
       <DependentUpon>SharingScheduleForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\TempCategorySetting.resx">
-      <DependentUpon>TempCategorySetting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\MainForm\UserLabel.resx">
       <DependentUpon>UserLabel.cs</DependentUpon>

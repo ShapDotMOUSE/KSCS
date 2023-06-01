@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SharingClickForm));
-            this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.flpMember = new System.Windows.Forms.FlowLayoutPanel();
             this.panelTop = new Guna.UI2.WinForms.Guna2Panel();
             this.txtMember = new Guna.UI2.WinForms.Guna2TextBox();
@@ -38,12 +37,9 @@
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.btnCreate = new Guna.UI2.WinForms.Guna2Button();
             this.btnCancel = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
+            this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.SuspendLayout();
-            // 
-            // guna2Elipse1
-            // 
-            this.guna2Elipse1.BorderRadius = 10;
-            this.guna2Elipse1.TargetControl = this;
             // 
             // flpMember
             // 
@@ -144,6 +140,16 @@
             this.btnCancel.Text = "취 소";
             this.btnCancel.Click += new System.EventHandler(this.guna2Button3_Click);
             // 
+            // guna2ShadowForm1
+            // 
+            this.guna2ShadowForm1.BorderRadius = 10;
+            this.guna2ShadowForm1.TargetForm = this;
+            // 
+            // guna2Elipse1
+            // 
+            this.guna2Elipse1.BorderRadius = 10;
+            this.guna2Elipse1.TargetControl = this;
+            // 
             // SharingClickForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -166,8 +172,6 @@
         }
 
         #endregion
-
-        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
         private System.Windows.Forms.FlowLayoutPanel flpMember;
         private Guna.UI2.WinForms.Guna2Panel panelTop;
         private Guna.UI2.WinForms.Guna2TextBox txtMember;
@@ -175,5 +179,7 @@
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
         private Guna.UI2.WinForms.Guna2Button btnCancel;
         private Guna.UI2.WinForms.Guna2Button btnCreate;
+        private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm1;
+        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
     }
 }

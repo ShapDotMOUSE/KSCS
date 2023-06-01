@@ -16,6 +16,9 @@ namespace KSCS.Forms
         public SharingClickForm()
         {
             InitializeComponent();
+            this.Focus();
+            this.guna2ShadowForm1.TargetForm = this;
+
         }
 
         private void guna2Button3_Click(object sender, EventArgs e)

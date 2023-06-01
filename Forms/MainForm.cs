@@ -36,6 +36,14 @@ namespace KSCS
             DialogResult Result = loginForm.ShowDialog();
             if (Result == DialogResult.OK)
             {
+                //초기 사이즈 및 위치 설정
+                this.Size = new Size(1360, 960);
+
+                this.StartPosition = FormStartPosition.Manual;
+                this.Location = new Point(
+                   (Screen.PrimaryScreen.Bounds.Width - this.Size.Width) / 2,
+                   (Screen.PrimaryScreen.Bounds.Height - this.Size.Height) / 2
+                );
                 LoadMagam();
                 lblStdNum.Text = stdNum;
                 //초기 메인 카테고리 설정
@@ -70,9 +78,6 @@ namespace KSCS
             }
             else
                 Close();
-
-            this.Size = new Size(1360, 960);
-
         }
 
         private void setTab()

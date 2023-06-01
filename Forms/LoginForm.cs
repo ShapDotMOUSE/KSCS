@@ -108,17 +108,23 @@ namespace KSCS
             }
         }
 
-        private void LoginForm_Resize(object sender, EventArgs e)
-        {
-            this.Size = new Size(800, 500);
-        }
-
         private void tbStdNum_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
             }
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            this.Size = new Size(800, 500);
+
+            this.StartPosition = FormStartPosition.Manual;
+            this.Location = new Point(
+               (Screen.PrimaryScreen.Bounds.Width - this.Size.Width) / 2,
+               (Screen.PrimaryScreen.Bounds.Height - this.Size.Height) / 2
+            );
         }
     }
 }

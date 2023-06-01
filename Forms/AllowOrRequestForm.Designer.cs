@@ -30,24 +30,22 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AllowOrRequestForm));
-            this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.panelTop = new Guna.UI2.WinForms.Guna2Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbl_message = new System.Windows.Forms.Label();
             this.closeBtn = new Guna.UI2.WinForms.Guna2ImageButton();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
+            this.lbl_StudentNumber = new System.Windows.Forms.Label();
+            this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.panelTop.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // guna2Elipse1
-            // 
-            this.guna2Elipse1.BorderRadius = 10;
-            this.guna2Elipse1.TargetControl = this;
             // 
             // panelTop
             // 
             this.panelTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
-            this.panelTop.Controls.Add(this.label1);
+            this.panelTop.Controls.Add(this.lbl_StudentNumber);
+            this.panelTop.Controls.Add(this.lbl_message);
             this.panelTop.Controls.Add(this.closeBtn);
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(0, 0);
@@ -55,16 +53,16 @@
             this.panelTop.Size = new System.Drawing.Size(535, 72);
             this.panelTop.TabIndex = 6;
             // 
-            // label1
+            // lbl_message
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("나눔고딕", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(33, 32);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(475, 20);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "2019203055님이 회원님을 실시간 일정 공유에 초대하셨습니다.";
+            this.lbl_message.AutoSize = true;
+            this.lbl_message.Font = new System.Drawing.Font("나눔고딕", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lbl_message.ForeColor = System.Drawing.Color.Black;
+            this.lbl_message.Location = new System.Drawing.Point(135, 25);
+            this.lbl_message.Name = "lbl_message";
+            this.lbl_message.Size = new System.Drawing.Size(375, 20);
+            this.lbl_message.TabIndex = 7;
+            this.lbl_message.Text = "님이 회원님을 실시간 일정 공유에 초대하셨습니다.";
             // 
             // closeBtn
             // 
@@ -112,6 +110,27 @@
             this.guna2Button2.TabIndex = 7;
             this.guna2Button2.Text = "거 절";
             // 
+            // guna2ShadowForm1
+            // 
+            this.guna2ShadowForm1.BorderRadius = 10;
+            this.guna2ShadowForm1.TargetForm = this;
+            // 
+            // lbl_StudentNumber
+            // 
+            this.lbl_StudentNumber.AutoSize = true;
+            this.lbl_StudentNumber.Font = new System.Drawing.Font("나눔고딕", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lbl_StudentNumber.Location = new System.Drawing.Point(32, 25);
+            this.lbl_StudentNumber.Margin = new System.Windows.Forms.Padding(0);
+            this.lbl_StudentNumber.Name = "lbl_StudentNumber";
+            this.lbl_StudentNumber.Size = new System.Drawing.Size(109, 20);
+            this.lbl_StudentNumber.TabIndex = 13;
+            this.lbl_StudentNumber.Text = "2019203055";
+            // 
+            // guna2Elipse1
+            // 
+            this.guna2Elipse1.BorderRadius = 10;
+            this.guna2Elipse1.TargetControl = this;
+            // 
             // AllowOrRequestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -133,12 +152,13 @@
         }
 
         #endregion
-
-        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private Guna.UI2.WinForms.Guna2Panel panelTop;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_message;
         private Guna.UI2.WinForms.Guna2ImageButton closeBtn;
+        private System.Windows.Forms.Label lbl_StudentNumber;
+        private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm1;
+        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
     }
 }

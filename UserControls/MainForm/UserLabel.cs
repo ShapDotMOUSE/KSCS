@@ -35,6 +35,7 @@ namespace KSCS.UserControls.MainForm
         public void SetName(string name)
         {
             txtLabel.Text = name;
+            this.Name = "label" + name;
         }
 
     }

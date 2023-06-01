@@ -11,12 +11,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static KSCS.Class.KSCS_static;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace KSCS
 {
     public partial class UserSubCategory : UserControl
     {
         string MainCategory;
+        bool isRemove;
         public UserSubCategory()
         {
             InitializeComponent();
@@ -65,6 +67,7 @@ namespace KSCS
                 chkCategory.Enabled = false;
                 chkCategory.Checked = true;
             }
+            isRemove = false;
             txtCategory.MaxLength = 4;
             this.ActiveControl = txtCategory;
             txtCategory.Focus();
@@ -91,10 +94,15 @@ namespace KSCS
                         {
                             //신규 카테고리인 경우
                             category.AddSubdivision(MainCategory, txtCategory.Text);
+                            //All 탭에 추가
+                            HashSet<string> TabCategory = category.Tabs["All"] as HashSet<string>;
+                            TabCategory.Add(txtCategory.Text);
+                            category.Tabs["All"] = TabCategory;
+                            //DB 추가
                             Database.CreateSubCategory(MainCategory, txtCategory.Text);
                             lblCategory.ForeColor = Color.Black;
                             category.SetColor(txtCategory.Text, Color.Black);
-                            if(TabName == "All")
+                            if (TabName == "All")
                                 MainForm.flowLayoutPanelLable.Controls.Add(
                                      new UserLabel(txtCategory.Text, category.GetColor(txtCategory.Text)));
                         }
@@ -123,7 +131,7 @@ namespace KSCS
                 else
                 {
                     //새로 만드는 카테고리인 경우 추가된 카테고리 삭제
-                    ((FlowLayoutPanel)this.Parent).Controls.Remove(this);
+                    if(!isRemove) ((FlowLayoutPanel)this.Parent).Controls.Remove(this);
                 }
             }
         }
@@ -142,7 +150,7 @@ namespace KSCS
             lblCategory.Visible = true;
             txtCategory.Visible = false;
             txtCategory.Clear();
-            if(lblCategory.Text.Length == 0 )
+            if(lblCategory.Text.Length == 0 && !isRemove)
                 ((FlowLayoutPanel)this.Parent).Controls.Remove(this);
         }
 
@@ -172,6 +180,21 @@ namespace KSCS
            temp.ShowDialog();
         }
 
-        
+        private void menuDelete_Click(object sender, EventArgs e)
+        {
+            if(MainCategory == "KLAS" || this.Name == "기타")
+            {
+                MessageBox.Show("삭제할 수 없는 카테고리입니다.");
+            }
+            else
+            {
+                if(chkCategory.Checked)
+                {
+                    MainForm.flowLayoutPanelLable.Controls.Remove(MainForm.flowLayoutPanelLable.Controls["label" + lblCategory.Text]);
+                }
+                ((FlowLayoutPanel)this.Parent).Controls.Remove(this);
+                Database.DeleteSubCategory(this.Name);
+            }
+        }
     }
 }

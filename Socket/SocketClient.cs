@@ -43,7 +43,7 @@ namespace Socket
         public async Task Send(NetworkStream networkStream)
         {
             await networkStream.WriteAsync(this.sendBuffer, 0, this.sendBuffer.Length).ConfigureAwait(false);
-            networkStream.Flush();
+            await networkStream.FlushAsync();
 
             for (int i = 0; i < 1024 * 4; i++)
             {

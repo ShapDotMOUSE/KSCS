@@ -307,6 +307,7 @@ namespace KSCS
             s_client = new SocketClient(stdNum);
             s_client.OnConnect += new SocketClient.ConnectClientHandler(ConnectClient);
             s_client.OnLoadAddress += new SocketClient.LoadAddress(LoadAddress);
+            s_client.OnMessage += new SocketClient.MessageHandler(Message);
             s_client.addressDict = Database.GetAddress(testStdnums);
             //Init 데이터 생성
             s_client.InitClass = new Init

@@ -167,6 +167,7 @@
             this.Name = "SharingClickForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SharingClickForm";
+            this.TopMost = true;
             this.ResumeLayout(false);
 
         }

@@ -1,4 +1,5 @@
-﻿using KSCS.Class;
+﻿using Guna.UI2.WinForms;
+using KSCS.Class;
 using KSCS.Forms;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,9 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 using static System.Net.Mime.MediaTypeNames;
+
 
 namespace KSCS
 {
@@ -125,6 +128,29 @@ namespace KSCS
                (Screen.PrimaryScreen.Bounds.Width - this.Size.Width) / 2,
                (Screen.PrimaryScreen.Bounds.Height - this.Size.Height) / 2
             );
+
+            guna2PictureBox2.Visible = false;
+            guna2PictureBox3.Visible = false;
+            guna2PictureBox4.Visible = false;
+
+            Random random = new Random();
+            int randomNumber = random.Next(1, 5); // 1부터 4 사이의 난수 생성
+
+            switch (randomNumber)
+            {
+                case 1:
+                    guna2PictureBox1.Image = guna2PictureBox1.Image;
+                    break;
+                case 2:
+                    guna2PictureBox1.Image = guna2PictureBox2.Image;
+                    break;
+                case 3:
+                    guna2PictureBox1.Image = guna2PictureBox3.Image;
+                    break;
+                case 4:
+                    guna2PictureBox1.Image = guna2PictureBox4.Image;
+                    break;
+            }
         }
     }
 }

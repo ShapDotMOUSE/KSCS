@@ -418,7 +418,7 @@ namespace KSCS
             {
                 this.listener.Stop();
             }
-            if (s_client.clientSocketDict.Count > 0)
+            if (s_client?.clientSocketDict.Count > 0)
             {
                 foreach (KeyValuePair<string, TcpClient> keyValue in s_client.clientSocketDict)
                     keyValue.Value.Close();

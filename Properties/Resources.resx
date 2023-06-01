@@ -124,14 +124,8 @@
   <data name="free-icon-font-cross-39177591" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\free-icon-font-cross-39177591.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="그립톡-기본" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\그립톡-기본.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="우니커피" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\우니커피.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="lecture" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\lecture.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="individual" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\individual.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="nextIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\nextIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -139,14 +133,14 @@
   <data name="down" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="팡이우니 일기" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\팡이우니 일기.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="individual" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\individual.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="LOGO" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LOGO.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lecture" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lecture.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Outdoor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Outdoor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CategoryPlus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CategoryPlus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -157,11 +151,17 @@
   <data name="user" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\user.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="팡이놀람" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\팡이놀람.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="free-icon-font-plus-3917757" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\free-icon-font-plus-3917757.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="우니커피" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\우니커피.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="team_proejct" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\team_proejct.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="homework" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\homework.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="팡이마술봉" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\팡이마술봉.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -178,11 +178,11 @@
   <data name="우니팡이동그라미" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\우니팡이동그라미.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="free-icon-font-plus-3917757" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\free-icon-font-plus-3917757.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="homework" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\homework.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="팡이놀람" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\팡이놀람.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="그립톡-기본" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\그립톡-기본.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="free-icon-font-cross-3917759" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\free-icon-font-cross-3917759.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -190,10 +190,13 @@
   <data name="우니열공" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\우니열공.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="팡이우니 일기" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\팡이우니 일기.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="plugin" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\plugin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Outdoor" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Outdoor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="modify" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\modify.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

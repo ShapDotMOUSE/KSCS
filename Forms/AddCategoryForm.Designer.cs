@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddCategoryForm));
             this.AddCategoryFormElipse = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
@@ -56,9 +57,8 @@
             this.guna2Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
-            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(5);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(455, 40);
+            this.guna2Panel1.Size = new System.Drawing.Size(280, 25);
             this.guna2Panel1.TabIndex = 0;
             // 
             // guna2DragControl1
@@ -71,10 +71,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("나눔고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(29, 82);
-            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label1.Location = new System.Drawing.Point(18, 51);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(157, 28);
+            this.label1.Size = new System.Drawing.Size(96, 17);
             this.label1.TabIndex = 1;
             this.label1.Text = "상위 카테고리";
             // 
@@ -82,10 +81,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("나눔고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label2.Location = new System.Drawing.Point(29, 166);
-            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label2.Location = new System.Drawing.Point(18, 104);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(127, 28);
+            this.label2.Size = new System.Drawing.Size(78, 17);
             this.label2.TabIndex = 1;
             this.label2.Text = "카테고리명";
             // 
@@ -100,10 +98,9 @@
             this.cmbMain.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbMain.IntegralHeight = false;
             this.cmbMain.ItemHeight = 30;
-            this.cmbMain.Location = new System.Drawing.Point(195, 66);
-            this.cmbMain.Margin = new System.Windows.Forms.Padding(5);
+            this.cmbMain.Location = new System.Drawing.Point(120, 41);
             this.cmbMain.Name = "cmbMain";
-            this.cmbMain.Size = new System.Drawing.Size(215, 36);
+            this.cmbMain.Size = new System.Drawing.Size(134, 36);
             this.cmbMain.TabIndex = 2;
             // 
             // txtboxSub
@@ -117,23 +114,22 @@
             this.txtboxSub.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtboxSub.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtboxSub.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtboxSub.Location = new System.Drawing.Point(195, 150);
-            this.txtboxSub.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.txtboxSub.Location = new System.Drawing.Point(120, 94);
+            this.txtboxSub.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtboxSub.Name = "txtboxSub";
             this.txtboxSub.PasswordChar = '\0';
             this.txtboxSub.PlaceholderText = "";
             this.txtboxSub.SelectedText = "";
-            this.txtboxSub.Size = new System.Drawing.Size(219, 64);
+            this.txtboxSub.Size = new System.Drawing.Size(135, 40);
             this.txtboxSub.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("나눔고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label3.Location = new System.Drawing.Point(29, 248);
-            this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label3.Location = new System.Drawing.Point(18, 155);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(157, 28);
+            this.label3.Size = new System.Drawing.Size(96, 17);
             this.label3.TabIndex = 1;
             this.label3.Text = "카테고리 색상";
             // 
@@ -149,14 +145,14 @@
             this.boxColor.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.boxColor.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.boxColor.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.boxColor.Location = new System.Drawing.Point(195, 235);
-            this.boxColor.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.boxColor.Location = new System.Drawing.Point(120, 147);
+            this.boxColor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.boxColor.Name = "boxColor";
             this.boxColor.PasswordChar = '\0';
             this.boxColor.PlaceholderText = "";
             this.boxColor.ReadOnly = true;
             this.boxColor.SelectedText = "";
-            this.boxColor.Size = new System.Drawing.Size(49, 48);
+            this.boxColor.Size = new System.Drawing.Size(30, 30);
             this.boxColor.TabIndex = 4;
             this.boxColor.Click += new System.EventHandler(this.guna2TextBox2_Click);
             // 
@@ -174,15 +170,15 @@
             this.txtboxColor.Font = new System.Drawing.Font("나눔고딕", 7.2F);
             this.txtboxColor.ForeColor = System.Drawing.Color.Black;
             this.txtboxColor.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtboxColor.Location = new System.Drawing.Point(257, 232);
-            this.txtboxColor.Margin = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtboxColor.Location = new System.Drawing.Point(158, 145);
+            this.txtboxColor.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtboxColor.Name = "txtboxColor";
             this.txtboxColor.PasswordChar = '\0';
             this.txtboxColor.PlaceholderForeColor = System.Drawing.Color.Black;
             this.txtboxColor.PlaceholderText = "";
             this.txtboxColor.ReadOnly = true;
             this.txtboxColor.SelectedText = "";
-            this.txtboxColor.Size = new System.Drawing.Size(158, 58);
+            this.txtboxColor.Size = new System.Drawing.Size(97, 36);
             this.txtboxColor.TabIndex = 5;
             // 
             // guna2ColorTransition1
@@ -203,10 +199,9 @@
             this.guna2Button1.FillColor = System.Drawing.Color.White;
             this.guna2Button1.Font = new System.Drawing.Font("나눔고딕", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.guna2Button1.ForeColor = System.Drawing.Color.Black;
-            this.guna2Button1.Location = new System.Drawing.Point(114, 318);
-            this.guna2Button1.Margin = new System.Windows.Forms.Padding(5);
+            this.guna2Button1.Location = new System.Drawing.Point(70, 199);
             this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(98, 40);
+            this.guna2Button1.Size = new System.Drawing.Size(60, 25);
             this.guna2Button1.TabIndex = 6;
             this.guna2Button1.Text = "저 장";
             this.guna2Button1.Click += new System.EventHandler(this.btnSave_Click);
@@ -222,20 +217,19 @@
             this.guna2Button2.FillColor = System.Drawing.Color.White;
             this.guna2Button2.Font = new System.Drawing.Font("나눔고딕", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.guna2Button2.ForeColor = System.Drawing.Color.Black;
-            this.guna2Button2.Location = new System.Drawing.Point(255, 318);
-            this.guna2Button2.Margin = new System.Windows.Forms.Padding(5);
+            this.guna2Button2.Location = new System.Drawing.Point(157, 199);
             this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(98, 40);
+            this.guna2Button2.Size = new System.Drawing.Size(60, 25);
             this.guna2Button2.TabIndex = 6;
             this.guna2Button2.Text = "취 소";
             this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
             // 
             // AddCategoryForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(455, 384);
+            this.ClientSize = new System.Drawing.Size(280, 240);
             this.Controls.Add(this.guna2Button2);
             this.Controls.Add(this.guna2Button1);
             this.Controls.Add(this.txtboxColor);
@@ -247,7 +241,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(5);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddCategoryForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.TempCategorySetting_Load);

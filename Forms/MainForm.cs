@@ -7,40 +7,24 @@ using System.Windows.Forms;
 using Label = System.Windows.Forms.Label;
 using Panel = System.Windows.Forms.Panel;
 using KSCS.Class;
-using MySql.Data.MySqlClient;
 using static KSCS.Class.KSCS_static;
 using System.Net.Sockets;
-using System.Threading;
-using System.Web.UI.WebControls;
 using Socket;
 using System.Net;
-using KSCS.UserControls.MainForm;
+using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace KSCS
 {
     public partial class MainForm : Form
     {
-
         //스케줄 관련
         public MainForm()
         {
             InitializeComponent();
         }
-
-        private NetworkStream networkStream;
-        private TcpListener listener;
-        private TcpClient client;
-
-
-        private byte[] sendBuffer = new byte[1024 * 4];
-        private byte[] readBuffer = new byte[1024 * 4];
-
-        private bool ClientOn = false;
-        private bool Connect = false;
-
-        private Thread thread;
-
-        private Init InitClass;
+        TcpListener listener;
+        SocketClient s_client = null;
         public static FlowLayoutPanel flowLayoutPanelLable;
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -51,38 +35,43 @@ namespace KSCS
             LoginForm loginForm = new LoginForm();
             DialogResult Result = loginForm.ShowDialog();
             if (Result == DialogResult.OK)
+            {
                 LoadMagam();
+                lblStdNum.Text = stdNum;
+                //초기 메인 카테고리 설정
+                Database.ReadCategoryList();
+                Database.ReadTabAndCategory();
+                foreach (string Main in category.Categories.Keys)
+                {
+                    UserMainCategory category = new UserMainCategory();
+                    category.SetAddMode(Main);
+                    panelMainCategory.Controls.Add(category);
+                }
+
+
+                //초기 탭 설정 
+                TabAll.Clicked += ChangeTab;
+                Tab1.Clicked += ChangeTab;
+                Tab2.Clicked += ChangeTab;
+                Tab3.Clicked += ChangeTab;
+                Tab4.Clicked += ChangeTab;
+                //btnSharing.Clicked += CreateSharing;
+                btnSharing.Clicked += btnShare_Click;
+                //btnSharing.DoubleClicked += CreateSharing;
+                setTab();
+
+                //달력 (탭 위에 위치 -> 현재)
+                dispalyDate();
+                DisplayCategery();
+
+                //탭 로드
+                SetCheckedCategoryByTab();
+                TabAll.ShowTab();
+            }
             else
                 Close();
-            lblStdNum.Text = stdNum;
-            //초기 메인 카테고리 설정
-            Database.ReadCategoryList();
-            Database.ReadTabAndCategory();
-            foreach (string Main in category.Categories.Keys)
-            {
-                UserMainCategory category = new UserMainCategory();
-                category.SetAddMode(Main);
-                panelMainCategory.Controls.Add(category);
-            }
-   
 
-            //초기 탭 설정 
-            TabAll.Clicked += ChangeTab;
-            Tab1.Clicked += ChangeTab;
-            Tab2.Clicked += ChangeTab;
-            Tab3.Clicked += ChangeTab;
-            Tab4.Clicked += ChangeTab;
-            btnSharing.Clicked += btnShare_Click;
-            btnSharing.DoubleClicked += CreateSharing;
-            setTab();
-
-            //달력 (탭 위에 위치 -> 현재)
-            dispalyDate();
-            DisplayCategery();
-
-            //탭 로드
-            SetCheckedCategoryByTab();
-            TabAll.ShowTab();
+            this.Size = new Size(1360, 960);
 
         }
 
@@ -101,12 +90,12 @@ namespace KSCS
             MagamButtonEnable();
         }
 
-        private void MainForm_Resize(object sender, EventArgs e)
-        {
-            this.Size = new Size(1440, 1080);
-            this.MaximumSize = new Size(1440, 1080);
-            this.MinimumSize = new Size(1440, 1080);
-        }
+        //private void MainForm_Resize(object sender, EventArgs e)
+        //{
+        //    this.Size = new Size(1340, 960);
+        //    this.MaximumSize = new Size(1340, 960);
+        //    this.MinimumSize = new Size(1340, 960);
+        //}
 
 
         //카테고리 함수---------------------------------------------------------------------------------------------------------------------------------------
@@ -213,10 +202,10 @@ namespace KSCS
         //마감 일정 컨트롤---------------------------------------------------------------------------------------------------------------
         private void MagamButtonEnable()
         {
-            btnMagam_Click(btnMagam_Task, new EventArgs());
+            btnMagam_Click(btnMagam_Online, new EventArgs());
             btnMagam_Quiz.Enabled = true;
-            btnMagam_Task.Enabled = true;
             btnMagam_Online.Enabled = true;
+            btnMagam_Task.Enabled = true;
             btnMagam_Prjct.Enabled = true;
         }
 
@@ -316,96 +305,94 @@ namespace KSCS
             return flpDays.Controls.OfType<UserDate>();
         }
 
-        public void Send()
+
+
+
+        //    //실시간 일정 공유 생성 : 현재 더블클릭
+        //    //사용자 본인은 포트를 열지 않음. 모두 Listner에게 연결시도
+        public void CreateSharing(object sender, EventArgs e)
         {
-            networkStream.Write(this.sendBuffer, 0, this.sendBuffer.Length);
-            networkStream.Flush();
 
-            for (int i = 0; i < 1024 * 4; i++)
-            {
-                this.sendBuffer[i] = 0;
-            }
-        }
+            MessageBox.Show("실시간 일정 공유 생성");
 
-        
-        //실시간 일정 공유 생성 : 현재 더블클릭
-        public void CreateSharing(object sender, MouseEventArgs e)
-        {
-            MessageBox.Show("시작");
-            Database.SetAddress();
-            List<string> test= new List<string>();
-            test.Add("2019203055");
-            test.Add("2021203078");
-            client = new TcpClient();
-            Dictionary<string, string> addressDict = Database.GetAddress(test);
-            try
-            {
-                client.Connect(addressDict["2019203055"], 7777);
-            }
-            catch
-            {
-                MessageBox.Show("접속 에러");
-                return;
-            }
-            networkStream = client.GetStream();
+            List<string> testStdnums = new List<string>
+                {
+                    "2019203055",
+                    "2019203018",
+                    "2019203082",
+                };
 
-            Init Init = new Init
+            List<string> testTodo = testStdnums.ToList();
+            testTodo.Remove(stdNum);
+
+
+            s_client = new SocketClient(stdNum);
+            s_client.OnConnect += new SocketClient.ConnectClientHandler(ConnectClient);
+            s_client.OnLoadAddress += new SocketClient.LoadAddress(LoadAddress);
+            s_client.OnMessage += new SocketClient.MessageHandler(Message);
+            s_client.addressDict = Database.GetAddress(testStdnums);
+            //Init 데이터 생성
+            s_client.InitClass = new Init
             {
                 Type = (int)PacketType.INIT,
-                members = test,
-                addressDict = addressDict
+                members = testStdnums,
+                todoLink = testTodo,
+                boss = stdNum,
+                sender = stdNum
             };
-
-            Packet.Serialize(Init).CopyTo(this.sendBuffer, 0);
-            this.Send();
+            s_client.sendClientTodo();
         }
 
-        public void ParticipateSharing()
+        public void ConnectClient(string sender, List<string> todo)
+        {
+            Invoke(new MethodInvoker(delegate ()
+            {
+                MessageBox.Show("연결 성공!\r\n"
+                    + "\r\n 연결된 사람 : " + sender
+                    + "\r\n todo : " + string.Join(",", todo.Select(std => string.Format("'{0}'", std))));
+            }));
+        }
+
+        public void Message(string message)
+        {
+            Invoke(new MethodInvoker(delegate ()
+            {
+                MessageBox.Show(message);
+            }));
+        }
+
+        public void LoadAddress()
+        {
+            if (s_client != null)
+            {
+                s_client.addressDict = Database.GetAddress(s_client.InitClass.todoLink);
+            }
+        }
+        async public Task ParticipateSharing()
         {
             Database.SetAddress();
             listener = new TcpListener(IPAddress.Any, 7777);
             listener.Start();
-            TcpClient client = listener.AcceptTcpClient();
-            if (client.Connected)
-            {
-                ClientOn = true;
-                networkStream = client.GetStream();
-            }
-            int nRead = 0;  
-
-            while (ClientOn)
+            Console.WriteLine("Start Listener");
+            s_client = new SocketClient(stdNum);
+            s_client.OnConnect += new SocketClient.ConnectClientHandler(ConnectClient);
+            s_client.OnLoadAddress += new SocketClient.LoadAddress(LoadAddress);
+            s_client.OnMessage += new SocketClient.MessageHandler(Message);
+            while (true)
             {
                 try
                 {
-                    nRead = 0;
-                    nRead = networkStream.Read(readBuffer, 0, 1024 * 4);
-                }
-                catch
-                {
-                    ClientOn = false;
-                    networkStream = null;
-                }
-                Packet packet = (Packet)Packet.Deserialize(readBuffer);
+                    TcpClient client = await listener.AcceptTcpClientAsync().ConfigureAwait(false); //주최자 접속
+                    Task.Run(() => s_client.readStreamData(client));
 
-                switch ((int)packet.Type)
+                }
+                catch (SocketException se)
                 {
-                    case (int)PacketType.INIT:
-                        {
-                            InitClass = (Init)Packet.Deserialize(readBuffer);
-                            this.Invoke(new MethodInvoker(delegate ()
-                            {
-                                foreach (string s in InitClass.members)
-                                {
-                                    if (InitClass.addressDict.ContainsKey(s))
-                                    {
-                                        MessageBox.Show(s + " : " + InitClass.addressDict[s]);
-                                    }
-                                    else
-                                        MessageBox.Show(s + " : 연결 할 수 없습니다.");
-                                }
-                            }));
-                            break;
-                        }
+                    Trace.WriteLine(string.Format("ParticipateSharing - SocketException : {0}", se.Message));
+                }
+                catch (Exception ex)
+                {
+                    Trace.WriteLine(string.Format("ParticipateSharing - Exception : {0}", ex.Message));
                 }
             }
 
@@ -417,8 +404,7 @@ namespace KSCS
         public void btnShare_Click(object sender, EventArgs e)
         {
             MessageBox.Show("시작");
-            thread = new Thread(new ThreadStart(ParticipateSharing));
-            thread.Start();
+            Task.Run(()=>ParticipateSharing());
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -426,14 +412,11 @@ namespace KSCS
             if (listener != null)
             {
                 this.listener.Stop();
-                this.networkStream.Close();
-                this.thread.Abort();
             }
-            else if (client != null)
+            if (s_client.clientSocketDict.Count > 0)
             {
-                this.client.Close();
-                this.networkStream.Close();
-
+                foreach (KeyValuePair<string, TcpClient> keyValue in s_client.clientSocketDict)
+                    keyValue.Value.Close();
             }
             Database.DeleteAddress();
         }

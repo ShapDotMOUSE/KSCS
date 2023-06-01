@@ -104,6 +104,12 @@
     <Compile Include="Forms\AddCategoryForm.Designer.cs">
       <DependentUpon>AddCategoryForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\AllowOrRequestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AllowOrRequestForm.Designer.cs">
+      <DependentUpon>AllowOrRequestForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\LoadingForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +122,12 @@
     <Compile Include="Forms\SharingClickForm.Designer.cs">
       <DependentUpon>SharingClickForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\SharingScheduleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SharingScheduleForm.Designer.cs">
+      <DependentUpon>SharingScheduleForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\TempCategorySetting.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +139,18 @@
     </Compile>
     <Compile Include="UserControls\MainForm\UserLabel.Designer.cs">
       <DependentUpon>UserLabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MainForm\UserMemberStatus.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\MainForm\UserMemberStatus.Designer.cs">
+      <DependentUpon>UserMemberStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MainForm\UserSharingAddButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\MainForm\UserSharingAddButton.Designer.cs">
+      <DependentUpon>UserSharingAddButton.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\MainForm\UserTapButton.cs">
       <SubType>UserControl</SubType>
@@ -207,17 +231,29 @@
     <EmbeddedResource Include="Forms\AddCategoryForm.resx">
       <DependentUpon>AddCategoryForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AllowOrRequestForm.resx">
+      <DependentUpon>AllowOrRequestForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoadingForm.resx">
       <DependentUpon>LoadingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SharingClickForm.resx">
       <DependentUpon>SharingClickForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SharingScheduleForm.resx">
+      <DependentUpon>SharingScheduleForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\TempCategorySetting.resx">
       <DependentUpon>TempCategorySetting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\MainForm\UserLabel.resx">
       <DependentUpon>UserLabel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\MainForm\UserMemberStatus.resx">
+      <DependentUpon>UserMemberStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\MainForm\UserSharingAddButton.resx">
+      <DependentUpon>UserSharingAddButton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\MainForm\UserTapButton.resx">
       <DependentUpon>UserTapButton.cs</DependentUpon>
@@ -358,6 +394,12 @@
       <Project>{dda9c866-b606-41cc-b40e-baade2225b41}</Project>
       <Name>Socket</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plugin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Outdoor.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -50,9 +50,10 @@
             this.btnTap.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTap.ForeColor = System.Drawing.Color.White;
             this.btnTap.Location = new System.Drawing.Point(0, 0);
+            this.btnTap.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnTap.Name = "btnTap";
             this.btnTap.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnTap.Size = new System.Drawing.Size(32, 63);
+            this.btnTap.Size = new System.Drawing.Size(59, 126);
             this.btnTap.TabIndex = 23;
             this.btnTap.Click += new System.EventHandler(this.customTapButton_Click);
             this.btnTap.DoubleClick += new System.EventHandler(this.btnTap_DoubleClick);
@@ -70,21 +71,38 @@
             this.panelWhite.Controls.Add(this.txtTab);
             this.panelWhite.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelWhite.Location = new System.Drawing.Point(0, 0);
-            this.panelWhite.Margin = new System.Windows.Forms.Padding(2);
+            this.panelWhite.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelWhite.Name = "panelWhite";
-            this.panelWhite.Size = new System.Drawing.Size(12, 63);
+            this.panelWhite.Size = new System.Drawing.Size(22, 126);
             this.panelWhite.TabIndex = 25;
             this.panelWhite.MouseEnter += new System.EventHandler(this.btnTab_MouseHover);
             this.panelWhite.MouseLeave += new System.EventHandler(this.btnTap_MouseLeave);
             // 
-            // customTapButton
+            // txtTab
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.txtTab.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtTab.DefaultText = "";
+            this.txtTab.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtTab.Location = new System.Drawing.Point(0, 0);
+            this.txtTab.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtTab.Multiline = true;
+            this.txtTab.Name = "txtTab";
+            this.txtTab.PasswordChar = '\0';
+            this.txtTab.PlaceholderText = "";
+            this.txtTab.SelectedText = "";
+            this.txtTab.Size = new System.Drawing.Size(53, 120);
+            this.txtTab.TabIndex = 0;
+            this.txtTab.WordWrap = false;
+            // 
+            // UserTabButton
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panelWhite);
             this.Controls.Add(this.btnTap);
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "UserTabButton";
-            this.Size = new System.Drawing.Size(32, 63);
+            this.Size = new System.Drawing.Size(59, 126);
             this.Load += new System.EventHandler(this.UserTabButton_Load);
             this.panelWhite.ResumeLayout(false);
             this.ResumeLayout(false);

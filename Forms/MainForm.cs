@@ -379,7 +379,7 @@ namespace KSCS
         public void btnShare_Click(object sender, EventArgs e)
         {
             MessageBox.Show("시작");
-            ParticipateSharing().Wait();
+            Task.Run(()=>ParticipateSharing());
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)

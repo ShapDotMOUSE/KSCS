@@ -182,7 +182,7 @@ namespace KSCS
 
         public static void UpdateSchedule(Schedule schedule, int index)
         {
-            string updateQuery = string.Format("UPDATE Schedule SET title='{0}', content='{1}', place='{2}', category_id=(SELECT id FROM Category WHERE category_name='{3}' AND student_id='{4}'),startDate='{5}', endDate='{6}' WHERE id={7};",
+            string updateQuery = string.Format("UPDATE Schedule SET title='{0}', content='{1}', place='{2}', category_id=(SELECT id FROM Category WHERE category_name='{3}' AND student_id='{4}' AND parent_category_id IS NOT NULL),startDate='{5}', endDate='{6}' WHERE id={7};",
                     schedule.title,
                     schedule.content,
                     schedule.place,

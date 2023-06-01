@@ -44,6 +44,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.sharingButton_MouseDoubleClick);
             // 
             // label1
             // 
@@ -54,6 +55,7 @@
             this.label1.Size = new System.Drawing.Size(94, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "실시간 공유";
+            this.label1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.sharingButton_MouseDoubleClick);
             // 
             // guna2Elipse1
             // 
@@ -69,7 +71,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "UserSharingAddButton";
             this.Size = new System.Drawing.Size(140, 50);
-            this.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.UserSharingAddButton_MouseDoubleClick);
+            this.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.sharingButton_MouseDoubleClick);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

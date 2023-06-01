@@ -28,7 +28,7 @@ namespace KSCS.Forms
             {
                 MemberAdd memberAdd = new MemberAdd();
                 memberAdd.txtMember.Text = txtMember.Text;
-                memberAdd.txtMember.Font = new Font(memberAdd.txtMember.Font.FontFamily, 12f, FontStyle.Regular);
+                memberAdd.txtMember.Font = new Font(memberAdd.txtMember.Font.FontFamily, 10f, FontStyle.Regular);
 
                 Size size = TextRenderer.MeasureText(memberAdd.txtMember.Text, memberAdd.txtMember.Font);
                 memberAdd.txtMember.ClientSize = new Size(size.Width, size.Height);
@@ -36,8 +36,15 @@ namespace KSCS.Forms
                 memberAdd.btnClose.ClientSize = new Size(10, 9);
                 txtMember.Text = "";
                 flpMember.Controls.Add(memberAdd);
+                memberAdd.AddEvent += new EventHandler(DeleteMemberEvent); //삭제 이벤트 핸들러 추가
             }
         }
+
+        private void DeleteMemberEvent(object sender, EventArgs e)
+        {
+            flpMember.Controls.Remove((Control)sender);
+        }
+
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             flpAddMember();

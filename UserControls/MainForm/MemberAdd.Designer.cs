@@ -41,11 +41,11 @@
             // 
             this.txtMember.BackColor = System.Drawing.Color.LightCyan;
             this.txtMember.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtMember.Location = new System.Drawing.Point(4, 4);
-            this.txtMember.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMember.Font = new System.Drawing.Font("나눔고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtMember.Location = new System.Drawing.Point(3, 3);
             this.txtMember.Multiline = true;
             this.txtMember.Name = "txtMember";
-            this.txtMember.Size = new System.Drawing.Size(125, 24);
+            this.txtMember.Size = new System.Drawing.Size(100, 20);
             this.txtMember.TabIndex = 0;
             // 
             // guna2Elipse1
@@ -57,10 +57,10 @@
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.Image = global::KSCS.Properties.Resources.free_icon_font_cross_3917759;
-            this.btnClose.Location = new System.Drawing.Point(109, 5);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
+            this.btnClose.Location = new System.Drawing.Point(108, 4);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 4, 2, 2);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(19, 20);
+            this.btnClose.Size = new System.Drawing.Size(15, 17);
             this.btnClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnClose.TabIndex = 1;
             this.btnClose.TabStop = false;
@@ -71,20 +71,18 @@
             this.flowLayoutPanel1.Controls.Add(this.txtMember);
             this.flowLayoutPanel1.Controls.Add(this.btnClose);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(-1, 0);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(168, 24);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(134, 20);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
             // MemberAdd
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightCyan;
             this.Controls.Add(this.flowLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MemberAdd";
-            this.Size = new System.Drawing.Size(168, 43);
+            this.Size = new System.Drawing.Size(134, 36);
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();

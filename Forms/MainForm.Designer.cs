@@ -37,15 +37,26 @@
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            this.btn_logout = new System.Windows.Forms.PictureBox();
             this.btnSettingComplete = new Guna.UI2.WinForms.Guna2Button();
+            this.btnPlusCategory = new Guna.UI2.WinForms.Guna2Button();
             this.panelMainCategory = new System.Windows.Forms.FlowLayoutPanel();
+            this.guna2PictureBox4 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
             this.panelMagam = new System.Windows.Forms.FlowLayoutPanel();
             this.panelMagamBtns = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnMagam_Online = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.btnMagam_Quiz = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.btnMagam_Task = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.btnMagam_Prjct = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.btnMagam_Personal = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnUserSharingAddButton1 = new KSCS.UserControls.MainForm.UserSharingAddButton();
             this.flpLabel = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -55,18 +66,11 @@
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
+            this.btnPrevisous = new Guna.UI2.WinForms.Guna2Button();
+            this.btnNext = new Guna.UI2.WinForms.Guna2Button();
             this.lblMonth = new System.Windows.Forms.Label();
+            this.guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.flpDays = new System.Windows.Forms.TableLayoutPanel();
-            this.guna2Elipse3 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.guna2Elipse4 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.guna2Elipse5 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.btnSharing = new KSCS.UserControls.MainForm.SharingButton();
-            this.Tab4 = new KSCS.UserTabButton();
-            this.Tab3 = new KSCS.UserTabButton();
-            this.Tab2 = new KSCS.UserTabButton();
-            this.Tab1 = new KSCS.UserTabButton();
-            this.TabAll = new KSCS.UserTabButton();
-            this.btnUserSharingAddButton1 = new KSCS.UserControls.MainForm.UserSharingAddButton();
             this.userDate1 = new KSCS.UserDate();
             this.userDate2 = new KSCS.UserDate();
             this.userDate3 = new KSCS.UserDate();
@@ -109,31 +113,27 @@
             this.userDate40 = new KSCS.UserDate();
             this.userDate41 = new KSCS.UserDate();
             this.userDate42 = new KSCS.UserDate();
-            this.btnPrevisous = new Guna.UI2.WinForms.Guna2Button();
-            this.btnNext = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.btnMagam_Online = new Guna.UI2.WinForms.Guna2CircleButton();
-            this.btnMagam_Quiz = new Guna.UI2.WinForms.Guna2CircleButton();
-            this.btnMagam_Task = new Guna.UI2.WinForms.Guna2CircleButton();
-            this.btnMagam_Prjct = new Guna.UI2.WinForms.Guna2CircleButton();
-            this.btnMagam_Personal = new Guna.UI2.WinForms.Guna2CircleButton();
-            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.btn_logout = new System.Windows.Forms.PictureBox();
-            this.btnPlusCategory = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2PictureBox4 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.guna2Elipse3 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2Elipse4 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2Elipse5 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.btnSharing = new KSCS.UserControls.MainForm.SharingButton();
+            this.Tab4 = new KSCS.UserTabButton();
+            this.Tab3 = new KSCS.UserTabButton();
+            this.Tab2 = new KSCS.UserTabButton();
+            this.Tab1 = new KSCS.UserTabButton();
+            this.TabAll = new KSCS.UserTabButton();
             this.guna2Panel2.SuspendLayout();
-            this.guna2Panel3.SuspendLayout();
-            this.panelMagamBtns.SuspendLayout();
-            this.guna2Panel4.SuspendLayout();
-            this.guna2Panel5.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
-            this.flpDays.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_logout)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox4)).BeginInit();
+            this.guna2Panel3.SuspendLayout();
+            this.panelMagamBtns.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
+            this.guna2Panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
+            this.guna2Panel5.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox3)).BeginInit();
+            this.flpDays.SuspendLayout();
             this.SuspendLayout();
             // 
             // label2
@@ -220,6 +220,16 @@
             this.guna2Panel2.Size = new System.Drawing.Size(246, 930);
             this.guna2Panel2.TabIndex = 18;
             // 
+            // btn_logout
+            // 
+            this.btn_logout.Image = global::KSCS.Properties.Resources.Outdoor;
+            this.btn_logout.Location = new System.Drawing.Point(204, 14);
+            this.btn_logout.Name = "btn_logout";
+            this.btn_logout.Size = new System.Drawing.Size(27, 32);
+            this.btn_logout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btn_logout.TabIndex = 28;
+            this.btn_logout.TabStop = false;
+            // 
             // btnSettingComplete
             // 
             this.btnSettingComplete.BorderRadius = 20;
@@ -236,6 +246,24 @@
             this.btnSettingComplete.Size = new System.Drawing.Size(145, 47);
             this.btnSettingComplete.TabIndex = 27;
             this.btnSettingComplete.Text = "설정 완료";
+            this.btnSettingComplete.Visible = false;
+            // 
+            // btnPlusCategory
+            // 
+            this.btnPlusCategory.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnPlusCategory.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnPlusCategory.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnPlusCategory.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnPlusCategory.FillColor = System.Drawing.Color.White;
+            this.btnPlusCategory.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnPlusCategory.ForeColor = System.Drawing.Color.White;
+            this.btnPlusCategory.Image = global::KSCS.Properties.Resources.CategoryPlus;
+            this.btnPlusCategory.ImageOffset = new System.Drawing.Point(1, 0);
+            this.btnPlusCategory.Location = new System.Drawing.Point(168, 211);
+            this.btnPlusCategory.Name = "btnPlusCategory";
+            this.btnPlusCategory.Size = new System.Drawing.Size(28, 25);
+            this.btnPlusCategory.TabIndex = 26;
+            this.btnPlusCategory.Click += new System.EventHandler(this.btnPlusCategory_Click);
             // 
             // panelMainCategory
             // 
@@ -246,6 +274,18 @@
             this.panelMainCategory.Name = "panelMainCategory";
             this.panelMainCategory.Size = new System.Drawing.Size(180, 451);
             this.panelMainCategory.TabIndex = 20;
+            // 
+            // guna2PictureBox4
+            // 
+            this.guna2PictureBox4.BackColor = System.Drawing.Color.White;
+            this.guna2PictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox4.Image")));
+            this.guna2PictureBox4.ImageRotate = 0F;
+            this.guna2PictureBox4.Location = new System.Drawing.Point(19, 16);
+            this.guna2PictureBox4.Name = "guna2PictureBox4";
+            this.guna2PictureBox4.Size = new System.Drawing.Size(81, 85);
+            this.guna2PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox4.TabIndex = 17;
+            this.guna2PictureBox4.TabStop = false;
             // 
             // guna2Panel3
             // 
@@ -283,6 +323,112 @@
             this.panelMagamBtns.Size = new System.Drawing.Size(288, 44);
             this.panelMagamBtns.TabIndex = 9;
             // 
+            // btnMagam_Online
+            // 
+            this.btnMagam_Online.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnMagam_Online.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnMagam_Online.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnMagam_Online.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnMagam_Online.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.btnMagam_Online.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnMagam_Online.ForeColor = System.Drawing.Color.White;
+            this.btnMagam_Online.Image = global::KSCS.Properties.Resources.lecture;
+            this.btnMagam_Online.Location = new System.Drawing.Point(3, 3);
+            this.btnMagam_Online.Name = "btnMagam_Online";
+            this.btnMagam_Online.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.btnMagam_Online.Size = new System.Drawing.Size(35, 35);
+            this.btnMagam_Online.TabIndex = 11;
+            this.btnMagam_Online.Click += new System.EventHandler(this.btnMagam_Click);
+            // 
+            // btnMagam_Quiz
+            // 
+            this.btnMagam_Quiz.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnMagam_Quiz.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnMagam_Quiz.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnMagam_Quiz.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnMagam_Quiz.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.btnMagam_Quiz.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnMagam_Quiz.ForeColor = System.Drawing.Color.White;
+            this.btnMagam_Quiz.Image = global::KSCS.Properties.Resources.quiz;
+            this.btnMagam_Quiz.ImageOffset = new System.Drawing.Point(1, 0);
+            this.btnMagam_Quiz.ImageSize = new System.Drawing.Size(22, 20);
+            this.btnMagam_Quiz.Location = new System.Drawing.Point(44, 3);
+            this.btnMagam_Quiz.Name = "btnMagam_Quiz";
+            this.btnMagam_Quiz.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.btnMagam_Quiz.Size = new System.Drawing.Size(35, 35);
+            this.btnMagam_Quiz.TabIndex = 12;
+            this.btnMagam_Quiz.Click += new System.EventHandler(this.btnMagam_Click);
+            // 
+            // btnMagam_Task
+            // 
+            this.btnMagam_Task.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnMagam_Task.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnMagam_Task.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnMagam_Task.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnMagam_Task.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.btnMagam_Task.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnMagam_Task.ForeColor = System.Drawing.Color.White;
+            this.btnMagam_Task.Image = global::KSCS.Properties.Resources.homework;
+            this.btnMagam_Task.ImageOffset = new System.Drawing.Point(1, 0);
+            this.btnMagam_Task.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnMagam_Task.Location = new System.Drawing.Point(85, 3);
+            this.btnMagam_Task.Name = "btnMagam_Task";
+            this.btnMagam_Task.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.btnMagam_Task.Size = new System.Drawing.Size(35, 35);
+            this.btnMagam_Task.TabIndex = 13;
+            this.btnMagam_Task.Click += new System.EventHandler(this.btnMagam_Click);
+            // 
+            // btnMagam_Prjct
+            // 
+            this.btnMagam_Prjct.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnMagam_Prjct.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnMagam_Prjct.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnMagam_Prjct.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnMagam_Prjct.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.btnMagam_Prjct.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnMagam_Prjct.ForeColor = System.Drawing.Color.White;
+            this.btnMagam_Prjct.Image = global::KSCS.Properties.Resources.team_proejct;
+            this.btnMagam_Prjct.ImageOffset = new System.Drawing.Point(1, 0);
+            this.btnMagam_Prjct.ImageSize = new System.Drawing.Size(35, 35);
+            this.btnMagam_Prjct.Location = new System.Drawing.Point(126, 3);
+            this.btnMagam_Prjct.Name = "btnMagam_Prjct";
+            this.btnMagam_Prjct.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.btnMagam_Prjct.Size = new System.Drawing.Size(35, 35);
+            this.btnMagam_Prjct.TabIndex = 14;
+            this.btnMagam_Prjct.Click += new System.EventHandler(this.btnMagam_Click);
+            // 
+            // btnMagam_Personal
+            // 
+            this.btnMagam_Personal.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnMagam_Personal.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnMagam_Personal.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnMagam_Personal.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnMagam_Personal.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.btnMagam_Personal.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnMagam_Personal.ForeColor = System.Drawing.Color.White;
+            this.btnMagam_Personal.Image = global::KSCS.Properties.Resources.individual;
+            this.btnMagam_Personal.ImageOffset = new System.Drawing.Point(1, 0);
+            this.btnMagam_Personal.ImageSize = new System.Drawing.Size(26, 20);
+            this.btnMagam_Personal.Location = new System.Drawing.Point(167, 3);
+            this.btnMagam_Personal.Name = "btnMagam_Personal";
+            this.btnMagam_Personal.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.btnMagam_Personal.Size = new System.Drawing.Size(35, 35);
+            this.btnMagam_Personal.TabIndex = 15;
+            this.btnMagam_Personal.Click += new System.EventHandler(this.btnMagam_Click);
+            // 
+            // guna2PictureBox1
+            // 
+            this.guna2PictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2PictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2PictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox1.Image")));
+            this.guna2PictureBox1.ImageRotate = 0F;
+            this.guna2PictureBox1.Location = new System.Drawing.Point(517, 60);
+            this.guna2PictureBox1.Name = "guna2PictureBox1";
+            this.guna2PictureBox1.Size = new System.Drawing.Size(80, 105);
+            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox1.TabIndex = 8;
+            this.guna2PictureBox1.TabStop = false;
+            // 
             // guna2Elipse2
             // 
             this.guna2Elipse2.BorderRadius = 10;
@@ -299,6 +445,18 @@
             this.guna2Panel4.Name = "guna2Panel4";
             this.guna2Panel4.Size = new System.Drawing.Size(492, 175);
             this.guna2Panel4.TabIndex = 19;
+            // 
+            // guna2PictureBox2
+            // 
+            this.guna2PictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.guna2PictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox2.Image")));
+            this.guna2PictureBox2.ImageRotate = 0F;
+            this.guna2PictureBox2.Location = new System.Drawing.Point(15, 14);
+            this.guna2PictureBox2.Name = "guna2PictureBox2";
+            this.guna2PictureBox2.Size = new System.Drawing.Size(88, 105);
+            this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox2.TabIndex = 8;
+            this.guna2PictureBox2.TabStop = false;
             // 
             // label5
             // 
@@ -330,6 +488,14 @@
             this.guna2Panel5.Name = "guna2Panel5";
             this.guna2Panel5.Size = new System.Drawing.Size(1106, 733);
             this.guna2Panel5.TabIndex = 21;
+            // 
+            // btnUserSharingAddButton1
+            // 
+            this.btnUserSharingAddButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(235)))));
+            this.btnUserSharingAddButton1.Location = new System.Drawing.Point(61, 658);
+            this.btnUserSharingAddButton1.Name = "btnUserSharingAddButton1";
+            this.btnUserSharingAddButton1.Size = new System.Drawing.Size(140, 46);
+            this.btnUserSharingAddButton1.TabIndex = 45;
             // 
             // flpLabel
             // 
@@ -445,6 +611,44 @@
             this.textBox7.Text = "Sat";
             this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // btnPrevisous
+            // 
+            this.btnPrevisous.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPrevisous.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnPrevisous.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnPrevisous.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnPrevisous.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnPrevisous.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnPrevisous.FillColor = System.Drawing.Color.White;
+            this.btnPrevisous.Font = new System.Drawing.Font("Microsoft Sans Serif", 27F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrevisous.ForeColor = System.Drawing.Color.Black;
+            this.btnPrevisous.Image = ((System.Drawing.Image)(resources.GetObject("btnPrevisous.Image")));
+            this.btnPrevisous.ImageSize = new System.Drawing.Size(20, 30);
+            this.btnPrevisous.Location = new System.Drawing.Point(434, 14);
+            this.btnPrevisous.Name = "btnPrevisous";
+            this.btnPrevisous.Size = new System.Drawing.Size(32, 57);
+            this.btnPrevisous.TabIndex = 27;
+            this.btnPrevisous.Click += new System.EventHandler(this.btnMonth_Click);
+            // 
+            // btnNext
+            // 
+            this.btnNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnNext.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnNext.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnNext.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnNext.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnNext.FillColor = System.Drawing.Color.White;
+            this.btnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 27F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNext.ForeColor = System.Drawing.Color.Black;
+            this.btnNext.Image = ((System.Drawing.Image)(resources.GetObject("btnNext.Image")));
+            this.btnNext.ImageSize = new System.Drawing.Size(20, 30);
+            this.btnNext.Location = new System.Drawing.Point(555, 14);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(32, 57);
+            this.btnNext.TabIndex = 26;
+            this.btnNext.Click += new System.EventHandler(this.btnMonth_Click);
+            // 
             // lblMonth
             // 
             this.lblMonth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -456,6 +660,18 @@
             this.lblMonth.Size = new System.Drawing.Size(76, 46);
             this.lblMonth.TabIndex = 2;
             this.lblMonth.Text = "5월";
+            // 
+            // guna2PictureBox3
+            // 
+            this.guna2PictureBox3.Cursor = System.Windows.Forms.Cursors.No;
+            this.guna2PictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox3.Image")));
+            this.guna2PictureBox3.ImageRotate = 0F;
+            this.guna2PictureBox3.Location = new System.Drawing.Point(7, 670);
+            this.guna2PictureBox3.Name = "guna2PictureBox3";
+            this.guna2PictureBox3.Size = new System.Drawing.Size(43, 46);
+            this.guna2PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox3.TabIndex = 0;
+            this.guna2PictureBox3.TabStop = false;
             // 
             // flpDays
             // 
@@ -521,80 +737,6 @@
             this.flpDays.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.flpDays.Size = new System.Drawing.Size(843, 592);
             this.flpDays.TabIndex = 42;
-            // 
-            // guna2Elipse3
-            // 
-            this.guna2Elipse3.BorderRadius = 10;
-            this.guna2Elipse3.TargetControl = this.guna2Panel3;
-            // 
-            // guna2Elipse4
-            // 
-            this.guna2Elipse4.BorderRadius = 10;
-            this.guna2Elipse4.TargetControl = this.guna2Panel4;
-            // 
-            // guna2Elipse5
-            // 
-            this.guna2Elipse5.BorderRadius = 10;
-            this.guna2Elipse5.TargetControl = this.guna2Panel5;
-            // 
-            // btnSharing
-            // 
-            this.btnSharing.Location = new System.Drawing.Point(1116, 832);
-            this.btnSharing.Margin = new System.Windows.Forms.Padding(4);
-            this.btnSharing.Name = "btnSharing";
-            this.btnSharing.Size = new System.Drawing.Size(36, 78);
-            this.btnSharing.TabIndex = 23;
-            // 
-            // Tab4
-            // 
-            this.Tab4.Location = new System.Drawing.Point(1116, 735);
-            this.Tab4.Margin = new System.Windows.Forms.Padding(4);
-            this.Tab4.Name = "Tab4";
-            this.Tab4.Size = new System.Drawing.Size(36, 78);
-            this.Tab4.TabIndex = 22;
-            // 
-            // Tab3
-            // 
-            this.Tab3.Location = new System.Drawing.Point(1116, 635);
-            this.Tab3.Margin = new System.Windows.Forms.Padding(4);
-            this.Tab3.Name = "Tab3";
-            this.Tab3.Size = new System.Drawing.Size(36, 78);
-            this.Tab3.TabIndex = 22;
-            // 
-            // Tab2
-            // 
-            this.Tab2.Location = new System.Drawing.Point(1116, 535);
-            this.Tab2.Margin = new System.Windows.Forms.Padding(4);
-            this.Tab2.Name = "Tab2";
-            this.Tab2.Size = new System.Drawing.Size(36, 78);
-            this.Tab2.TabIndex = 22;
-            this.Tab2.Click += new System.EventHandler(this.ChangeTab);
-            // 
-            // Tab1
-            // 
-            this.Tab1.Location = new System.Drawing.Point(1116, 430);
-            this.Tab1.Margin = new System.Windows.Forms.Padding(4);
-            this.Tab1.Name = "Tab1";
-            this.Tab1.Size = new System.Drawing.Size(36, 78);
-            this.Tab1.TabIndex = 22;
-            this.Tab1.Click += new System.EventHandler(this.ChangeTab);
-            // 
-            // TabAll
-            // 
-            this.TabAll.Location = new System.Drawing.Point(1116, 332);
-            this.TabAll.Margin = new System.Windows.Forms.Padding(4);
-            this.TabAll.Name = "TabAll";
-            this.TabAll.Size = new System.Drawing.Size(36, 78);
-            this.TabAll.TabIndex = 22;
-            this.TabAll.Click += new System.EventHandler(this.ChangeTab);
-            // 
-            // btnUserSharingAddButton1
-            // 
-            this.btnUserSharingAddButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(235)))));
-            this.btnUserSharingAddButton1.Location = new System.Drawing.Point(61, 658);
-            this.btnUserSharingAddButton1.Name = "btnUserSharingAddButton1";
-            this.btnUserSharingAddButton1.Size = new System.Drawing.Size(140, 46);
-            this.btnUserSharingAddButton1.TabIndex = 45;
             // 
             // userDate1
             // 
@@ -1016,212 +1158,71 @@
             this.userDate42.Size = new System.Drawing.Size(120, 98);
             this.userDate42.TabIndex = 41;
             // 
-            // btnPrevisous
+            // guna2Elipse3
             // 
-            this.btnPrevisous.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPrevisous.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnPrevisous.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnPrevisous.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnPrevisous.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnPrevisous.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnPrevisous.FillColor = System.Drawing.Color.White;
-            this.btnPrevisous.Font = new System.Drawing.Font("Microsoft Sans Serif", 27F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrevisous.ForeColor = System.Drawing.Color.Black;
-            this.btnPrevisous.Image = ((System.Drawing.Image)(resources.GetObject("btnPrevisous.Image")));
-            this.btnPrevisous.ImageSize = new System.Drawing.Size(20, 30);
-            this.btnPrevisous.Location = new System.Drawing.Point(434, 14);
-            this.btnPrevisous.Name = "btnPrevisous";
-            this.btnPrevisous.Size = new System.Drawing.Size(32, 57);
-            this.btnPrevisous.TabIndex = 27;
-            this.btnPrevisous.Click += new System.EventHandler(this.btnMonth_Click);
+            this.guna2Elipse3.BorderRadius = 10;
+            this.guna2Elipse3.TargetControl = this.guna2Panel3;
             // 
-            // btnNext
+            // guna2Elipse4
             // 
-            this.btnNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnNext.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnNext.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnNext.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnNext.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnNext.FillColor = System.Drawing.Color.White;
-            this.btnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 27F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNext.ForeColor = System.Drawing.Color.Black;
-            this.btnNext.Image = ((System.Drawing.Image)(resources.GetObject("btnNext.Image")));
-            this.btnNext.ImageSize = new System.Drawing.Size(20, 30);
-            this.btnNext.Location = new System.Drawing.Point(555, 14);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(32, 57);
-            this.btnNext.TabIndex = 26;
-            this.btnNext.Click += new System.EventHandler(this.btnMonth_Click);
+            this.guna2Elipse4.BorderRadius = 10;
+            this.guna2Elipse4.TargetControl = this.guna2Panel4;
             // 
-            // guna2PictureBox3
+            // guna2Elipse5
             // 
-            this.guna2PictureBox3.Cursor = System.Windows.Forms.Cursors.No;
-            this.guna2PictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox3.Image")));
-            this.guna2PictureBox3.ImageRotate = 0F;
-            this.guna2PictureBox3.Location = new System.Drawing.Point(7, 670);
-            this.guna2PictureBox3.Name = "guna2PictureBox3";
-            this.guna2PictureBox3.Size = new System.Drawing.Size(43, 46);
-            this.guna2PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox3.TabIndex = 0;
-            this.guna2PictureBox3.TabStop = false;
+            this.guna2Elipse5.BorderRadius = 10;
+            this.guna2Elipse5.TargetControl = this.guna2Panel5;
             // 
-            // guna2PictureBox2
+            // btnSharing
             // 
-            this.guna2PictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2PictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox2.Image")));
-            this.guna2PictureBox2.ImageRotate = 0F;
-            this.guna2PictureBox2.Location = new System.Drawing.Point(15, 14);
-            this.guna2PictureBox2.Name = "guna2PictureBox2";
-            this.guna2PictureBox2.Size = new System.Drawing.Size(88, 105);
-            this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox2.TabIndex = 8;
-            this.guna2PictureBox2.TabStop = false;
+            this.btnSharing.Location = new System.Drawing.Point(1116, 832);
+            this.btnSharing.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSharing.Name = "btnSharing";
+            this.btnSharing.Size = new System.Drawing.Size(36, 78);
+            this.btnSharing.TabIndex = 23;
             // 
-            // btnMagam_Online
+            // Tab4
             // 
-            this.btnMagam_Online.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnMagam_Online.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnMagam_Online.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnMagam_Online.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnMagam_Online.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.btnMagam_Online.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnMagam_Online.ForeColor = System.Drawing.Color.White;
-            this.btnMagam_Online.Image = global::KSCS.Properties.Resources.lecture;
-            this.btnMagam_Online.Location = new System.Drawing.Point(3, 3);
-            this.btnMagam_Online.Name = "btnMagam_Online";
-            this.btnMagam_Online.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.btnMagam_Online.Size = new System.Drawing.Size(35, 35);
-            this.btnMagam_Online.TabIndex = 11;
-            this.btnMagam_Online.Click += new System.EventHandler(this.btnMagam_Click);
+            this.Tab4.Location = new System.Drawing.Point(1116, 735);
+            this.Tab4.Margin = new System.Windows.Forms.Padding(4);
+            this.Tab4.Name = "Tab4";
+            this.Tab4.Size = new System.Drawing.Size(36, 78);
+            this.Tab4.TabIndex = 22;
             // 
-            // btnMagam_Quiz
+            // Tab3
             // 
-            this.btnMagam_Quiz.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnMagam_Quiz.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnMagam_Quiz.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnMagam_Quiz.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnMagam_Quiz.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.btnMagam_Quiz.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnMagam_Quiz.ForeColor = System.Drawing.Color.White;
-            this.btnMagam_Quiz.Image = global::KSCS.Properties.Resources.quiz;
-            this.btnMagam_Quiz.ImageOffset = new System.Drawing.Point(1, 0);
-            this.btnMagam_Quiz.ImageSize = new System.Drawing.Size(22, 20);
-            this.btnMagam_Quiz.Location = new System.Drawing.Point(44, 3);
-            this.btnMagam_Quiz.Name = "btnMagam_Quiz";
-            this.btnMagam_Quiz.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.btnMagam_Quiz.Size = new System.Drawing.Size(35, 35);
-            this.btnMagam_Quiz.TabIndex = 12;
-            this.btnMagam_Quiz.Click += new System.EventHandler(this.btnMagam_Click);
+            this.Tab3.Location = new System.Drawing.Point(1116, 635);
+            this.Tab3.Margin = new System.Windows.Forms.Padding(4);
+            this.Tab3.Name = "Tab3";
+            this.Tab3.Size = new System.Drawing.Size(36, 78);
+            this.Tab3.TabIndex = 22;
             // 
-            // btnMagam_Task
+            // Tab2
             // 
-            this.btnMagam_Task.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnMagam_Task.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnMagam_Task.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnMagam_Task.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnMagam_Task.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.btnMagam_Task.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnMagam_Task.ForeColor = System.Drawing.Color.White;
-            this.btnMagam_Task.Image = global::KSCS.Properties.Resources.homework;
-            this.btnMagam_Task.ImageOffset = new System.Drawing.Point(1, 0);
-            this.btnMagam_Task.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnMagam_Task.Location = new System.Drawing.Point(85, 3);
-            this.btnMagam_Task.Name = "btnMagam_Task";
-            this.btnMagam_Task.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.btnMagam_Task.Size = new System.Drawing.Size(35, 35);
-            this.btnMagam_Task.TabIndex = 13;
-            this.btnMagam_Task.Click += new System.EventHandler(this.btnMagam_Click);
+            this.Tab2.Location = new System.Drawing.Point(1116, 535);
+            this.Tab2.Margin = new System.Windows.Forms.Padding(4);
+            this.Tab2.Name = "Tab2";
+            this.Tab2.Size = new System.Drawing.Size(36, 78);
+            this.Tab2.TabIndex = 22;
+            this.Tab2.Click += new System.EventHandler(this.ChangeTab);
             // 
-            // btnMagam_Prjct
+            // Tab1
             // 
-            this.btnMagam_Prjct.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnMagam_Prjct.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnMagam_Prjct.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnMagam_Prjct.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnMagam_Prjct.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.btnMagam_Prjct.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnMagam_Prjct.ForeColor = System.Drawing.Color.White;
-            this.btnMagam_Prjct.Image = global::KSCS.Properties.Resources.team_proejct;
-            this.btnMagam_Prjct.ImageOffset = new System.Drawing.Point(1, 0);
-            this.btnMagam_Prjct.ImageSize = new System.Drawing.Size(35, 35);
-            this.btnMagam_Prjct.Location = new System.Drawing.Point(126, 3);
-            this.btnMagam_Prjct.Name = "btnMagam_Prjct";
-            this.btnMagam_Prjct.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.btnMagam_Prjct.Size = new System.Drawing.Size(35, 35);
-            this.btnMagam_Prjct.TabIndex = 14;
-            this.btnMagam_Prjct.Click += new System.EventHandler(this.btnMagam_Click);
+            this.Tab1.Location = new System.Drawing.Point(1116, 430);
+            this.Tab1.Margin = new System.Windows.Forms.Padding(4);
+            this.Tab1.Name = "Tab1";
+            this.Tab1.Size = new System.Drawing.Size(36, 78);
+            this.Tab1.TabIndex = 22;
+            this.Tab1.Click += new System.EventHandler(this.ChangeTab);
             // 
-            // btnMagam_Personal
+            // TabAll
             // 
-            this.btnMagam_Personal.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnMagam_Personal.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnMagam_Personal.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnMagam_Personal.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnMagam_Personal.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.btnMagam_Personal.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnMagam_Personal.ForeColor = System.Drawing.Color.White;
-            this.btnMagam_Personal.Image = global::KSCS.Properties.Resources.individual;
-            this.btnMagam_Personal.ImageOffset = new System.Drawing.Point(1, 0);
-            this.btnMagam_Personal.ImageSize = new System.Drawing.Size(26, 20);
-            this.btnMagam_Personal.Location = new System.Drawing.Point(167, 3);
-            this.btnMagam_Personal.Name = "btnMagam_Personal";
-            this.btnMagam_Personal.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.btnMagam_Personal.Size = new System.Drawing.Size(35, 35);
-            this.btnMagam_Personal.TabIndex = 15;
-            this.btnMagam_Personal.Click += new System.EventHandler(this.btnMagam_Click);
-            // 
-            // guna2PictureBox1
-            // 
-            this.guna2PictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2PictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2PictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox1.Image")));
-            this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(517, 60);
-            this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(80, 105);
-            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox1.TabIndex = 8;
-            this.guna2PictureBox1.TabStop = false;
-            // 
-            // btn_logout
-            // 
-            this.btn_logout.Image = global::KSCS.Properties.Resources.Outdoor;
-            this.btn_logout.Location = new System.Drawing.Point(204, 14);
-            this.btn_logout.Name = "btn_logout";
-            this.btn_logout.Size = new System.Drawing.Size(27, 32);
-            this.btn_logout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btn_logout.TabIndex = 28;
-            this.btn_logout.TabStop = false;
-            // 
-            // btnPlusCategory
-            // 
-            this.btnPlusCategory.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnPlusCategory.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnPlusCategory.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnPlusCategory.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnPlusCategory.FillColor = System.Drawing.Color.White;
-            this.btnPlusCategory.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnPlusCategory.ForeColor = System.Drawing.Color.White;
-            this.btnPlusCategory.Image = global::KSCS.Properties.Resources.CategoryPlus;
-            this.btnPlusCategory.ImageOffset = new System.Drawing.Point(1, 0);
-            this.btnPlusCategory.Location = new System.Drawing.Point(168, 211);
-            this.btnPlusCategory.Name = "btnPlusCategory";
-            this.btnPlusCategory.Size = new System.Drawing.Size(28, 25);
-            this.btnPlusCategory.TabIndex = 26;
-            this.btnPlusCategory.Click += new System.EventHandler(this.btnPlusCategory_Click);
-            // 
-            // guna2PictureBox4
-            // 
-            this.guna2PictureBox4.BackColor = System.Drawing.Color.White;
-            this.guna2PictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox4.Image")));
-            this.guna2PictureBox4.ImageRotate = 0F;
-            this.guna2PictureBox4.Location = new System.Drawing.Point(19, 16);
-            this.guna2PictureBox4.Name = "guna2PictureBox4";
-            this.guna2PictureBox4.Size = new System.Drawing.Size(81, 85);
-            this.guna2PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox4.TabIndex = 17;
-            this.guna2PictureBox4.TabStop = false;
+            this.TabAll.Location = new System.Drawing.Point(1116, 332);
+            this.TabAll.Margin = new System.Windows.Forms.Padding(4);
+            this.TabAll.Name = "TabAll";
+            this.TabAll.Size = new System.Drawing.Size(36, 78);
+            this.TabAll.TabIndex = 22;
+            this.TabAll.Click += new System.EventHandler(this.ChangeTab);
             // 
             // MainForm
             // 
@@ -1251,21 +1252,21 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.guna2Panel2.ResumeLayout(false);
             this.guna2Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_logout)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox4)).EndInit();
             this.guna2Panel3.ResumeLayout(false);
             this.guna2Panel3.PerformLayout();
             this.panelMagamBtns.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.guna2Panel4.ResumeLayout(false);
             this.guna2Panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).EndInit();
             this.guna2Panel5.ResumeLayout(false);
             this.guna2Panel5.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
-            this.flpDays.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btn_logout)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox4)).EndInit();
+            this.flpDays.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

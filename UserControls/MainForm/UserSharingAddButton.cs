@@ -18,9 +18,8 @@ namespace KSCS.UserControls.MainForm
             InitializeComponent();
         }
 
-        private void UserSharingAddButton_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void sharingButton_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            OnMouseDoubleClick(e);
             SharingClickForm sharingClickForm = new SharingClickForm();
             DialogResult result = sharingClickForm.ShowDialog();
         }

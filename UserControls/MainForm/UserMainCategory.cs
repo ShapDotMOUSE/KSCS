@@ -74,11 +74,13 @@ namespace KSCS
                     if (lblMainCategory.Text.Length > 0)
                     {
                         category.ChangeMainName(lblMainCategory.Text, txtMainCategory.Text);
+                        Database.UpdateParentCategory(lblMainCategory.Text, txtMainCategory.Text);
                     }
                     else
                     {
                         //신규 카테고리인 경우
                         category.Categories.Add(txtMainCategory.Text, new HashSet<string>());
+                        Database.CreateParentCategory(txtMainCategory.Text);
                     }
                     this.Name = txtMainCategory.Text;
                     lblMainCategory.Text = txtMainCategory.Text;
@@ -121,6 +123,19 @@ namespace KSCS
         private void UserMainCategory_Load(object sender, EventArgs e)
         {
             txtMainCategory.Focus();
+        }
+
+        private void MenuDelete_Click(object sender, EventArgs e)
+        {
+            if(flpSubCategory.Controls.Count == 0)
+            {
+                Database.DeleteParentCategory(this.Name);
+                ((FlowLayoutPanel)this.Parent).Controls.Remove(this);
+            }
+            else
+            {
+                MessageBox.Show("하위 카테고리가 존재합니다!");
+            }
         }
     }
 }

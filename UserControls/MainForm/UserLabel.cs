@@ -32,5 +32,11 @@ namespace KSCS.UserControls.MainForm
             Circle.FillColor = color;
         }
 
+        public void SetName(string name)
+        {
+            txtLabel.Text = name;
+            this.Name = "label" + name;
+        }
+
     }
 }

@@ -28,12 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblCategory = new System.Windows.Forms.Label();
             this.chkCategory = new Guna.UI2.WinForms.Guna2CustomCheckBox();
             this.txtCategory = new Guna.UI2.WinForms.Guna2TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.menuDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.tableLayoutPanel1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -98,6 +102,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 173F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F));
+            this.tableLayoutPanel1.ContextMenuStrip = this.contextMenuStrip1;
             this.tableLayoutPanel1.Controls.Add(this.guna2Panel1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.chkCategory, 1, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -108,6 +113,24 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(210, 38);
             this.tableLayoutPanel1.TabIndex = 18;
             this.tableLayoutPanel1.DoubleClick += new System.EventHandler(this.UserCategory_DoubleClick);
+            this.tableLayoutPanel1.MouseLeave += new System.EventHandler(this.UserSubCategory_MouseLeave);
+            this.tableLayoutPanel1.MouseHover += new System.EventHandler(this.UserSubCategory_MouseHover);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuDelete});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(137, 42);
+            this.contextMenuStrip1.Opened += new System.EventHandler(this.contextMenuStrip1_Opened);
+            // 
+            // menuDelete
+            // 
+            this.menuDelete.Name = "menuDelete";
+            this.menuDelete.Size = new System.Drawing.Size(136, 38);
+            this.menuDelete.Text = "삭제";
+            this.menuDelete.Click += new System.EventHandler(this.menuDelete_Click);
             // 
             // guna2Panel1
             // 
@@ -124,13 +147,17 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.ContextMenuStrip = this.contextMenuStrip1;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
             this.Name = "UserSubCategory";
             this.Size = new System.Drawing.Size(210, 38);
             this.Load += new System.EventHandler(this.UserCategory_Load);
             this.DoubleClick += new System.EventHandler(this.UserCategory_DoubleClick);
+            this.MouseLeave += new System.EventHandler(this.UserSubCategory_MouseLeave);
+            this.MouseHover += new System.EventHandler(this.UserSubCategory_MouseHover);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -144,5 +171,7 @@
         private Guna.UI2.WinForms.Guna2TextBox txtCategory;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem menuDelete;
     }
 }

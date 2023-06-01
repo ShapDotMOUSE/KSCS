@@ -35,8 +35,6 @@
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.lblMainCategory = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.MenuAddSub = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.txtMainCategory = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnAddSubCategory = new Guna.UI2.WinForms.Guna2Button();
@@ -111,32 +109,17 @@
             // 
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MenuAddSub,
-            this.MenuEdit,
             this.MenuDelete});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(295, 118);
-            // 
-            // MenuAddSub
-            // 
-            this.MenuAddSub.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MenuAddSub.Name = "MenuAddSub";
-            this.MenuAddSub.Size = new System.Drawing.Size(294, 38);
-            this.MenuAddSub.Text = "하위 카테고리 추가";
-            // 
-            // MenuEdit
-            // 
-            this.MenuEdit.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.MenuEdit.Name = "MenuEdit";
-            this.MenuEdit.Size = new System.Drawing.Size(294, 38);
-            this.MenuEdit.Text = "이름 수정";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(301, 86);
             // 
             // MenuDelete
             // 
             this.MenuDelete.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MenuDelete.Name = "MenuDelete";
-            this.MenuDelete.Size = new System.Drawing.Size(294, 38);
+            this.MenuDelete.Size = new System.Drawing.Size(300, 38);
             this.MenuDelete.Text = "삭제";
+            this.MenuDelete.Click += new System.EventHandler(this.MenuDelete_Click);
             // 
             // txtMainCategory
             // 
@@ -222,8 +205,6 @@
         private Guna.UI2.WinForms.Guna2TextBox txtMainCategory;
         private System.Windows.Forms.Label lblMainCategory;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem MenuAddSub;
-        private System.Windows.Forms.ToolStripMenuItem MenuEdit;
         private System.Windows.Forms.ToolStripMenuItem MenuDelete;
         private Guna.UI2.WinForms.Guna2Button btnAddSubCategory;
         private Guna.UI2.WinForms.Guna2Button btnShowSubCategory;

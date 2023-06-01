@@ -117,6 +117,8 @@ namespace KSCS
                 Categories.Add(Main,new HashSet<string>());
             }
             Categories[Main].Add(Sub);
+            CategoryColor.Add(Sub, Color.Black);
+
         }
 
 
@@ -189,6 +191,12 @@ namespace KSCS
         {
             Tabs[New] = Tabs[Old];
             Tabs.Remove(Old);
+        }
+
+        //하위 카테고리 이미 존재 여부
+        public bool IsExitsSubCategory(string Sub)
+        {
+            return CategoryColor.ContainsKey(Sub);
         }
 
     }

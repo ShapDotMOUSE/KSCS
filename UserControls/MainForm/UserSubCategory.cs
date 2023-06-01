@@ -11,12 +11,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static KSCS.Class.KSCS_static;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace KSCS
 {
     public partial class UserSubCategory : UserControl
     {
         string MainCategory;
+        bool isRemove;
         public UserSubCategory()
         {
             InitializeComponent();
@@ -60,11 +62,12 @@ namespace KSCS
         }
         private void UserCategory_Load(object sender, EventArgs e)
         {
-            if (KSCS_static.TabName == "All")
+            if (TabName == "All")
             {
                 chkCategory.Enabled = false;
                 chkCategory.Checked = true;
             }
+            isRemove = false;
             txtCategory.MaxLength = 4;
             this.ActiveControl = txtCategory;
             txtCategory.Focus();
@@ -77,22 +80,43 @@ namespace KSCS
             {
                 if (txtCategory.Text.Length > 0)
                 {
-                    //입력된 내용이 있을 경우
-                    if (lblCategory.Text.Length > 0)
+                    //카테고리 이름 중복
+                    if (!category.IsExitsSubCategory(txtCategory.Text))
                     {
-                        //기존 카테고리인 경우
-                        category.ChageSubdivisionName(((FlowLayoutPanel)this.Parent).Name,lblCategory.Text, txtCategory.Text);
+                        if (lblCategory.Text.Length > 0)
+                        {
+                            //기존 카테고리인 경우
+                            Database.UpdateSubCategory(txtCategory.Text, lblCategory.Text);
+                            category.ChageSubdivisionName((this.Parent).Parent.Name, lblCategory.Text, txtCategory.Text);
+                            ((UserLabel)MainForm.flowLayoutPanelLable.Controls["label" + lblCategory.Text]).SetName(txtCategory.Text);
+                        }
+                        else
+                        {
+                            //신규 카테고리인 경우
+                            category.AddSubdivision(MainCategory, txtCategory.Text);
+                            //All 탭에 추가
+                            HashSet<string> TabCategory = category.Tabs["All"] as HashSet<string>;
+                            TabCategory.Add(txtCategory.Text);
+                            category.Tabs["All"] = TabCategory;
+                            //DB 추가
+                            Database.CreateSubCategory(MainCategory, txtCategory.Text);
+                            lblCategory.ForeColor = Color.Black;
+                            category.SetColor(txtCategory.Text, Color.Black);
+                            if (TabName == "All")
+                                MainForm.flowLayoutPanelLable.Controls.Add(
+                                     new UserLabel(txtCategory.Text, category.GetColor(txtCategory.Text)));
+                        }
+
+                        //텍스트 박스 DisVisible 카테고리 이름 Visible
+                        lblCategory.Text = txtCategory.Text;
+                        this.Name = txtCategory.Text;
+                        txtCategory.Visible = false;
+                        lblCategory.Visible = true;
                     }
                     else
                     {
-                        //신규 카테고리인 경우
-                        KSCS_static.category.AddSubdivision(MainCategory, txtCategory.Text);
-                        Database.CreateSubCategory(MainCategory, txtCategory.Text);
+                        MessageBox.Show("이미 존재하는 카테고리 이름입니다!");
                     }
-                    lblCategory.Text = txtCategory.Text;
-                    this.Name = txtCategory.Text;
-                    txtCategory.Visible = false;
-                    lblCategory.Visible = true;
                 }
             }else if(e.KeyCode == Keys.Escape)
             {
@@ -107,7 +131,7 @@ namespace KSCS
                 else
                 {
                     //새로 만드는 카테고리인 경우 추가된 카테고리 삭제
-                    ((FlowLayoutPanel)this.Parent).Controls.Remove(this);
+                    if(!isRemove) ((FlowLayoutPanel)this.Parent).Controls.Remove(this);
                 }
             }
         }
@@ -126,7 +150,7 @@ namespace KSCS
             lblCategory.Visible = true;
             txtCategory.Visible = false;
             txtCategory.Clear();
-            if(lblCategory.Text.Length == 0 )
+            if(lblCategory.Text.Length == 0 && !isRemove)
                 ((FlowLayoutPanel)this.Parent).Controls.Remove(this);
         }
 
@@ -136,7 +160,9 @@ namespace KSCS
             if (chkCategory.Checked)
             {
                 category.AddChecked(TabName, lblCategory.Text);
-                MainForm.flowLayoutPanelLable.Controls.Add(new UserLabel(lblCategory.Text, KSCS_static.category.GetColor(lblCategory.Text)));
+                if(lblCategory.Text.Length != 0 )
+                    MainForm.flowLayoutPanelLable.Controls.Add(
+                        new UserLabel(lblCategory.Text, category.GetColor(lblCategory.Text)));
             }
             else
             {
@@ -154,6 +180,36 @@ namespace KSCS
            temp.ShowDialog();
         }
 
+        private void menuDelete_Click(object sender, EventArgs e)
+        {
+            if(MainCategory == "KLAS" || this.Name == "기타" || this.Name == "공유일정")
+            {
+                MessageBox.Show("삭제할 수 없는 카테고리입니다.");
+            }
+            else
+            {
+                if(chkCategory.Checked)
+                {
+                    MainForm.flowLayoutPanelLable.Controls.Remove(MainForm.flowLayoutPanelLable.Controls["label" + lblCategory.Text]);
+                }
+                ((FlowLayoutPanel)this.Parent).Controls.Remove(this);
+                Database.DeleteSubCategory(this.Name);
+            }
+        }
+
+        private void UserSubCategory_MouseHover(object sender, EventArgs e)
+        {
+            this.BackColor = Color.Gainsboro;
+        }
         
+        private void UserSubCategory_MouseLeave(object sender, EventArgs e)
+        {
+            this.BackColor = Color.White;
+        }
+
+        private void contextMenuStrip1_Opened(object sender, EventArgs e)
+        {
+            this.BackColor = Color.Gainsboro;
+        }
     }
 }

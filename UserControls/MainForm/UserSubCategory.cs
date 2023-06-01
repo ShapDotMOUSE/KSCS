@@ -182,7 +182,7 @@ namespace KSCS
 
         private void menuDelete_Click(object sender, EventArgs e)
         {
-            if(MainCategory == "KLAS" || this.Name == "기타")
+            if(MainCategory == "KLAS" || this.Name == "기타" || this.Name == "공유일정")
             {
                 MessageBox.Show("삭제할 수 없는 카테고리입니다.");
             }

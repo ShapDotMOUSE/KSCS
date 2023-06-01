@@ -57,14 +57,21 @@ namespace KSCS.Forms
         {
             if (originMain != cmbMain.SelectedItem.ToString())
             {
+                string NewMain = cmbMain.SelectedItem.ToString();
                 if (originMain == "KLAS")
                 {
                     MessageBox.Show("해당 카테고리는 상위 카테고리를 변경할 수 없습니다");
                     cmbMain.SelectedItem = originMain;
+                    return;
+                }
+                else if (NewMain == "KLAS")
+                {
+                    MessageBox.Show("해당 카테고리로 상위 카테고리를 변경할 수 없습니다");
+                    cmbMain.SelectedItem = originMain;
+                    return;
                 }
                 else
                 {
-                    string NewMain = cmbMain.SelectedItem.ToString();
                     //변경 사항 Category에 적용
                     category.ChangeParentOfSub(originMain, NewMain, originSub);
                     //변경 사항 MainForm에 적용
@@ -84,16 +91,25 @@ namespace KSCS.Forms
             }
             if (originSub != txtboxSub.Text)
             {
-                string NewSub = txtboxSub.Text;
-                //변경 사항 Category에 적용
-                category.ChageSubdivisionName(originMain, originSub, NewSub);
-                FlowLayoutPanel Parent = MainCategory.Controls[originMain].Controls["flpSubCategory"] as FlowLayoutPanel;
-                ((UserSubCategory)Parent.Controls[originSub]).SetBasicMode(NewSub);
-                //DB 업데이트
-                Database.UpdateSubCategory(NewSub, originSub);
-                //라벨 수정
-                ((UserLabel)MainForm.flowLayoutPanelLable.Controls["label" + originSub]).SetName(NewSub);
-                originSub = NewSub;
+                if (originMain == "KLAS" || originSub =="기타" || originSub=="공유일정")
+                {
+                    MessageBox.Show("해당 카테고리의 이름은 변경할 수 없습니다");
+                    txtboxSub.Text = originSub;
+                    return;
+                }
+                else
+                {
+                    string NewSub = txtboxSub.Text;
+                    //변경 사항 Category에 적용
+                    category.ChageSubdivisionName(originMain, originSub, NewSub);
+                    FlowLayoutPanel Parent = MainCategory.Controls[originMain].Controls["flpSubCategory"] as FlowLayoutPanel;
+                    ((UserSubCategory)Parent.Controls[originSub]).SetBasicMode(NewSub);
+                    //DB 업데이트
+                    Database.UpdateSubCategory(NewSub, originSub);
+                    //라벨 수정
+                    ((UserLabel)MainForm.flowLayoutPanelLable.Controls["label" + originSub]).SetName(NewSub);
+                    originSub = NewSub;
+                }
             }
 
             if(originColor != boxColor.FillColor)

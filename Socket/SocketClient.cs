@@ -61,7 +61,6 @@ namespace Socket
                     Trace.WriteLine(string.Format("연결 실패 + {0}: 실시간 일정 공유에 접속되어 있지 않습니다.", todo));
                     continue;
                 }
-                todoLink.Remove(todo);
                 Task.Run(() => createConnection(todo,todoLink));
                 
             }
@@ -81,6 +80,8 @@ namespace Socket
                     networkStream = todoClient.GetStream();
                     //접속 후 추가
                     clientSocketDict.Add(stdNum, todoClient);
+
+                    todoLink.Remove(stdNum);
 
                     Init init = InitClass;
                     init.sender = clientStdNum;

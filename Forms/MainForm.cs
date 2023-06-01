@@ -296,6 +296,7 @@ namespace KSCS
 
             List<string> testStdnums = new List<string>
                 {
+                    "2019203055",
                     "2019203018",
                     "2019203082",
                 };
@@ -313,8 +314,8 @@ namespace KSCS
             s_client.InitClass = new Init
             {
                 Type = (int)PacketType.INIT,
-                members = testStdnums.ToList(),
-                todoLink = testTodo.ToList(),
+                members = testStdnums,
+                todoLink = testTodo,
                 boss = stdNum,
                 sender = stdNum
             };
@@ -351,6 +352,7 @@ namespace KSCS
             Database.SetAddress();
             listener = new TcpListener(IPAddress.Any, 7777);
             listener.Start();
+            Console.WriteLine("Start Listener");
             s_client = new SocketClient(stdNum);
             s_client.OnConnect += new SocketClient.ConnectClientHandler(ConnectClient);
             s_client.OnLoadAddress += new SocketClient.LoadAddress(LoadAddress);

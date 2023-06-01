@@ -118,6 +118,7 @@ namespace KSCS
             }
             Categories[Main].Add(Sub);
             CategoryColor.Add(Sub, Color.Black);
+
         }
 
 

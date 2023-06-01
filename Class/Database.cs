@@ -406,7 +406,7 @@ namespace KSCS
                 "(SELECT id FROM (SELECT id FROM Category WHERE category_name='{1}' and student_id={2} AND parent_category_id IS NULL) A)," +
                 "{3}, '{2}');", Sub,Parent,stdNum, Color.Black.ToArgb());
             MySqlCommand cmd = new MySqlCommand(insertQuery, connection);
-            if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to insert Data.");
+            cmd.ExecuteNonQuery();
 
             string insertQueryTab = string.Format("INSERT INTO TabCategory(tab_id,category_id) VALUES (" +
                     "(SELECT id FROM StudentTab WHERE tab_name='All' AND student_id={0})," +
@@ -457,6 +457,7 @@ namespace KSCS
             string setQuery = string.Format("set sql_safe_updates=0");
             MySqlCommand cmd = new MySqlCommand(setQuery, getDBConnection());
             cmd.ExecuteNonQuery();
+
             string updateSheduleQuery = string.Format("UPDATE Schedule SET category_id=" +
                 "(SELECT id FROM Category WHERE category_name='기타' AND student_id={0} AND parent_category_id IS NOT NULL) " +
                 "WHERE student_id={0} AND category_id=" +

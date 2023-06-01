@@ -128,6 +128,8 @@ namespace KSCS
             Categories[Parent].Remove(Old);
             Categories[Parent].Add(Old);
 
+            CategoryColor.Add(New, CategoryColor[Old]);
+            CategoryColor.Remove(Old);
             foreach (DictionaryEntry tab in Tabs)
             {
                 HashSet<string> tabCategorys = tab.Value as HashSet<string>;

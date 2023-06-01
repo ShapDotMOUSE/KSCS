@@ -157,32 +157,28 @@ namespace KSCS
         //카테고리 체크 여부 확인해서 탭에 추가 및 삭제
         private void chkCategory_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkCategory.Checked)
+            if (lblCategory.Text.Length > 0)
             {
-                category.AddChecked(TabName, lblCategory.Text);
-                if(lblCategory.Text.Length != 0 )
-                    MainForm.flowLayoutPanelLable.Controls.Add(
-                        new UserLabel(lblCategory.Text, category.GetColor(lblCategory.Text)));
+                if (chkCategory.Checked)
+                {
+                    category.AddChecked(TabName, lblCategory.Text);
+                    if (lblCategory.Text.Length != 0)
+                        MainForm.flowLayoutPanelLable.Controls.Add(
+                            new UserLabel(lblCategory.Text, category.GetColor(lblCategory.Text)));
+                }
+                else
+                {
+                    category.DeletChecked(TabName, lblCategory.Text);
+                    MainForm.flowLayoutPanelLable.Controls.Remove(MainForm.flowLayoutPanelLable.Controls["label" + lblCategory.Text]);
+                }
+                MainForm.LoadMainForm(); //추가
             }
-            else
-            {
-                category.DeletChecked(TabName, lblCategory.Text);
-                MainForm.flowLayoutPanelLable.Controls.Remove(MainForm.flowLayoutPanelLable.Controls["label" + lblCategory.Text]);
-            }
-            MainForm.LoadMainForm(); //추가
         }
 
-        //유저 카테고리 수정 폼 로드
-        private void UserCategory_DoubleClick(object sender, EventArgs e)
-        {
-            UserMainCategory parent = (UserMainCategory)((FlowLayoutPanel)this.Parent).Parent;
-           AddCategoryForm temp = new AddCategoryForm((FlowLayoutPanel)(parent.Parent), parent.Name, lblCategory.Text);
-           temp.ShowDialog();
-        }
 
         private void menuDelete_Click(object sender, EventArgs e)
         {
-            if(MainCategory == "KLAS" || this.Name == "기타" || this.Name == "공유일정")
+            if(MainCategory == "KLAS" || this.Name == "기타" || this.Name == "공유 일정")
             {
                 MessageBox.Show("삭제할 수 없는 카테고리입니다.");
             }
@@ -210,6 +206,13 @@ namespace KSCS
         private void contextMenuStrip1_Opened(object sender, EventArgs e)
         {
             this.BackColor = Color.Gainsboro;
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            UserMainCategory parent = (UserMainCategory)((FlowLayoutPanel)this.Parent).Parent;
+            AddCategoryForm temp = new AddCategoryForm((FlowLayoutPanel)(parent.Parent), parent.Name, lblCategory.Text);
+            temp.ShowDialog();
         }
     }
 }

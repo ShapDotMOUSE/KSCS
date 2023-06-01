@@ -297,7 +297,7 @@ namespace KSCS
         {
             string insertQuery = string.Format("INSERT INTO TabCategory(tab_id,category_id) VALUES (" +
                     "(SELECT id FROM StudentTab WHERE tab_name='{0}' AND student_id='{1}')," +
-                    "(SELECT id FROM Category WHERE student_id='{1}' AND category_name='{2}'))", Tab, stdNum, Sub);
+                    "(SELECT id FROM Category WHERE student_id='{1}' AND category_name='{2}' AND parent_category_id IS NOT NULL))", Tab, stdNum, Sub);
 
             MySqlCommand cmd = new MySqlCommand(insertQuery, getDBConnection());
             if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Insert Data.");
@@ -307,7 +307,7 @@ namespace KSCS
         {
             string deleteQuery = string.Format("DELETE FROM TabCategory WHERE" +
                 " tab_id=(SELECT id FROM StudentTab WHERE tab_name='{0}' AND student_id='{1}') AND" +
-                " category_id=(SELECT id FROM Category WHERE student_id='{1}' AND category_name='{2}')", Tab, stdNum, Sub);
+                " category_id=(SELECT id FROM Category WHERE student_id='{1}' AND category_name='{2}' AND parent_category_id IS NOT NULL)", Tab, stdNum, Sub);
             MySqlCommand cmd = new MySqlCommand(deleteQuery, getDBConnection());
             if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Delete Data.");
         }
@@ -338,14 +338,14 @@ namespace KSCS
         {
             string insertQuery = string.Format("INSERT INTO Category(category_name, parent_category_id,color,student_id) VALUES (" +
                 "'{0}'," +
-                "(SELECT id FROM (SELECT id FROM Category WHERE category_name='{1}' and student_id={2}) A)," +
+                "(SELECT id FROM (SELECT id FROM Category WHERE category_name='{1}' and student_id={2} AND parent_category_id IS NULL) A)," +
                 "{3}, '{2}');", Sub,Parent,stdNum, Color.Black.ToArgb());
             MySqlCommand cmd = new MySqlCommand(insertQuery, connection);
             if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to insert Data.");
 
             string insertQueryTab = string.Format("INSERT INTO TabCategory(tab_id,category_id) VALUES (" +
                     "(SELECT id FROM StudentTab WHERE tab_name='All' AND student_id={0})," +
-                    "(SELECT id FROM Category WHERE student_id={0} AND category_name='{1}'))", stdNum, Sub);
+                    "(SELECT id FROM Category WHERE student_id={0} AND category_name='{1}' AND parent_category_id IS NOT NULL))", stdNum, Sub);
             MySqlCommand cmd2 = new MySqlCommand(insertQueryTab, connection);
             if (cmd2.ExecuteNonQuery() != 1) MessageBox.Show("Failed to insert Data.");
             //cmd.CommandText = "SELECT LAST_INSERT_ID() AS id";
@@ -358,7 +358,7 @@ namespace KSCS
         public static void UpdateSubCategory(string New, string old)
         {
             string updateQuery = string.Format("UPDATE Category SET category_name='{0}'" +
-                "WHERE category_name='{1}' AND student_id={2}", New, old, stdNum);
+                "WHERE category_name='{1}' AND student_id={2} AND parent_category_id IS NOT NULL", New, old, stdNum);
             MySqlCommand cmd = new MySqlCommand(updateQuery, getDBConnection());
             if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Update Data.");
         }
@@ -372,8 +372,8 @@ namespace KSCS
 
             string updateQuery = string.Format("UPDATE Category SET parent_category_id=" +
                 "(SELECT id FROM " +
-                "(SELECT id FROM Category WHERE category_name='{0}' AND student_id={2}) A )" +
-                "WHERE category_name='{1}' AND student_id={2}", NewMain, Sub, stdNum);
+                "(SELECT id FROM Category WHERE category_name='{0}' AND student_id={2} AND parent_category_id IS NULL) A )" +
+                "WHERE category_name='{1}' AND student_id={2} AND parent_category_id IS NOT NULL", NewMain, Sub, stdNum);
             MySqlCommand cmd = new MySqlCommand(updateQuery, getDBConnection());
             if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Update Data.");
         }
@@ -381,7 +381,7 @@ namespace KSCS
         public static void UpdateSubCategoryColor(string Sub, Color color)
         {
             string updateQuery = string.Format("UPDATE Category SET color=" +
-                "{0} WHERE category_name='{1}' AND student_id={2}", color.ToArgb(), Sub, stdNum);
+                "{0} WHERE category_name='{1}' AND student_id={2} AND parent_category_id IS NOT NULL", color.ToArgb(), Sub, stdNum);
             MySqlCommand cmd = new MySqlCommand(updateQuery, getDBConnection());
             if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Update Data.");
         }
@@ -389,6 +389,9 @@ namespace KSCS
         public static void DeleteSubCategory(string Sub)
         {
             //해당 카테고리를 참고하던 스케줄 기타 카테고리로 변경
+            string setQuery = string.Format("set sql_safe_updates=0");
+            MySqlCommand cmd = new MySqlCommand(setQuery, getDBConnection());
+            cmd.ExecuteNonQuery();
             string updateSheduleQuery = string.Format("UPDATE Schedule SET category_id=" +
                 "(SELECT id FROM Category WHERE category_name='기타' AND student_id={0} AND parent_category_id IS NOT NULL) " +
                 "WHERE student_id={0} AND category_id=" +
@@ -426,14 +429,14 @@ namespace KSCS
         public static void UpdateParentCategory(string Old, string New)
         {
             string updateQuery = string.Format("UPDATE Category SET category_name = '{0}'" +
-                "WHERE category_name='{1}' AND student_id={2}", New,Old,stdNum);
+                "WHERE category_name='{1}' AND student_id={2} AND parent_category_id IS NULL", New,Old,stdNum);
             MySqlCommand cmd = new MySqlCommand(updateQuery, getDBConnection());
             if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Update Data.");
         }
 
         public static void DeleteParentCategory(string Parent)
         {
-            string deleteQuery = string.Format("DELETE FROM Category WHERE category_name='{0}'",Parent);
+            string deleteQuery = string.Format("DELETE FROM Category WHERE category_name='{0}' AND parent_category_id IS NULL", Parent);
             MySqlCommand cmd = new MySqlCommand(deleteQuery, getDBConnection());
             if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to Delete Data.");
         }

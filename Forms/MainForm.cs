@@ -306,7 +306,7 @@ namespace KSCS
 
 
             //Init 데이터 생성
-            Init Init = new Init
+            s_client.InitClass = new Init
             {
                 Type = (int)PacketType.INIT,
                 members = testStdnums.ToList(),

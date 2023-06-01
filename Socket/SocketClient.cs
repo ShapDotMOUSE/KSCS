@@ -38,13 +38,6 @@ namespace Socket
             t_handler.Start();
         }
 
-        public void startConnect()
-        {
-            Thread t_handler = new Thread(() => { });
-            t_handler.IsBackground = true;
-            t_handler.Start();
-        }
-
         public delegate void ConnectClientHandler(string sender,List<string> todo);
         public event ConnectClientHandler OnConnect;
 
@@ -53,6 +46,7 @@ namespace Socket
 
         public delegate void LoadAddress();
         public event LoadAddress OnLoadAddress;
+
         public void Send(NetworkStream networkStream)
         {
             networkStream.Write(this.sendBuffer, 0, this.sendBuffer.Length);
@@ -117,7 +111,7 @@ namespace Socket
                 while (true)
                 {
                     stream = connectSocket.GetStream();
-                    bytes = stream.Read(sendBuffer, 0, sendBuffer.Length);
+                    bytes = stream.Read(readBuffer, 0, readBuffer.Length);
                     Packet packet = (Packet)Packet.Deserialize(readBuffer);
                     switch ((int)packet.Type)
                     {

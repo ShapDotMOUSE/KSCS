@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using KSCS.Class;
 using static KSCS.Class.KSCS_static; //추가
 
 namespace KSCS
@@ -93,7 +94,7 @@ namespace KSCS
                     if (!klasSchedule.category.Equals("Personal"))
                     {
                         klasSchedule.category = KlasCategory[key];
-                        if (Convert.ToInt32(klasSchedule.startDate.ToString("MM")) == month)
+                        if (Convert.ToInt32(klasSchedule.startDate.ToString("MM")) == month && KSCS_static.category.IsChecked(KSCS_static.TabName, klasSchedule.category))
                         {
                             monthScheduleList[Convert.ToInt32(klasSchedule.startDate.ToString("dd")) - 1].Add(klasSchedule);
                         }

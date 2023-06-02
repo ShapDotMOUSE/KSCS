@@ -169,6 +169,7 @@ namespace KSCS
         {
             //Database.ReadScheduleList();
             Database.ReadTabScheduleList();
+            Schedule.ReadTabKlasSchedule(); //추가
 
             lblMonth.Text = month.ToString() + "월";
             lblMonth.TextAlign = ContentAlignment.MiddleCenter;
@@ -423,6 +424,7 @@ namespace KSCS
         public static void LoadMainForm()
         {
             Database.ReadTabScheduleList();
+            Schedule.ReadTabKlasSchedule(); //추가
 
             DateTime startOfMonth = new DateTime(year, month, 1);
             int dates = DateTime.DaysInMonth(year, month);

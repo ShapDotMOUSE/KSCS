@@ -116,6 +116,7 @@ namespace KSCS
                 if (ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
                 {
                     localIP = ip.ToString();
+                    break;
                 }
             }
             string updateQuery = string.Format("UPDATE Student SET address='{0}' WHERE id='{1}'",localIP, stdNum);

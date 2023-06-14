@@ -25,6 +25,9 @@ namespace Socket
         
         public Invite InviteClass;
         public InitMesh InitMeshClass;
+        public ShareSchedule ShareScheduleClass;
+        public CreateShareSchedule CreateShareScheduleClass;
+        public AgreeShareSchedule AgreeShareScheduleClass;
 
         public SocketClient(string studentNum)
         {
@@ -187,6 +190,25 @@ namespace Socket
                                 //연결 성공 시 메시지 출력.
                                 if (OnConnect != null)
                                     OnConnect(InitMeshClass.sender,new List<string>(),"Mesh 연결");
+                                break;
+                            }
+                            case (int)PacketType.SHARE_SCHEDULE: 
+                            {
+                                ShareScheduleClass=(ShareSchedule)Packet.Deserialize(readBuffer);
+                                
+                                break;
+                            }
+                            case (int)PacketType.CREATE_SHARE_SCHEDULE:
+                            {
+                                CreateShareScheduleClass=(CreateShareSchedule)Packet.Deserialize(readBuffer);
+                                //스케줄 데이터 보여주고 동의 여부 체크
+                                break;
+                            }
+                            case (int)PacketType.AGREE_SHARE_SCHEDULE:
+                            {
+                                AgreeShareScheduleClass=(AgreeShareSchedule)Packet.Deserialize(readBuffer);
+                                //동의 시 일정 추가
+                                
                                 break;
                             }
                             

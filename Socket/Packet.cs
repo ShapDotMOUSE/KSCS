@@ -10,9 +10,11 @@ namespace Socket
 {
     public enum PacketType
     {
-        INVITE,
-        INIT_MESH,
-        UPDATE
+        INVITE,//최초 연결 생성
+        INIT_MESH,//연결 안된 노드들 연결
+        SHARE_SCHEDULE,//일정 공유
+        CREATE_SHARE_SCHEDULE,//공유 일정 생성
+        AGREE_SHARE_SCHEDULE//공유 일정 생성 동의
     }
     public enum PacketSendERROR
     {

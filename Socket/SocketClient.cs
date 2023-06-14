@@ -55,7 +55,7 @@ namespace Socket
         }
 
         //모든 맴버 초대 함수
-        public void inviteAllMembers()
+        public async void inviteAllMembers()
         {
             List<string> todoLink=InviteClass.members.ToList();
             foreach (string member in InviteClass.members)
@@ -66,7 +66,7 @@ namespace Socket
                     continue;
                 }
                 todoLink.Remove(member);
-                Task.Run(() => inviteMember(member,todoLink));
+                await Task.Run(() => inviteMember(member, todoLink));
             }
         }
 

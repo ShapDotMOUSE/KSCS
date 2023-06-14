@@ -321,7 +321,6 @@ namespace KSCS
             List<string> testStdnums = new List<string>
                 {
                     "2019203082",
-                    "2021203078",
                     "2019203018"
                 };
 
@@ -430,6 +429,7 @@ namespace KSCS
                 foreach (KeyValuePair<string, TcpClient> keyValue in s_client.clientSocketDict)
                     keyValue.Value.Close();
             }
+            
             Database.DeleteAddress();
         }
         public static void LoadMainForm()

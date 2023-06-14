@@ -25,6 +25,7 @@ namespace KSCS.Forms
 
         private void btnAgree_Click(object sender, EventArgs e)
         {
+            DialogResult = DialogResult.OK;
             Close();
         }
     }

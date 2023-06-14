@@ -518,6 +518,7 @@ namespace KSCS
                 boss = stdNum,
             };
             s_client.inviteAllMembers();
+            btnSettingComplete.Enabled = true;
         }
 
         private void OnInvite(string boss)
@@ -527,7 +528,11 @@ namespace KSCS
                 AllowOrRequestForm allowOrRequestForm = new AllowOrRequestForm();
                 allowOrRequestForm.lbl_StudentNumber.Text = boss;
                 allowOrRequestForm.TopMost = true;
-                allowOrRequestForm.Show();
+                DialogResult = allowOrRequestForm.ShowDialog();
+                if (DialogResult == DialogResult.OK)
+                {
+                    btnSettingComplete.Enabled = true;
+                }
             }));
         }
 
@@ -590,11 +595,12 @@ namespace KSCS
         public void ChangeShareSchedule()
         {
             btnSettingComplete.Visible = isShareSchedule;
-            btnSettingComplete.Enabled = !isShareSchedule;
+            btnSettingComplete.Enabled = false;
             btnUserSharingAddButton.Visible = isShareSchedule;
 
             //btnUserSharingAddButton.Enabled = !isShareSchedule;
         }
+        
 
         //실시간 일정 공유 참가 : 현재 클릭
         public void btnShare_Click(object sender, EventArgs e)

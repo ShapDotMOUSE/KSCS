@@ -533,7 +533,6 @@ namespace KSCS
         public void InvitieShareSchedule(object sender, EventArgs e)
         {
 
-            MessageBox.Show("실시간 일정 공유 생성");
             listener.Stop();
             isListen = false;
             Database.DeleteAddress();
@@ -687,7 +686,6 @@ namespace KSCS
 
                 SharingTabEnable(!(TabName == TabSharing.Name));
 
-                MessageBox.Show("시작");
                 Task.Run(() => EnterShareSchedule());
             }
         }

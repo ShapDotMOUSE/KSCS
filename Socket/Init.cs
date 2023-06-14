@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 namespace Socket
 {
     [Serializable]
-    public class Invite : Packet
+    public class Init : Packet
     {
         public List<string> members;
         public List<string> todoLink;
         public string boss;
+        public string sender;
 
-        public Invite()
+        public Init()
         {
             members = new List<string>();
-            todoLink = new List<string>();
         }
     }
 }

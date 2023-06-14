@@ -117,7 +117,7 @@
             this.tbPassword.Location = new System.Drawing.Point(31, 279);
             this.tbPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbPassword.Name = "tbPassword";
-            this.tbPassword.PasswordChar = '●';
+            this.tbPassword.PasswordChar = '*';
             this.tbPassword.PlaceholderForeColor = System.Drawing.Color.White;
             this.tbPassword.PlaceholderText = "Password";
             this.tbPassword.SelectedText = "";
@@ -157,7 +157,7 @@
             this.label1.Font = new System.Drawing.Font("나눔고딕", 10F);
             this.label1.Location = new System.Drawing.Point(33, 179);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 23);
+            this.label1.Size = new System.Drawing.Size(64, 31);
             this.label1.TabIndex = 7;
             this.label1.Text = "학번";
             // 
@@ -167,7 +167,7 @@
             this.label2.Font = new System.Drawing.Font("나눔고딕", 10F);
             this.label2.Location = new System.Drawing.Point(33, 255);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 23);
+            this.label2.Size = new System.Drawing.Size(114, 31);
             this.label2.TabIndex = 7;
             this.label2.Text = "비밀번호";
             // 
@@ -178,7 +178,7 @@
             this.label4.ForeColor = System.Drawing.Color.DimGray;
             this.label4.Location = new System.Drawing.Point(34, 432);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(379, 19);
+            this.label4.Size = new System.Drawing.Size(532, 25);
             this.label4.TabIndex = 8;
             this.label4.Text = "학번과 비번은 저장되지 않으며 로그인에만 사용됩니다.";
             // 
@@ -193,7 +193,7 @@
             this.label3.Font = new System.Drawing.Font("나눔고딕", 10F);
             this.label3.Location = new System.Drawing.Point(33, 329);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(111, 23);
+            this.label3.Size = new System.Drawing.Size(147, 31);
             this.label3.TabIndex = 17;
             this.label3.Text = "자동 로그인";
             // 
@@ -203,7 +203,7 @@
             this.lblMsg.ForeColor = System.Drawing.Color.IndianRed;
             this.lblMsg.Location = new System.Drawing.Point(35, 363);
             this.lblMsg.Name = "lblMsg";
-            this.lblMsg.Size = new System.Drawing.Size(0, 18);
+            this.lblMsg.Size = new System.Drawing.Size(0, 24);
             this.lblMsg.TabIndex = 18;
             // 
             // toggleAutoLogin

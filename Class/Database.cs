@@ -116,6 +116,7 @@ namespace KSCS
                 if (ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
                 {
                     localIP = ip.ToString();
+                    break;
                 }
             }
             string updateQuery = string.Format("UPDATE Student SET address='{0}' WHERE id='{1}'",localIP, stdNum);
@@ -127,6 +128,7 @@ namespace KSCS
         {
             string updateQuery = string.Format("UPDATE Student SET address='' WHERE id='{0}'", stdNum);
             MySqlCommand cmd = new MySqlCommand(updateQuery, getDBConnection());
+            if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to insert Data.");
         }
 
         //스케줄 관련======================================================================

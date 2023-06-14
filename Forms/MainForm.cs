@@ -465,10 +465,10 @@ namespace KSCS
         //실시간 일정 공유 참가 : 현재 클릭
         public void btnShare_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show("시작");
             
             SharingTabEnable(!(TabName == TabSharing.Name));
-            //Task.Run(()=>ParticipateSharing());
+            MessageBox.Show("시작");
+            Task.Run(()=>ParticipateSharing());
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)

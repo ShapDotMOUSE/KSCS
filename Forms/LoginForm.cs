@@ -1,6 +1,7 @@
 ﻿using Guna.UI2.WinForms;
 using KSCS.Class;
 using KSCS.Forms;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -77,6 +78,57 @@ namespace KSCS
             return true;
         }
 
+        private void SaveAutoLogin(string Id, string Pw)
+        {
+            try
+            {
+                RegistryKey rk = Registry.CurrentUser.CreateSubKey(@"KSCS").CreateSubKey(@"Login");
+
+                rk.SetValue("ID", Id);
+                rk.SetValue("PW", Pw);
+            }catch (Exception ex) { }
+        }
+
+        private async void LoadAutoLogin()
+        {
+            try
+            {
+                RegistryKey rk = Registry.CurrentUser.OpenSubKey(@"KSCS").OpenSubKey(@"Login");
+
+                LoadingForm loadingForm = new LoadingForm();
+                loadingForm.TopMost = true;
+                loadingForm.Show();
+
+                var ID = Convert.ToString(rk.GetValue("ID"));
+                var PW = Convert.ToString(rk.GetValue("PW"));
+
+                tbStdNum.Text = ID;
+                tbPassword.Text = PW;
+                toggleAutoLogin.Checked = true;
+
+                bool login = await Task.Run(() => KLAS.LoginKLAS(ID, PW));
+
+                loadingForm.Invoke((MethodInvoker)delegate
+                {
+                    if (login) //KLAS 로그인
+                    {
+                        Database.CreateData();
+
+                        this.Cursor = Cursors.Default;
+                        this.DialogResult = DialogResult.OK;
+                        loadingForm.Close();
+                        this.Close();
+                    }
+                    else
+                    {
+                        lblMsg.Text = "죄송합니다. 로그인할 수 없습니다.";
+                        tbPassword.Focus();
+                        loadingForm.Close();
+                    }
+                });
+            }
+            catch (Exception ex) { }
+        }
         //로그인------------------------------------------------------------
         //호출 후, 로그인 성공 시, MainForm Load 실패 시, 유지
         private async void btnLogin_Click(object sender, EventArgs e)
@@ -94,6 +146,8 @@ namespace KSCS
                 {
                     if (login) //KLAS 로그인
                     {
+                        if (toggleAutoLogin.Checked)
+                            SaveAutoLogin(ID, PW);
                         Database.CreateData();
 
                         this.Cursor = Cursors.Default;
@@ -151,6 +205,9 @@ namespace KSCS
                     guna2PictureBox1.Image = guna2PictureBox4.Image;
                     break;
             }
+
+            LoadAutoLogin();
         }
+
     }
 }

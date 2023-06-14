@@ -147,7 +147,7 @@ namespace Socket
             {
                 try
                 {
-                    if (clientSocketDict.ContainsKey(member) && clientSocketDict[member].Connected)
+                    if (!member.Equals(clientStdNum)&&clientSocketDict.ContainsKey(member) && clientSocketDict[member].Connected)
                     {
                         NetworkStream networkStream = clientSocketDict[member].GetStream();
                         ShareSchedule shareSchedule = new ShareSchedule(clientStdNum, categoryList);
@@ -248,7 +248,9 @@ namespace Socket
                     foreach(TcpClient tcpClient in clientSocketDict.Values)
                         tcpClient.Close();
                     stream.Close();
-                    
+                    connectSocket.Close();
+
+
                 }
 
             }
@@ -261,6 +263,7 @@ namespace Socket
                     foreach (TcpClient tcpClient in clientSocketDict.Values)
                         tcpClient.Close();
                     stream.Close();
+                    connectSocket.Close();
                 }
             }
         }

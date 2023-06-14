@@ -151,6 +151,12 @@
     <Compile Include="UserControls\MainForm\UserSharingAddButton.Designer.cs">
       <DependentUpon>UserSharingAddButton.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\MainForm\UserSharingSubCategory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\MainForm\UserSharingSubCategory.Designer.cs">
+      <DependentUpon>UserSharingSubCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\MainForm\UserTapButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -250,6 +256,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\MainForm\UserSharingAddButton.resx">
       <DependentUpon>UserSharingAddButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\MainForm\UserSharingSubCategory.resx">
+      <DependentUpon>UserSharingSubCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\MainForm\UserTapButton.resx">
       <DependentUpon>UserTapButton.cs</DependentUpon>

@@ -122,6 +122,7 @@
             this.Tab2 = new KSCS.UserTabButton();
             this.Tab1 = new KSCS.UserTabButton();
             this.TabAll = new KSCS.UserTabButton();
+            this.panelToday = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_logout)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox4)).BeginInit();
@@ -143,8 +144,8 @@
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(155, 46);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(202, 61);
+            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 31);
             this.label2.TabIndex = 6;
@@ -157,8 +158,8 @@
             this.lblStdNum.BackColor = System.Drawing.Color.White;
             this.lblStdNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblStdNum.ForeColor = System.Drawing.Color.Black;
-            this.lblStdNum.Location = new System.Drawing.Point(155, 80);
-            this.lblStdNum.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblStdNum.Location = new System.Drawing.Point(202, 107);
+            this.lblStdNum.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblStdNum.Name = "lblStdNum";
             this.lblStdNum.Size = new System.Drawing.Size(176, 31);
             this.lblStdNum.TabIndex = 6;
@@ -171,8 +172,8 @@
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(32, 253);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(42, 337);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(121, 39);
             this.label1.TabIndex = 7;
@@ -453,9 +454,10 @@
             this.guna2Panel4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.guna2Panel4.BackColor = System.Drawing.Color.White;
             this.guna2Panel4.BorderRadius = 10;
+            this.guna2Panel4.Controls.Add(this.panelToday);
             this.guna2Panel4.Controls.Add(this.guna2PictureBox2);
             this.guna2Panel4.Controls.Add(this.label5);
-            this.guna2Panel4.Location = new System.Drawing.Point(37, 24);
+            this.guna2Panel4.Location = new System.Drawing.Point(38, 24);
             this.guna2Panel4.Margin = new System.Windows.Forms.Padding(5);
             this.guna2Panel4.Name = "guna2Panel4";
             this.guna2Panel4.Size = new System.Drawing.Size(800, 280);
@@ -466,7 +468,7 @@
             this.guna2PictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.guna2PictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox2.Image")));
             this.guna2PictureBox2.ImageRotate = 0F;
-            this.guna2PictureBox2.Location = new System.Drawing.Point(24, 22);
+            this.guna2PictureBox2.Location = new System.Drawing.Point(25, 23);
             this.guna2PictureBox2.Margin = new System.Windows.Forms.Padding(5);
             this.guna2PictureBox2.Name = "guna2PictureBox2";
             this.guna2PictureBox2.Size = new System.Drawing.Size(143, 168);
@@ -1248,6 +1250,14 @@
             this.userDate42.Size = new System.Drawing.Size(195, 157);
             this.userDate42.TabIndex = 41;
             // 
+            // 
+            // panelToday
+            // 
+            this.panelToday.Location = new System.Drawing.Point(150, 72);
+            this.panelToday.Name = "panelToday";
+            this.panelToday.Size = new System.Drawing.Size(442, 126);
+            this.panelToday.TabIndex = 9;
+            //
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
@@ -1390,6 +1400,7 @@
         private Guna.UI2.WinForms.Guna2Button btnSettingComplete;
         private System.Windows.Forms.PictureBox btn_logout;
         public System.Windows.Forms.FlowLayoutPanel flpLabel;
+        private Guna.UI2.WinForms.Guna2Panel panelToday;
     }
 }
 

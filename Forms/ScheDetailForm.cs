@@ -216,6 +216,7 @@ namespace KSCS
             ClearForm();
             //스케줄 유닛 다시 load
             InitializeScheDetailForm();
+            MainForm.DisplayToday();
             ClearAllDelegatesOfTheEventHandler(); //이벤트 핸들러 초기화
         }
 
@@ -254,6 +255,7 @@ namespace KSCS
                 ClearForm();
                 //스케줄 유닛 다시 load
                 InitializeScheDetailForm();
+                MainForm.DisplayToday();
                 ClearAllDelegatesOfTheEventHandler(); //이벤트 핸들러 초기화
             }
         }

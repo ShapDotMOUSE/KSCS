@@ -57,8 +57,8 @@ namespace Socket
         //모든 맴버 초대 함수
         public async void inviteAllMembers()
         {
-            List<string> todoLink=InviteClass.members.ToList();
-            foreach (string member in InviteClass.members)
+            List<string> todoLink=InviteClass.todoLink.ToList();
+            foreach (string member in InviteClass.todoLink)
             {
                 if (!addressDict.ContainsKey(member))
                 {

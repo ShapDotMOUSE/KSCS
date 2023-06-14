@@ -123,6 +123,7 @@ namespace Socket
                         clientSocketDict.Add(stdNum, todoClient);
 
                         InitMesh initMesh = new InitMesh(clientStdNum);
+                        initMesh.Type = (int)PacketType.INIT_MESH;
 
                         Packet.Serialize(initMesh).CopyTo(this.sendBuffer, 0);
                         await Send(networkStream);

@@ -16,6 +16,7 @@ using System.Diagnostics;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using KSCS.UserControls.MainForm;
 using System.Threading;
+using KSCS.Forms;
 
 namespace KSCS
 {
@@ -26,7 +27,7 @@ namespace KSCS
         {
             InitializeComponent();
         }
-        static bool isShareSchedule=false;
+        static bool isShareSchedule = false;
         TcpListener listener;
         bool isListen;
         SocketClient s_client = null;
@@ -123,7 +124,7 @@ namespace KSCS
                     uc.setMain(key);
                     ((FlowLayoutPanel)((UserMainCategory)panelMainCategory.Controls[key]).flpSubCategory).Controls.Add(uc);
 
-                   
+
                 }
             }
         }
@@ -179,7 +180,7 @@ namespace KSCS
                 SetCheckedCategoryByTab();
             }
 
-           
+
         }
 
         //탭 함수-------------------------------------------------------------------------------------------------------------------------------------------
@@ -234,8 +235,8 @@ namespace KSCS
             thread.Start();
         }
 
-       
-        
+
+
 
         //달력 함수-----------------------------------------------------------------------------------------------------------------------------------------
         private void dispalyDate()
@@ -290,14 +291,14 @@ namespace KSCS
                 foreach (Schedule schedule in KlasSchedule[MagamName.Substring(9)])
                 {
                     //최소 날짜 구하기
-                    if(schedule.endDate < min) min = schedule.endDate;
+                    if (schedule.endDate < min) min = schedule.endDate;
                 }
-                
-                if(min != DateTime.MaxValue)
+
+                if (min != DateTime.MaxValue)
                 {
                     time = min - now;
-                    if(time.Days < 3) ((Guna2CircleButton)panelMagamBtns.Controls[MagamName]).FillColor = Color.Red;
-                    else if(time.Days < 7) ((Guna2CircleButton)panelMagamBtns.Controls[MagamName]).FillColor = Color.Yellow;
+                    if (time.Days < 3) ((Guna2CircleButton)panelMagamBtns.Controls[MagamName]).FillColor = Color.Red;
+                    else if (time.Days < 7) ((Guna2CircleButton)panelMagamBtns.Controls[MagamName]).FillColor = Color.Yellow;
                     else ((Guna2CircleButton)panelMagamBtns.Controls[MagamName]).FillColor = Color.Green;
                 }
             }
@@ -314,7 +315,7 @@ namespace KSCS
             else if (color == Color.Gray) return Color.Gainsboro;
             else return Color.Gray;
         }
-        
+
         public void UpdateSchedule()
         {
             Thread thread = new Thread(new ThreadStart(delegate ()
@@ -373,7 +374,7 @@ namespace KSCS
         private void btnMagam_Click(object sender, EventArgs e)
         {
             //이전 컬러 수정
-            if(clickMagamBtn != null) clickMagamBtn.FillColor = ChangeColor(clickMagamBtn.FillColor);
+            if (clickMagamBtn != null) clickMagamBtn.FillColor = ChangeColor(clickMagamBtn.FillColor);
             //현제 클릭 마감 버튼 수정
             clickMagamBtn = (Guna2CircleButton)sender;
             Panel panel = (Panel)clickMagamBtn.Parent;
@@ -451,7 +452,7 @@ namespace KSCS
                 }
             }
 
-            
+
         }
 
         //달력 컨트롤--------------------------------------------------------------------------------------------------------------------------------------
@@ -517,6 +518,14 @@ namespace KSCS
                 boss = stdNum,
             };
             s_client.inviteAllMembers();
+        }
+
+        private void OnInvite(string boss)
+        {
+            AllowOrRequestForm allowOrRequestForm = new AllowOrRequestForm();
+            allowOrRequestForm.lbl_StudentNumber.Text = boss;
+            allowOrRequestForm.TopMost = true;
+            allowOrRequestForm.Show();
         }
 
         public void ConnectClient(string sender, List<string> todo,string type)

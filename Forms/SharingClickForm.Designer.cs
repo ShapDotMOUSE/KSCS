@@ -97,7 +97,7 @@
             this.btnMemberAdd.Size = new System.Drawing.Size(100, 45);
             this.btnMemberAdd.TabIndex = 1;
             this.btnMemberAdd.Text = "멤버 추가";
-            this.btnMemberAdd.Click += new System.EventHandler(this.guna2Button1_Click);
+            this.btnMemberAdd.Click += new System.EventHandler(this.btnMemberAdd_Click);
             // 
             // guna2DragControl1
             // 
@@ -139,7 +139,7 @@
             this.btnCancel.Size = new System.Drawing.Size(100, 45);
             this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "취 소";
-            this.btnCancel.Click += new System.EventHandler(this.guna2Button3_Click);
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // guna2ShadowForm1
             // 

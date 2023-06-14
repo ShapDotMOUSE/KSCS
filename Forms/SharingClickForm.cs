@@ -8,17 +8,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static KSCS.Class.KSCS_static;
 
 namespace KSCS.Forms
 {
     public partial class SharingClickForm : Form
     {
+        public event EventHandler SharingClick;
+        public List<string> members { get; }
         public SharingClickForm()
         {
             InitializeComponent();
         }
 
-        private void guna2Button3_Click(object sender, EventArgs e)
+        private void btnCancel_Click(object sender, EventArgs e)
         {
             Close();
         }
@@ -26,6 +29,8 @@ namespace KSCS.Forms
         {
             if (txtMember.Text.Length > 0)
             {
+                members.Add(txtMember.Text);
+
                 MemberAdd memberAdd = new MemberAdd();
                 memberAdd.txtMember.Text = txtMember.Text;
                 memberAdd.txtMember.Font = new Font(memberAdd.txtMember.Font.FontFamily, 10f, FontStyle.Regular);
@@ -34,6 +39,7 @@ namespace KSCS.Forms
                 memberAdd.txtMember.ClientSize = new Size(size.Width, size.Height);
                 memberAdd.ClientSize = new Size(size.Width + 25, 22);
                 memberAdd.btnClose.ClientSize = new Size(10, 9);
+
                 txtMember.Text = "";
                 flpMember.Controls.Add(memberAdd);
                 memberAdd.AddEvent += new EventHandler(DeleteMemberEvent); //삭제 이벤트 핸들러 추가
@@ -45,7 +51,7 @@ namespace KSCS.Forms
             flpMember.Controls.Remove((Control)sender);
         }
 
-        private void guna2Button1_Click(object sender, EventArgs e)
+        private void btnMemberAdd_Click(object sender, EventArgs e)
         {
             flpAddMember();
         }
@@ -64,9 +70,8 @@ namespace KSCS.Forms
         {
             this.Close();
 
-            AllowOrRequestForm allowOrRequestForm = new AllowOrRequestForm();
-            allowOrRequestForm.TopMost=true;
-            allowOrRequestForm.Show();
+            sharingMember = members;
+            SharingClick(sender, e);
         }
     }
 }

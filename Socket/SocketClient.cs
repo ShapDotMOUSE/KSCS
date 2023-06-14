@@ -46,6 +46,9 @@ namespace Socket
         public delegate void LoadAddress();
         public event LoadAddress OnLoadAddress;
 
+        public delegate void InvitationMessage(string boss);
+        public event InvitationMessage OnInvite;
+
         public async Task Send(NetworkStream networkStream)
         {
             await networkStream.WriteAsync(this.sendBuffer, 0, this.sendBuffer.Length).ConfigureAwait(false);
@@ -139,6 +142,18 @@ namespace Socket
             }
         }
 
+        //public async void sendCategoryList(List<string> )
+        //{
+        //    foreach(string member in InviteClass.members)
+        //    {
+        //        if (clientSocketDict.ContainsKey(member) && clientSocketDict[member].Connected)
+        //        {
+        //            NetworkStream networkStream= clientSocketDict[member].GetStream();
+
+        //        }
+        //    }
+        //}
+
         public async void readStreamData(TcpClient connectSocket)
         {
             NetworkStream stream = null;
@@ -167,8 +182,8 @@ namespace Socket
                                 isConnectedMemberDict[InviteClass.boss]= true;
 
                                 //연결 성공 시 메시지 출력.
-                                if (OnConnect != null)
-                                    OnConnect(InviteClass.boss, InviteClass.todoLink,"초대받기");
+                                if (OnInvite != null)
+                                    OnInvite(InviteClass.boss);
 
                                 //데이터 베이스에서 ip 불러오기
                                 OnLoadAddress();

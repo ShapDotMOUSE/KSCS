@@ -26,13 +26,8 @@ namespace KSCS
 
         TcpListener listener;
         SocketClient s_client = null;
+        private Guna2CircleButton clickMagamBtn;
         public static FlowLayoutPanel flowLayoutPanelLable;
-        enum DeadLien
-        {
-            DeadLineRed = 0,
-            DeadLineYellow = 3,
-            DeadLineGreen = 7
-        };
 
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -202,7 +197,40 @@ namespace KSCS
         //마감일정 함수-----------------------------------------------------------------------------------------------------------------------------------------
         public void InitializeMagam()
         {
+            string[] MagamKLASName = { "btnMagam_Online", "btnMagam_Quiz", "btnMagam_Task", "btnMagam_Prjct" };
+            DateTime now = DateTime.Now;
 
+            foreach (string MagamName in MagamKLASName)
+            {
+                DateTime min = DateTime.MaxValue;
+                TimeSpan time;
+
+                foreach (Schedule schedule in KlasSchedule[MagamName.Substring(9)])
+                {
+                    //최소 날짜 구하기
+                    if(schedule.endDate < min) min = schedule.endDate;
+                }
+                
+                if(min != DateTime.MaxValue)
+                {
+                    time = min - now;
+                    if(time.Days < 3) ((Guna2CircleButton)panelMagamBtns.Controls[MagamName]).FillColor = Color.Red;
+                    else if(time.Days < 7) ((Guna2CircleButton)panelMagamBtns.Controls[MagamName]).FillColor = Color.Yellow;
+                    else ((Guna2CircleButton)panelMagamBtns.Controls[MagamName]).FillColor = Color.Green;
+                }
+            }
+        }
+
+        private Color ChangeColor(Color color)
+        {
+            if (color == Color.Red) return Color.DarkRed;
+            else if (color == Color.Green) return Color.DarkGreen;
+            else if (color == Color.Yellow) return Color.FromArgb(204, 204, 0);
+            else if (color == Color.DarkRed) return Color.Red;
+            else if (color == Color.DarkGreen) return Color.Green;
+            else if (color == Color.FromArgb(204, 204, 0)) return Color.Yellow;
+            else if (color == Color.Gray) return Color.Gainsboro;
+            else return Color.Gray;
         }
 
         //컨트롤 함수------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -221,19 +249,20 @@ namespace KSCS
             btnMagam_Online.Enabled = true;
             btnMagam_Task.Enabled = true;
             btnMagam_Prjct.Enabled = true;
+            InitializeMagam();
         }
 
         //마감 버튼 클릭 시, 각 일정에 따른 KLAS 클래스에 정의 된 Dictionary 접근하여 데이터 확인.
         //@todo: 개인 마감일정 관리 개별로 할지 논의 필요.
         private void btnMagam_Click(object sender, EventArgs e)
         {
-            Guna2CircleButton btn = (Guna2CircleButton)sender;
-            Panel panel = (Panel)btn.Parent;
-            foreach (Guna2CircleButton magamBtn in panel.Controls)
-            {
-                magamBtn.FillColor = Color.FromArgb(217, 217, 217); ;
-            }
-            //btn.FillColor = Color.FromArgb(217,217,217);
+            //이전 컬러 수정
+            if(clickMagamBtn != null) clickMagamBtn.FillColor = ChangeColor(clickMagamBtn.FillColor);
+            //현제 클릭 마감 버튼 수정
+            clickMagamBtn = (Guna2CircleButton)sender;
+            Panel panel = (Panel)clickMagamBtn.Parent;
+            clickMagamBtn.FillColor = ChangeColor(clickMagamBtn.FillColor);
+
             panelMagam.Controls.Clear();
             int index = 0;
 
@@ -241,12 +270,12 @@ namespace KSCS
             Dictionary<string, DateTime> MagamMinDate = new Dictionary<string, DateTime>();
 
             // KLAS 요소 중 남은 요소가 없을시 문구 출력
-            if (KlasSchedule[btn.Name.Substring(9)].Count < 1 && btn.Name.Substring(9) != "Personal")
+            if (KlasSchedule[clickMagamBtn.Name.Substring(9)].Count < 1 && clickMagamBtn.Name.Substring(9) != "Personal")
             {
                 Label lbl = new Label
                 {
-                    Name = "KLAS_" + btn.Name.Substring(9) + "_" + index.ToString(),
-                    Text = "남은 " + KLAS.klasMagamNames[btn.Name.Substring(9)] + "가 없습니다!!",
+                    Name = "KLAS_" + clickMagamBtn.Name.Substring(9) + "_" + index.ToString(),
+                    Text = "남은 " + KLAS.klasMagamNames[clickMagamBtn.Name.Substring(9)] + "가 없습니다!!",
                     AutoSize = true,
                     Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
                 };
@@ -259,7 +288,7 @@ namespace KSCS
             else
             {
 
-                foreach (Schedule schedule in KlasSchedule[btn.Name.Substring(9)])
+                foreach (Schedule schedule in KlasSchedule[clickMagamBtn.Name.Substring(9)])
                 {
                     //총 개수 구하는 부분
                     //ex) 몇 개 중
@@ -279,7 +308,7 @@ namespace KSCS
                     }
                     else MagamMinDate.Add(schedule.content, schedule.endDate);
                 }
-                foreach (Schedule schedule in KlasSchedule[btn.Name.Substring(9)])
+                foreach (Schedule schedule in KlasSchedule[clickMagamBtn.Name.Substring(9)])
                 {
                     //가장 최근 마감 일정 갯수 구하는 부분
                     //ex) 몇 개가
@@ -293,8 +322,8 @@ namespace KSCS
                 {
                     Label lbl = new Label
                     {
-                        Name = "KLAS_" + btn.Name.Substring(9) + "_" + index.ToString(),
-                        Text = items.Key + " " + KLAS.klasMagamNames[btn.Name.Substring(9)] + " " + items.Value[0] + " 개 중 " + items.Value[1] + " 개가 " + Schedule.MagamDateFrom(MagamMinDate[items.Key]) + " 남았습니다.",
+                        Name = "KLAS_" + clickMagamBtn.Name.Substring(9) + "_" + index.ToString(),
+                        Text = items.Key + " " + KLAS.klasMagamNames[clickMagamBtn.Name.Substring(9)] + " " + items.Value[0] + " 개 중 " + items.Value[1] + " 개가 " + Schedule.MagamDateFrom(MagamMinDate[items.Key]) + " 남았습니다.",
                         AutoSize = true,
                         Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
                     };

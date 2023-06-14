@@ -46,17 +46,17 @@
 ### Design
 * Figma
 
-## 🗣️ 커뮤니케이션
-
-* GitHub
-* Notion
-* Discord
-
 
 ## ⚙️ 시스템 아키텍처
 
 
 ## 📁 DB 구조
 
+![KSCS](https://github.com/SharpDotMOUSE/KSCS/assets/89342648/2398ebbd-7a6a-4406-8a1c-4b6e83f0910d)
 
 
+## 🗣️ 커뮤니케이션
+
+* GitHub
+* Notion
+* Discord

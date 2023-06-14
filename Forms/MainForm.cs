@@ -303,14 +303,9 @@ namespace KSCS
         }
 
         //실시간 일정 공유 호출용
-        public static void CreateSharingSchedule()
+        public static void CreateSharingSchedule(string shareNum) //학번
         {
-            //Database.ReadTabScheduleList();
-            //Schedule.ReadTabKlasSchedule();
 
-            //DateTime startOfMonth = new DateTime(year, month, 1);
-            //int dates = DateTime.DaysInMonth(year, month);
-            //int dayOfWeek = Convert.ToInt32(startOfMonth.DayOfWeek.ToString("d")) + 1;
             DateTime startOfMonth = new DateTime(2023, 6, 1);
             int dates = DateTime.DaysInMonth(2023, 6);
             int dayOfWeek = Convert.ToInt32(startOfMonth.DayOfWeek.ToString("d")) + 1;
@@ -320,7 +315,7 @@ namespace KSCS
             foreach (UserDate userDate in Application.OpenForms.OfType<MainForm>().FirstOrDefault().GetUserDate())
             {
                 if (++index < dayOfWeek) userDate.ChangeBlank();
-                else if (date <= dates) userDate.SetDate(date++);
+                else if (date <= dates) userDate.SetShareDate(date++, shareNum);
                 else userDate.ChangeBlank();
 
                 if (index % 7 == 0) userDate.ChangeColor(Color.Blue);

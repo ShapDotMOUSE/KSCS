@@ -69,6 +69,7 @@
             this.tbPlace = new Guna.UI2.WinForms.Guna2TextBox();
             this.tbTitle = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnMemSet = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
             this.panelTop.SuspendLayout();
             this.panelLabel.SuspendLayout();
             this.flpMember.SuspendLayout();
@@ -398,7 +399,7 @@
             this.btnAddSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddSchedule.ForeColor = System.Drawing.Color.Black;
             this.btnAddSchedule.Image = global::KSCS.Properties.Resources.free_icon_font_plus_3917757;
-            this.btnAddSchedule.Location = new System.Drawing.Point(-15, 94);
+            this.btnAddSchedule.Location = new System.Drawing.Point(-15, 96);
             this.btnAddSchedule.Name = "btnAddSchedule";
             this.btnAddSchedule.Size = new System.Drawing.Size(167, 40);
             this.btnAddSchedule.TabIndex = 45;
@@ -597,6 +598,10 @@
             this.btnMemSet.Text = "일정 함께하는 친구 추가";
             this.btnMemSet.Click += new System.EventHandler(this.btnMemSet_Click);
             // 
+            // guna2ShadowForm1
+            // 
+            this.guna2ShadowForm1.TargetForm = this;
+            // 
             // ScheDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
@@ -680,5 +685,6 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel labelMember;
         private System.Windows.Forms.FlowLayoutPanel flpMember;
         private System.Windows.Forms.TextBox txtMember;
+        private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm1;
     }
 }

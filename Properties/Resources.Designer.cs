@@ -153,6 +153,16 @@ namespace KSCS.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        internal static System.Drawing.Bitmap modify {
+            get {
+                object obj = ResourceManager.GetObject("modify", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         internal static System.Drawing.Bitmap nextIcon {
             get {
                 object obj = ResourceManager.GetObject("nextIcon", resourceCulture);
@@ -313,9 +323,39 @@ namespace KSCS.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap 팡이우니_일기 {
+        internal static System.Drawing.Bitmap 팡이우니_일기_1 {
             get {
-                object obj = ResourceManager.GetObject("팡이우니 일기", resourceCulture);
+                object obj = ResourceManager.GetObject("팡이우니_일기_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap 팡이우니_일기_2 {
+            get {
+                object obj = ResourceManager.GetObject("팡이우니 일기_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap 팡이우니_일기_3 {
+            get {
+                object obj = ResourceManager.GetObject("팡이우니_일기_3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap 팡이우니_일기_4 {
+            get {
+                object obj = ResourceManager.GetObject("팡이우니_일기_4", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

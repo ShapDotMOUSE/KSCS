@@ -1,4 +1,6 @@
-﻿using KSCS.Forms;
+﻿using Guna.UI2.WinForms;
+using Guna.UI2.WinForms.Suite;
+using KSCS.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

@@ -179,7 +179,7 @@ namespace KSCS
         public static void CreateScheudle(Schedule schedule, String studentId)
         {
             string insertQuery = string.Format("INSERT INTO Schedule(student_id,title,content,place,category_id,startDate,endDate)" +
-                "VALUES ('{0}','{1}','{2}','{3}',(SELECT id FROM Category WHERE category_name='{4}' and student_id='{0}'),'{5}','{6}');",
+                "VALUES ('{0}','{1}','{2}','{3}',(SELECT id FROM Category WHERE category_name='{4}' and student_id='{0}' and parent_category_id IS NOT NULL),'{5}','{6}');",
                     studentId,
                     schedule.title,
                     schedule.content,

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Hosting;
@@ -46,6 +47,19 @@ namespace KSCS
             txtMainCategory.Visible = false;
             txtMainCategory.Enabled = false;
             txtMainCategory.Clear();
+        }
+
+        public void SetSharing(bool enable)
+        {
+            if(enable)
+            {
+                lblMainCategory.DoubleClick -= lblMainCategory_DoubleClick;
+            }
+            else
+            {
+                lblMainCategory.DoubleClick += lblMainCategory_DoubleClick;
+            }
+            btnAddSubCategory.Visible = !enable;
         }
 
         //이벤트 핸들러 ----------------------------------------------------------------------------------------------

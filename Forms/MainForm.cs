@@ -13,6 +13,9 @@ using Socket;
 using System.Net;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using KSCS.UserControls.MainForm;
+using System.Threading;
 
 namespace KSCS
 {
@@ -27,7 +30,9 @@ namespace KSCS
         TcpListener listener;
         bool isListen;
         SocketClient s_client = null;
+        private Guna2CircleButton clickMagamBtn;
         public static FlowLayoutPanel flowLayoutPanelLable;
+
         private void MainForm_Load(object sender, EventArgs e)
         {
 
@@ -38,6 +43,14 @@ namespace KSCS
             DialogResult Result = loginForm.ShowDialog();
             if (Result == DialogResult.OK)
             {
+                //초기 사이즈 및 위치 설정
+                this.Size = new Size(1360, 960);
+
+                this.StartPosition = FormStartPosition.Manual;
+                this.Location = new Point(
+                   (Screen.PrimaryScreen.Bounds.Width - this.Size.Width) / 2,
+                   (Screen.PrimaryScreen.Bounds.Height - this.Size.Height) / 2
+                );
                 LoadMagam();
                 lblStdNum.Text = stdNum;
                 //초기 메인 카테고리 설정
@@ -58,7 +71,7 @@ namespace KSCS
                 Tab3.Clicked += ChangeTab;
                 Tab4.Clicked += ChangeTab;
                 //btnSharing.Clicked += CreateSharing;
-                btnSharing.Clicked += btnShare_Click;
+                TabSharing.Clicked += btnShare_Click;
                 //btnSharing.DoubleClicked += CreateSharing;
                 setTab();
 
@@ -67,14 +80,12 @@ namespace KSCS
                 DisplayCategery();
 
                 //탭 로드
-                SetCheckedCategoryByTab();
+                UpdateTab();
+                UpdateSchedule();
                 TabAll.ShowTab();
             }
             else
                 Close();
-
-            this.Size = new Size(1360, 960);
-
         }
 
         private void setTab()
@@ -111,18 +122,69 @@ namespace KSCS
                     uc.SetBasicMode(item);
                     uc.setMain(key);
                     ((FlowLayoutPanel)((UserMainCategory)panelMainCategory.Controls[key]).flpSubCategory).Controls.Add(uc);
+
+                   
                 }
             }
         }
 
+        //실시간 함수---------------------------------------------------------------------------------------------------------------------------------------
+        private void SharingSubCategorySet(bool enable)
+        {
+            foreach (var key in category.Categories.Keys)
+            {
+                ((UserMainCategory)panelMainCategory.Controls[key]).SetSharing(enable);
+                foreach (var item in category.Categories[key])
+                {
+                    ((FlowLayoutPanel)((UserMainCategory)panelMainCategory.Controls[key]).flpSubCategory).Controls[item].Visible = !enable;
+                    if (enable)
+                    {
+                        SharingCategory.Add(item, false);
+                        UserSharingSubCategory ucSharing = new UserSharingSubCategory();
+                        ucSharing.SetBasicMode(item);
+                        ucSharing.setMain(key);
+                        ((FlowLayoutPanel)((UserMainCategory)panelMainCategory.Controls[key]).flpSubCategory).Controls.Add(ucSharing);
+                    }
+                    else
+                    {
+                        UserSharingSubCategory ucSharing = ((FlowLayoutPanel)((UserMainCategory)panelMainCategory.Controls[key]).flpSubCategory).Controls["Sharing" + item] as UserSharingSubCategory;
+                        ((FlowLayoutPanel)((UserMainCategory)panelMainCategory.Controls[key]).flpSubCategory).Controls.Remove(ucSharing);
+                    }
+                }
+            }
+        }
 
+        public void SharingTabEnable(bool enable)
+        {
+            TabAll.Enabled = !enable;
+            Tab1.Enabled = !enable;
+            Tab2.Enabled = !enable;
+            Tab3.Enabled = !enable;
+            Tab4.Enabled = !enable;
+            if (enable)
+            {
+                flowLayoutPanelLable.Controls.Clear();
+                TabName = TabSharing.Name;
+                TabSharing.ShowTab();
+                SharingCategory = new Dictionary<string, bool>();
+                SharingSubCategorySet(enable);
+
+            }
+            else
+            {
+                SharingCategory = null;
+                TabName = TabAll.Name;
+                SharingSubCategorySet(enable);
+                LoadMainForm();
+                SetCheckedCategoryByTab();
+            }
+
+           
+        }
 
         //탭 함수-------------------------------------------------------------------------------------------------------------------------------------------
         private void ChangeTab(object sender, EventArgs e)
         {
-            /*
-             * TODO: 이 부분에 DB에 연결하는 함수 추가 필요
-             */
             UserTabButton OldTab = this.Controls[TabName] as UserTabButton;
             UserTabButton btn = sender as UserTabButton;
             TabName = btn.Name;
@@ -132,8 +194,16 @@ namespace KSCS
             ChangeShareSchedule();
             LoadMainForm(); //추가
         }
+
         private void SetCheckedCategoryByTab()
         {
+            UpdateTab();
+            UpdateSchedule();
+        }
+
+        private void CreateTab() {
+            //UI 쓰레드인 경우
+
             flpLabel.Controls.Clear();
             foreach (string key in category.Categories.Keys)
             {
@@ -157,6 +227,21 @@ namespace KSCS
                 }
             }
         }
+        public void UpdateTab()
+        {
+            Thread thread = new Thread(new ThreadStart(delegate ()
+            {
+                this.Invoke(new Action(delegate ()
+                {
+                    CreateTab();
+                }));
+
+            }));
+            thread.Start();
+        }
+
+       
+        
 
         //달력 함수-----------------------------------------------------------------------------------------------------------------------------------------
         private void dispalyDate()
@@ -171,8 +256,10 @@ namespace KSCS
         private void createDates()
         {
             //Database.ReadScheduleList();
-            if (!isShareSchedule)
+            if (!isShareSchedule){
                 Database.ReadTabScheduleList();
+                Schedule.ReadTabKlasSchedule(); //추가
+            }
 
             lblMonth.Text = month.ToString() + "월";
             lblMonth.TextAlign = ContentAlignment.MiddleCenter;
@@ -194,6 +281,78 @@ namespace KSCS
             }
         }
 
+        //마감일정 함수-----------------------------------------------------------------------------------------------------------------------------------------
+        public void InitializeMagam()
+        {
+            string[] MagamKLASName = { "btnMagam_Online", "btnMagam_Quiz", "btnMagam_Task", "btnMagam_Prjct" };
+            DateTime now = DateTime.Now;
+
+            foreach (string MagamName in MagamKLASName)
+            {
+                DateTime min = DateTime.MaxValue;
+                TimeSpan time;
+
+                foreach (Schedule schedule in KlasSchedule[MagamName.Substring(9)])
+                {
+                    //최소 날짜 구하기
+                    if(schedule.endDate < min) min = schedule.endDate;
+                }
+                
+                if(min != DateTime.MaxValue)
+                {
+                    time = min - now;
+                    if(time.Days < 3) ((Guna2CircleButton)panelMagamBtns.Controls[MagamName]).FillColor = Color.Red;
+                    else if(time.Days < 7) ((Guna2CircleButton)panelMagamBtns.Controls[MagamName]).FillColor = Color.Yellow;
+                    else ((Guna2CircleButton)panelMagamBtns.Controls[MagamName]).FillColor = Color.Green;
+                }
+            }
+        }
+
+        private Color ChangeColor(Color color)
+        {
+            if (color == Color.Red) return Color.DarkRed;
+            else if (color == Color.Green) return Color.DarkGreen;
+            else if (color == Color.Yellow) return Color.FromArgb(204, 204, 0);
+            else if (color == Color.DarkRed) return Color.Red;
+            else if (color == Color.DarkGreen) return Color.Green;
+            else if (color == Color.FromArgb(204, 204, 0)) return Color.Yellow;
+            else if (color == Color.Gray) return Color.Gainsboro;
+            else return Color.Gray;
+        }
+        
+        public void UpdateSchedule()
+        {
+            Thread thread = new Thread(new ThreadStart(delegate ()
+            {
+                this.Invoke(new Action(delegate ()
+                {
+                    CreateSchedule();
+                }));
+
+            }));
+            thread.Start();
+        }
+
+        public static void CreateSchedule()
+        {
+            Database.ReadTabScheduleList();
+
+            DateTime startOfMonth = new DateTime(year, month, 1);
+            int dates = DateTime.DaysInMonth(year, month);
+            int dayOfWeek = Convert.ToInt32(startOfMonth.DayOfWeek.ToString("d")) + 1;
+            int index = 0;
+            int date = 1;
+
+            foreach (UserDate userDate in Application.OpenForms.OfType<MainForm>().FirstOrDefault().GetUserDate())
+            {
+                if (++index < dayOfWeek) userDate.ChangeBlank();
+                else if (date <= dates) userDate.SetDate(date++);
+                else userDate.ChangeBlank();
+
+                if (index % 7 == 0) userDate.ChangeColor(Color.Blue);
+                else if (index % 7 == 1) userDate.ChangeColor(Color.Red);
+            }
+        }
 
         //컨트롤 함수------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -211,60 +370,33 @@ namespace KSCS
             btnMagam_Online.Enabled = true;
             btnMagam_Task.Enabled = true;
             btnMagam_Prjct.Enabled = true;
+            InitializeMagam();
         }
 
         //마감 버튼 클릭 시, 각 일정에 따른 KLAS 클래스에 정의 된 Dictionary 접근하여 데이터 확인.
         //@todo: 개인 마감일정 관리 개별로 할지 논의 필요.
         private void btnMagam_Click(object sender, EventArgs e)
         {
-            Guna2CircleButton btn = (Guna2CircleButton)sender;
-            Panel panel = (Panel)btn.Parent;
-            foreach (Guna2CircleButton magamBtn in panel.Controls)
-            {
-                magamBtn.FillColor = Color.FromArgb(217, 217, 217); ;
-            }
-            //btn.FillColor = Color.FromArgb(217,217,217);
+            //이전 컬러 수정
+            if(clickMagamBtn != null) clickMagamBtn.FillColor = ChangeColor(clickMagamBtn.FillColor);
+            //현제 클릭 마감 버튼 수정
+            clickMagamBtn = (Guna2CircleButton)sender;
+            Panel panel = (Panel)clickMagamBtn.Parent;
+            clickMagamBtn.FillColor = ChangeColor(clickMagamBtn.FillColor);
+
             panelMagam.Controls.Clear();
             int index = 0;
 
             Dictionary<string, int[]> MagamLectureDic = new Dictionary<string, int[]>();
             Dictionary<string, DateTime> MagamMinDate = new Dictionary<string, DateTime>();
 
-            foreach (Schedule schedule in KlasSchedule[btn.Name.Substring(9)])
-            {
-                //총 개수 구하는 부분
-                //ex) 몇 개 중
-                if (MagamLectureDic.ContainsKey(schedule.content))
-                    MagamLectureDic[schedule.content][0] += 1;
-                else
-                {
-                    MagamLectureDic.Add(schedule.content, new int[2]);
-                    MagamLectureDic[schedule.content][0] = 1;
-                    MagamLectureDic[schedule.content][1] = 0;
-                }
-                //가장 최근 마감 일정 남은 시간 구하는 부분
-                //ex) 몇 일/시간 남았습니다.
-                if (MagamMinDate.ContainsKey(schedule.content))
-                {
-                    if (MagamMinDate[schedule.content] < schedule.endDate) MagamMinDate[schedule.content] = schedule.endDate;
-                }
-                else MagamMinDate.Add(schedule.content, schedule.endDate);
-            }
-            foreach (Schedule schedule in KlasSchedule[btn.Name.Substring(9)])
-            {
-                //가장 최근 마감 일정 갯수 구하는 부분
-                //ex) 몇 개가
-                if (MagamMinDate[schedule.content] == schedule.endDate)
-                {
-                    MagamLectureDic[schedule.content][1] += 1;
-                }
-            }
-            foreach (KeyValuePair<string, int[]> items in MagamLectureDic)
+            // KLAS 요소 중 남은 요소가 없을시 문구 출력
+            if (KlasSchedule[clickMagamBtn.Name.Substring(9)].Count < 1 && clickMagamBtn.Name.Substring(9) != "Personal")
             {
                 Label lbl = new Label
                 {
-                    Name = "KLAS_" + btn.Name.Substring(9) + "_" + index.ToString(),
-                    Text = items.Key + " " + KLAS.klasMagamNames[btn.Name.Substring(9)] + " " + items.Value[0] + " 개 중 " + items.Value[1] + " 개가 " + Schedule.MagamDateFrom(MagamMinDate[items.Key]) + " 남았습니다.",
+                    Name = "KLAS_" + clickMagamBtn.Name.Substring(9) + "_" + index.ToString(),
+                    Text = "남은 " + KLAS.klasMagamNames[clickMagamBtn.Name.Substring(9)] + "가 없습니다!!",
                     AutoSize = true,
                     Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
                 };
@@ -274,6 +406,57 @@ namespace KSCS
                 else panelMagam.Controls.Add(lbl);
                 index++;
             }
+            else
+            {
+
+                foreach (Schedule schedule in KlasSchedule[clickMagamBtn.Name.Substring(9)])
+                {
+                    //총 개수 구하는 부분
+                    //ex) 몇 개 중
+                    if (MagamLectureDic.ContainsKey(schedule.content))
+                        MagamLectureDic[schedule.content][0] += 1;
+                    else
+                    {
+                        MagamLectureDic.Add(schedule.content, new int[2]);
+                        MagamLectureDic[schedule.content][0] = 1;
+                        MagamLectureDic[schedule.content][1] = 0;
+                    }
+                    //가장 최근 마감 일정 남은 시간 구하는 부분
+                    //ex) 몇 일/시간 남았습니다.
+                    if (MagamMinDate.ContainsKey(schedule.content))
+                    {
+                        if (MagamMinDate[schedule.content] < schedule.endDate) MagamMinDate[schedule.content] = schedule.endDate;
+                    }
+                    else MagamMinDate.Add(schedule.content, schedule.endDate);
+                }
+                foreach (Schedule schedule in KlasSchedule[clickMagamBtn.Name.Substring(9)])
+                {
+                    //가장 최근 마감 일정 갯수 구하는 부분
+                    //ex) 몇 개가
+                    if (MagamMinDate[schedule.content] == schedule.endDate)
+                    {
+                        MagamLectureDic[schedule.content][1] += 1;
+                    }
+                }
+
+                foreach (KeyValuePair<string, int[]> items in MagamLectureDic)
+                {
+                    Label lbl = new Label
+                    {
+                        Name = "KLAS_" + clickMagamBtn.Name.Substring(9) + "_" + index.ToString(),
+                        Text = items.Key + " " + KLAS.klasMagamNames[clickMagamBtn.Name.Substring(9)] + " " + items.Value[0] + " 개 중 " + items.Value[1] + " 개가 " + Schedule.MagamDateFrom(MagamMinDate[items.Key]) + " 남았습니다.",
+                        AutoSize = true,
+                        Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
+                    };
+                    lbl.Location = new Point(0, index * (lbl.Height + 3));
+                    //panelMagam.Controls.Add(lbl);
+                    if (panel.InvokeRequired) panelMagam.Invoke(new MethodInvoker(delegate { panelMagam.Controls.Add(lbl); }));
+                    else panelMagam.Controls.Add(lbl);
+                    index++;
+                }
+            }
+
+            
         }
 
         //달력 컨트롤--------------------------------------------------------------------------------------------------------------------------------------
@@ -416,6 +599,10 @@ namespace KSCS
                 monthScheduleList.Add(new List<Schedule>());
             }
             createDates();
+
+            
+            SharingTabEnable(!(TabName == TabSharing.Name));
+
             MessageBox.Show("시작");
             Task.Run(() => EnterShareSchedule());
         }
@@ -438,6 +625,7 @@ namespace KSCS
         {
             if(!isShareSchedule)
             Database.ReadTabScheduleList();
+            Schedule.ReadTabKlasSchedule(); //추가
 
             DateTime startOfMonth = new DateTime(year, month, 1);
             int dates = DateTime.DaysInMonth(year, month);

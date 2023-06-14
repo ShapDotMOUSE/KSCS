@@ -128,11 +128,10 @@
     <Compile Include="Forms\SharingScheduleForm.Designer.cs">
       <DependentUpon>SharingScheduleForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\TempCategorySetting.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\TempCategorySetting.Designer.cs">
-      <DependentUpon>TempCategorySetting.cs</DependentUpon>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\MainForm\UserLabel.cs">
       <SubType>UserControl</SubType>
@@ -151,6 +150,12 @@
     </Compile>
     <Compile Include="UserControls\MainForm\UserSharingAddButton.Designer.cs">
       <DependentUpon>UserSharingAddButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MainForm\UserSharingSubCategory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\MainForm\UserSharingSubCategory.Designer.cs">
+      <DependentUpon>UserSharingSubCategory.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\MainForm\UserTapButton.cs">
       <SubType>UserControl</SubType>
@@ -243,9 +248,6 @@
     <EmbeddedResource Include="Forms\SharingScheduleForm.resx">
       <DependentUpon>SharingScheduleForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\TempCategorySetting.resx">
-      <DependentUpon>TempCategorySetting.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\MainForm\UserLabel.resx">
       <DependentUpon>UserLabel.cs</DependentUpon>
     </EmbeddedResource>
@@ -254,6 +256,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\MainForm\UserSharingAddButton.resx">
       <DependentUpon>UserSharingAddButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\MainForm\UserSharingSubCategory.resx">
+      <DependentUpon>UserSharingSubCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\MainForm\UserTapButton.resx">
       <DependentUpon>UserTapButton.cs</DependentUpon>
@@ -284,14 +289,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="Forms\ScheDetailForm.resx">
       <DependentUpon>ScheDetailForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -339,7 +339,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\plus.png" />
-    <EmbeddedResource Include="Resources\팡이우니 일기.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\우니팡이동그라미.png" />
@@ -400,6 +399,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Outdoor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\팡이우니 일기_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\팡이우니_일기_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\팡이우니_일기_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\팡이우니_일기_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\modify.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

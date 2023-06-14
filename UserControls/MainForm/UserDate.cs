@@ -20,8 +20,14 @@ namespace KSCS
         private void LoadUserDate()
         {
             flpEvent.Controls.Clear(); //userEvent 컨트롤 초기화
+            lblUnitNum.Visible = false;
             foreach (Schedule schedule in monthScheduleList[Convert.ToInt32(lblDate.Text) - 1])
                 AddEvent(schedule.title, category.GetColor(schedule.category));
+            if(monthScheduleList[Convert.ToInt32(lblDate.Text)-1].Count > 2)
+            {
+                lblUnitNum.Visible = true;
+                lblUnitNum.Text = "+ "+(monthScheduleList[Convert.ToInt32(lblDate.Text) - 1].Count-2).ToString();
+            }
             this.Refresh();
         }
 
@@ -33,6 +39,7 @@ namespace KSCS
                 lblDate.Text = "";
                 BackColor = Color.White;
                 lblDate.Visible = false;
+                lblUnitNum.Visible = false;
                 Cursor = Cursors.Default;
                 btnTransparent.MouseEnter -= UserDate_MouseEnter;
                 btnTransparent.MouseLeave -= UserDate_MouseLeave;

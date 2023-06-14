@@ -15,68 +15,6 @@ namespace KSCS
         public Dictionary<string, Color> CategoryColor= new Dictionary<string, Color>();
         public Hashtable Tabs=new Hashtable();
 
-        public void TestCategory()
-        {
-            HashSet<string> SchoolCategories = new HashSet<string>();
-            SchoolCategories.Add("학사일정");
-            SchoolCategories.Add("과제");
-            SchoolCategories.Add("퀴즈");
-            SchoolCategories.Add("온라인강의");
-            HashSet<string> PersonalCategories = new HashSet<string>();
-            PersonalCategories.Add("생일");
-            PersonalCategories.Add("약속");
-            PersonalCategories.Add("식사");
-            HashSet<string> EtcCatergories = new HashSet<string>();
-            EtcCatergories.Add("기타1");
-            EtcCatergories.Add("기타2");
-            EtcCatergories.Add("기타3");
-
-            Categories["학교"] = SchoolCategories;
-            Categories["개인"] = PersonalCategories;
-            Categories["기타"] = EtcCatergories;
-
-            HashSet<String> TabCategory1 = new HashSet<String>();
-            TabCategory1.Add("학사일정");
-            TabCategory1.Add("과제");
-            TabCategory1.Add("퀴즈");
-            TabCategory1.Add("온라인강의");
-            TabCategory1.Add("생일");
-            TabCategory1.Add("약속");
-            TabCategory1.Add("식사");
-            TabCategory1.Add("기타1");
-            TabCategory1.Add("기타2");
-            TabCategory1.Add("기타3");
-            Tabs["TabAll"] = TabCategory1;
-
-            HashSet<String> TabCategory2 = new HashSet<String>();
-            TabCategory2.Add("학사일정");
-            TabCategory2.Add("과제");
-            TabCategory2.Add("퀴즈");
-            TabCategory2.Add("온라인강의");
-            TabCategory2.Add("기타1");
-            TabCategory2.Add("기타2");
-            Tabs["Tab1"] = TabCategory2;
-
-            HashSet<String> TabCategory3 = new HashSet<String>();
-            TabCategory3.Add("학사일정");
-            TabCategory3.Add("과제");
-            TabCategory3.Add("퀴즈");
-            TabCategory3.Add("온라인강의");
-            Tabs["Tab2"] = TabCategory3; 
-            
-            HashSet<String> TabCategory4 = new HashSet<String>();
-            TabCategory4.Add("생일");
-            TabCategory4.Add("약속");
-            TabCategory4.Add("식사");
-            Tabs["Tab3"] = TabCategory4; 
-            
-            HashSet<String> TabCategory5 = new HashSet<String>();
-            TabCategory5.Add("기타1");
-            TabCategory5.Add("기타2");
-            TabCategory5.Add("기타3");
-            Tabs["Tab4"] = TabCategory5;
-        }
-
         //카테고리 Color 
         public void SetColor(string Sub,Color color)
         {
@@ -186,13 +124,6 @@ namespace KSCS
         {
             Categories[New] = Categories[Old];
             Categories.Remove(Old);
-        }
-
-        //탭이름 변경
-        public void ChangeTabName(string Old, string New)
-        {
-            Tabs[New] = Tabs[Old];
-            Tabs.Remove(Old);
         }
 
         //하위 카테고리 이미 존재 여부

@@ -13,6 +13,8 @@ using Socket;
 using System.Net;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using KSCS.UserControls.MainForm;
 
 namespace KSCS
 {
@@ -64,7 +66,7 @@ namespace KSCS
                 Tab3.Clicked += ChangeTab;
                 Tab4.Clicked += ChangeTab;
                 //btnSharing.Clicked += CreateSharing;
-                btnSharing.Clicked += btnShare_Click;
+                TabSharing.Clicked += btnShare_Click;
                 //btnSharing.DoubleClicked += CreateSharing;
                 setTab();
 
@@ -114,26 +116,78 @@ namespace KSCS
                     uc.SetBasicMode(item);
                     uc.setMain(key);
                     ((FlowLayoutPanel)((UserMainCategory)panelMainCategory.Controls[key]).flpSubCategory).Controls.Add(uc);
+
+                   
                 }
             }
         }
 
+        //실시간 함수---------------------------------------------------------------------------------------------------------------------------------------
+        private void SharingSubCategorySet(bool enable)
+        {
+            foreach (var key in category.Categories.Keys)
+            {
+                ((UserMainCategory)panelMainCategory.Controls[key]).SetSharing(enable);
+                foreach (var item in category.Categories[key])
+                {
+                    ((FlowLayoutPanel)((UserMainCategory)panelMainCategory.Controls[key]).flpSubCategory).Controls[item].Visible = !enable;
+                    if (enable)
+                    {
+                        SharingCategory.Add(item, false);
+                        UserSharingSubCategory ucSharing = new UserSharingSubCategory();
+                        ucSharing.SetBasicMode(item);
+                        ucSharing.setMain(key);
+                        ((FlowLayoutPanel)((UserMainCategory)panelMainCategory.Controls[key]).flpSubCategory).Controls.Add(ucSharing);
+                    }
+                    else
+                    {
+                        UserSharingSubCategory ucSharing = ((FlowLayoutPanel)((UserMainCategory)panelMainCategory.Controls[key]).flpSubCategory).Controls["Sharing" + item] as UserSharingSubCategory;
+                        ((FlowLayoutPanel)((UserMainCategory)panelMainCategory.Controls[key]).flpSubCategory).Controls.Remove(ucSharing);
+                    }
+                }
+            }
+        }
 
+        public void SharingTabEnable(bool enable)
+        {
+            TabAll.Enabled = !enable;
+            Tab1.Enabled = !enable;
+            Tab2.Enabled = !enable;
+            Tab3.Enabled = !enable;
+            Tab4.Enabled = !enable;
+            if (enable)
+            {
+                flowLayoutPanelLable.Controls.Clear();
+                TabName = TabSharing.Name;
+                TabSharing.ShowTab();
+                SharingCategory = new Dictionary<string, bool>();
+                SharingSubCategorySet(enable);
+
+            }
+            else
+            {
+                SharingCategory = null;
+                TabName = TabAll.Name;
+                SharingSubCategorySet(enable);
+                LoadMainForm();
+                SetCheckedCategoryByTab();
+            }
+
+           
+        }
 
         //탭 함수-------------------------------------------------------------------------------------------------------------------------------------------
         private void ChangeTab(object sender, EventArgs e)
         {
-            /*
-             * TODO: 이 부분에 DB에 연결하는 함수 추가 필요
-             */
             UserTabButton OldTab = this.Controls[TabName] as UserTabButton;
             UserTabButton btn = sender as UserTabButton;
             TabName = btn.Name;
             OldTab.HideTab();
             SetCheckedCategoryByTab();
 
-            LoadMainForm(); //추가
+            LoadMainForm();
         }
+
         private void SetCheckedCategoryByTab()
         {
             flpLabel.Controls.Clear();
@@ -159,6 +213,9 @@ namespace KSCS
                 }
             }
         }
+
+       
+        
 
         //달력 함수-----------------------------------------------------------------------------------------------------------------------------------------
         private void dispalyDate()
@@ -408,8 +465,10 @@ namespace KSCS
         //실시간 일정 공유 참가 : 현재 클릭
         public void btnShare_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("시작");
-            Task.Run(()=>ParticipateSharing());
+            //MessageBox.Show("시작");
+            
+            SharingTabEnable(!(TabName == TabSharing.Name));
+            //Task.Run(()=>ParticipateSharing());
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)

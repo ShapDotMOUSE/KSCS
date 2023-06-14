@@ -16,22 +16,25 @@ namespace Socket
         public string clientStdNum;
         //다른 학번들과 연결 클라이언트 딕셔너리
         public Dictionary<string,TcpClient> clientSocketDict;
-
+        public Dictionary<string, bool> isConnectedMemberDict;
         //데이터베이스에서 얻어온 address 딕셔너리
         public Dictionary<string, string> addressDict;
         
         private byte[] sendBuffer=new byte[1024 * 4];
         private byte[] readBuffer=new byte[1024 * 4];
         
-        public Init InitClass; 
+        public Invite InviteClass;
+        public InitMesh InitMeshClass;
 
         public SocketClient(string studentNum)
         {
             this.clientStdNum = studentNum;
             clientSocketDict=new Dictionary<string, TcpClient>();
+            isConnectedMemberDict = new Dictionary<string, bool>();
+            addressDict = new Dictionary<string, string>();
         }
 
-        public delegate void ConnectClientHandler(string sender,List<string> todo);
+        public delegate void ConnectClientHandler(string sender,List<string> todo,string type);
         public event ConnectClientHandler OnConnect;
 
         public delegate void MessageHandler(string message);
@@ -51,44 +54,47 @@ namespace Socket
             }
         }
 
-        public void sendClientTodo()
+        //모든 맴버 초대 함수
+        public async void inviteAllMembers()
         {
-            List<string> todoLink=InitClass.todoLink.ToList();
-            foreach (string todo in InitClass.todoLink)
+            List<string> todoLink=InviteClass.todoLink.ToList();
+            foreach (string member in InviteClass.todoLink)
             {
-                if (!addressDict.ContainsKey(todo))
+                if (!addressDict.ContainsKey(member))
                 {
-                    Trace.WriteLine(string.Format("연결 실패 + {0}: 실시간 일정 공유에 접속되어 있지 않습니다.", todo));
+                    Trace.WriteLine(string.Format("연결 실패 + {0}: 실시간 일정 공유에 접속되어 있지 않습니다.", member));
                     continue;
                 }
-                Task.Run(() => createConnection(todo,todoLink));
-                
+                todoLink.Remove(member);
+                await Task.Run(() => inviteMember(member, todoLink));
             }
         }
-        private async void createConnection(string stdNum,List<string> todoLink)
+
+        //맴버 초대 함수
+        private async void inviteMember(string stdNum,List<string> todoLink)
         {
             if (stdNum != null)
             {
                 NetworkStream networkStream=null;
                 try
                 {
-                    OnMessage("연결 시도" + stdNum);
+                    OnMessage("초대 시도" + stdNum);
                     TcpClient todoClient = new TcpClient();
                     //각 사용자 들에게 접속 시도
                     todoClient.Connect(addressDict[stdNum], 7777);
 
-                    networkStream = todoClient.GetStream();
-                    //접속 후 추가
-                    clientSocketDict.Add(stdNum, todoClient);
+                    if (todoClient.Connected)
+                    {
+                        networkStream = todoClient.GetStream();
+                        //접속 후 추가
 
-                    todoLink.Remove(stdNum);
+                        Invite invite = InviteClass;
+                        invite.boss = clientStdNum;
+                        invite.todoLink = todoLink;
 
-                    Init init = InitClass;
-                    init.sender = clientStdNum;
-                    init.todoLink = todoLink;
-
-                    Packet.Serialize(init).CopyTo(this.sendBuffer, 0);
-                    await Send(networkStream);
+                        Packet.Serialize(invite).CopyTo(this.sendBuffer, 0);
+                        await Send(networkStream);
+                    }
                 }
                 catch
                 {
@@ -96,6 +102,40 @@ namespace Socket
                 }
             }
         }
+
+        private async void linkMesh(string stdNum)
+        {
+            if (stdNum != null)
+            {
+                NetworkStream networkStream = null;
+                try
+                {
+                    OnMessage("Mesh 연결 시도" + stdNum);
+                    TcpClient todoClient = new TcpClient();
+                    //각 사용자 들에게 접속 시도
+                    todoClient.Connect(addressDict[stdNum], 7777);
+
+                    if (todoClient.Connected)
+                    {
+                        isConnectedMemberDict[stdNum] = true;
+                        networkStream = todoClient.GetStream();
+                        //접속 후 추가
+                        clientSocketDict.Add(stdNum, todoClient);
+
+                        InitMesh initMesh = new InitMesh(clientStdNum);
+                        initMesh.Type = (int)PacketType.INIT_MESH;
+
+                        Packet.Serialize(initMesh).CopyTo(this.sendBuffer, 0);
+                        await Send(networkStream);
+                    }
+                }
+                catch(Exception e) 
+                {
+                    Trace.WriteLine(string.Format("연결 실패 + {0}: 실시간 일정 공유에 접속되어 있지 않습니다.\n{1}", stdNum,e.Message));
+                }
+            }
+        }
+
         public async void readStreamData(TcpClient connectSocket)
         {
             NetworkStream stream = null;
@@ -109,25 +149,47 @@ namespace Socket
                     Packet packet = (Packet)Packet.Deserialize(readBuffer);
                     switch ((int)packet.Type)
                     {
-                        case (int)PacketType.INIT:
+                        case (int)PacketType.INVITE://보스한테 초대 받음.
                             {
-                                InitClass = (Init)Packet.Deserialize(readBuffer);
-                                clientSocketDict.Add(InitClass.sender, connectSocket);
+                                InviteClass = (Invite)Packet.Deserialize(readBuffer);
+                                //딕셔너리 초기화
+                                foreach(string member in InviteClass.members)
+                                {
+                                    if(member != clientStdNum)
+                                        isConnectedMemberDict.Add(member, false);
+                                }
 
+                                //보스와의 연결 추가
+                                clientSocketDict.Add(InviteClass.boss, connectSocket);
+                                isConnectedMemberDict[InviteClass.boss]= true;
+
+                                //연결 성공 시 메시지 출력.
                                 if (OnConnect != null)
-                                    OnConnect(InitClass.sender, InitClass.todoLink);
+                                    OnConnect(InviteClass.boss, InviteClass.todoLink,"초대받기");
 
-                                if (InitClass.todoLink.Count > 0 && OnLoadAddress != null)
-                                    OnLoadAddress();
+                                //데이터 베이스에서 ip 불러오기
+                                OnLoadAddress();
 
-                                //보낸 사람이 boss가 아니거나 더 이상 보낼 사람 없으면 종료.
-                                if (!InitClass.boss.Equals(InitClass.sender) || InitClass.todoLink.Count == 0)
-                                    break;
 
-                                sendClientTodo();
+                                //다른 todoLink에게 연결 시도 코드
+                                foreach (string todo in InviteClass.todoLink)
+                                {
+                                    Task.Run(() => linkMesh(todo));
+                                }
                                 break;
                             }
-
+                            case (int)PacketType.INIT_MESH:
+                            {
+                                InitMeshClass=(InitMesh)Packet.Deserialize(readBuffer);
+                                //다른 노드와의 연결 추가
+                                clientSocketDict.Add(InitMeshClass.sender, connectSocket);
+                                isConnectedMemberDict[InitMeshClass.sender]= true;
+                                //연결 성공 시 메시지 출력.
+                                if (OnConnect != null)
+                                    OnConnect(InitMeshClass.sender,new List<string>(),"Mesh 연결");
+                                break;
+                            }
+                            
                     }
                 }
             }

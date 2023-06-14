@@ -56,7 +56,7 @@
             this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnUserSharingAddButton1 = new KSCS.UserControls.MainForm.UserSharingAddButton();
+            this.btnUserSharingAddButton = new KSCS.UserControls.MainForm.UserSharingAddButton();
             this.flpLabel = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -143,8 +143,8 @@
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(202, 61);
-            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label2.Location = new System.Drawing.Point(155, 46);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 31);
             this.label2.TabIndex = 6;
@@ -157,8 +157,8 @@
             this.lblStdNum.BackColor = System.Drawing.Color.White;
             this.lblStdNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblStdNum.ForeColor = System.Drawing.Color.Black;
-            this.lblStdNum.Location = new System.Drawing.Point(202, 107);
-            this.lblStdNum.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.lblStdNum.Location = new System.Drawing.Point(155, 80);
+            this.lblStdNum.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStdNum.Name = "lblStdNum";
             this.lblStdNum.Size = new System.Drawing.Size(176, 31);
             this.lblStdNum.TabIndex = 6;
@@ -171,8 +171,8 @@
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(42, 338);
-            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label1.Location = new System.Drawing.Point(32, 253);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(121, 39);
             this.label1.TabIndex = 7;
@@ -493,7 +493,7 @@
             this.guna2Panel5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.guna2Panel5.BackColor = System.Drawing.Color.White;
             this.guna2Panel5.BorderRadius = 10;
-            this.guna2Panel5.Controls.Add(this.btnUserSharingAddButton1);
+            this.guna2Panel5.Controls.Add(this.btnUserSharingAddButton);
             this.guna2Panel5.Controls.Add(this.flpLabel);
             this.guna2Panel5.Controls.Add(this.flowLayoutPanel1);
             this.guna2Panel5.Controls.Add(this.btnPrevisous);
@@ -507,14 +507,15 @@
             this.guna2Panel5.Size = new System.Drawing.Size(1797, 1173);
             this.guna2Panel5.TabIndex = 21;
             // 
-            // btnUserSharingAddButton1
+            // btnUserSharingAddButton
             // 
-            this.btnUserSharingAddButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(235)))));
-            this.btnUserSharingAddButton1.Location = new System.Drawing.Point(99, 1053);
-            this.btnUserSharingAddButton1.Margin = new System.Windows.Forms.Padding(6);
-            this.btnUserSharingAddButton1.Name = "btnUserSharingAddButton1";
-            this.btnUserSharingAddButton1.Size = new System.Drawing.Size(228, 74);
-            this.btnUserSharingAddButton1.TabIndex = 45;
+            this.btnUserSharingAddButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(235)))));
+            this.btnUserSharingAddButton.Location = new System.Drawing.Point(91, 1072);
+            this.btnUserSharingAddButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnUserSharingAddButton.Name = "btnUserSharingAddButton";
+            this.btnUserSharingAddButton.Size = new System.Drawing.Size(231, 74);
+            this.btnUserSharingAddButton.TabIndex = 45;
+            this.btnUserSharingAddButton.Visible = false;
             // 
             // flpLabel
             // 
@@ -1272,6 +1273,7 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(1918, 1018);
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.guna2Panel2.ResumeLayout(false);
@@ -1384,7 +1386,7 @@
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.TextBox textBox7;
-        private UserControls.MainForm.UserSharingAddButton btnUserSharingAddButton1;
+        private UserControls.MainForm.UserSharingAddButton btnUserSharingAddButton;
         private Guna.UI2.WinForms.Guna2Button btnSettingComplete;
         private System.Windows.Forms.PictureBox btn_logout;
         public System.Windows.Forms.FlowLayoutPanel flpLabel;

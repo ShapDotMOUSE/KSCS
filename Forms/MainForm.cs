@@ -33,7 +33,7 @@ namespace KSCS
         private Guna2CircleButton clickMagamBtn;
         public static FlowLayoutPanel flowLayoutPanelLable;
 
-        private void MainForm_Load(object sender, EventArgs e)
+        private async void MainForm_Load(object sender, EventArgs e)
         {
 
             flowLayoutPanelLable = flpLabel;
@@ -51,7 +51,10 @@ namespace KSCS
                    (Screen.PrimaryScreen.Bounds.Width - this.Size.Width) / 2,
                    (Screen.PrimaryScreen.Bounds.Height - this.Size.Height) / 2
                 );
-                LoadMagam();
+
+                await KLAS.LoadMagamData();
+                MagamButtonEnable();
+
                 lblStdNum.Text = stdNum;
                 //초기 메인 카테고리 설정
                 Database.ReadCategoryList();
@@ -75,14 +78,15 @@ namespace KSCS
                 //btnSharing.DoubleClicked += CreateSharing;
                 setTab();
 
+
+                //탭 로드
+                UpdateTab();
+                TabAll.ShowTab();
+
                 //달력 (탭 위에 위치 -> 현재)
                 dispalyDate();
                 DisplayCategery();
 
-                //탭 로드
-                UpdateTab();
-                UpdateSchedule();
-                TabAll.ShowTab();
             }
             else
                 Close();
@@ -97,11 +101,7 @@ namespace KSCS
             Tab3.Name = tabNameList[3];
             Tab4.Name = tabNameList[4];
         }
-        private async void LoadMagam()
-        {
-            await KLAS.LoadMagamData();
-            MagamButtonEnable();
-        }
+        
 
         //private void MainForm_Resize(object sender, EventArgs e)
         //{
@@ -193,7 +193,6 @@ namespace KSCS
             ChangeShareSchedule();
             LoadMainForm(); //추가
             UpdateTab();
-            UpdateSchedule();
         }
 
         private void SetCheckedCategoryByTab()
@@ -223,15 +222,11 @@ namespace KSCS
         }
         public void UpdateTab()
         {
-            Thread thread = new Thread(new ThreadStart(delegate ()
+            Task.Run(() => this.Invoke(new Action(delegate ()
             {
-                this.Invoke(new Action(delegate ()
-                {
-                    SetCheckedCategoryByTab();
-                }));
-
-            }));
-            thread.Start();
+                SetCheckedCategoryByTab();
+                CreateSchedule();
+            })));
         }
 
        
@@ -244,7 +239,6 @@ namespace KSCS
 
             year = now.Year;
             month = now.Month;
-            createDates();
         }
 
         private void createDates()
@@ -315,22 +309,10 @@ namespace KSCS
             else return Color.Gray;
         }
         
-        public void UpdateSchedule()
-        {
-            Thread thread = new Thread(new ThreadStart(delegate ()
-            {
-                this.Invoke(new Action(delegate ()
-                {
-                    CreateSchedule();
-                }));
-
-            }));
-            thread.Start();
-        }
-
         public static void CreateSchedule()
         {
             Database.ReadTabScheduleList();
+            Schedule.ReadTabKlasSchedule();
 
             DateTime startOfMonth = new DateTime(year, month, 1);
             int dates = DateTime.DaysInMonth(year, month);
@@ -585,19 +567,24 @@ namespace KSCS
         //실시간 일정 공유 참가 : 현재 클릭
         public void btnShare_Click(object sender, EventArgs e)
         {
-            isShareSchedule = true;
-            ChangeShareSchedule();
-            btnUserSharingAddButton.CreateSharing += InvitieShareSchedule;
-            monthScheduleList.Clear();
-            for (int i = 0; i < DateTime.DaysInMonth(year, month); i++)
+            if (!isShareSchedule)
             {
-                monthScheduleList.Add(new List<Schedule>());
+                isShareSchedule = true;
+
+                ChangeShareSchedule();
+                btnUserSharingAddButton.CreateSharing += InvitieShareSchedule;
+                monthScheduleList.Clear();
+                for (int i = 0; i < DateTime.DaysInMonth(year, month); i++)
+                {
+                    monthScheduleList.Add(new List<Schedule>());
+                }
+                createDates();
+
+                SharingTabEnable(!(TabName == TabSharing.Name));
+
+                MessageBox.Show("시작");
+                Task.Run(() => EnterShareSchedule());
             }
-            createDates();
-            
-            SharingTabEnable(!(TabName == TabSharing.Name));
-            MessageBox.Show("시작");
-            Task.Run(() => EnterShareSchedule());
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -616,9 +603,11 @@ namespace KSCS
         }
         public static void LoadMainForm()
         {
-            if(!isShareSchedule)
-            Database.ReadTabScheduleList();
-            Schedule.ReadTabKlasSchedule(); //추가
+            if (!isShareSchedule)
+            {
+                Database.ReadTabScheduleList();
+                Schedule.ReadTabKlasSchedule(); //추가
+            }
 
             DateTime startOfMonth = new DateTime(year, month, 1);
             int dates = DateTime.DaysInMonth(year, month);

@@ -128,9 +128,9 @@ namespace Socket
                         await Send(networkStream);
                     }
                 }
-                catch
+                catch(Exception e) 
                 {
-                    Trace.WriteLine(string.Format("연결 실패 + {0}: 실시간 일정 공유에 접속되어 있지 않습니다.", stdNum));
+                    Trace.WriteLine(string.Format("연결 실패 + {0}: 실시간 일정 공유에 접속되어 있지 않습니다.\n{1}", stdNum,e.Message));
                 }
             }
         }
@@ -154,7 +154,8 @@ namespace Socket
                                 //딕셔너리 초기화
                                 foreach(string member in InviteClass.members)
                                 {
-                                    isConnectedMemberDict.Add(member, false);
+                                    if(member != clientStdNum)
+                                        isConnectedMemberDict.Add(member, false);
                                 }
 
                                 //보스와의 연결 추가
@@ -170,7 +171,6 @@ namespace Socket
 
 
                                 //다른 todoLink에게 연결 시도 코드
-                                List<string> todoLink = InviteClass.todoLink.ToList();
                                 foreach (string todo in InviteClass.todoLink)
                                 {
                                     Task.Run(() => linkMesh(todo));

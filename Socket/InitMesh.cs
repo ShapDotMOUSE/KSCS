@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Socket
 {
+    [Serializable]
     public class InitMesh :Packet
     {
         public string sender;

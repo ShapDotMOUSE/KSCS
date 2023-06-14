@@ -32,5 +32,6 @@ namespace KSCS.Class
         public static int year, month;
         //실시간 공유
         public static Dictionary<string, bool> SharingCategory;
+        public static List<string> sharingMember;
     }
 }

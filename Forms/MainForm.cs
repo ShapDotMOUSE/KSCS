@@ -16,6 +16,7 @@ using System.Diagnostics;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using KSCS.UserControls.MainForm;
 using System.Threading;
+using KSCS.Forms;
 
 namespace KSCS
 {
@@ -27,7 +28,7 @@ namespace KSCS
         {
             InitializeComponent();
         }
-        static bool isShareSchedule=false;
+        static bool isShareSchedule = false;
         TcpListener listener;
         bool isListen;
         SocketClient s_client = null;
@@ -127,7 +128,7 @@ namespace KSCS
                     uc.setMain(key);
                     ((FlowLayoutPanel)((UserMainCategory)panelMainCategory.Controls[key]).flpSubCategory).Controls.Add(uc);
 
-                   
+
                 }
             }
         }
@@ -183,7 +184,7 @@ namespace KSCS
                 SetCheckedCategoryByTab();
             }
 
-           
+
         }
 
         //탭 함수-------------------------------------------------------------------------------------------------------------------------------------------
@@ -234,8 +235,8 @@ namespace KSCS
             })));
         }
 
-       
-        
+
+
 
         //달력 함수-----------------------------------------------------------------------------------------------------------------------------------------
         private void dispalyDate()
@@ -289,14 +290,14 @@ namespace KSCS
                 foreach (Schedule schedule in KlasSchedule[MagamName.Substring(9)])
                 {
                     //최소 날짜 구하기
-                    if(schedule.endDate < min) min = schedule.endDate;
+                    if (schedule.endDate < min) min = schedule.endDate;
                 }
-                
-                if(min != DateTime.MaxValue)
+
+                if (min != DateTime.MaxValue)
                 {
                     time = min - now;
-                    if(time.Days < 3) ((Guna2CircleButton)panelMagamBtns.Controls[MagamName]).FillColor = Color.Red;
-                    else if(time.Days < 7) ((Guna2CircleButton)panelMagamBtns.Controls[MagamName]).FillColor = Color.Yellow;
+                    if (time.Days < 3) ((Guna2CircleButton)panelMagamBtns.Controls[MagamName]).FillColor = Color.Red;
+                    else if (time.Days < 7) ((Guna2CircleButton)panelMagamBtns.Controls[MagamName]).FillColor = Color.Yellow;
                     else ((Guna2CircleButton)panelMagamBtns.Controls[MagamName]).FillColor = Color.Green;
                 }
             }
@@ -383,7 +384,7 @@ namespace KSCS
         private void btnMagam_Click(object sender, EventArgs e)
         {
             //이전 컬러 수정
-            if(clickMagamBtn != null) clickMagamBtn.FillColor = ChangeColor(clickMagamBtn.FillColor);
+            if (clickMagamBtn != null) clickMagamBtn.FillColor = ChangeColor(clickMagamBtn.FillColor);
             //현제 클릭 마감 버튼 수정
             clickMagamBtn = (Guna2CircleButton)sender;
             Panel panel = (Panel)clickMagamBtn.Parent;
@@ -461,7 +462,7 @@ namespace KSCS
                 }
             }
 
-            
+
         }
 
         //달력 컨트롤--------------------------------------------------------------------------------------------------------------------------------------
@@ -527,6 +528,22 @@ namespace KSCS
                 boss = stdNum,
             };
             s_client.inviteAllMembers();
+            btnSettingComplete.Enabled = true;
+        }
+
+        private void OnInvite(string boss)
+        {
+            Invoke((MethodInvoker)(() =>
+            {
+                AllowOrRequestForm allowOrRequestForm = new AllowOrRequestForm();
+                allowOrRequestForm.lbl_StudentNumber.Text = boss;
+                allowOrRequestForm.TopMost = true;
+                DialogResult = allowOrRequestForm.ShowDialog();
+                if (DialogResult == DialogResult.OK)
+                {
+                    btnSettingComplete.Enabled = true;
+                }
+            }));
         }
 
         public void ConnectClient(string sender, List<string> todo,string type)
@@ -565,6 +582,8 @@ namespace KSCS
             s_client.OnConnect += new SocketClient.ConnectClientHandler(ConnectClient);
             s_client.OnLoadAddress += new SocketClient.LoadAddress(LoadAddress);
             s_client.OnMessage += new SocketClient.MessageHandler(ShowMessage);
+            s_client.OnInvite += new SocketClient.InvitationMessageHandler(OnInvite);
+            
             while (isListen)
             {
                 try
@@ -586,11 +605,12 @@ namespace KSCS
         public void ChangeShareSchedule()
         {
             btnSettingComplete.Visible = isShareSchedule;
-            btnSettingComplete.Enabled = !isShareSchedule;
+            btnSettingComplete.Enabled = false;
             btnUserSharingAddButton.Visible = isShareSchedule;
 
             //btnUserSharingAddButton.Enabled = !isShareSchedule;
         }
+        
 
         //실시간 일정 공유 참가 : 현재 클릭
         public void btnShare_Click(object sender, EventArgs e)

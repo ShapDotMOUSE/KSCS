@@ -15,7 +15,7 @@ namespace KSCS.UserControls.MainForm
 {
     public partial class UserSharingAddButton : UserControl
     {
-        public EventHandler<EventArgs> CreateSharing;
+        public EventHandler CreateSharing;
         public UserSharingAddButton()
         {
             InitializeComponent();
@@ -23,12 +23,9 @@ namespace KSCS.UserControls.MainForm
 
         private void sharingButton_Click(object sender, EventArgs e)
         {
-            if (CreateSharing != null)
-            {
-                CreateSharing(sender, e);
-            }
-            //SharingClickForm sharingClickForm = new SharingClickForm();
-            //DialogResult result = sharingClickForm.ShowDialog();
+            SharingClickForm sharingClickForm = new SharingClickForm();
+            sharingClickForm.SharingClick += CreateSharing;
+            DialogResult result = sharingClickForm.ShowDialog();
         }
     }
 }

@@ -17,9 +17,16 @@ namespace KSCS.Forms
             InitializeComponent();
         }
 
-        private void guna2Button2_Click(object sender, EventArgs e)
+
+        private void btnRefuse_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnAgree_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.OK;
+            Close();
         }
     }
 }

@@ -511,8 +511,6 @@ namespace KSCS
                 {
                     "2019203082",
                     "2019203018",
-                    "2019203055",
-                    "2019203045"
                 };
 
             List<string> testTodo = testStdnums.ToList();

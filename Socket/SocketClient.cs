@@ -88,12 +88,13 @@ namespace Socket
                     TcpClient todoClient = new TcpClient();
                     //각 사용자 들에게 접속 시도
                     todoClient.Connect(addressDict[stdNum], 7777);
+                    
 
                     if (todoClient.Connected)
                     {
                         networkStream = todoClient.GetStream();
                         //접속 후 추가
-
+                        clientSocketDict.Add(stdNum, todoClient);
                         Invite invite = InviteClass;
                         invite.boss = clientStdNum;
                         invite.todoLink = todoLink;

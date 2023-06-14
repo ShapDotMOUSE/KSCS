@@ -620,6 +620,11 @@ namespace KSCS
 
         public void applyShareSchedule(string stdNum, List<string> categoryList)
         {
+            Invoke((MethodInvoker)(() =>
+            {
+                Database.ReadShareScheduleList(stdNum, categoryList);
+                MainForm.CreateSharingSchedule(stdNum);
+            }));
 
         }
         async public Task EnterShareSchedule()
@@ -634,7 +639,7 @@ namespace KSCS
             s_client.OnLoadAddress += new SocketClient.LoadAddress(LoadAddress);
             s_client.OnMessage += new SocketClient.MessageHandler(ShowMessage);
             s_client.OnInvite += new SocketClient.InvitationMessageHandler(OnInvite);
-
+            s_client.OnSendCategories += new SocketClient.SendCategoryHandler(applyShareSchedule);
             while (isListen)
             {
                 try

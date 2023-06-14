@@ -49,6 +49,9 @@ namespace Socket
         public delegate void InvitationMessageHandler(string boss);
         public event InvitationMessageHandler OnInvite;
 
+        public delegate void SendCategoryHandler(string stdNum,List<string> categories);
+        public event SendCategoryHandler OnSendCategories;
+
         public async Task Send(NetworkStream networkStream)
         {
             await networkStream.WriteAsync(this.sendBuffer, 0, this.sendBuffer.Length).ConfigureAwait(false);
@@ -219,14 +222,16 @@ namespace Socket
                             {
                                 ShareScheduleClass=(ShareSchedule)Packet.Deserialize(readBuffer);
 
-                                OnMessage(ShareScheduleClass.categoryList[0].ToString());
-                                
+
+                                OnSendCategories(ShareScheduleClass.stdnum, ShareScheduleClass.categoryList);
+
                                 break;
                             }
                             case (int)PacketType.CREATE_SHARE_SCHEDULE:
                             {
                                 CreateShareScheduleClass=(CreateShareSchedule)Packet.Deserialize(readBuffer);
                                 //스케줄 데이터 보여주고 동의 여부 체크
+
                                 break;
                             }
                             case (int)PacketType.AGREE_SHARE_SCHEDULE:

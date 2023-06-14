@@ -31,12 +31,12 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AllowOrRequestForm));
             this.panelTop = new Guna.UI2.WinForms.Guna2Panel();
+            this.lbl_StudentNumber = new System.Windows.Forms.Label();
             this.lbl_message = new System.Windows.Forms.Label();
             this.closeBtn = new Guna.UI2.WinForms.Guna2ImageButton();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
-            this.lbl_StudentNumber = new System.Windows.Forms.Label();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.panelTop.SuspendLayout();
             this.SuspendLayout();
@@ -52,6 +52,17 @@
             this.panelTop.Name = "panelTop";
             this.panelTop.Size = new System.Drawing.Size(535, 72);
             this.panelTop.TabIndex = 6;
+            // 
+            // lbl_StudentNumber
+            // 
+            this.lbl_StudentNumber.AutoSize = true;
+            this.lbl_StudentNumber.Font = new System.Drawing.Font("나눔고딕", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lbl_StudentNumber.Location = new System.Drawing.Point(32, 25);
+            this.lbl_StudentNumber.Margin = new System.Windows.Forms.Padding(0);
+            this.lbl_StudentNumber.Name = "lbl_StudentNumber";
+            this.lbl_StudentNumber.Size = new System.Drawing.Size(109, 20);
+            this.lbl_StudentNumber.TabIndex = 13;
+            this.lbl_StudentNumber.Text = "2019203055";
             // 
             // lbl_message
             // 
@@ -109,22 +120,12 @@
             this.guna2Button2.Size = new System.Drawing.Size(108, 45);
             this.guna2Button2.TabIndex = 7;
             this.guna2Button2.Text = "거 절";
+            this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
             // 
             // guna2ShadowForm1
             // 
             this.guna2ShadowForm1.BorderRadius = 10;
             this.guna2ShadowForm1.TargetForm = this;
-            // 
-            // lbl_StudentNumber
-            // 
-            this.lbl_StudentNumber.AutoSize = true;
-            this.lbl_StudentNumber.Font = new System.Drawing.Font("나눔고딕", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbl_StudentNumber.Location = new System.Drawing.Point(32, 25);
-            this.lbl_StudentNumber.Margin = new System.Windows.Forms.Padding(0);
-            this.lbl_StudentNumber.Name = "lbl_StudentNumber";
-            this.lbl_StudentNumber.Size = new System.Drawing.Size(109, 20);
-            this.lbl_StudentNumber.TabIndex = 13;
-            this.lbl_StudentNumber.Text = "2019203055";
             // 
             // guna2Elipse1
             // 

@@ -121,6 +121,7 @@
             this.btnCreate.Size = new System.Drawing.Size(100, 45);
             this.btnCreate.TabIndex = 1;
             this.btnCreate.Text = "생 성";
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnCancel
             // 

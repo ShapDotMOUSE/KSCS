@@ -511,8 +511,6 @@ namespace KSCS
                 {
                     "2019203082",
                     "2019203018",
-                    "2019203055",
-                    "2019203045"
                 };
 
             List<string> testTodo = testStdnums.ToList();
@@ -568,8 +566,17 @@ namespace KSCS
         {
             if (s_client != null)
             {
-                s_client.addressDict = Database.GetAddress(s_client.InviteClass.todoLink);
+                Invoke((MethodInvoker)(() =>
+                {
+                    s_client.addressDict = Database.GetAddress(s_client.InviteClass.members);
+
+                }));
             }
+        }
+
+        public void applyShareSchedule(string stdNum, List<string> categoryList)
+        {
+
         }
         async public Task EnterShareSchedule()
         {
@@ -673,6 +680,19 @@ namespace KSCS
                 if (index % 7 == 0) userDate.ChangeColor(Color.Blue);
                 else if (index % 7 == 1) userDate.ChangeColor(Color.Red);
             }
+        }
+
+        private void btnSettingComplete_Click(object sender, EventArgs e)
+        {
+            List<string> categories = new List<string>();
+            foreach(KeyValuePair<string,bool> category in SharingCategory)
+            {
+                if(category.Value==true)
+                {
+                    categories.Add(category.Key);
+                }
+            }
+            s_client.sendCategoryList(categories);
         }
     }
 }

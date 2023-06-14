@@ -88,12 +88,13 @@ namespace Socket
                     TcpClient todoClient = new TcpClient();
                     //각 사용자 들에게 접속 시도
                     todoClient.Connect(addressDict[stdNum], 7777);
+                    
 
                     if (todoClient.Connected)
                     {
                         networkStream = todoClient.GetStream();
                         //접속 후 추가
-
+                        clientSocketDict.Add(stdNum, todoClient);
                         Invite invite = InviteClass;
                         invite.boss = clientStdNum;
                         invite.todoLink = todoLink;
@@ -141,17 +142,28 @@ namespace Socket
             }
         }
 
-        //public async void sendCategoryList(List<string> )
-        //{
-        //    foreach(string member in InviteClass.members)
-        //    {
-        //        if (clientSocketDict.ContainsKey(member) && clientSocketDict[member].Connected)
-        //        {
-        //            NetworkStream networkStream= clientSocketDict[member].GetStream();
+        public async void sendCategoryList(List<string> categoryList)
+        {
+            foreach (string member in InviteClass.members)
+            {
+                try
+                {
+                    if (!member.Equals(clientStdNum)&&clientSocketDict.ContainsKey(member) && clientSocketDict[member].Connected)
+                    {
+                        NetworkStream networkStream = clientSocketDict[member].GetStream();
+                        ShareSchedule shareSchedule = new ShareSchedule(clientStdNum, categoryList);
+                        shareSchedule.Type = (int)PacketType.SHARE_SCHEDULE;
 
-        //        }
-        //    }
-        //}
+                        Packet.Serialize(shareSchedule).CopyTo(this.sendBuffer, 0);
+                        await Send(networkStream);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Trace.WriteLine(string.Format("sendCategory - Exception : {0}", e.Message));
+                }
+            }
+        }
 
         public async void readStreamData(TcpClient connectSocket)
         {
@@ -206,6 +218,8 @@ namespace Socket
                             case (int)PacketType.SHARE_SCHEDULE: 
                             {
                                 ShareScheduleClass=(ShareSchedule)Packet.Deserialize(readBuffer);
+
+                                OnMessage(ShareScheduleClass.categoryList[0].ToString());
                                 
                                 break;
                             }
@@ -235,7 +249,9 @@ namespace Socket
                     foreach(TcpClient tcpClient in clientSocketDict.Values)
                         tcpClient.Close();
                     stream.Close();
-                    
+                    connectSocket.Close();
+
+
                 }
 
             }
@@ -248,6 +264,7 @@ namespace Socket
                     foreach (TcpClient tcpClient in clientSocketDict.Values)
                         tcpClient.Close();
                     stream.Close();
+                    connectSocket.Close();
                 }
             }
         }

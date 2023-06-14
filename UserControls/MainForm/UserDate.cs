@@ -39,7 +39,7 @@ namespace KSCS
                 lblDate.Text = "";
                 BackColor = Color.White;
                 lblDate.Visible = false;
-                lblUnitNum.Visible = false; //추가
+                lblUnitNum.Visible = false;
                 Cursor = Cursors.Default;
                 btnTransparent.MouseEnter -= UserDate_MouseEnter;
                 btnTransparent.MouseLeave -= UserDate_MouseLeave;

@@ -91,7 +91,7 @@
             this.lblUnitNum.AutoSize = true;
             this.lblUnitNum.BackColor = System.Drawing.Color.Transparent;
             this.lblUnitNum.Font = new System.Drawing.Font("Pretendard Light", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblUnitNum.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblUnitNum.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblUnitNum.Location = new System.Drawing.Point(122, 98);
             this.lblUnitNum.Name = "lblUnitNum";
             this.lblUnitNum.Size = new System.Drawing.Size(24, 14);

@@ -331,6 +331,59 @@ namespace KSCS
             table.Close();
         }
 
+        public static void ReadShareScheduleList(string shareNum,List<string> categoryList)
+        {
+            string selectQuery = string.Format("SELECT * FROM (SELECT Schedule.id AS schedule_id, Schedule.student_id, Category.id AS category_id, Schedule.startDate, Schedule.endDate, Schedule.status, Schedule.title, Schedule.content, Schedule.place, Schedule.alarmStatus, Category.category_name, Category.parent_category_id, Category.color " +
+                "FROM Schedule JOIN Category ON Schedule.category_id = Category.id " +
+                "WHERE Schedule.student_id = '{0}' AND(startDate BETWEEN DATE_FORMAT('{1}', '%Y-%m-%d') AND LAST_DAY('{1}') " +
+                "OR endDate BETWEEN DATE_FORMAT('{1}', '%Y-%m-%d') AND LAST_DAY('{1}')) AND Schedule.category_id " +
+                "IN(SELECT Category.id FROM Category WHERE(Category.student_id = '{0}' AND Category.parent_category_id IS NOT NULL) AND Category.category_name IN {2})) AS AllSchedule",
+                shareNum, new DateTime(2023, 6, 1).ToString("yyyy-MM-dd"), categoryList);
+            MySqlCommand cmd = new MySqlCommand(selectQuery, getDBConnection());
+            MySqlDataReader table = cmd.ExecuteReader();
+            monthScheduleList.Clear(); //한달 스케줄 초기화
+
+            //하루 단위 리스트 생성
+            for (int i = 0; i < DateTime.DaysInMonth(year, month); i++)
+            {
+                monthScheduleList.Add(new List<Schedule>());
+            }
+
+            while (table.Read())
+            {
+                char delimiter = ','; // 구분자
+                string[] parts = table["concatenated_student_ids"].ToString().Split(new[] { delimiter }, StringSplitOptions.RemoveEmptyEntries);
+                List<string> members = new List<string>(parts);
+                members.Remove(stdNum); //자신의 학번은 삭제
+
+                Schedule schedule = new Schedule(
+                    table["title"].ToString(),
+                    table["content"].ToString(),
+                    table["place"].ToString(),
+                    table["category_name"].ToString(),
+                    DateTime.Parse(table["startDate"].ToString()),
+                    DateTime.Parse(table["endDate"].ToString()),
+                    members
+                    )
+                {
+                    id = int.Parse(table["schedule_id"].ToString()),
+                };
+
+                /* 리스트 추가 */
+                //startDate와 endDate 일자가 다른 경우도 포함
+                TimeSpan duration = schedule.endDate - schedule.startDate;
+                for (int i = 0; i <= duration.Days; i++)
+                {
+                    if (Convert.ToInt32(schedule.startDate.AddDays(i).ToString("MM")) == month)
+                    {
+                        monthScheduleList[Convert.ToInt32(schedule.startDate.AddDays(i).ToString("dd")) - 1].Add(schedule);
+                    }
+                }
+            }
+
+            table.Close();
+        }
+
 
         //탭관련=============================
         public static List<string> ReadTab()

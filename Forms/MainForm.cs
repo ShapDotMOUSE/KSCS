@@ -568,7 +568,11 @@ namespace KSCS
         {
             if (s_client != null)
             {
-                s_client.addressDict = Database.GetAddress(s_client.InviteClass.todoLink);
+                Invoke((MethodInvoker)(() =>
+                {
+                    s_client.addressDict = Database.GetAddress(s_client.InviteClass.todoLink);
+
+                }));
             }
         }
 

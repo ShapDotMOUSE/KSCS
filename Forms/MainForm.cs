@@ -23,9 +23,17 @@ namespace KSCS
         {
             InitializeComponent();
         }
+
         TcpListener listener;
         SocketClient s_client = null;
         public static FlowLayoutPanel flowLayoutPanelLable;
+        enum DeadLien
+        {
+            DeadLineRed = 0,
+            DeadLineYellow = 3,
+            DeadLineGreen = 7
+        };
+
         private void MainForm_Load(object sender, EventArgs e)
         {
 
@@ -191,6 +199,11 @@ namespace KSCS
             }
         }
 
+        //마감일정 함수-----------------------------------------------------------------------------------------------------------------------------------------
+        public void InitializeMagam()
+        {
+
+        }
 
         //컨트롤 함수------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -227,41 +240,13 @@ namespace KSCS
             Dictionary<string, int[]> MagamLectureDic = new Dictionary<string, int[]>();
             Dictionary<string, DateTime> MagamMinDate = new Dictionary<string, DateTime>();
 
-            foreach (Schedule schedule in KlasSchedule[btn.Name.Substring(9)])
-            {
-                //총 개수 구하는 부분
-                //ex) 몇 개 중
-                if (MagamLectureDic.ContainsKey(schedule.content))
-                    MagamLectureDic[schedule.content][0] += 1;
-                else
-                {
-                    MagamLectureDic.Add(schedule.content, new int[2]);
-                    MagamLectureDic[schedule.content][0] = 1;
-                    MagamLectureDic[schedule.content][1] = 0;
-                }
-                //가장 최근 마감 일정 남은 시간 구하는 부분
-                //ex) 몇 일/시간 남았습니다.
-                if (MagamMinDate.ContainsKey(schedule.content))
-                {
-                    if (MagamMinDate[schedule.content] < schedule.endDate) MagamMinDate[schedule.content] = schedule.endDate;
-                }
-                else MagamMinDate.Add(schedule.content, schedule.endDate);
-            }
-            foreach (Schedule schedule in KlasSchedule[btn.Name.Substring(9)])
-            {
-                //가장 최근 마감 일정 갯수 구하는 부분
-                //ex) 몇 개가
-                if (MagamMinDate[schedule.content] == schedule.endDate)
-                {
-                    MagamLectureDic[schedule.content][1] += 1;
-                }
-            }
-            foreach (KeyValuePair<string, int[]> items in MagamLectureDic)
+            // KLAS 요소 중 남은 요소가 없을시 문구 출력
+            if (KlasSchedule[btn.Name.Substring(9)].Count < 1 && btn.Name.Substring(9) != "Personal")
             {
                 Label lbl = new Label
                 {
                     Name = "KLAS_" + btn.Name.Substring(9) + "_" + index.ToString(),
-                    Text = items.Key + " " + KLAS.klasMagamNames[btn.Name.Substring(9)] + " " + items.Value[0] + " 개 중 " + items.Value[1] + " 개가 " + Schedule.MagamDateFrom(MagamMinDate[items.Key]) + " 남았습니다.",
+                    Text = "남은 " + KLAS.klasMagamNames[btn.Name.Substring(9)] + "가 없습니다!!",
                     AutoSize = true,
                     Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
                 };
@@ -271,6 +256,57 @@ namespace KSCS
                 else panelMagam.Controls.Add(lbl);
                 index++;
             }
+            else
+            {
+
+                foreach (Schedule schedule in KlasSchedule[btn.Name.Substring(9)])
+                {
+                    //총 개수 구하는 부분
+                    //ex) 몇 개 중
+                    if (MagamLectureDic.ContainsKey(schedule.content))
+                        MagamLectureDic[schedule.content][0] += 1;
+                    else
+                    {
+                        MagamLectureDic.Add(schedule.content, new int[2]);
+                        MagamLectureDic[schedule.content][0] = 1;
+                        MagamLectureDic[schedule.content][1] = 0;
+                    }
+                    //가장 최근 마감 일정 남은 시간 구하는 부분
+                    //ex) 몇 일/시간 남았습니다.
+                    if (MagamMinDate.ContainsKey(schedule.content))
+                    {
+                        if (MagamMinDate[schedule.content] < schedule.endDate) MagamMinDate[schedule.content] = schedule.endDate;
+                    }
+                    else MagamMinDate.Add(schedule.content, schedule.endDate);
+                }
+                foreach (Schedule schedule in KlasSchedule[btn.Name.Substring(9)])
+                {
+                    //가장 최근 마감 일정 갯수 구하는 부분
+                    //ex) 몇 개가
+                    if (MagamMinDate[schedule.content] == schedule.endDate)
+                    {
+                        MagamLectureDic[schedule.content][1] += 1;
+                    }
+                }
+
+                foreach (KeyValuePair<string, int[]> items in MagamLectureDic)
+                {
+                    Label lbl = new Label
+                    {
+                        Name = "KLAS_" + btn.Name.Substring(9) + "_" + index.ToString(),
+                        Text = items.Key + " " + KLAS.klasMagamNames[btn.Name.Substring(9)] + " " + items.Value[0] + " 개 중 " + items.Value[1] + " 개가 " + Schedule.MagamDateFrom(MagamMinDate[items.Key]) + " 남았습니다.",
+                        AutoSize = true,
+                        Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
+                    };
+                    lbl.Location = new Point(0, index * (lbl.Height + 3));
+                    //panelMagam.Controls.Add(lbl);
+                    if (panel.InvokeRequired) panelMagam.Invoke(new MethodInvoker(delegate { panelMagam.Controls.Add(lbl); }));
+                    else panelMagam.Controls.Add(lbl);
+                    index++;
+                }
+            }
+
+            
         }
 
         //달력 컨트롤--------------------------------------------------------------------------------------------------------------------------------------

@@ -285,7 +285,7 @@ namespace KSCS
             flpMember.Visible = false;
 
             //추가(공유일정인 경우, member 로드)
-            if (monthScheduleList[UserDate.static_date - 1][index].members.Count > 0)
+            if (monthScheduleList[UserDate.static_date - 1][index].members?.Count > 0)
             {
                 LoadMembers(monthScheduleList[UserDate.static_date - 1][index]);
             }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using KSCS.Class;
+using static KSCS.Class.KSCS_static; //추가
 
 namespace KSCS
 {
@@ -69,6 +71,37 @@ namespace KSCS
                     return ts.Days + "일";
             }
             return "";
+        }
+
+        public static Dictionary<string, string> KlasCategory = new Dictionary<string, string>()
+            {
+                { "Task","과제" },
+                { "Quiz","퀴즈" },
+                { "Online","온라인 강의" },
+                { "Prjct","학사일정" }
+            };
+
+        //KlasScheduleList를 monthScehduleList 에 담는 함수
+        static public void ReadTabKlasSchedule()
+        {
+            foreach (KeyValuePair<string, List<Schedule>> kvp in KlasSchedule)
+            {
+                string key = kvp.Key;
+                List<Schedule> KlasScheduleList = kvp.Value;
+
+                foreach (Schedule klasSchedule in KlasScheduleList)
+                {
+                    if (!klasSchedule.category.Equals("Personal"))
+                    {
+                        klasSchedule.category = KlasCategory[key];
+                        if (Convert.ToInt32(klasSchedule.startDate.ToString("MM")) == month && KSCS_static.category.IsChecked(KSCS_static.TabName, klasSchedule.category))
+                        {
+                            monthScheduleList[Convert.ToInt32(klasSchedule.startDate.ToString("dd")) - 1].Add(klasSchedule);
+                        }
+                        
+                    }
+                }
+            }
         }
     }
 }

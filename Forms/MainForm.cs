@@ -376,7 +376,7 @@ namespace KSCS
                     AutoSize = true,
                     Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
                 };
-                lbl.Text = schedule.title;
+                lbl.Text = schedule.title + " " + schedule.startDate.ToString("HH:mm") + " ~ "+schedule.endDate.ToString("HH:mm");
                 lbl.Location = new Point(0, index * (lbl.Height + 3));
                 if (panel.InvokeRequired) panel.Invoke(new MethodInvoker(delegate { panel.Controls.Add(lbl); }));
                 else panel.Controls.Add(lbl);

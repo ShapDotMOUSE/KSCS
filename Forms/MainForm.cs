@@ -19,6 +19,7 @@ namespace KSCS
 {
     public partial class MainForm : Form
     {
+
         //스케줄 관련
         public MainForm()
         {
@@ -67,6 +68,9 @@ namespace KSCS
                 //달력 (탭 위에 위치 -> 현재)
                 dispalyDate();
                 DisplayCategery();
+
+                //오늘의 일정
+                DisplayToday();
 
                 //탭 로드
                 UpdateTab();
@@ -278,6 +282,29 @@ namespace KSCS
             }
         }
 
+        //오늘의 일정 함수
+        public static void DisplayToday()
+        {
+            Panel panel = (Panel)Application.OpenForms.OfType<MainForm>().FirstOrDefault().panelToday;
+            panel.Controls.Clear();
+            int index = 0;
+
+            foreach (Schedule schedule in monthScheduleList[DateTime.Now.Day - 1])
+            {
+                Label lbl = new Label
+                {
+                    AutoSize = true,
+                    Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
+                };
+                lbl.Text = schedule.title;
+                lbl.Location = new Point(0, index * (lbl.Height + 3));
+                if (panel.InvokeRequired) panel.Invoke(new MethodInvoker(delegate { panel.Controls.Add(lbl); }));
+                else panel.Controls.Add(lbl);
+                index++;
+            }
+            Application.OpenForms.OfType<MainForm>().FirstOrDefault().Refresh();
+        }
+        
         //컨트롤 함수------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         //화면 컨트롤-------------------------------------------

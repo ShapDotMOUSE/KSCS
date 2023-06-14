@@ -17,6 +17,8 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using KSCS.UserControls.MainForm;
 using System.Threading;
 using KSCS.Forms;
+using System.Security;
+using System.IO;
 
 namespace KSCS
 {
@@ -82,15 +84,16 @@ namespace KSCS
 
 
                 //오늘의 일정
-                
+
+                //달력 (탭 위에 위치 -> 현재)
+                dispalyDate();
+                DisplayCategery();
 
                 //탭 로드
                 UpdateTab();
                 TabAll.ShowTab();
 
-                //달력 (탭 위에 위치 -> 현재)
-                dispalyDate();
-                DisplayCategery();
+                
 
             }
             else
@@ -158,7 +161,6 @@ namespace KSCS
                 }
             }
         }
-
         public void SharingTabEnable(bool enable)
         {
             TabAll.Enabled = !enable;
@@ -241,10 +243,11 @@ namespace KSCS
         //달력 함수-----------------------------------------------------------------------------------------------------------------------------------------
         private void dispalyDate()
         {
-            DateTime now = DateTime.Now; //수정 필요
+            DateTime now = DateTime.Now;
 
             year = now.Year;
             month = now.Month;
+            createDates();
         }
 
         private void createDates()
@@ -319,7 +322,7 @@ namespace KSCS
         {
             Database.ReadTabScheduleList();
             Schedule.ReadTabKlasSchedule();
-
+            int month1 = month;
             DateTime startOfMonth = new DateTime(year, month, 1);
             int dates = DateTime.DaysInMonth(year, month);
             int dayOfWeek = Convert.ToInt32(startOfMonth.DayOfWeek.ToString("d")) + 1;
@@ -514,6 +517,16 @@ namespace KSCS
                     "2019203055",
                     "2019203045"
                 };
+
+            btnUserSharingAddButton.ChangeStatus(true);
+
+            foreach (string stdNum in testStdnums)
+            {
+                UserMemberStatus memberStatus = new UserMemberStatus();
+                memberStatus.SetName(stdNum);
+                memberStatus.SetColor(testStdNumColor[stdNum]);
+                flowLayoutPanelLable.Controls.Add(memberStatus);
+            }
 
             List<string> testTodo = testStdnums.ToList();
             testTodo.Remove(stdNum);

@@ -44,6 +44,7 @@
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
             this.SuspendLayout();
             // 
             // AddCategoryFormElipse
@@ -224,6 +225,10 @@
             this.guna2Button2.Text = "취 소";
             this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
             // 
+            // guna2ShadowForm1
+            // 
+            this.guna2ShadowForm1.TargetForm = this;
+            // 
             // AddCategoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -267,5 +272,6 @@
         private Guna.UI2.WinForms.Guna2ColorTransition guna2ColorTransition1;
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
         private System.Windows.Forms.ColorDialog colorDialog1;
+        private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm1;
     }
 }

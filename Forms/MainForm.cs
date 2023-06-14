@@ -13,6 +13,8 @@ using Socket;
 using System.Net;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using KSCS.UserControls.MainForm;
 using System.Threading;
 
 namespace KSCS
@@ -40,6 +42,14 @@ namespace KSCS
             DialogResult Result = loginForm.ShowDialog();
             if (Result == DialogResult.OK)
             {
+                //초기 사이즈 및 위치 설정
+                this.Size = new Size(1360, 960);
+
+                this.StartPosition = FormStartPosition.Manual;
+                this.Location = new Point(
+                   (Screen.PrimaryScreen.Bounds.Width - this.Size.Width) / 2,
+                   (Screen.PrimaryScreen.Bounds.Height - this.Size.Height) / 2
+                );
                 LoadMagam();
                 lblStdNum.Text = stdNum;
                 //초기 메인 카테고리 설정
@@ -60,7 +70,7 @@ namespace KSCS
                 Tab3.Clicked += ChangeTab;
                 Tab4.Clicked += ChangeTab;
                 //btnSharing.Clicked += CreateSharing;
-                btnSharing.Clicked += btnShare_Click;
+                TabSharing.Clicked += btnShare_Click;
                 //btnSharing.DoubleClicked += CreateSharing;
                 setTab();
 
@@ -75,9 +85,6 @@ namespace KSCS
             }
             else
                 Close();
-
-            this.Size = new Size(1360, 960);
-
         }
 
         private void setTab()
@@ -114,11 +121,65 @@ namespace KSCS
                     uc.SetBasicMode(item);
                     uc.setMain(key);
                     ((FlowLayoutPanel)((UserMainCategory)panelMainCategory.Controls[key]).flpSubCategory).Controls.Add(uc);
+
+                   
                 }
             }
         }
 
+        //실시간 함수---------------------------------------------------------------------------------------------------------------------------------------
+        private void SharingSubCategorySet(bool enable)
+        {
+            foreach (var key in category.Categories.Keys)
+            {
+                ((UserMainCategory)panelMainCategory.Controls[key]).SetSharing(enable);
+                foreach (var item in category.Categories[key])
+                {
+                    ((FlowLayoutPanel)((UserMainCategory)panelMainCategory.Controls[key]).flpSubCategory).Controls[item].Visible = !enable;
+                    if (enable)
+                    {
+                        SharingCategory.Add(item, false);
+                        UserSharingSubCategory ucSharing = new UserSharingSubCategory();
+                        ucSharing.SetBasicMode(item);
+                        ucSharing.setMain(key);
+                        ((FlowLayoutPanel)((UserMainCategory)panelMainCategory.Controls[key]).flpSubCategory).Controls.Add(ucSharing);
+                    }
+                    else
+                    {
+                        UserSharingSubCategory ucSharing = ((FlowLayoutPanel)((UserMainCategory)panelMainCategory.Controls[key]).flpSubCategory).Controls["Sharing" + item] as UserSharingSubCategory;
+                        ((FlowLayoutPanel)((UserMainCategory)panelMainCategory.Controls[key]).flpSubCategory).Controls.Remove(ucSharing);
+                    }
+                }
+            }
+        }
 
+        public void SharingTabEnable(bool enable)
+        {
+            TabAll.Enabled = !enable;
+            Tab1.Enabled = !enable;
+            Tab2.Enabled = !enable;
+            Tab3.Enabled = !enable;
+            Tab4.Enabled = !enable;
+            if (enable)
+            {
+                flowLayoutPanelLable.Controls.Clear();
+                TabName = TabSharing.Name;
+                TabSharing.ShowTab();
+                SharingCategory = new Dictionary<string, bool>();
+                SharingSubCategorySet(enable);
+
+            }
+            else
+            {
+                SharingCategory = null;
+                TabName = TabAll.Name;
+                SharingSubCategorySet(enable);
+                LoadMainForm();
+                SetCheckedCategoryByTab();
+            }
+
+           
+        }
 
         //탭 함수-------------------------------------------------------------------------------------------------------------------------------------------
         private void ChangeTab(object sender, EventArgs e)
@@ -127,12 +188,20 @@ namespace KSCS
             UserTabButton btn = sender as UserTabButton;
             TabName = btn.Name;
             OldTab.HideTab();
+            SetCheckedCategoryByTab();
+
+            LoadMainForm();
+        }
+
+        private void SetCheckedCategoryByTab()
+        {
             UpdateTab();
             UpdateSchedule();
         }
 
         private void CreateTab() {
             //UI 쓰레드인 경우
+
             flpLabel.Controls.Clear();
             foreach (string key in category.Categories.Keys)
             {
@@ -168,6 +237,9 @@ namespace KSCS
             }));
             thread.Start();
         }
+
+       
+        
 
         //달력 함수-----------------------------------------------------------------------------------------------------------------------------------------
         private void dispalyDate()
@@ -514,6 +586,8 @@ namespace KSCS
         //실시간 일정 공유 참가 : 현재 클릭
         public void btnShare_Click(object sender, EventArgs e)
         {
+            
+            SharingTabEnable(!(TabName == TabSharing.Name));
             MessageBox.Show("시작");
             Task.Run(()=>ParticipateSharing());
         }
@@ -524,7 +598,7 @@ namespace KSCS
             {
                 this.listener.Stop();
             }
-            if (s_client.clientSocketDict.Count > 0)
+            if (s_client?.clientSocketDict.Count > 0)
             {
                 foreach (KeyValuePair<string, TcpClient> keyValue in s_client.clientSocketDict)
                     keyValue.Value.Close();

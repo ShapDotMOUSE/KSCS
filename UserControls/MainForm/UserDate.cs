@@ -26,13 +26,31 @@ namespace KSCS
             foreach (Schedule schedule in monthScheduleList[Convert.ToInt32(lblDate.Text) - 1])
                 AddEvent(schedule.title, category.GetColor(schedule.category));
 
-            if(monthScheduleList[Convert.ToInt32(lblDate.Text)-1].Count > 2)
+
+            if (monthScheduleList[Convert.ToInt32(lblDate.Text)-1].Count > 2)
             {
                 lblUnitNum.Visible = true;
                 lblUnitNum.Text = "+ "+(monthScheduleList[Convert.ToInt32(lblDate.Text) - 1].Count-2).ToString();
             }
             this.Refresh();
         }
+
+        private void LoadShareDate(string shareNum)
+        {
+            flpEvent.Controls.Clear(); //userEvent 컨트롤 초기화
+            lblUnitNum.Visible = false;
+
+            foreach (Schedule schedule in monthScheduleList[Convert.ToInt32(lblDate.Text) - 1])
+                AddEvent(schedule.title, testStdNumColor[shareNum]);
+
+            if (monthScheduleList[Convert.ToInt32(lblDate.Text) - 1].Count > 2)
+            {
+                lblUnitNum.Visible = true;
+                lblUnitNum.Text = "+ " + (monthScheduleList[Convert.ToInt32(lblDate.Text) - 1].Count - 2).ToString();
+            }
+            this.Refresh();
+        }
+
 
         public void ChangeBlank()
         {
@@ -75,6 +93,24 @@ namespace KSCS
             lblDate.Text = date.ToString();
             LoadUserDate();
         }
+
+        //실시간 일정 공유용
+        public void SetShareDate(int date, string shareNum)
+        {
+            if (!lblDate.Visible)
+            {
+                BackColor = Color.FromArgb(255, 249, 229);
+                lblDate.Visible = true;
+                Cursor = Cursors.Hand;
+                btnTransparent.MouseEnter += UserDate_MouseEnter;
+                btnTransparent.MouseLeave += UserDate_MouseLeave;
+                btnTransparent.MouseClick += UserDate_Click;
+            }
+            lblDate.Text = date.ToString();
+            LoadShareDate(shareNum);
+        }
+
+
 
         private void UserDate_MouseEnter(object sender, EventArgs e)
         {

@@ -53,12 +53,29 @@ namespace KSCS
                         "('기타', null, null, '{0}')", stdNum);
                 if (cmd.ExecuteNonQuery() != 3) MessageBox.Show("Failed to insert Data.");
 
-                cmd.CommandText = string.Format("INSERT INTO Category(category_name, parent_category_id, color, student_id) VALUES" +
-                       "('학사일정', {1}, null, '{0}')," +
-                       "('과제', {1}, null, '{0}')," +
-                       "('퀴즈', {1}, null, '{0}')" +
-                       "('온라인 강의', {1}, null, '{0}')", stdNum,1);
-                if (cmd.ExecuteNonQuery() != 3) MessageBox.Show("Failed to insert Data.");
+                string idQuery1 = string.Format("SELECT id FROM Category WHERE category_name='KLAS' AND student_id={0}", stdNum);
+                MySqlCommand cmd1 = new MySqlCommand(idQuery1, getDBConnection());
+                MySqlDataReader table1 = cmd1.ExecuteReader();
+                table1.Read();
+                int idKLAS = int.Parse(table1["id"].ToString());
+                table1.Close();
+
+                string idQuery2 = string.Format("SELECT id FROM Category WHERE category_name='기타' AND student_id={0}", stdNum);
+                MySqlCommand cmd2 = new MySqlCommand(idQuery2, getDBConnection());
+                MySqlDataReader table2 = cmd2.ExecuteReader();
+                table2.Read();
+                int idETC = int.Parse(table2["id"].ToString());
+                table2.Close();
+
+                cmd.CommandText = string.Format(
+                    "INSERT INTO Category(category_name, parent_category_id, color, student_id) VALUES " +
+                       "('학사일정','{1}', '{3}', '{0}')," +
+                       "('과제', '{1}', '{3}', '{0}')," +
+                       "('퀴즈', '{1}', '{3}', '{0}')," +
+                       "('온라인 강의', '{1}', '{3}', '{0}')," +
+                       "('기타', '{2}', '{4}', '{0}')," +
+                       "('공유 일정', '{2}', '{4}', '{0}')", stdNum, idKLAS, idETC, Color.FromArgb(58,5,31).ToArgb(), Color.Black.ToArgb());
+                if (cmd.ExecuteNonQuery() != 6) MessageBox.Show("Failed to insert Data.");
 
                 cmd.CommandText = string.Format("INSERT INTO StudentTab(tab_name, student_id) VALUES " +
                         "('All','{0}')," +
@@ -164,7 +181,7 @@ namespace KSCS
         public static void CreateScheudle(Schedule schedule, String studentId)
         {
             string insertQuery = string.Format("INSERT INTO Schedule(student_id,title,content,place,category_id,startDate,endDate)" +
-                "VALUES ('{0}','{1}','{2}','{3}',(SELECT id FROM Category WHERE category_name='{4}' and student_id='{0}'),'{5}','{6}');",
+                "VALUES ('{0}','{1}','{2}','{3}',(SELECT id FROM Category WHERE category_name='{4}' and student_id='{0}' and parent_category_id IS NOT NULL),'{5}','{6}');",
                     studentId,
                     schedule.title,
                     schedule.content,

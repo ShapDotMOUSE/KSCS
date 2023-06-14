@@ -36,9 +36,11 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnEdit = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnEdit)).BeginInit();
             this.SuspendLayout();
             // 
             // lblCategory
@@ -61,7 +63,7 @@
             this.chkCategory.CheckedState.BorderThickness = 2;
             this.chkCategory.CheckedState.FillColor = System.Drawing.Color.White;
             this.chkCategory.CheckMarkColor = System.Drawing.Color.Maroon;
-            this.chkCategory.Location = new System.Drawing.Point(173, 4);
+            this.chkCategory.Location = new System.Drawing.Point(193, 4);
             this.chkCategory.Margin = new System.Windows.Forms.Padding(0, 4, 6, 4);
             this.chkCategory.Name = "chkCategory";
             this.chkCategory.Size = new System.Drawing.Size(31, 30);
@@ -98,21 +100,21 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 173F));
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 156F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F));
             this.tableLayoutPanel1.ContextMenuStrip = this.contextMenuStrip1;
             this.tableLayoutPanel1.Controls.Add(this.guna2Panel1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.chkCategory, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnEdit, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.chkCategory, 2, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(210, 38);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(230, 38);
             this.tableLayoutPanel1.TabIndex = 18;
-            this.tableLayoutPanel1.DoubleClick += new System.EventHandler(this.UserCategory_DoubleClick);
             this.tableLayoutPanel1.MouseLeave += new System.EventHandler(this.UserSubCategory_MouseLeave);
             this.tableLayoutPanel1.MouseHover += new System.EventHandler(this.UserSubCategory_MouseHover);
             // 
@@ -142,6 +144,17 @@
             this.guna2Panel1.Size = new System.Drawing.Size(136, 38);
             this.guna2Panel1.TabIndex = 19;
             // 
+            // btnEdit
+            // 
+            this.btnEdit.Image = global::KSCS.Properties.Resources.modify;
+            this.btnEdit.Location = new System.Drawing.Point(159, 3);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(31, 30);
+            this.btnEdit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnEdit.TabIndex = 20;
+            this.btnEdit.TabStop = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
             // UserSubCategory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
@@ -151,15 +164,15 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
             this.Name = "UserSubCategory";
-            this.Size = new System.Drawing.Size(210, 38);
+            this.Size = new System.Drawing.Size(230, 38);
             this.Load += new System.EventHandler(this.UserCategory_Load);
-            this.DoubleClick += new System.EventHandler(this.UserCategory_DoubleClick);
             this.MouseLeave += new System.EventHandler(this.UserSubCategory_MouseLeave);
             this.MouseHover += new System.EventHandler(this.UserSubCategory_MouseHover);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnEdit)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -173,5 +186,6 @@
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem menuDelete;
+        private System.Windows.Forms.PictureBox btnEdit;
     }
 }

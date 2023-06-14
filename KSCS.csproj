@@ -412,5 +412,8 @@
   <ItemGroup>
     <None Include="Resources\팡이우니_일기_4.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\modify.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

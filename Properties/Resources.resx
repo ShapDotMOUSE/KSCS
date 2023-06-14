@@ -190,6 +190,9 @@
   <data name="우니열공" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\우니열공.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="팡이우니 일기" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\팡이우니 일기.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="plugin" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\plugin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -204,5 +207,9 @@
   </data>
   <data name="팡이우니_일기_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\팡이우니_일기_4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+    =======
+  <data name="modify" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\modify.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

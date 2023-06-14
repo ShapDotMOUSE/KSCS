@@ -141,14 +141,21 @@ namespace KSCS
 
         private void MenuDelete_Click(object sender, EventArgs e)
         {
-            if(flpSubCategory.Controls.Count == 0)
+            if (this.Name == "KLAS" || this.Name == "개인" || this.Name == "기타")
             {
-                Database.DeleteParentCategory(this.Name);
-                ((FlowLayoutPanel)this.Parent).Controls.Remove(this);
+                MessageBox.Show("해당 카테고리는 지울 수 없습니다!");
             }
             else
             {
-                MessageBox.Show("하위 카테고리가 존재합니다!");
+                if (flpSubCategory.Controls.Count == 0)
+                {
+                    Database.DeleteParentCategory(this.Name);
+                    ((FlowLayoutPanel)this.Parent).Controls.Remove(this);
+                }
+                else
+                {
+                    MessageBox.Show("하위 카테고리가 존재합니다!");
+                }
             }
         }
     }

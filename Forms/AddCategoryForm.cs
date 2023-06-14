@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static KSCS.Class.KSCS_static;
@@ -23,16 +24,18 @@ namespace KSCS.Forms
         string originMain;
         string originSub;
         Color originColor;
+        MainForm MainForm;
         FlowLayoutPanel MainCategory;
 
         //폼 호출 시 해당 카테고리의 이름과 상위 카테고리의 이름 넘겨받기
-        public AddCategoryForm(FlowLayoutPanel MainCategory, string Main, string Sub)
+        public AddCategoryForm(MainForm MainForm, FlowLayoutPanel MainCategory, string Main, string Sub)
         {
             InitializeComponent();
             originMain = Main;
             originSub = Sub;
             originColor = KSCS_static.category.GetColor(originSub);
             this.MainCategory = MainCategory;
+            this.MainForm = MainForm;
         }
 
         //처음 폼 로드 시 카테고리 정보 세팅
@@ -55,6 +58,7 @@ namespace KSCS.Forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            bool change = false;
             if (originMain != cmbMain.SelectedItem.ToString())
             {
                 string NewMain = cmbMain.SelectedItem.ToString();
@@ -87,6 +91,7 @@ namespace KSCS.Forms
                     Database.UpdateParentCategoryOfSubCategory(NewMain, originSub);
 
                     originMain = NewMain;
+                    change= true;
                 }
             }
             if (originSub != txtboxSub.Text)
@@ -109,6 +114,7 @@ namespace KSCS.Forms
                     //라벨 수정
                     ((UserLabel)MainForm.flowLayoutPanelLable.Controls["label" + originSub]).SetName(NewSub);
                     originSub = NewSub;
+                    change= true;
                 }
             }
 
@@ -121,6 +127,13 @@ namespace KSCS.Forms
                 Database.UpdateSubCategoryColor(originSub, boxColor.FillColor);
                 //라벨 수정
                 ((UserLabel)MainForm.flowLayoutPanelLable.Controls["label" + originSub]).SetColor(boxColor.FillColor);
+                change= true;
+            }
+
+            if (change)
+            {
+                MainForm.UpdateTab();
+                MainForm.UpdateSchedule();
             }
             Close();
 

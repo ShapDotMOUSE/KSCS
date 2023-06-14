@@ -84,6 +84,8 @@ namespace KSCS
 
         private void addBtn_Click(object sender, EventArgs e) // 추가&수정
         {
+            TimeSpan timeDifference = GetEndDateTime() - GetStartDateTime();
+            
             if (tbTitle.Text == String.Empty)
             {
                 MessageBox.Show("제목을 입력하세요");
@@ -92,6 +94,11 @@ namespace KSCS
             else if (cbCategory.SelectedItem == null)
             {
                 MessageBox.Show("카테고리를 선택하세요");
+                return;
+            }
+            else if (timeDifference.Days < 0||timeDifference.Hours < 0)
+            {
+                MessageBox.Show("날짜/시간이 옳지 않습니다");
                 return;
             }
 
@@ -285,7 +292,7 @@ namespace KSCS
             flpMember.Visible = false;
 
             //추가(공유일정인 경우, member 로드)
-            if (monthScheduleList[UserDate.static_date - 1][index].members.Count > 0)
+            if (monthScheduleList[UserDate.static_date - 1][index].members?.Count > 0)
             {
                 LoadMembers(monthScheduleList[UserDate.static_date - 1][index]);
             }

@@ -56,7 +56,6 @@
             this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnUserSharingAddButton1 = new KSCS.UserControls.MainForm.UserSharingAddButton();
             this.flpLabel = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -71,6 +70,16 @@
             this.lblMonth = new System.Windows.Forms.Label();
             this.guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.flpDays = new System.Windows.Forms.TableLayoutPanel();
+            this.guna2Elipse3 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2Elipse4 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2Elipse5 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.btnSharing = new KSCS.UserControls.MainForm.SharingButton();
+            this.Tab4 = new KSCS.UserTabButton();
+            this.Tab3 = new KSCS.UserTabButton();
+            this.Tab2 = new KSCS.UserTabButton();
+            this.Tab1 = new KSCS.UserTabButton();
+            this.TabAll = new KSCS.UserTabButton();
+            this.btnUserSharingAddButton1 = new KSCS.UserControls.MainForm.UserSharingAddButton();
             this.userDate1 = new KSCS.UserDate();
             this.userDate2 = new KSCS.UserDate();
             this.userDate3 = new KSCS.UserDate();
@@ -337,7 +346,7 @@
             this.btnMagam_Online.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnMagam_Online.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnMagam_Online.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnMagam_Online.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.btnMagam_Online.FillColor = System.Drawing.Color.Gainsboro;
             this.btnMagam_Online.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnMagam_Online.ForeColor = System.Drawing.Color.White;
             this.btnMagam_Online.Image = global::KSCS.Properties.Resources.lecture;
@@ -355,7 +364,7 @@
             this.btnMagam_Quiz.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnMagam_Quiz.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnMagam_Quiz.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnMagam_Quiz.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.btnMagam_Quiz.FillColor = System.Drawing.Color.Gainsboro;
             this.btnMagam_Quiz.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnMagam_Quiz.ForeColor = System.Drawing.Color.White;
             this.btnMagam_Quiz.Image = global::KSCS.Properties.Resources.quiz;
@@ -375,7 +384,7 @@
             this.btnMagam_Task.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnMagam_Task.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnMagam_Task.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnMagam_Task.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.btnMagam_Task.FillColor = System.Drawing.Color.Gainsboro;
             this.btnMagam_Task.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnMagam_Task.ForeColor = System.Drawing.Color.White;
             this.btnMagam_Task.Image = global::KSCS.Properties.Resources.homework;
@@ -395,7 +404,7 @@
             this.btnMagam_Prjct.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnMagam_Prjct.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnMagam_Prjct.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnMagam_Prjct.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.btnMagam_Prjct.FillColor = System.Drawing.Color.Gainsboro;
             this.btnMagam_Prjct.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnMagam_Prjct.ForeColor = System.Drawing.Color.White;
             this.btnMagam_Prjct.Image = global::KSCS.Properties.Resources.team_proejct;
@@ -415,7 +424,7 @@
             this.btnMagam_Personal.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnMagam_Personal.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnMagam_Personal.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnMagam_Personal.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.btnMagam_Personal.FillColor = System.Drawing.Color.Gainsboro;
             this.btnMagam_Personal.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnMagam_Personal.ForeColor = System.Drawing.Color.White;
             this.btnMagam_Personal.Image = global::KSCS.Properties.Resources.individual;
@@ -760,6 +769,81 @@
             this.flpDays.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.flpDays.Size = new System.Drawing.Size(1370, 947);
             this.flpDays.TabIndex = 42;
+            // 
+            // guna2Elipse3
+            // 
+            this.guna2Elipse3.BorderRadius = 10;
+            this.guna2Elipse3.TargetControl = this.guna2Panel3;
+            // 
+            // guna2Elipse4
+            // 
+            this.guna2Elipse4.BorderRadius = 10;
+            this.guna2Elipse4.TargetControl = this.guna2Panel4;
+            // 
+            // guna2Elipse5
+            // 
+            this.guna2Elipse5.BorderRadius = 10;
+            this.guna2Elipse5.TargetControl = this.guna2Panel5;
+            // 
+            // btnSharing
+            // 
+            this.btnSharing.Location = new System.Drawing.Point(1813, 1331);
+            this.btnSharing.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.btnSharing.Name = "btnSharing";
+            this.btnSharing.Size = new System.Drawing.Size(58, 125);
+            this.btnSharing.TabIndex = 23;
+            // 
+            // Tab4
+            // 
+            this.Tab4.Location = new System.Drawing.Point(1813, 1176);
+            this.Tab4.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.Tab4.Name = "Tab4";
+            this.Tab4.Size = new System.Drawing.Size(58, 125);
+            this.Tab4.TabIndex = 22;
+            // 
+            // Tab3
+            // 
+            this.Tab3.Location = new System.Drawing.Point(1813, 1016);
+            this.Tab3.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.Tab3.Name = "Tab3";
+            this.Tab3.Size = new System.Drawing.Size(58, 125);
+            this.Tab3.TabIndex = 22;
+            // 
+            // Tab2
+            // 
+            this.Tab2.Location = new System.Drawing.Point(1813, 856);
+            this.Tab2.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.Tab2.Name = "Tab2";
+            this.Tab2.Size = new System.Drawing.Size(58, 125);
+            this.Tab2.TabIndex = 22;
+            this.Tab2.Click += new System.EventHandler(this.ChangeTab);
+            // 
+            // Tab1
+            // 
+            this.Tab1.Location = new System.Drawing.Point(1813, 688);
+            this.Tab1.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.Tab1.Name = "Tab1";
+            this.Tab1.Size = new System.Drawing.Size(58, 125);
+            this.Tab1.TabIndex = 22;
+            this.Tab1.Click += new System.EventHandler(this.ChangeTab);
+            // 
+            // TabAll
+            // 
+            this.TabAll.Location = new System.Drawing.Point(1813, 531);
+            this.TabAll.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.TabAll.Name = "TabAll";
+            this.TabAll.Size = new System.Drawing.Size(58, 125);
+            this.TabAll.TabIndex = 22;
+            this.TabAll.Click += new System.EventHandler(this.ChangeTab);
+            // 
+            // btnUserSharingAddButton1
+            // 
+            this.btnUserSharingAddButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(235)))));
+            this.btnUserSharingAddButton1.Location = new System.Drawing.Point(99, 1053);
+            this.btnUserSharingAddButton1.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.btnUserSharingAddButton1.Name = "btnUserSharingAddButton1";
+            this.btnUserSharingAddButton1.Size = new System.Drawing.Size(227, 73);
+            this.btnUserSharingAddButton1.TabIndex = 45;
             // 
             // userDate1
             // 

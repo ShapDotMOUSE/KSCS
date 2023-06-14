@@ -87,7 +87,7 @@ namespace Socket
                 NetworkStream networkStream=null;
                 try
                 {
-                    OnMessage("초대 시도" + stdNum);
+                    //OnMessage("초대 시도" + stdNum);
                     TcpClient todoClient = new TcpClient();
                     //각 사용자 들에게 접속 시도
                     todoClient.Connect(addressDict[stdNum], 7777);

@@ -57,7 +57,7 @@
             this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnUserSharingAddButton = new KSCS.UserControls.MainForm.UserSharingAddButton();
+            this.btnUserSharingAddButton = new KSCS.UserSharingAddButton();
             this.flpLabel = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -1400,7 +1400,7 @@
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.TextBox textBox7;
-        private UserControls.MainForm.UserSharingAddButton btnUserSharingAddButton;
+        private UserSharingAddButton btnUserSharingAddButton;
         private Guna.UI2.WinForms.Guna2Button btnSettingComplete;
         private System.Windows.Forms.PictureBox btn_logout;
         public System.Windows.Forms.FlowLayoutPanel flpLabel;

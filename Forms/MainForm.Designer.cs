@@ -777,13 +777,13 @@
             this.guna2Elipse5.BorderRadius = 10;
             this.guna2Elipse5.TargetControl = this.guna2Panel5;
             // 
-            // btnSharing
+            // TabSharing
             // 
-            this.btnSharing.Location = new System.Drawing.Point(1813, 1331);
-            this.btnSharing.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
-            this.btnSharing.Name = "btnSharing";
-            this.btnSharing.Size = new System.Drawing.Size(58, 125);
-            this.btnSharing.TabIndex = 23;
+            this.TabSharing.Location = new System.Drawing.Point(1814, 1331);
+            this.TabSharing.Margin = new System.Windows.Forms.Padding(6);
+            this.TabSharing.Name = "TabSharing";
+            this.TabSharing.Size = new System.Drawing.Size(58, 125);
+            this.TabSharing.TabIndex = 23;
             // 
             // Tab4
             // 

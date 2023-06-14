@@ -189,7 +189,6 @@ namespace KSCS
             UserTabButton btn = sender as UserTabButton;
             TabName = btn.Name;
             OldTab.HideTab();
-            SetCheckedCategoryByTab();
             isShareSchedule = false;
             ChangeShareSchedule();
             LoadMainForm(); //추가
@@ -228,7 +227,7 @@ namespace KSCS
             {
                 this.Invoke(new Action(delegate ()
                 {
-                    CreateTab();
+                    SetCheckedCategoryByTab();
                 }));
 
             }));

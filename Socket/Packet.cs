@@ -10,8 +10,8 @@ namespace Socket
 {
     public enum PacketType
     {
-        INIT,
-        CONNECT,
+        INVITE,
+        INIT_MESH,
         UPDATE
     }
     public enum PacketSendERROR

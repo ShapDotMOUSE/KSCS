@@ -145,14 +145,21 @@ namespace Socket
         {
             foreach (string member in InviteClass.members)
             {
-                if (clientSocketDict.ContainsKey(member) && clientSocketDict[member].Connected)
+                try
                 {
-                    NetworkStream networkStream = clientSocketDict[member].GetStream();
-                    ShareSchedule shareSchedule= new ShareSchedule(clientStdNum,categoryList);
-                    shareSchedule.Type = (int)PacketType.SHARE_SCHEDULE;
+                    if (clientSocketDict.ContainsKey(member) && clientSocketDict[member].Connected)
+                    {
+                        NetworkStream networkStream = clientSocketDict[member].GetStream();
+                        ShareSchedule shareSchedule = new ShareSchedule(clientStdNum, categoryList);
+                        shareSchedule.Type = (int)PacketType.SHARE_SCHEDULE;
 
-                    Packet.Serialize(shareSchedule).CopyTo(this.sendBuffer,0);
-                    await Send(networkStream);
+                        Packet.Serialize(shareSchedule).CopyTo(this.sendBuffer, 0);
+                        await Send(networkStream);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Trace.WriteLine(string.Format("sendCategory - Exception : {0}", e.Message));
                 }
             }
         }

@@ -59,5 +59,14 @@ namespace KSCS.Forms
             }
 
         }
+
+        public void btnCreate_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+            AllowOrRequestForm allowOrRequestForm = new AllowOrRequestForm();
+            allowOrRequestForm.TopMost=true;
+            allowOrRequestForm.Show();
+        }
     }
 }

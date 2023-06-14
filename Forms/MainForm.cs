@@ -13,6 +13,8 @@ using Socket;
 using System.Net;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using KSCS.UserControls.MainForm;
 using System.Threading;
 
 namespace KSCS
@@ -24,8 +26,9 @@ namespace KSCS
         {
             InitializeComponent();
         }
-
+        static bool isShareSchedule=false;
         TcpListener listener;
+        bool isListen;
         SocketClient s_client = null;
         private Guna2CircleButton clickMagamBtn;
         public static FlowLayoutPanel flowLayoutPanelLable;
@@ -40,6 +43,14 @@ namespace KSCS
             DialogResult Result = loginForm.ShowDialog();
             if (Result == DialogResult.OK)
             {
+                //초기 사이즈 및 위치 설정
+                this.Size = new Size(1360, 960);
+
+                this.StartPosition = FormStartPosition.Manual;
+                this.Location = new Point(
+                   (Screen.PrimaryScreen.Bounds.Width - this.Size.Width) / 2,
+                   (Screen.PrimaryScreen.Bounds.Height - this.Size.Height) / 2
+                );
                 LoadMagam();
                 lblStdNum.Text = stdNum;
                 //초기 메인 카테고리 설정
@@ -60,7 +71,7 @@ namespace KSCS
                 Tab3.Clicked += ChangeTab;
                 Tab4.Clicked += ChangeTab;
                 //btnSharing.Clicked += CreateSharing;
-                btnSharing.Clicked += btnShare_Click;
+                TabSharing.Clicked += btnShare_Click;
                 //btnSharing.DoubleClicked += CreateSharing;
                 setTab();
 
@@ -75,9 +86,6 @@ namespace KSCS
             }
             else
                 Close();
-
-            this.Size = new Size(1360, 960);
-
         }
 
         private void setTab()
@@ -114,11 +122,65 @@ namespace KSCS
                     uc.SetBasicMode(item);
                     uc.setMain(key);
                     ((FlowLayoutPanel)((UserMainCategory)panelMainCategory.Controls[key]).flpSubCategory).Controls.Add(uc);
+
+                   
                 }
             }
         }
 
+        //실시간 함수---------------------------------------------------------------------------------------------------------------------------------------
+        private void SharingSubCategorySet(bool enable)
+        {
+            foreach (var key in category.Categories.Keys)
+            {
+                ((UserMainCategory)panelMainCategory.Controls[key]).SetSharing(enable);
+                foreach (var item in category.Categories[key])
+                {
+                    ((FlowLayoutPanel)((UserMainCategory)panelMainCategory.Controls[key]).flpSubCategory).Controls[item].Visible = !enable;
+                    if (enable)
+                    {
+                        SharingCategory.Add(item, false);
+                        UserSharingSubCategory ucSharing = new UserSharingSubCategory();
+                        ucSharing.SetBasicMode(item);
+                        ucSharing.setMain(key);
+                        ((FlowLayoutPanel)((UserMainCategory)panelMainCategory.Controls[key]).flpSubCategory).Controls.Add(ucSharing);
+                    }
+                    else
+                    {
+                        UserSharingSubCategory ucSharing = ((FlowLayoutPanel)((UserMainCategory)panelMainCategory.Controls[key]).flpSubCategory).Controls["Sharing" + item] as UserSharingSubCategory;
+                        ((FlowLayoutPanel)((UserMainCategory)panelMainCategory.Controls[key]).flpSubCategory).Controls.Remove(ucSharing);
+                    }
+                }
+            }
+        }
 
+        public void SharingTabEnable(bool enable)
+        {
+            TabAll.Enabled = !enable;
+            Tab1.Enabled = !enable;
+            Tab2.Enabled = !enable;
+            Tab3.Enabled = !enable;
+            Tab4.Enabled = !enable;
+            if (enable)
+            {
+                flowLayoutPanelLable.Controls.Clear();
+                TabName = TabSharing.Name;
+                TabSharing.ShowTab();
+                SharingCategory = new Dictionary<string, bool>();
+                SharingSubCategorySet(enable);
+
+            }
+            else
+            {
+                SharingCategory = null;
+                TabName = TabAll.Name;
+                SharingSubCategorySet(enable);
+                LoadMainForm();
+                SetCheckedCategoryByTab();
+            }
+
+           
+        }
 
         //탭 함수-------------------------------------------------------------------------------------------------------------------------------------------
         private void ChangeTab(object sender, EventArgs e)
@@ -127,19 +189,23 @@ namespace KSCS
             UserTabButton btn = sender as UserTabButton;
             TabName = btn.Name;
             OldTab.HideTab();
+            SetCheckedCategoryByTab();
+            isShareSchedule = false;
+            ChangeShareSchedule();
+            LoadMainForm(); //추가
             UpdateTab();
             UpdateSchedule();
         }
 
-        private void CreateTab() {
-            //UI 쓰레드인 경우
+        private void SetCheckedCategoryByTab()
+        {
             flpLabel.Controls.Clear();
             foreach (string key in category.Categories.Keys)
             {
                 FlowLayoutPanel flp = ((UserMainCategory)panelMainCategory.Controls[key]).flpSubCategory;
                 foreach (UserSubCategory subCategory in flp.Controls)
                 {
-                    Color subColor = KSCS_static.category.GetColor(subCategory.GetText());
+                    Color subColor = category.GetColor(subCategory.GetText());
                     if (TabName != TabAll.Name)
                     {
                         bool check = category.IsChecked(TabName, subCategory.GetText());
@@ -169,6 +235,9 @@ namespace KSCS
             thread.Start();
         }
 
+       
+        
+
         //달력 함수-----------------------------------------------------------------------------------------------------------------------------------------
         private void dispalyDate()
         {
@@ -182,8 +251,11 @@ namespace KSCS
         private void createDates()
         {
             //Database.ReadScheduleList();
-            Database.ReadTabScheduleList();
-            Schedule.ReadTabKlasSchedule(); //추가
+            if (!isShareSchedule)
+            {
+                Database.ReadTabScheduleList();
+                Schedule.ReadTabKlasSchedule(); //추가
+            }
 
             lblMonth.Text = month.ToString() + "월";
             lblMonth.TextAlign = ContentAlignment.MiddleCenter;
@@ -417,54 +489,48 @@ namespace KSCS
         }
 
 
-
-
-        //    //실시간 일정 공유 생성 : 현재 더블클릭
-        //    //사용자 본인은 포트를 열지 않음. 모두 Listner에게 연결시도
-        public void CreateSharing(object sender, EventArgs e)
+        //각 맴버들 초대
+        public void InvitieShareSchedule(object sender, EventArgs e)
         {
 
             MessageBox.Show("실시간 일정 공유 생성");
-
+            listener.Stop();
+            isListen = false;
+            Database.DeleteAddress();
             List<string> testStdnums = new List<string>
                 {
-                    "2019203055",
-                    "2019203018",
                     "2019203082",
+                    "2019203018",
+                    "2019203055",
+                    "2019203045"
                 };
 
             List<string> testTodo = testStdnums.ToList();
             testTodo.Remove(stdNum);
 
-
-            s_client = new SocketClient(stdNum);
-            s_client.OnConnect += new SocketClient.ConnectClientHandler(ConnectClient);
-            s_client.OnLoadAddress += new SocketClient.LoadAddress(LoadAddress);
-            s_client.OnMessage += new SocketClient.MessageHandler(Message);
             s_client.addressDict = Database.GetAddress(testStdnums);
             //Init 데이터 생성
-            s_client.InitClass = new Init
+            s_client.InviteClass = new Invite
             {
-                Type = (int)PacketType.INIT,
+                Type = (int)PacketType.INVITE,
                 members = testStdnums,
                 todoLink = testTodo,
                 boss = stdNum,
-                sender = stdNum
             };
-            s_client.sendClientTodo();
+            s_client.inviteAllMembers();
         }
 
-        public void ConnectClient(string sender, List<string> todo)
+        public void ConnectClient(string sender, List<string> todo,string type)
         {
             Invoke(new MethodInvoker(delegate ()
             {
-                MessageBox.Show("연결 성공!\r\n"
+                MessageBox.Show(type+" 성공!\r\n"
                     + "\r\n 연결된 사람 : " + sender
                     + "\r\n todo : " + string.Join(",", todo.Select(std => string.Format("'{0}'", std))));
             }));
         }
 
-        public void Message(string message)
+        public void ShowMessage(string message)
         {
             Invoke(new MethodInvoker(delegate ()
             {
@@ -476,46 +542,63 @@ namespace KSCS
         {
             if (s_client != null)
             {
-                s_client.addressDict = Database.GetAddress(s_client.InitClass.todoLink);
+                s_client.addressDict = Database.GetAddress(s_client.InviteClass.todoLink);
             }
         }
-        async public Task ParticipateSharing()
+        async public Task EnterShareSchedule()
         {
             Database.SetAddress();
             listener = new TcpListener(IPAddress.Any, 7777);
             listener.Start();
+            isListen = true;
             Console.WriteLine("Start Listener");
             s_client = new SocketClient(stdNum);
             s_client.OnConnect += new SocketClient.ConnectClientHandler(ConnectClient);
             s_client.OnLoadAddress += new SocketClient.LoadAddress(LoadAddress);
-            s_client.OnMessage += new SocketClient.MessageHandler(Message);
-            while (true)
+            s_client.OnMessage += new SocketClient.MessageHandler(ShowMessage);
+            while (isListen)
             {
                 try
                 {
-                    TcpClient client = await listener.AcceptTcpClientAsync().ConfigureAwait(false); //주최자 접속
+                    TcpClient client = await listener.AcceptTcpClientAsync().ConfigureAwait(false); //주최자
                     Task.Run(() => s_client.readStreamData(client));
-
                 }
                 catch (SocketException se)
                 {
-                    Trace.WriteLine(string.Format("ParticipateSharing - SocketException : {0}", se.Message));
+                    Trace.WriteLine(string.Format("EnterShareSchedule - SocketException : {0}", se.Message));
                 }
                 catch (Exception ex)
                 {
-                    Trace.WriteLine(string.Format("ParticipateSharing - Exception : {0}", ex.Message));
+                    Trace.WriteLine(string.Format("EnterShareSchedule - Exception : {0}", ex.Message));
                 }
             }
-
         }
 
-        
+        public void ChangeShareSchedule()
+        {
+            btnSettingComplete.Visible = isShareSchedule;
+            btnSettingComplete.Enabled = !isShareSchedule;
+            btnUserSharingAddButton.Visible = isShareSchedule;
+
+            //btnUserSharingAddButton.Enabled = !isShareSchedule;
+        }
 
         //실시간 일정 공유 참가 : 현재 클릭
         public void btnShare_Click(object sender, EventArgs e)
         {
+            isShareSchedule = true;
+            ChangeShareSchedule();
+            btnUserSharingAddButton.CreateSharing += InvitieShareSchedule;
+            monthScheduleList.Clear();
+            for (int i = 0; i < DateTime.DaysInMonth(year, month); i++)
+            {
+                monthScheduleList.Add(new List<Schedule>());
+            }
+            createDates();
+            
+            SharingTabEnable(!(TabName == TabSharing.Name));
             MessageBox.Show("시작");
-            Task.Run(()=>ParticipateSharing());
+            Task.Run(() => EnterShareSchedule());
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -524,15 +607,17 @@ namespace KSCS
             {
                 this.listener.Stop();
             }
-            if (s_client.clientSocketDict.Count > 0)
+            if (s_client!=null&&s_client.clientSocketDict.Count > 0)
             {
                 foreach (KeyValuePair<string, TcpClient> keyValue in s_client.clientSocketDict)
                     keyValue.Value.Close();
             }
+            
             Database.DeleteAddress();
         }
         public static void LoadMainForm()
         {
+            if(!isShareSchedule)
             Database.ReadTabScheduleList();
             Schedule.ReadTabKlasSchedule(); //추가
 
@@ -545,6 +630,7 @@ namespace KSCS
             foreach (UserDate userDate in Application.OpenForms.OfType<MainForm>().FirstOrDefault().GetUserDate())
             {
                 if (++index < dayOfWeek) userDate.ChangeBlank();
+
                 else if (date <= dates) userDate.SetDate(date++);
                 else userDate.ChangeBlank();
 

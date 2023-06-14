@@ -56,6 +56,7 @@
             this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnUserSharingAddButton = new KSCS.UserControls.MainForm.UserSharingAddButton();
             this.flpLabel = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -70,16 +71,6 @@
             this.lblMonth = new System.Windows.Forms.Label();
             this.guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.flpDays = new System.Windows.Forms.TableLayoutPanel();
-            this.guna2Elipse3 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.guna2Elipse4 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.guna2Elipse5 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.btnSharing = new KSCS.UserControls.MainForm.SharingButton();
-            this.Tab4 = new KSCS.UserTabButton();
-            this.Tab3 = new KSCS.UserTabButton();
-            this.Tab2 = new KSCS.UserTabButton();
-            this.Tab1 = new KSCS.UserTabButton();
-            this.TabAll = new KSCS.UserTabButton();
-            this.btnUserSharingAddButton1 = new KSCS.UserControls.MainForm.UserSharingAddButton();
             this.userDate1 = new KSCS.UserDate();
             this.userDate2 = new KSCS.UserDate();
             this.userDate3 = new KSCS.UserDate();
@@ -122,6 +113,15 @@
             this.userDate40 = new KSCS.UserDate();
             this.userDate41 = new KSCS.UserDate();
             this.userDate42 = new KSCS.UserDate();
+            this.guna2Elipse3 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2Elipse4 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2Elipse5 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.TabSharing = new KSCS.UserControls.MainForm.SharingButton();
+            this.Tab4 = new KSCS.UserTabButton();
+            this.Tab3 = new KSCS.UserTabButton();
+            this.Tab2 = new KSCS.UserTabButton();
+            this.Tab1 = new KSCS.UserTabButton();
+            this.TabAll = new KSCS.UserTabButton();
             this.guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_logout)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox4)).BeginInit();
@@ -143,8 +143,8 @@
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(202, 61);
-            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label2.Location = new System.Drawing.Point(155, 46);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 31);
             this.label2.TabIndex = 6;
@@ -157,8 +157,8 @@
             this.lblStdNum.BackColor = System.Drawing.Color.White;
             this.lblStdNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblStdNum.ForeColor = System.Drawing.Color.Black;
-            this.lblStdNum.Location = new System.Drawing.Point(202, 107);
-            this.lblStdNum.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.lblStdNum.Location = new System.Drawing.Point(155, 80);
+            this.lblStdNum.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStdNum.Name = "lblStdNum";
             this.lblStdNum.Size = new System.Drawing.Size(176, 31);
             this.lblStdNum.TabIndex = 6;
@@ -171,8 +171,8 @@
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(42, 337);
-            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label1.Location = new System.Drawing.Point(32, 253);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(121, 39);
             this.label1.TabIndex = 7;
@@ -184,7 +184,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(760, 25);
+            this.label4.Location = new System.Drawing.Point(760, 26);
             this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
             this.label4.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -227,7 +227,7 @@
             // btn_logout
             // 
             this.btn_logout.Image = global::KSCS.Properties.Resources.Outdoor;
-            this.btn_logout.Location = new System.Drawing.Point(332, 23);
+            this.btn_logout.Location = new System.Drawing.Point(332, 22);
             this.btn_logout.Margin = new System.Windows.Forms.Padding(5);
             this.btn_logout.Name = "btn_logout";
             this.btn_logout.Size = new System.Drawing.Size(44, 51);
@@ -249,7 +249,7 @@
             this.btnSettingComplete.Location = new System.Drawing.Point(86, 1331);
             this.btnSettingComplete.Margin = new System.Windows.Forms.Padding(5);
             this.btnSettingComplete.Name = "btnSettingComplete";
-            this.btnSettingComplete.Size = new System.Drawing.Size(235, 75);
+            this.btnSettingComplete.Size = new System.Drawing.Size(236, 75);
             this.btnSettingComplete.TabIndex = 27;
             this.btnSettingComplete.Text = "설정 완료";
             this.btnSettingComplete.Visible = false;
@@ -265,7 +265,7 @@
             this.btnPlusCategory.ForeColor = System.Drawing.Color.White;
             this.btnPlusCategory.Image = global::KSCS.Properties.Resources.CategoryPlus;
             this.btnPlusCategory.ImageOffset = new System.Drawing.Point(1, 0);
-            this.btnPlusCategory.Location = new System.Drawing.Point(273, 337);
+            this.btnPlusCategory.Location = new System.Drawing.Point(273, 338);
             this.btnPlusCategory.Margin = new System.Windows.Forms.Padding(5);
             this.btnPlusCategory.Name = "btnPlusCategory";
             this.btnPlusCategory.Size = new System.Drawing.Size(46, 40);
@@ -278,7 +278,7 @@
             this.panelMainCategory.AutoScroll = true;
             this.panelMainCategory.Location = new System.Drawing.Point(49, 413);
             this.panelMainCategory.Name = "panelMainCategory";
-            this.panelMainCategory.Size = new System.Drawing.Size(329, 894);
+            this.panelMainCategory.Size = new System.Drawing.Size(328, 894);
             this.panelMainCategory.TabIndex = 20;
             // 
             // guna2PictureBox4
@@ -286,10 +286,10 @@
             this.guna2PictureBox4.BackColor = System.Drawing.Color.White;
             this.guna2PictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox4.Image")));
             this.guna2PictureBox4.ImageRotate = 0F;
-            this.guna2PictureBox4.Location = new System.Drawing.Point(31, 25);
+            this.guna2PictureBox4.Location = new System.Drawing.Point(31, 26);
             this.guna2PictureBox4.Margin = new System.Windows.Forms.Padding(5);
             this.guna2PictureBox4.Name = "guna2PictureBox4";
-            this.guna2PictureBox4.Size = new System.Drawing.Size(131, 136);
+            this.guna2PictureBox4.Size = new System.Drawing.Size(132, 136);
             this.guna2PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.guna2PictureBox4.TabIndex = 17;
             this.guna2PictureBox4.TabStop = false;
@@ -303,10 +303,10 @@
             this.guna2Panel3.Controls.Add(this.panelMagamBtns);
             this.guna2Panel3.Controls.Add(this.guna2PictureBox1);
             this.guna2Panel3.Controls.Add(this.label4);
-            this.guna2Panel3.Location = new System.Drawing.Point(872, 24);
+            this.guna2Panel3.Location = new System.Drawing.Point(873, 24);
             this.guna2Panel3.Margin = new System.Windows.Forms.Padding(5);
             this.guna2Panel3.Name = "guna2Panel3";
-            this.guna2Panel3.Size = new System.Drawing.Size(1000, 280);
+            this.guna2Panel3.Size = new System.Drawing.Size(999, 280);
             this.guna2Panel3.TabIndex = 19;
             // 
             // panelMagam
@@ -325,10 +325,10 @@
             this.panelMagamBtns.Controls.Add(this.btnMagam_Task);
             this.panelMagamBtns.Controls.Add(this.btnMagam_Prjct);
             this.panelMagamBtns.Controls.Add(this.btnMagam_Personal);
-            this.panelMagamBtns.Location = new System.Drawing.Point(23, 25);
+            this.panelMagamBtns.Location = new System.Drawing.Point(23, 26);
             this.panelMagamBtns.Margin = new System.Windows.Forms.Padding(5);
             this.panelMagamBtns.Name = "panelMagamBtns";
-            this.panelMagamBtns.Size = new System.Drawing.Size(468, 71);
+            this.panelMagamBtns.Size = new System.Drawing.Size(468, 70);
             this.panelMagamBtns.TabIndex = 9;
             // 
             // btnMagam_Online
@@ -455,7 +455,7 @@
             this.guna2Panel4.BorderRadius = 10;
             this.guna2Panel4.Controls.Add(this.guna2PictureBox2);
             this.guna2Panel4.Controls.Add(this.label5);
-            this.guna2Panel4.Location = new System.Drawing.Point(38, 24);
+            this.guna2Panel4.Location = new System.Drawing.Point(37, 24);
             this.guna2Panel4.Margin = new System.Windows.Forms.Padding(5);
             this.guna2Panel4.Name = "guna2Panel4";
             this.guna2Panel4.Size = new System.Drawing.Size(800, 280);
@@ -466,7 +466,7 @@
             this.guna2PictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.guna2PictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox2.Image")));
             this.guna2PictureBox2.ImageRotate = 0F;
-            this.guna2PictureBox2.Location = new System.Drawing.Point(25, 23);
+            this.guna2PictureBox2.Location = new System.Drawing.Point(24, 22);
             this.guna2PictureBox2.Margin = new System.Windows.Forms.Padding(5);
             this.guna2PictureBox2.Name = "guna2PictureBox2";
             this.guna2PictureBox2.Size = new System.Drawing.Size(143, 168);
@@ -480,7 +480,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(507, 25);
+            this.label5.Location = new System.Drawing.Point(507, 26);
             this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label5.Name = "label5";
             this.label5.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -493,7 +493,7 @@
             this.guna2Panel5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.guna2Panel5.BackColor = System.Drawing.Color.White;
             this.guna2Panel5.BorderRadius = 10;
-            this.guna2Panel5.Controls.Add(this.btnUserSharingAddButton1);
+            this.guna2Panel5.Controls.Add(this.btnUserSharingAddButton);
             this.guna2Panel5.Controls.Add(this.flpLabel);
             this.guna2Panel5.Controls.Add(this.flowLayoutPanel1);
             this.guna2Panel5.Controls.Add(this.btnPrevisous);
@@ -501,19 +501,29 @@
             this.guna2Panel5.Controls.Add(this.lblMonth);
             this.guna2Panel5.Controls.Add(this.guna2PictureBox3);
             this.guna2Panel5.Controls.Add(this.flpDays);
-            this.guna2Panel5.Location = new System.Drawing.Point(38, 339);
+            this.guna2Panel5.Location = new System.Drawing.Point(37, 339);
             this.guna2Panel5.Margin = new System.Windows.Forms.Padding(5);
             this.guna2Panel5.Name = "guna2Panel5";
             this.guna2Panel5.Size = new System.Drawing.Size(1797, 1173);
             this.guna2Panel5.TabIndex = 21;
             // 
+            // btnUserSharingAddButton
+            // 
+            this.btnUserSharingAddButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(235)))));
+            this.btnUserSharingAddButton.Location = new System.Drawing.Point(91, 1072);
+            this.btnUserSharingAddButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnUserSharingAddButton.Name = "btnUserSharingAddButton";
+            this.btnUserSharingAddButton.Size = new System.Drawing.Size(231, 74);
+            this.btnUserSharingAddButton.TabIndex = 45;
+            this.btnUserSharingAddButton.Visible = false;
+            // 
             // flpLabel
             // 
             this.flpLabel.BackColor = System.Drawing.Color.Snow;
-            this.flpLabel.Location = new System.Drawing.Point(38, 207);
+            this.flpLabel.Location = new System.Drawing.Point(37, 206);
             this.flpLabel.Margin = new System.Windows.Forms.Padding(5);
             this.flpLabel.Name = "flpLabel";
-            this.flpLabel.Size = new System.Drawing.Size(298, 807);
+            this.flpLabel.Size = new System.Drawing.Size(297, 806);
             this.flpLabel.TabIndex = 44;
             // 
             // flowLayoutPanel1
@@ -525,10 +535,10 @@
             this.flowLayoutPanel1.Controls.Add(this.textBox5);
             this.flowLayoutPanel1.Controls.Add(this.textBox6);
             this.flowLayoutPanel1.Controls.Add(this.textBox7);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(380, 151);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(380, 150);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(5);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1370, 47);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1370, 46);
             this.flowLayoutPanel1.TabIndex = 43;
             // 
             // textBox1
@@ -540,7 +550,7 @@
             this.textBox1.Margin = new System.Windows.Forms.Padding(0);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(195, 65);
+            this.textBox1.Size = new System.Drawing.Size(195, 66);
             this.textBox1.TabIndex = 0;
             this.textBox1.Text = "Sun";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -553,7 +563,7 @@
             this.textBox2.Margin = new System.Windows.Forms.Padding(0);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(195, 65);
+            this.textBox2.Size = new System.Drawing.Size(195, 66);
             this.textBox2.TabIndex = 1;
             this.textBox2.Text = "Mon";
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -566,7 +576,7 @@
             this.textBox3.Margin = new System.Windows.Forms.Padding(0);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(195, 65);
+            this.textBox3.Size = new System.Drawing.Size(195, 66);
             this.textBox3.TabIndex = 2;
             this.textBox3.Text = "Tue";
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -579,7 +589,7 @@
             this.textBox4.Margin = new System.Windows.Forms.Padding(0);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(195, 65);
+            this.textBox4.Size = new System.Drawing.Size(195, 66);
             this.textBox4.TabIndex = 3;
             this.textBox4.Text = "Wed";
             this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -592,7 +602,7 @@
             this.textBox5.Margin = new System.Windows.Forms.Padding(0);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(195, 65);
+            this.textBox5.Size = new System.Drawing.Size(195, 66);
             this.textBox5.TabIndex = 4;
             this.textBox5.Text = "Thu";
             this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -605,7 +615,7 @@
             this.textBox6.Margin = new System.Windows.Forms.Padding(0);
             this.textBox6.Multiline = true;
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(195, 65);
+            this.textBox6.Size = new System.Drawing.Size(195, 66);
             this.textBox6.TabIndex = 5;
             this.textBox6.Text = "Fri";
             this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -618,7 +628,7 @@
             this.textBox7.Margin = new System.Windows.Forms.Padding(0);
             this.textBox7.Multiline = true;
             this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(195, 65);
+            this.textBox7.Size = new System.Drawing.Size(195, 66);
             this.textBox7.TabIndex = 6;
             this.textBox7.Text = "Sat";
             this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -636,7 +646,7 @@
             this.btnPrevisous.ForeColor = System.Drawing.Color.Black;
             this.btnPrevisous.Image = ((System.Drawing.Image)(resources.GetObject("btnPrevisous.Image")));
             this.btnPrevisous.ImageSize = new System.Drawing.Size(20, 30);
-            this.btnPrevisous.Location = new System.Drawing.Point(705, 23);
+            this.btnPrevisous.Location = new System.Drawing.Point(705, 22);
             this.btnPrevisous.Margin = new System.Windows.Forms.Padding(5);
             this.btnPrevisous.Name = "btnPrevisous";
             this.btnPrevisous.Size = new System.Drawing.Size(52, 91);
@@ -656,7 +666,7 @@
             this.btnNext.ForeColor = System.Drawing.Color.Black;
             this.btnNext.Image = ((System.Drawing.Image)(resources.GetObject("btnNext.Image")));
             this.btnNext.ImageSize = new System.Drawing.Size(20, 30);
-            this.btnNext.Location = new System.Drawing.Point(902, 23);
+            this.btnNext.Location = new System.Drawing.Point(902, 22);
             this.btnNext.Margin = new System.Windows.Forms.Padding(5);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(52, 91);
@@ -668,7 +678,7 @@
             this.lblMonth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMonth.AutoSize = true;
             this.lblMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblMonth.Location = new System.Drawing.Point(768, 32);
+            this.lblMonth.Location = new System.Drawing.Point(769, 32);
             this.lblMonth.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblMonth.Name = "lblMonth";
             this.lblMonth.Size = new System.Drawing.Size(121, 73);
@@ -680,10 +690,10 @@
             this.guna2PictureBox3.Cursor = System.Windows.Forms.Cursors.No;
             this.guna2PictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox3.Image")));
             this.guna2PictureBox3.ImageRotate = 0F;
-            this.guna2PictureBox3.Location = new System.Drawing.Point(12, 1072);
+            this.guna2PictureBox3.Location = new System.Drawing.Point(11, 1072);
             this.guna2PictureBox3.Margin = new System.Windows.Forms.Padding(5);
             this.guna2PictureBox3.Name = "guna2PictureBox3";
-            this.guna2PictureBox3.Size = new System.Drawing.Size(70, 73);
+            this.guna2PictureBox3.Size = new System.Drawing.Size(70, 74);
             this.guna2PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.guna2PictureBox3.TabIndex = 0;
             this.guna2PictureBox3.TabStop = false;
@@ -740,7 +750,7 @@
             this.flpDays.Controls.Add(this.userDate40, 4, 5);
             this.flpDays.Controls.Add(this.userDate41, 5, 5);
             this.flpDays.Controls.Add(this.userDate42, 6, 5);
-            this.flpDays.Location = new System.Drawing.Point(380, 207);
+            this.flpDays.Location = new System.Drawing.Point(380, 206);
             this.flpDays.Name = "flpDays";
             this.flpDays.RowCount = 6;
             this.flpDays.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
@@ -817,15 +827,6 @@
             this.TabAll.Size = new System.Drawing.Size(58, 125);
             this.TabAll.TabIndex = 22;
             this.TabAll.Click += new System.EventHandler(this.ChangeTab);
-            // 
-            // btnUserSharingAddButton1
-            // 
-            this.btnUserSharingAddButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(235)))));
-            this.btnUserSharingAddButton1.Location = new System.Drawing.Point(99, 1053);
-            this.btnUserSharingAddButton1.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
-            this.btnUserSharingAddButton1.Name = "btnUserSharingAddButton1";
-            this.btnUserSharingAddButton1.Size = new System.Drawing.Size(227, 73);
-            this.btnUserSharingAddButton1.TabIndex = 45;
             // 
             // userDate1
             // 
@@ -1254,7 +1255,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
             this.ClientSize = new System.Drawing.Size(2340, 1536);
-            this.Controls.Add(this.btnSharing);
+            this.Controls.Add(this.TabSharing);
             this.Controls.Add(this.Tab4);
             this.Controls.Add(this.Tab3);
             this.Controls.Add(this.Tab2);
@@ -1270,7 +1271,7 @@
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(2340, 1536);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(2340, 1536);
+            this.MinimumSize = new System.Drawing.Size(1918, 1018);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
@@ -1376,7 +1377,7 @@
         private System.Windows.Forms.FlowLayoutPanel panelMainCategory;
         private Guna.UI2.WinForms.Guna2CircleButton btnMagam_Personal;
         private Guna.UI2.WinForms.Guna2Button btnPlusCategory;
-        private UserControls.MainForm.SharingButton btnSharing;
+        private UserControls.MainForm.SharingButton TabSharing;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
@@ -1385,7 +1386,7 @@
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.TextBox textBox7;
-        private UserControls.MainForm.UserSharingAddButton btnUserSharingAddButton1;
+        private UserControls.MainForm.UserSharingAddButton btnUserSharingAddButton;
         private Guna.UI2.WinForms.Guna2Button btnSettingComplete;
         private System.Windows.Forms.PictureBox btn_logout;
         public System.Windows.Forms.FlowLayoutPanel flpLabel;

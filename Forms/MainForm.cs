@@ -93,7 +93,7 @@ namespace KSCS
                 UpdateTab();
                 TabAll.ShowTab();
 
-                
+
 
             }
             else
@@ -109,7 +109,7 @@ namespace KSCS
             Tab3.Name = tabNameList[3];
             Tab4.Name = tabNameList[4];
         }
-        
+
 
         //private void MainForm_Resize(object sender, EventArgs e)
         //{
@@ -317,7 +317,7 @@ namespace KSCS
             else if (color == Color.Gray) return Color.Gainsboro;
             else return Color.Gray;
         }
-        
+
         public static void CreateSchedule()
         {
             Database.ReadTabScheduleList();
@@ -362,7 +362,7 @@ namespace KSCS
             }
             Application.OpenForms.OfType<MainForm>().FirstOrDefault().Refresh();
         }
-        
+
         //컨트롤 함수------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         //화면 컨트롤-------------------------------------------
@@ -518,6 +518,9 @@ namespace KSCS
 
             btnUserSharingAddButton.ChangeStatus(true);
 
+            List<string> testTodo = testStdnums.ToList();
+            testTodo.Remove(stdNum);
+
             foreach (string stdNum in testStdnums)
             {
                 UserMemberStatus memberStatus = new UserMemberStatus();
@@ -526,8 +529,6 @@ namespace KSCS
                 flowLayoutPanelLable.Controls.Add(memberStatus);
             }
 
-            List<string> testTodo = testStdnums.ToList();
-            testTodo.Remove(stdNum);
 
             s_client.addressDict = Database.GetAddress(testStdnums);
             //Init 데이터 생성
@@ -553,15 +554,24 @@ namespace KSCS
                 if (DialogResult == DialogResult.OK)
                 {
                     btnSettingComplete.Enabled = true;
+                    foreach (string std in s_client.InviteClass.members)
+                    {
+
+                        UserMemberStatus memberStatus = new UserMemberStatus();
+                        memberStatus.SetName(std);
+                        memberStatus.SetColor(testStdNumColor[std]);
+                        flowLayoutPanelLable.Controls.Add(memberStatus);
+
+                    }
                 }
             }));
         }
 
-        public void ConnectClient(string sender, List<string> todo,string type)
+        public void ConnectClient(string sender, List<string> todo, string type)
         {
             Invoke(new MethodInvoker(delegate ()
             {
-                MessageBox.Show(type+" 성공!\r\n"
+                MessageBox.Show(type + " 성공!\r\n"
                     + "\r\n 연결된 사람 : " + sender
                     + "\r\n todo : " + string.Join(",", todo.Select(std => string.Format("'{0}'", std))));
             }));
@@ -603,7 +613,7 @@ namespace KSCS
             s_client.OnLoadAddress += new SocketClient.LoadAddress(LoadAddress);
             s_client.OnMessage += new SocketClient.MessageHandler(ShowMessage);
             s_client.OnInvite += new SocketClient.InvitationMessageHandler(OnInvite);
-            
+
             while (isListen)
             {
                 try
@@ -630,7 +640,7 @@ namespace KSCS
 
             //btnUserSharingAddButton.Enabled = !isShareSchedule;
         }
-        
+
 
         //실시간 일정 공유 참가 : 현재 클릭
         public void btnShare_Click(object sender, EventArgs e)
@@ -661,12 +671,12 @@ namespace KSCS
             {
                 this.listener.Stop();
             }
-            if (s_client!=null&&s_client.clientSocketDict.Count > 0)
+            if (s_client != null && s_client.clientSocketDict.Count > 0)
             {
                 foreach (KeyValuePair<string, TcpClient> keyValue in s_client.clientSocketDict)
                     keyValue.Value.Close();
             }
-            
+
             Database.DeleteAddress();
         }
         public static void LoadMainForm()
@@ -698,9 +708,9 @@ namespace KSCS
         private void btnSettingComplete_Click(object sender, EventArgs e)
         {
             List<string> categories = new List<string>();
-            foreach(KeyValuePair<string,bool> category in SharingCategory)
+            foreach (KeyValuePair<string, bool> category in SharingCategory)
             {
-                if(category.Value==true)
+                if (category.Value == true)
                 {
                     categories.Add(category.Key);
                 }

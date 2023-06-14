@@ -30,5 +30,7 @@ namespace KSCS.Class
         };
         //달력 년도, 월
         public static int year, month;
+        //실시간 공유
+        public static Dictionary<string, bool> SharingCategory;
     }
 }

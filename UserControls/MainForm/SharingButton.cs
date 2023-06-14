@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static KSCS.Class.KSCS_static;
 using System.Windows.Forms;
 
 namespace KSCS.UserControls.MainForm
@@ -19,15 +20,25 @@ namespace KSCS.UserControls.MainForm
             InitializeComponent();
         }
 
-        protected override void OnClick(EventArgs e)
+        public void HideTab()
         {
-            Clicked?.Invoke(this, e);
+            btnSharing.Text = "";
+            panelWhite.BringToFront();
         }
 
-        private void btnSharing_MouseLeave(object sender, EventArgs e)
+        public void ShowTab()
         {
-            //panelWhite.Visible = true;
-            panelWhite.BringToFront();
+            btnSharing.Text = "공유하기";
+            btnSharing.BringToFront();
+        }
+
+        protected override void OnClick(EventArgs e)
+        {
+            //if(TabName != this.Name)
+            {
+                Clicked?.Invoke(this, e);
+            }
+            
         }
 
         private void SharingButton_Click(object sender, EventArgs e)
@@ -37,8 +48,19 @@ namespace KSCS.UserControls.MainForm
 
         private void btnSharing_MouseHover(object sender, EventArgs e)
         {
-            btnSharing.BringToFront();
-            //panelWhite.Visible = false;
+            if (TabName != this.Name)
+            {
+                ShowTab();
+            }
         }
+        private void btnSharing_MouseLeave(object sender, EventArgs e)
+        {
+            if (TabName != this.Name)
+            {
+                HideTab();
+            }
+        }
+
+       
     }
 }

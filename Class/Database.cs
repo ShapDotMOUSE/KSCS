@@ -128,7 +128,6 @@ namespace KSCS
         {
             string updateQuery = string.Format("UPDATE Student SET address='' WHERE id='{0}'", stdNum);
             MySqlCommand cmd = new MySqlCommand(updateQuery, getDBConnection());
-            if (cmd.ExecuteNonQuery() != 1) MessageBox.Show("Failed to insert Data.");
         }
 
         //스케줄 관련======================================================================

@@ -133,7 +133,6 @@ namespace KSCS.Forms
             if (change)
             {
                 MainForm.UpdateTab();
-                MainForm.UpdateSchedule();
             }
             Close();
 

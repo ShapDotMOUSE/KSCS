@@ -25,11 +25,6 @@ namespace KSCS
             InitializeComponent();
         }
 
-        public string GetName()
-        {
-            return this.Name;
-        }
-
         public string GetText()
         {
             return lblCategory.Text;

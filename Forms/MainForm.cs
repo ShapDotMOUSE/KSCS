@@ -522,10 +522,13 @@ namespace KSCS
 
         private void OnInvite(string boss)
         {
-            AllowOrRequestForm allowOrRequestForm = new AllowOrRequestForm();
-            allowOrRequestForm.lbl_StudentNumber.Text = boss;
-            allowOrRequestForm.TopMost = true;
-            allowOrRequestForm.Show();
+            Invoke((MethodInvoker)(() =>
+            {
+                AllowOrRequestForm allowOrRequestForm = new AllowOrRequestForm();
+                allowOrRequestForm.lbl_StudentNumber.Text = boss;
+                allowOrRequestForm.TopMost = true;
+                allowOrRequestForm.Show();
+            }));
         }
 
         public void ConnectClient(string sender, List<string> todo,string type)
@@ -564,6 +567,8 @@ namespace KSCS
             s_client.OnConnect += new SocketClient.ConnectClientHandler(ConnectClient);
             s_client.OnLoadAddress += new SocketClient.LoadAddress(LoadAddress);
             s_client.OnMessage += new SocketClient.MessageHandler(ShowMessage);
+            s_client.OnInvite += new SocketClient.InvitationMessageHandler(OnInvite);
+            
             while (isListen)
             {
                 try
@@ -605,7 +610,6 @@ namespace KSCS
             createDates();
             
             SharingTabEnable(!(TabName == TabSharing.Name));
-            MessageBox.Show("시작");
             Task.Run(() => EnterShareSchedule());
         }
 

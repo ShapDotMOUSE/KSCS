@@ -46,8 +46,8 @@ namespace Socket
         public delegate void LoadAddress();
         public event LoadAddress OnLoadAddress;
 
-        public delegate void InvitationMessage(string boss);
-        public event InvitationMessage OnInvite;
+        public delegate void InvitationMessageHandler(string boss);
+        public event InvitationMessageHandler OnInvite;
 
         public async Task Send(NetworkStream networkStream)
         {
@@ -116,7 +116,6 @@ namespace Socket
                 NetworkStream networkStream = null;
                 try
                 {
-                    OnMessage("Mesh 연결 시도" + stdNum);
                     TcpClient todoClient = new TcpClient();
                     //각 사용자 들에게 접속 시도
                     todoClient.Connect(addressDict[stdNum], 7777);
@@ -202,9 +201,6 @@ namespace Socket
                                 //다른 노드와의 연결 추가
                                 clientSocketDict.Add(InitMeshClass.sender, connectSocket);
                                 isConnectedMemberDict[InitMeshClass.sender]= true;
-                                //연결 성공 시 메시지 출력.
-                                if (OnConnect != null)
-                                    OnConnect(InitMeshClass.sender,new List<string>(),"Mesh 연결");
                                 break;
                             }
                             case (int)PacketType.SHARE_SCHEDULE: 

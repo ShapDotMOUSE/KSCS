@@ -276,6 +276,55 @@ namespace KSCS
             }
         }
 
+        //카테고리/탭 호출용
+        public static void CreateSchedule()
+        {
+            Database.ReadTabScheduleList();
+            Schedule.ReadTabKlasSchedule();
+
+            DateTime startOfMonth = new DateTime(year, month, 1);
+            int dates = DateTime.DaysInMonth(year, month);
+            int dayOfWeek = Convert.ToInt32(startOfMonth.DayOfWeek.ToString("d")) + 1;
+            int index = 0;
+            int date = 1;
+
+            foreach (UserDate userDate in Application.OpenForms.OfType<MainForm>().FirstOrDefault().GetUserDate())
+            {
+                if (++index < dayOfWeek) userDate.ChangeBlank();
+                else if (date <= dates) userDate.SetDate(date++);
+                else userDate.ChangeBlank();
+
+                if (index % 7 == 0) userDate.ChangeColor(Color.Blue);
+                else if (index % 7 == 1) userDate.ChangeColor(Color.Red);
+            }
+        }
+
+        //실시간 일정 공유 호출용
+        public static void CreateSharingSchedule()
+        {
+            //Database.ReadTabScheduleList();
+            //Schedule.ReadTabKlasSchedule();
+
+            //DateTime startOfMonth = new DateTime(year, month, 1);
+            //int dates = DateTime.DaysInMonth(year, month);
+            //int dayOfWeek = Convert.ToInt32(startOfMonth.DayOfWeek.ToString("d")) + 1;
+            DateTime startOfMonth = new DateTime(2023, 6, 1);
+            int dates = DateTime.DaysInMonth(2023, 6);
+            int dayOfWeek = Convert.ToInt32(startOfMonth.DayOfWeek.ToString("d")) + 1;
+            int index = 0;
+            int date = 1;
+
+            foreach (UserDate userDate in Application.OpenForms.OfType<MainForm>().FirstOrDefault().GetUserDate())
+            {
+                if (++index < dayOfWeek) userDate.ChangeBlank();
+                else if (date <= dates) userDate.SetDate(date++);
+                else userDate.ChangeBlank();
+
+                if (index % 7 == 0) userDate.ChangeColor(Color.Blue);
+                else if (index % 7 == 1) userDate.ChangeColor(Color.Red);
+            }
+        }
+
         //마감일정 함수-----------------------------------------------------------------------------------------------------------------------------------------
         public void InitializeMagam()
         {
@@ -315,27 +364,9 @@ namespace KSCS
             else return Color.Gray;
         }
         
-        public static void CreateSchedule()
-        {
-            Database.ReadTabScheduleList();
-            Schedule.ReadTabKlasSchedule();
+        
 
-            DateTime startOfMonth = new DateTime(year, month, 1);
-            int dates = DateTime.DaysInMonth(year, month);
-            int dayOfWeek = Convert.ToInt32(startOfMonth.DayOfWeek.ToString("d")) + 1;
-            int index = 0;
-            int date = 1;
 
-            foreach (UserDate userDate in Application.OpenForms.OfType<MainForm>().FirstOrDefault().GetUserDate())
-            {
-                if (++index < dayOfWeek) userDate.ChangeBlank();
-                else if (date <= dates) userDate.SetDate(date++);
-                else userDate.ChangeBlank();
-
-                if (index % 7 == 0) userDate.ChangeColor(Color.Blue);
-                else if (index % 7 == 1) userDate.ChangeColor(Color.Red);
-            }
-        }
 
         //오늘의 일정 함수
         public static void DisplayToday()

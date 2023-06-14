@@ -571,6 +571,11 @@ namespace KSCS
                 s_client.addressDict = Database.GetAddress(s_client.InviteClass.todoLink);
             }
         }
+
+        public void applyShareSchedule(string stdNum, List<string> categoryList)
+        {
+
+        }
         async public Task EnterShareSchedule()
         {
             Database.SetAddress();
@@ -673,6 +678,19 @@ namespace KSCS
                 if (index % 7 == 0) userDate.ChangeColor(Color.Blue);
                 else if (index % 7 == 1) userDate.ChangeColor(Color.Red);
             }
+        }
+
+        private void btnSettingComplete_Click(object sender, EventArgs e)
+        {
+            List<string> categories = new List<string>();
+            foreach(KeyValuePair<string,bool> category in SharingCategory)
+            {
+                if(category.Value==true)
+                {
+                    categories.Add(category.Key);
+                }
+            }
+            s_client.sendCategoryList(categories);
         }
     }
 }

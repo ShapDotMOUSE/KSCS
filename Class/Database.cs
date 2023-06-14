@@ -128,6 +128,7 @@ namespace KSCS
         {
             string updateQuery = string.Format("UPDATE Student SET address='' WHERE id='{0}'", stdNum);
             MySqlCommand cmd = new MySqlCommand(updateQuery, getDBConnection());
+            cmd.ExecuteNonQuery();
         }
 
         //스케줄 관련======================================================================

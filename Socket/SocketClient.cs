@@ -141,17 +141,21 @@ namespace Socket
             }
         }
 
-        //public async void sendCategoryList(List<string> )
-        //{
-        //    foreach(string member in InviteClass.members)
-        //    {
-        //        if (clientSocketDict.ContainsKey(member) && clientSocketDict[member].Connected)
-        //        {
-        //            NetworkStream networkStream= clientSocketDict[member].GetStream();
+        public async void sendCategoryList(List<string> categoryList)
+        {
+            foreach (string member in InviteClass.members)
+            {
+                if (clientSocketDict.ContainsKey(member) && clientSocketDict[member].Connected)
+                {
+                    NetworkStream networkStream = clientSocketDict[member].GetStream();
+                    ShareSchedule shareSchedule= new ShareSchedule(clientStdNum,categoryList);
+                    shareSchedule.Type = (int)PacketType.SHARE_SCHEDULE;
 
-        //        }
-        //    }
-        //}
+                    Packet.Serialize(shareSchedule).CopyTo(this.sendBuffer,0);
+                    await Send(networkStream);
+                }
+            }
+        }
 
         public async void readStreamData(TcpClient connectSocket)
         {
@@ -206,6 +210,8 @@ namespace Socket
                             case (int)PacketType.SHARE_SCHEDULE: 
                             {
                                 ShareScheduleClass=(ShareSchedule)Packet.Deserialize(readBuffer);
+
+                                OnMessage(ShareScheduleClass.categoryList[0].ToString());
                                 
                                 break;
                             }

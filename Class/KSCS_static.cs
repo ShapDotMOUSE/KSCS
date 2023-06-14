@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
@@ -32,6 +34,13 @@ namespace KSCS.Class
         public static int year, month;
         //실시간 공유
         public static Dictionary<string, bool> SharingCategory;
+        public static Dictionary<string, Color> testStdNumColor = new Dictionary<string, Color>()
+        {
+             {"2019203082", Color.Red}, 
+            {"2019203018",Color.Purple }, 
+            {"2019203055", Color.PowderBlue},
+            {"2019203045", Color.Pink }
+        };
         public static List<string> sharingMember;
     }
 }

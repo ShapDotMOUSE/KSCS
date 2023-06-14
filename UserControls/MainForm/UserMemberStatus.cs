@@ -17,5 +17,17 @@ namespace KSCS.UserControls.MainForm
             InitializeComponent();
             txtLabel.BringToFront();
         }
+
+        public void SetName(string stdNum)
+        {
+            txtLabel.Text = stdNum;
+            this.Name = stdNum;
+        }
+
+        public void SetColor(Color color)
+        {
+            txtLabel.ForeColor = color;
+
+        }
     }
 }

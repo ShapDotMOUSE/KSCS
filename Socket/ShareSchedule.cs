@@ -10,11 +10,12 @@ namespace Socket
     public class ShareSchedule : Packet
     {
         public string stdnum;
-        public List<int> categoryList;
+        public List<string> categoryList;
 
-        public ShareSchedule()
+        public ShareSchedule(string stdnum,List<string> categoryList)
         {
-            this.categoryList = new List<int>();
+            this.stdnum=stdnum;
+            this.categoryList = categoryList;
         }
     }
 }

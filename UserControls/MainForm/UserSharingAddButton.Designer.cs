@@ -1,4 +1,4 @@
-﻿namespace KSCS.UserControls.MainForm
+﻿namespace KSCS
 {
     partial class UserSharingAddButton
     {

@@ -45,14 +45,6 @@ namespace KSCS
         private void chkCategory_Click(object sender, EventArgs e)
         {
             SharingCategory[lblCategory.Text] = chkCategory.Checked;
-            if(chkCategory.Checked )
-            {
-                MainForm.flowLayoutPanelLable.Controls.Add(new UserLabel(lblCategory.Text, Color.Black));
-            }
-            else
-            {
-                MainForm.flowLayoutPanelLable.Controls.Remove(MainForm.flowLayoutPanelLable.Controls["label" + lblCategory.Text]);
-            }
         }
     }
 }

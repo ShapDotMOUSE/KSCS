@@ -31,6 +31,7 @@
             this.lblDate = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.flpEvent = new System.Windows.Forms.FlowLayoutPanel();
             this.btnTransparent = new Guna.UI2.WinForms.Guna2Button();
+            this.lblUnitNum = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblDate
@@ -85,11 +86,25 @@
             this.btnTransparent.MouseEnter += new System.EventHandler(this.UserDate_MouseEnter);
             this.btnTransparent.MouseLeave += new System.EventHandler(this.UserDate_MouseLeave);
             // 
+            // lblUnitNum
+            // 
+            this.lblUnitNum.AutoSize = true;
+            this.lblUnitNum.BackColor = System.Drawing.Color.Transparent;
+            this.lblUnitNum.Font = new System.Drawing.Font("Pretendard Light", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblUnitNum.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblUnitNum.Location = new System.Drawing.Point(122, 98);
+            this.lblUnitNum.Name = "lblUnitNum";
+            this.lblUnitNum.Size = new System.Drawing.Size(24, 14);
+            this.lblUnitNum.TabIndex = 4;
+            this.lblUnitNum.Text = "+ 0";
+            this.lblUnitNum.Visible = false;
+            // 
             // UserDate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(249)))), ((int)(((byte)(229)))));
+            this.Controls.Add(this.lblUnitNum);
             this.Controls.Add(this.btnTransparent);
             this.Controls.Add(this.flpEvent);
             this.Controls.Add(this.lblDate);
@@ -98,6 +113,7 @@
             this.Name = "UserDate";
             this.Size = new System.Drawing.Size(150, 118);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -106,5 +122,6 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel lblDate;
         private System.Windows.Forms.FlowLayoutPanel flpEvent;
         private Guna.UI2.WinForms.Guna2Button btnTransparent;
+        private System.Windows.Forms.Label lblUnitNum;
     }
 }

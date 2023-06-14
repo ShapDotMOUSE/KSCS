@@ -61,9 +61,7 @@
             this.labelPlace = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.labelMember = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
-            this.userMemberStatus1 = new KSCS.UserControls.MainForm.UserMemberStatus();
             this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
-            this.panelSchedules.SuspendLayout();
             this.flpMember.SuspendLayout();
             this.panelTop.SuspendLayout();
             this.panelLabel.SuspendLayout();
@@ -89,7 +87,6 @@
             this.panelSchedules.AutoScroll = true;
             this.panelSchedules.AutoScrollMargin = new System.Drawing.Size(0, 100);
             this.panelSchedules.AutoScrollMinSize = new System.Drawing.Size(0, 450);
-            this.panelSchedules.Controls.Add(this.userMemberStatus1);
             this.panelSchedules.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelSchedules.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.panelSchedules.Location = new System.Drawing.Point(0, 44);
@@ -489,13 +486,6 @@
             this.guna2DragControl1.TargetControl = this.panelTop;
             this.guna2DragControl1.UseTransparentDrag = true;
             // 
-            // userMemberStatus1
-            // 
-            this.userMemberStatus1.Location = new System.Drawing.Point(3, 6);
-            this.userMemberStatus1.Name = "userMemberStatus1";
-            this.userMemberStatus1.Size = new System.Drawing.Size(170, 31);
-            this.userMemberStatus1.TabIndex = 0;
-            // 
             // guna2ShadowForm1
             // 
             this.guna2ShadowForm1.TargetForm = this;
@@ -525,7 +515,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SharingScheduleForm";
             this.Text = "SharingScheduleForm";
-            this.panelSchedules.ResumeLayout(false);
             this.flpMember.ResumeLayout(false);
             this.flpMember.PerformLayout();
             this.panelTop.ResumeLayout(false);
@@ -569,7 +558,6 @@
         private Guna.UI2.WinForms.Guna2Panel panelTop;
         private Guna.UI2.WinForms.Guna2ImageButton closeBtn;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
-        private UserControls.MainForm.UserMemberStatus userMemberStatus1;
         private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm1;
     }
 }

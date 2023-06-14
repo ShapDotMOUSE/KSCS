@@ -13,6 +13,7 @@ using Socket;
 using System.Net;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Threading;
 
 namespace KSCS
 {
@@ -68,7 +69,8 @@ namespace KSCS
                 DisplayCategery();
 
                 //탭 로드
-                SetCheckedCategoryByTab();
+                UpdateTab();
+                UpdateSchedule();
                 TabAll.ShowTab();
             }
             else
@@ -121,19 +123,16 @@ namespace KSCS
         //탭 함수-------------------------------------------------------------------------------------------------------------------------------------------
         private void ChangeTab(object sender, EventArgs e)
         {
-            /*
-             * TODO: 이 부분에 DB에 연결하는 함수 추가 필요
-             */
             UserTabButton OldTab = this.Controls[TabName] as UserTabButton;
             UserTabButton btn = sender as UserTabButton;
             TabName = btn.Name;
             OldTab.HideTab();
-            SetCheckedCategoryByTab();
-
-            LoadMainForm(); //추가
+            UpdateTab();
+            UpdateSchedule();
         }
-        private void SetCheckedCategoryByTab()
-        {
+
+        private void CreateTab() {
+            //UI 쓰레드인 경우
             flpLabel.Controls.Clear();
             foreach (string key in category.Categories.Keys)
             {
@@ -156,6 +155,18 @@ namespace KSCS
                     subCategory.SetColor(subColor);
                 }
             }
+        }
+        public void UpdateTab()
+        {
+            Thread thread = new Thread(new ThreadStart(delegate ()
+            {
+                this.Invoke(new Action(delegate ()
+                {
+                    CreateTab();
+                }));
+
+            }));
+            thread.Start();
         }
 
         //달력 함수-----------------------------------------------------------------------------------------------------------------------------------------
@@ -231,6 +242,40 @@ namespace KSCS
             else if (color == Color.FromArgb(204, 204, 0)) return Color.Yellow;
             else if (color == Color.Gray) return Color.Gainsboro;
             else return Color.Gray;
+        }
+        
+        public void UpdateSchedule()
+        {
+            Thread thread = new Thread(new ThreadStart(delegate ()
+            {
+                this.Invoke(new Action(delegate ()
+                {
+                    CreateSchedule();
+                }));
+
+            }));
+            thread.Start();
+        }
+
+        public static void CreateSchedule()
+        {
+            Database.ReadTabScheduleList();
+
+            DateTime startOfMonth = new DateTime(year, month, 1);
+            int dates = DateTime.DaysInMonth(year, month);
+            int dayOfWeek = Convert.ToInt32(startOfMonth.DayOfWeek.ToString("d")) + 1;
+            int index = 0;
+            int date = 1;
+
+            foreach (UserDate userDate in Application.OpenForms.OfType<MainForm>().FirstOrDefault().GetUserDate())
+            {
+                if (++index < dayOfWeek) userDate.ChangeBlank();
+                else if (date <= dates) userDate.SetDate(date++);
+                else userDate.ChangeBlank();
+
+                if (index % 7 == 0) userDate.ChangeColor(Color.Blue);
+                else if (index % 7 == 1) userDate.ChangeColor(Color.Red);
+            }
         }
 
         //컨트롤 함수------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -19,6 +19,7 @@ using System.Threading;
 using KSCS.Forms;
 using System.Security;
 using System.IO;
+using Microsoft.Win32;
 
 namespace KSCS
 {
@@ -738,6 +739,15 @@ namespace KSCS
                 }
             }
             s_client.sendCategoryList(categories);
+        }
+
+        private void btn_logout_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Registry.CurrentUser.DeleteSubKeyTree(@"KSCS");
+            }catch (Exception ex) { }
+            this.Close();
         }
     }
 }

@@ -333,22 +333,6 @@ namespace KSCS
 
         public static void ReadShareScheduleList(string shareNum,List<string> categoryList)
         {
-            MySqlCommand cmd;
-            MySqlDataReader table;
-            if (ShareNumCategory.ContainsKey(shareNum))
-            {
-                //예전 딕셔너리에 있는 값의 스케줄 삭제 후, 추가
-                string selectQuery1 = string.Format("SELECT Schedule.id FROM Schedule WHERE Schedule.category_id IN (SELECT Category.id FROM Category WHERE (Category.student_id = '{0}' AND Category.parent_category_id IS NOT NULL) AND Category.category_name IN ({1}))",
-                    shareNum, string.Join(",", ShareNumCategory[shareNum].Select(category => string.Format("'{0}'", category))));
-
-                cmd = new MySqlCommand(selectQuery1, getDBConnection());
-                table = cmd.ExecuteReader();
-                while (table.Read())
-                {
-                    monthScheduleList.ForEach(scheduleList => scheduleList.RemoveAll(schedule => schedule.id == int.Parse(table["id"].ToString())));
-                }
-                table.Close();
-            }
             string selectQuery2 = string.Format("SELECT * FROM (SELECT Schedule.id AS schedule_id, Schedule.student_id, Category.id AS category_id, Schedule.startDate, Schedule.endDate, Schedule.status, Schedule.title, Schedule.content, Schedule.place, Schedule.alarmStatus, Category.category_name, Category.parent_category_id, Category.color " +
                     "FROM Schedule JOIN Category ON Schedule.category_id = Category.id " +
                     "WHERE Schedule.student_id = '{0}' AND(startDate BETWEEN DATE_FORMAT('{1}', '%Y-%m-%d') AND LAST_DAY('{1}') " +
@@ -356,18 +340,20 @@ namespace KSCS
                     "IN(SELECT Category.id FROM Category WHERE(Category.student_id = '{0}' AND Category.parent_category_id IS NOT NULL) AND Category.category_name IN ({2}))) AS AllSchedule " +
                     "LEFT OUTER JOIN(SELECT m1.schedule_id, GROUP_CONCAT(m2.student_id) AS concatenated_student_ids FROM Members m1 INNER JOIN Members m2 ON m1.main_schedule_id = m2.main_schedule_id GROUP BY m1.schedule_id) AS MemberList ON AllSchedule.schedule_id = MemberList.schedule_id ORDER BY startDate ASC; ",
                     shareNum, new DateTime(2023, 6, 1).ToString("yyyy-MM-dd"), string.Join(",", categoryList.Select(category => string.Format("'{0}'", category))));
-            cmd = new MySqlCommand(selectQuery2, getDBConnection());
-            table = cmd.ExecuteReader();
-            //monthScheduleList.Clear(); //한달 스케줄 초기화
+            MySqlCommand cmd = new MySqlCommand(selectQuery2, getDBConnection());
+            MySqlDataReader table = cmd.ExecuteReader();
+            monthScheduleList.Clear(); //한달 스케줄 초기화
 
-            //딕셔너리에 추가
-            if (ShareNumCategory.ContainsKey(shareNum)) ShareNumCategory[shareNum] = categoryList;
-            else ShareNumCategory.Add(shareNum, categoryList);
+            List<List<Schedule>> MemberScheduleList = new List<List<Schedule>>(); //한달 단위 schedule list 생성
+            
+            //이미 딕셔너리 존재하면, 삭제
+            if (ShareNum_ScheduleList.ContainsKey(shareNum)) ShareNum_ScheduleList.Remove(shareNum); 
+
 
             //하루 단위 리스트 생성
             for (int i = 0; i < DateTime.DaysInMonth(year, month); i++)
             {
-                monthScheduleList.Add(new List<Schedule>());
+                MemberScheduleList.Add(new List<Schedule>());
             }
 
             while (table.Read())
@@ -397,12 +383,16 @@ namespace KSCS
                 {
                     if (Convert.ToInt32(schedule.startDate.AddDays(i).ToString("MM")) == month)
                     {
-                        monthScheduleList[Convert.ToInt32(schedule.startDate.AddDays(i).ToString("dd")) - 1].Add(schedule);
+                        schedule.category = shareNum; //카테고리에, 스케줄 주인 학번을 추가
+                        MemberScheduleList[Convert.ToInt32(schedule.startDate.AddDays(i).ToString("dd")) - 1].Add(schedule);
                     }
                 }
             }
 
             table.Close();
+
+            ShareNum_ScheduleList.Add(shareNum, MemberScheduleList); //딕셔너리 추가
+
         }
 
 

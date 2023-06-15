@@ -103,5 +103,21 @@ namespace KSCS
                 }
             }
         }
+
+        static public void LoadTotalScheduleList()
+        {
+            foreach (KeyValuePair<string, List<List<Schedule>>> kvp in ShareNum_ScheduleList)
+            {
+                string key = kvp.Key;
+                List<List<Schedule>> memberScheduleList = kvp.Value;
+
+                int i = 0;
+                foreach (List<Schedule> dayScheduleList in memberScheduleList)
+                {
+                    monthScheduleList[i++].AddRange(dayScheduleList);
+                }
+            }
+        }
+
     }
 }

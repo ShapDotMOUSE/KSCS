@@ -35,13 +35,25 @@
 
 <details>
 <summary>캘린더 인터페이스</summary>
-<div markdown="1">       
+<div markdown="1">   
+
+![캘린더 인터페이스](https://github.com/SharpDotMOUSE/KSCS/assets/89342648/877c5062-148b-4f56-bcb5-2df30d314a60)
+ 
+![일정 생성](https://github.com/SharpDotMOUSE/KSCS/assets/89342648/b6598a34-16e8-4b89-b6dd-ee196d268ad1)
+
 </div>
 </details>
 
 <details>
 <summary>로그인 세션 유지</summary>
 <div markdown="1">       
+ 
+![로그인 및 자동 로그인](https://github.com/SharpDotMOUSE/KSCS/assets/89342648/1818f4ad-159d-42ff-9f58-2de8a6e23afa)
+
+![자동로그인](https://github.com/SharpDotMOUSE/KSCS/assets/89342648/98e49cba-b977-4e7a-8a8b-e0ec32b4e825)
+
+
+
 </div>
 </details>
 
@@ -53,19 +65,36 @@
 
 <details>
 <summary>오늘의 일정 & 마감 일정</summary>
-<div markdown="1">       
+<div markdown="1">   
+ 
+![오늘의 일정](https://github.com/SharpDotMOUSE/KSCS/assets/89342648/bb352d52-4ecb-4dd8-ab0d-bf32c09d2c83)
+
+![마감일정_온라인강의](https://github.com/SharpDotMOUSE/KSCS/assets/89342648/d6e06663-79af-417e-a839-611d738eb662)
+![마감일정_과제](https://github.com/SharpDotMOUSE/KSCS/assets/89342648/00150be1-ee4f-4524-b11f-2cd85b8792a6)
+![마감일정_퀴즈](https://github.com/SharpDotMOUSE/KSCS/assets/89342648/10be7e6f-34c3-4ec3-abdd-e34ff052aa82)
+![마감일정_팀플](https://github.com/SharpDotMOUSE/KSCS/assets/89342648/49a667b1-2145-4841-9262-32c63e14a219)
+
+ 
 </div>
 </details>
 
 <details>
 <summary>공유 일정</summary>
-<div markdown="1">       
+<div markdown="1">     
+
+![공유 일정](https://github.com/SharpDotMOUSE/KSCS/assets/89342648/7bf50a53-a36b-4f9f-9661-a8cfeeb7dc28)
+
+![공유 일정_생성](https://github.com/SharpDotMOUSE/KSCS/assets/89342648/a86e1ae2-6fe0-4a73-9ee0-1a0deec9d9f6)
+
+ 
 </div>
 </details>
 
 <details> 
 <summary>일정 보기 탭 & 카테고리</summary>
 <div markdown="1">       
+
+
 </div>
 </details>
 

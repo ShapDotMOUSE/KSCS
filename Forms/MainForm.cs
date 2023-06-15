@@ -534,9 +534,9 @@ namespace KSCS
             Database.DeleteAddress();
             List<string> testStdnums = new List<string>
                 {
-                    //"2019203082",
+                    "2019203082",
                     "2021203078",
-                    //"2019203055",
+                    "2019203055",
                     "2019203045"
                 };
 

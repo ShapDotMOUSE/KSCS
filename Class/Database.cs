@@ -333,6 +333,7 @@ namespace KSCS
 
         public static void ReadShareScheduleList(string shareNum,List<string> categoryList)
         {
+            if (categoryList.Count == 0) return;
             string selectQuery2 = string.Format("SELECT * FROM (SELECT Schedule.id AS schedule_id, Schedule.student_id, Category.id AS category_id, Schedule.startDate, Schedule.endDate, Schedule.status, Schedule.title, Schedule.content, Schedule.place, Schedule.alarmStatus, Category.category_name, Category.parent_category_id, Category.color " +
                     "FROM Schedule JOIN Category ON Schedule.category_id = Category.id " +
                     "WHERE Schedule.student_id = '{0}' AND(startDate BETWEEN DATE_FORMAT('{1}', '%Y-%m-%d') AND LAST_DAY('{1}') " +

@@ -617,19 +617,19 @@ namespace KSCS
                 AllowOrRequestForm allowOrRequestForm = new AllowOrRequestForm();
                 allowOrRequestForm.lbl_StudentNumber.Text = boss;
                 allowOrRequestForm.TopMost = true;
+                foreach (string memberNum in s_client.InviteClass.members)
+                {
+                    UserMemberStatus memberStatus = new UserMemberStatus();
+                    memberStatus.SetName(memberNum);
+                    memberStatus.SetColor(testStdNumColor[memberNum]);
+                    if (memberNum == stdNum)
+                        memberStatus.SetStatus(true);
+                    flowLayoutPanelLable.Controls.Add(memberStatus);
+                }
                 DialogResult = allowOrRequestForm.ShowDialog();
                 if (DialogResult == DialogResult.OK)
                 {
                     btnSettingComplete.Enabled = true;
-                    foreach (string memberNum in s_client.InviteClass.members)
-                    {
-                        UserMemberStatus memberStatus = new UserMemberStatus();
-                        memberStatus.SetName(memberNum);
-                        memberStatus.SetColor(testStdNumColor[memberNum]);
-                        if (memberNum == stdNum)
-                            memberStatus.SetStatus(true);
-                        flowLayoutPanelLable.Controls.Add(memberStatus);
-                    }
                 }
             }));
         }

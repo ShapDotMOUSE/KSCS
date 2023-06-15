@@ -40,13 +40,16 @@ namespace KSCS
             flpEvent.Controls.Clear(); //userEvent 컨트롤 초기화
             lblUnitNum.Visible = false;
 
-            foreach (Schedule schedule in monthScheduleList[Convert.ToInt32(lblDate.Text) - 1])
-                AddEvent(schedule.title, testStdNumColor[schedule.category]);
-
-            if (monthScheduleList[Convert.ToInt32(lblDate.Text) - 1].Count > 2)
+            if (monthScheduleList.Count > 0)
             {
-                lblUnitNum.Visible = true;
-                lblUnitNum.Text = "+ " + (monthScheduleList[Convert.ToInt32(lblDate.Text) - 1].Count - 2).ToString();
+                foreach (Schedule schedule in monthScheduleList[Convert.ToInt32(lblDate.Text) - 1])
+                    AddEvent(schedule.title, testStdNumColor[schedule.category]);
+
+                if (monthScheduleList[Convert.ToInt32(lblDate.Text) - 1].Count > 2)
+                {
+                    lblUnitNum.Visible = true;
+                    lblUnitNum.Text = "+ " + (monthScheduleList[Convert.ToInt32(lblDate.Text) - 1].Count - 2).ToString();
+                }
             }
             this.Refresh();
         }

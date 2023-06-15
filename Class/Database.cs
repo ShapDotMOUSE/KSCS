@@ -338,7 +338,7 @@ namespace KSCS
                 "WHERE Schedule.student_id = '{0}' AND(startDate BETWEEN DATE_FORMAT('{1}', '%Y-%m-%d') AND LAST_DAY('{1}') " +
                 "OR endDate BETWEEN DATE_FORMAT('{1}', '%Y-%m-%d') AND LAST_DAY('{1}')) AND Schedule.category_id " +
                 "IN(SELECT Category.id FROM Category WHERE(Category.student_id = '{0}' AND Category.parent_category_id IS NOT NULL) AND Category.category_name IN {2})) AS AllSchedule",
-                shareNum, new DateTime(2023, 6, 1).ToString("yyyy-MM-dd"), categoryList);
+                shareNum, new DateTime(2023, 6, 1).ToString("yyyy-MM-dd"), string.Join(",", categoryList));
             MySqlCommand cmd = new MySqlCommand(selectQuery, getDBConnection());
             MySqlDataReader table = cmd.ExecuteReader();
             monthScheduleList.Clear(); //한달 스케줄 초기화

@@ -534,7 +534,7 @@ namespace KSCS
             List<string> testStdnums = new List<string>
                 {
                     "2019203082",
-                    "2019203055",
+                    "2021203078",
                 };
 
             btnUserSharingAddButton.ChangeStatus(true);

@@ -575,7 +575,7 @@ namespace KSCS
             List<string> testStdnums = new List<string>
                 {
                     "2019203082",
-                    "2021203078",
+                    //"2021203078",
                     "2019203055",
                     "2019203045"
                 };
@@ -617,15 +617,15 @@ namespace KSCS
                 AllowOrRequestForm allowOrRequestForm = new AllowOrRequestForm();
                 allowOrRequestForm.lbl_StudentNumber.Text = boss;
                 allowOrRequestForm.TopMost = true;
-                foreach (string memberNum in s_client.InviteClass.members)
-                {
-                    UserMemberStatus memberStatus = new UserMemberStatus();
-                    memberStatus.SetName(memberNum);
-                    memberStatus.SetColor(testStdNumColor[memberNum]);
-                    if (memberNum == stdNum)
-                        memberStatus.SetStatus(true);
-                    flowLayoutPanelLable.Controls.Add(memberStatus);
-                }
+                    foreach (string memberNum in s_client.InviteClass.members)
+                    {
+                        UserMemberStatus memberStatus = new UserMemberStatus();
+                        memberStatus.SetName(memberNum);
+                        memberStatus.SetColor(testStdNumColor[memberNum]);
+                        if (memberNum == stdNum)
+                            memberStatus.SetStatus(true);
+                        flowLayoutPanelLable.Controls.Add(memberStatus);
+                    }
                 DialogResult = allowOrRequestForm.ShowDialog();
                 if (DialogResult == DialogResult.OK)
                 {

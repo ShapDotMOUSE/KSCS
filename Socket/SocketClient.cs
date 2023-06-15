@@ -109,6 +109,10 @@ namespace Socket
                         await Send(networkStream);
                         await readStreamData(todoClient);
                     }
+                    else
+                    {
+                        OnStatusChange(stdNum, false);
+                    }
                 }
                 catch
                 {

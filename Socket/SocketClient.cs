@@ -152,7 +152,6 @@ namespace Socket
                 {
                     Trace.WriteLine(string.Format("연결 실패 + {0}: 실시간 일정 공유에 접속되어 있지 않습니다.\n{1}", stdNum, se.Message));
                     OnStatusChange(stdNum, false);
-                    clientSocketDict[stdNum].Close();
                 }
                 catch (Exception e)
                 {
@@ -179,11 +178,15 @@ namespace Socket
                     }
 
                 }
+                catch(SocketException se)
+                {
+                    Trace.WriteLine(string.Format("sendCategory - Exception : {0}", se.Message));
+                    OnStatusChange(member, false);
+                }
                 catch (Exception e)
                 {
                     Trace.WriteLine(string.Format("sendCategory - Exception : {0}", e.Message));
                     OnStatusChange(member, false);
-                    clientSocketDict[member].Close();
                 }
             }
         }
@@ -288,8 +291,6 @@ namespace Socket
                         OnStatusChange(client.Key, false);
                     }
                 }
-                stream.Close();
-                connectSocket.Close();
             }
         }
     }

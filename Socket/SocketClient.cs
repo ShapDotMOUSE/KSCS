@@ -33,7 +33,6 @@ namespace Socket
         {
             this.clientStdNum = studentNum;
             clientSocketDict = new Dictionary<string, TcpClient>();
-            isConnectedMemberDict = new Dictionary<string, bool>();
             addressDict = new Dictionary<string, string>();
         }
 

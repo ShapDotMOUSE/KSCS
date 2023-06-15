@@ -16,24 +16,30 @@ namespace KSCS
     public partial class UserSharingAddButton : UserControl
     {
         public EventHandler CreateSharing;
-        public bool Sharing;
+        public static EventHandler EnableTab;
+        public static EventHandler Exit;
+
+        private bool Sharing;
         public UserSharingAddButton()
         {
             InitializeComponent();
             Sharing = false;
+            AllowOrRequestForm.SharingButtonStatusChange = ChangeStatusTrueHandler;
         }
 
         private void sharingButton_Click(object sender, EventArgs e)
         {
-            if (label1.Text == "실시간 공유")
+            if (!Sharing)
             {
                 SharingClickForm sharingClickForm = new SharingClickForm();
                 sharingClickForm.SharingClick += CreateSharing;
+                sharingClickForm.SharingClick += EnableTab;
                 DialogResult result = sharingClickForm.ShowDialog();
             }
             else
             {
-
+                ChangeStatus(false);
+                Exit?.Invoke(this, e);
             }
         }
 
@@ -42,11 +48,18 @@ namespace KSCS
             if (en)
             {
                 label1.Text = "나가기";
+                Sharing = true;
             }
             else
             {
                 label1.Text = "실시간 공유";
-            } 
+                Sharing = false;
+            }
+        }
+
+        public void ChangeStatusTrueHandler(object sender, EventArgs e)
+        {
+            ChangeStatus(true);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
@@ -15,14 +16,13 @@ namespace Socket
         //본인 학번
         public string clientStdNum;
         //다른 학번들과 연결 클라이언트 딕셔너리
-        public Dictionary<string,TcpClient> clientSocketDict;
-        public Dictionary<string, bool> isConnectedMemberDict;
+        public Dictionary<string, TcpClient> clientSocketDict;
         //데이터베이스에서 얻어온 address 딕셔너리
         public Dictionary<string, string> addressDict;
-        
-        private byte[] sendBuffer=new byte[1024 * 4];
-        private byte[] readBuffer=new byte[1024 * 4];
-        
+
+        private byte[] sendBuffer = new byte[1024 * 4];
+        private byte[] readBuffer = new byte[1024 * 4];
+
         public Invite InviteClass;
         public InitMesh InitMeshClass;
         public ShareSchedule ShareScheduleClass;
@@ -32,12 +32,11 @@ namespace Socket
         public SocketClient(string studentNum)
         {
             this.clientStdNum = studentNum;
-            clientSocketDict=new Dictionary<string, TcpClient>();
-            isConnectedMemberDict = new Dictionary<string, bool>();
+            clientSocketDict = new Dictionary<string, TcpClient>();
             addressDict = new Dictionary<string, string>();
         }
 
-        public delegate void ConnectClientHandler(string sender,List<string> todo,string type);
+        public delegate void ConnectClientHandler(string sender, List<string> todo, string type);
         public event ConnectClientHandler OnConnect;
 
         public delegate void MessageHandler(string message);
@@ -49,8 +48,11 @@ namespace Socket
         public delegate void InvitationMessageHandler(string boss);
         public event InvitationMessageHandler OnInvite;
 
-        public delegate void SendCategoryHandler(string stdNum,List<string> categories);
+        public delegate void SendCategoryHandler(string stdNum, List<string> categories);
         public event SendCategoryHandler OnSendCategories;
+
+        public delegate void StatusChangeHandler(string stdNum, bool status);
+        public event StatusChangeHandler OnStatusChange;
 
         public async Task Send(NetworkStream networkStream)
         {
@@ -66,7 +68,7 @@ namespace Socket
         //모든 맴버 초대 함수
         public async void inviteAllMembers()
         {
-            List<string> todoLink=InviteClass.todoLink.ToList();
+            List<string> todoLink = InviteClass.todoLink.ToList();
             foreach (string member in InviteClass.todoLink)
             {
                 if (!addressDict.ContainsKey(member))
@@ -80,24 +82,25 @@ namespace Socket
         }
 
         //맴버 초대 함수
-        private async void inviteMember(string stdNum,List<string> todoLink)
+        private async void inviteMember(string stdNum, List<string> todoLink)
         {
             if (stdNum != null)
             {
-                NetworkStream networkStream=null;
+                NetworkStream networkStream = null;
                 try
                 {
                     //OnMessage("초대 시도" + stdNum);
                     TcpClient todoClient = new TcpClient();
                     //각 사용자 들에게 접속 시도
                     todoClient.Connect(addressDict[stdNum], 7777);
-                    
+
 
                     if (todoClient.Connected)
                     {
                         networkStream = todoClient.GetStream();
                         //접속 후 추가
                         clientSocketDict.Add(stdNum, todoClient);
+                        OnStatusChange(stdNum, true);
                         Invite invite = InviteClass;
                         invite.boss = clientStdNum;
                         invite.todoLink = todoLink;
@@ -106,9 +109,14 @@ namespace Socket
                         await Send(networkStream);
                         await readStreamData(todoClient);
                     }
+                    else
+                    {
+                        OnStatusChange(stdNum, false);
+                    }
                 }
                 catch
                 {
+                    OnStatusChange(stdNum, false);
                     Trace.WriteLine(string.Format("연결 실패 + {0}: 실시간 일정 공유에 접속되어 있지 않습니다.", stdNum));
                 }
             }
@@ -127,7 +135,7 @@ namespace Socket
 
                     if (todoClient.Connected)
                     {
-                        isConnectedMemberDict[stdNum] = true;
+                        OnStatusChange(stdNum, true);
                         networkStream = todoClient.GetStream();
                         //접속 후 추가
                         clientSocketDict.Add(stdNum, todoClient);
@@ -138,12 +146,18 @@ namespace Socket
                         Packet.Serialize(initMesh).CopyTo(this.sendBuffer, 0);
                         await Send(networkStream);
                         await readStreamData(todoClient);
-
                     }
                 }
-                catch(Exception e) 
+                catch(SocketException se)
                 {
-                    Trace.WriteLine(string.Format("연결 실패 + {0}: 실시간 일정 공유에 접속되어 있지 않습니다.\n{1}", stdNum,e.Message));
+                    Trace.WriteLine(string.Format("연결 실패 + {0}: 실시간 일정 공유에 접속되어 있지 않습니다.\n{1}", stdNum, se.Message));
+                    OnStatusChange(stdNum, false);
+                    clientSocketDict[stdNum].Close();
+                }
+                catch (Exception e)
+                {
+                    Trace.WriteLine(string.Format("연결 실패 + {0}: 실시간 일정 공유에 접속되어 있지 않습니다.\n{1}", stdNum, e.Message));
+                    OnStatusChange(stdNum, false);
                 }
             }
         }
@@ -154,7 +168,7 @@ namespace Socket
             {
                 try
                 {
-                    if (!member.Equals(clientStdNum)&&clientSocketDict.ContainsKey(member)&& clientSocketDict[member].Connected)
+                    if (!member.Equals(clientStdNum) && clientSocketDict.ContainsKey(member) && clientSocketDict[member].Connected)
                     {
                         NetworkStream networkStream = clientSocketDict[member].GetStream();
                         ShareSchedule shareSchedule = new ShareSchedule(clientStdNum, categoryList);
@@ -163,11 +177,13 @@ namespace Socket
                         Packet.Serialize(shareSchedule).CopyTo(this.sendBuffer, 0);
                         await Send(networkStream);
                     }
-                    
+
                 }
                 catch (Exception e)
                 {
                     Trace.WriteLine(string.Format("sendCategory - Exception : {0}", e.Message));
+                    OnStatusChange(member, false);
+                    clientSocketDict[member].Close();
                 }
             }
         }
@@ -189,19 +205,18 @@ namespace Socket
                             {
                                 InviteClass = (Invite)Packet.Deserialize(readBuffer);
                                 //딕셔너리 초기화
-                                foreach(string member in InviteClass.members)
+                                foreach (string member in InviteClass.members)
                                 {
-                                    if(member != clientStdNum)
-                                        isConnectedMemberDict.Add(member, false);
+                                    if (member != clientStdNum)
+                                        OnStatusChange(member, false);
                                 }
 
                                 //보스와의 연결 추가
                                 clientSocketDict.Add(InviteClass.boss, connectSocket);
-                                isConnectedMemberDict[InviteClass.boss]= true;
-
                                 //연결 성공 시 메시지 출력.
                                 if (OnInvite != null)
                                     OnInvite(InviteClass.boss);
+                                OnStatusChange(InviteClass.boss, true);
 
                                 //데이터 베이스에서 ip 불러오기
                                 OnLoadAddress();
@@ -214,38 +229,37 @@ namespace Socket
                                 }
                                 break;
                             }
-                            case (int)PacketType.INIT_MESH:
+                        case (int)PacketType.INIT_MESH:
                             {
-                                InitMeshClass=(InitMesh)Packet.Deserialize(readBuffer);
+                                InitMeshClass = (InitMesh)Packet.Deserialize(readBuffer);
                                 //다른 노드와의 연결 추가
                                 clientSocketDict.Add(InitMeshClass.sender, connectSocket);
-                                isConnectedMemberDict[InitMeshClass.sender]= true;
+                                OnStatusChange(InitMeshClass.sender, true);
                                 break;
                             }
-                            case (int)PacketType.SHARE_SCHEDULE: 
+                        case (int)PacketType.SHARE_SCHEDULE:
                             {
-                                ShareScheduleClass=(ShareSchedule)Packet.Deserialize(readBuffer);
+                                ShareScheduleClass = (ShareSchedule)Packet.Deserialize(readBuffer);
 
 
                                 OnSendCategories(ShareScheduleClass.stdnum, ShareScheduleClass.categoryList);
 
                                 break;
                             }
-                            case (int)PacketType.CREATE_SHARE_SCHEDULE:
+                        case (int)PacketType.CREATE_SHARE_SCHEDULE:
                             {
-                                CreateShareScheduleClass=(CreateShareSchedule)Packet.Deserialize(readBuffer);
+                                CreateShareScheduleClass = (CreateShareSchedule)Packet.Deserialize(readBuffer);
                                 //스케줄 데이터 보여주고 동의 여부 체크
 
                                 break;
                             }
-                            case (int)PacketType.AGREE_SHARE_SCHEDULE:
+                        case (int)PacketType.AGREE_SHARE_SCHEDULE:
                             {
-                                AgreeShareScheduleClass=(AgreeShareSchedule)Packet.Deserialize(readBuffer);
+                                AgreeShareScheduleClass = (AgreeShareSchedule)Packet.Deserialize(readBuffer);
                                 //동의 시 일정 추가
-                                
                                 break;
                             }
-                            
+
                     }
                 }
             }
@@ -253,28 +267,29 @@ namespace Socket
             {
                 Trace.WriteLine(string.Format("doConnect - SocketException : {0}", se.Message));
 
-                if (clientSocketDict.Count>0)
+                foreach (KeyValuePair<string, TcpClient> client in clientSocketDict)
                 {
-                    foreach(TcpClient tcpClient in clientSocketDict.Values)
-                        tcpClient.Close();
-                    stream.Close();
-                    connectSocket.Close();
-
-
+                    if (client.Value.Equals(connectSocket))
+                    {
+                        OnStatusChange(client.Key, false);
+                    }
                 }
-
+                stream.Close();
+                connectSocket.Close();
             }
             catch (Exception ex)
             {
                 Trace.WriteLine(string.Format("doConnect - Exception : {0}", ex.Message));
 
-                if (clientSocketDict.Count > 0)
+                foreach (KeyValuePair<string, TcpClient> client in clientSocketDict)
                 {
-                    foreach (TcpClient tcpClient in clientSocketDict.Values)
-                        tcpClient.Close();
-                    stream.Close();
-                    connectSocket.Close();
+                    if (client.Value.Equals(connectSocket))
+                    {
+                        OnStatusChange(client.Key, false);
+                    }
                 }
+                stream.Close();
+                connectSocket.Close();
             }
         }
     }

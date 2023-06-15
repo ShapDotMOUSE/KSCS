@@ -733,6 +733,7 @@ namespace KSCS
             }
         }
 
+        //보낼 때
         private void btnSettingComplete_Click(object sender, EventArgs e)
         {
             List<string> categories = new List<string>();
@@ -743,6 +744,7 @@ namespace KSCS
                     categories.Add(category.Key);
                 }
             }
+            monthScheduleList.Clear(); //한달 스케줄 초기화
             Database.ReadShareScheduleList(stdNum, categories);
             CreateSharingSchedule(stdNum);
             s_client.sendCategoryList(categories);

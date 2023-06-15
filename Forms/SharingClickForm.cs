@@ -15,10 +15,11 @@ namespace KSCS.Forms
     public partial class SharingClickForm : Form
     {
         public event EventHandler SharingClick;
-        public List<string> members { get; }
+        public List<string> members { get; set; }
         public SharingClickForm()
         {
             InitializeComponent();
+            members = new List<string>();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

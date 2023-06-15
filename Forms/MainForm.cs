@@ -20,6 +20,7 @@ using KSCS.Forms;
 using System.Security;
 using System.IO;
 using Microsoft.Win32;
+using MySqlX.XDevAPI;
 
 namespace KSCS
 {
@@ -131,8 +132,6 @@ namespace KSCS
                     uc.SetBasicMode(item);
                     uc.setMain(key);
                     ((FlowLayoutPanel)((UserMainCategory)panelMainCategory.Controls[key]).flpSubCategory).Controls.Add(uc);
-
-
                 }
             }
         }
@@ -150,6 +149,7 @@ namespace KSCS
                     {
                         SharingCategory.Add(item, false);
                         UserSharingSubCategory ucSharing = new UserSharingSubCategory();
+                        ucSharing.shareCategory = LoadScheduleOnSharing;
                         ucSharing.SetBasicMode(item);
                         ucSharing.setMain(key);
                         ((FlowLayoutPanel)((UserMainCategory)panelMainCategory.Controls[key]).flpSubCategory).Controls.Add(ucSharing);
@@ -162,42 +162,99 @@ namespace KSCS
                 }
             }
         }
-        public void SharingTabEnable(bool enable)
+
+        private void LoadScheduleOnSharing(object sender, EventArgs e)
         {
-            TabAll.Enabled = !enable;
-            Tab1.Enabled = !enable;
-            Tab2.Enabled = !enable;
-            Tab3.Enabled = !enable;
-            Tab4.Enabled = !enable;
+            List<string> categories=new List<string>();
+            foreach (KeyValuePair<string, bool> category in SharingCategory)
+            {
+                if (category.Value == true)
+                {
+                    categories.Add(category.Key);
+                }
+            }
+            monthScheduleList.Clear(); //한달 스케줄 초기화
+            Database.ReadShareScheduleList(stdNum, categories);
+            Schedule.LoadTotalScheduleList();
+            CreateSharingSchedule();
+        }
+        private void EnterSharingTab(bool enable)
+        {
             if (enable)
             {
+                UserTabButton OldTab = this.Controls[TabName] as UserTabButton;
+                OldTab.HideTab();
                 flowLayoutPanelLable.Controls.Clear();
                 TabName = TabSharing.Name;
                 TabSharing.ShowTab();
                 SharingCategory = new Dictionary<string, bool>();
                 SharingSubCategorySet(enable);
+                AllowOrRequestForm.EnableTab = TabEnableHadler;
+                UserSharingAddButton.Exit = ExitSharingHandler;
+                UserSharingAddButton.EnableTab = TabEnableHadler;
 
             }
             else
             {
+                TabSharing.HideTab();
                 SharingCategory = null;
-                TabName = TabAll.Name;
+                isListen = false;
+                isShareSchedule = false;
+                AllowOrRequestForm.EnableTab = null;
+                UserSharingAddButton.EnableTab = null;
+                UserSharingAddButton.Exit = null;
+                s_client = null;
+
                 SharingSubCategorySet(enable);
-                LoadMainForm();
-                SetCheckedCategoryByTab();
+                listener.Stop();
             }
+        }
 
+        public void TabEnableHadler(object sender, EventArgs e)
+        {
+            EnableTab(true);
+        }
 
+        public void EnableTab(bool enable)
+        {
+            Tab1.Enabled = !enable;
+            Tab2.Enabled = !enable;
+            Tab3.Enabled = !enable;
+            Tab4.Enabled = !enable;
+            TabAll.Enabled = !enable;
+        }
+
+        public void ExitSharingHandler(object sender, EventArgs e)
+        {
+            
+            EnableTab(false);
+            TabAll.ShowTab();
+            ChangeTab(TabAll, e);
+        }
+
+        public void ChangeSharingMemberLableStatus(string stdNum, bool enable)
+        {
+            Invoke((MethodInvoker)(() =>
+            {
+                    ((UserMemberStatus)flowLayoutPanelLable.Controls[stdNum])?.SetStatus(enable);
+            }));
         }
 
         //탭 함수-------------------------------------------------------------------------------------------------------------------------------------------
         private void ChangeTab(object sender, EventArgs e)
         {
-            UserTabButton OldTab = this.Controls[TabName] as UserTabButton;
+            if (TabName != TabSharing.Name)
+            {
+                UserTabButton OldTab = this.Controls[TabName] as UserTabButton;
+                OldTab.HideTab();
+            }
+            else
+            {
+                EnterSharingTab(false);
+            }
+
             UserTabButton btn = sender as UserTabButton;
             TabName = btn.Name;
-            OldTab.HideTab();
-            isShareSchedule = false;
             ChangeShareSchedule();
             LoadMainForm(); //추가
             UpdateTab();
@@ -304,7 +361,7 @@ namespace KSCS
         }
 
         //실시간 일정 공유 호출용
-        public static void CreateSharingSchedule(string shareNum) //학번
+        public static void CreateSharingSchedule() //학번
         {
 
             DateTime startOfMonth = new DateTime(2023, 6, 1);
@@ -316,7 +373,7 @@ namespace KSCS
             foreach (UserDate userDate in Application.OpenForms.OfType<MainForm>().FirstOrDefault().GetUserDate())
             {
                 if (++index < dayOfWeek) userDate.ChangeBlank();
-                else if (date <= dates) userDate.SetShareDate(date++, shareNum);
+                else if (date <= dates) userDate.SetShareDate(date++);
                 else userDate.ChangeBlank();
 
                 if (index % 7 == 0) userDate.ChangeColor(Color.Blue);
@@ -362,7 +419,7 @@ namespace KSCS
             else if (color == Color.Gray) return Color.Gainsboro;
             else return Color.Gray;
         }
-        
+
         //오늘의 일정 함수
         public static void DisplayToday()
         {
@@ -377,7 +434,7 @@ namespace KSCS
                     AutoSize = true,
                     Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
                 };
-                lbl.Text = schedule.title + " " + schedule.startDate.ToString("HH:mm") + " ~ "+schedule.endDate.ToString("HH:mm");
+                lbl.Text = schedule.startDate.ToString("HH:mm") + " ~ " + schedule.endDate.ToString("HH:mm") + " " + schedule.title;
                 lbl.Location = new Point(0, index * (lbl.Height + 3));
                 if (panel.InvokeRequired) panel.Invoke(new MethodInvoker(delegate { panel.Controls.Add(lbl); }));
                 else panel.Controls.Add(lbl);
@@ -529,43 +586,41 @@ namespace KSCS
         public void InvitieShareSchedule(object sender, EventArgs e)
         {
 
-            MessageBox.Show("실시간 일정 공유 생성");
             listener.Stop();
             isListen = false;
             Database.DeleteAddress();
-            List<string> testStdnums = new List<string>
-                {
-                    "2019203082",
-                    "2019203018",
-                };
-
+            
             btnUserSharingAddButton.ChangeStatus(true);
 
-            List<string> testTodo = testStdnums.ToList();
-            testTodo.Remove(stdNum);
+            sharingMember.Add(stdNum);
+            List<string> todoLink = sharingMember.ToList();
+            todoLink.Remove(stdNum);
 
-            foreach (string stdNum in testStdnums)
+            foreach (string memberNum in sharingMember)
             {
                 UserMemberStatus memberStatus = new UserMemberStatus();
-                memberStatus.SetName(stdNum);
-                memberStatus.SetColor(testStdNumColor[stdNum]);
+                memberStatus.SetName(memberNum);
+                memberStatus.SetColor(testStdNumColor[memberNum]);
+                if (memberNum == stdNum)
+                    memberStatus.SetStatus(true);
+                
                 flowLayoutPanelLable.Controls.Add(memberStatus);
             }
 
 
-            s_client.addressDict = Database.GetAddress(testStdnums);
+            s_client.addressDict = Database.GetAddress(sharingMember);
             //Init 데이터 생성
             s_client.InviteClass = new Invite
             {
                 Type = (int)PacketType.INVITE,
-                members = testStdnums,
-                todoLink = testTodo,
+                members = sharingMember,
+                todoLink = todoLink,
                 boss = stdNum,
             };
             s_client.inviteAllMembers();
             btnSettingComplete.Enabled = true;
         }
-
+        
         private void OnInvite(string boss)
         {
             Invoke((MethodInvoker)(() =>
@@ -573,21 +628,32 @@ namespace KSCS
                 AllowOrRequestForm allowOrRequestForm = new AllowOrRequestForm();
                 allowOrRequestForm.lbl_StudentNumber.Text = boss;
                 allowOrRequestForm.TopMost = true;
+                foreach (string memberNum in s_client.InviteClass.members)
+                {
+                    UserMemberStatus memberStatus = new UserMemberStatus();
+                    memberStatus.SetName(memberNum);
+                    memberStatus.SetColor(testStdNumColor[memberNum]);
+                    if (memberNum == stdNum)
+                        memberStatus.SetStatus(true);
+                    flowLayoutPanelLable.Controls.Add(memberStatus);
+                }
+                allowOrRequestForm.RefuseConnect+= refusetInvite;
                 DialogResult = allowOrRequestForm.ShowDialog();
                 if (DialogResult == DialogResult.OK)
                 {
                     btnSettingComplete.Enabled = true;
-                    foreach (string std in s_client.InviteClass.members)
-                    {
-
-                        UserMemberStatus memberStatus = new UserMemberStatus();
-                        memberStatus.SetName(std);
-                        memberStatus.SetColor(testStdNumColor[std]);
-                        flowLayoutPanelLable.Controls.Add(memberStatus);
-
-                    }
                 }
             }));
+        }
+
+        public void refusetInvite(object sender, EventArgs e)
+        {
+            listener.Stop();
+            isListen = false;
+            listener.Start();
+            isListen = true;
+            flowLayoutPanelLable.Controls.Clear();
+            s_client = null;
         }
 
         public void ConnectClient(string sender, List<string> todo, string type)
@@ -622,6 +688,13 @@ namespace KSCS
 
         public void applyShareSchedule(string stdNum, List<string> categoryList)
         {
+            Invoke((MethodInvoker)(() =>
+            {
+                monthScheduleList.Clear(); //한달 스케줄 초기화
+                Database.ReadShareScheduleList(stdNum, categoryList);
+                Schedule.LoadTotalScheduleList();
+                CreateSharingSchedule();
+            }));
 
         }
         async public Task EnterShareSchedule()
@@ -636,7 +709,8 @@ namespace KSCS
             s_client.OnLoadAddress += new SocketClient.LoadAddress(LoadAddress);
             s_client.OnMessage += new SocketClient.MessageHandler(ShowMessage);
             s_client.OnInvite += new SocketClient.InvitationMessageHandler(OnInvite);
-
+            s_client.OnSendCategories += new SocketClient.SendCategoryHandler(applyShareSchedule);
+            s_client.OnStatusChange += new SocketClient.StatusChangeHandler(ChangeSharingMemberLableStatus);
             while (isListen)
             {
                 try
@@ -647,10 +721,14 @@ namespace KSCS
                 catch (SocketException se)
                 {
                     Trace.WriteLine(string.Format("EnterShareSchedule - SocketException : {0}", se.Message));
+                    isListen = false;
+                    listener.Stop();
                 }
                 catch (Exception ex)
                 {
                     Trace.WriteLine(string.Format("EnterShareSchedule - Exception : {0}", ex.Message));
+                    isListen = false;
+                    listener.Stop();
                 }
             }
         }
@@ -673,7 +751,7 @@ namespace KSCS
                 isShareSchedule = true;
 
                 ChangeShareSchedule();
-                btnUserSharingAddButton.CreateSharing += InvitieShareSchedule;
+                btnUserSharingAddButton.CreateSharing = InvitieShareSchedule;
                 monthScheduleList.Clear();
                 for (int i = 0; i < DateTime.DaysInMonth(year, month); i++)
                 {
@@ -681,9 +759,8 @@ namespace KSCS
                 }
                 createDates();
 
-                SharingTabEnable(!(TabName == TabSharing.Name));
+                EnterSharingTab(true);
 
-                MessageBox.Show("시작");
                 Task.Run(() => EnterShareSchedule());
             }
         }
@@ -728,6 +805,7 @@ namespace KSCS
             }
         }
 
+        //보낼 때
         private void btnSettingComplete_Click(object sender, EventArgs e)
         {
             List<string> categories = new List<string>();
@@ -738,6 +816,7 @@ namespace KSCS
                     categories.Add(category.Key);
                 }
             }
+            
             s_client.sendCategoryList(categories);
         }
 
@@ -746,7 +825,13 @@ namespace KSCS
             try
             {
                 Registry.CurrentUser.DeleteSubKeyTree(@"KSCS");
-            }catch (Exception ex) { }
+            }
+            catch (Exception ex) { }
+            this.Close();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
             this.Close();
         }
     }

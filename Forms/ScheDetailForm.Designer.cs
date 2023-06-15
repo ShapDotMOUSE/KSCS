@@ -217,7 +217,7 @@
             this.labelCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.labelCategory.Location = new System.Drawing.Point(59, 237);
             this.labelCategory.Name = "labelCategory";
-            this.labelCategory.Size = new System.Drawing.Size(76, 24);
+            this.labelCategory.Size = new System.Drawing.Size(91, 28);
             this.labelCategory.TabIndex = 31;
             this.labelCategory.Text = "Category";
             // 
@@ -227,7 +227,7 @@
             this.labelMemo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.labelMemo.Location = new System.Drawing.Point(59, 306);
             this.labelMemo.Name = "labelMemo";
-            this.labelMemo.Size = new System.Drawing.Size(51, 24);
+            this.labelMemo.Size = new System.Drawing.Size(64, 28);
             this.labelMemo.TabIndex = 30;
             this.labelMemo.Text = "Memo";
             // 
@@ -237,7 +237,7 @@
             this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.labelTitle.Location = new System.Drawing.Point(59, 24);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(38, 24);
+            this.labelTitle.Size = new System.Drawing.Size(43, 28);
             this.labelTitle.TabIndex = 29;
             this.labelTitle.Text = "Title";
             // 
@@ -247,7 +247,7 @@
             this.labelSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.labelSchedule.Location = new System.Drawing.Point(59, 89);
             this.labelSchedule.Name = "labelSchedule";
-            this.labelSchedule.Size = new System.Drawing.Size(78, 24);
+            this.labelSchedule.Size = new System.Drawing.Size(94, 28);
             this.labelSchedule.TabIndex = 26;
             this.labelSchedule.Text = "Schedule";
             // 
@@ -257,7 +257,7 @@
             this.labelPlace.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.labelPlace.Location = new System.Drawing.Point(59, 167);
             this.labelPlace.Name = "labelPlace";
-            this.labelPlace.Size = new System.Drawing.Size(48, 24);
+            this.labelPlace.Size = new System.Drawing.Size(58, 28);
             this.labelPlace.TabIndex = 28;
             this.labelPlace.Text = "Place";
             // 
@@ -267,7 +267,7 @@
             this.labelMember.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.labelMember.Location = new System.Drawing.Point(59, 408);
             this.labelMember.Name = "labelMember";
-            this.labelMember.Size = new System.Drawing.Size(67, 24);
+            this.labelMember.Size = new System.Drawing.Size(83, 28);
             this.labelMember.TabIndex = 27;
             this.labelMember.Text = "Member";
             // 
@@ -357,20 +357,20 @@
             this.guna2ContextMenuStrip1.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
             this.guna2ContextMenuStrip1.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
             this.guna2ContextMenuStrip1.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.guna2ContextMenuStrip1.Size = new System.Drawing.Size(133, 48);
+            this.guna2ContextMenuStrip1.Size = new System.Drawing.Size(138, 60);
             // 
             // tsmAddmem
             // 
             this.tsmAddmem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.tsmAddmem.Name = "tsmAddmem";
-            this.tsmAddmem.Size = new System.Drawing.Size(132, 22);
+            this.tsmAddmem.Size = new System.Drawing.Size(137, 28);
             this.tsmAddmem.Text = "멤버 추가";
             // 
             // tsmDeleteMem
             // 
             this.tsmDeleteMem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.tsmDeleteMem.Name = "tsmDeleteMem";
-            this.tsmDeleteMem.Size = new System.Drawing.Size(132, 22);
+            this.tsmDeleteMem.Size = new System.Drawing.Size(137, 28);
             this.tsmDeleteMem.Text = "멤버 삭제";
             // 
             // panelSchedules
@@ -399,7 +399,7 @@
             this.btnAddSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddSchedule.ForeColor = System.Drawing.Color.Black;
             this.btnAddSchedule.Image = global::KSCS.Properties.Resources.free_icon_font_plus_3917757;
-            this.btnAddSchedule.Location = new System.Drawing.Point(-15, 96);
+            this.btnAddSchedule.Location = new System.Drawing.Point(-15, 98);
             this.btnAddSchedule.Name = "btnAddSchedule";
             this.btnAddSchedule.Size = new System.Drawing.Size(167, 40);
             this.btnAddSchedule.TabIndex = 45;
@@ -411,7 +411,7 @@
             this.guna2HtmlLabel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.guna2HtmlLabel8.Location = new System.Drawing.Point(342, 160);
             this.guna2HtmlLabel8.Name = "guna2HtmlLabel8";
-            this.guna2HtmlLabel8.Size = new System.Drawing.Size(37, 20);
+            this.guna2HtmlLabel8.Size = new System.Drawing.Size(45, 24);
             this.guna2HtmlLabel8.TabIndex = 40;
             this.guna2HtmlLabel8.Text = "End :";
             // 
@@ -421,7 +421,7 @@
             this.guna2HtmlLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.guna2HtmlLabel7.Location = new System.Drawing.Point(342, 135);
             this.guna2HtmlLabel7.Name = "guna2HtmlLabel7";
-            this.guna2HtmlLabel7.Size = new System.Drawing.Size(42, 20);
+            this.guna2HtmlLabel7.Size = new System.Drawing.Size(51, 24);
             this.guna2HtmlLabel7.TabIndex = 39;
             this.guna2HtmlLabel7.Text = "Start :";
             // 
@@ -477,6 +477,7 @@
             this.dtpEndDate.Name = "dtpEndDate";
             this.dtpEndDate.Size = new System.Drawing.Size(141, 20);
             this.dtpEndDate.TabIndex = 36;
+            this.dtpEndDate.UseTransparentBackground = true;
             this.dtpEndDate.Value = new System.DateTime(2023, 5, 9, 1, 5, 29, 884);
             // 
             // dtpStartDate
@@ -495,6 +496,7 @@
             this.dtpStartDate.Name = "dtpStartDate";
             this.dtpStartDate.Size = new System.Drawing.Size(141, 20);
             this.dtpStartDate.TabIndex = 35;
+            this.dtpStartDate.UseTransparentBackground = true;
             this.dtpStartDate.Value = new System.DateTime(2023, 5, 9, 1, 5, 29, 884);
             // 
             // cbCategory
@@ -604,7 +606,7 @@
             // 
             // ScheDetailForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(650, 590);

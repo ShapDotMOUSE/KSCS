@@ -188,6 +188,8 @@ namespace KSCS
                 AllowOrRequestForm.EnableTab = null;
                 UserSharingAddButton.EnableTab = null;
                 UserSharingAddButton.Exit = null;
+                s_client = null;
+
                 SharingSubCategorySet(enable);
                 listener.Stop();
             }
@@ -209,6 +211,7 @@ namespace KSCS
 
         public void ExitSharingHandler(object sender, EventArgs e)
         {
+            
             EnableTab(false);
             TabAll.ShowTab();
             ChangeTab(TabAll, e);
@@ -608,7 +611,7 @@ namespace KSCS
             s_client.inviteAllMembers();
             btnSettingComplete.Enabled = true;
         }
-
+        
         private void OnInvite(string boss)
         {
             Invoke((MethodInvoker)(() =>
@@ -640,6 +643,8 @@ namespace KSCS
             isListen = false;
             listener.Start();
             isListen = true;
+            flowLayoutPanelLable.Controls.Clear();
+            s_client = null;
         }
 
         public void ConnectClient(string sender, List<string> todo, string type)
@@ -735,7 +740,7 @@ namespace KSCS
                 isShareSchedule = true;
 
                 ChangeShareSchedule();
-                btnUserSharingAddButton.CreateSharing += InvitieShareSchedule;
+                btnUserSharingAddButton.CreateSharing = InvitieShareSchedule;
                 monthScheduleList.Clear();
                 for (int i = 0; i < DateTime.DaysInMonth(year, month); i++)
                 {

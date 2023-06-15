@@ -35,13 +35,13 @@ namespace KSCS
             this.Refresh();
         }
 
-        private void LoadShareDate(string shareNum)
+        private void LoadShareDate()
         {
             flpEvent.Controls.Clear(); //userEvent 컨트롤 초기화
             lblUnitNum.Visible = false;
 
             foreach (Schedule schedule in monthScheduleList[Convert.ToInt32(lblDate.Text) - 1])
-                AddEvent(schedule.title, testStdNumColor[shareNum]);
+                AddEvent(schedule.title, testStdNumColor[schedule.category]);
 
             if (monthScheduleList[Convert.ToInt32(lblDate.Text) - 1].Count > 2)
             {
@@ -95,7 +95,7 @@ namespace KSCS
         }
 
         //실시간 일정 공유용
-        public void SetShareDate(int date, string shareNum)
+        public void SetShareDate(int date)
         {
             if (!lblDate.Visible)
             {
@@ -107,7 +107,7 @@ namespace KSCS
                 btnTransparent.MouseClick += UserDate_Click;
             }
             lblDate.Text = date.ToString();
-            LoadShareDate(shareNum);
+            LoadShareDate();
         }
 
 

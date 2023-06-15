@@ -44,5 +44,7 @@ namespace KSCS.Class
 
         };
         public static List<string> sharingMember;
+
+        public static Dictionary<string, List<List<Schedule>>> ShareNum_ScheduleList=new Dictionary<string, List<List<Schedule>>>(); //추가
     }
 }

@@ -346,7 +346,7 @@ namespace KSCS
         }
 
         //실시간 일정 공유 호출용
-        public static void CreateSharingSchedule(string shareNum) //학번
+        public static void CreateSharingSchedule() //학번
         {
 
             DateTime startOfMonth = new DateTime(2023, 6, 1);
@@ -358,7 +358,7 @@ namespace KSCS
             foreach (UserDate userDate in Application.OpenForms.OfType<MainForm>().FirstOrDefault().GetUserDate())
             {
                 if (++index < dayOfWeek) userDate.ChangeBlank();
-                else if (date <= dates) userDate.SetShareDate(date++, shareNum);
+                else if (date <= dates) userDate.SetShareDate(date++);
                 else userDate.ChangeBlank();
 
                 if (index % 7 == 0) userDate.ChangeColor(Color.Blue);
@@ -679,7 +679,8 @@ namespace KSCS
             Invoke((MethodInvoker)(() =>
             {
                 Database.ReadShareScheduleList(stdNum, categoryList);
-                CreateSharingSchedule(stdNum);
+                Schedule.LoadTotalScheduleList();
+                MainForm.CreateSharingSchedule();
             }));
 
         }
@@ -791,6 +792,7 @@ namespace KSCS
             }
         }
 
+        //보낼 때
         private void btnSettingComplete_Click(object sender, EventArgs e)
         {
             List<string> categories = new List<string>();
@@ -801,8 +803,10 @@ namespace KSCS
                     categories.Add(category.Key);
                 }
             }
+           
             Database.ReadShareScheduleList(stdNum, categories);
-            CreateSharingSchedule(stdNum);
+            Schedule.LoadTotalScheduleList();
+            CreateSharingSchedule();
             s_client.sendCategoryList(categories);
         }
 

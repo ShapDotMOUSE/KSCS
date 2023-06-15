@@ -34,6 +34,7 @@ namespace KSCS
             return CategoryColor[Sub];
         }
 
+
         //탭에 카테고리 설정
         public void LoadTab(Hashtable tabs)
         {

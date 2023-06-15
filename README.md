@@ -29,33 +29,49 @@
 * 사용자 편의 일정 관리 Window 캘린더
 * 공유 일정 기능을 통한 소통과 협업의 효율성 향상
 * 광운대학교 재학생들의 효율적인 일정관리 윈도우 프로그램
+  
+ ![캘린더 인터페이스](https://github.com/SharpDotMOUSE/KSCS/assets/89342648/877c5062-148b-4f56-bcb5-2df30d314a60)
 
 
 ## 🔎 기능 소개
+
+<details>
+<summary>KLAS 연동  및 로그인 & 로그아웃</summary>
+<div markdown="1">       
+ 
+![로그인 및 자동 로그인](https://github.com/SharpDotMOUSE/KSCS/assets/89342648/1818f4ad-159d-42ff-9f58-2de8a6e23afa)
+
+* KLAS 연동을 통해, 회원가입 없이 KLAS 정보로 로그인이 가능
+* 자동 로그인 기능을 통해 로그인 세션 유지
+
+
+![자동로그인](https://github.com/SharpDotMOUSE/KSCS/assets/89342648/98e49cba-b977-4e7a-8a8b-e0ec32b4e825)
+* 자동 로그인 설정 후, 재 로그인 시 데이터 로딩
+
+  
+![로그아웃](https://github.com/SharpDotMOUSE/KSCS/assets/89342648/cfa3b5e7-e044-4566-8d48-bdd0e6693ff4)
+
+* 자동 로그인 해제 및 로그아웃
+
+</div>
+</details>
 
 <details>
 <summary>캘린더 인터페이스</summary>
 <div markdown="1">   
 
 ![캘린더 인터페이스](https://github.com/SharpDotMOUSE/KSCS/assets/89342648/877c5062-148b-4f56-bcb5-2df30d314a60)
+
+* 로그인 이후, 홈 화면
  
 ![일정 생성](https://github.com/SharpDotMOUSE/KSCS/assets/89342648/b6598a34-16e8-4b89-b6dd-ee196d268ad1)
 
-</div>
-</details>
-
-<details>
-<summary>로그인 세션 유지</summary>
-<div markdown="1">       
- 
-![로그인 및 자동 로그인](https://github.com/SharpDotMOUSE/KSCS/assets/89342648/1818f4ad-159d-42ff-9f58-2de8a6e23afa)
-
-![자동로그인](https://github.com/SharpDotMOUSE/KSCS/assets/89342648/98e49cba-b977-4e7a-8a8b-e0ec32b4e825)
-
-
+* 일정을 추가하고 싶은 날짜를 클릭하여, 일정 생
 
 </div>
 </details>
+
+
 
 <details>
 <summary>Klas 연동을 통한 학사일정</summary>
@@ -63,7 +79,7 @@
  
 ![KLAS 연동](https://github.com/SharpDotMOUSE/KSCS/assets/89342648/42fdd0a3-ba48-4329-bf7e-a9785622f821)
 
- 
+ * KLAS 연동을 통해, KLAS 에서 제공하는 학사일정 정보 
 </div>
 </details>
 

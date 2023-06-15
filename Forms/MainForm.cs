@@ -176,6 +176,7 @@ namespace KSCS
             monthScheduleList.Clear(); //한달 스케줄 초기화
             Database.ReadShareScheduleList(stdNum, categories);
             Schedule.LoadTotalScheduleList();
+            CreateSharingSchedule();
         }
         private void EnterSharingTab(bool enable)
         {
@@ -814,8 +815,7 @@ namespace KSCS
                     categories.Add(category.Key);
                 }
             }
-            monthScheduleList.Clear(); //한달 스케줄 초기화
-            CreateSharingSchedule();
+            
             s_client.sendCategoryList(categories);
         }
 

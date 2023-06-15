@@ -104,6 +104,7 @@ namespace Socket
 
                         Packet.Serialize(invite).CopyTo(this.sendBuffer, 0);
                         await Send(networkStream);
+                        await readStreamData(todoClient);
                     }
                 }
                 catch
@@ -136,7 +137,6 @@ namespace Socket
 
                         Packet.Serialize(initMesh).CopyTo(this.sendBuffer, 0);
                         await Send(networkStream);
-                        await readStreamData(todoClient);
                     }
                 }
                 catch(Exception e) 
@@ -152,10 +152,7 @@ namespace Socket
             {
                 try
                 {
-                    if (!clientSocketDict[member].Connected)
-                    {
-                    }
-                    if (!member.Equals(clientStdNum)&&clientSocketDict.ContainsKey(member))
+                    if (!member.Equals(clientStdNum)&&clientSocketDict.ContainsKey(member)&& clientSocketDict[member].Connected)
                     {
                         NetworkStream networkStream = clientSocketDict[member].GetStream();
                         ShareSchedule shareSchedule = new ShareSchedule(clientStdNum, categoryList);

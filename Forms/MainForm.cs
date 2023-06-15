@@ -19,6 +19,7 @@ using System.Threading;
 using KSCS.Forms;
 using System.Security;
 using System.IO;
+using Microsoft.Win32;
 
 namespace KSCS
 {
@@ -376,7 +377,7 @@ namespace KSCS
                     AutoSize = true,
                     Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
                 };
-                lbl.Text = schedule.title;
+                lbl.Text = schedule.title + " " + schedule.startDate.ToString("HH:mm") + " ~ "+schedule.endDate.ToString("HH:mm");
                 lbl.Location = new Point(0, index * (lbl.Height + 3));
                 if (panel.InvokeRequired) panel.Invoke(new MethodInvoker(delegate { panel.Controls.Add(lbl); }));
                 else panel.Controls.Add(lbl);
@@ -745,6 +746,15 @@ namespace KSCS
             Database.ReadShareScheduleList(stdNum, categories);
             CreateSharingSchedule(stdNum);
             s_client.sendCategoryList(categories);
+        }
+
+        private void btn_logout_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Registry.CurrentUser.DeleteSubKeyTree(@"KSCS");
+            }catch (Exception ex) { }
+            this.Close();
         }
     }
 }

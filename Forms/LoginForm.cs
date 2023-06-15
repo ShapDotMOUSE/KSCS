@@ -93,39 +93,42 @@ namespace KSCS
         {
             try
             {
-                RegistryKey rk = Registry.CurrentUser.OpenSubKey(@"KSCS").OpenSubKey(@"Login");
-
-                LoadingForm loadingForm = new LoadingForm();
-                loadingForm.TopMost = true;
-                loadingForm.Show();
-
-                var ID = Convert.ToString(rk.GetValue("ID"));
-                var PW = Convert.ToString(rk.GetValue("PW"));
-
-                tbStdNum.Text = ID;
-                tbPassword.Text = PW;
-                toggleAutoLogin.Checked = true;
-
-                bool login = await Task.Run(() => KLAS.LoginKLAS(ID, PW));
-
-                loadingForm.Invoke((MethodInvoker)delegate
+                RegistryKey rk = Registry.CurrentUser.OpenSubKey(@"KSCS")?.OpenSubKey(@"Login");
+                if (rk != null)
                 {
-                    if (login) //KLAS 로그인
-                    {
-                        Database.CreateData();
 
-                        this.Cursor = Cursors.Default;
-                        this.DialogResult = DialogResult.OK;
-                        loadingForm.Close();
-                        this.Close();
-                    }
-                    else
+                    LoadingForm loadingForm = new LoadingForm();
+                    loadingForm.TopMost = true;
+                    loadingForm.Show();
+
+                    var ID = Convert.ToString(rk.GetValue("ID"));
+                    var PW = Convert.ToString(rk.GetValue("PW"));
+
+                    tbStdNum.Text = ID;
+                    tbPassword.Text = PW;
+                    toggleAutoLogin.Checked = true;
+
+                    bool login = await Task.Run(() => KLAS.LoginKLAS(ID, PW));
+
+                    loadingForm.Invoke((MethodInvoker)delegate
                     {
-                        lblMsg.Text = "죄송합니다. 로그인할 수 없습니다.";
-                        tbPassword.Focus();
-                        loadingForm.Close();
-                    }
-                });
+                        if (login) //KLAS 로그인
+                        {
+                            Database.CreateData();
+
+                            this.Cursor = Cursors.Default;
+                            this.DialogResult = DialogResult.OK;
+                            loadingForm.Close();
+                            this.Close();
+                        }
+                        else
+                        {
+                            lblMsg.Text = "죄송합니다. 로그인할 수 없습니다.";
+                            tbPassword.Focus();
+                            loadingForm.Close();
+                        }
+                    });
+                }
             }
             catch (Exception ex) { }
         }

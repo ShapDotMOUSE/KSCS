@@ -745,7 +745,7 @@ namespace KSCS
                     categories.Add(category.Key);
                 }
             }
-            monthScheduleList.Clear(); //한달 스케줄 초기화
+           
             Database.ReadShareScheduleList(stdNum, categories);
             Schedule.LoadTotalScheduleList();
             CreateSharingSchedule();

@@ -111,10 +111,15 @@ namespace KSCS
                 string key = kvp.Key;
                 List<List<Schedule>> memberScheduleList = kvp.Value;
 
-                int i = 0;
+                for (int i = 0; i < DateTime.DaysInMonth(year, month); i++)
+                {
+                    monthScheduleList.Add(new List<Schedule>());
+                }
+
+                int j = 0;
                 foreach (List<Schedule> dayScheduleList in memberScheduleList)
                 {
-                    monthScheduleList[i++].AddRange(dayScheduleList);
+                    monthScheduleList[j++].AddRange(dayScheduleList);
                 }
             }
         }

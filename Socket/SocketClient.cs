@@ -203,10 +203,10 @@ namespace Socket
 
                                 //보스와의 연결 추가
                                 clientSocketDict.Add(InviteClass.boss, connectSocket);
-                                OnStatusChange(InviteClass.boss, true);
                                 //연결 성공 시 메시지 출력.
                                 if (OnInvite != null)
                                     OnInvite(InviteClass.boss);
+                                OnStatusChange(InviteClass.boss, true);
 
                                 //데이터 베이스에서 ip 불러오기
                                 OnLoadAddress();

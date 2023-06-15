@@ -536,8 +536,8 @@ namespace KSCS
                 {
                     //"2019203082",
                     "2021203078",
-                    "2019203055"
-                    //"2019203045"
+                    //"2019203055",
+                    "2019203045"
                 };
 
             btnUserSharingAddButton.ChangeStatus(true);

@@ -592,6 +592,7 @@ namespace KSCS
             
             btnUserSharingAddButton.ChangeStatus(true);
 
+            sharingMember.Add(stdNum);
             List<string> todoLink = sharingMember.ToList();
             todoLink.Remove(stdNum);
 

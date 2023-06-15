@@ -219,7 +219,7 @@ namespace KSCS
             Invoke((MethodInvoker)(() =>
             {
                 if (isListen)
-                    ((UserMemberStatus)flowLayoutPanelLable.Controls[stdNum]).SetStatus(enable);
+                    ((UserMemberStatus)flowLayoutPanelLable.Controls[stdNum])?.SetStatus(enable);
             }));
         }
 
@@ -585,11 +585,14 @@ namespace KSCS
             List<string> testTodo = testStdnums.ToList();
             testTodo.Remove(stdNum);
 
-            foreach (string stdNum in testStdnums)
+            foreach (string memberNum in testStdnums)
             {
                 UserMemberStatus memberStatus = new UserMemberStatus();
-                memberStatus.SetName(stdNum);
-                memberStatus.SetColor(testStdNumColor[stdNum]);
+                memberStatus.SetName(memberNum);
+                memberStatus.SetColor(testStdNumColor[memberNum]);
+                if (memberNum == stdNum)
+                    memberStatus.SetStatus(true);
+                
                 flowLayoutPanelLable.Controls.Add(memberStatus);
             }
 
@@ -618,11 +621,13 @@ namespace KSCS
                 if (DialogResult == DialogResult.OK)
                 {
                     btnSettingComplete.Enabled = true;
-                    foreach (string std in s_client.InviteClass.members)
+                    foreach (string memberNum in s_client.InviteClass.members)
                     {
                         UserMemberStatus memberStatus = new UserMemberStatus();
-                        memberStatus.SetName(std);
-                        memberStatus.SetColor(testStdNumColor[std]);
+                        memberStatus.SetName(memberNum);
+                        memberStatus.SetColor(testStdNumColor[memberNum]);
+                        if (memberNum == stdNum)
+                            memberStatus.SetStatus(true);
                         flowLayoutPanelLable.Controls.Add(memberStatus);
                     }
                 }

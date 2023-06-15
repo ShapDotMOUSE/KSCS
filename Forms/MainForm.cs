@@ -529,14 +529,15 @@ namespace KSCS
         public void InvitieShareSchedule(object sender, EventArgs e)
         {
 
-            MessageBox.Show("실시간 일정 공유 생성");
             listener.Stop();
             isListen = false;
             Database.DeleteAddress();
             List<string> testStdnums = new List<string>
                 {
                     "2019203082",
-                    "2019203018",
+                    "2021203078",
+                    "2019203055",
+                    "2019203045"
                 };
 
             btnUserSharingAddButton.ChangeStatus(true);
@@ -622,6 +623,11 @@ namespace KSCS
 
         public void applyShareSchedule(string stdNum, List<string> categoryList)
         {
+            Invoke((MethodInvoker)(() =>
+            {
+                Database.ReadShareScheduleList(stdNum, categoryList);
+                MainForm.CreateSharingSchedule(stdNum);
+            }));
 
         }
         async public Task EnterShareSchedule()
@@ -636,7 +642,7 @@ namespace KSCS
             s_client.OnLoadAddress += new SocketClient.LoadAddress(LoadAddress);
             s_client.OnMessage += new SocketClient.MessageHandler(ShowMessage);
             s_client.OnInvite += new SocketClient.InvitationMessageHandler(OnInvite);
-
+            s_client.OnSendCategories += new SocketClient.SendCategoryHandler(applyShareSchedule);
             while (isListen)
             {
                 try
@@ -683,7 +689,6 @@ namespace KSCS
 
                 SharingTabEnable(!(TabName == TabSharing.Name));
 
-                MessageBox.Show("시작");
                 Task.Run(() => EnterShareSchedule());
             }
         }
@@ -738,6 +743,8 @@ namespace KSCS
                     categories.Add(category.Key);
                 }
             }
+            Database.ReadShareScheduleList(stdNum, categories);
+            CreateSharingSchedule(stdNum);
             s_client.sendCategoryList(categories);
         }
 

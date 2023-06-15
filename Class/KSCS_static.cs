@@ -39,7 +39,9 @@ namespace KSCS.Class
              {"2019203082", Color.Red}, 
             {"2019203018",Color.Purple }, 
             {"2019203055", Color.PowderBlue},
-            {"2019203045", Color.Pink }
+            {"2019203045", Color.Pink },
+            { "2021203078",Color.Aqua}
+
         };
         public static List<string> sharingMember;
     }

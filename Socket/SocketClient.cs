@@ -49,6 +49,9 @@ namespace Socket
         public delegate void InvitationMessageHandler(string boss);
         public event InvitationMessageHandler OnInvite;
 
+        public delegate void SendCategoryHandler(string stdNum,List<string> categories);
+        public event SendCategoryHandler OnSendCategories;
+
         public async Task Send(NetworkStream networkStream)
         {
             await networkStream.WriteAsync(this.sendBuffer, 0, this.sendBuffer.Length).ConfigureAwait(false);
@@ -84,7 +87,7 @@ namespace Socket
                 NetworkStream networkStream=null;
                 try
                 {
-                    OnMessage("초대 시도" + stdNum);
+                    //OnMessage("초대 시도" + stdNum);
                     TcpClient todoClient = new TcpClient();
                     //각 사용자 들에게 접속 시도
                     todoClient.Connect(addressDict[stdNum], 7777);
@@ -101,6 +104,7 @@ namespace Socket
 
                         Packet.Serialize(invite).CopyTo(this.sendBuffer, 0);
                         await Send(networkStream);
+                        await readStreamData(todoClient);
                     }
                 }
                 catch
@@ -133,6 +137,8 @@ namespace Socket
 
                         Packet.Serialize(initMesh).CopyTo(this.sendBuffer, 0);
                         await Send(networkStream);
+                        await readStreamData(todoClient);
+
                     }
                 }
                 catch(Exception e) 
@@ -148,7 +154,7 @@ namespace Socket
             {
                 try
                 {
-                    if (!member.Equals(clientStdNum)&&clientSocketDict.ContainsKey(member) && clientSocketDict[member].Connected)
+                    if (!member.Equals(clientStdNum)&&clientSocketDict.ContainsKey(member)&& clientSocketDict[member].Connected)
                     {
                         NetworkStream networkStream = clientSocketDict[member].GetStream();
                         ShareSchedule shareSchedule = new ShareSchedule(clientStdNum, categoryList);
@@ -157,6 +163,7 @@ namespace Socket
                         Packet.Serialize(shareSchedule).CopyTo(this.sendBuffer, 0);
                         await Send(networkStream);
                     }
+                    
                 }
                 catch (Exception e)
                 {
@@ -165,7 +172,7 @@ namespace Socket
             }
         }
 
-        public async void readStreamData(TcpClient connectSocket)
+        public async Task readStreamData(TcpClient connectSocket)
         {
             NetworkStream stream = null;
             int bytes = 0;
@@ -219,14 +226,16 @@ namespace Socket
                             {
                                 ShareScheduleClass=(ShareSchedule)Packet.Deserialize(readBuffer);
 
-                                OnMessage(ShareScheduleClass.categoryList[0].ToString());
-                                
+
+                                OnSendCategories(ShareScheduleClass.stdnum, ShareScheduleClass.categoryList);
+
                                 break;
                             }
                             case (int)PacketType.CREATE_SHARE_SCHEDULE:
                             {
                                 CreateShareScheduleClass=(CreateShareSchedule)Packet.Deserialize(readBuffer);
                                 //스케줄 데이터 보여주고 동의 여부 체크
+
                                 break;
                             }
                             case (int)PacketType.AGREE_SHARE_SCHEDULE:

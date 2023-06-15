@@ -132,8 +132,6 @@ namespace KSCS
                     uc.SetBasicMode(item);
                     uc.setMain(key);
                     ((FlowLayoutPanel)((UserMainCategory)panelMainCategory.Controls[key]).flpSubCategory).Controls.Add(uc);
-
-
                 }
             }
         }
@@ -151,6 +149,7 @@ namespace KSCS
                     {
                         SharingCategory.Add(item, false);
                         UserSharingSubCategory ucSharing = new UserSharingSubCategory();
+                        ucSharing.shareCategory = LoadScheduleOnSharing;
                         ucSharing.SetBasicMode(item);
                         ucSharing.setMain(key);
                         ((FlowLayoutPanel)((UserMainCategory)panelMainCategory.Controls[key]).flpSubCategory).Controls.Add(ucSharing);
@@ -162,6 +161,21 @@ namespace KSCS
                     }
                 }
             }
+        }
+
+        private void LoadScheduleOnSharing(object sender, EventArgs e)
+        {
+            List<string> categories=new List<string>();
+            foreach (KeyValuePair<string, bool> category in SharingCategory)
+            {
+                if (category.Value == true)
+                {
+                    categories.Add(category.Key);
+                }
+            }
+            monthScheduleList.Clear(); //한달 스케줄 초기화
+            Database.ReadShareScheduleList(stdNum, categories);
+            Schedule.LoadTotalScheduleList();
         }
         private void EnterSharingTab(bool enable)
         {
@@ -577,10 +591,6 @@ namespace KSCS
             
             btnUserSharingAddButton.ChangeStatus(true);
 
-            sharingMember.Add("2019203082");
-            //sharingMember.Add("2019203078");
-            sharingMember.Add("2019203055");
-            sharingMember.Add("2019203045");
             List<string> todoLink = sharingMember.ToList();
             todoLink.Remove(stdNum);
 
@@ -681,7 +691,7 @@ namespace KSCS
                 monthScheduleList.Clear(); //한달 스케줄 초기화
                 Database.ReadShareScheduleList(stdNum, categoryList);
                 Schedule.LoadTotalScheduleList();
-                MainForm.CreateSharingSchedule();
+                CreateSharingSchedule();
             }));
 
         }
@@ -805,8 +815,6 @@ namespace KSCS
                 }
             }
             monthScheduleList.Clear(); //한달 스케줄 초기화
-            Database.ReadShareScheduleList(stdNum, categories);
-            Schedule.LoadTotalScheduleList();
             CreateSharingSchedule();
             s_client.sendCategoryList(categories);
         }

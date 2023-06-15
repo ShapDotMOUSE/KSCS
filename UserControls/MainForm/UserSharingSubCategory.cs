@@ -15,6 +15,7 @@ namespace KSCS
     public partial class UserSharingSubCategory : UserControl
     {
         string MainCategory;
+        public EventHandler shareCategory;
 
         public UserSharingSubCategory()
         {
@@ -45,6 +46,7 @@ namespace KSCS
         private void chkCategory_Click(object sender, EventArgs e)
         {
             SharingCategory[lblCategory.Text] = chkCategory.Checked;
+            shareCategory?.Invoke(this, e);
         }
     }
 }

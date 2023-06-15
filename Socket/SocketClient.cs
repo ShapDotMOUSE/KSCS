@@ -148,11 +148,16 @@ namespace Socket
                         await readStreamData(todoClient);
                     }
                 }
+                catch(SocketException se)
+                {
+                    Trace.WriteLine(string.Format("연결 실패 + {0}: 실시간 일정 공유에 접속되어 있지 않습니다.\n{1}", stdNum, se.Message));
+                    OnStatusChange(stdNum, false);
+                    clientSocketDict[stdNum].Close();
+                }
                 catch (Exception e)
                 {
                     Trace.WriteLine(string.Format("연결 실패 + {0}: 실시간 일정 공유에 접속되어 있지 않습니다.\n{1}", stdNum, e.Message));
                     OnStatusChange(stdNum, false);
-                    clientSocketDict[stdNum].Close();
                 }
             }
         }

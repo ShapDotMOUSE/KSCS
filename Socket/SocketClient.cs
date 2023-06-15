@@ -137,6 +137,8 @@ namespace Socket
 
                         Packet.Serialize(initMesh).CopyTo(this.sendBuffer, 0);
                         await Send(networkStream);
+                        await readStreamData(todoClient);
+
                     }
                 }
                 catch(Exception e) 

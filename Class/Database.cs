@@ -333,9 +333,9 @@ namespace KSCS
 
         public static void ReadShareScheduleList(string shareNum,List<string> categoryList)
         {
-            //삭제 후, 추가
-            string selectQuery1 = string.Format("SELECT Schedule.id FROM Schedule WHERE Schedule.category_id IN (SELECT Category.id FROM Category WHERE(Category.student_id = '{0}' AND Category.parent_category_id IS NOT NULL) AND Category.category_name IN ({1}))",
-                shareNum, string.Join(",", categoryList.Select(category => string.Format("'{0}'", category))));
+            //예전 딕셔너리에 있는 값의 스케줄 삭제 후, 추가
+            string selectQuery1 = string.Format("SELECT Schedule.id FROM Schedule WHERE Schedule.category_id IN (SELECT Category.id FROM Category WHERE (Category.student_id = '{0}' AND Category.parent_category_id IS NOT NULL) AND Category.category_name IN ({1}))",
+                shareNum, string.Join(",", ShareNumCategory[shareNum].Select(category => string.Format("'{0}'", category))));
             MySqlCommand cmd = new MySqlCommand(selectQuery1, getDBConnection());
             MySqlDataReader table = cmd.ExecuteReader();
             while (table.Read())
@@ -355,6 +355,10 @@ namespace KSCS
             cmd = new MySqlCommand(selectQuery2, getDBConnection());
             table = cmd.ExecuteReader();
             //monthScheduleList.Clear(); //한달 스케줄 초기화
+
+            //딕셔너리에 추가
+            if (ShareNumCategory.ContainsKey(shareNum)) ShareNumCategory[shareNum] = categoryList;
+            else ShareNumCategory.Add(shareNum, categoryList);
 
             //하루 단위 리스트 생성
             for (int i = 0; i < DateTime.DaysInMonth(year, month); i++)

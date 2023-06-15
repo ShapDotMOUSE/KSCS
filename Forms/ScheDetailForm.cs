@@ -278,6 +278,8 @@ namespace KSCS
             dtpStartDate.Value = monthScheduleList[UserDate.static_date - 1][index].startDate;
             dtpStartTime.Value = monthScheduleList[UserDate.static_date - 1][index].startDate;
             int categoryIndex = cbCategory.Items.IndexOf(monthScheduleList[UserDate.static_date - 1][index].category);
+            //변경
+            //if(TabName== "TabSharing") panelTop.BackColor = testStdNumColor[];
             panelTop.BackColor = category.GetColor(monthScheduleList[UserDate.static_date - 1][index].category);
             cbCategory.SelectedIndex = categoryIndex;
             cbCategory.Text = monthScheduleList[UserDate.static_date - 1][index].category;
@@ -313,6 +315,7 @@ namespace KSCS
             if (cbCategory.SelectedIndex != 0 && addBtn.Text == "Modify")
             {
                 scheduleUnit scheduleUnit = (scheduleUnit)(panelSchedules.Controls[selectedScheduleIndex]);
+                //if(TabName=="TabSharing") scheduleUnit.ChangeScheduleColor(category.GetColor(cbCategory.Text));
                 scheduleUnit.ChangeScheduleColor(category.GetColor(cbCategory.Text)); //수정
             }
         }

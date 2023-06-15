@@ -214,10 +214,13 @@ namespace KSCS
             ChangeTab(TabAll, e);
         }
 
-        public void ChangeSharingMemberLableStatusHandle(bool enable, string stdNum)
+        public void ChangeSharingMemberLableStatus(string stdNum, bool enable)
         {
-            if (isListen)
-                ((UserMemberStatus)flowLayoutPanelLable.Controls[stdNum]).SetStatus(enable);
+            Invoke((MethodInvoker)(() =>
+            {
+                if (isListen)
+                    ((UserMemberStatus)flowLayoutPanelLable.Controls[stdNum]).SetStatus(enable);
+            }));
         }
 
         //탭 함수-------------------------------------------------------------------------------------------------------------------------------------------
@@ -399,7 +402,7 @@ namespace KSCS
             else if (color == Color.Gray) return Color.Gainsboro;
             else return Color.Gray;
         }
-        
+
         //오늘의 일정 함수
         public static void DisplayToday()
         {
@@ -414,7 +417,7 @@ namespace KSCS
                     AutoSize = true,
                     Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
                 };
-                lbl.Text = schedule.title + " " + schedule.startDate.ToString("HH:mm") + " ~ "+schedule.endDate.ToString("HH:mm");
+                lbl.Text = schedule.title + " " + schedule.startDate.ToString("HH:mm") + " ~ " + schedule.endDate.ToString("HH:mm");
                 lbl.Location = new Point(0, index * (lbl.Height + 3));
                 if (panel.InvokeRequired) panel.Invoke(new MethodInvoker(delegate { panel.Controls.Add(lbl); }));
                 else panel.Controls.Add(lbl);
@@ -678,6 +681,7 @@ namespace KSCS
             s_client.OnMessage += new SocketClient.MessageHandler(ShowMessage);
             s_client.OnInvite += new SocketClient.InvitationMessageHandler(OnInvite);
             s_client.OnSendCategories += new SocketClient.SendCategoryHandler(applyShareSchedule);
+            s_client.OnStatusChange += new SocketClient.StatusChangeHandler(ChangeSharingMemberLableStatus);
             while (isListen)
             {
                 try
@@ -688,13 +692,13 @@ namespace KSCS
                 catch (SocketException se)
                 {
                     Trace.WriteLine(string.Format("EnterShareSchedule - SocketException : {0}", se.Message));
-                    isListen=false;
+                    isListen = false;
                     listener.Stop();
                 }
                 catch (Exception ex)
                 {
                     Trace.WriteLine(string.Format("EnterShareSchedule - Exception : {0}", ex.Message));
-                    isListen=false;
+                    isListen = false;
                     listener.Stop();
                 }
             }
@@ -792,7 +796,8 @@ namespace KSCS
             try
             {
                 Registry.CurrentUser.DeleteSubKeyTree(@"KSCS");
-            }catch (Exception ex) { }
+            }
+            catch (Exception ex) { }
             this.Close();
         }
 

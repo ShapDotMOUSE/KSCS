@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
@@ -16,7 +17,6 @@ namespace Socket
         public string clientStdNum;
         //다른 학번들과 연결 클라이언트 딕셔너리
         public Dictionary<string, TcpClient> clientSocketDict;
-        public Dictionary<string, bool> isConnectedMemberDict;
         //데이터베이스에서 얻어온 address 딕셔너리
         public Dictionary<string, string> addressDict;
 
@@ -51,6 +51,9 @@ namespace Socket
 
         public delegate void SendCategoryHandler(string stdNum, List<string> categories);
         public event SendCategoryHandler OnSendCategories;
+
+        public delegate void StatusChangeHandler(string stdNum, bool status);
+        public event StatusChangeHandler OnStatusChange;
 
         public async Task Send(NetworkStream networkStream)
         {
@@ -98,6 +101,7 @@ namespace Socket
                         networkStream = todoClient.GetStream();
                         //접속 후 추가
                         clientSocketDict.Add(stdNum, todoClient);
+                        OnStatusChange(stdNum, true);
                         Invite invite = InviteClass;
                         invite.boss = clientStdNum;
                         invite.todoLink = todoLink;
@@ -127,7 +131,7 @@ namespace Socket
 
                     if (todoClient.Connected)
                     {
-                        isConnectedMemberDict[stdNum] = true;
+                        OnStatusChange(stdNum, true);
                         networkStream = todoClient.GetStream();
                         //접속 후 추가
                         clientSocketDict.Add(stdNum, todoClient);
@@ -143,7 +147,7 @@ namespace Socket
                 catch (Exception e)
                 {
                     Trace.WriteLine(string.Format("연결 실패 + {0}: 실시간 일정 공유에 접속되어 있지 않습니다.\n{1}", stdNum, e.Message));
-                    isConnectedMemberDict[stdNum] = false;
+                    OnStatusChange(stdNum, false);
                     clientSocketDict[stdNum].Close();
                 }
             }
@@ -169,7 +173,7 @@ namespace Socket
                 catch (Exception e)
                 {
                     Trace.WriteLine(string.Format("sendCategory - Exception : {0}", e.Message));
-                    isConnectedMemberDict[member] = false;
+                    OnStatusChange(member, false);
                     clientSocketDict[member].Close();
                 }
             }
@@ -195,13 +199,12 @@ namespace Socket
                                 foreach (string member in InviteClass.members)
                                 {
                                     if (member != clientStdNum)
-                                        isConnectedMemberDict.Add(member, false);
+                                        OnStatusChange(member, false);
                                 }
 
                                 //보스와의 연결 추가
                                 clientSocketDict.Add(InviteClass.boss, connectSocket);
-                                isConnectedMemberDict[InviteClass.boss] = true;
-
+                                OnStatusChange(InviteClass.boss, true);
                                 //연결 성공 시 메시지 출력.
                                 if (OnInvite != null)
                                     OnInvite(InviteClass.boss);
@@ -222,7 +225,7 @@ namespace Socket
                                 InitMeshClass = (InitMesh)Packet.Deserialize(readBuffer);
                                 //다른 노드와의 연결 추가
                                 clientSocketDict.Add(InitMeshClass.sender, connectSocket);
-                                isConnectedMemberDict[InitMeshClass.sender] = true;
+                                OnStatusChange(InitMeshClass.sender, true);
                                 break;
                             }
                         case (int)PacketType.SHARE_SCHEDULE:
@@ -259,7 +262,7 @@ namespace Socket
                 {
                     if (client.Value.Equals(connectSocket))
                     {
-                        isConnectedMemberDict[client.Key] = false;
+                        OnStatusChange(client.Key, false);
                     }
                 }
                 stream.Close();
@@ -273,7 +276,7 @@ namespace Socket
                 {
                     if (client.Value.Equals(connectSocket))
                     {
-                        isConnectedMemberDict[client.Key] = false;
+                        OnStatusChange(client.Key, false);
                     }
                 }
                 stream.Close();

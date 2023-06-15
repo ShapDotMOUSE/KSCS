@@ -20,6 +20,7 @@ using KSCS.Forms;
 using System.Security;
 using System.IO;
 using Microsoft.Win32;
+using MySqlX.XDevAPI;
 
 namespace KSCS
 {
@@ -580,12 +581,10 @@ namespace KSCS
                     btnSettingComplete.Enabled = true;
                     foreach (string std in s_client.InviteClass.members)
                     {
-
                         UserMemberStatus memberStatus = new UserMemberStatus();
                         memberStatus.SetName(std);
                         memberStatus.SetColor(testStdNumColor[std]);
                         flowLayoutPanelLable.Controls.Add(memberStatus);
-
                     }
                 }
             }));
@@ -626,7 +625,7 @@ namespace KSCS
             Invoke((MethodInvoker)(() =>
             {
                 Database.ReadShareScheduleList(stdNum, categoryList);
-                MainForm.CreateSharingSchedule(stdNum);
+                CreateSharingSchedule(stdNum);
             }));
 
         }
@@ -653,10 +652,14 @@ namespace KSCS
                 catch (SocketException se)
                 {
                     Trace.WriteLine(string.Format("EnterShareSchedule - SocketException : {0}", se.Message));
+                    isListen=false;
+                    listener.Stop();
                 }
                 catch (Exception ex)
                 {
                     Trace.WriteLine(string.Format("EnterShareSchedule - Exception : {0}", ex.Message));
+                    isListen=false;
+                    listener.Stop();
                 }
             }
         }

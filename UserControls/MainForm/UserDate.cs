@@ -37,7 +37,7 @@ namespace KSCS
 
         private void LoadShareDate(string shareNum)
         {
-            //flpEvent.Controls.Clear(); //userEvent 컨트롤 초기화
+            flpEvent.Controls.Clear(); //userEvent 컨트롤 초기화
             lblUnitNum.Visible = false;
 
             foreach (Schedule schedule in monthScheduleList[Convert.ToInt32(lblDate.Text) - 1])

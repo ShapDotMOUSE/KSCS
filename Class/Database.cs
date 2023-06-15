@@ -333,25 +333,29 @@ namespace KSCS
 
         public static void ReadShareScheduleList(string shareNum,List<string> categoryList)
         {
-            //예전 딕셔너리에 있는 값의 스케줄 삭제 후, 추가
-            string selectQuery1 = string.Format("SELECT Schedule.id FROM Schedule WHERE Schedule.category_id IN (SELECT Category.id FROM Category WHERE (Category.student_id = '{0}' AND Category.parent_category_id IS NOT NULL) AND Category.category_name IN ({1}))",
-                shareNum, string.Join(",", ShareNumCategory[shareNum].Select(category => string.Format("'{0}'", category))));
-            MySqlCommand cmd = new MySqlCommand(selectQuery1, getDBConnection());
-            MySqlDataReader table = cmd.ExecuteReader();
-            while (table.Read())
+            MySqlCommand cmd;
+            MySqlDataReader table;
+            if (ShareNumCategory.ContainsKey(shareNum))
             {
-                monthScheduleList.ForEach(scheduleList => scheduleList.RemoveAll(schedule => schedule.id == int.Parse(table["id"].ToString())));
+                //예전 딕셔너리에 있는 값의 스케줄 삭제 후, 추가
+                string selectQuery1 = string.Format("SELECT Schedule.id FROM Schedule WHERE Schedule.category_id IN (SELECT Category.id FROM Category WHERE (Category.student_id = '{0}' AND Category.parent_category_id IS NOT NULL) AND Category.category_name IN ({1}))",
+                    shareNum, string.Join(",", ShareNumCategory[shareNum].Select(category => string.Format("'{0}'", category))));
+
+                cmd = new MySqlCommand(selectQuery1, getDBConnection());
+                table = cmd.ExecuteReader();
+                while (table.Read())
+                {
+                    monthScheduleList.ForEach(scheduleList => scheduleList.RemoveAll(schedule => schedule.id == int.Parse(table["id"].ToString())));
+                }
+                table.Close();
             }
-            table.Close();
-
-
             string selectQuery2 = string.Format("SELECT * FROM (SELECT Schedule.id AS schedule_id, Schedule.student_id, Category.id AS category_id, Schedule.startDate, Schedule.endDate, Schedule.status, Schedule.title, Schedule.content, Schedule.place, Schedule.alarmStatus, Category.category_name, Category.parent_category_id, Category.color " +
-                "FROM Schedule JOIN Category ON Schedule.category_id = Category.id " +
-                "WHERE Schedule.student_id = '{0}' AND(startDate BETWEEN DATE_FORMAT('{1}', '%Y-%m-%d') AND LAST_DAY('{1}') " +
-                "OR endDate BETWEEN DATE_FORMAT('{1}', '%Y-%m-%d') AND LAST_DAY('{1}')) AND Schedule.category_id " +
-                "IN(SELECT Category.id FROM Category WHERE(Category.student_id = '{0}' AND Category.parent_category_id IS NOT NULL) AND Category.category_name IN ({2}))) AS AllSchedule "+
-                "LEFT OUTER JOIN(SELECT m1.schedule_id, GROUP_CONCAT(m2.student_id) AS concatenated_student_ids FROM Members m1 INNER JOIN Members m2 ON m1.main_schedule_id = m2.main_schedule_id GROUP BY m1.schedule_id) AS MemberList ON AllSchedule.schedule_id = MemberList.schedule_id ORDER BY startDate ASC; ",
-                shareNum, new DateTime(2023, 6, 1).ToString("yyyy-MM-dd"), string.Join(",", categoryList.Select(category => string.Format("'{0}'", category))));
+                    "FROM Schedule JOIN Category ON Schedule.category_id = Category.id " +
+                    "WHERE Schedule.student_id = '{0}' AND(startDate BETWEEN DATE_FORMAT('{1}', '%Y-%m-%d') AND LAST_DAY('{1}') " +
+                    "OR endDate BETWEEN DATE_FORMAT('{1}', '%Y-%m-%d') AND LAST_DAY('{1}')) AND Schedule.category_id " +
+                    "IN(SELECT Category.id FROM Category WHERE(Category.student_id = '{0}' AND Category.parent_category_id IS NOT NULL) AND Category.category_name IN ({2}))) AS AllSchedule " +
+                    "LEFT OUTER JOIN(SELECT m1.schedule_id, GROUP_CONCAT(m2.student_id) AS concatenated_student_ids FROM Members m1 INNER JOIN Members m2 ON m1.main_schedule_id = m2.main_schedule_id GROUP BY m1.schedule_id) AS MemberList ON AllSchedule.schedule_id = MemberList.schedule_id ORDER BY startDate ASC; ",
+                    shareNum, new DateTime(2023, 6, 1).ToString("yyyy-MM-dd"), string.Join(",", categoryList.Select(category => string.Format("'{0}'", category))));
             cmd = new MySqlCommand(selectQuery2, getDBConnection());
             table = cmd.ExecuteReader();
             //monthScheduleList.Clear(); //한달 스케줄 초기화

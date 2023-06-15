@@ -33,7 +33,52 @@
 
 ## 🔎 기능 소개
 
+<details>
+<summary>캘린더 인터페이스</summary>
+<div markdown="1">       
+</div>
+</details>
+
+<details>
+<summary>로그인 세션 유지</summary>
+<div markdown="1">       
+</div>
+</details>
+
+<details>
+<summary>Klas 연동을 통한 학사일정</summary>
+<div markdown="1">       
+</div>
+</details>
+
+<details>
+<summary>오늘의 일정 & 마감 일정</summary>
+<div markdown="1">       
+</div>
+</details>
+
+<details>
+<summary>공유 일정</summary>
+<div markdown="1">       
+</div>
+</details>
+
+<details> 
+<summary>일정 보기 탭 & 카테고리</summary>
+<div markdown="1">       
+</div>
+</details>
+
+<details>
+<details>
+<summary>실시간 일정 공유</summary>
+<div markdown="1">       
+</div>
+</details>
+
 ## 📃 기술 스택
+
+
 ### Database
 * MySQL
 
@@ -52,7 +97,10 @@
 
 ## 📁 DB 구조
 
-![KSCS](https://github.com/SharpDotMOUSE/KSCS/assets/89342648/2398ebbd-7a6a-4406-8a1c-4b6e83f0910d)
+![KSCS](https://github.com/SharpDotMOUSE/KSCS/assets/89342648/c50427f3-c4da-421e-8f79-ff6469557b5a)
+
+* `TabCategory` : `StudentTab` 와 `Category` 을 매핑해주는 중간 테이블
+* `Members` : `Student` 와 `Schedule` 를 매핑해주는 중간 테이블. 공유 일정 멤버들을 나타냄
 
 
 ## 🗣️ 커뮤니케이션

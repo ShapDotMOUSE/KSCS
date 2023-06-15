@@ -70,7 +70,6 @@
 </details>
 
 <details>
-<details>
 <summary>실시간 일정 공유</summary>
 <div markdown="1">       
 </div>

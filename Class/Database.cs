@@ -333,6 +333,8 @@ namespace KSCS
 
         public static void ReadShareScheduleList(string shareNum,List<string> categoryList)
         {
+            //이미 딕셔너리 존재하면, 삭제
+            if (ShareNum_ScheduleList.ContainsKey(shareNum)) ShareNum_ScheduleList.Remove(shareNum);
             if (categoryList.Count == 0) return;
             string selectQuery2 = string.Format("SELECT * FROM (SELECT Schedule.id AS schedule_id, Schedule.student_id, Category.id AS category_id, Schedule.startDate, Schedule.endDate, Schedule.status, Schedule.title, Schedule.content, Schedule.place, Schedule.alarmStatus, Category.category_name, Category.parent_category_id, Category.color " +
                     "FROM Schedule JOIN Category ON Schedule.category_id = Category.id " +
@@ -346,10 +348,6 @@ namespace KSCS
             //monthScheduleList.Clear(); //한달 스케줄 초기화
 
             List<List<Schedule>> MemberScheduleList = new List<List<Schedule>>(); //한달 단위 schedule list 생성
-            
-            //이미 딕셔너리 존재하면, 삭제
-            if (ShareNum_ScheduleList.ContainsKey(shareNum)) ShareNum_ScheduleList.Remove(shareNum); 
-
 
             //하루 단위 리스트 생성
             for (int i = 0; i < DateTime.DaysInMonth(year, month); i++)

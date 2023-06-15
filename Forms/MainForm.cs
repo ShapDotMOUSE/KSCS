@@ -213,6 +213,12 @@ namespace KSCS
             ChangeTab(TabAll, e);
         }
 
+        public void ChangeSharingMemberLableStatusHandle(bool enable, string stdNum)
+        {
+            if (isListen)
+                ((UserMemberStatus)flowLayoutPanelLable.Controls[stdNum]).SetStatus(enable);
+        }
+
         //탭 함수-------------------------------------------------------------------------------------------------------------------------------------------
         private void ChangeTab(object sender, EventArgs e)
         {

@@ -14,6 +14,7 @@ namespace KSCS.Forms
     {
         public static EventHandler EnableTab;
         public static EventHandler SharingButtonStatusChange;
+        public EventHandler RefuseConnect;
         public AllowOrRequestForm()
         {
             InitializeComponent();
@@ -22,7 +23,8 @@ namespace KSCS.Forms
 
         private void btnRefuse_Click(object sender, EventArgs e)
         {
-            this.Close();
+            RefuseConnect?.Invoke(this, e);
+            Close();
         }
 
         private void btnAgree_Click(object sender, EventArgs e)

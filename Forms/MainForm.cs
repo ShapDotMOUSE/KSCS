@@ -616,21 +616,30 @@ namespace KSCS
                 AllowOrRequestForm allowOrRequestForm = new AllowOrRequestForm();
                 allowOrRequestForm.lbl_StudentNumber.Text = boss;
                 allowOrRequestForm.TopMost = true;
-                    foreach (string memberNum in s_client.InviteClass.members)
-                    {
-                        UserMemberStatus memberStatus = new UserMemberStatus();
-                        memberStatus.SetName(memberNum);
-                        memberStatus.SetColor(testStdNumColor[memberNum]);
-                        if (memberNum == stdNum)
-                            memberStatus.SetStatus(true);
-                        flowLayoutPanelLable.Controls.Add(memberStatus);
-                    }
+                foreach (string memberNum in s_client.InviteClass.members)
+                {
+                    UserMemberStatus memberStatus = new UserMemberStatus();
+                    memberStatus.SetName(memberNum);
+                    memberStatus.SetColor(testStdNumColor[memberNum]);
+                    if (memberNum == stdNum)
+                        memberStatus.SetStatus(true);
+                    flowLayoutPanelLable.Controls.Add(memberStatus);
+                }
+                allowOrRequestForm.RefuseConnect+= refusetInvite;
                 DialogResult = allowOrRequestForm.ShowDialog();
                 if (DialogResult == DialogResult.OK)
                 {
                     btnSettingComplete.Enabled = true;
                 }
             }));
+        }
+
+        public void refusetInvite(object sender, EventArgs e)
+        {
+            listener.Stop();
+            isListen = false;
+            listener.Start();
+            isListen = true;
         }
 
         public void ConnectClient(string sender, List<string> todo, string type)

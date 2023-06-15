@@ -343,7 +343,7 @@ namespace KSCS
                     shareNum, new DateTime(2023, 6, 1).ToString("yyyy-MM-dd"), string.Join(",", categoryList.Select(category => string.Format("'{0}'", category))));
             MySqlCommand cmd = new MySqlCommand(selectQuery2, getDBConnection());
             MySqlDataReader table = cmd.ExecuteReader();
-            monthScheduleList.Clear(); //한달 스케줄 초기화
+            //monthScheduleList.Clear(); //한달 스케줄 초기화
 
             List<List<Schedule>> MemberScheduleList = new List<List<Schedule>>(); //한달 단위 schedule list 생성
             

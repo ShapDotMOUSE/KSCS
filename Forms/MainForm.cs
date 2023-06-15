@@ -574,20 +574,17 @@ namespace KSCS
             listener.Stop();
             isListen = false;
             Database.DeleteAddress();
-            List<string> testStdnums = new List<string>
-                {
-                    "2019203082",
-                    //"2021203078",
-                    "2019203055",
-                    "2019203045"
-                };
-
+            
             btnUserSharingAddButton.ChangeStatus(true);
 
-            List<string> testTodo = testStdnums.ToList();
-            testTodo.Remove(stdNum);
+            sharingMember.Add("2019203082");
+            //sharingMember.Add("2019203078");
+            sharingMember.Add("2019203055");
+            sharingMember.Add("2019203045");
+            List<string> todoLink = sharingMember.ToList();
+            todoLink.Remove(stdNum);
 
-            foreach (string memberNum in testStdnums)
+            foreach (string memberNum in sharingMember)
             {
                 UserMemberStatus memberStatus = new UserMemberStatus();
                 memberStatus.SetName(memberNum);
@@ -599,13 +596,13 @@ namespace KSCS
             }
 
 
-            s_client.addressDict = Database.GetAddress(testStdnums);
+            s_client.addressDict = Database.GetAddress(sharingMember);
             //Init 데이터 생성
             s_client.InviteClass = new Invite
             {
                 Type = (int)PacketType.INVITE,
-                members = testStdnums,
-                todoLink = testTodo,
+                members = sharingMember,
+                todoLink = todoLink,
                 boss = stdNum,
             };
             s_client.inviteAllMembers();

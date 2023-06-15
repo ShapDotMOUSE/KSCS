@@ -163,42 +163,78 @@ namespace KSCS
                 }
             }
         }
-        public void SharingTabEnable(bool enable)
+        private void EnterSharingTab(bool enable)
         {
-            TabAll.Enabled = !enable;
-            Tab1.Enabled = !enable;
-            Tab2.Enabled = !enable;
-            Tab3.Enabled = !enable;
-            Tab4.Enabled = !enable;
             if (enable)
             {
+                UserTabButton OldTab = this.Controls[TabName] as UserTabButton;
+                OldTab.HideTab();
                 flowLayoutPanelLable.Controls.Clear();
                 TabName = TabSharing.Name;
                 TabSharing.ShowTab();
                 SharingCategory = new Dictionary<string, bool>();
                 SharingSubCategorySet(enable);
+                AllowOrRequestForm.EnableTab = TabEnableHadler;
+                UserSharingAddButton.Exit = ExitSharingHandler;
+                UserSharingAddButton.EnableTab = TabEnableHadler;
 
             }
             else
             {
+                TabSharing.HideTab();
                 SharingCategory = null;
-                TabName = TabAll.Name;
+                isListen = false;
+                isShareSchedule = false;
+                AllowOrRequestForm.EnableTab = null;
+                UserSharingAddButton.EnableTab = null;
+                UserSharingAddButton.Exit = null;
                 SharingSubCategorySet(enable);
-                LoadMainForm();
-                SetCheckedCategoryByTab();
+                listener.Stop();
             }
+        }
 
+        public void TabEnableHadler(object sender, EventArgs e)
+        {
+            EnableTab(true);
+        }
 
+        public void EnableTab(bool enable)
+        {
+            Tab1.Enabled = !enable;
+            Tab2.Enabled = !enable;
+            Tab3.Enabled = !enable;
+            Tab4.Enabled = !enable;
+            TabAll.Enabled = !enable;
+        }
+
+        public void ExitSharingHandler(object sender, EventArgs e)
+        {
+            EnableTab(false);
+            TabAll.ShowTab();
+            ChangeTab(TabAll, e);
+        }
+
+        public void ChangeSharingMemberLableStatusHandle(bool enable, string stdNum)
+        {
+            if (isListen)
+                ((UserMemberStatus)flowLayoutPanelLable.Controls[stdNum]).SetStatus(enable);
         }
 
         //탭 함수-------------------------------------------------------------------------------------------------------------------------------------------
         private void ChangeTab(object sender, EventArgs e)
         {
-            UserTabButton OldTab = this.Controls[TabName] as UserTabButton;
+            if (TabName != TabSharing.Name)
+            {
+                UserTabButton OldTab = this.Controls[TabName] as UserTabButton;
+                OldTab.HideTab();
+            }
+            else
+            {
+                EnterSharingTab(false);
+            }
+
             UserTabButton btn = sender as UserTabButton;
             TabName = btn.Name;
-            OldTab.HideTab();
-            isShareSchedule = false;
             ChangeShareSchedule();
             LoadMainForm(); //추가
             UpdateTab();
@@ -690,7 +726,7 @@ namespace KSCS
                 }
                 createDates();
 
-                SharingTabEnable(!(TabName == TabSharing.Name));
+                EnterSharingTab(true);
 
                 Task.Run(() => EnterShareSchedule());
             }

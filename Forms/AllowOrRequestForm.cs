@@ -12,6 +12,8 @@ namespace KSCS.Forms
 {
     public partial class AllowOrRequestForm : Form
     {
+        public static EventHandler EnableTab;
+        public static EventHandler SharingButtonStatusChange;
         public AllowOrRequestForm()
         {
             InitializeComponent();
@@ -26,6 +28,8 @@ namespace KSCS.Forms
         private void btnAgree_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
+            EnableTab?.Invoke(this, e);
+            SharingButtonStatusChange?.Invoke(this, e);
             Close();
         }
     }

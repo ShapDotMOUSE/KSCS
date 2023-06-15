@@ -740,6 +740,8 @@ namespace KSCS
                     categories.Add(category.Key);
                 }
             }
+            Database.ReadShareScheduleList(stdNum, categories);
+            CreateSharingSchedule(stdNum);
             s_client.sendCategoryList(categories);
         }
     }

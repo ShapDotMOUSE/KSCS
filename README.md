@@ -1,4 +1,4 @@
-# Kw Schedule Calendar Service
+# Kwangwoon Schedule Calendar Service (KSCS)
 <img width="159" alt="로고" src="https://github.com/SharpDotMOUSE/KSCS/assets/89342648/30b49977-7aed-4c78-8a9d-511475bd4b4d">
 
 <img src="https://img.shields.io/badge/version-v1.0.0-red"/>
@@ -59,7 +59,11 @@
 
 <details>
 <summary>Klas 연동을 통한 학사일정</summary>
-<div markdown="1">       
+<div markdown="1">     
+ 
+![KLAS 연동](https://github.com/SharpDotMOUSE/KSCS/assets/89342648/42fdd0a3-ba48-4329-bf7e-a9785622f821)
+
+ 
 </div>
 </details>
 
@@ -93,6 +97,12 @@
 <details> 
 <summary>일정 보기 탭 & 카테고리</summary>
 <div markdown="1">       
+
+![보기 탭](https://github.com/SharpDotMOUSE/KSCS/assets/89342648/ec8a78d0-085a-4de7-b722-a4ef05b1ca02)
+![카테고리](https://github.com/SharpDotMOUSE/KSCS/assets/89342648/5162d64d-7d8f-4789-84b6-d77cb8b4ed26)
+![카테고리_대분류추가](https://github.com/SharpDotMOUSE/KSCS/assets/89342648/1374dc58-3568-4c3b-9c5a-5dccf7833636)
+![카테고리_소분류추가](https://github.com/SharpDotMOUSE/KSCS/assets/89342648/e46ae487-dd22-4b50-879f-e1a047417ee0)
+![카테고리 변경](https://github.com/SharpDotMOUSE/KSCS/assets/89342648/313c6d74-8cbe-4603-bcc3-dba50c6e0b0b)
 
 
 </div>

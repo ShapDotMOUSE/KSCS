@@ -116,6 +116,7 @@ namespace Socket
                 }
                 catch
                 {
+                    OnStatusChange(stdNum, false);
                     Trace.WriteLine(string.Format("연결 실패 + {0}: 실시간 일정 공유에 접속되어 있지 않습니다.", stdNum));
                 }
             }

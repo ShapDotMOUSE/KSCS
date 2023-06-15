@@ -218,7 +218,6 @@ namespace KSCS
         {
             Invoke((MethodInvoker)(() =>
             {
-                if (isListen)
                     ((UserMemberStatus)flowLayoutPanelLable.Controls[stdNum])?.SetStatus(enable);
             }));
         }
